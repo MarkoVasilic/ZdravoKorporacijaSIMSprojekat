@@ -1,1 +1,1 @@
-# ZdravoKorporacijaSIMSprojekatSjajno
+# ZdravoKorporacijaSIMSprojekat
