@@ -1,10 +1,12 @@
 using System;
+using Model;
+using System.Collections.Generic;
 
 namespace Services
 {
-   public class PatientService
+    public class PatientService
    {
-      public List<Pacient> GetAllPatients()
+      public List<Patient> GetAllPatients()
       {
          throw new NotImplementedException();
       }
