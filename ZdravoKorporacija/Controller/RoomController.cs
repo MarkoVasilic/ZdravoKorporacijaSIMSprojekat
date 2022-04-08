@@ -1,4 +1,5 @@
 using Model;
+using Services;
 using System;
 using System.Collections.Generic;
 
@@ -6,29 +7,35 @@ namespace Controller
 {
     public class RoomController
     {
-        public Model.Room CreateRoom(Model.Room roomToMake)
+        RoomService roomService = new RoomService();
+        public void CreateRoom(Model.Room roomToMake)
         {
-            throw new NotImplementedException();
+            roomService.CreateRoom(roomToMake);
         }
 
         public List<Room> GetAllRooms()
         {
-            throw new NotImplementedException();
+            return roomService.GetAllRooms();
         }
 
-        public Boolean DeleteRoom(int id)
+        public void DeleteRoom(int id)
         {
-            throw new NotImplementedException();
+            roomService.DeleteRoom(id);
         }
 
-        public Boolean ModifyRoom(Model.Room roomToModify)
+        public void ModifyRoom(Model.Room roomToModify)
         {
-            throw new NotImplementedException();
+            roomService.ModifyRoom(roomToModify);
         }
 
         public Model.Room FindRoomByName(String name)
         {
-            throw new NotImplementedException();
+            return roomService.FindRoomByName(name);
+        }
+
+        public Model.Room FindRoomByType(RoomType roomType)
+        {
+            return roomService.FindRoomByType(roomType);
         }
 
     }
