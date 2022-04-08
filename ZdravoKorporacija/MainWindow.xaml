@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="724" Width="1024">
     <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="C:\Users\IdeaPad\Desktop\Faks\SIMS-nasProjekat\ZdravoKorporacijaSIMSprojekat\ZdravoKorporacija\Resources\bolnicaHCI.jpg"
+                AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"  Content="Pacijent" HorizontalAlignment="Left" Margin="40,110,0,0" VerticalAlignment="Top" Width="140" Height="96" Click="ButtonClickPatient"/>
+        <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"  Content="Sekretar" HorizontalAlignment="Left" Margin="40,233,0,0" VerticalAlignment="Top" Width="140" Height="85" Click="Button_Click"/>
+        <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"  Content="Upravnik" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Width="140" Height="89" RenderTransformOrigin="0.659,0.685"/>
+        <Button  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"  Content="Lekar" HorizontalAlignment="Left" Margin="40,473,0,0" VerticalAlignment="Top" Width="140" Height="92" Background="#FFF9F9F9"/>
+        <TextBox FontFamily="Impact" Background ="Transparent" FontSize="48" HorizontalAlignment="Left" Margin="344,41,0,0" TextWrapping="Wrap" Text="Zdravo-Korporacija" VerticalAlignment="Top" Width="441" Height="82" TextChanged="TextBox_TextChanged"/>
+
 
     </Grid>
 </Window>
