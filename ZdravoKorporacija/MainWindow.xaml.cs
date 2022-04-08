@@ -23,5 +23,11 @@ namespace ZdravoKorporacija
             PacijentHomePage pacijentHomePage = new PacijentHomePage();
             pacijentHomePage.Show();
         }
+
+        private void Button_Click_Secretary(object sender, RoutedEventArgs e)
+        {
+            SecretaryAddAccountWindow secretaryAddAccountWindow = new SecretaryAddAccountWindow();
+            secretaryAddAccountWindow.Show();
+        }
     }
 }
