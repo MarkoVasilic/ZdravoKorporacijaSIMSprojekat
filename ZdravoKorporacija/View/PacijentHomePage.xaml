@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View"
         mc:Ignorable="d"
-        Title="PacijentHomePage" Height="450" Width="800">
-    <Grid>
-        <Label Content="Veljo Peder" FontSize="50" HorizontalAlignment="Left" Margin="382,166,0,0" VerticalAlignment="Top"/>
+        Title="PatiententHomePage" Height="450" Width="800">
+    <Grid Background="#FF4FC3A0">
+        <Label Content="Welcome to our hospital" FontSize="50" HorizontalAlignment="Left" Margin="119,158,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
