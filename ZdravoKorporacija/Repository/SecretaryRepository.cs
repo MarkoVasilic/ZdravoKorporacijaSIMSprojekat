@@ -1,8 +1,6 @@
-using System;
-
 namespace Repository
 {
-   public class SecretaryRepository
-   {
-   }
+    public class SecretaryRepository
+    {
+    }
 }
