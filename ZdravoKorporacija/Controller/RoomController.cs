@@ -1,33 +1,42 @@
+using Model;
+using Services;
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {
-   public class RoomController
-   {
-      public Model.Room CreateRoom(Model.Room roomToMake)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Room> GetAllRooms()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean DeleteRoom(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean ModifyRoom(Model.Room roomToModify)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Room FindRoomByName(String name)
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+    public class RoomController
+    {
+        RoomService roomService = new RoomService();
+        public void CreateRoom(Model.Room roomToMake)
+        {
+            roomService.CreateRoom(roomToMake);
+        }
+
+        public List<Room> GetAllRooms()
+        {
+            return roomService.GetAllRooms();
+        }
+
+        public void DeleteRoom(int id)
+        {
+            roomService.DeleteRoom(id);
+        }
+
+        public void ModifyRoom(Model.Room roomToModify)
+        {
+            roomService.ModifyRoom(roomToModify);
+        }
+
+        public Model.Room FindRoomByName(String name)
+        {
+            return roomService.FindRoomByName(name);
+        }
+
+        public Model.Room FindRoomByType(RoomType roomType)
+        {
+            return roomService.FindRoomByType(roomType);
+        }
+
+    }
 }

@@ -1,12 +1,10 @@
-using System;
-
 namespace Model
 {
-   public enum RoomType
-   {
-      EXAMINATION,
-      CONFERENCE,
-      STORAGE,
-      SURGERY
-   }
+    public enum RoomType
+    {
+        EXAMINATION,
+        CONFERENCE,
+        STORAGE,
+        SURGERY
+    }
 }

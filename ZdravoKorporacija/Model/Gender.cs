@@ -1,10 +1,8 @@
-using System;
-
 namespace Model
 {
-   public enum Gender
-   {
-      MALE,
-      FEMALE
-   }
+    public enum Gender
+    {
+        MALE,
+        FEMALE
+    }
 }

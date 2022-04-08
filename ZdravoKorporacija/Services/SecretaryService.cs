@@ -1,8 +1,6 @@
-using System;
-
 namespace Services
 {
-   public class SecretaryService
-   {
-   }
+    public class SecretaryService
+    {
+    }
 }
