@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKorporacija.View;
 
-namespace ZdravoKorporacija
+namespace ZdravoKorporacija.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PacijentHomePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PacijentHomePage : Window
     {
-        public MainWindow()
+        public PacijentHomePage()
         {
             InitializeComponent();
-        }
-
-        private void Button_ClickPacijent(object sender, RoutedEventArgs e)
-        {
-            PacijentHomePage pacijentHomePage = new PacijentHomePage();
-            pacijentHomePage.Show();
         }
     }
 }
