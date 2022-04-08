@@ -1,35 +1,68 @@
+using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
     public class AppointmentRepository
     {
-        private String appointmentFilePath;
+        private String appointmentFilePath=@"..\..\..\Resources\Appointments.json";
 
         public List<Model.Appointment> FindAll()
         {
-            throw new NotImplementedException();
+            var values = GetValues();
+                return values;
         }
 
-        public Model.Appointment SaveAppointment(Model.Appointment AppointmentToSave)
+        public void SaveAppointment(Model.Appointment AppointmentToSave)
         {
-            throw new NotImplementedException();
+            var values = GetValues();
+            values.Add(AppointmentToSave);
+            Save(values);
         }
 
-        public Boolean RemoveAppointment(int AppointmentId)
+        public void RemoveAppointment(int AppointmentId)
         {
-            throw new NotImplementedException();
+            var values = GetValues();
+            values.RemoveAll(val => val.id == AppointmentId);
+            Save(values);
         }
 
         public Model.Appointment FindOneById(int AppointmentId)
         {
-            throw new NotImplementedException();
+            var values = GetValues();
+            foreach (var val in values)
+            {
+                if (val.id == AppointmentId)
+                {
+                    return val;
+                }
+            }
+
+            return null;
         }
 
         public List<Model.Appointment> FindAllByDoctor(Model.Doctor DoctorForAppointment)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Appointment> GetValues()
+        {
+            var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(appointmentFilePath));
+            if (values == null)
+            {
+                values = new List<Appointment>();
+            }
+
+            return values;
+        }
+
+        public void Save(List<Appointment> values)
+        {
+            File.WriteAllText(appointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
     }

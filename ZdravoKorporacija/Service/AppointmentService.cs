@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Repository;
 
 namespace Service
 {
     public class AppointmentService
     {
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
         public List<Appointment> GetAllAppointments()
         {
-            throw new NotImplementedException();
+            return appointmentRepository.FindAll();
         }
 
         public Model.Appointment CreateAppointment(Model.Appointment PacientToMake)

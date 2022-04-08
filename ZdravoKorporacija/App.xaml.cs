@@ -3,6 +3,7 @@ using Repository;
 using Service;
 using Model;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace ZdravoKorporacija
 {

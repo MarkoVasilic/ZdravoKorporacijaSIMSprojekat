@@ -4,12 +4,12 @@ namespace Model
 {
     public class Appointment
     {
-        public DateTime startTime;
-        public int duration;
-        public int id;
+        public DateTime startTime { get; set; }
+        public int duration { get; set; }
+        public int id { get; set; }
 
-        public Patient patient;
-        public Doctor doctor;
+        public Patient patient {get; set;}
+        public Doctor doctor; 
 
 
         public Doctor Doctor

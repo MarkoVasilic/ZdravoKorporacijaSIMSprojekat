@@ -1,3 +1,4 @@
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -5,9 +6,10 @@ namespace Controller
 {
     public class AppointmentController
     {
+        AppointmentService appointmentService = new AppointmentService();
         public List<Model.Appointment> GetAllAppointments()
         {
-            throw new NotImplementedException();
+            return appointmentService.GetAllAppointments();
         }
 
         public Model.Appointment CreateAppointment(Model.Appointment PacientToMake)

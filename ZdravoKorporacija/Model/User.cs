@@ -13,10 +13,10 @@ namespace Model
         public Gender gender { get; set; }
         public String email { get; set; }
         public String telephone { get; set; }
-        public String adress { get; set; }
+        public String address { get; set; }
 
         protected User(string firstName, string lastName, string username, string password,
-            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone, string? adress)
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone, string? address)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -27,7 +27,7 @@ namespace Model
             this.gender = gender;
             this.email = email ?? "";
             this.telephone = telephone ?? "";
-            this.adress = adress ?? "";
+            this.address = address ?? "";
         }
     }
 }
