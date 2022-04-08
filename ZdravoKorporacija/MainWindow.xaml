@@ -10,7 +10,7 @@
     <Grid Margin="0,0,0,-6">
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\IdeaPad\Desktop\Faks\SIMS-nasProjekat\ZdravoKorporacijaSIMSprojekat\ZdravoKorporacija\Resources\Images\bolnicaHCI.jpg" Stretch="Fill"/>
-        </Grid.Background>
+        </Grid.Background> 
         <Button Content="Patient" HorizontalAlignment="Left" Margin="47,129,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719" Click="Button_ClickPacijent"/>
         <TextBox IsReadOnly="True" BorderThickness="0" Background ="Transparent" HorizontalAlignment="Left" Margin="332,27,0,0" TextWrapping="Wrap" Text="Zdravo Corporation" VerticalAlignment="Top" Width="486" Height="73" FontSize="54" FontFamily="Britannic Bold" AllowDrop="True"/>
         <Button Content="Secretary" HorizontalAlignment="Left" Margin="47,250,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719"/>
