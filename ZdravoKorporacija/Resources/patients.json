@@ -1,0 +1,44 @@
+[
+  {
+    "allergens": [],
+    "bloodType": 2,
+    "firstName": "Marko",
+    "lastName": "Vasilic",
+    "username": "mare",
+    "password": "123",
+    "jmbg": "1234567891111",
+    "dateOfBirth": "2022-04-08T14:11:26.2304068+02:00",
+    "gender": 1,
+    "email": "marko.cda@vnda.com",
+    "telephone": "000000000",
+    "adress": "pere perica 5a"
+  },
+  {
+    "allergens": [],
+    "bloodType": 2,
+    "firstName": "Marko",
+    "lastName": "Konj",
+    "username": "mare",
+    "password": "123",
+    "jmbg": "1234567891111",
+    "dateOfBirth": "2022-04-08T14:11:26.2304068+02:00",
+    "gender": 1,
+    "email": "marko.cda@vnda.com",
+    "telephone": "000000000",
+    "adress": "pere perica 5a"
+  },
+  {
+    "allergens": [],
+    "bloodType": 0,
+    "firstName": "milos",
+    "lastName": "vas",
+    "username": "milos",
+    "password": "password",
+    "jmbg": "456456465456",
+    "dateOfBirth": null,
+    "gender": 0,
+    "email": "",
+    "telephone": "",
+    "adress": ""
+  }
+]

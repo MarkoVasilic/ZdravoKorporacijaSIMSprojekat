@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using Model;
 
-namespace Controller
+namespace Service
 {
-    public class DoctorController
+    public class DoctorService
     {
         public Doctor GetDoctor(long Jmbg)
         {
