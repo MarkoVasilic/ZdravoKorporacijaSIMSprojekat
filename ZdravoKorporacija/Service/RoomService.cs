@@ -1,9 +1,10 @@
-using Model;
 using System;
+using System.Collections.Generic;
+using Model;
 
-namespace Controller
+namespace Service
 {
-    public class RoomController
+    public class RoomService
     {
         public Model.Room CreateRoom(Model.Room roomToMake)
         {
@@ -15,7 +16,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Boolean DeleteRoom(int id)
+        public Boolean DeleteRoom(int roomId)
         {
             throw new NotImplementedException();
         }

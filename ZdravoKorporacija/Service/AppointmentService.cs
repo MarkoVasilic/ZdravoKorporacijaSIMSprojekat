@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Model;
 
-namespace Controller
+namespace Service
 {
-    public class AppointmentController
+    public class AppointmentService
     {
-        public List<Model.Appointment> GetAllAppointments()
+        public List<Appointment> GetAllAppointments()
         {
             throw new NotImplementedException();
         }
@@ -25,12 +26,12 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Model.Appointment GetAppointmentById(int AppointmentId)
+        public Model.Appointment GetOneAppointment(int AppointmentId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Model.Appointment> GetAppointmentsByDoctor(Model.Doctor DoctorForAppointment)
+        public List<Appointment> GetAppointmentsByDoctor(Model.Doctor DoctorForAppointment)
         {
             throw new NotImplementedException();
         }
