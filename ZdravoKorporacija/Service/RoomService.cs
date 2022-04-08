@@ -1,34 +1,61 @@
+using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
-using Model;
+using System.Linq;
 
 namespace Service
 {
     public class RoomService
     {
-        public Model.Room CreateRoom(Model.Room roomToMake)
+
+        RoomRepository roomRepository = new RoomRepository();
+
+        public void CreateRoom(Model.Room roomToMake)
         {
-            throw new NotImplementedException();
+            int id = GenerateNewId();
+            roomToMake.id = id;
+            roomRepository.SaveRoom(roomToMake);
         }
 
         public List<Room> GetAllRooms()
         {
-            throw new NotImplementedException();
+            return roomRepository.FindAll();
         }
 
-        public Boolean DeleteRoom(int roomId)
+        public void DeleteRoom(int roomId)
         {
-            throw new NotImplementedException();
+            roomRepository.RemoveRoom(roomId);
         }
 
-        public Boolean ModifyRoom(Model.Room roomToModify)
+
+        public void ModifyRoom(Model.Room roomToModify)
         {
-            throw new NotImplementedException();
+            roomRepository.ModifyRoom(roomToModify);
         }
 
         public Model.Room FindRoomByName(String name)
         {
-            throw new NotImplementedException();
+            return roomRepository.FindOneByName(name);
+        }
+
+        public Model.Room FindRoomByType(RoomType roomType)
+        {
+            return roomRepository.FindOneByType(roomType);
+        }
+
+        public int GenerateNewId()
+        {
+            try
+            {
+                List<Room> rooms = roomRepository.FindAll();
+                int currentMax = rooms.Max(obj => obj.id);
+                return currentMax + 1;
+            }
+            catch
+            {
+                return 1;
+            }
         }
 
     }
