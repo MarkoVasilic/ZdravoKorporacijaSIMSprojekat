@@ -10,7 +10,6 @@
   <ItemGroup>
 
     <Folder Include="View\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>

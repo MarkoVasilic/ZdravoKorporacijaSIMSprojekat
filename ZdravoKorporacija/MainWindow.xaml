@@ -9,7 +9,7 @@
         Title="MainWindow" Height="768" Width="1024">
     <Grid Margin="0,0,0,-6">
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\IdeaPad\Desktop\Faks\SIMS-nasProjekat\ZdravoKorporacijaSIMSprojekat\ZdravoKorporacija\Resources\bolnicaHCI.jpg" Stretch="Fill"/>
+            <ImageBrush ImageSource="C:\Users\IdeaPad\Desktop\Faks\SIMS-nasProjekat\ZdravoKorporacijaSIMSprojekat\ZdravoKorporacija\Resources\Images\bolnicaHCI.jpg" Stretch="Fill"/>
         </Grid.Background>
         <Button Content="Pacijent" HorizontalAlignment="Left" Margin="47,129,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719"/>
         <TextBox Background ="Transparent" HorizontalAlignment="Left" Margin="313,29,0,0" TextWrapping="Wrap" Text="Zdravo-Korporacija" VerticalAlignment="Top" Width="486" Height="73" FontSize="48" FontFamily="Britannic Bold"/>
