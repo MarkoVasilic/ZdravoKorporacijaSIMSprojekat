@@ -36,20 +36,6 @@ namespace Model
                 }
             }
         }
-        public Room room;
-
-
-        public Room Room
-        {
-            get
-            {
-                return room;
-            }
-            set
-            {
-                this.room = value;
-            }
-        }
 
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ZdravoKorporacija.View
 {
     /// <summary>
-    /// Interaction logic for PacijentHomePage.xaml
+    /// Interaction logic for DeleteAppointmentPage.xaml
     /// </summary>
-    public partial class PacijentHomePage : Window
+    public partial class DeleteAppointmentPage : Window
     {
-        public PacijentHomePage()
+        public DeleteAppointmentPage()
         {
             InitializeComponent();
         }

@@ -12,17 +12,19 @@ namespace Controller
             return appointmentService.GetAllAppointments();
         }
 
-        public Model.Appointment CreateAppointment(Model.Appointment PacientToMake)
+        //void
+        public void CreateAppointment(Model.Appointment PacientToMake)
         {
             throw new NotImplementedException();
         }
 
-        public Boolean DeleteAppointment(int AppointmentId)
+        //void
+        public void DeleteAppointment(int AppointmentId)
         {
-            throw new NotImplementedException();
+            appointmentService.DeleteAppointment(AppointmentId);    
         }
-
-        public Boolean ModifyAppointment(Model.Appointment AppointmentToModify)
+        // void
+        public void ModifyAppointment(Model.Appointment AppointmentToModify)
         {
             throw new NotImplementedException();
         }

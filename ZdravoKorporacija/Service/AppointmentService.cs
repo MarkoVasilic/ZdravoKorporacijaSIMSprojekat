@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Model;
 using Repository;
 
@@ -13,19 +14,38 @@ namespace Service
             return appointmentRepository.FindAll();
         }
 
-        public Model.Appointment CreateAppointment(Model.Appointment PacientToMake)
+        //void
+        public void CreateAppointment(Model.Appointment appointmentToMake)
         {
-            throw new NotImplementedException();
+            int id = GenerateNewId();
+            appointmentToMake.id = id;
+            appointmentRepository.SaveAppointment(appointmentToMake);
+
         }
 
-        public Boolean DeleteAppointment(int AppointmentId)
+        private int GenerateNewId()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Appointment> appointments = appointmentRepository.FindAll();
+                int currentMax = appointments.Max(obj => obj.id);
+                return currentMax + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+        //void
+        public void DeleteAppointment(int AppointmentId)
+        {
+           appointmentRepository.RemoveAppointment(AppointmentId);
         }
 
-        public Boolean ModifyAppointment(Model.Appointment AppointmentToModify)
+        //vraca void
+        public void ModifyAppointment(Model.Appointment AppointmentToModify)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();   
         }
 
         public Model.Appointment GetOneAppointment(int AppointmentId)

@@ -36,14 +36,7 @@
     "description": "opis",
     "RoomType": "EXAMINATION",
     "appointment": []
-},
-
-"room":{
-    "name": "soba1",
-    "id": 12,
-    "description": "opis",
-    "RoomType": "EXAMINATION"
-    }
+}
 }
 
 ]
