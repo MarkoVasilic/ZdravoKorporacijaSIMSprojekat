@@ -1,8 +1,7 @@
-using System;
 using Model;
 using Service;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Controller
 {
@@ -28,7 +27,7 @@ namespace Controller
             {
                 throw new Exception("Patient with that jmbg already exists!");
             }
-                
+
         }
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
@@ -58,7 +57,7 @@ namespace Controller
             else
             {
                 throw new Exception("Patient with that jmbg doesn't exists!");
-            }  
+            }
         }
 
         public Patient? GetOnePatient(string jmbg)

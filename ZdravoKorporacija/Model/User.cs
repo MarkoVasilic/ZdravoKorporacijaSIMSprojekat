@@ -12,7 +12,7 @@ namespace Model
         public DateTime? dateOfBirth { get; set; }
         public Gender gender { get; set; }
         public String email { get; set; }
-        public String telephone { get; set; }
+        public String phoneNumber { get; set; }
         public String address { get; set; }
 
         protected User(string firstName, string lastName, string username, string password,
@@ -26,7 +26,7 @@ namespace Model
             this.dateOfBirth = dateOfBirth;
             this.gender = gender;
             this.email = email ?? "";
-            this.telephone = telephone ?? "";
+            this.phoneNumber = telephone ?? "";
             this.address = address ?? "";
         }
     }

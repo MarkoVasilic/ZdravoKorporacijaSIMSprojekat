@@ -8,12 +8,12 @@ namespace Repository
 {
     public class AppointmentRepository
     {
-        private String appointmentFilePath=@"..\..\..\Resources\Appointments.json";
+        private String appointmentFilePath = @"..\..\..\Resources\Appointments.json";
 
         public List<Model.Appointment> FindAll()
         {
             var values = GetValues();
-                return values;
+            return values;
         }
 
         public void SaveAppointment(Model.Appointment AppointmentToSave)

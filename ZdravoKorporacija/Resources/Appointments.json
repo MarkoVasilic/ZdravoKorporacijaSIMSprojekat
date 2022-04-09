@@ -14,7 +14,7 @@
 "dateOfBirth": "2021-06-12T00:00:00+02:00",
 "gender": "MALE",
 "email": "gmail@gmail.com",
-"telephone": "0638162900",
+"phoneNumber": "0638162900",
 "address": "Bokeljskih Mornara 25"
 },
 "Doctor": 
@@ -29,7 +29,7 @@
     "dateOfBirth": "2021-06-12T00:00:00+02:00",
     "gender": "MALE",
     "email": "gmail@gmail.com",
-    "telephone": "0638162900",
+    "phoneNumber": "0638162900",
     "address": "Bokeljskih Mornara 25",
     "name": "soba1",
     "id": 12,

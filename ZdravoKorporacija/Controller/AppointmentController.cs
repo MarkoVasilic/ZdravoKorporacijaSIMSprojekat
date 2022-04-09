@@ -21,7 +21,7 @@ namespace Controller
         //void
         public void DeleteAppointment(int AppointmentId)
         {
-            appointmentService.DeleteAppointment(AppointmentId);    
+            appointmentService.DeleteAppointment(AppointmentId);
         }
         // void
         public void ModifyAppointment(Model.Appointment AppointmentToModify)

@@ -13,7 +13,7 @@ namespace Model
         public Doctor(bool specialization, string specializationType, List<Appointment> appointment,
             string firstName, string lastName, string username, string password,
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
-            string? adress): base(firstName, lastName, username, password, jmbg, dateOfBirth, gender, email, telephone, adress)
+            string? adress) : base(firstName, lastName, username, password, jmbg, dateOfBirth, gender, email, telephone, adress)
         {
             this.specializationType = specializationType;
             this.specialization = specialization;

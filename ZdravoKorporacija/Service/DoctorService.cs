@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Model;
+using System;
 
 namespace Service
 {

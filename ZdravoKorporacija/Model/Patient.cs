@@ -13,7 +13,7 @@ namespace Model
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
             string? adress) : base(firstName, lastName, username, password, jmbg, dateOfBirth, gender, email, telephone, adress)
         {
-            this.allergens = allergens ?? new List<String> ();
+            this.allergens = allergens ?? new List<String>();
             this.bloodType = bloodType;
         }
     }

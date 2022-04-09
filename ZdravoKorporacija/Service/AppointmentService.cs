@@ -1,8 +1,8 @@
+using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Model;
-using Repository;
 
 namespace Service
 {
@@ -39,13 +39,13 @@ namespace Service
         //void
         public void DeleteAppointment(int AppointmentId)
         {
-           appointmentRepository.RemoveAppointment(AppointmentId);
+            appointmentRepository.RemoveAppointment(AppointmentId);
         }
 
         //vraca void
         public void ModifyAppointment(Model.Appointment AppointmentToModify)
         {
-            throw new NotImplementedException();   
+            throw new NotImplementedException();
         }
 
         public Model.Appointment GetOneAppointment(int AppointmentId)
