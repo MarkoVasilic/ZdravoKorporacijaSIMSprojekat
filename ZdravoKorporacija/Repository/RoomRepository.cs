@@ -30,7 +30,7 @@ namespace Repository
             Save(values);
         }
 
-        public Model.Room FindOneByName(String name)
+        public Model.Room? FindOneByName(String name)
         {
             List<Room> rooms = GetValues();
             foreach (Room room in rooms)
@@ -48,7 +48,7 @@ namespace Repository
             Save(values);
         }
 
-        public Model.Room FindOneByType(RoomType roomType)
+        public Model.Room? FindOneByType(RoomType roomType)
         {
             List<Room> rooms = GetValues();
             foreach (Room room in rooms)

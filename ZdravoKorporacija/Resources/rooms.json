@@ -1,44 +1,14 @@
 [
   {
-    "name": "Conference room 1",
+    "name": "soba1",
     "id": 1,
-    "description": "conference room",
-    "RoomType": 2
+    "description": "neka soba",
+    "type": 0
   },
-
   {
-    "name": "Examination room 1",
+    "name": "soba1",
     "id": 2,
-    "description": "patient examination room",
-    "RoomType": 1
-  },
-
-  {
-    "name": "Examination room 2",
-    "id": 3,
-    "description": "patient examination room",
-    "RoomType": 1
-  },
-
-  {
-    "name": "Operating room 1",
-    "id": 4,
-    "description": "operating room",
-    "RoomType": 4
-  },
-
-  {
-    "name": "Operating room 2",
-    "id": 5,
-    "description": "operating room",
-    "RoomType": 4
-  },
-
-  {
-    "name": "Storage 1",
-    "id": 5,
-    "description": "storage",
-    "RoomType": 3
+    "description": "neka soba",
+    "type": 0
   }
-
 ]

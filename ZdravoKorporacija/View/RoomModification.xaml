@@ -1,0 +1,18 @@
+﻿<Window x:Class="ZdravoKorporacija.View.RoomModification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKorporacija.View"
+        mc:Ignorable="d"
+        Title="RoomModification" Height="450" Width="800">
+    <Grid>
+        <Label Content="Name" Margin="342,102,248,303" FontSize="18"/>
+        <Label Content="Description" Margin="319,222,271,168" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="256,136,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="252" BorderBrush="Black" Height="47"/>
+        <TextBox HorizontalAlignment="Left" Margin="256,266,0,121" TextWrapping="Wrap" Text="TextBox" Width="252" BorderBrush="Black"/>
+        <Button Content="Subbmit" Margin="304,354,340,30" Background="#FFA6E89C" />
+        <Label Content="ROOM MODIFICATION" Margin="273,41,273,356" FontSize="20" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

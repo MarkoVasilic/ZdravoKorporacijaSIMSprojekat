@@ -29,5 +29,11 @@ namespace ZdravoKorporacija
             SecretaryAddAccountWindow secretaryAddAccountWindow = new SecretaryAddAccountWindow();
             secretaryAddAccountWindow.Show();
         }
+
+        private void Button_Click_Manager(object sender, RoutedEventArgs e)
+        {
+           ManagerHomePage managerHomePage = new ManagerHomePage();
+           managerHomePage.Show();
+        }
     }
 }

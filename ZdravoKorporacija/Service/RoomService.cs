@@ -11,6 +11,11 @@ namespace Service
 
         RoomRepository roomRepository = new RoomRepository();
 
+        public RoomService(RoomRepository roomRepository)
+        {
+            this.roomRepository = roomRepository;
+        }
+
         public void CreateRoom(Model.Room roomToMake)
         {
             int id = GenerateNewId();
@@ -34,12 +39,12 @@ namespace Service
             roomRepository.ModifyRoom(roomToModify);
         }
 
-        public Model.Room FindRoomByName(String name)
+        public Model.Room? FindRoomByName(String name)
         {
             return roomRepository.FindOneByName(name);
         }
 
-        public Model.Room FindRoomByType(RoomType roomType)
+        public Model.Room? FindRoomByType(RoomType roomType)
         {
             return roomRepository.FindOneByType(roomType);
         }
