@@ -7,7 +7,13 @@ namespace Controller
 {
     public class RoomController
     {
-        RoomService roomService = new RoomService();
+        readonly RoomService roomService;
+
+        public RoomController(RoomService roomService)
+        {
+            this.roomService = roomService;
+        }
+
         public void CreateRoom(Model.Room roomToMake)
         {
             roomService.CreateRoom(roomToMake);
@@ -28,12 +34,12 @@ namespace Controller
             roomService.ModifyRoom(roomToModify);
         }
 
-        public Model.Room FindRoomByName(String name)
+        public Model.Room? FindRoomByName(String name)
         {
             return roomService.FindRoomByName(name);
         }
 
-        public Model.Room FindRoomByType(RoomType roomType)
+        public Model.Room? FindRoomByType(RoomType roomType)
         {
             return roomService.FindRoomByType(roomType);
         }
