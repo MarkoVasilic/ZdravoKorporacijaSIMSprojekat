@@ -53,7 +53,8 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        public List<Appointment> GetAppointmentsByDoctor(Model.Doctor DoctorForAppointment)
+        //prosledi jmbg
+        public List<Appointment> GetAppointmentsByDoctorJmbg(String Jmbg)
         {
             throw new NotImplementedException();
         }

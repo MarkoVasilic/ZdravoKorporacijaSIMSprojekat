@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Repository
 {
@@ -6,10 +7,14 @@ namespace Repository
     {
         private String doctorFilePath;
 
-        public Model.Doctor FindOneByJmbg(long Jmbg)
+        public Model.Doctor FindOneByJmbg(String Jmbg)
         {
             throw new NotImplementedException();
         }
 
+        public List<Model.Doctor> FindAllBySpeciality(String Speciality)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

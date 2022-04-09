@@ -45,7 +45,8 @@ namespace Repository
             return null;
         }
 
-        public List<Model.Appointment> FindAllByDoctor(Model.Doctor DoctorForAppointment)
+        //doctors appointments by jmbg
+        public List<Model.Appointment> FindAllByDoctor(String Jmbg)
         {
             throw new NotImplementedException();
         }

@@ -34,7 +34,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public List<Model.Appointment> GetAppointmentsByDoctor(Model.Doctor DoctorForAppointment)
+        public List<Model.Appointment> GetAppointmentsByDoctorJmbg(String DoctorJmbg)
         {
             throw new NotImplementedException();
         }
