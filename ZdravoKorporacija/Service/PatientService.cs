@@ -19,9 +19,9 @@ namespace Service
             return PatientRepository.FindAll();
         }
 
-        public void CreatePatient(Patient pacientToMake)
+        public void CreatePatient(Patient patientToMake)
         {
-            PatientRepository.SavePatient(pacientToMake);
+            PatientRepository.SavePatient(patientToMake);
         }
 
         public void DeletePatient(string jmbg)
