@@ -1,6 +1,5 @@
 using Model;
 using System;
-using Model;
 
 namespace Controller
 {

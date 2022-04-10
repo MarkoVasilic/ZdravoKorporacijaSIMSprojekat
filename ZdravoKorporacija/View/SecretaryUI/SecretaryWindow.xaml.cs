@@ -11,17 +11,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
-namespace ZdravoKorporacija.View
+namespace ZdravoKorporacija.View.SecretaryUI
 {
-    /// <summary>
-    /// Interaction logic for SecretaryAddAccountWindow.xaml
-    /// </summary>
-    public partial class SecretaryAddAccountWindow : Window
+    public partial class SecretaryWindow : Window
     {
-        public SecretaryAddAccountWindow()
+        public SecretaryWindow()
         {
             InitializeComponent();
+            DataContext = new SecretaryWindowVM(this);
         }
     }
 }

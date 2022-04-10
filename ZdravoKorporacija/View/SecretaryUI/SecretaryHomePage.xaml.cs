@@ -10,18 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoKorporacija.View
+namespace ZdravoKorporacija.View.SecretaryUI
 {
-    /// <summary>
-    /// Interaction logic for PacijentHomePage.xaml
-    /// </summary>
-    public partial class PacijentHomePage : Window
+    public partial class SecretaryHomePage : Page
     {
-        public PacijentHomePage()
+        public SecretaryHomePage()
         {
             InitializeComponent();
+        }
+
+        private void Patient_accounts_click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PatientsView());
         }
     }
 }

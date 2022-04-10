@@ -8,33 +8,33 @@ namespace Controller
 {
     public class PatientController
     {
-        private readonly PatientService patientService;
+        private readonly PatientService PatientService;
 
         public PatientController(PatientService patientService)
         {
-            this.patientService = patientService;
+            this.PatientService = patientService;
         }
 
         public List<Patient> GetAllPatients()
         {
-            return patientService.GetAllPatients();
+            return PatientService.GetAllPatients();
         }
 
         public void CreatePatient(Patient patientToMake)
         {
-            if (patientService.GetOnePatient(patientToMake.jmbg) == null)
-                patientService.CreatePatient(patientToMake);
+            if (PatientService.GetOnePatient(patientToMake.Jmbg) == null)
+                PatientService.CreatePatient(patientToMake);
             else
             {
-                throw new Exception("Patient with that jmbg already exists!");
+                //throw new Exception("Patient with that jmbg already exists!");
             }
                 
         }
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
-            if (patientService.GetOnePatient(jmbg) == null)
-                patientService.CreateGuestAccount(firstName, lastName, jmbg);
+            if (PatientService.GetOnePatient(jmbg) == null)
+                PatientService.CreateGuestAccount(firstName, lastName, jmbg);
             else
             {
                 throw new Exception("Patient with that jmbg already exists!");
@@ -43,8 +43,8 @@ namespace Controller
 
         public void DeletePatient(string jmbg)
         {
-            if (patientService.GetOnePatient(jmbg) != null)
-                patientService.DeletePatient(jmbg);
+            if (PatientService.GetOnePatient(jmbg) != null)
+                PatientService.DeletePatient(jmbg);
             else
             {
                 throw new Exception("Patient with that jmbg doesn't exists!");
@@ -53,8 +53,8 @@ namespace Controller
 
         public void ModifyPatient(Patient patientToModify)
         {
-            if (patientService.GetOnePatient(patientToModify.jmbg) != null)
-                patientService.ModifyPatient(patientToModify);
+            if (PatientService.GetOnePatient(patientToModify.Jmbg) != null)
+                PatientService.ModifyPatient(patientToModify);
             else
             {
                 throw new Exception("Patient with that jmbg doesn't exists!");
@@ -63,7 +63,7 @@ namespace Controller
 
         public Patient? GetOnePatient(string jmbg)
         {
-            return patientService.GetOnePatient(jmbg);
+            return PatientService.GetOnePatient(jmbg);
         }
 
     }

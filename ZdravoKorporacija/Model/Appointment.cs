@@ -8,8 +8,8 @@ namespace Model
         public int duration;
         public int id;
 
-        public Patient patient;
-        public Doctor doctor;
+        public Patient? patient;
+        public Doctor? doctor;
 
 
         public Doctor Doctor
