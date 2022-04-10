@@ -7,43 +7,43 @@ namespace Service
 {
     public class PatientService
     {
-        private readonly PatientRepository patientRepository;
+        private readonly PatientRepository PatientRepository;
 
         public PatientService(PatientRepository patientRepository)
         {
-            this.patientRepository = patientRepository;
+            this.PatientRepository = patientRepository;
         }
 
         public List<Patient> GetAllPatients()
         {
-            return patientRepository.FindAll();
+            return PatientRepository.FindAll();
         }
 
-        public void CreatePatient(Patient pacientToMake)
+        public void CreatePatient(Patient patientToMake)
         {
-            patientRepository.SavePatient(pacientToMake);
+            PatientRepository.SavePatient(patientToMake);
         }
 
         public void DeletePatient(string jmbg)
         {
-            patientRepository.RemovePatient(jmbg);
+            PatientRepository.RemovePatient(jmbg);
         }
 
-        public void ModifyPatient(Patient pacientToModify)
+        public void ModifyPatient(Patient patientToModify)
         {
-            patientRepository.SavePatient(pacientToModify);
+            PatientRepository.UpdatePatient(patientToModify);
         }
 
         public Model.Patient? GetOnePatient(string jmbg)
         {
-            return patientRepository.FindOneByJmbg(jmbg);
+            return PatientRepository.FindOneByJmbg(jmbg);
         }
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
-            Patient guestPatient = new Patient(null, BloodType.NONE, firstName, lastName, firstName, "password", jmbg,
+            Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "password", jmbg,
                 null, Gender.NONE, null, null, null);
-            patientRepository.SavePatient(guestPatient);
+            PatientRepository.SavePatient(guestPatient);
         }
 
     }
