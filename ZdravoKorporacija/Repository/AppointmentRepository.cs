@@ -16,6 +16,17 @@ namespace Repository
             return values;
         }
 
+        public List<Model.Appointment> FindAllByPatientId(String patientId)
+        {
+            var values = GetValues();
+            List<Model.Appointment> result = new List<Model.Appointment>();
+            foreach (Appointment appointment in values)
+                if (appointment.patientJmbg.Equals(patientId))
+                    result.Add(appointment);
+            return result;
+        }
+
+
         public void SaveAppointment(Model.Appointment AppointmentToSave)
         {
             var values = GetValues();
@@ -67,5 +78,5 @@ namespace Repository
             File.WriteAllText(appointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-    }
+    }   
 }

@@ -23,10 +23,10 @@ namespace Controller
         {
             appointmentService.DeleteAppointment(AppointmentId);
         }
-        // void
-        public void ModifyAppointment(Model.Appointment AppointmentToModify)
+        // ISPRAVITI NA DIJAGRAMU PROMJENU PARAMETARA 
+        public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            throw new NotImplementedException();
+            appointmentService.ModifyAppointment(newDate, appointmentId);
         }
 
         public Model.Appointment GetAppointmentById(int AppointmentId)
@@ -38,6 +38,10 @@ namespace Controller
         {
             throw new NotImplementedException();
         }
+        public List<Model.Appointment> FindAllByPatientId(String patientId)
+        {
+            return appointmentService.FindAllByPatientId(patientId);
+        }
 
     }
-}
+    }
