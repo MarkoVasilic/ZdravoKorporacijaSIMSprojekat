@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoKorporacija.View
+namespace ZdravoKorporacija.View.SecretaryUI
 {
     /// <summary>
-    /// Interaction logic for PacijentHomePage.xaml
+    /// Interaction logic for AddNewPatientPage.xaml
     /// </summary>
-    public partial class PacijentHomePage : Window
+    public partial class AddNewPatientPage : Page
     {
-        public PacijentHomePage()
+        public AddNewPatientPage()
         {
             InitializeComponent();
         }

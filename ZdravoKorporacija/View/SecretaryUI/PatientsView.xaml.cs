@@ -21,5 +21,6 @@ namespace ZdravoKorporacija.View.SecretaryUI
             InitializeComponent();
             DataContext = new PatientsViewVM();
         }
+
     }
 }

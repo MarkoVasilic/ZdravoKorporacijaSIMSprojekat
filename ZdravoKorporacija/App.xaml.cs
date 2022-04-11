@@ -19,7 +19,7 @@ namespace ZdravoKorporacija
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
 
-            Patient patient = new Patient(false, null, BloodType.A_PLUS, "Marko", "Vasilic", "mare", "konj", "123456789", System.DateTime.Now,
+            Patient patient = new Patient(false, null, BloodType.O_MINUS, "Marko", "Vasilic", "mare", "konj", "123456789", System.DateTime.Now,
                 Gender.MALE, "marko.12@gmail.com", "456132", "periceva 5");
             Patient patient1 = new Patient(false, null, BloodType.A_PLUS, "Marko", "Vasilic", "mare", "konj", "88888888", System.DateTime.Now,
                 Gender.MALE, "marko.12@gmail.com", "456132", "periceva 5");
