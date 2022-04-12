@@ -128,7 +128,11 @@
     "Username": "mare",
     "Password": "konj",
     "Jmbg": "7532147",
-    "DateOfBirth": "2022-04-12T20:03:23.5290505+02:00",
+<<<<<<< HEAD
+    "DateOfBirth": "2022-04-11T23:22:01.4094932+02:00",
+=======
+    "DateOfBirth": "2022-04-12T14:25:15.9772432+02:00",
+>>>>>>> 3445fca3fac6e27e49069f58edd6587b4dc8dbb1
     "Gender": 1,
     "Email": "marko.12@gmail.com",
     "PhoneNumber": "456132",

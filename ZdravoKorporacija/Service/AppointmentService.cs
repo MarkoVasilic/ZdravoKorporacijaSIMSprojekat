@@ -20,9 +20,12 @@ namespace Service
             return AppointmentRepository.FindAll();
         }
 
-        //void
-        public void CreateAppointment(Model.Appointment appointmentToMake)
+        //neophodno odraditi neki try Catch ako se unese ID doktora koji ne postoji.
+        // odnosno potrebna je validacija, takodje razmatram opciju da vraca Appointment umjesto void
+        public void CreateAppointmentPatient(DateTime date, String doctorJMBG)
         {
+            
+            Appointment appointment = new Appointment();    
             int id = GenerateNewId();
             appointmentToMake.Id = id;
             AppointmentRepository.SaveAppointment(appointmentToMake);
@@ -81,6 +84,9 @@ namespace Service
             return appointment;
 
         }
-
+        public List<Appointment> FindAllByPatientId(String patientId)
+        {
+            return appointmentRepository.FindAllByPatientId(patientId);
+        }
     }
 }

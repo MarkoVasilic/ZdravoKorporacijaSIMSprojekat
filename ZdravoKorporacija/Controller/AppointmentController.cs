@@ -50,6 +50,10 @@ namespace Controller
         {
             return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
+        public List<Model.Appointment> FindAllByPatientId(String patientId)
+        {
+            return appointmentService.FindAllByPatientId(patientId);
+        }
 
     }
-}
+    }
