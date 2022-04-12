@@ -27,8 +27,8 @@ namespace Service
             
             Appointment appointment = new Appointment();    
             int id = GenerateNewId();
-            appointmentToMake.Id = id;
-            AppointmentRepository.SaveAppointment(appointmentToMake);
+            appointment.Id = id;
+            AppointmentRepository.SaveAppointment(appointment);
 
         }
 
@@ -86,7 +86,7 @@ namespace Service
         }
         public List<Appointment> FindAllByPatientId(String patientId)
         {
-            return appointmentRepository.FindAllByPatientId(patientId);
+            return AppointmentRepository.FindAllByPatientId(patientId);
         }
     }
 }

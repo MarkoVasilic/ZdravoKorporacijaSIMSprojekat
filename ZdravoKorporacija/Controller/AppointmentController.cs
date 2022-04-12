@@ -52,7 +52,7 @@ namespace Controller
         }
         public List<Model.Appointment> FindAllByPatientId(String patientId)
         {
-            return appointmentService.FindAllByPatientId(patientId);
+            return AppointmentService.FindAllByPatientId(patientId);
         }
 
     }

@@ -38,5 +38,21 @@
     "PatientJmbg": "0123",
     "DoctorJmbg": "456",
     "RoomId": 11
+  },
+  {
+    "StartTime": "2022-04-12T21:27:25.0509131+02:00",
+    "Duration": 15,
+    "Id": 5,
+    "PatientJmbg": "0123",
+    "DoctorJmbg": "456",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2012-02-02T00:00:00",
+    "Duration": 15,
+    "Id": 2,
+    "PatientJmbg": "0123",
+    "DoctorJmbg": "456",
+    "RoomId": 11
   }
 ]
