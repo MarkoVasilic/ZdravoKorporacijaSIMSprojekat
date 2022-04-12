@@ -24,6 +24,11 @@ namespace Controller
             return AppointmentService.CreateAppointmentByDoctor(StartTime, Duration, PatientJmbg);
         }
 
+        public Model.Appointment CreateAppointmentByPatient(DateTime StartTime, String DoctorJmbg)
+        {
+            return AppointmentService.CreateAppointmentByPatient(StartTime, DoctorJmbg);
+        }
+
         //void
         public void DeleteAppointment(int AppointmentId)
         {
@@ -52,7 +57,7 @@ namespace Controller
         }
         public List<Model.Appointment> FindAllByPatientId(String patientId)
         {
-            return AppointmentService.FindAllByPatientId(patientId);
+            return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
 
     }
