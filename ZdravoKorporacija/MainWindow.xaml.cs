@@ -22,5 +22,16 @@ namespace ZdravoKorporacija
            ManagerHomePage managerHomePage = new ManagerHomePage();
            managerHomePage.Show();
         }
+
+        private void Button_Click_Patient(object sender, RoutedEventArgs e)
+        {
+            PacijentHomePage patientHomePage = new PacijentHomePage();
+            patientHomePage.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

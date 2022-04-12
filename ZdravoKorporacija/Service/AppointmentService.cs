@@ -42,12 +42,16 @@ namespace Service
             appointmentRepository.RemoveAppointment(AppointmentId);
         }
 
-        //vraca void
-        public void ModifyAppointment(Model.Appointment AppointmentToModify)
+        //PROMJENIO SAM PARAMETRE FUNKCIJE, ISPRAVITI NA DIJAGRAMU
+        public void ModifyAppointment(DateTime newDate, int appointmentId)
         {
-            throw new NotImplementedException();
+            Appointment newAppointment= new Appointment();
+           newAppointment = appointmentRepository.FindOneById(appointmentId);
+            newAppointment.startTime = newDate;
         }
 
+
+        // da li je ova metoda potrebna ako postoji FindOneById
         public Model.Appointment GetOneAppointment(int AppointmentId)
         {
             throw new NotImplementedException();
@@ -58,6 +62,9 @@ namespace Service
         {
             throw new NotImplementedException();
         }
-
+        public List<Appointment> FindAllByPatientId(String patientId)
+        {
+            return appointmentRepository.FindAllByPatientId(patientId);
+        }
     }
 }
