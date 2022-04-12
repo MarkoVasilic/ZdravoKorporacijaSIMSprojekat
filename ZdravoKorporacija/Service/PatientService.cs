@@ -19,14 +19,37 @@ namespace Service
             return PatientRepository.FindAll();
         }
 
-        public void CreatePatient(Patient patientToMake)
+        public String CreatePatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
+            string firstName, string lastName, string username, string password,
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
+            string? address)
         {
-            PatientRepository.SavePatient(patientToMake);
+            if (PatientRepository.FindOneByJmbg(jmbg) != null)
+                return "Patient with that jmbg already exists!";
+            else if (PatientRepository.FindOneByUsername(username) != null)
+                return "Patient with that username already exists!";
+            else
+            {
+                Patient newPatient = new Patient(isGuest, allergens, bloodType, firstName, lastName, username, password,
+            jmbg, dateOfBirth, gender, email, telephone, address);
+                if (!newPatient.validatePatient())
+                    return "Something went wrong, patient account isn't saved!";
+                PatientRepository.SavePatient(newPatient);
+                return "";
+            }
         }
 
-        public void DeletePatient(string jmbg)
+        public String DeletePatient(string jmbg)
         {
-            PatientRepository.RemovePatient(jmbg);
+            if (PatientRepository.FindOneByJmbg(jmbg) == null)
+            {
+                return "Patient with that jmbg doesn't exist!";
+            }
+            else
+            {
+                PatientRepository.RemovePatient(jmbg);
+                return "";
+            }
         }
 
         public void DeleteAllPatients()
@@ -34,9 +57,22 @@ namespace Service
             PatientRepository.RemoveAll();
         }
 
-        public void ModifyPatient(Patient patientToModify)
+        public String ModifyPatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
+            string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
+            string? address)
         {
-            PatientRepository.UpdatePatient(patientToModify);
+            if (PatientRepository.FindOneByJmbg(jmbg) == null)
+                return "Patient with that jmbg doesn't exists!";
+            else
+            {
+                Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
+                Patient newPatient = new Patient(isGuest, allergens, bloodType, firstName, lastName, oldPatient.Username, oldPatient.Password,
+            jmbg, dateOfBirth, gender, email, telephone, address);
+                if (!newPatient.validatePatient())
+                    return "Something went wrong, patient account isn't changed!";
+                PatientRepository.UpdatePatient(newPatient);
+                return "";
+            }
         }
 
         public Model.Patient? GetOnePatient(string jmbg)
@@ -44,11 +80,19 @@ namespace Service
             return PatientRepository.FindOneByJmbg(jmbg);
         }
 
-        public void CreateGuestAccount(String firstName, String lastName, String jmbg)
+        public String CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
             Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,
                 null, Gender.NONE, null, null, null);
-            PatientRepository.SavePatient(guestPatient);
+            if (PatientRepository.FindOneByJmbg(jmbg) != null)
+                return "Patient with that jmbg already exists!";
+            else if (!guestPatient.validateGuest())
+                return "Something went wrong, patient account isn't saved!";
+            else
+            {
+                PatientRepository.SavePatient(guestPatient);
+                return "";
+            }
         }
 
     }

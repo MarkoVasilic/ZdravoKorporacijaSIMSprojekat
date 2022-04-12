@@ -65,7 +65,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
                             <TextBlock FontFamily="Yu Gothic" FontSize="16"  Width="120"> Blood type:</TextBlock>
-                            <TextBlock Text="{Binding Path=Patient.BloodType, Mode=OneWay}" FontWeight="Bold" FontSize="15"></TextBlock>
+                            <TextBlock Text="{Binding Path=Patient.BloodTypeEnum, Mode=OneWay}" FontWeight="Bold" FontSize="15"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
                             <TextBlock FontFamily="Yu Gothic" FontSize="16"  Width="120"> Phone number:</TextBlock>
