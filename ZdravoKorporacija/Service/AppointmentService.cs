@@ -8,18 +8,28 @@ namespace Service
 {
     public class AppointmentService
     {
+        DoctorRepository doctorRepository = new DoctorRepository();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
         public List<Appointment> GetAllAppointments()
         {
             return appointmentRepository.FindAll();
         }
 
-        //void
-        public void CreateAppointment(Model.Appointment appointmentToMake)
+        //neophodno odraditi neki try Catch ako se unese ID doktora koji ne postoji.
+        // odnosno potrebna je validacija, takodje razmatram opciju da vraca Appointment umjesto void
+        public void CreateAppointmentPatient(DateTime date, String doctorJMBG)
         {
+            
+            Appointment appointment = new Appointment();    
             int id = GenerateNewId();
-            appointmentToMake.id = id;
-            appointmentRepository.SaveAppointment(appointmentToMake);
+             appointment.id = id;
+            appointment.doctorJmbg = doctorJMBG;
+            appointment.startTime = date;
+            appointment.patientJmbg = "111111111";
+            Model.Doctor doctor;
+            doctor = doctorRepository.FindOneByJmbg(doctorJMBG);
+            appointment.roomId = doctor.roomId;
+            appointmentRepository.SaveAppointment(appointment);
 
         }
 

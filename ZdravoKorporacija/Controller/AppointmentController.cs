@@ -13,9 +13,9 @@ namespace Controller
         }
 
         //void
-        public void CreateAppointment(Model.Appointment PacientToMake)
+        public void CreateAppointmentPatient(DateTime date, String doctorJMBG)
         {
-            throw new NotImplementedException();
+            appointmentService.CreateAppointmentPatient(date, doctorJMBG);  
         }
 
         //void

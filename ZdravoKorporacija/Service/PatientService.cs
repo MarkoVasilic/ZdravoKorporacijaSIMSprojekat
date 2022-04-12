@@ -29,6 +29,11 @@ namespace Service
             PatientRepository.RemovePatient(jmbg);
         }
 
+        public void DeleteAllPatients()
+        {
+            PatientRepository.RemoveAll();
+        }
+
         public void ModifyPatient(Patient patientToModify)
         {
             PatientRepository.UpdatePatient(patientToModify);
@@ -41,7 +46,7 @@ namespace Service
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
-            Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "password", jmbg,
+            Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,
                 null, Gender.NONE, null, null, null);
             PatientRepository.SavePatient(guestPatient);
         }

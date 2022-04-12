@@ -46,6 +46,13 @@ namespace Repository
             Save(values);
         }
 
+        public void RemoveAll()
+        {
+            var values = GetValues();
+            values.Clear();
+            Save(values);
+        }
+
         public Patient? FindOneByJmbg(string Jmbg)
         {
             List<Patient> patients = GetValues();
