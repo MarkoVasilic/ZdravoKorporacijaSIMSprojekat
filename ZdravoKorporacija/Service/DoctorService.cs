@@ -1,4 +1,5 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -6,14 +7,22 @@ namespace Service
 {
     public class DoctorService
     {
-        public Doctor GetDoctor(String Jmbg)
+        private readonly DoctorRepository DoctorRepository;
+
+        public DoctorService(DoctorRepository doctorRepository) 
         {
-            throw new NotImplementedException();
+            this.DoctorRepository = doctorRepository;
+        }
+
+        public Doctor? GetOneByJmbg(String Jmbg)
+        {
+            return DoctorRepository.FindOneByJmbg(Jmbg);
+
         }
 
         public List<Model.Doctor> GetDoctorsBySpeciality(String Speciality)
         {
-            throw new NotImplementedException();
+            return DoctorRepository.FindAllBySpeciality(Speciality);
         }
 
     }

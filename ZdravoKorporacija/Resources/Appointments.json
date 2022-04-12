@@ -1,42 +1,42 @@
 [
-{
-"StartTime": "2021-06-12T00:00:00+02:00",
-"duration": 45,
-"id": 1,
-"Patient": {
-"allergens": [],
-"BloodType": "A_PLUS",
-"FirstName": "Jovan",
-"LastName": "Konjevic",
-"Username": "JocaBolca",
-"password": "1234",
-"jmbg": "030800044444",
-"dateOfBirth": "2021-06-12T00:00:00+02:00",
-"gender": "MALE",
-"email": "gmail@gmail.com",
-"phoneNumber": "0638162900",
-"address": "Bokeljskih Mornara 25"
-},
-"Doctor": 
-{
-    "specializationType": "Kardiolog",
-    "specialization": true,
-    "FirstName": "Jovan",
-    "LastName": "Konjevic",
-    "Username": "JocaBolca",
-    "password": "1234",
-    "jmbg": "030800044444",
-    "dateOfBirth": "2021-06-12T00:00:00+02:00",
-    "gender": "MALE",
-    "email": "gmail@gmail.com",
-    "phoneNumber": "0638162900",
-    "address": "Bokeljskih Mornara 25",
-    "name": "soba1",
-    "id": 12,
-    "description": "opis",
-    "RoomType": "EXAMINATION",
-    "appointment": []
-}
-}
-
+  {
+    "StartTime": "2021-06-12T00:00:00+02:00",
+    "Duration": 45,
+    "Id": 1,
+    "PatientJmbg": "1111111111",
+    "DoctorJmbg": "1231231231231",
+    "RoomId": 1
+  },
+  {
+    "StartTime": "2022-04-12T19:58:00.8156075+02:00",
+    "Duration": 15,
+    "Id": 2,
+    "PatientJmbg": "0123",
+    "DoctorJmbg": "456",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-04-12T20:00:06.0775969+02:00",
+    "Duration": 15,
+    "Id": 3,
+    "PatientJmbg": "0123",
+    "DoctorJmbg": "456",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-04-12T20:03:24.0681565+02:00",
+    "Duration": 15,
+    "Id": 4,
+    "PatientJmbg": "0123",
+    "DoctorJmbg": "456",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2012-02-02T00:00:00",
+    "Duration": 15,
+    "Id": 2,
+    "PatientJmbg": "0123",
+    "DoctorJmbg": "456",
+    "RoomId": 11
+  }
 ]

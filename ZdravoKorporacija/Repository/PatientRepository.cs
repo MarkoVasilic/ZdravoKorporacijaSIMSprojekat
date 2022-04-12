@@ -53,7 +53,7 @@ namespace Repository
             Save(values);
         }
 
-        public Patient? FindOneByJmbg(string Jmbg)
+        public Patient? FindOneByJmbg(String Jmbg)
         {
             List<Patient> patients = GetValues();
             foreach (Patient patient in patients)

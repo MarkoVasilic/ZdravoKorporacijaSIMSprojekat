@@ -6,37 +6,49 @@ namespace Controller
 {
     public class AppointmentController
     {
-        AppointmentService appointmentService = new AppointmentService();
+        private readonly AppointmentService AppointmentService;
+
+        public AppointmentController(AppointmentService appointmentService)
+        {
+            this.AppointmentService = appointmentService;
+        }
+
         public List<Model.Appointment> GetAllAppointments()
         {
-            return appointmentService.GetAllAppointments();
+            return AppointmentService.GetAllAppointments();
         }
 
         //void
-        public void CreateAppointment(Model.Appointment PacientToMake)
+        public Model.Appointment CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
         {
-            throw new NotImplementedException();
+            return AppointmentService.CreateAppointmentByDoctor(StartTime, Duration, PatientJmbg);
         }
 
         //void
         public void DeleteAppointment(int AppointmentId)
         {
-            appointmentService.DeleteAppointment(AppointmentId);
+            AppointmentService.DeleteAppointment(AppointmentId);
         }
         // void
-        public void ModifyAppointment(Model.Appointment AppointmentToModify)
+        // ISPRAVITI NA DIJAGRAMU PROMJENU PARAMETARA 
+        public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            throw new NotImplementedException();
+            AppointmentService.ModifyAppointment(appointmentId, newDate);
         }
 
-        public Model.Appointment GetAppointmentById(int AppointmentId)
+        //msm da ne treba
+        public Model.Appointment GetOneById(int AppointmentId)
         {
-            throw new NotImplementedException();
+            return AppointmentService.GetOneById(AppointmentId);
         }
 
         public List<Model.Appointment> GetAppointmentsByDoctorJmbg(String DoctorJmbg)
         {
-            throw new NotImplementedException();
+            return AppointmentService.GetAppointmentsByDoctorJmbg(DoctorJmbg);
+        }
+        public List<Model.Appointment> GetAppointmentsByPatientJmbg(String patientId)
+        {
+            return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
 
     }

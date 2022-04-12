@@ -8,18 +8,24 @@ namespace Service
 {
     public class AppointmentService
     {
-        AppointmentRepository appointmentRepository = new AppointmentRepository();
+        AppointmentRepository AppointmentRepository = new AppointmentRepository();
+
+        public AppointmentService(AppointmentRepository appointmentRepository)
+        {
+            this.AppointmentRepository = appointmentRepository;
+        }
+
         public List<Appointment> GetAllAppointments()
         {
-            return appointmentRepository.FindAll();
+            return AppointmentRepository.FindAll();
         }
 
         //void
         public void CreateAppointment(Model.Appointment appointmentToMake)
         {
             int id = GenerateNewId();
-            appointmentToMake.id = id;
-            appointmentRepository.SaveAppointment(appointmentToMake);
+            appointmentToMake.Id = id;
+            AppointmentRepository.SaveAppointment(appointmentToMake);
 
         }
 
@@ -27,8 +33,8 @@ namespace Service
         {
             try
             {
-                List<Appointment> appointments = appointmentRepository.FindAll();
-                int currentMax = appointments.Max(obj => obj.id);
+                List<Appointment> appointments = AppointmentRepository.FindAll();
+                int currentMax = appointments.Max(obj => obj.Id);
                 return currentMax + 1;
             }
             catch
@@ -39,24 +45,41 @@ namespace Service
         //void
         public void DeleteAppointment(int AppointmentId)
         {
-            appointmentRepository.RemoveAppointment(AppointmentId);
+            AppointmentRepository.RemoveAppointment(AppointmentId);
         }
 
         //vraca void
-        public void ModifyAppointment(Model.Appointment AppointmentToModify)
+        //PROMIJENIO SAM PARAMETRE FUNKCIJE, ISPRAVITI NA DIJAGRAMU
+        public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            throw new NotImplementedException();
+            Appointment newAppointment = AppointmentRepository.FindOneById(appointmentId);
+            newAppointment.StartTime = newDate;
+            AppointmentRepository.SaveAppointment(newAppointment);
         }
 
-        public Model.Appointment GetOneAppointment(int AppointmentId)
+        public Model.Appointment GetOneById(int AppointmentId)
         {
-            throw new NotImplementedException();
+            return AppointmentRepository.FindOneById(AppointmentId);
         }
 
-        //prosledi jmbg
-        public List<Appointment> GetAppointmentsByDoctorJmbg(String Jmbg)
+
+        public List<Appointment> GetAppointmentsByDoctorJmbg(String DoctorJmbg)
         {
-            throw new NotImplementedException();
+            return AppointmentRepository.FindAllByDoctorJmbg(DoctorJmbg);
+        }
+
+        public List<Appointment> GetAppointmentsByPatientJmbg(String PatientId)
+        {
+            return AppointmentRepository.FindAllByPatientJmbg(PatientId);
+        }
+
+        public Model.Appointment CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
+        {
+            int id = GenerateNewId();
+            Appointment appointment = new Appointment(StartTime, Duration, id, PatientJmbg, "456", 11);
+            AppointmentRepository.SaveAppointment(appointment);
+            return appointment;
+
         }
 
     }

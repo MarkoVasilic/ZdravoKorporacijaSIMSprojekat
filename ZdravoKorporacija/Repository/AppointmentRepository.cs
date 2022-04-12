@@ -26,7 +26,7 @@ namespace Repository
         public void RemoveAppointment(int AppointmentId)
         {
             var values = GetValues();
-            values.RemoveAll(val => val.id == AppointmentId);
+            values.RemoveAll(val => val.Id == AppointmentId);
             Save(values);
         }
 
@@ -36,7 +36,7 @@ namespace Repository
             var values = GetValues();
             foreach (var val in values)
             {
-                if (val.id == AppointmentId)
+                if (val.Id == AppointmentId)
                 {
                     return val;
                 }
@@ -45,10 +45,25 @@ namespace Repository
             return null;
         }
 
-        //doctors appointments by jmbg
-        public List<Model.Appointment> FindAllByDoctor(String Jmbg)
+        public List<Model.Appointment> FindAllByPatientJmbg(String patientId)
         {
-            throw new NotImplementedException();
+            var values = GetValues();
+            List<Model.Appointment> result = new List<Model.Appointment>();
+            foreach (Appointment appointment in values)
+                if (appointment.PatientJmbg.Equals(patientId))
+                    result.Add(appointment);
+            return result;
+        }
+
+        //doctors appointments by jmbg
+        public List<Model.Appointment> FindAllByDoctorJmbg(String DoctorJmbg)
+        {
+            var values = GetValues();
+            List<Model.Appointment> result = new List<Model.Appointment>();
+            foreach (Appointment appointment in values)
+                if (appointment.DoctorJmbg.Equals(DoctorJmbg))
+                    result.Add(appointment);
+            return result;
         }
 
         public List<Appointment> GetValues()
