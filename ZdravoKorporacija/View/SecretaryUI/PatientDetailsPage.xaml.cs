@@ -1,25 +1,21 @@
-﻿using Model;
-using System;
+﻿using Controller;
+using Model;
+using Repository;
+using Service;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
     public partial class PatientDetailsPage : Page
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public PatientController PatientController { get; set; }
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -42,6 +38,9 @@ namespace ZdravoKorporacija.View.SecretaryUI
         public PatientDetailsPage(Patient patient)
         {
             InitializeComponent();
+            PatientRepository patientRepository = new PatientRepository();
+            PatientService patientService = new PatientService(patientRepository);
+            PatientController = new PatientController(patientService);
             this.Patient = patient;
             this.Password = patient.Password;
             this.hidePassword();
@@ -68,15 +67,46 @@ namespace ZdravoKorporacija.View.SecretaryUI
 
         private void Show_Password_Button_Click(object sender, RoutedEventArgs e)
         {
-                if (ShowPasswordIcon.Kind == MaterialDesignThemes.Wpf.PackIconKind.Show)
-                {
-                    showPassword();
-                }
-                else
-                {
-                    hidePassword();
-                }
+            if (ShowPasswordIcon.Kind == MaterialDesignThemes.Wpf.PackIconKind.Show)
+            {
+                showPassword();
+            }
+            else
+            {
+                hidePassword();
+            }
 
+        }
+
+        private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            YesNoQuestion.Visibility = Visibility.Visible;
+            DeletePatientButton.Visibility = Visibility.Hidden;
+        }
+
+        private void Yes_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PatientController.DeletePatient(Patient.Jmbg);
+            NavigationService.Navigate(new PatientsView());
+        }
+
+        private void No_Button_Click(object sender, RoutedEventArgs e)
+        {
+            YesNoQuestion.Visibility = Visibility.Hidden;
+            DeletePatientButton.Visibility = Visibility.Visible;
+        }
+
+        private void Edit_Basic_Info_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EditBasicInfo(Patient));
+        }
+
+        private void Reset_Password_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Patient.Password = "sifra123";
+            password = "sifra123";
+            showPassword();
+            PatientController.ModifyPatient(Patient);
         }
     }
 }

@@ -13,13 +13,21 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="360"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" VerticalAlignment="Center">
             <Label Content="Patients accounts" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"/>
         </StackPanel>
-        <ListView Grid.Row="1" Margin="10,0,10,10" Name="PatientsListView" ItemsSource="{Binding Path=PatientsForTable}" AlternationCount="2">
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button x:Name="AddAccountButton" Margin="0 0 20 0" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Command="{Binding AddAccountCommand}">
+                <StackPanel  Orientation="Vertical">
+                    <materialDesign:PackIcon  Kind="AccountAdd" Height="50" Width="70" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <ListView Grid.Row="2" Margin="10,0,10,10" Name="PatientsListView" ItemsSource="{Binding Path=PatientsForTable}" AlternationCount="2">
             <ListView.ItemTemplate>
                 
                 <DataTemplate>

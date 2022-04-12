@@ -23,9 +23,9 @@ namespace Service
             appointment.doctorJmbg = doctorJMBG;
             appointment.startTime = date;
             appointment.patientJmbg = "111111111";
-            Model.Doctor doctor = new Doctor();
-        doctor = DoctorRepository.findOneById(doctorJMBG);
-            appointment.roomId = doctor.roomId;
+          //  Model.Doctor doctor = new Doctor();
+      //  doctor = DoctorRepository.findOneById(doctorJMBG);
+        //    appointment.roomId = doctor.roomId;
             appointmentRepository.SaveAppointment(appointment);
 
         }

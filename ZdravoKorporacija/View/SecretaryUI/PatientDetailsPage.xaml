@@ -22,6 +22,7 @@
                     <RowDefinition Height="45"></RowDefinition>
                     <RowDefinition Height="200"></RowDefinition>
                     <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition Height="45"></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="PersonBadge" Height="70" Width="70"></materialDesign:PackIcon>
@@ -33,10 +34,12 @@
                         <ColumnDefinition Width="120"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="1" FontFamily="Yu Gothic" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"> Basic info:</TextBlock>
-                    <StackPanel Grid.Column="2" Orientation="Vertical">
-                        <materialDesign:PackIcon  Kind="Edit" Height="20" Width="70" HorizontalAlignment="Center"></materialDesign:PackIcon>
-                        <Label Grid.Column="2" Content="Edit info" HorizontalAlignment="Center" FontSize="13" FontWeight="SemiBold"></Label>
-                    </StackPanel>
+                    <Button x:Name="EditPatientButton" Margin="0 0 20 0" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="Edit_Basic_Info_Button_Click">
+                        <StackPanel  Orientation="Vertical">
+                            <materialDesign:PackIcon  Kind="Edit" Height="20" Width="70" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                            <Label Grid.Column="2" Content="Edit info" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold"></Label>
+                        </StackPanel>
+                    </Button>
                 </Grid>
                 <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0,1,0,1" Margin="10">
                     <StackPanel>
@@ -88,6 +91,12 @@
                         <ColumnDefinition Width="120"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="1" FontFamily="Yu Gothic" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"> Credentials:</TextBlock>
+                    <Button x:Name="ResetPasswordButton" Margin="0 0 20 0" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="Reset_Password_Button_Click">
+                        <StackPanel  Orientation="Vertical">
+                            <materialDesign:PackIcon  Kind="PasswordReset" Height="20" Width="70" HorizontalAlignment="Center"></materialDesign:PackIcon>
+                            <Label Grid.Column="2" Content="Reset password" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold"></Label>
+                        </StackPanel>
+                    </Button>
                 </Grid>
                 <Border Grid.Row="4" BorderBrush="Black" BorderThickness="0,1,0,1" Margin="10">
                     <StackPanel>
@@ -123,7 +132,7 @@
                     </StackPanel>
                 </Border>
                 <StackPanel Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0">
-                    <Button x:Name="DeletePatientButton" Height="30" Background="Red">
+                    <Button x:Name="DeletePatientButton" Click="Delete_Button_Click" Height="30" Background="#FFE95555">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -134,6 +143,38 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
+                <Grid x:Name="YesNoQuestion" Grid.Row="8" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"> Are you sure?</TextBlock>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="YesButton" Click="Yes_Button_Click"  Background="#FF2F922F">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5,5,5,5" FontSize="18" Text="Yes" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="NoButton" Click="No_Button_Click"  Background="#FFE95555">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5,5,5,5" FontSize="18" Text="No" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </ScrollViewer>
     </Grid>

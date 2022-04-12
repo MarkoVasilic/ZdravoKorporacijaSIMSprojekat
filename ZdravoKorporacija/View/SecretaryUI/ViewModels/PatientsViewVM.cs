@@ -32,16 +32,23 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 
 
         public ICommand PatientDetailsCommand { get; set; }
+        public ICommand AddAccountCommand { get; set; }
 
         private void initializeCommands()
         {
             PatientDetailsCommand = new RelayCommand(detailsPatientExecute);
+            AddAccountCommand = new RelayCommand(addAccountExecute);
         }
 
         private void detailsPatientExecute(object sender)
         {
             var selected = sender as Patient;
             SecretaryWindowVM.NavigationService.Navigate(new PatientDetailsPage(selected));
+        }
+
+        private void addAccountExecute(object sender)
+        {
+            SecretaryWindowVM.NavigationService.Navigate(new AddNewPatientPage());
         }
     }
 }
