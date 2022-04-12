@@ -28,6 +28,7 @@ namespace Service
             Appointment appointment = new Appointment();    
             int id = GenerateNewId();
             appointment.Id = id;
+
             AppointmentRepository.SaveAppointment(appointment);
 
         }
