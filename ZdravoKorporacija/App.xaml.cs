@@ -18,6 +18,7 @@ namespace ZdravoKorporacija
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
+            AppointmentController appointmentController = new AppointmentController();
 
             Patient patient = new Patient(false, null, BloodType.A_PLUS, "Marko", "Vasilic", "mare", "konj", "123456789", System.DateTime.Now,
                 Gender.MALE, "marko.12@gmail.com", "456132", "periceva 5");
@@ -48,6 +49,8 @@ namespace ZdravoKorporacija
             patientController.CreatePatient(patient8);
             patient8.Address = "jbgaa";
             patientController.ModifyPatient(patient8);
+
+            
         }
 
     }

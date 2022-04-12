@@ -15,11 +15,18 @@ namespace Service
         }
 
         //void
-        public void CreateAppointment(Model.Appointment appointmentToMake)
+        public void CreateAppointment(DateTime date, String doctorJMBG)
         {
+            Appointment appointment = new Appointment();    
             int id = GenerateNewId();
-            appointmentToMake.id = id;
-            appointmentRepository.SaveAppointment(appointmentToMake);
+             appointment.id = id;
+            appointment.doctorJmbg = doctorJMBG;
+            appointment.startTime = date;
+            appointment.patientJmbg = "111111111";
+            Model.Doctor doctor = new Doctor();
+        doctor = DoctorRepository.findOneById(doctorJMBG);
+            appointment.roomId = doctor.roomId;
+            appointmentRepository.SaveAppointment(appointment);
 
         }
 

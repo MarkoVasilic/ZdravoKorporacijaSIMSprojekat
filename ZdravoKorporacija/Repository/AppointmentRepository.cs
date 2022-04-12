@@ -21,8 +21,13 @@ namespace Repository
             var values = GetValues();
             List<Model.Appointment> result = new List<Model.Appointment>();
             foreach (Appointment appointment in values)
+            {
                 if (appointment.patientJmbg.Equals(patientId))
+                {
                     result.Add(appointment);
+                    
+                }
+            }
             return result;
         }
 
