@@ -52,7 +52,7 @@ namespace Service
 
         //vraca void
         //PROMIJENIO SAM PARAMETRE FUNKCIJE, ISPRAVITI NA DIJAGRAMU
-        public void ModifyAppointment(int appointmentId, DateTime newDate)
+        public void ModifyAppointment(DateTime newDate, int appointmentId)
         {
             var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
             if (oneAppointment != null)

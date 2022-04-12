@@ -56,8 +56,8 @@ namespace ZdravoKorporacija
             appointmentController.CreateAppointmentByDoctor(DateTime.Now, 15, "0123");
             appointmentController.ModifyAppointment(11, new DateTime(2010, 2, 2));
             appointmentController.CreateAppointmentByPatient(DateTime.Now, "1231231231231");
-            appointmentController.CreateAppointmentByPatient(DateTime.Now, "789");
-
+            Console.WriteLine(appointmentController.CreateAppointmentByPatient(DateTime.Now, "789"));
+            
 
         }
 

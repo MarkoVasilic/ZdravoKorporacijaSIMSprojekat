@@ -18,6 +18,7 @@ namespace Controller
             return AppointmentService.GetAllAppointments();
         }
 
+
         //void
         public Model.Appointment CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
         {
@@ -38,7 +39,7 @@ namespace Controller
         // ISPRAVITI NA DIJAGRAMU PROMJENU PARAMETARA 
         public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            AppointmentService.ModifyAppointment(appointmentId, newDate);
+            AppointmentService.ModifyAppointment(newDate, appointmentId);
         }
 
         //msm da ne treba
