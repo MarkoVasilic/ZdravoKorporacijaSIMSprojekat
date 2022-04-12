@@ -49,8 +49,9 @@ namespace ZdravoKorporacija
             patientController.CreatePatient(patient8);
             patient8.Address = "jbgaa";
             patientController.ModifyPatient(patient8);
-
-            
+            appointmentController.CreateAppointmentPatient(System.DateTime.Now, "1231231231231");
+            appointmentController.CreateAppointmentPatient(System.DateTime.Now, "1231231231231");
+            appointmentController.CreateAppointmentPatient(System.DateTime.Now, "03000");
         }
 
     }

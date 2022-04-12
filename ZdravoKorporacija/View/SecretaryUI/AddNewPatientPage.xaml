@@ -180,7 +180,7 @@
                     </TextBox>
                 </StackPanel>
                 <Button Name="SaveButton" Grid.Row="10" Grid.Column="1" Height="30" Width="90" HorizontalAlignment="Right"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                Click="Save_Button_Click" Margin="0,0,10,0">
+                 Margin="0,0,10,0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Save</TextBlock>
                     </StackPanel>
