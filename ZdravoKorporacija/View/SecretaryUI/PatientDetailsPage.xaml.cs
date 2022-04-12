@@ -2,12 +2,10 @@
 using Model;
 using Repository;
 using Service;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -106,7 +104,8 @@ namespace ZdravoKorporacija.View.SecretaryUI
             Patient.Password = "sifra123";
             password = "sifra123";
             showPassword();
-            PatientController.ModifyPatient(Patient);
+            PatientController.ModifyPatient(Patient.IsGuest, Patient.Allergens, Patient.BloodTypeEnum, Patient.FirstName,
+                Patient.LastName, Patient.Jmbg, Patient.DateOfBirth, Patient.Gender, Patient.Email, Patient.PhoneNumber, Patient.Address);
         }
     }
 }

@@ -19,8 +19,8 @@ namespace ZdravoKorporacija
 
         private void Button_Click_Manager(object sender, RoutedEventArgs e)
         {
-           ManagerHomePage managerHomePage = new ManagerHomePage();
-           managerHomePage.Show();
+            ManagerHomePage managerHomePage = new ManagerHomePage();
+            managerHomePage.Show();
         }
     }
 }

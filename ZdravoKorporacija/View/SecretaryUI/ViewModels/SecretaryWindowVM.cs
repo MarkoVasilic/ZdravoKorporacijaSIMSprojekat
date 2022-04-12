@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Navigation;
-using ZdravoKorporacija.View.SecretaryUI.Commands;
+﻿using System.Windows.Navigation;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 {
@@ -20,6 +13,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             SecretaryWindow.SecretaryMainFrame.Content = new SecretaryHomePage();
             NavigationService = SecretaryWindow.SecretaryMainFrame.NavigationService;
         }
+
 
     }
 }

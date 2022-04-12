@@ -24,6 +24,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"></ColumnDefinition>
@@ -146,7 +147,7 @@
                 </StackPanel>
                 <StackPanel Grid.Row="8" Grid.Column="1">
                     <TextBlock Margin="10,0,0,10" FontSize="18" >Address:</TextBlock>
-                    <TextBox x:Name="AddressTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35"
+                    <TextBox x:Name="AddressTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="60"
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
                         <TextBox.Text>
                             <Binding Path="Address" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
@@ -159,7 +160,11 @@
                         </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <Button Name="SaveButton" Grid.Row="9" Grid.Column="1" Height="30" Width="90" HorizontalAlignment="Right"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
+                <StackPanel Grid.Row="9" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="12" Foreground="Red">
+                    </TextBlock>
+                </StackPanel>
+                <Button Name="SaveButton" Grid.Row="10" Grid.Column="1" Height="30" Width="90" HorizontalAlignment="Right"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
                 Click="Save_Button_Click" Margin="0,0,10,0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Save</TextBlock>
