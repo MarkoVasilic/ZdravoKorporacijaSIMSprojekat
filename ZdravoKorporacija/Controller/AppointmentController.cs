@@ -18,15 +18,16 @@ namespace Controller
             return AppointmentService.GetAllAppointments();
         }
 
-        public Model.Appointment CreateAppointmentByPatient(DateTime newDate, string doctorJMBG)
-        {
-            return AppointmentService.CreateAppointmentPatient(newDate, doctorJMBG);
-        }
 
         //void
         public Model.Appointment CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(StartTime, Duration, PatientJmbg);
+        }
+
+        public Model.Appointment CreateAppointmentByPatient(DateTime StartTime, String DoctorJmbg)
+        {
+            return AppointmentService.CreateAppointmentByPatient(StartTime, DoctorJmbg);
         }
 
         //void
@@ -57,7 +58,7 @@ namespace Controller
         }
         public List<Model.Appointment> FindAllByPatientId(String patientId)
         {
-            return AppointmentService.FindAllByPatientId(patientId);
+            return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
 
     }
