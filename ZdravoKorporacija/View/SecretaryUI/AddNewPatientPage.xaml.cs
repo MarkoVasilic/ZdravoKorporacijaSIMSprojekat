@@ -27,10 +27,5 @@ namespace ZdravoKorporacija.View.SecretaryUI
             else
                 addAccountVM.setBloodType((BloodType)BloodTypeComboBox.SelectedIndex);
         }
-
-        private void Save_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
