@@ -53,11 +53,17 @@ namespace Service
 
         //vraca void
         //PROMIJENIO SAM PARAMETRE FUNKCIJE, ISPRAVITI NA DIJAGRAMU
-        public void ModifyAppointment(int appointmentId, DateTime newDate)
+        public void ModifyAppointment(DateTime newDate, int appointmentId)
         {
-            Appointment newAppointment = AppointmentRepository.FindOneById(appointmentId);
-            newAppointment.StartTime = newDate;
-            AppointmentRepository.SaveAppointment(newAppointment);
+            var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
+            if (oneAppointment != null)
+            {
+                var values = AppointmentRepository.GetValues();
+                values.RemoveAll(value => value.Id.Equals(oneAppointment.Id));
+                oneAppointment.StartTime = newDate;
+                values.Add(oneAppointment);
+                AppointmentRepository.Save(values);
+            }
         }
 
         public Model.Appointment GetOneById(int AppointmentId)
