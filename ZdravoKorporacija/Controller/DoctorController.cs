@@ -14,14 +14,14 @@ namespace Controller
             this.DoctorService = doctorService;
         }
 
-        public Doctor? GetDoctor(String Jmbg)
+        public Doctor? GetOneDoctor(String jmbg)
         {
-            return DoctorService.GetOneByJmbg(Jmbg);
+            return DoctorService.GetOneByJmbg(jmbg);
         }
 
-        public List<Model.Doctor>? getDoctorsBySpeciality(String Speciality)
+        public List<Model.Doctor>? getAllBySpeciality(String speciality)
         {
-            return DoctorService.GetDoctorsBySpeciality(Speciality);
+            return DoctorService.GetAllBySpeciality(speciality);
         }
 
     }

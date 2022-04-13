@@ -85,19 +85,19 @@ namespace Service
             return AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
         }
 
-        public List<Appointment> GetAppointmentsByPatientJmbg(String patientId)
+        public List<Appointment> GetAppointmentsByPatientJmbg(String patientJmbg)
         {
-            return AppointmentRepository.FindAllByPatientJmbg(patientId);
+            return AppointmentRepository.FindAllByPatientJmbg(patientJmbg);
         }
 
-        public String CreateAppointmentByPatient(DateTime date, String doctorJMBG)
+        public String CreateAppointmentByPatient(DateTime date, String doctorJmbg)
         {
-            if (DoctorRepository.FindOneByJmbg(doctorJMBG) == null)
+            if (DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
             {
                 return "Doctor with that JMBG doesn't exist!";
             }
             int id = GenerateNewId();
-            Appointment appointment = new Appointment(date, 15, id, "1111111111111", doctorJMBG, 11);
+            Appointment appointment = new Appointment(date, 15, id, "1111111111111", doctorJmbg, 11);
             AppointmentRepository.SaveAppointment(appointment);
             if (!appointment.validateAppointment())
             {

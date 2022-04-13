@@ -14,15 +14,15 @@ namespace Service
             this.DoctorRepository = doctorRepository;
         }
 
-        public Doctor? GetOneByJmbg(String Jmbg)
+        public Doctor? GetOneByJmbg(String jmbg)
         {
-            return DoctorRepository.FindOneByJmbg(Jmbg);
+            return DoctorRepository.FindOneByJmbg(jmbg);
 
         }
 
-        public List<Model.Doctor>? GetDoctorsBySpeciality(String Speciality)
+        public List<Doctor>? GetAllBySpeciality(String speciality)
         {
-            return DoctorRepository.FindAllBySpeciality(Speciality);
+            return DoctorRepository.FindAllBySpeciality(speciality);
         }
 
     }

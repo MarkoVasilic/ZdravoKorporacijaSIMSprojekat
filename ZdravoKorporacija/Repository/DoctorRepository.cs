@@ -14,19 +14,19 @@ namespace Repository
         {
         }
 
-        public Model.Doctor? FindOneByJmbg(String Jmbg)
+        public Model.Doctor? FindOneByJmbg(String jmbg)
         {
             List<Model.Doctor> doctors = GetValues();
             foreach (Doctor doctor in doctors)
-                if (doctor.Jmbg.Equals(Jmbg))
+                if (doctor.Jmbg.Equals(jmbg))
                     return doctor;
             return null;
         }
 
-        public List<Model.Doctor>? FindAllBySpeciality(String Speciality)
+        public List<Model.Doctor>? FindAllBySpeciality(String speciality)
         {
             List<Doctor> doctors = GetValues();
-            return doctors.FindAll(doctor => doctor.SpecialtyType.Equals(Speciality));
+            return doctors.FindAll(doctor => doctor.SpecialtyType.Equals(speciality));
         }
 
         private void Save(List<Doctor> values)
