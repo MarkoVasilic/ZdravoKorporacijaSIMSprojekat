@@ -9,6 +9,7 @@ namespace Service
     public class AppointmentService
     {
         AppointmentRepository AppointmentRepository = new AppointmentRepository();
+        PatientRepository patientRepository = new PatientRepository();
 
         public AppointmentService(AppointmentRepository appointmentRepository)
         {
@@ -81,12 +82,23 @@ namespace Service
             return AppointmentRepository.FindAllByPatientJmbg(PatientId);
         }
 
-        public Model.Appointment CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
+        public String CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
         {
+            if (patientRepository.FindOneByJmbg(PatientJmbg) == null)
+            {
+                return "Patient with that JMBG doesn't exist!";
+            }
             int id = GenerateNewId();
             Appointment appointment = new Appointment(StartTime, Duration, id, PatientJmbg, "456", 11);
-            AppointmentRepository.SaveAppointment(appointment);
-            return appointment;
+             if(!appointment.validateAppointment())
+            {
+                return "Domething went wrong, new appointment isn't created!";
+            }
+            else
+            {
+                AppointmentRepository.SaveAppointment(appointment);
+                return "";
+            }
 
         }
     }

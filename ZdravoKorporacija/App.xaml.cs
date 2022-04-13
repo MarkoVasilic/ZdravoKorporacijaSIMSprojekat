@@ -42,6 +42,7 @@ namespace ZdravoKorporacija
                 Gender.MALE, "marko.12@gmail.com", "456132", "periceva 5");
             Patient patient8 = new Patient(false, null, BloodType.A_PLUS, "Marko", "Vasilic", "mare", "konj", "7532147", System.DateTime.Now,
                 Gender.MALE, "marko.12@gmail.com", "456132", "periceva 5");
+            /*
             patientController.CreatePatient(patient);
             patientController.CreatePatient(patient1);
             patientController.CreatePatient(patient2);
@@ -57,6 +58,7 @@ namespace ZdravoKorporacija
             appointmentController.ModifyAppointment(11, new DateTime(2010, 2, 2));
             appointmentController.CreateAppointmentByPatient(DateTime.Now, "1231231231231");
             Console.WriteLine(appointmentController.CreateAppointmentByPatient(DateTime.Now, "789"));
+            */
             
 
         }
