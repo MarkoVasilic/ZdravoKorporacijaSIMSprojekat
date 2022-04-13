@@ -20,7 +20,7 @@ namespace Controller
 
 
         //void
-        public Model.Appointment CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
+        public String CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(StartTime, Duration, PatientJmbg);
         }
