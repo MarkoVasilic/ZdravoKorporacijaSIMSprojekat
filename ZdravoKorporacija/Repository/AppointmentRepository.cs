@@ -16,7 +16,7 @@ namespace Repository
             return values;
         }
 
-        public List<Appointment> FindAllByPatientId(String patientJmbg)
+        public List<Appointment> FindAllByPatientJmbg(String patientJmbg)
         {
             var values = GetValues();
             List<Model.Appointment> result = new List<Model.Appointment>();
@@ -54,16 +54,6 @@ namespace Repository
             }
 
             return null;
-        }
-
-        public List<Appointment> FindAllByPatientJmbg(String patientId)
-        {
-            var values = GetValues();
-            List<Model.Appointment> result = new List<Appointment>();
-            foreach (Appointment appointment in values)
-                if (appointment.PatientJmbg.Equals(patientId))
-                    result.Add(appointment);
-            return result;
         }
 
         public List<Appointment> FindAllByDoctorJmbg(String doctorJmbg)
