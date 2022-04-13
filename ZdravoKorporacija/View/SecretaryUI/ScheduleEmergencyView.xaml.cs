@@ -4,15 +4,14 @@ using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 namespace ZdravoKorporacija.View.SecretaryUI
 {
     /// <summary>
-    /// Interaction logic for PatientsView.xaml
+    /// Interaction logic for ScheduleEmergencyView.xaml
     /// </summary>
-    public partial class PatientsView : Page
+    public partial class ScheduleEmergencyView : Page
     {
-        public PatientsView()
+        public ScheduleEmergencyView()
         {
             InitializeComponent();
-            DataContext = new PatientsViewVM();
+            this.DataContext = new ScheduleEmergencyVM();
         }
-
     }
 }

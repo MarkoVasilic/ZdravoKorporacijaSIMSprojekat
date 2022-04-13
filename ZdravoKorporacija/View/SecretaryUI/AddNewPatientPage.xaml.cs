@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -20,14 +10,22 @@ namespace ZdravoKorporacija.View.SecretaryUI
     /// </summary>
     public partial class AddNewPatientPage : Page
     {
+        private AddAccountVM addAccountVM;
         public AddNewPatientPage()
         {
             InitializeComponent();
+            addAccountVM = new AddAccountVM();
+            this.DataContext = addAccountVM;
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Male.IsChecked == true)
+                addAccountVM.setPatientGenderMale((BloodType)BloodTypeComboBox.SelectedIndex);
+            else if (Female.IsChecked == true)
+                addAccountVM.setPatientGenderFemale((BloodType)BloodTypeComboBox.SelectedIndex);
+            else
+                addAccountVM.setBloodType((BloodType)BloodTypeComboBox.SelectedIndex);
         }
     }
 }

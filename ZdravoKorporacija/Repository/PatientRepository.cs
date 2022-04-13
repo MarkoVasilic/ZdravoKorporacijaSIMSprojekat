@@ -63,6 +63,16 @@ namespace Repository
             return null;
         }
 
+        public Patient? FindOneByUsername(string Username)
+        {
+            List<Patient> patients = GetValues();
+            foreach (Patient patient in patients)
+                if (patient.Username.Equals(Username))
+                    return patient;
+
+            return null;
+        }
+
         private void Save(List<Patient> values)
         {
             File.WriteAllText(PatientFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));

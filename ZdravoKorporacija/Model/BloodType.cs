@@ -3,13 +3,13 @@
     public enum BloodType
     {
         NONE,
-        A_PLUS,
-        A_MINUS,
-        B_PLUS,
-        B_MINUS,
-        O_PLUS,
-        O_MINUS,
-        AB_PLUS,
-        AB_MINUS
+        A_POSITIVE,
+        A_NEGATIVE,
+        B_POSITIVE,
+        B_NEGATIVE,
+        O_POSITIVE,
+        O_NEGATIVE,
+        AB_POSITIVE,
+        AB_NEGATIVE
     }
 }

@@ -3,21 +3,11 @@ using Model;
 using Repository;
 using Service;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -34,6 +24,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
         private DateTime? dateOfBirth;
         private Gender gender;
         private BloodType bloodType;
+        private string errorMessage;
 
         private Patient selectedPatient;
 
@@ -57,6 +48,18 @@ namespace ZdravoKorporacija.View.SecretaryUI
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+
+
+        public string ErrorMessage
+        {
+            get => errorMessage;
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged("ErrorMessage");
             }
         }
 
@@ -88,7 +91,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 OnPropertyChanged("LastName");
             }
         }
-  
+
         public string PhoneNumber
         {
             get => phoneNumber;
@@ -154,22 +157,22 @@ namespace ZdravoKorporacija.View.SecretaryUI
             Address = SelectedPatient.Address;
             if (SelectedPatient.DateOfBirth != null)
                 DateOfBirth = SelectedPatient.DateOfBirth;
-            if((int)SelectedPatient.Gender == 1)
+            if ((int)SelectedPatient.Gender == 1)
             {
                 Male.IsChecked = true;
                 Female.IsChecked = false;
             }
-            else if((int)SelectedPatient.Gender == 2)
+            else if ((int)SelectedPatient.Gender == 2)
             {
                 Male.IsChecked = false;
                 Female.IsChecked = true;
             }
             else
             {
-                Male.IsChecked = false;
+                Male.IsChecked = true;
                 Female.IsChecked = false;
             }
-            BloodTypeComboBox.SelectedIndex = (int)SelectedPatient.BloodType;
+            BloodTypeComboBox.SelectedIndex = (int)SelectedPatient.BloodTypeEnum;
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
@@ -183,8 +186,10 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 newGender = Gender.NONE;
             Patient newPatient = new Patient(selectedPatient.IsGuest, selectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, firstName, lastName,
                 selectedPatient.Username, selectedPatient.Password, selectedPatient.Jmbg, dateOfBirth, newGender, email, phoneNumber, address);
-            PatientController.ModifyPatient(newPatient);
-            NavigationService.Navigate(new PatientsView());
+            ErrorMessage = PatientController.ModifyPatient(selectedPatient.IsGuest, selectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, firstName, lastName,
+                selectedPatient.Jmbg, dateOfBirth, newGender, email, phoneNumber, address);
+            if (ErrorMessage.Length == 0)
+                NavigationService.Navigate(new PatientsView());
         }
     }
 }

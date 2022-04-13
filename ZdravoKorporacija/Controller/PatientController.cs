@@ -19,53 +19,23 @@ namespace Controller
             return PatientService.GetAllPatients();
         }
 
-        public String CreatePatient(Patient patientToMake)
+        public String CreatePatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
+            string firstName, string lastName, string username, string password,
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
+            string? address)
         {
-            if (PatientService.GetOnePatient(patientToMake.Jmbg) != null)
-            {
-                return "Patient with that jmbg already exists!";
-            }
-            else if(patientToMake.IsGuest == false && (patientToMake.FirstName == null || patientToMake.LastName == null
-                || patientToMake.Jmbg == null || patientToMake.Gender == Gender.NONE || patientToMake.Email == null))
-            {
-                return "You must enter first name, last name, jmbg, gender and email!";
-            }
-            else
-            {
-                PatientService.CreatePatient(patientToMake);
-                return "";
-            }
-
+            return PatientService.CreatePatient(isGuest, allergens, bloodType, firstName, lastName, username, password,
+            jmbg, dateOfBirth, gender, email, telephone, address);
         }
 
         public String CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
-            if (PatientService.GetOnePatient(jmbg) != null)
-            {
-                return "Patient with that jmbg already exists!";
-            }
-            else if (firstName == null || lastName == null || jmbg == null)
-            {
-                return "You must enter first name, last name and jmbg!";
-            }
-            else
-            {
-                PatientService.CreateGuestAccount(firstName, lastName, jmbg);
-                return "";
-            }
+            return PatientService.CreateGuestAccount(firstName, lastName, jmbg);
         }
 
         public String DeletePatient(string jmbg)
         {
-            if (PatientService.GetOnePatient(jmbg) != null)
-            {
-                return "Patient with that jmbg doesn't exist!";
-            }
-            else
-            {
-                PatientService.DeletePatient(jmbg);
-                return "";
-            }
+            return PatientService.DeletePatient(jmbg);
         }
 
         public void DeleteAllPatients()
@@ -73,22 +43,12 @@ namespace Controller
             PatientService.DeleteAllPatients();
         }
 
-        public String ModifyPatient(Patient patientToModify)
+        public String ModifyPatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
+            string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
+            string? address)
         {
-            if (PatientService.GetOnePatient(patientToModify.Jmbg) == null)
-            {
-                return "Patient with that jmbg doesn't exist!";
-            }
-            else if (patientToModify.IsGuest == false && (patientToModify.FirstName == null || patientToModify.LastName == null
-                || patientToModify.Jmbg == null || patientToModify.Gender == Gender.NONE || patientToModify.Email == null))
-            {
-                return "You must enter first name, last name, jmbg, gender and email!";
-            }
-            else
-            {
-                PatientService.ModifyPatient(patientToModify);
-                return "";
-            }
+            return PatientService.ModifyPatient(isGuest, allergens, bloodType, firstName, lastName,
+            jmbg, dateOfBirth, gender, email, telephone, address);
         }
 
         public Patient? GetOnePatient(string jmbg)
