@@ -22,6 +22,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
     {
   
         private RoomController roomController;
+        private String errorMessage;
 
         public ModifyRoom()
         {
@@ -51,10 +52,17 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
             }
 
+            errorMessage = roomController.ModifyRoom(roomId, name, description);
 
-            roomController.ModifyRoom(roomId, name, description);
-
-            this.Close();
+            if(errorMessage.Length == 0)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(roomController.ModifyRoom(roomId, name, description), "Error");
+                this.Close();
+            }
 
         }
     }

@@ -3,35 +3,42 @@
     "Name": "izmena1",
     "Id": 3,
     "Description": "izmena opis",
-    "Type": 0,
+    "Type": 1,
     "typeStr": "EXAMINATION"
   },
   {
     "Name": "nadja",
     "Id": 4,
     "Description": "nadjaaa",
-    "Type": 3,
+    "Type": 4,
     "typeStr": "SURGERY"
   },
   {
     "Name": "proba",
     "Id": 5,
     "Description": "proba1",
-    "Type": 1,
+    "Type": 2,
     "typeStr": "CONFERENCE"
   },
   {
     "Name": "NADJA",
     "Id": 7,
     "Description": "NADJA",
-    "Type": 0,
+    "Type": 1,
     "typeStr": "EXAMINATION"
   },
   {
-    "Name": "nadja",
+    "Name": "nadjaprobaaA",
     "Id": 8,
-    "Description": "car",
-    "Type": 0,
+    "Description": "nadjaprobaaaaaaA",
+    "Type": 1,
     "typeStr": "EXAMINATION"
+  },
+  {
+    "Name": "sobaproba1",
+    "Id": 9,
+    "Description": "sobaproba",
+    "Type": 2,
+    "typeStr": "CONFERENCE"
   }
 ]

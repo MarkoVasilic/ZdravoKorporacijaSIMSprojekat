@@ -17,14 +17,13 @@ using Repository;
 
 namespace ZdravoKorporacija.View.RoomCRUD
 {
-    /// <summary>
-    /// Interaction logic for DeleteRoom.xaml
-    /// </summary>
+    
     public partial class DeleteRoom : Window
     {
 
         private RoomController roomController;
         private int roomId;
+        private String errorMessage;
 
         public DeleteRoom()
         {
@@ -38,8 +37,18 @@ namespace ZdravoKorporacija.View.RoomCRUD
         {
       
             roomId = int.Parse(textBoxDeleteRoom.Text);
-            roomController.DeleteRoom(roomId);
-            this.Close();
+
+            errorMessage = roomController.DeleteRoom(roomId);
+
+            if (errorMessage.Length == 0)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(roomController.DeleteRoom(roomId), "Error");
+                this.Close();
+            }
 
         }
     }

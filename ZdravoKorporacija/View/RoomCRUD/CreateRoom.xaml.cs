@@ -24,6 +24,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private RoomType type;
         private RoomController roomController;
+        private String errorMessage;
         public CreateRoom()
         {
             InitializeComponent();
@@ -71,8 +72,17 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 return;
             }
 
-            roomController.CreateRoom(name, description, type);
-            this.Close();
+            errorMessage = roomController.CreateRoom(name, description, type);
+            
+            if(errorMessage.Length == 0)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(roomController.CreateRoom(name, description, type), "Error");
+                this.Close();
+            }
 
         }
     }

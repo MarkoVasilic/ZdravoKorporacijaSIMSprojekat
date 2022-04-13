@@ -17,26 +17,26 @@ namespace Service
         }
 
 
-
-
-        public void CreateRoom(String roomName, String roomDescription, RoomType roomType)
+        public String CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
-
-            try 
+            int roomId = GenerateNewId();
+            if (RoomRepository.FindOneById(roomId) != null)
             {
-                int roomId = GenerateNewId();
-
-                Room room = new Room(roomName, roomId, roomDescription, roomType);
-
-                RoomRepository.SaveRoom(room);
-
-            } catch (Exception e) when (roomName == "" || roomDescription == "" || roomType == null || RoomRepository.FindOneByName(roomName) != null)
+                return "Room with that identification number already exists!";
+            }else if(RoomRepository.FindOneByName(roomName) != null)
             {
-                Console.WriteLine("Proverite parametre za unos sobe!");
-
+                return "Room with that name already exists!";
             }
-            
-
+            else
+            {
+                Room newRoom = new Room(roomName, roomId, roomDescription, roomType);
+                if (!newRoom.validateRoom())
+                {
+                    return "Something went wrong, room isn't saved!";
+                }
+                RoomRepository.SaveRoom(newRoom);
+                return "";
+            }
         }
 
         public List<Room> GetAllRooms()
@@ -44,20 +44,43 @@ namespace Service
             return RoomRepository.FindAll();
         }
 
-        public void DeleteRoom(int roomId)
+        public String DeleteRoom(int roomId)
         {
-            RoomRepository.RemoveRoom(roomId);
+            if (RoomRepository.FindOneById(roomId) == null)
+            {
+                return "Room with that identification number doesn't exists";
+            }
+            else
+            {
+
+                RoomRepository.RemoveRoom(roomId);
+                return "";
+            }
         }
 
 
-        public void ModifyRoom(int roomId, String roomName, String roomDescription)
+        public String ModifyRoom(int roomId, String roomName, String roomDescription)
         {
-            Room oldRoom = RoomRepository.FindOneById(roomId);
-            if(oldRoom != null)
+
+            if(RoomRepository.FindOneById(roomId) == null)
             {
-                Room newRoom = new Room(roomName, oldRoom.Id, roomDescription, oldRoom.Type);
-                RoomRepository.ModifyRoom(newRoom);
+                return "Room with that identification number doesn't exists";
             }
+            else
+            {
+                Room oldRoom = RoomRepository.FindOneById(roomId);
+                Room newRoom = new Room(roomName, oldRoom.Id, roomDescription, oldRoom.Type);
+
+                if (!newRoom.validateRoom())
+                {
+                    return "Something went wrong, room isn't changed";
+                }
+
+                RoomRepository.ModifyRoom(newRoom);
+                return "";
+                
+            }
+
         }
 
         public Model.Room? FindRoomByName(String name)
