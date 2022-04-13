@@ -26,8 +26,19 @@ namespace Repository
         public void RemoveRoom(int roomId)
         {
             var values = GetValues();
-            values.RemoveAll(val => val.id == roomId);
+            values.RemoveAll(val => val.Id == roomId);
             Save(values);
+        }
+
+        public Model.Room? FindOneById(int id)
+        {
+            List<Room> rooms = GetValues();
+            foreach (Room room in rooms)
+            {
+                if (room.Id == id)
+                    return room;
+            }
+            return null;
         }
 
         public Model.Room? FindOneByName(String name)
@@ -35,7 +46,7 @@ namespace Repository
             List<Room> rooms = GetValues();
             foreach (Room room in rooms)
             {
-                if (room.name == name)
+                if (room.Name == name)
                     return room;
             }
             return null;
@@ -44,16 +55,17 @@ namespace Repository
         public void ModifyRoom(Room roomToModify)
         {
             var values = GetValues();
-            values[values.FindIndex(val => val.id == roomToModify.id)] = roomToModify;
+            values[values.FindIndex(val => val.Id == roomToModify.Id)] = roomToModify;
             Save(values);
         }
+
 
         public Model.Room? FindOneByType(RoomType roomType)
         {
             List<Room> rooms = GetValues();
             foreach (Room room in rooms)
             {
-                if (room.type == roomType)
+                if (room.Type == roomType)
                     return room;
             }
 

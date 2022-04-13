@@ -1,0 +1,20 @@
+﻿<Window x:Class="ZdravoKorporacija.View.RoomCRUD.GetAllRooms"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKorporacija.View.RoomCRUD"
+        mc:Ignorable="d"
+        Title="GetAllRooms" Height="450" Width="800" Background="LightYellow">
+    <Grid>
+        <DataGrid x:Name="dataGridRooms" Grid.Row="1" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Room type" Binding="{Binding typeStr}" Width="*"></DataGridTextColumn>
+               
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
