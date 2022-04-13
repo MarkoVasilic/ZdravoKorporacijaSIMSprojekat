@@ -17,6 +17,30 @@ namespace ZdravoKorporacija
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
+            appointmentController = new AppointmentController(appointmentService);
+
+ 
+
+            /*
+            patientController.CreatePatient(patient);
+            patientController.CreatePatient(patient1);
+            patientController.CreatePatient(patient2);
+            patientController.CreatePatient(patient3);
+            patientController.CreatePatient(patient4);
+            patientController.CreatePatient(patient5);
+            patientController.CreatePatient(patient6);
+            patientController.CreatePatient(patient7);
+            patientController.CreatePatient(patient8);
+            patient8.Address = "jbgaa";
+            patientController.ModifyPatient(patient8);
+            appointmentController.CreateAppointmentByDoctor(DateTime.Now, 15, "0123");
+            appointmentController.ModifyAppointment(11, new DateTime(2010, 2, 2));
+            appointmentController.CreateAppointmentByPatient(DateTime.Now, "1231231231231");
+            Console.WriteLine(appointmentController.CreateAppointmentByPatient(DateTime.Now, "789"));
+            */
+
         }
 
     }
