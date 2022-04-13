@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ZdravoKorporacija.View.AppointmentCRUD;
 
 namespace ZdravoKorporacija.View
 {
@@ -30,6 +31,12 @@ namespace ZdravoKorporacija.View
         {
             UpdateAppointmentPage updateAppointmentPage = new UpdateAppointmentPage();
             updateAppointmentPage.Show();
+        }
+
+        private void MyAppointmentsButton(object sender, RoutedEventArgs e)
+        {
+            GetAllAppointmentsPatient getAllAppointmentsPatient = new GetAllAppointmentsPatient();
+            getAllAppointmentsPatient.Show();   
         }
     }
 }

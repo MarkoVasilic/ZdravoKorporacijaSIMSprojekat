@@ -11,7 +11,7 @@
     "StartTime": "2022-04-12T20:00:06.0775969+02:00",
     "Duration": 15,
     "Id": 3,
-    "PatientJmbg": "0123",
+    "PatientJmbg": "1111111111",
     "DoctorJmbg": "456",
     "RoomId": 11
   },
@@ -19,7 +19,7 @@
     "StartTime": "2022-04-12T20:03:24.0681565+02:00",
     "Duration": 15,
     "Id": 4,
-    "PatientJmbg": "0123",
+    "PatientJmbg": "1111111111",
     "DoctorJmbg": "456",
     "RoomId": 11
   },
@@ -27,7 +27,7 @@
     "StartTime": "2022-04-12T21:27:25.0509131+02:00",
     "Duration": 15,
     "Id": 5,
-    "PatientJmbg": "0123",
+    "PatientJmbg": "1111111111",
     "DoctorJmbg": "456",
     "RoomId": 11
   },

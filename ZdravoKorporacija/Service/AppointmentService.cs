@@ -21,6 +21,7 @@ namespace Service
             this.DoctorRepository = doctorRepository;
             this.RoomRepository = roomRepository;
         }
+        public AppointmentService() { }
 
         public List<Appointment> GetAllAppointments()
         {

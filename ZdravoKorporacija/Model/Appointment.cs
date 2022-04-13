@@ -43,5 +43,16 @@ namespace Model
                 return true;
 
         }
+
+        public  void toString()
+        { 
+            Console.WriteLine("ID = " + Id);
+            Console.WriteLine("PatientJMBG = " + PatientJmbg);
+            Console.WriteLine("DoctorJmbg = " + DoctorJmbg);
+            Console.WriteLine("StartTime = " + StartTime);
+            Console.WriteLine("RoomId = " + RoomId);
+            Console.WriteLine("Duration = " + Duration);
+            Console.WriteLine();
+        }
     }
 }

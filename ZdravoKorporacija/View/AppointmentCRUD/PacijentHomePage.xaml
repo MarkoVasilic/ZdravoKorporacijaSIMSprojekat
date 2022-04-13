@@ -9,7 +9,7 @@
     <Grid Background="#FF4FC3A0">
         <Label Content="Welcome to our hospital" FontSize="50" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top"/>
         <Button Content="Create Appointment" HorizontalAlignment="Left" Height="61" Margin="23,282,0,0" VerticalAlignment="Top" Width="125" Click="ButtonCreateAppointment"/>
-        <Button Content="My Appointments" HorizontalAlignment="Left" Height="61" Margin="217,282,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.794,0.508"/>
+        <Button Content="My Appointments" HorizontalAlignment="Left" Height="61" Margin="217,282,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.794,0.508" Click="MyAppointmentsButton"/>
         <Button Content="Delete Appointment" HorizontalAlignment="Left" Height="61" Margin="599,282,0,0" VerticalAlignment="Top" Width="125" Click="DeleteAppointmentButton"/>
         <Button Content="Update Appointment" HorizontalAlignment="Left" Height="61" Margin="400,282,0,0" VerticalAlignment="Top" Width="125" Click="UpdateAppointmentButton"/>
 

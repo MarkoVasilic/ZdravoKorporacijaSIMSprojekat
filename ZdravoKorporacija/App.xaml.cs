@@ -1,6 +1,9 @@
 ﻿using Controller;
+using Model;
 using Repository;
 using Service;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace ZdravoKorporacija
@@ -42,7 +45,9 @@ namespace ZdravoKorporacija
             appointmentController.CreateAppointmentByPatient(DateTime.Now, "1231231231231");
             Console.WriteLine(appointmentController.CreateAppointmentByPatient(DateTime.Now, "789"));
             */
-
+            List<Appointment> appointmentList = new List<Appointment>(appointmentController.GetAllAppointments());
+            foreach (Appointment appointment in appointmentList)
+                appointment.toString();
         }
 
     }
