@@ -35,14 +35,14 @@ namespace Controller
             return RoomService.ModifyRoom(roomId, roomName, roomDescription);
         }
 
-        public Model.Room? FindRoomByName(String name)
+        public Model.Room? GetRoomByName(String name)
         {
-            return RoomService.FindRoomByName(name);
+            return RoomService.GetRoomByName(name);
         }
 
-        public Model.Room? FindRoomByType(RoomType roomType)
+        public Model.Room? GetRoomByType(RoomType roomType)
         {
-            return RoomService.FindRoomByType(roomType);
+            return RoomService.GetRoomByType(roomType);
         }
 
     }

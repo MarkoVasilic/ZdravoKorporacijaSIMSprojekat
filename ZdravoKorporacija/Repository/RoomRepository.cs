@@ -8,7 +8,7 @@ namespace Repository
 {
     public class RoomRepository
     {
-        private String roomFilePath = @"..\..\..\Resources\rooms.json";
+        private readonly String RoomFilePath = @"..\..\..\Resources\rooms.json";
 
         public List<Room> FindAll()
         {
@@ -52,7 +52,7 @@ namespace Repository
             return null;
         }
 
-        public void ModifyRoom(Room roomToModify)
+        public void UpdateRoom(Room roomToModify)
         {
             var values = GetValues();
             values[values.FindIndex(val => val.Id == roomToModify.Id)] = roomToModify;
@@ -75,12 +75,12 @@ namespace Repository
 
         public void Save(List<Room> values)
         {
-            File.WriteAllText(roomFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(RoomFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         public List<Room> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Room>>(File.ReadAllText(roomFilePath));
+            var values = JsonConvert.DeserializeObject<List<Room>>(File.ReadAllText(RoomFilePath));
 
             if (values == null)
             {

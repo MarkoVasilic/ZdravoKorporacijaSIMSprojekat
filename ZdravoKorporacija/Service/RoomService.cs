@@ -76,19 +76,19 @@ namespace Service
                     return "Something went wrong, room isn't changed";
                 }
 
-                RoomRepository.ModifyRoom(newRoom);
+                RoomRepository.UpdateRoom(newRoom);
                 return "";
                 
             }
 
         }
 
-        public Model.Room? FindRoomByName(String name)
+        public Model.Room? GetRoomByName(String name)
         {
             return RoomRepository.FindOneByName(name);
         }
 
-        public Model.Room? FindRoomByType(RoomType roomType)
+        public Model.Room? GetRoomByType(RoomType roomType)
         {
             return RoomRepository.FindOneByType(roomType);
         }
