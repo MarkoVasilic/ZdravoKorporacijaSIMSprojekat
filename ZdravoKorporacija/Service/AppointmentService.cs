@@ -8,28 +8,23 @@ namespace Service
 {
     public class AppointmentService
     {
-        AppointmentRepository AppointmentRepository = new AppointmentRepository();
-        PatientRepository patientRepository = new PatientRepository();
+        readonly AppointmentRepository AppointmentRepository = new AppointmentRepository();
+        readonly PatientRepository PatientRepository = new PatientRepository();
+        readonly DoctorRepository DoctorRepository = new DoctorRepository();
+        readonly RoomRepository RoomRepository = new RoomRepository();
 
-        public AppointmentService(AppointmentRepository appointmentRepository)
+        public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository,
+            DoctorRepository doctorRepository, RoomRepository roomRepository)
         {
             this.AppointmentRepository = appointmentRepository;
+            this.PatientRepository = patientRepository;
+            this.DoctorRepository = doctorRepository;
+            this.RoomRepository = roomRepository;
         }
 
         public List<Appointment> GetAllAppointments()
         {
             return AppointmentRepository.FindAll();
-        }
-
-        //neophodno odraditi neki try Catch ako se unese ID doktora koji ne postoji.
-        // odnosno potrebna je validacija, takodje razmatram opciju da vraca Appointment umjesto void
-        public Model.Appointment CreateAppointmentByPatient(DateTime date, String doctorJMBG)
-        {
-            int id = GenerateNewId();
-            Appointment appointment = new Appointment(date, 15, id, "1111111111111", doctorJMBG, 11);    
-            AppointmentRepository.SaveAppointment(appointment);
-            return appointment;
-
         }
 
         private int GenerateNewId()
@@ -45,52 +40,85 @@ namespace Service
                 return 1;
             }
         }
-        //void
-        public void DeleteAppointment(int AppointmentId)
+        public String DeleteAppointment(int appointmentId)
         {
-            AppointmentRepository.RemoveAppointment(AppointmentId);
-        }
-
-        //vraca void
-        //PROMIJENIO SAM PARAMETRE FUNKCIJE, ISPRAVITI NA DIJAGRAMU
-        public void ModifyAppointment(DateTime newDate, int appointmentId)
-        {
-            var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
-            if (oneAppointment != null)
+            if (AppointmentRepository.FindOneById(appointmentId) == null)
             {
-                var values = AppointmentRepository.GetValues();
-                values.RemoveAll(value => value.Id.Equals(oneAppointment.Id));
-                oneAppointment.StartTime = newDate;
-                values.Add(oneAppointment);
-                AppointmentRepository.Save(values);
+                return "Appointment with that id doesn't exist!";
+            }
+            else
+            {
+                AppointmentRepository.RemoveAppointment(appointmentId);
+                return "";
             }
         }
 
-        public Model.Appointment GetOneById(int AppointmentId)
+        public String ModifyAppointment(DateTime newDate, int appointmentId)
         {
-            return AppointmentRepository.FindOneById(AppointmentId);
+            var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
+            if (oneAppointment == null)
+            {
+                return "Appointment with that id doesn't exist!";
+            }
+            else
+            {
+                Appointment newAppointment = new Appointment(newDate, oneAppointment.Duration, oneAppointment.Id, oneAppointment.PatientJmbg,
+                    oneAppointment.DoctorJmbg, oneAppointment.RoomId);
+                if (!newAppointment.validateAppointment())
+                {
+                    return "Something went wrong, new appointment isn't created!";
+                }
+                AppointmentRepository.UpdateAppointment(newAppointment);
+                return "";
+            }
+
+        }
+
+        public Model.Appointment? GetOneById(int appointmentId)
+        {
+            return AppointmentRepository.FindOneById(appointmentId);
         }
 
 
-        public List<Appointment> GetAppointmentsByDoctorJmbg(String DoctorJmbg)
+        public List<Appointment> GetAppointmentsByDoctorJmbg(String doctorJmbg)
         {
-            return AppointmentRepository.FindAllByDoctorJmbg(DoctorJmbg);
+            return AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
         }
 
-        public List<Appointment> GetAppointmentsByPatientJmbg(String PatientId)
+        public List<Appointment> GetAppointmentsByPatientJmbg(String patientId)
         {
-            return AppointmentRepository.FindAllByPatientJmbg(PatientId);
+            return AppointmentRepository.FindAllByPatientJmbg(patientId);
         }
 
-        public String CreateAppointmentByDoctor(DateTime StartTime, int Duration, String PatientJmbg)
+        public String CreateAppointmentByPatient(DateTime date, String doctorJMBG)
         {
-            if (patientRepository.FindOneByJmbg(PatientJmbg) == null)
+            if (DoctorRepository.FindOneByJmbg(doctorJMBG) == null)
+            {
+                return "Doctor with that JMBG doesn't exist!";
+            }
+            int id = GenerateNewId();
+            Appointment appointment = new Appointment(date, 15, id, "1111111111111", doctorJMBG, 11);
+            AppointmentRepository.SaveAppointment(appointment);
+            if (!appointment.validateAppointment())
+            {
+                return "Something went wrong, new appointment isn't created!";
+            }
+            else
+            {
+                return "";
+            }
+
+        }
+
+        public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
+        {
+            if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
             {
                 return "Patient with that JMBG doesn't exist!";
             }
             int id = GenerateNewId();
-            Appointment appointment = new Appointment(StartTime, Duration, id, PatientJmbg, "456", 11);
-             if(!appointment.validateAppointment())
+            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, "456", 11);
+            if (!appointment.validateAppointment())
             {
                 return "Domething went wrong, new appointment isn't created!";
             }
@@ -101,5 +129,6 @@ namespace Service
             }
 
         }
+
     }
 }

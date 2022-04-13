@@ -20,29 +20,29 @@ namespace Repository
             return values;
         }
 
-        public void SavePatient(Patient PatientToMake)
+        public void SavePatient(Patient patientToMake)
         {
             var values = GetValues();
-            values.Add(PatientToMake);
+            values.Add(patientToMake);
             Save(values);
         }
 
-        public void UpdatePatient(Patient PatientToModify)
+        public void UpdatePatient(Patient patientToModify)
         {
-            var onePatient = FindOneByJmbg(PatientToModify.Jmbg);
+            var onePatient = FindOneByJmbg(patientToModify.Jmbg);
             if (onePatient != null)
             {
                 var values = GetValues();
                 values.RemoveAll(value => value.Jmbg.Equals(onePatient.Jmbg));
-                values.Add(PatientToModify);
+                values.Add(patientToModify);
                 Save(values);
             }
         }
 
-        public void RemovePatient(string Jmbg)
+        public void RemovePatient(string jmbg)
         {
             var values = GetValues();
-            values.RemoveAll(value => value.Jmbg.Equals(Jmbg));
+            values.RemoveAll(value => value.Jmbg.Equals(jmbg));
             Save(values);
         }
 
@@ -53,21 +53,21 @@ namespace Repository
             Save(values);
         }
 
-        public Patient? FindOneByJmbg(String Jmbg)
+        public Patient? FindOneByJmbg(String jmbg)
         {
             List<Patient> patients = GetValues();
             foreach (Patient patient in patients)
-                if (patient.Jmbg.Equals(Jmbg))
+                if (patient.Jmbg.Equals(jmbg))
                     return patient;
 
             return null;
         }
 
-        public Patient? FindOneByUsername(string Username)
+        public Patient? FindOneByUsername(string username)
         {
             List<Patient> patients = GetValues();
             foreach (Patient patient in patients)
-                if (patient.Username.Equals(Username))
+                if (patient.Username.Equals(username))
                     return patient;
 
             return null;

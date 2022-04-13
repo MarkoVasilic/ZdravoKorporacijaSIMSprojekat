@@ -8,15 +8,15 @@ namespace Repository
 {
     public class AppointmentRepository
     {
-        private String appointmentFilePath = @"..\..\..\Resources\Appointments.json";
+        private readonly String AppointmentFilePath = @"..\..\..\Resources\Appointments.json";
 
-        public List<Model.Appointment> FindAll()
+        public List<Appointment> FindAll()
         {
             var values = GetValues();
             return values;
         }
 
-        public List<Model.Appointment> FindAllByPatientId(String patientJmbg)
+        public List<Appointment> FindAllByPatientId(String patientJmbg)
         {
             var values = GetValues();
             List<Model.Appointment> result = new List<Model.Appointment>();
@@ -27,27 +27,27 @@ namespace Repository
         }
 
 
-        public void SaveAppointment(Model.Appointment AppointmentToSave)
+        public void SaveAppointment(Appointment appointmentToSave)
         {
             var values = GetValues();
-            values.Add(AppointmentToSave);
+            values.Add(appointmentToSave);
             Save(values);
         }
 
-        public void RemoveAppointment(int AppointmentId)
+        public void RemoveAppointment(int appointmentId)
         {
             var values = GetValues();
-            values.RemoveAll(val => val.Id == AppointmentId);
+            values.RemoveAll(val => val.Id == appointmentId);
             Save(values);
         }
 
 
-        public Model.Appointment FindOneById(int AppointmentId)
+        public Appointment? FindOneById(int appointmentId)
         {
             var values = GetValues();
             foreach (var val in values)
             {
-                if (val.Id == AppointmentId)
+                if (val.Id == appointmentId)
                 {
                     return val;
                 }
@@ -56,30 +56,29 @@ namespace Repository
             return null;
         }
 
-        public List<Model.Appointment> FindAllByPatientJmbg(String patientId)
+        public List<Appointment> FindAllByPatientJmbg(String patientId)
         {
             var values = GetValues();
-            List<Model.Appointment> result = new List<Model.Appointment>();
+            List<Model.Appointment> result = new List<Appointment>();
             foreach (Appointment appointment in values)
                 if (appointment.PatientJmbg.Equals(patientId))
                     result.Add(appointment);
             return result;
         }
 
-        //doctors appointments by jmbg
-        public List<Model.Appointment> FindAllByDoctorJmbg(String DoctorJmbg)
+        public List<Appointment> FindAllByDoctorJmbg(String doctorJmbg)
         {
             var values = GetValues();
-            List<Model.Appointment> result = new List<Model.Appointment>();
+            List<Appointment> result = new List<Appointment>();
             foreach (Appointment appointment in values)
-                if (appointment.DoctorJmbg.Equals(DoctorJmbg))
+                if (appointment.DoctorJmbg.Equals(doctorJmbg))
                     result.Add(appointment);
             return result;
         }
 
         public List<Appointment> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(appointmentFilePath));
+            var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(AppointmentFilePath));
             if (values == null)
             {
                 values = new List<Appointment>();
@@ -88,10 +87,22 @@ namespace Repository
             return values;
         }
 
-        public void Save(List<Appointment> values)
+        public void UpdateAppointment(Appointment appointmentToModify)
         {
-            File.WriteAllText(appointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            var oneAppointment = FindOneById(appointmentToModify.Id);
+            if (oneAppointment != null)
+            {
+                var values = GetValues();
+                values.RemoveAll(value => value.Id.Equals(appointmentToModify.Id));
+                values.Add(appointmentToModify);
+                Save(values);
+            }
         }
 
-    }   
+        public void Save(List<Appointment> values)
+        {
+            File.WriteAllText(AppointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+        }
+
+    }
 }

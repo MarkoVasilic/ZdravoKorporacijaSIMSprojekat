@@ -61,11 +61,11 @@ namespace Service
             string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
             string? address)
         {
-            if (PatientRepository.FindOneByJmbg(jmbg) == null)
+            Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
+            if (oldPatient == null)
                 return "Patient with that jmbg doesn't exists!";
             else
             {
-                Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
                 Patient newPatient = new Patient(isGuest, allergens, bloodType, firstName, lastName, oldPatient.Username, oldPatient.Password,
             jmbg, dateOfBirth, gender, email, telephone, address);
                 if (!newPatient.validatePatient())
@@ -75,7 +75,7 @@ namespace Service
             }
         }
 
-        public Model.Patient? GetOnePatient(string jmbg)
+        public Patient? GetOneByJmbg(string jmbg)
         {
             return PatientRepository.FindOneByJmbg(jmbg);
         }

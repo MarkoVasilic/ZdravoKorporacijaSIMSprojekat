@@ -9,7 +9,7 @@ namespace Service
     {
         private readonly DoctorRepository DoctorRepository;
 
-        public DoctorService(DoctorRepository doctorRepository) 
+        public DoctorService(DoctorRepository doctorRepository)
         {
             this.DoctorRepository = doctorRepository;
         }
@@ -20,7 +20,7 @@ namespace Service
 
         }
 
-        public List<Model.Doctor> GetDoctorsBySpeciality(String Speciality)
+        public List<Model.Doctor>? GetDoctorsBySpeciality(String Speciality)
         {
             return DoctorRepository.FindAllBySpeciality(Speciality);
         }

@@ -14,14 +14,16 @@ namespace ZdravoKorporacija
 
         public App()
         {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
             appointmentController = new AppointmentController(appointmentService);
 
- 
+
 
             /*
             patientController.CreatePatient(patient);

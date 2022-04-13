@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
 using Model;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Repository
@@ -23,10 +23,10 @@ namespace Repository
             return null;
         }
 
-        public List<Model.Doctor> FindAllBySpeciality(String Speciality)
+        public List<Model.Doctor>? FindAllBySpeciality(String Speciality)
         {
             List<Doctor> doctors = GetValues();
-            return doctors.FindAll(doctor => doctor.SpecializationType.Equals(Speciality));
+            return doctors.FindAll(doctor => doctor.SpecialtyType.Equals(Speciality));
         }
 
         private void Save(List<Doctor> values)
