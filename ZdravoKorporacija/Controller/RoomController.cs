@@ -7,41 +7,42 @@ namespace Controller
 {
     public class RoomController
     {
-        readonly RoomService roomService;
+        private readonly RoomService RoomService;
 
         public RoomController(RoomService roomService)
         {
-            this.roomService = roomService;
+            this.RoomService = roomService;
         }
 
-        public void CreateRoom(Model.Room roomToMake)
+        public String CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
-            roomService.CreateRoom(roomToMake);
+            return RoomService.CreateRoom(roomName, roomDescription, roomType);
         }
 
         public List<Room> GetAllRooms()
         {
-            return roomService.GetAllRooms();
+            return RoomService.GetAllRooms();
         }
 
-        public void DeleteRoom(int id)
+        public String DeleteRoom(int id)
         {
-            roomService.DeleteRoom(id);
+            return RoomService.DeleteRoom(id);
         }
 
-        public void ModifyRoom(Model.Room roomToModify)
+        public String ModifyRoom(int roomId, String roomName, String roomDescription)
         {
-            roomService.ModifyRoom(roomToModify);
+
+            return RoomService.ModifyRoom(roomId, roomName, roomDescription);
         }
 
         public Model.Room? FindRoomByName(String name)
         {
-            return roomService.FindRoomByName(name);
+            return RoomService.FindRoomByName(name);
         }
 
         public Model.Room? FindRoomByType(RoomType roomType)
         {
-            return roomService.FindRoomByType(roomType);
+            return RoomService.FindRoomByType(roomType);
         }
 
     }

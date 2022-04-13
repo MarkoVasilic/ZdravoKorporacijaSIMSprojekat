@@ -9,52 +9,96 @@ namespace Service
     public class RoomService
     {
 
-        RoomRepository roomRepository = new RoomRepository();
+        private readonly RoomRepository RoomRepository;
 
         public RoomService(RoomRepository roomRepository)
         {
-            this.roomRepository = roomRepository;
+            this.RoomRepository = roomRepository;
         }
 
-        public void CreateRoom(Model.Room roomToMake)
+
+        public String CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
-            int id = GenerateNewId();
-            roomToMake.id = id;
-            roomRepository.SaveRoom(roomToMake);
+            int roomId = GenerateNewId();
+            if (RoomRepository.FindOneById(roomId) != null)
+            {
+                return "Room with that identification number already exists!";
+            }else if(RoomRepository.FindOneByName(roomName) != null)
+            {
+                return "Room with that name already exists!";
+            }
+            else
+            {
+                Room newRoom = new Room(roomName, roomId, roomDescription, roomType);
+                if (!newRoom.validateRoom())
+                {
+                    return "Something went wrong, room isn't saved!";
+                }
+                RoomRepository.SaveRoom(newRoom);
+                return "";
+            }
         }
 
         public List<Room> GetAllRooms()
         {
-            return roomRepository.FindAll();
+            return RoomRepository.FindAll();
         }
 
-        public void DeleteRoom(int roomId)
+        public String DeleteRoom(int roomId)
         {
-            roomRepository.RemoveRoom(roomId);
+            if (RoomRepository.FindOneById(roomId) == null)
+            {
+                return "Room with that identification number doesn't exists";
+            }
+            else
+            {
+
+                RoomRepository.RemoveRoom(roomId);
+                return "";
+            }
         }
 
 
-        public void ModifyRoom(Model.Room roomToModify)
+        public String ModifyRoom(int roomId, String roomName, String roomDescription)
         {
-            roomRepository.ModifyRoom(roomToModify);
+
+            if(RoomRepository.FindOneById(roomId) == null)
+            {
+                return "Room with that identification number doesn't exists";
+            }
+            else
+            {
+                Room oldRoom = RoomRepository.FindOneById(roomId);
+                Room newRoom = new Room(roomName, oldRoom.Id, roomDescription, oldRoom.Type);
+
+                if (!newRoom.validateRoom())
+                {
+                    return "Something went wrong, room isn't changed";
+                }
+
+                RoomRepository.ModifyRoom(newRoom);
+                return "";
+                
+            }
+
         }
 
         public Model.Room? FindRoomByName(String name)
         {
-            return roomRepository.FindOneByName(name);
+            return RoomRepository.FindOneByName(name);
         }
 
         public Model.Room? FindRoomByType(RoomType roomType)
         {
-            return roomRepository.FindOneByType(roomType);
+            return RoomRepository.FindOneByType(roomType);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<Room> rooms = roomRepository.FindAll();
-                int currentMax = rooms.Max(obj => obj.id);
+                List<Room> rooms = RoomRepository.FindAll();
+                int currentMax = rooms.Max(obj => obj.Id);
                 return currentMax + 1;
             }
             catch
