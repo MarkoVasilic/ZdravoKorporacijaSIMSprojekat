@@ -93,6 +93,11 @@ namespace Service
             return RoomRepository.FindOneByType(roomType);
         }
 
+        public Model.Room? GetRoomById(int roomId)
+        {
+            return RoomRepository.FindOneById(roomId);
+        }
+
         public int GenerateNewId()
         {
             try

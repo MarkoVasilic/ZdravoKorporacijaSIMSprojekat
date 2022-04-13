@@ -45,5 +45,10 @@ namespace Controller
             return RoomService.GetRoomByType(roomType);
         }
 
+        public Model.Room? GetRoomById(int roomId)
+        {
+            return RoomService.GetRoomById(roomId);
+        }
+
     }
 }
