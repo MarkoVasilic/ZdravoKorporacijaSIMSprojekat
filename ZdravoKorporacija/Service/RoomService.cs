@@ -9,52 +9,73 @@ namespace Service
     public class RoomService
     {
 
-        RoomRepository roomRepository = new RoomRepository();
+        private readonly RoomRepository RoomRepository;
 
         public RoomService(RoomRepository roomRepository)
         {
-            this.roomRepository = roomRepository;
+            this.RoomRepository = roomRepository;
         }
 
-        public void CreateRoom(Model.Room roomToMake)
+
+
+
+        public void CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
-            int id = GenerateNewId();
-            roomToMake.id = id;
-            roomRepository.SaveRoom(roomToMake);
+
+            try 
+            {
+                int roomId = GenerateNewId();
+
+                Room room = new Room(roomName, roomId, roomDescription, roomType);
+
+                RoomRepository.SaveRoom(room);
+
+            } catch (Exception e) when (roomName == "" || roomDescription == "" || roomType == null || RoomRepository.FindOneByName(roomName) != null)
+            {
+                Console.WriteLine("Proverite parametre za unos sobe!");
+
+            }
+            
+
         }
 
         public List<Room> GetAllRooms()
         {
-            return roomRepository.FindAll();
+            return RoomRepository.FindAll();
         }
 
         public void DeleteRoom(int roomId)
         {
-            roomRepository.RemoveRoom(roomId);
+            RoomRepository.RemoveRoom(roomId);
         }
 
 
-        public void ModifyRoom(Model.Room roomToModify)
+        public void ModifyRoom(int roomId, String roomName, String roomDescription)
         {
-            roomRepository.ModifyRoom(roomToModify);
+            Room oldRoom = RoomRepository.FindOneById(roomId);
+            if(oldRoom != null)
+            {
+                Room newRoom = new Room(roomName, oldRoom.Id, roomDescription, oldRoom.Type);
+                RoomRepository.ModifyRoom(newRoom);
+            }
         }
 
         public Model.Room? FindRoomByName(String name)
         {
-            return roomRepository.FindOneByName(name);
+            return RoomRepository.FindOneByName(name);
         }
 
         public Model.Room? FindRoomByType(RoomType roomType)
         {
-            return roomRepository.FindOneByType(roomType);
+            return RoomRepository.FindOneByType(roomType);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<Room> rooms = roomRepository.FindAll();
-                int currentMax = rooms.Max(obj => obj.id);
+                List<Room> rooms = RoomRepository.FindAll();
+                int currentMax = rooms.Max(obj => obj.Id);
                 return currentMax + 1;
             }
             catch

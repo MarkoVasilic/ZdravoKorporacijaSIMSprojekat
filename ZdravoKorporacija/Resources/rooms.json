@@ -1,14 +1,37 @@
 [
   {
-    "name": "soba1",
-    "id": 1,
-    "description": "neka soba",
-    "type": 0
+    "Name": "izmena1",
+    "Id": 3,
+    "Description": "izmena opis",
+    "Type": 0,
+    "typeStr": "EXAMINATION"
   },
   {
-    "name": "soba1",
-    "id": 2,
-    "description": "neka soba",
-    "type": 0
+    "Name": "nadja",
+    "Id": 4,
+    "Description": "nadjaaa",
+    "Type": 3,
+    "typeStr": "SURGERY"
+  },
+  {
+    "Name": "proba",
+    "Id": 5,
+    "Description": "proba1",
+    "Type": 1,
+    "typeStr": "CONFERENCE"
+  },
+  {
+    "Name": "NADJA",
+    "Id": 7,
+    "Description": "NADJA",
+    "Type": 0,
+    "typeStr": "EXAMINATION"
+  },
+  {
+    "Name": "nadja",
+    "Id": 8,
+    "Description": "car",
+    "Type": 0,
+    "typeStr": "EXAMINATION"
   }
 ]
