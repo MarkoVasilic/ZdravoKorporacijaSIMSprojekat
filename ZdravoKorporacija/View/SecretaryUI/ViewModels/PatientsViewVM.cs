@@ -10,7 +10,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 {
     internal class PatientsViewVM
     {
-        private ObservableCollection<Patient>? _patientsForTable;
+        private ObservableCollection<Patient> _patientsForTable;
         public ObservableCollection<Patient> PatientsForTable { get => _patientsForTable; set => _patientsForTable = value; }
         public PatientController patientController { get; set; }
         public Patient SelectedPatient { get; set; }
