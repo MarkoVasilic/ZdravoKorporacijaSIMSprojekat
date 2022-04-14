@@ -57,6 +57,7 @@ namespace Service
         public String ModifyAppointment(DateTime newDate, int appointmentId)
         {
             var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
+            Console.WriteLine("Novi datum" + newDate);
             if (oneAppointment == null)
             {
                 return "Appointment with that id doesn't exist!";
@@ -67,7 +68,7 @@ namespace Service
                     oneAppointment.DoctorJmbg, oneAppointment.RoomId);
                 if (!newAppointment.validateAppointment())
                 {
-                    return "Something went wrong, new appointment isn't created!";
+                    return "Something went wrong, new appointment isn't modified!";
                 }
                 AppointmentRepository.UpdateAppointment(newAppointment);
                 return "";
@@ -118,7 +119,7 @@ namespace Service
                 return "Patient with that JMBG doesn't exist!";
             }
             int id = GenerateNewId();
-            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, "456", 11);
+            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, "4444444444444", 11);
             if (!appointment.validateAppointment())
             {
                 return "Domething went wrong, new appointment isn't created!";

@@ -9,8 +9,10 @@
     <Grid Background="#FF4FC3A0">
         <Label Content="Update an Appointment" FontSize="50" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="175,207,0,0" TextWrapping="Wrap" Text="Date:" FontSize="17" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.547,0.621"/>
-        <DatePicker HorizontalAlignment="Left" Margin="285,207,0,0" VerticalAlignment="Top" Width="217" RenderTransformOrigin="0.502,0.857" Height="32"/>
-        <Button Content="Update" HorizontalAlignment="Left" Height="47"  FontSize="25" Margin="285,326,0,0" VerticalAlignment="Top" Width="201"/>
+        <DatePicker  x:Name="datePicker" HorizontalAlignment="Left" Margin="285,207,0,0" VerticalAlignment="Top" Width="217" RenderTransformOrigin="0.502,0.857" Height="32"/>
+        <Button Content="Update" HorizontalAlignment="Left" Height="47"  FontSize="25" Margin="285,326,0,0" VerticalAlignment="Top" Width="201" Click="UpdateButton"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="175,136,0,0" TextWrapping="Wrap" Text="ID:" FontSize="17" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.547,0.621"/>
+        <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="285,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201" Height="28" BorderBrush="Black"/>
     </Grid>
 </Window>
 

@@ -28,5 +28,20 @@
     "Email": "cdsa@cdds.coc",
     "PhoneNumber": "212",
     "Address": "sascdcsa"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 4,
+    "FirstName": "marko",
+    "LastName": "vasilic",
+    "Username": "marko",
+    "Password": "sifra123",
+    "Jmbg": "1111111111111",
+    "DateOfBirth": "2022-03-28T00:00:00",
+    "Gender": 1,
+    "Email": "cdsa@cdds.coc",
+    "PhoneNumber": "212",
+    "Address": "sascdcsa"
   }
 ]

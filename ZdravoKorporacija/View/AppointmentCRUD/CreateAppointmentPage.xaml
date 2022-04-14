@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="CreateAppointmentPage" Height="450" Width="800">
     <Grid Background="#FF4FC3A0">
-        <TextBox  HorizontalAlignment="Left" Margin="129,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203" Height="32" TextChanged="TextBox_TextChanged"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="20,124,0,0" TextWrapping="Wrap" Text="Doctor:" FontSize="24" VerticalAlignment="Top" Width="104" RenderTransformOrigin="0.547,0.621"/>
         <Label Content="Create an Appointment" FontSize="50" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="20,191,0,0" TextWrapping="Wrap" Text="Date:" FontSize="24" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.547,0.621"/>
-        <DatePicker HorizontalAlignment="Left" Margin="122,0,0,0" VerticalAlignment="Center" Width="217" RenderTransformOrigin="0.502,0.857" Height="32"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="122,0,0,0" VerticalAlignment="Center" Width="217" RenderTransformOrigin="0.502,0.857" Height="32"/>
         <Button Content="Create" HorizontalAlignment="Left" Height="47"  FontSize="25" Margin="301,308,0,0" VerticalAlignment="Top" Width="201"/>
+        <ComboBox HorizontalAlignment="Left" Margin="129,134,0,0" VerticalAlignment="Top" Width="185"/>
     </Grid>
 </Window>

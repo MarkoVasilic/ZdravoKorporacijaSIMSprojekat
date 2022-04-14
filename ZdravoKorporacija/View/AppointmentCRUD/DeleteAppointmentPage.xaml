@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="DeleteAppointmentPage" Height="450" Width="800">
     <Grid Background="#FF4FC3A0">
-        <TextBox  HorizontalAlignment="Left" Margin="279,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203" Height="45"/>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="65,185,0,0" TextWrapping="Wrap" Text="Appointment ID:" FontSize="24" VerticalAlignment="Top" Width="209" RenderTransformOrigin="0.547,0.621"/>
+        <TextBox  HorizontalAlignment="Left" Margin="279,185,0,0" TextWrapping="Wrap" x:Name="textBoxDeleteAppointment" Text="" VerticalAlignment="Top" Width="203" Height="45"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="65,185,0,0"  TextWrapping="Wrap" Text="Appointment ID:" FontSize="24" VerticalAlignment="Top" Width="209" RenderTransformOrigin="0.547,0.621"/>
         <Label Content="Delete an Appointment" FontSize="50" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Delete" FontSize="25"  HorizontalAlignment="Left" Height="47" Margin="279,323,0,0" VerticalAlignment="Top" Width="201"/>
+        <Button Content="Delete" FontSize="25"  HorizontalAlignment="Left" Height="47" Margin="279,323,0,0" VerticalAlignment="Top" Width="201" Click="DeleteAppointmentButton"/>
     </Grid>
 </Window>
 

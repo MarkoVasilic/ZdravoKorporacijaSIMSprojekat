@@ -5,7 +5,7 @@ namespace Model
 {
     public class Appointment
     {
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
         public int Duration { get; set; }
         public int Id { get; set; }
         public String PatientJmbg { get; set; }
