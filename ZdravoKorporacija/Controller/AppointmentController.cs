@@ -20,7 +20,6 @@ namespace Controller
         }
 
 
-        //void
         public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);

@@ -48,12 +48,11 @@ namespace ZdravoKorporacija
             Console.WriteLine(appointmentController.CreateAppointmentByPatient(DateTime.Now, "789"));
             */
 
-
-            //   appointmentController.ModifyAppointment(1, new DateTime(2010, 2, 2));
-            // Console.WriteLine("Aleksandra " + appointmentController.CreateAppointmentByDoctor(new DateTime(2023, 3, 3), 44, "1111111111111"));
-            // Console.WriteLine(appointmentController.CreateAppointmentByPatient(new DateTime(2044, 2, 2), "1231231231231"));
-            // Console.WriteLine("Modify result = " +appointmentController.ModifyAppointment(10, new DateTime(2024, 4, 4)));
-            //Console.WriteLine("Delete result = " + appointmentController.DeleteAppointment(29));
+            //ODBRANA
+            //Console.WriteLine("Create appointment by doctor = " + appointmentController.CreateAppointmentByDoctor(new DateTime(2070, 3, 3), 44, "1111111111111"));
+            //Console.WriteLine("Create appointment by patient = " + appointmentController.CreateAppointmentByPatient(new DateTime(2054, 2, 2), "1231231231231"));
+            //Console.WriteLine("Modify result = " +appointmentController.ModifyAppointment(10, new DateTime(2025, 5, 5)));
+            //Console.WriteLine("Delete result = " + appointmentController.DeleteAppointment(19));
            
             
             //ISPIS SVIH APPOINTMENTA
