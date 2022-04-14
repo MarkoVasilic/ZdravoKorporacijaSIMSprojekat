@@ -48,7 +48,7 @@ namespace Service
         {
             if (RoomRepository.FindOneById(roomId) == null)
             {
-                return "Room with that identification number doesn't exists";
+                return "Room with that identification number doesn't exist";
             }
             else
             {
@@ -64,7 +64,7 @@ namespace Service
 
             if(RoomRepository.FindOneById(roomId) == null)
             {
-                return "Room with that identification number doesn't exists";
+                return "Room with that identification number doesn't exist";
             }
             else
             {

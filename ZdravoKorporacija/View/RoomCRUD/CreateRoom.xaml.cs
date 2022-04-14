@@ -50,6 +50,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 MessageBox.Show("Please enter a description", "Error");
                 return;
             }
+            
             if (comboBoxType.SelectedIndex == 0)
             {
                 type = RoomType.EXAMINATION;

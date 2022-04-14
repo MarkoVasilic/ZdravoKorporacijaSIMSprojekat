@@ -1,15 +1,8 @@
 [
   {
-    "Name": "izmena1",
-    "Id": 3,
-    "Description": "izmena opis",
-    "Type": 1,
-    "typeStr": "EXAMINATION"
-  },
-  {
-    "Name": "nadja",
+    "Name": "PROBICA",
     "Id": 4,
-    "Description": "nadjaaa",
+    "Description": "PROBICA",
     "Type": 4,
     "typeStr": "SURGERY"
   },
@@ -40,5 +33,12 @@
     "Description": "sobaproba",
     "Type": 2,
     "typeStr": "CONFERENCE"
+  },
+  {
+    "Name": "nova proba",
+    "Id": 10,
+    "Description": "nova proba",
+    "Type": 3,
+    "typeStr": "STORAGE"
   }
 ]
