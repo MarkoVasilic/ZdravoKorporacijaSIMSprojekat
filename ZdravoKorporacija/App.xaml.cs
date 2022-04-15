@@ -49,28 +49,28 @@ namespace ZdravoKorporacija
             */
 
             //ODBRANA
-            //Console.WriteLine("Create appointment by doctor = " + appointmentController.CreateAppointmentByDoctor(new DateTime(2070, 3, 3), 44, "1111111111111"));
-            //Console.WriteLine("Create appointment by patient = " + appointmentController.CreateAppointmentByPatient(new DateTime(2054, 2, 2), "1231231231231"));
-            //Console.WriteLine("Modify result = " +appointmentController.ModifyAppointment(10, new DateTime(2025, 5, 5)));
-            //Console.WriteLine("Delete result = " + appointmentController.DeleteAppointment(19));
+            //Console.WriteLine("Create appointment by doctor = " + appointmentController.CreateAppointmentByDoctor(new DateTime(2000, 3, 3), 44, "1111111111111"));
+            //Console.WriteLine("Create appointment by patient = " + appointmentController.CreateAppointmentByPatient(new DateTime(2090, 2, 2), "1231231231231"));
+            //Console.WriteLine("Modify result = " + appointmentController.ModifyAppointment(38, new DateTime(2035, 5, 5)));
+            //Console.WriteLine("Delete result = " + appointmentController.DeleteAppointment(38));
            
             
             //ISPIS SVIH APPOINTMENTA
-            // List<Appointment> appointmentList = new List<Appointment>(appointmentController.GetAllAppointments());
-            //foreach (Appointment appointment in appointmentList)
-            //  appointment.toString();
+            /*List<Appointment> appointmentList = new List<Appointment>(appointmentController.GetAllAppointments());
+            foreach (Appointment appointment in appointmentList)
+              appointment.toString();*/
 
 
             //ISPIS SVIH APPOINTMENTA ZA PACIJENTA
-            // List<Appointment> appointmentListPatient = new List<Appointment>(appointmentController.GetAppointmentsByPatientJmbg("1111111111111"));
-            //foreach (Appointment appointment in appointmentListPatient)
-            //  appointment.toString();
+            /*List<Appointment> appointmentListPatient = new List<Appointment>(appointmentController.GetAppointmentsByPatientJmbg("1111111111111"));
+            foreach (Appointment appointment in appointmentListPatient)
+              appointment.toString();*/
 
 
             //ISPIS SVIH APPOINTMENTA ZA DOKTORA
-            // List<Appointment> appointmentListDoctor = new List<Appointment>(appointmentController.GetAppointmentsByDoctorJmbg("4444444444444"));
-            //foreach (Appointment appointment in appointmentListDoctor)
-              //appointment.toString();
+            /*List<Appointment> appointmentListDoctor = new List<Appointment>(appointmentController.GetAppointmentsByDoctorJmbg("4444444444444"));
+            foreach (Appointment appointment in appointmentListDoctor)
+              appointment.toString();*/
 
 
         }

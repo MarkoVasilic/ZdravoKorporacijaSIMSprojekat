@@ -35,21 +35,27 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void DeleteRoomClick(object sender, RoutedEventArgs e)
         {
-      
-            roomId = int.Parse(textBoxDeleteRoom.Text);
-
-            errorMessage = roomController.DeleteRoom(roomId);
-
-            if (errorMessage.Length == 0)
+            try
             {
-                this.Close();
+                roomId = int.Parse(textBoxDeleteRoom.Text);
+                errorMessage = roomController.DeleteRoom(roomId);
+
+                if (errorMessage.Length == 0)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(roomController.DeleteRoom(roomId), "Error");
+                    this.Close();
+                }
             }
-            else
+            catch
             {
                 MessageBox.Show(roomController.DeleteRoom(roomId), "Error");
                 this.Close();
             }
-
+                
         }
     }
 }

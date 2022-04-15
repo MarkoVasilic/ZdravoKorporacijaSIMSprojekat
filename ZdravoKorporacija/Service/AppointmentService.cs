@@ -122,7 +122,7 @@ namespace Service
             Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, "4444444444444", 11);
             if (!appointment.validateAppointment())
             {
-                return "Domething went wrong, new appointment isn't created!";
+                return "Something went wrong, new appointment isn't created!";
             }
             else
             {

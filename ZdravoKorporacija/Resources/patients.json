@@ -15,21 +15,6 @@
     "Address": "sascdcsa"
   },
   {
-    "IsGuest": false,
-    "Allergens": [],
-    "BloodTypeEnum": 6,
-    "FirstName": "asdsf",
-    "LastName": "fdasfsd",
-    "Username": "mareeee",
-    "Password": "aaaaaaaa",
-    "Jmbg": "1234567891235",
-    "DateOfBirth": "2022-03-30T00:00:00",
-    "Gender": 2,
-    "Email": "sa@c.com",
-    "PhoneNumber": "15151",
-    "Address": "dcascs"
-  },
-  {
     "IsGuest": true,
     "Allergens": [],
     "BloodTypeEnum": 4,
@@ -58,5 +43,35 @@
     "Email": "cdsa@cdds.coc",
     "PhoneNumber": "212",
     "Address": "sascdcsa"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [],
+    "BloodTypeEnum": 2,
+    "FirstName": "veljko",
+    "LastName": "veljkic",
+    "Username": "veeeee",
+    "Password": "konjicccdd",
+    "Jmbg": "1596357489632",
+    "DateOfBirth": "2022-04-02T00:00:00",
+    "Gender": 2,
+    "Email": "cds@cdncd.com",
+    "PhoneNumber": "12312",
+    "Address": "cda"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "marko",
+    "LastName": "markiccc",
+    "Username": "marko",
+    "Password": "sifra123",
+    "Jmbg": "7894561239637",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
   }
 ]
