@@ -2,20 +2,39 @@
   {
     "IsGuest": true,
     "Allergens": [],
-    "BloodTypeEnum": 4,
+    "BloodTypeEnum": 0,
     "FirstName": "marko",
-    "LastName": "vasilic",
+    "LastName": "markiccc",
     "Username": "marko",
     "Password": "sifra123",
-    "Jmbg": "1123456789111",
-    "DateOfBirth": "2022-03-28T00:00:00",
-    "Gender": 1,
-    "Email": "cdsa@cdds.coc",
-    "PhoneNumber": "212",
-    "Address": "sascdcsa"
+    "Jmbg": "7894561239637",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
   },
   {
-    "IsGuest": true,
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 1,
+    "FirstName": "milos",
+    "LastName": "milosevic",
+    "Username": "mikimilane",
+    "Password": "mackacka",
+    "Jmbg": "7458963215963",
+    "DateOfBirth": "2022-04-16T16:12:17.7395603+02:00",
+    "Gender": 1,
+    "Email": "milos@milos.com",
+    "PhoneNumber": "456789",
+    "Address": "neka dresa 12"
+  },
+  {
+    "IsGuest": false,
     "Allergens": [],
     "BloodTypeEnum": 4,
     "FirstName": "marko",
@@ -30,8 +49,27 @@
     "Address": "sascdcsa"
   },
   {
-    "IsGuest": true,
-    "Allergens": [],
+    "IsGuest": false,
+    "Allergens": [
+      "cdcs"
+    ],
+    "BloodTypeEnum": 6,
+    "FirstName": "lazar",
+    "LastName": "lazarobi",
+    "Username": "lakil",
+    "Password": "lazarlazar",
+    "Jmbg": "7536984215123",
+    "DateOfBirth": "2022-03-28T00:00:00",
+    "Gender": 1,
+    "Email": "dcas@cds.com",
+    "PhoneNumber": "3421",
+    "Address": "vfsvdf"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "cdsacs"
+    ],
     "BloodTypeEnum": 4,
     "FirstName": "marko",
     "LastName": "vasilic",
@@ -58,20 +96,5 @@
     "Email": "cds@cdncd.com",
     "PhoneNumber": "12312",
     "Address": "cda"
-  },
-  {
-    "IsGuest": true,
-    "Allergens": [],
-    "BloodTypeEnum": 0,
-    "FirstName": "marko",
-    "LastName": "markiccc",
-    "Username": "marko",
-    "Password": "sifra123",
-    "Jmbg": "7894561239637",
-    "DateOfBirth": null,
-    "Gender": 0,
-    "Email": "",
-    "PhoneNumber": "",
-    "Address": ""
   }
 ]

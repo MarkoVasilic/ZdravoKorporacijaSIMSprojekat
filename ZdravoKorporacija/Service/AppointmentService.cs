@@ -1,4 +1,5 @@
 using Model;
+using ZdravoKorporacija.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -132,5 +133,152 @@ namespace Service
 
         }
 
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId, 
+            DateTime dateFrom, DateTime dateUntil, int duration, String priority)
+        {
+            if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
+                throw new Exception("Patient with that JMBG doesn't exist!");
+            else if (DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+                throw new Exception("Doctor with that JMBG doesn't exist!");
+            else if (RoomRepository.FindOneById(roomId) == null)
+                throw new Exception("Room with that id doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+            int id = GenerateNewId();
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
+            doctorsNeeded.Remove(sentDoctor);
+            if (priority == "doctor")
+            {
+                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                    dateFrom, dateUntil, duration);
+                while (possibleAppointments.Count == 0)
+                {
+                    dateFrom = dateUntil;
+                    dateUntil = dateUntil.AddDays(5);
+                    possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                    dateFrom, dateUntil, duration);
+                }
+            }
+            else
+            {
+                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                    dateFrom, dateUntil, duration);
+                while (possibleAppointments.Count == 0)
+                {
+                    foreach (var doc in doctorsNeeded)
+                    {
+                        doctorJmbg = doc.Jmbg;
+                        possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                        dateFrom, dateUntil, duration);
+                        if (possibleAppointments.Count != 0)
+                            break;
+                    }
+                    if (possibleAppointments.Count == 0)
+                        throw new Exception("There are not free appointments for given parameters!");
+                }
+            }
+            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
+            foreach (var pa in possibleAppointments)
+            {
+                PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, doctorJmbg, sentDoctor.SpecialtyType,
+                    roomId, pa, duration);
+                retValue.Add(possibleAppointmentsDTO);
+                Console.WriteLine(pa);
+            }
+            return retValue;
+        }
+
+        public List<DateTime> findPossibleStartTimesOfAppointment(String patientJmbg, String doctorJmbg, int roomId, DateTime dateFrom,
+            DateTime dateUntil, int duration)
+        {
+            List<Appointment> allAppointments = this.GetAllAppointments();
+            List<Appointment> neededAppointments = new List<Appointment>();
+            List<(DateTime, DateTime)> freePeriod = new List<(DateTime, DateTime)>();
+            List<(DateTime, DateTime)> newFreePeriod = new List<(DateTime, DateTime)>();
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            foreach (var app in allAppointments){
+                if (app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (app.DoctorJmbg == doctorJmbg
+                    || app.PatientJmbg == patientJmbg || app.RoomId == roomId))
+                    neededAppointments.Add(app);
+            }
+            neededAppointments.Sort((x, y) => DateTime.Compare(x.StartTime.AddMinutes(x.Duration), y.StartTime.AddMinutes(y.Duration)));
+            if (neededAppointments.Count == 0)
+            {
+                var firstDate = dateFrom;
+                while (firstDate < dateUntil && firstDate < dateFrom.AddDays(5))
+                {
+                    freePeriod.Add((firstDate.AddHours(8).AddMinutes(15), firstDate.AddDays(1).AddMinutes(-15)));
+                    firstDate = firstDate.AddDays(1);
+                }
+                
+            }
+            else
+            {
+                if (neededAppointments[0].StartTime > dateFrom.AddMinutes(duration + 15))
+                {
+                    freePeriod.Add((dateFrom.AddMinutes(15), neededAppointments[0].StartTime.AddMinutes(-15)));
+                }
+                for (int i = 0; i < neededAppointments.Count - 1; i++)
+                {
+                    if (neededAppointments[i].StartTime.AddMinutes(neededAppointments[i].Duration + 15) < neededAppointments[i + 1].StartTime)
+                    {
+                        (DateTime, DateTime) newPeriod = (neededAppointments[i].StartTime.AddMinutes(neededAppointments[i].Duration + 15),
+                            neededAppointments[i + 1].StartTime.AddMinutes(-15));
+                        freePeriod.Add(newPeriod);
+                    }
+
+                }
+                if (neededAppointments.Last().StartTime.AddMinutes(neededAppointments.Last().Duration) < dateUntil.AddMinutes(-duration - 15))
+                {
+                    freePeriod.Add((neededAppointments.Last().StartTime.AddMinutes(neededAppointments.Last().Duration + 15), dateUntil.AddMinutes(-15)));
+                }
+            }
+            
+            for (int i = 0; i < freePeriod.Count; i++)
+            {
+                if (freePeriod[i].Item1.AddHours(9) < freePeriod[i].Item2)
+                {
+                    newFreePeriod.AddRange(splitPeriod(freePeriod[i]));
+                }
+                else
+                    newFreePeriod.Add(freePeriod[i]);
+
+            }
+
+            if (freePeriod.Count > 0)
+            {
+                int counter = 0;
+                while (counter < 10)
+                {
+                    for (int i = 0; i < newFreePeriod.Count; i++)
+                    {
+                        if (counter == 10)
+                            break;
+                        if (newFreePeriod[i].Item1.AddMinutes(duration) < newFreePeriod[i].Item2)
+                        {
+                            possibleAppointments.Add(newFreePeriod[i].Item1);
+                            newFreePeriod[i] = (newFreePeriod[i].Item1.AddMinutes(duration + 15), newFreePeriod[i].Item2);
+                            counter++;
+                        }
+                    }
+                }
+                possibleAppointments.Sort((x, y) => DateTime.Compare(x, y));
+            }
+            return possibleAppointments;
+        }
+
+        private List<(DateTime, DateTime)> splitPeriod ((DateTime, DateTime) period)
+        {
+            List<(DateTime, DateTime)> retValue = new List<(DateTime, DateTime)>();
+            while (period.Item1.AddHours(9) < period.Item2)
+            {
+                retValue.Add((period.Item1, period.Item1.AddHours(8)));
+                period = (period.Item1.AddHours(8).AddMinutes(15), period.Item2);
+            }
+            retValue.Add((period.Item1, period.Item2));
+            return retValue;
+        }
     }
 }

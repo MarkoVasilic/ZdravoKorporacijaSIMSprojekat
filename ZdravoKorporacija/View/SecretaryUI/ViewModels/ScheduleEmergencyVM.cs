@@ -47,9 +47,16 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public ICommand CreateGuestAccountCommand { get; set; }
         private void createGuestExecute(object parameter)
         {
-            ErrorMessage = patientController.CreateGuestAccount(FirstName, LastName, Jmbg);
-            if (ErrorMessage.Length == 0)
+            try
+            {
+                patientController.CreateGuestAccount(FirstName, LastName, Jmbg);
                 SecretaryWindowVM.NavigationService.Navigate(new PatientsView());
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
+                
         }
     }
 }

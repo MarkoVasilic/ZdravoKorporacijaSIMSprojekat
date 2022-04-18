@@ -1,7 +1,7 @@
 [
   {
-    "Specialization": false,
-    "SpecializationType": "Physician",
+    "Specialty": false,
+    "SpecialtyType": "Physician",
     "FirstName": "Aleksandra",
     "LastName": "Petrovic",
     "Username": "petrovicaa",
@@ -15,8 +15,8 @@
     "roomId": 1
   },
   {
-    "Specialization": false,
-    "SpecializationType": "Physician",
+    "Specialty": false,
+    "SpecialtyType": "Physician",
     "FirstName": "Jovan",
     "LastName": "Konjevic",
     "Username": "petrovicaa",

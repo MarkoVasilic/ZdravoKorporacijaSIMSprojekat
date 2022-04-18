@@ -184,12 +184,16 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 newGender = Gender.FEMALE;
             else
                 newGender = Gender.NONE;
-            Patient newPatient = new Patient(selectedPatient.IsGuest, selectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, firstName, lastName,
-                selectedPatient.Username, selectedPatient.Password, selectedPatient.Jmbg, dateOfBirth, newGender, email, phoneNumber, address);
-            ErrorMessage = PatientController.ModifyPatient(selectedPatient.IsGuest, selectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, firstName, lastName,
+            try
+            {
+                PatientController.ModifyPatient(false, selectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, firstName, lastName,
                 selectedPatient.Jmbg, dateOfBirth, newGender, email, phoneNumber, address);
-            if (ErrorMessage.Length == 0)
                 NavigationService.Navigate(new PatientsView());
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }

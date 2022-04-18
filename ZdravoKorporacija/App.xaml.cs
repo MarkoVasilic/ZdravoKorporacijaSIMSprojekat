@@ -28,7 +28,9 @@ namespace ZdravoKorporacija
             appointmentController = new AppointmentController(appointmentService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
-
+            /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
+            patientController.CreatePatient(false, alergeni, BloodType.A_POSITIVE, "milos", "milosevic", "mikimilane", "mackacka",
+                "7458963215963", DateTime.Now, Gender.MALE, "milos@milos.com", "456789", "neka dresa 12");*/
 
             /*
             patientController.CreatePatient(patient);
@@ -53,8 +55,8 @@ namespace ZdravoKorporacija
             //Console.WriteLine("Create appointment by patient = " + appointmentController.CreateAppointmentByPatient(new DateTime(2090, 2, 2), "1231231231231"));
             //Console.WriteLine("Modify result = " + appointmentController.ModifyAppointment(38, new DateTime(2035, 5, 5)));
             //Console.WriteLine("Delete result = " + appointmentController.DeleteAppointment(38));
-           
-            
+
+
             //ISPIS SVIH APPOINTMENTA
             /*List<Appointment> appointmentList = new List<Appointment>(appointmentController.GetAllAppointments());
             foreach (Appointment appointment in appointmentList)
@@ -72,6 +74,8 @@ namespace ZdravoKorporacija
             foreach (Appointment appointment in appointmentListDoctor)
               appointment.toString();*/
 
+            appointmentService.GetPossibleAppointmentsBySecretary("1111111111111", "1231231231231", 11, new DateTime(2023, 3, 3),
+                new DateTime(2023, 3, 6), 60, "time");
 
         }
 

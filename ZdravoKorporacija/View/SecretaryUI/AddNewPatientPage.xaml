@@ -13,7 +13,7 @@
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <Grid Background="#FFF3F2FC">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
@@ -275,20 +275,28 @@
                 </StackPanel>
                 <StackPanel Grid.Row="14" Grid.Column="1">
                     <TextBlock Margin="10,0,0,10" FontSize="18" >Allergens:</TextBlock>
-                    <TextBox x:Name="AllergensTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="80"
-                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
-
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
+                    <StackPanel Orientation="Horizontal">
+                        <ListBox x:Name="AllergensTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="80"
+                                Width="215" ItemsSource="{Binding Path=PatientAllergens}" SelectedItem="{Binding SelectedAllergen}">
+                            <ListBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </ListBox.Resources>
+                        </ListBox>
+                        <Button Name="RemoveAllergenButton" Height="30" Width="85" HorizontalAlignment="Right"  Background="Red" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
+                 Margin="10,0,10,0" Command="{Binding RemoveAllergenCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Remove</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="15" Grid.Column="1">
                     <TextBlock Margin="10,0,0,10" FontSize="18" >Add new allergen:</TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="AddAllergenTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35" Width="250">
+                        <TextBox Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                 BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35" Width="250">
                             
                             <TextBox.Resources>
                                 <Style TargetType="{x:Type Border}">
@@ -297,7 +305,7 @@
                             </TextBox.Resources>
                         </TextBox>
                         <Button Name="AddAllergenButton" Height="30" Width="50" HorizontalAlignment="Right"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Margin="10,0,10,0">
+                 Margin="10,0,10,0" Command="{Binding AddAllergenCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Add</TextBlock>
                             </StackPanel>
