@@ -83,7 +83,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RemoveAllergenCommand = new RelayCommand(removeAllergenExecute);
         }
 
-        
+
 
 
         protected virtual void OnPropertyChanged(string name)

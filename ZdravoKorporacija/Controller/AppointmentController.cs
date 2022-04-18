@@ -1,7 +1,8 @@
+using Model;
 using Service;
 using System;
-using Model;
 using System.Collections.Generic;
+using ZdravoKorporacija.DTO;
 
 namespace Controller
 {
@@ -51,6 +52,20 @@ namespace Controller
         public List<Model.Appointment> GetAppointmentsByPatientJmbg(String patientId)
         {
             return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
+        }
+
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId,
+            DateTime dateFrom, DateTime dateUntil, int duration, String priority)
+        {
+            return AppointmentService.GetPossibleAppointmentsBySecretary(patientJmbg, doctorJmbg, roomId,
+                dateFrom, dateUntil, duration, priority);
+        }
+
+        public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
+            DateTime startTime, int duration)
+        {
+            AppointmentService.CreateAppointmentBySecretary(patientJmbg, doctorJmbg, roomId,
+                startTime, duration);
         }
 
     }

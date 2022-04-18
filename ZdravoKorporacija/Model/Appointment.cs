@@ -44,8 +44,8 @@ namespace Model
 
         }
 
-        public  void toString()
-        { 
+        public void toString()
+        {
             Console.WriteLine("ID = " + Id);
             Console.WriteLine("PatientJMBG = " + PatientJmbg);
             Console.WriteLine("DoctorJmbg = " + DoctorJmbg);

@@ -1,20 +1,9 @@
 ﻿using Controller;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Repository;
 using Service;
+using System;
+using System.Windows;
 
 namespace ZdravoKorporacija.View.RoomCRUD
 {
@@ -37,7 +26,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
         {
             String name = textBoxName.Text;
 
-            if(name.Trim()== "")
+            if (name.Trim() == "")
             {
                 MessageBox.Show("Please enter a name", "Error");
                 return;
@@ -50,12 +39,12 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 MessageBox.Show("Please enter a description", "Error");
                 return;
             }
-            
+
             if (comboBoxType.SelectedIndex == 0)
             {
                 type = RoomType.EXAMINATION;
             }
-            else if(comboBoxType.SelectedIndex == 1)
+            else if (comboBoxType.SelectedIndex == 1)
             {
                 type = RoomType.CONFERENCE;
             }
@@ -63,7 +52,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
             {
                 type = RoomType.STORAGE;
             }
-            else if(comboBoxType.SelectedIndex == 3)
+            else if (comboBoxType.SelectedIndex == 3)
             {
                 type = RoomType.SURGERY;
             }
@@ -74,8 +63,8 @@ namespace ZdravoKorporacija.View.RoomCRUD
             }
 
             errorMessage = roomController.CreateRoom(name, description, type);
-            
-            if(errorMessage.Length == 0)
+
+            if (errorMessage.Length == 0)
             {
                 this.Close();
             }

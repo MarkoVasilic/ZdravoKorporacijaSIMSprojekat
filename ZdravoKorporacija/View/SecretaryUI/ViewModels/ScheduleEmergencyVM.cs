@@ -56,7 +56,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             {
                 ErrorMessage = e.Message;
             }
-                
+
         }
     }
 }

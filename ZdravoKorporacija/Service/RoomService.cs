@@ -23,7 +23,8 @@ namespace Service
             if (RoomRepository.FindOneById(roomId) != null)
             {
                 return "Room with that identification number already exists!";
-            }else if(RoomRepository.FindOneByName(roomName) != null)
+            }
+            else if (RoomRepository.FindOneByName(roomName) != null)
             {
                 return "Room with that name already exists!";
             }
@@ -62,7 +63,7 @@ namespace Service
         public String ModifyRoom(int roomId, String roomName, String roomDescription)
         {
 
-            if(RoomRepository.FindOneById(roomId) == null)
+            if (RoomRepository.FindOneById(roomId) == null)
             {
                 return "Room with that identification number doesn't exist";
             }
@@ -78,7 +79,7 @@ namespace Service
 
                 RoomRepository.UpdateRoom(newRoom);
                 return "";
-                
+
             }
 
         }

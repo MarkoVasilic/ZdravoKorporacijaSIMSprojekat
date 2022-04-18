@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Controller;
-using Service;
+﻿using Controller;
 using Repository;
+using Service;
+using System;
+using System.Windows;
 
 namespace ZdravoKorporacija.View.RoomCRUD
 {
-    
+
     public partial class DeleteRoom : Window
     {
 
@@ -55,7 +44,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 MessageBox.Show(roomController.DeleteRoom(roomId), "Error");
                 this.Close();
             }
-                
+
         }
     }
 }

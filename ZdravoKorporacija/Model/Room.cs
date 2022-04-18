@@ -5,7 +5,7 @@ namespace Model
 {
     public class Room
     {
-        public String Name { get; set;}
+        public String Name { get; set; }
         public int Id { get; set; }
         public String Description { get; set; }
         public RoomType Type { get; set; }

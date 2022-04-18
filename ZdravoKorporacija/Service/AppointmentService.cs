@@ -1,9 +1,9 @@
 using Model;
-using ZdravoKorporacija.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
@@ -133,7 +133,25 @@ namespace Service
 
         }
 
-        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId, 
+        public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
+            DateTime startTime, int duration)
+        {
+            if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
+                throw new Exception("Patient with that JMBG doesn't exist!");
+            else if (DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+                throw new Exception("Doctor with that JMBG doesn't exist!");
+            else if (RoomRepository.FindOneById(roomId) == null)
+                throw new Exception("Room with that id doesn't exist!");
+            int id = GenerateNewId();
+            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, doctorJmbg, roomId);
+            if (!appointment.validateAppointment())
+            {
+                throw new Exception("Something went wrong, new appointment isn't created!");
+            }
+            AppointmentRepository.SaveAppointment(appointment);
+        }
+
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
             if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
@@ -198,7 +216,8 @@ namespace Service
             List<(DateTime, DateTime)> freePeriod = new List<(DateTime, DateTime)>();
             List<(DateTime, DateTime)> newFreePeriod = new List<(DateTime, DateTime)>();
             List<DateTime> possibleAppointments = new List<DateTime>();
-            foreach (var app in allAppointments){
+            foreach (var app in allAppointments)
+            {
                 if (app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (app.DoctorJmbg == doctorJmbg
                     || app.PatientJmbg == patientJmbg || app.RoomId == roomId))
                     neededAppointments.Add(app);
@@ -212,7 +231,7 @@ namespace Service
                     freePeriod.Add((firstDate.AddHours(8).AddMinutes(15), firstDate.AddDays(1).AddMinutes(-15)));
                     firstDate = firstDate.AddDays(1);
                 }
-                
+
             }
             else
             {
@@ -235,7 +254,7 @@ namespace Service
                     freePeriod.Add((neededAppointments.Last().StartTime.AddMinutes(neededAppointments.Last().Duration + 15), dateUntil.AddMinutes(-15)));
                 }
             }
-            
+
             for (int i = 0; i < freePeriod.Count; i++)
             {
                 if (freePeriod[i].Item1.AddHours(9) < freePeriod[i].Item2)
@@ -269,7 +288,7 @@ namespace Service
             return possibleAppointments;
         }
 
-        private List<(DateTime, DateTime)> splitPeriod ((DateTime, DateTime) period)
+        private List<(DateTime, DateTime)> splitPeriod((DateTime, DateTime) period)
         {
             List<(DateTime, DateTime)> retValue = new List<(DateTime, DateTime)>();
             while (period.Item1.AddHours(9) < period.Item2)

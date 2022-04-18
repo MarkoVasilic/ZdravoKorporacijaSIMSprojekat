@@ -36,7 +36,7 @@ namespace ZdravoKorporacija.View
         private void MyAppointmentsButton(object sender, RoutedEventArgs e)
         {
             GetAllAppointmentsPatient getAllAppointmentsPatient = new GetAllAppointmentsPatient();
-            getAllAppointmentsPatient.Show();   
+            getAllAppointmentsPatient.Show();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ZdravoKorporacija.View
         {
             InitializeComponent();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService  appointmentService = new AppointmentService();
+            AppointmentService appointmentService = new AppointmentService();
             appointmentController = new AppointmentController(appointmentService);
         }
 
@@ -35,7 +35,7 @@ namespace ZdravoKorporacija.View
             }
             else
             {
-                MessageBox.Show(appointmentController.DeleteAppointment(Id),  "Error");
+                MessageBox.Show(appointmentController.DeleteAppointment(Id), "Error");
                 this.Close();
             }
 

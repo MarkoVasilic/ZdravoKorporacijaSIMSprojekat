@@ -1,23 +1,8 @@
-﻿using Controller;
-using Repository;
-using Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace ZdravoKorporacija.View.RoomCRUD
 {
- 
+
     public partial class ManagerHomePage : Window
 
     {
@@ -29,8 +14,8 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
         {
-           CreateRoom createRoom = new CreateRoom();
-           createRoom.Show();
+            CreateRoom createRoom = new CreateRoom();
+            createRoom.Show();
         }
 
         private void DeleteRoomClick(object sender, RoutedEventArgs e)
