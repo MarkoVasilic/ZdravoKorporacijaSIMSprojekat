@@ -17,26 +17,25 @@ namespace Service
         }
 
 
-        public String CreateRoom(String roomName, String roomDescription, RoomType roomType)
+        public void CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
             int roomId = GenerateNewId();
             if (RoomRepository.FindOneById(roomId) != null)
             {
-                return "Room with that identification number already exists!";
+                throw new Exception("Room with that identification number already exists!");
             }
             else if (RoomRepository.FindOneByName(roomName) != null)
             {
-                return "Room with that name already exists!";
+                throw new Exception("Room with that name already exists!");
             }
             else
             {
                 Room newRoom = new Room(roomName, roomId, roomDescription, roomType);
                 if (!newRoom.validateRoom())
                 {
-                    return "Something went wrong, room isn't saved!";
+                    throw new Exception("Something went wrong, room isn't saved!");
                 }
                 RoomRepository.SaveRoom(newRoom);
-                return "";
             }
         }
 
@@ -45,27 +44,25 @@ namespace Service
             return RoomRepository.FindAll();
         }
 
-        public String DeleteRoom(int roomId)
+        public void DeleteRoom(int roomId)
         {
             if (RoomRepository.FindOneById(roomId) == null)
             {
-                return "Room with that identification number doesn't exist";
+                throw new Exception("Room with that identification number doesn't exist");
             }
             else
             {
-
                 RoomRepository.RemoveRoom(roomId);
-                return "";
             }
         }
 
 
-        public String ModifyRoom(int roomId, String roomName, String roomDescription)
+        public void ModifyRoom(int roomId, String roomName, String roomDescription)
         {
 
             if (RoomRepository.FindOneById(roomId) == null)
             {
-                return "Room with that identification number doesn't exist";
+                throw new Exception("Room with that identification number already exists!");
             }
             else
             {
@@ -74,11 +71,10 @@ namespace Service
 
                 if (!newRoom.validateRoom())
                 {
-                    return "Something went wrong, room isn't changed";
+                    throw new Exception("Something went wrong, room isn't changed!");
                 }
 
                 RoomRepository.UpdateRoom(newRoom);
-                return "";
 
             }
 

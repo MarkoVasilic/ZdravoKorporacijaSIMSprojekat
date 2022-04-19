@@ -13,7 +13,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private RoomType type;
         private RoomController roomController;
-        private String errorMessage;
         public CreateRoom()
         {
             InitializeComponent();
@@ -50,10 +49,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
             }
             else if (comboBoxType.SelectedIndex == 2)
             {
-                type = RoomType.STORAGE;
-            }
-            else if (comboBoxType.SelectedIndex == 3)
-            {
                 type = RoomType.SURGERY;
             }
             else
@@ -62,17 +57,9 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 return;
             }
 
-            errorMessage = roomController.CreateRoom(name, description, type);
-
-            if (errorMessage.Length == 0)
-            {
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show(roomController.CreateRoom(name, description, type), "Error");
-                this.Close();
-            }
+           roomController.CreateRoom(name, description, type);
+            this.Close();
+          
 
         }
     }

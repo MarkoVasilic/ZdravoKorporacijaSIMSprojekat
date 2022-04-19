@@ -12,7 +12,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private RoomController roomController;
         private int roomId;
-        private String errorMessage;
 
         public DeleteRoom()
         {
@@ -27,21 +26,13 @@ namespace ZdravoKorporacija.View.RoomCRUD
             try
             {
                 roomId = int.Parse(textBoxDeleteRoom.Text);
-                errorMessage = roomController.DeleteRoom(roomId);
-
-                if (errorMessage.Length == 0)
-                {
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(roomController.DeleteRoom(roomId), "Error");
-                    this.Close();
-                }
+                roomController.DeleteRoom(roomId);
+                this.Close();
             }
             catch
             {
-                MessageBox.Show(roomController.DeleteRoom(roomId), "Error");
+
+                MessageBox.Show("Error");
                 this.Close();
             }
 

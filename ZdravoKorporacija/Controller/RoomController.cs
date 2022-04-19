@@ -14,9 +14,9 @@ namespace Controller
             this.RoomService = roomService;
         }
 
-        public String CreateRoom(String roomName, String roomDescription, RoomType roomType)
+        public void CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
-            return RoomService.CreateRoom(roomName, roomDescription, roomType);
+           RoomService.CreateRoom(roomName, roomDescription, roomType);
         }
 
         public List<Room> GetAllRooms()
@@ -24,15 +24,15 @@ namespace Controller
             return RoomService.GetAllRooms();
         }
 
-        public String DeleteRoom(int id)
+        public void DeleteRoom(int id)
         {
-            return RoomService.DeleteRoom(id);
+            RoomService.DeleteRoom(id);
         }
 
-        public String ModifyRoom(int roomId, String roomName, String roomDescription)
+        public void ModifyRoom(int roomId, String roomName, String roomDescription)
         {
 
-            return RoomService.ModifyRoom(roomId, roomName, roomDescription);
+            RoomService.ModifyRoom(roomId, roomName, roomDescription);
         }
 
         public Model.Room? GetRoomByName(String name)
