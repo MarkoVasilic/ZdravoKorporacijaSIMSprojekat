@@ -28,5 +28,20 @@
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
     "roomId": 1
+  },
+  {
+    "Specialty": true,
+    "SpecialtyType": "Surgeon",
+    "FirstName": "Djovan",
+    "LastName": "Djovanovic",
+    "Username": "djova",
+    "Password": "sifra123",
+    "Jmbg": "5555555555555",
+    "DateOfBirth": "2022-06-10T15:22:34.4259553+02:00",
+    "Gender": 2,
+    "Email": "djvan@gmail.com",
+    "PhoneNumber": "06312323123",
+    "Address": "Strazilovska 155",
+    "roomId": 3
   }
 ]
