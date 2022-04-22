@@ -25,5 +25,22 @@ namespace Service
             return DoctorRepository.FindAllBySpeciality(speciality);
         }
 
+        public List<String> GetAllSpecialities()
+        {
+            List<Doctor> doctors = DoctorRepository.FindAll();
+            List<String> specialities = new List<String>();
+            foreach (var doctor in doctors)
+            {
+                if (!specialities.Contains(doctor.SpecialtyType))
+                    specialities.Add(doctor.SpecialtyType);
+            }
+            return specialities;
+        }
+
+        public List<Doctor> GetAll()
+        {
+            return DoctorRepository.FindAll();
+        }
+ 
     }
 }

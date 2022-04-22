@@ -24,5 +24,15 @@ namespace Controller
             return DoctorService.GetAllBySpeciality(speciality);
         }
 
+        public List<String> GetAllSpecialities()
+        {
+            return DoctorService.GetAllSpecialities();
+        }
+
+        public List<Doctor> GetAll()
+        {
+            return DoctorService.GetAll();
+        }
+
     }
 }

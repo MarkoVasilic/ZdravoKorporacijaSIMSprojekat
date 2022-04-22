@@ -34,6 +34,12 @@ namespace Repository
             File.WriteAllText(doctorFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
+        public List<Doctor> FindAll()
+        {
+            var values = GetValues();
+            return values;
+        }
+
         private List<Doctor> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(doctorFilePath));
