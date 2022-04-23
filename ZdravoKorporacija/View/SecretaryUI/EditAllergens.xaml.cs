@@ -102,7 +102,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
         {
             try
             {
-                PatientController.ModifyPatient(false, SelectedPatient.Allergens, SelectedPatient.BloodTypeEnum, SelectedPatient.FirstName, SelectedPatient.LastName,
+                PatientController.ModifyPatient(SelectedPatient.IsGuest, SelectedPatient.Allergens, SelectedPatient.BloodTypeEnum, SelectedPatient.FirstName, SelectedPatient.LastName,
                 SelectedPatient.Jmbg, SelectedPatient.DateOfBirth, SelectedPatient.Gender, SelectedPatient.Email, SelectedPatient.PhoneNumber, SelectedPatient.Address);
                 NavigationService.Navigate(new PatientsView());
             }

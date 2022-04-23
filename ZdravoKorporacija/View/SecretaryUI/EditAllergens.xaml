@@ -8,69 +8,54 @@
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
       Background="#FFF3F2FC"
-      Title="EditAllergens">
+      Title="EditAllergens"
+      FontFamily="Bell MT">
 
     <Grid>
         <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="40"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
-            <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" VerticalAlignment="Bottom"> Allergens:</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Edit allergens" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <ListBox x:Name="AllergensTextBox" BorderThickness="2,2,2,2" Height="100"
-                       Margin="10 0 0 0" Width="230" ItemsSource="{Binding Path=PatientAllergens}" SelectedItem="{Binding SelectedAllergen}">
-                <ListBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </ListBox.Resources>
-            </ListBox>
-            <Button Name="RemoveAllergenButton" Height="30" Width="85" HorizontalAlignment="Right"  Background="Red" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Margin="10,0,10,0" Click="Remove_Allergen_Button_Click">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Remove</TextBlock>
-                </StackPanel>
-            </Button>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock Margin="0,10,0,10" FontSize="18" >Allergens:</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <ListBox x:Name="AllergensListBox" Style="{StaticResource SecretaryListBoxStyle}" Width="280"
+                                ItemsSource="{Binding Path=PatientAllergens}" SelectedItem="{Binding SelectedAllergen}">
+                </ListBox>
+                <Button x:Name="RemoveAllergenButton" Margin="20 0 0 0" Background="Transparent" BorderBrush="Transparent" Click="Remove_Allergen_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                    <materialDesign:PackIcon Height="30" Width="30" Kind="Minus" Foreground="#FFE95555"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
-            <TextBlock FontFamily="Yu Gothic" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"> Add new allergen:</TextBlock>
-        </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBox Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                 BorderThickness="2,2,2,2" Margin="0,0,8,8" Height="35" Width="250">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </TextBox.Resources>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Margin="0,10,0,10" FontSize="18" >Add new allergen:</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource SecretaryTextBoxStyle}" Width="280">
                 </TextBox>
-            <Button Name="AddAllergenButton" Height="30" Width="50" HorizontalAlignment="Right"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Margin="10,0,10,0" Click="Add_Allergen_Button_Click">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Add</TextBlock>
-                </StackPanel>
-            </Button>
+                <Button x:Name="AddAllergenButton" Margin="20 0 0 0" Background="Transparent" BorderBrush="Transparent" Click="Add_Allergen_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                    <materialDesign:PackIcon Height="30" Width="30" Kind="Plus" Foreground="#FF2F922F"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="12" Foreground="Red">
+            <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
             </TextBlock>
         </StackPanel>
-        <Button Name="SaveButton" Grid.Row="5" Grid.Column="1" Height="40" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Click="Save_Button_Click">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Save and exit</TextBlock>
-            </StackPanel>
+        <Button Name="SaveButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+               Click="Save_Button_Click" Margin="0,10,10,0" Content="Save">
         </Button>
     </Grid>
 </Page>

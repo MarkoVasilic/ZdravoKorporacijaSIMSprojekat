@@ -7,83 +7,80 @@
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
       Background="#FFF3F2FC"
-      Title="ConfirmAppointmentInformations">
+      Title="ConfirmAppointmentInformations"
+      FontFamily="Bell MT">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="380"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="40"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"  HorizontalAlignment="Center">
-                <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" > Confirm informations:</TextBlock>
-            </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Confirm informations" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </StackPanel>
-        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,0,1" Margin="10">
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,0,1">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="16" Width="120" FontWeight="SemiBold"> Patient details:</TextBlock>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Patient details:</TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14" Width="120"> Full name:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.PatientFullName, Mode=OneWay}" FontSize="16" FontWeight="Medium"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Full name:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.PatientFullName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14"  Width="120"> JMBG:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.PatientJmbg, Mode=OneWay}" FontWeight="Medium" FontSize="15"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Jmbg:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.PatientJmbg, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="16" Width="120" FontWeight="SemiBold"> Doctor details:</TextBlock>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Doctor details:</TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14" Width="120"> Full name:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.DoctorFullName, Mode=OneWay}" FontSize="16" FontWeight="Medium"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Full name:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.DoctorFullName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14"  Width="120"> Speciality:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.DoctorSpeciality, Mode=OneWay}" FontWeight="Medium" FontSize="15"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Speciality:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.DoctorSpeciality, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="16" Width="120" FontWeight="SemiBold"> Room details:</TextBlock>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Room details:</TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14" Width="120"> Room name:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.RoomName, Mode=OneWay}" FontSize="16" FontWeight="Medium"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Room name:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.RoomName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14" Width="120"> Room ID:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.RoomId, Mode=OneWay}" FontSize="16" FontWeight="Medium"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Room ID:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.RoomId, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="16" Width="120" FontWeight="SemiBold"> Time details:</TextBlock>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Time details:</TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14" Width="120"> Date and time:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.StartTime, Mode=OneWay}" FontSize="16" FontWeight="Medium"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Date and time:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.StartTime, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="14" Width="120"> Duration:</TextBlock>
-                    <TextBlock Text="{Binding Path=SelectedAppointment.Duration, Mode=OneWay}" FontSize="16" FontWeight="Medium"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Duration:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.Duration, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                    <TextBlock FontSize="18" FontWeight="SemiBold" Width="120" Margin="5 0 0 0"> minutes</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBlock Text="{Binding Path=ErrorMessageConfirmAppointment, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="12" Foreground="Red">
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="{Binding Path=ErrorMessageConfirmAppointment, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
             </TextBlock>
         </StackPanel>
-        <Button Grid.Row="3" Grid.Column="1" Name="ConfirmAppointmentButton" HorizontalAlignment="Center" VerticalAlignment="Top"
-                Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                  Width="80" Command="{Binding ConfirmAppointmentCommand}">
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Confirm</TextBlock>
-            </StackPanel>
+        <Button Name="SearchButton" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+                Command="{Binding ConfirmAppointmentCommand}" Margin="0,10,10,0" Content="Confirm">
         </Button>
     </Grid>
 </Page>

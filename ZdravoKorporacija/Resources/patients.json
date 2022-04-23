@@ -1,18 +1,18 @@
 [
   {
-    "IsGuest": true,
+    "IsGuest": false,
     "Allergens": [],
-    "BloodTypeEnum": 0,
-    "FirstName": "marko",
-    "LastName": "markiccc",
-    "Username": "marko",
-    "Password": "sifra123",
-    "Jmbg": "7894561239637",
-    "DateOfBirth": null,
-    "Gender": 0,
-    "Email": "",
-    "PhoneNumber": "",
-    "Address": ""
+    "BloodTypeEnum": 3,
+    "FirstName": "dsdsasd",
+    "LastName": "dsacasdcsa",
+    "Username": "konjiiiii",
+    "Password": "konjiiiii",
+    "Jmbg": "7778889994445",
+    "DateOfBirth": "2022-04-14T00:00:00",
+    "Gender": 1,
+    "Email": "aaa@cds.com",
+    "PhoneNumber": "342423",
+    "Address": "cdssaccascds cdsacscds csdavvfsfvfd vsdfvfvasvfs vsfsvsf vfsvsfavsfv vsfvfsafv vfsvsavsdv"
   },
   {
     "IsGuest": false,
@@ -51,7 +51,27 @@
   {
     "IsGuest": false,
     "Allergens": [
-      "cdcs"
+      "vfdsvdf",
+      "vfdsvdf",
+      "vsdfvdf"
+    ],
+    "BloodTypeEnum": 2,
+    "FirstName": "cdascasa",
+    "LastName": "csdcsa",
+    "Username": "lllllaaaa",
+    "Password": "aaaalllll",
+    "Jmbg": "7777788888999",
+    "DateOfBirth": "2022-03-31T00:00:00",
+    "Gender": 1,
+    "Email": "cdsacs@cds.com",
+    "PhoneNumber": "34232342",
+    "Address": "cdscsd cdascsad cdascasdc"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "vdsvfd",
+      "lazarrrr"
     ],
     "BloodTypeEnum": 6,
     "FirstName": "lazar",
@@ -66,9 +86,30 @@
     "Address": "vfsvdf"
   },
   {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "kkokokko",
+    "LastName": "mcodsmavmsfom",
+    "Username": "kkokokko",
+    "Password": "sifra123",
+    "Jmbg": "6666655555777",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
+  },
+  {
     "IsGuest": false,
     "Allergens": [
-      "cdsacs"
+      "cdsacs",
+      "cdascs",
+      "cdascs",
+      "cdacs",
+      "cdasc",
+      "cdacscsd",
+      "sdcascdsd"
     ],
     "BloodTypeEnum": 4,
     "FirstName": "marko",
@@ -81,20 +122,5 @@
     "Email": "cdsa@cdds.coc",
     "PhoneNumber": "212",
     "Address": "sascdcsa"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [],
-    "BloodTypeEnum": 2,
-    "FirstName": "veljko",
-    "LastName": "veljkic",
-    "Username": "veeeee",
-    "Password": "konjicccdd",
-    "Jmbg": "1596357489632",
-    "DateOfBirth": "2022-04-02T00:00:00",
-    "Gender": 2,
-    "Email": "cds@cdncd.com",
-    "PhoneNumber": "12312",
-    "Address": "cda"
   }
 ]

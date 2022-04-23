@@ -104,8 +104,9 @@ namespace ZdravoKorporacija.View.SecretaryUI
             Patient.Password = "sifra123";
             password = "sifra123";
             showPassword();
-            PatientController.ModifyPatient(Patient.IsGuest, Patient.Allergens, Patient.BloodTypeEnum, Patient.FirstName,
-                Patient.LastName, Patient.Jmbg, Patient.DateOfBirth, Patient.Gender, Patient.Email, Patient.PhoneNumber, Patient.Address);
+            if (Patient.IsGuest != true)
+                PatientController.ModifyPatient(Patient.IsGuest, Patient.Allergens, Patient.BloodTypeEnum, Patient.FirstName,
+                    Patient.LastName, Patient.Jmbg, Patient.DateOfBirth, Patient.Gender, Patient.Email, Patient.PhoneNumber, Patient.Address);
         }
 
         private void Edit_Allergens_Button_Click(object sender, RoutedEventArgs e)

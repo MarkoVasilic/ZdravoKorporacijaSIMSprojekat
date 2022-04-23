@@ -237,6 +237,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 
         public ScheduleAppointmentVM()
         {
+            SecretaryWindowVM.setWindowTitle("Schedule appointment");
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);

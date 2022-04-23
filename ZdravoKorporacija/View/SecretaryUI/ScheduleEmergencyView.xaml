@@ -7,96 +7,87 @@
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
       Background="#FFF3F2FC"
-      Title="ScheduleEmergencyView">
+      Title="ScheduleEmergencyView"
+      FontFamily="Bell MT">
 
     <Grid>
-        <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
-            <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center"> Find existing patient:</TextBlock>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Margin="10,0,0,10" FontSize="18" >Enter patient jmbg:</TextBlock>
-            <TextBox x:Name="ExistingJmbgTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
-        </StackPanel>
-        <Button Name="SearchButton" Margin="0 10 0 0" Grid.Row="2" Grid.Column="1" Height="40" Width="80" HorizontalAlignment="Center"  VerticalAlignment="Top" Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Search</TextBlock>
-            </StackPanel>
-        </Button>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
-            <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center"> Or make guest account:</TextBlock>
-        </StackPanel>
-        <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBlock Margin="10,0,0,10" FontSize="18" >First name:</TextBlock>
-            <TextBox x:Name="FirstNameTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
-                <TextBox.Text>
-                    <Binding Path="FirstName" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
-                    </Binding>
-                </TextBox.Text>
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
-        </StackPanel>
-        <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBlock Margin="10,0,0,10" FontSize="18" >Last name:</TextBlock>
-            <TextBox x:Name="LastNameTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
-                <TextBox.Text>
-                    <Binding Path="LastName" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
-                    </Binding>
-                </TextBox.Text>
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
-        </StackPanel>
-        <StackPanel Grid.Row="6" Grid.Column="1">
-            <TextBlock Margin="10,0,0,10" FontSize="18" >JMBG:</TextBlock>
-            <TextBox x:Name="JmbgTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
-                <TextBox.Text>
-                    <Binding Path="Jmbg" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
-                    </Binding>
-                </TextBox.Text>
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
-        </StackPanel>
-        <StackPanel Grid.Row="7" Grid.Column="1">
-            <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="12" Foreground="Red">
-            </TextBlock>
-        </StackPanel>
-        <Button Name="SaveButton" Grid.Row="8" Grid.Column="1" Command="{Binding CreateGuestAccountCommand}" Height="40" Width="80" HorizontalAlignment="Center"  VerticalAlignment="Top" Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Save</TextBlock>
-            </StackPanel>
-        </Button>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <Label Content="Find existing patient" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Enter patient jmbg:</TextBlock>
+                    <TextBox x:Name="ExistingJmbgTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="SearchJmbg" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ErrorMessageSearch, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
+                    </TextBlock>
+                </StackPanel>
+                <Button Name="SearchButton" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+                Margin="0,10,10,0" Content="Search">
+                </Button>
+                <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                    <Label Content="Or make a guest account" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Grid.Row="6" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Enter patient first name:</TextBlock>
+                    <TextBox x:Name="FirstNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="FirstName" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="7" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Enter patient last name:</TextBlock>
+                    <TextBox x:Name="LastNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="LastName" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="8" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Enter patient jmbg:</TextBlock>
+                    <TextBox x:Name="JmbgTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="Jmbg" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="9" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
+                    </TextBlock>
+                </StackPanel>
+                <Button Name="SaveButton" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+               Command="{Binding CreateGuestAccountCommand}" Margin="0,10,10,0" Content="Save">
+                </Button>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -38,6 +38,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 
         public ScheduleEmergencyVM()
         {
+            SecretaryWindowVM.setWindowTitle("Schedule emergency appointment");
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);

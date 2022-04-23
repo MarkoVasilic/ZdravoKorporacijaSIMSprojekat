@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -8,6 +9,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
     {
         public SecretaryHomePage()
         {
+            SecretaryWindowVM.setWindowTitle("Dashboard");
             InitializeComponent();
         }
 

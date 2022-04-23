@@ -5,46 +5,49 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.SecretaryUI"
       xmlns:val="clr-namespace:ZdravoKorporacija.View.SecretaryUI.Validation"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
       Background="#FFF3F2FC"
-      Title="AddNewPatientPage">
+      Title="AddNewPatientPage"
+      FontFamily="Bell MT">
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="80"></RowDefinition>
-                    <RowDefinition Height="80"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="40"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center"> Enter basic info</TextBlock>
+                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <Label Content="Enter Basic info" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >First name:</TextBlock>
-                    <TextBox x:Name="FirstNameTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >First name:</TextBlock>
+                    <TextBox x:Name="FirstNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.FirstName" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                                 <Binding.ValidationRules>
@@ -52,32 +55,26 @@
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
-                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-
                                     <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
-                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Last name:</TextBlock>
-                    <TextBox x:Name="LastNameTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Last name:</TextBlock>
+                    <TextBox x:Name="LastNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.LastName" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                                 <Binding.ValidationRules>
@@ -85,11 +82,6 @@
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <Grid>
@@ -100,17 +92,16 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-
                                     <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxLastName"/>
-                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="3" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >JMBG:</TextBlock>
-                    <TextBox x:Name="JmbgTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                <StackPanel Grid.Row="4" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Jmbg:</TextBlock>
+                    <TextBox x:Name="JmbgTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Jmbg" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                                 <Binding.ValidationRules>
@@ -118,11 +109,6 @@
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <Grid>
@@ -133,58 +119,38 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-
                                     <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxJmbg"/>
-                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <Grid Grid.Row="4" Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock FontSize="18" >Date of birth:</TextBlock>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <DatePicker Grid.Column="1" Margin="10 0 0 0" FontSize="15" Width="200"
-                                    SelectedDate="{Binding Path=Patient.DateOfBirth, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateEnd="{x:Static sys:DateTime.Today}" Focusable="False">
-                            <DatePicker.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </DatePicker.Resources>
-                        </DatePicker>
-                    </StackPanel>
-                </Grid>
-                <Grid Grid.Row="5" Grid.Column="1">
+                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left">Date of birth:</TextBlock>
+                    <DatePicker  Margin="20 10 0 10" FontSize="18" Width="215" Style="{StaticResource SecretaryDatePickerStyle}"
+                                    SelectedDate="{Binding Path=Patient.DateOfBirth, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateEnd="{x:Static sys:DateTime.Today}">
+                    </DatePicker>
+                </StackPanel>
+                <Grid Grid.Row="6" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120"></ColumnDefinition>
                         <ColumnDefinition Width="120"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 10">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock FontSize="18" >Gender:</TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0">
-                        <RadioButton x:Name = "Male" GroupName = "Gender" FontSize="15" Content="Male" IsChecked="True" />
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <RadioButton x:Name = "Male" GroupName = "Gender" FontSize="18" Content="Male" IsChecked="True"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0">
-                        <RadioButton x:Name = "Female" GroupName = "Gender" FontSize="15" Content="Female" />
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <RadioButton x:Name = "Female" GroupName = "Gender" FontSize="18" Content="Female"/>
                     </StackPanel>
                 </Grid>
-                <StackPanel Grid.Row="6" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Blood type:</TextBlock>
-                    <ComboBox Name="BloodTypeComboBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35"
-                             SelectedValuePath="Content" >
-                        <ComboBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </ComboBox.Resources>
+                <StackPanel Grid.Row="7" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Blood type:</TextBlock>
+                    <ComboBox Name="BloodTypeComboBox" Style="{StaticResource SecretaryComboBoxStyle}" SelectedValuePath="Content" >
                         <ComboBoxItem>NONE</ComboBoxItem>
                         <ComboBoxItem>A+</ComboBoxItem>
                         <ComboBoxItem>A-</ComboBoxItem>
@@ -196,131 +162,86 @@
                         <ComboBoxItem>AB-</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Grid.Row="7" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Phone Number:</TextBlock>
-                    <TextBox x:Name="PhoneNumberTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                <StackPanel Grid.Row="8" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Phone Number:</TextBlock>
+                    <TextBox x:Name="PhoneNumberTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.PhoneNumber" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="8" Grid.Column="1">
+                <StackPanel Grid.Row="9" Grid.Column="1">
                     <TextBlock Margin="10,0,0,10" FontSize="18" >Email:</TextBlock>
-                    <TextBox x:Name="EmailTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                    <TextBox x:Name="EmailTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Email" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="9" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Address:</TextBlock>
-                    <TextBox x:Name="AddressTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="60"
+                <StackPanel Grid.Row="10" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Address:</TextBlock>
+                    <TextBox x:Name="AddressTextBox" Style="{StaticResource SecretaryTextBoxStyle}" Height="80"
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
                         <TextBox.Text>
                             <Binding Path="Patient.Address" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center"> Enter credentials:</TextBlock>
+                <StackPanel Grid.Row="11" Grid.Column="1" VerticalAlignment="Center">
+                    <Label Content="Enter credentials" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Grid.Row="11" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Username:</TextBlock>
-                    <TextBox x:Name="UsernameTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                <StackPanel Grid.Row="12" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Username:</TextBlock>
+                    <TextBox x:Name="UsernameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Username" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="12" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Password:</TextBlock>
-                    <TextBox x:Name="PasswordTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35">
+                <StackPanel Grid.Row="13" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Password:</TextBlock>
+                    <TextBox x:Name="PasswordTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Password" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Yu Gothic" FontSize="24" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center"> Enter allergens:</TextBlock>
-                </StackPanel>
-                <StackPanel Grid.Row="14" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Allergens:</TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <ListBox x:Name="AllergensTextBox" BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="80"
-                                Width="215" ItemsSource="{Binding Path=PatientAllergens}" SelectedItem="{Binding SelectedAllergen}">
-                            <ListBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </ListBox.Resources>
-                        </ListBox>
-                        <Button Name="RemoveAllergenButton" Height="30" Width="85" HorizontalAlignment="Right"  Background="Red" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Margin="10,0,10,0" Command="{Binding RemoveAllergenCommand}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Remove</TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+                <StackPanel Grid.Row="14" Grid.Column="1" VerticalAlignment="Center">
+                    <Label Content="Enter allergens" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Row="15" Grid.Column="1">
-                    <TextBlock Margin="10,0,0,10" FontSize="18" >Add new allergen:</TextBlock>
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Allergens:</TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                 BorderThickness="2,2,2,2" Margin="8,0,8,8" Height="35" Width="250">
-                            
-                            <TextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </TextBox.Resources>
-                        </TextBox>
-                        <Button Name="AddAllergenButton" Height="30" Width="50" HorizontalAlignment="Right"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Margin="10,0,10,0" Command="{Binding AddAllergenCommand}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Add</TextBlock>
-                            </StackPanel>
+                        <ListBox x:Name="AllergensListBox" Style="{StaticResource SecretaryListBoxStyle}" Width="280"
+                                ItemsSource="{Binding Path=PatientAllergens}" SelectedItem="{Binding SelectedAllergen}">
+                        </ListBox>
+                        <Button x:Name="RemoveAllergenButton" Margin="20 0 0 0" Background="Transparent" BorderBrush="Transparent" Command="{Binding RemoveAllergenCommand}" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                            <materialDesign:PackIcon Height="30" Width="30" Kind="Minus" Foreground="#FFE95555"></materialDesign:PackIcon>
                         </Button>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="16" Grid.Column="1">
-                    <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="12" Foreground="Red">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Add new allergen:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource SecretaryTextBoxStyle}" Width="280">
+                        </TextBox>
+                        <Button x:Name="AddAllergenButton" Margin="20 0 0 0" Background="Transparent" BorderBrush="Transparent" Command="{Binding AddAllergenCommand}" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                            <materialDesign:PackIcon Height="30" Width="30" Kind="Plus" Foreground="#FF2F922F"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="17" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
                     </TextBlock>
                 </StackPanel>
-                <Button Name="SaveButton" Grid.Row="17" Grid.Column="1" Height="40" Width="120" HorizontalAlignment="Center"  Background="#FF2F922F" Foreground="Black" FontSize="18" FontFamily="Yu Gothic"
-                 Command="{Binding SaveCommand}" Click="Save_Button_Click" Margin="0,20,10,0">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontFamily="Yu Gothic" VerticalAlignment="Center">Save</TextBlock>
-                    </StackPanel>
+                <Button Name="SaveButton" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+                Command="{Binding SaveCommand}" Click="Save_Button_Click" Margin="0,10,10,0" Content="Save">
                 </Button>
             </Grid>
         </ScrollViewer>

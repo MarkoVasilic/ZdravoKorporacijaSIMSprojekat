@@ -62,6 +62,10 @@ namespace Service
             Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
             if (oldPatient == null)
                 throw new Exception("Patient with that jmbg doesn't exist!");
+            else if (isGuest == true) {
+                oldPatient.Allergens = allergens;
+                PatientRepository.UpdatePatient(oldPatient);
+            }
             else
             {
                 Patient newPatient = new Patient(isGuest, allergens, bloodType, firstName, lastName, oldPatient.Username, oldPatient.Password,
