@@ -75,6 +75,11 @@ namespace ZdravoKorporacija
             appointmentService.GetPossibleAppointmentsBySecretary("1111111111111", "1231231231231", 11, new DateTime(2023, 3, 3),
                 new DateTime(2023, 3, 6), 60, "time");
 
+            //Testiranje zakazivanja min 24h prije, max 4 dana unaprijed
+            // appointmentController.ModifyAppointment(13, new DateTime(2022, 4, 16));
+         //  Console.WriteLine(appointmentController.ModifyAppointment(43, new DateTime(2022, 4, 25)));
+            //appointmentController.ModifyAppointment(13, new DateTime(2010, 2, 22));
+           //Console.WriteLine("Create appointment by patient = " + appointmentController.CreateAppointmentByPatient(System.DateTime.Now.AddHours(23), "1231231231231"));
         }
 
 

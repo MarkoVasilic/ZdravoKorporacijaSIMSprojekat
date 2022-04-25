@@ -57,7 +57,19 @@ namespace Service
 
         public String ModifyAppointment(DateTime newDate, int appointmentId)
         {
+            //Logika za zakazivanje minimum 24h prije, maximum 4 dana unaprijed
+
             var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
+            TimeSpan span = new TimeSpan(4, 0, 0, 0);
+            TimeSpan minSpan = new TimeSpan(0, 24, 0, 0);
+            DateTime maxDate = oneAppointment.StartTime.Add(span);
+            DateTime currentTime = new DateTime();
+            currentTime = System.DateTime.Now;
+            if (newDate > maxDate)
+                return "new appointment Date must be in next 4 days!";
+            if (oneAppointment.StartTime.Subtract(minSpan)<=currentTime)
+                return "Appointment cant be modified 24h before the scheduled Appointment";
+
             Console.WriteLine("Novi datum" + newDate);
             if (oneAppointment == null)
             {

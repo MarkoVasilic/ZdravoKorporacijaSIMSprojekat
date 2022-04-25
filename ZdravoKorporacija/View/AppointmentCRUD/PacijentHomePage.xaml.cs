@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.View
 
         private void DeleteAppointmentButton(object sender, RoutedEventArgs e)
         {
-            DeleteAppointmentPage deleteAppointmentPage = new DeleteAppointmentPage();
+        DeleteAppointmentPage deleteAppointmentPage = new DeleteAppointmentPage();
             deleteAppointmentPage.Show();
         }
 

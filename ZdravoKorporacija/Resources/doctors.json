@@ -30,6 +30,36 @@
     "roomId": 1
   },
   {
+    "Specialty": false,
+    "SpecialtyType": "Physician",
+    "FirstName": "Nadja",
+    "LastName": "Kanjuh",
+    "Username": "petrovicaa",
+    "Password": "sifra123",
+    "Jmbg": "5151515151515",
+    "DateOfBirth": "2022-04-10T15:22:34.4259553+02:00",
+    "Gender": 1,
+    "Email": "petrovic@gmail.com",
+    "PhoneNumber": "063123123",
+    "Address": "Strazilovska 4",
+    "roomId": 1
+  },
+  {
+    "Specialty": false,
+    "SpecialtyType": "Physician",
+    "FirstName": "Marko",
+    "LastName": "Vasilic",
+    "Username": "petrovicaa",
+    "Password": "sifra123",
+    "Jmbg": "5454545454545",
+    "DateOfBirth": "2022-04-10T15:22:34.4259553+02:00",
+    "Gender": 1,
+    "Email": "petrovic@gmail.com",
+    "PhoneNumber": "063123123",
+    "Address": "Strazilovska 4",
+    "roomId": 1
+  },
+  {
     "Specialty": true,
     "SpecialtyType": "Surgeon",
     "FirstName": "Djovan",
