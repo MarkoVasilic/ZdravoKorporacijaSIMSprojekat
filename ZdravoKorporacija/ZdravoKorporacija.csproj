@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\Bell_MT.ttf" />
     <None Remove="Resources\Images\bolnicaHCI.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Fonts\Bell_MT.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.View
     /// <summary>
     /// Interaction logic for CreateAppointmentPage.xaml
     /// </summary>
-    public partial class CreateAppointmentPage : Window
+    public partial class CreateAppointmentPage : Page
     {
         public CreateAppointmentPage()
         {
@@ -18,14 +18,9 @@ namespace ZdravoKorporacija.View
 
         private void ButtonBack(object sender, RoutedEventArgs e)
         {
-            PacijentHomePage pacijentHomePage = new PacijentHomePage();
-            this.Close();
+           
+            NavigationService.Navigate(new AppointmentPage());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PossibleAppointmentPatientPage possibleAppointmentPatient = new PossibleAppointmentPatientPage();
-            this.Content = possibleAppointmentPatient;
-        }
     }
 }

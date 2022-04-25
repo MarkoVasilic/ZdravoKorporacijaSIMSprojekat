@@ -9,15 +9,20 @@
       Title="PossibleAppointmentPatientPage" Background="#FF4FC3A0">
 
     <Grid Background="#FF4FC3A0">
-        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms"  ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="0,163,0,0">
+        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms"  ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="10,100,10,10">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="*"></DataGridTextColumn>
-
+                <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="180" ></DataGridTextColumn>
+                <DataGridTemplateColumn Header="    Zakazi" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnView" Content="Zakazi" Click="btnView_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
@@ -20,9 +22,19 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
     /// </summary>
     public partial class PossibleAppointmentPatientPage : Page
     {
-        public PossibleAppointmentPatientPage()
+        private CreateAppointmentVM CreateAppointmentVM;
+        public PossibleAppointmentPatientPage(CreateAppointmentVM createAppointmentVM)
         {
+            CreateAppointmentVM = createAppointmentVM;
             InitializeComponent();
+            DataContext = CreateAppointmentVM;
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            PossibleAppointmentsDTO obj = ((FrameworkElement)sender).DataContext as PossibleAppointmentsDTO;
+            CreateAppointmentVM.SelectedAppointment = obj;
+            CreateAppointmentVM.SelectAppointment();
         }
     }
 }

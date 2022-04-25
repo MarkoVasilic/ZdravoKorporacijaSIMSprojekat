@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using ZdravoKorporacija.DTO;
 
 namespace Service
@@ -172,9 +173,9 @@ namespace Service
                 throw new Exception("Doctor with that JMBG doesn't exist!");
             else if (RoomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");
-            else if (dateFrom > dateUntil)
+            else if (dateFrom > dateUntil)                 
                 throw new Exception("Dates are not valid!");
-            int id = GenerateNewId();
+                int id = GenerateNewId();
             List<DateTime> possibleAppointments = new List<DateTime>();
             Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
             List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);

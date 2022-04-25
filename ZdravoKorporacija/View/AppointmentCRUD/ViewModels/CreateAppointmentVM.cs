@@ -9,11 +9,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 {
-    internal class CreateAppointmentVM : INotifyPropertyChanged
+    public class CreateAppointmentVM : INotifyPropertyChanged
     {
         public DoctorController doctorController { get; set; }
         public AppointmentController appointmentController { get; set; }
@@ -34,6 +37,11 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public ICommand GetAllPossibleAppointmentsPatient { get; set; }
+        public ICommand SelectedAppointmentCommand { get; set; }
+
+        public ICommand GoBackCommand { get; set; }
 
 
 
@@ -95,6 +103,18 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         }
 
+        public PossibleAppointmentsDTO SelectedAppointment
+        {
+            get { return selectedAppointment; }
+            set
+            {
+                selectedAppointment = value;
+                OnPropertyChanged("SelectedAppointment");
+            }
+
+
+        }
+
         public Doctor SelectedDoctor
         {
             get { return selectedDoctor; }
@@ -138,16 +158,28 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             AppointmentService appointmentService = new AppointmentService();
             appointmentController = new AppointmentController(appointmentService);
             doctorsListToDoctorList(doctorController.getAllBySpeciality("Physician"));
-           // possibleAppointments = appointmentController.GetPossibleAppointmentsBySecretary("1111111111111", selectedDoctor.Jmbg, 1, DateFrom, DateUntil, 45, "doctor");
 
+            GetAllPossibleAppointmentsPatient = new RelayCommand(possibleAppointmentsPatientExecute);
 
         }
 
 
+        public void SelectAppointment()
+        {
+            appointmentController.CreateAppointmentByPatient(selectedAppointment.StartTime, selectedAppointment.DoctorJmbg);
+            MessageBox.Show("Uspjesno zakazan pregled za " + selectedAppointment.StartTime);
+            PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+        }
+
+        private void possibleAppointmentsPatientExecute(object sender)
+        {
+            appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary("1111111111111", SelectedDoctor.Jmbg, SelectedDoctor.RoomId,
+                        DateFrom, DateUntil, 45, SelectedPriority));
+            PatientWindowVM.NavigationService.Navigate(new PossibleAppointmentPatientPage(this));
+        }
 
 
-
-       private void doctorsListToDoctorList(List<Doctor> doctors)
+        private void doctorsListToDoctorList(List<Doctor> doctors)
         {
             Doctors = new ObservableCollection<Doctor>();
             foreach (var d in doctors)
