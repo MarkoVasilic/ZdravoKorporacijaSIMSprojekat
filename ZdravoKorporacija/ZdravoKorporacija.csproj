@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\Bell_MT.ttf" />
     <None Remove="Resources\Images\bolnicaHCI.jpg" />
   </ItemGroup>
 
@@ -17,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Fonts\Bell_MT.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Images\bolnicaHCI.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ZdravoKorporacija"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <FontFamily x:Key="BellMTFont">.\Resources\Fonts\Bell_MT.ttf#Bell MT</FontFamily>
         <Style x:Key="SecretaryTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>

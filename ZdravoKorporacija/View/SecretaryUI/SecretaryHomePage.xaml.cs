@@ -27,5 +27,10 @@ namespace ZdravoKorporacija.View.SecretaryUI
         {
             NavigationService.Navigate(new ScheduleAppointmentView());
         }
+
+        private void Check_Scheduled_Appointments_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AppointmentView());
+        }
     }
 }

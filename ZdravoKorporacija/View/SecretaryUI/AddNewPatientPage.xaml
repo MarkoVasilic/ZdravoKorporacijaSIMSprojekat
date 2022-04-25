@@ -11,7 +11,7 @@
       d:DesignHeight="750" d:DesignWidth="430"
       Background="#FFF3F2FC"
       Title="AddNewPatientPage"
-      FontFamily="Bell MT">
+      FontFamily="{StaticResource BellMTFont}">
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">

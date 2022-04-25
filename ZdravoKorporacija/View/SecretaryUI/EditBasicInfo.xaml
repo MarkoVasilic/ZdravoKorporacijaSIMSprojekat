@@ -9,7 +9,7 @@
       d:DesignHeight="750" d:DesignWidth="430"
       Title="EditBasicInfo"
       Background="#FFF3F2FC"
-      FontFamily="Bell MT">
+      FontFamily="{StaticResource BellMTFont}">
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">

@@ -9,7 +9,7 @@
       d:DesignHeight="750" d:DesignWidth="430"
       Background="#FFF3F2FC"
       Title="EditAllergens"
-      FontFamily="Bell MT">
+      FontFamily="{StaticResource BellMTFont}">
 
     <Grid>
         <Grid.RowDefinitions>
