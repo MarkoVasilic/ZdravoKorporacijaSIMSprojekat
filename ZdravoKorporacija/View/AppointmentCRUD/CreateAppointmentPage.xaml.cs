@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.View.AppointmentCRUD;
+using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
 
 namespace ZdravoKorporacija.View
 {
@@ -11,11 +13,19 @@ namespace ZdravoKorporacija.View
         public CreateAppointmentPage()
         {
             InitializeComponent();
+            DataContext = new CreateAppointmentVM();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ButtonBack(object sender, RoutedEventArgs e)
         {
+            PacijentHomePage pacijentHomePage = new PacijentHomePage();
+            this.Close();
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PossibleAppointmentPatientPage possibleAppointmentPatient = new PossibleAppointmentPatientPage();
+            this.Content = possibleAppointmentPatient;
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GetAllAppointmentsPatient" Height="324" Width="1024">
     <Grid Background="#FF4FC3A0">
-        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="0,24,0,0">
+        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms" ItemsSource="{Binding possibleAppointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="0,24,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="*"></DataGridTextColumn>
