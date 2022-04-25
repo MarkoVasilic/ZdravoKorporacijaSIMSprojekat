@@ -3,13 +3,14 @@ using Repository;
 using Service;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ZdravoKorporacija.View
 {
     /// <summary>
     /// Interaction logic for DeleteAppointmentPage.xaml
     /// </summary>
-    public partial class DeleteAppointmentPage : Window
+    public partial class DeleteAppointmentPage : Page
     {
         private AppointmentController appointmentController;
         private int Id;
@@ -31,12 +32,12 @@ namespace ZdravoKorporacija.View
 
             if (errorMessage.Length == 0)
             {
-                this.Close();
+
             }
             else
             {
                 MessageBox.Show(appointmentController.DeleteAppointment(Id), "Error");
-                this.Close();
+
             }
 
         }

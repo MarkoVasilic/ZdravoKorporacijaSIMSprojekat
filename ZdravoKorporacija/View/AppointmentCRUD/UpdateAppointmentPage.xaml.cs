@@ -3,13 +3,14 @@ using Repository;
 using Service;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ZdravoKorporacija.View
 {
     /// <summary>
     /// Interaction logic for UpdateAppointmentPage.xaml
     /// </summary>
-    public partial class UpdateAppointmentPage : Window
+    public partial class UpdateAppointmentPage : Page
     {
         private AppointmentController appointmentController;
         private String errorMessage;
@@ -36,12 +37,12 @@ namespace ZdravoKorporacija.View
 
             if (errorMessage.Length == 0)
             {
-                this.Close();
+
             }
             else
             {
                 MessageBox.Show(appointmentController.ModifyAppointment(appointmentId, date), "Error");
-                this.Close();
+
             }
 
         }

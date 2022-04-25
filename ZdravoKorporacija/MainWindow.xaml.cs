@@ -26,7 +26,7 @@ namespace ZdravoKorporacija
 
         private void Button_Click_Patient(object sender, RoutedEventArgs e)
         {
-            PacijentHomePage patientHomePage = new PacijentHomePage();
+            PatientHomeWindow patientHomePage = new PatientHomeWindow();
             patientHomePage.Show();
         }
 

@@ -4,11 +4,12 @@ using Repository;
 using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
 
-    public partial class GetAllAppointmentsPatient : Window
+    public partial class GetAllAppointmentsPatient : Page
     {
         private AppointmentController appointmentController;
         public ObservableCollection<Appointment> appointments { get; set; }
@@ -21,6 +22,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
             appointmentController = new AppointmentController(appointmentService);
             this.DataContext = this;
             appointments = new ObservableCollection<Appointment>(appointmentController.GetAppointmentsByPatientJmbg("1111111111111"));
+           
         }
     }
 }

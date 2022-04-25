@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using ZdravoKorporacija.DTO;
 
 namespace Service
@@ -72,7 +73,19 @@ namespace Service
 
         public String ModifyAppointment(DateTime newDate, int appointmentId)
         {
+            //Logika za zakazivanje minimum 24h prije, maximum 4 dana unaprijed
+
             var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
+            TimeSpan span = new TimeSpan(4, 0, 0, 0);
+            TimeSpan minSpan = new TimeSpan(0, 24, 0, 0);
+            DateTime maxDate = oneAppointment.StartTime.Add(span);
+            DateTime currentTime = new DateTime();
+            currentTime = System.DateTime.Now;
+            if (newDate > maxDate)
+                return "new appointment Date must be in next 4 days!";
+            if (oneAppointment.StartTime.Subtract(minSpan)<=currentTime)
+                return "Appointment cant be modified 24h before the scheduled Appointment";
+
             Console.WriteLine("Novi datum" + newDate);
             if (oneAppointment == null)
             {
@@ -175,9 +188,9 @@ namespace Service
                 throw new Exception("Doctor with that JMBG doesn't exist!");
             else if (RoomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");
-            else if (dateFrom > dateUntil)
+            else if (dateFrom > dateUntil)                 
                 throw new Exception("Dates are not valid!");
-            int id = GenerateNewId();
+                int id = GenerateNewId();
             List<DateTime> possibleAppointments = new List<DateTime>();
             Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
             List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
