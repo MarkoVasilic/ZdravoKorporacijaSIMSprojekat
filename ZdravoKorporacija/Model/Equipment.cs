@@ -12,7 +12,7 @@ namespace ZdravoKorporacija.Model
         public int Quantity { get; set; }
         public int? RoomId { get; set; }
 
-        public Equipment(int id, string name, bool isStatic, int quantity, int roomId)
+        public Equipment(int id, String name, bool isStatic, int quantity, int? roomId)
         {
             Id = id;
             Name = name;
@@ -39,5 +39,17 @@ namespace ZdravoKorporacija.Model
             }
             else return true;
         }
+
+
+        public void toString()
+        {
+            Console.WriteLine("ID = " + Id);
+            Console.WriteLine("EquipmentName = " + Name);
+            Console.WriteLine("isStatic = " + IsStatic);
+            Console.WriteLine("Quantity = " + Quantity);
+            Console.WriteLine("RoomId = " + RoomId);
+            Console.WriteLine();
+        }
+
     }
 }

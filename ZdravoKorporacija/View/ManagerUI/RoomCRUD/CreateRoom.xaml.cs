@@ -59,6 +59,8 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
            roomController.CreateRoom(name, description, type);
             this.Close();
+            GetAllRooms allRooms = new GetAllRooms();
+            allRooms.Show();
           
 
         }

@@ -28,12 +28,16 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 roomId = int.Parse(textBoxDeleteRoom.Text);
                 roomController.DeleteRoom(roomId);
                 this.Close();
+                ManagerHomePage managerHome = new ManagerHomePage();
+                managerHome.Show();
             }
             catch
             {
 
                 MessageBox.Show("Error");
                 this.Close();
+                ManagerHomePage managerHomePage = new ManagerHomePage();    
+                managerHomePage.Show();
             }
 
         }
