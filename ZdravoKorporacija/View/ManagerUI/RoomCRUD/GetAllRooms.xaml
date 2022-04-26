@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.RoomCRUD"
         mc:Ignorable="d"
-        Title="GetAllRooms" Height="450" Width="800" Background="LightYellow">
+        Title="GetAllRooms" Height="768" Width="1024" Background="LightYellow">
     <Grid>
-        <DataGrid x:Name="dataGridRooms" Grid.Row="1" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Center">
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="242" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Room type" Binding="{Binding typeStr}" Width="*"></DataGridTextColumn>
-               
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="58,627,0,0" VerticalAlignment="Top" Height="62" Width="174" Background="OrangeRed" FontSize="20" FontWeight="Bold" BorderBrush="Black" Click="BackButtonClick"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Rooms preview" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" />
     </Grid>
 </Window>

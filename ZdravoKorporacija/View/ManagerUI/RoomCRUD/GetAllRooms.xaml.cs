@@ -23,5 +23,12 @@ namespace ZdravoKorporacija.View.RoomCRUD
             this.DataContext = this;
             rooms = new ObservableCollection<Room>(roomController.GetAllRooms());
         }
+
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManagerHomePage managerHomePage = new ManagerHomePage();
+            managerHomePage.Show();
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Repository
             Save(values);
         }
 
-        public Model.Room? FindOneById(int id)
+        public Model.Room? FindOneById(int? id)
         {
             List<Room> rooms = GetValues();
             foreach (Room room in rooms)

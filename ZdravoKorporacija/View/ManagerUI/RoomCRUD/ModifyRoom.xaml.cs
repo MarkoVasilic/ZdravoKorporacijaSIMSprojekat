@@ -44,11 +44,16 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 roomController.ModifyRoom(roomId, name, description);
 
                 this.Close();
+
+                RoomsBeforeModification roomsBeforeModification = new RoomsBeforeModification();
+                roomsBeforeModification.Show();
             }
             catch
             {
                 MessageBox.Show("Error");
                 this.Close();
+                ManagerHomePage managerHomePage = new ManagerHomePage();
+                managerHomePage.Show();
             }
 
 

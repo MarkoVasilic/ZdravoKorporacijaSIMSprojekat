@@ -8,10 +8,11 @@
         Title="ManagerHomePage" Height="450" Width="800" Background="LightYellow">
     <Grid>
         <Button Content="Create room" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="CreateRoomClick"/>
-        <Button Content="Delete room" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Margin="0,193,0,0" Click="DeleteRoomClick"/>
-        <Button Content="Modify room" HorizontalAlignment="Center" Margin="0,275,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="ModifyRoomClick"/>
-        <Button Content="All rooms" HorizontalAlignment="Center" Margin="0,357,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="AllRoomsClick"/>
+        <Button Content="Delete room" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Margin="0,163,0,0" Click="DeleteRoomClick"/>
+        <Button Content="Modify room" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="ModifyRoomClick"/>
+        <Button Content="All rooms" HorizontalAlignment="Center" Margin="0,272,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="AllRoomsClick"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,46,0,0" TextWrapping="Wrap" Text="WELCOME TO OUR HOSPITAL" VerticalAlignment="Top" Height="27" Width="288" FontSize="20" FontWeight="bold"/>
+        <Button Content="Equipment" HorizontalAlignment="Center" Margin="0,325,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="EquipmentClick"/>
 
 
     </Grid>

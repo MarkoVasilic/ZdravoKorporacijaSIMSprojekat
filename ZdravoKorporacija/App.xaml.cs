@@ -2,7 +2,12 @@
 using Repository;
 using Service;
 using System;
+using System.Collections.Generic;
 using System.Windows;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija
 {
@@ -19,6 +24,7 @@ namespace ZdravoKorporacija
             DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
+            DisplacementRepository displacementRepository = new DisplacementRepository();   
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -26,6 +32,10 @@ namespace ZdravoKorporacija
             appointmentController = new AppointmentController(appointmentService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentController equipmentController = new EquipmentController(equipmentService);
+
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
             patientController.CreatePatient(false, alergeni, BloodType.A_POSITIVE, "milos", "milosevic", "mikimilane", "mackacka",
                 "7458963215963", DateTime.Now, Gender.MALE, "milos@milos.com", "456789", "neka dresa 12");*/
@@ -72,14 +82,24 @@ namespace ZdravoKorporacija
             foreach (Appointment appointment in appointmentListDoctor)
               appointment.toString();*/
 
-            appointmentService.GetPossibleAppointmentsBySecretary("1111111111111", "1231231231231", 11, new DateTime(2023, 3, 3),
-                new DateTime(2023, 3, 6), 60, "time");
+            //appointmentService.GetPossibleAppointmentsBySecretary("1111111111111", "1231231231231", 11, new DateTime(2023, 3, 3),
+            //new DateTime(2023, 3, 6), 60, "time");
 
-            //Testiranje zakazivanja min 24h prije, max 4 dana unaprijed
-            // appointmentController.ModifyAppointment(13, new DateTime(2022, 4, 16));
-         //  Console.WriteLine(appointmentController.ModifyAppointment(43, new DateTime(2022, 4, 25)));
-            //appointmentController.ModifyAppointment(13, new DateTime(2010, 2, 22));
-           //Console.WriteLine("Create appointment by patient = " + appointmentController.CreateAppointmentByPatient(System.DateTime.Now.AddHours(23), "1231231231231"));
+            //equipmentController.CreateEquipment("sto", true, 2, 7);
+            //equipmentController.CreateEquipment("zavoj", false, 50, null);
+
+            //ISPIS OPREME
+            /*List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
+            foreach (Equipment equipment in equipmentList)
+                equipment.toString();*/
+
+            //equipmentController.CreateDisplacement(7, 8, 1, 1, new DateTime(2022, 4, 24));
+            /*List<Displacement> displacementList = new List<Displacement>(equipmentController.GetAllDisplacements());
+            foreach (Displacement d in displacementList)
+                d.toString();*/
+
+            //equipmentController.CreateDisplacement(7, 1, 1, 1, DateTime.Now);
+            equipmentService.EquipmentDisplacement();
         }
 
 
