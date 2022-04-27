@@ -31,18 +31,13 @@ namespace ZdravoKorporacija.View
             Console.WriteLine("ID iz XAML-a" + appointmentId);
 
 
-
-
-            errorMessage = appointmentController.ModifyAppointment(appointmentId, date);
-
-            if (errorMessage.Length == 0)
+            try
             {
-
+                appointmentController.ModifyAppointment(appointmentId, date);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(appointmentController.ModifyAppointment(appointmentId, date), "Error");
-
+                MessageBox.Show(ex.Message, "Error");
             }
 
         }

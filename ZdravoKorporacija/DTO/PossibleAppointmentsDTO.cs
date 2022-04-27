@@ -15,8 +15,10 @@ namespace ZdravoKorporacija.DTO
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
 
+        public int AppointmentId { get; set; }
+
         public PossibleAppointmentsDTO(string patientJmbg, string patientFullName, string doctorJmbg, string doctorFullName,
-            string doctorSpeciality, int roomId, string roomName, DateTime startTime, int duration)
+            string doctorSpeciality, int roomId, string roomName, DateTime startTime, int duration, int appointmentId)
         {
             PatientJmbg = patientJmbg;
             PatientFullName = patientFullName;
@@ -27,6 +29,7 @@ namespace ZdravoKorporacija.DTO
             RoomName = roomName;
             StartTime = startTime;
             Duration = duration;
+            AppointmentId = appointmentId;
         }
     }
 }

@@ -9,24 +9,38 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 {
-    internal class AppointmentViemVM : INotifyPropertyChanged
+    public class AppointmentViemVM : INotifyPropertyChanged
     {
         public PatientController patientController { get; set; }
         public DoctorController doctorController { get; set; }
         public RoomController roomController { get; set; }
         public AppointmentController appointmentController { get; set; }
+        private String patientJmbg { get; set; }
         private Doctor? selectedDoctor { get; set; }
         private Room? selectedRoom { get; set; }
 
+        private PossibleAppointmentsDTO? selectedAppointment { get; set; }
+        private PossibleAppointmentsDTO? selectedNewAppointment { get; set; }
+        private DateTime startDate;
+        private String possibleAppointmentsVisibility;
+        private String errorMessage;
         private ObservableCollection<Doctor> doctors;
         private ObservableCollection<Room> rooms;
         private ObservableCollection<PossibleAppointmentsDTO> appointments;
+        private ObservableCollection<PossibleAppointmentsDTO> possibleAppointments;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand SearchAppointmentCommand { get; set; }
+        public ICommand ModifyAppointmentCommand { get; set; }
+        public ICommand DeleteAppointmentCommand { get; set; }
+        public ICommand SelectNewAppointmentCommand { get; set; }
 
         public ObservableCollection<Doctor> Doctors
         {
@@ -44,6 +58,95 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             {
                 rooms = value;
                 OnPropertyChanged("Rooms");
+            }
+        }
+
+        public ObservableCollection<PossibleAppointmentsDTO> PossibleAppointments
+        {
+            get => possibleAppointments;
+            set
+            {
+                possibleAppointments = value;
+                OnPropertyChanged("PossibleAppointments");
+            }
+        }
+
+        public Doctor SelectedDoctor
+        {
+            get { return selectedDoctor; }
+            set
+            {
+                selectedDoctor = value;
+                OnPropertyChanged("SelectedDoctor");
+            }
+        }
+        public Room SelectedRoom
+        {
+            get { return selectedRoom; }
+            set
+            {
+                selectedRoom = value;
+                OnPropertyChanged("SelectedRoom");
+            }
+        }
+
+        public PossibleAppointmentsDTO SelectedAppointment
+        {
+            get { return selectedAppointment; }
+            set
+            {
+                selectedAppointment = value;
+                OnPropertyChanged("SelectedAppointment");
+            }
+        }
+
+        public PossibleAppointmentsDTO SelectedNewAppointment
+        {
+            get { return selectedNewAppointment; }
+            set
+            {
+                selectedNewAppointment = value;
+                OnPropertyChanged("SelectedNewAppointment");
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get => errorMessage;
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged("ErrorMessage");
+            }
+        }
+
+        public string PatientJmbg
+        {
+            get => patientJmbg;
+            set
+            {
+                patientJmbg = value;
+                OnPropertyChanged("PatientJmbg");
+            }
+        }
+
+        public DateTime StartDate
+        {
+            get { return startDate; }
+            set
+            {
+                startDate = value;
+                OnPropertyChanged("StartDate");
+            }
+        }
+
+        public String PossibleAppointmentsVisibility
+        {
+            get { return possibleAppointmentsVisibility; }
+            set
+            {
+                possibleAppointmentsVisibility = value;
+                OnPropertyChanged("PossibleAppointmentsVisibility");
             }
         }
 
@@ -83,7 +186,11 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAll());
-            appointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
+            ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
+            DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
+            SelectNewAppointmentCommand = new RelayCommand(selectNewAppointmentExecute);
         }
 
         private void doctorsListToDoctorList(List<Doctor> doctors)
@@ -104,13 +211,67 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
         }
 
-        private void appointmentListToAppointmentList(List<PossibleAppointmentsDTO> possibleAppointmentsDTOs)
+        private void possibleAppointmentListToAppointmentList(List<PossibleAppointmentsDTO> possibleAppointmentsDTOs)
         {
             Appointments = new ObservableCollection<PossibleAppointmentsDTO>();
             foreach (var pa in possibleAppointmentsDTOs)
             {
-                Appointments.Add(pa);
+                if (pa.StartTime > DateTime.Now)
+                    Appointments.Add(pa);
             }
+        }
+
+        private void appointmentListToAppointmentList()
+        {
+            try
+            {
+                List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = appointmentController.GetPossibleAppointmentsBySecretary(SelectedAppointment.PatientJmbg,
+                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, DateTime.Today, DateTime.Today.AddDays(4), SelectedAppointment.Duration,
+                "time");
+                PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
+                foreach (var pa in possibleAppointmentsDTOs)
+                {
+                    PossibleAppointments.Add(pa);
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
+        }
+
+        private void searchAppointmentExecute(object parameter)
+        {
+
+
+        }
+        private void modifyAppointmentExecute(object parameter)
+        {
+            SelectedAppointment = parameter as PossibleAppointmentsDTO;
+            appointmentListToAppointmentList();
+            SecretaryWindowVM.NavigationService.Navigate(new ModifyAppointmentView(this));
+        }
+
+        private void deleteAppointmentExecute(object parameter)
+        {
+            SelectedAppointment = parameter as PossibleAppointmentsDTO;
+            appointmentController.DeleteAppointment(SelectedAppointment.AppointmentId);
+            possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+        }
+
+        private void selectNewAppointmentExecute(object parameter)
+        {
+            SelectedNewAppointment = parameter as PossibleAppointmentsDTO;
+            try
+            {
+                appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
+                SecretaryWindowVM.NavigationService.Navigate(new AppointmentView());
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message; 
+            }
+            
         }
     }
 }

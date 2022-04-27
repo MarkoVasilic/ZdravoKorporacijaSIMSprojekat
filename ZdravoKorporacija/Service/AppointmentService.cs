@@ -40,7 +40,7 @@ namespace Service
                 Patient patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
                 Room room = RoomRepository.FindOneById(ap.RoomId);
                 possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
-                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration));
+                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.Id));
             }
             return possibleAppointmentsDTO;
         }
@@ -74,38 +74,25 @@ namespace Service
                 return 1;
             }
         }
-        public String DeleteAppointment(int appointmentId)
+        public void DeleteAppointment(int appointmentId)
         {
             if (AppointmentRepository.FindOneById(appointmentId) == null)
             {
-                return "Appointment with that id doesn't exist!";
+                throw new Exception("Appointment with that id doesn't exist!");
             }
             else
             {
                 AppointmentRepository.RemoveAppointment(appointmentId);
-                return "";
             }
         }
 
-        public String ModifyAppointment(DateTime newDate, int appointmentId)
+        public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            //Logika za zakazivanje minimum 24h prije, maximum 4 dana unaprijed
 
             var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
-            TimeSpan span = new TimeSpan(4, 0, 0, 0);
-            TimeSpan minSpan = new TimeSpan(0, 24, 0, 0);
-            DateTime maxDate = oneAppointment.StartTime.Add(span);
-            DateTime currentTime = new DateTime();
-            currentTime = System.DateTime.Now;
-            if (newDate > maxDate)
-                return "new appointment Date must be in next 4 days!";
-            if (oneAppointment.StartTime.Subtract(minSpan)<=currentTime)
-                return "Appointment cant be modified 24h before the scheduled Appointment";
-
-            Console.WriteLine("Novi datum" + newDate);
             if (oneAppointment == null)
             {
-                return "Appointment with that id doesn't exist!";
+                throw new Exception("Appointment with that id doesn't exist!");
             }
             else
             {
@@ -113,10 +100,9 @@ namespace Service
                     oneAppointment.DoctorJmbg, oneAppointment.RoomId);
                 if (!newAppointment.validateAppointment())
                 {
-                    return "Something went wrong, new appointment isn't modified!";
+                    throw new Exception("Something went wrong, new appointment isn't modified!");
                 }
                 AppointmentRepository.UpdateAppointment(newAppointment);
-                return "";
             }
 
         }
@@ -250,7 +236,7 @@ namespace Service
                 if (pa > DateTime.Now.AddHours(1))
                 {
                     PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, selectedPatient.FirstName + " " + selectedPatient.LastName, doctorJmbg,
-                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration);
+                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);
                     retValue.Add(possibleAppointmentsDTO);
                 }
             }
