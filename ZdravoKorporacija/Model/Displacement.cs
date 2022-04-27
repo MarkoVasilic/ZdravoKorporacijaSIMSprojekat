@@ -22,7 +22,7 @@ namespace ZdravoKorporacija.Model
             StartRoom = startRoom;
             EndRoom = endRoom;
             StaticEquipmentId = staticEquipmentId;
-            StaticEquipmentQuantity = staticEquipmentQuantity;
+            StaticEquipmentQuantity = 1;
             DisplacementDate = displacementDate;
         }
 

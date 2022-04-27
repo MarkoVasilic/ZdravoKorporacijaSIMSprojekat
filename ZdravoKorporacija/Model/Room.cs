@@ -10,6 +10,7 @@ namespace Model
         public String Description { get; set; }
         public RoomType Type { get; set; }
 
+        public Room() { }
         public String? typeStr { get => Enum.GetName<RoomType>(Type); set => Type = Enum.Parse<RoomType>(value); }
         public Room(String Name, int Id, String Description, RoomType Type)
         {

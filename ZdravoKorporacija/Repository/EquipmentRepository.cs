@@ -82,6 +82,13 @@ namespace ZdravoKorporacija.Repository
             Save(values);
         }
 
+        public void RemoveEquipmentByRoom(int RoomId)
+        {
+            var values = GetValues();
+            values.RemoveAll(val => val.RoomId == RoomId);
+            Save(values);
+        }
+
         public void Save(List<Equipment> values)
         {
             File.WriteAllText(EquipmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));

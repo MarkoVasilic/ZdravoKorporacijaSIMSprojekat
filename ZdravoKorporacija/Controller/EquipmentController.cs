@@ -34,9 +34,9 @@ namespace ZdravoKorporacija.Controller
             return EquipmentService.GetEquipmentDTOs();
         }
 
-        public void CreateDisplacement(int startRoom, int endRoom, int equiomentId, int equipmentQuantity, DateTime displacementDate)
+        public void CreateDisplacement(int startRoom, int endRoom, int equiomentId, DateTime displacementDate)
         {
-            //EquipmentService.CreateDisplacement(startRoom, endRoom, equiomentId, equipmentQuantity, displacementDate);
+            EquipmentService.CreateDisplacement(startRoom, endRoom, equiomentId, displacementDate);
         }
 
         public List<Displacement> GetAllDisplacements()
@@ -48,6 +48,8 @@ namespace ZdravoKorporacija.Controller
         {
             EquipmentService.EquipmentDisplacement();
         }
+
+   
 
     }
 }
