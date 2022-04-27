@@ -49,7 +49,7 @@ namespace Service
         }
 
         public void CreateDoctor(bool speciality, String specialityType, string firstName, int roomId, string lastName, string username, string password,
-            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
             string? address)
         {
             if (DoctorRepository.FindOneByJmbg(jmbg) != null)
@@ -59,7 +59,7 @@ namespace Service
             else
             {
                 Doctor newDoctor = new Doctor(speciality, specialityType, roomId, firstName, lastName, username, password,
-                    jmbg, dateOfBirth, gender, email, telephone, address);
+                    jmbg, dateOfBirth, gender, email, phoneNumber, address);
                 DoctorRepository.SaveDoctor(newDoctor);
             }
         }
