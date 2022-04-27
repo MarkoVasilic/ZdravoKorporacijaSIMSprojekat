@@ -47,5 +47,19 @@
     "Description": "sala za sast",
     "Type": 2,
     "typeStr": "CONFERENCE"
+  },
+  {
+    "Name": "operacija",
+    "Id": 13,
+    "Description": "fdmsofmds",
+    "Type": 1,
+    "typeStr": "EXAMINATION"
+  },
+  {
+    "Name": "soba A",
+    "Id": 14,
+    "Description": "sala za sastanke",
+    "Type": 2,
+    "typeStr": "CONFERENCE"
   }
 ]

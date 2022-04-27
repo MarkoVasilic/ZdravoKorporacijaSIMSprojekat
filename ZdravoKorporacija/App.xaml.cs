@@ -98,8 +98,10 @@ namespace ZdravoKorporacija
             foreach (Displacement d in displacementList)
                 d.toString();*/
 
-            //equipmentController.CreateDisplacement(7, 1, 1, 1, DateTime.Now);
-            equipmentService.EquipmentDisplacement();
+            //equipmentController.CreateDisplacement(7, 1, 1, System.DateTime.Today);
+            equipmentController.EquipmentDisplacement();
+            
+            
         }
 
 

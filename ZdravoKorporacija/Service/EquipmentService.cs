@@ -202,127 +202,36 @@ namespace ZdravoKorporacija.Service
         }
 
 
-        /* public void EquipmentDisplacement() //prolazim kroz premestanja i kolicinu robe u pocetnoj sobi smanjujem, a u krajnjoj povecavam
-         { 
-             List<Displacement> displacements = new List<Displacement>(GetAllDisplacements());
-             foreach (Displacement displacement in displacements)
-             {
-                 if(displacement.DisplacementDate == DateTime.Now)
-                 {
-                         if (EquipmentRepository.FindOneByRoomId(displacement.EndRoom) == EquipmentRepository.FindOneById(displacement.StaticEquipmentId) && EquipmentRepository.FindOneByRoomId(displacement.EndRoom) != null) //ako postoji u sobi krajnjoj
-                         {
-                             EquipmentRepository.FindOneByRoomId(displacement.EndRoom).Quantity += displacement.StaticEquipmentQuantity;
-                             EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Quantity -= displacement.StaticEquipmentQuantity;
 
-                             if(EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Quantity == 0) //ako je kolicina u toj pocentoj sobi 0 brisem opremu u toj sobi
-                             {
-
-                             EquipmentRepository.RemoveEquipment(EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Id);
-                             }
-
-                         }
-                         else 
-                         {
-
-                             Equipment equipment = new Equipment(displacement.StaticEquipmentId, EquipmentRepository.FindOneById(displacement.StaticEquipmentId).Name, true, displacement.StaticEquipmentQuantity, displacement.EndRoom); //kreiram novu opremu u krajnjoj sobi koja ima kolicinu koju sam prosledila u promenama ako ne mogu da je pronadjem
-                             EquipmentRepository.SaveEquipment(equipment);
-
-                             EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Quantity -= displacement.StaticEquipmentQuantity; //smanjujem kolicinu u pocetnoj opremi
-
-                             if (EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Quantity == 0) //ako je kolicina u toj pocentoj sobi 0 brisem opremu u toj sobi
-                             {
-
-                                 EquipmentRepository.RemoveEquipment(EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Id);
-                             }
-
-                     }
-
-
-
-                 }
-             }
-         }*/
 
         public void EquipmentDisplacement()
         {
-            List<Displacement> displacementList = new List<Displacement>(GetAllDisplacements()); //samo menjam u opremi id sobe u kojoj se nalayi
-            foreach (Displacement displacement in displacementList)
+            List<Displacement> displacements = new List<Displacement>(GetAllDisplacements());
+            foreach (Displacement displacement in displacements)
             {
+                Equipment equipment = EquipmentRepository.FindOneById(displacement.StaticEquipmentId);
+                
 
                 if (displacement.DisplacementDate == System.DateTime.Today)
                 {
-                    Equipment equipment = EquipmentRepository.FindOneById(displacement.StaticEquipmentId);
-
-                    if (equipment != null)
+                    if(equipment != null)
                     {
-                        int? equipmentChangeQuantityId;
-
-                        int equipmentQuantity = equipment.Quantity;
-
-
-                        if (equipmentQuantity < displacement.StaticEquipmentQuantity)
-                        {
-                            throw new Exception("There is not enough equipment ");
-
-                        }
-                        else if (equipmentQuantity >= displacement.StaticEquipmentQuantity)
-                        {
-
-                            //pronalazim svaki equipment u krajnjoj sobi 
-                            List<Equipment> equipmentsInEndRoom = new List<Equipment>(EquipmentRepository.FindAllByRoomId(displacement.EndRoom));
-
-                            foreach (Equipment eq in equipmentsInEndRoom)
-                            {
-                                Boolean change = false;
-                                if (eq.Id == displacement.StaticEquipmentId)
-                                {
-                                    change = true;
-                                    break;
-                                    {
-
-                                    }
-
-                                    if (EquipmentRepository.FindOneById(equipmentChangeQuantityId) != null)
-                                    {
-                                         //povecam kolicinu u eq u start room-u
-
-                                    }
-                                    else //ako ne postoji equipment sa tim id-em kreiram novi u end room-u
-                                    {
-                                        Equipment newEquipment = new Equipment(displacement.StaticEquipmentId, EquipmentRepository.FindOneById(displacement.StaticEquipmentId).Name, true, displacement.StaticEquipmentQuantity, displacement.EndRoom);
-                                        EquipmentRepository.SaveEquipment(newEquipment);
-                                    }
-
-                                }
-                                if (change)
-                                {
-                                    EquipmentRepository.FindOneById(eq.Id).Quantity += displacement.StaticEquipmentQuantity; //smanjujem taj eq ciji se id poklapa sa onim u end room-u
-                                    
-                                }
-                                else
-                                {
-                                    Equipment newEquipment = new Equipment(displacement.StaticEquipmentId, EquipmentRepository.FindOneById(displacement.StaticEquipmentId).Name, true, displacement.StaticEquipmentQuantity, displacement.EndRoom);
-                                    EquipmentRepository.SaveEquipment(newEquipment);
-                                }
-                                EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Quantity -= displacement.StaticEquipmentQuantity;
-                                if (EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Quantity == 0)
-                                    EquipmentRepository.RemoveEquipment(EquipmentRepository.FindOneByRoomId(displacement.StartRoom).Id);
-                              // DisplacementRepository; // izbrisi displacment koji se desio
-                            }
-
-                        }
-                        else
-                        {
-                            throw new Exception("Equipment doesn't exist.");
-                        }
-
+                        equipment.RoomId = displacement.EndRoom;
                     }
+                    else
+                    {
+                        throw new Exception("Equipment with that identification number doesn't exist.");
+                    }
+                    
+                    if(EquipmentRepository.FindOneByRoomId(displacement.EndRoom) == null) //da mi se ne bi svaki put upisivala 
+                    {
+                        EquipmentRepository.SaveEquipment(equipment);
+                    }
+                    EquipmentRepository.RemoveEquipmentByRoom(displacement.StartRoom);
+
+
                 }
-
-
-
             }
-
 
         }
 
