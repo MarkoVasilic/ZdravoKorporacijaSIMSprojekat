@@ -46,6 +46,22 @@ namespace Service
             return possibleAppointmentsDTO;
         }
 
+
+        public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
+        {
+            List<Appointment> appointments = AppointmentRepository.GetAllFutureByPatient(App.loggedUser.Jmbg);
+            List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();
+            foreach (var ap in appointments)
+            {
+                Doctor? doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
+                Patient? patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
+                Room? room = RoomRepository.FindOneById(ap.RoomId);
+                possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
+                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration,ap.Id));
+            }
+            return possibleAppointmentsDTO;
+        }
+
         private int GenerateNewId()
         {
             try

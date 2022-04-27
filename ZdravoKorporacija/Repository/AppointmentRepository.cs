@@ -26,6 +26,23 @@ namespace Repository
             return result;
         }
 
+        public List<Appointment> GetAllFutureByPatient(String patientJmbg)
+        {
+            var values = GetValues();
+            List<Model.Appointment> result = new List<Model.Appointment>();
+            foreach (Appointment appointment in values)
+                if (appointment.PatientJmbg.Equals(patientJmbg))
+                {
+                    if (appointment.StartTime > System.DateTime.Now)
+                    {
+                        result.Add(appointment);
+                    }
+                }
+            return result;
+        }
+
+
+
 
         public void SaveAppointment(Appointment appointmentToSave)
         {

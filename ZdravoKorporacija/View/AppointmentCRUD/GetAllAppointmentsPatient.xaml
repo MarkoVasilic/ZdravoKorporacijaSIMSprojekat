@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.AppointmentCRUD"
         mc:Ignorable="d"
-        Title="GetAllAppointmentsPatient" Height="424" Width="1024">
-    <Grid Background="white" Margin="50">
-        <DataGrid  x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B">
+        Title="GetAllAppointmentsPatient" Height="768" Width="1024">
+    <Grid  Margin="50">
+       
+        <DataGrid  FontSize ="16" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B" Margin="10,156,23,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="120"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Home" FontSize="25" HorizontalAlignment="Left" Margin="306,542,0,0" VerticalAlignment="Top" Width="298" Height="69" Click="Button_Click"/>
+        <Label Content="My Appointments" FontSize="60" HorizontalAlignment="Left" Margin="219,38,0,0" VerticalAlignment="Top" Width="532" Height="82"/>
+
     </Grid>
 </Page>

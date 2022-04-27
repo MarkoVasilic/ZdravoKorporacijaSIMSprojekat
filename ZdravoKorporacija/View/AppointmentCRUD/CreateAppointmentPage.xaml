@@ -22,14 +22,14 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Label Content="Odaberite Doktora:" FontSize="30" HorizontalAlignment="Left" Height="53" Margin="58,155,0,0" VerticalAlignment="Top" Width="281"/>
-        <DatePicker HorizontalAlignment="Left" Height="24" Margin="553,208,0,0" VerticalAlignment="Top" Width="281" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}"  Focusable="False">
+        <DatePicker FontSize ="20" HorizontalAlignment="Left"  Margin="553,208,0,0" VerticalAlignment="Top" Width="281" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}"  Focusable="False">
             <DatePicker.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <DatePicker HorizontalAlignment="Left" Height="24" Margin="553,294,0,0" VerticalAlignment="Top" Width="281" SelectedDate="{Binding Path=DateUntil, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}"  Focusable="False">
+        <DatePicker HorizontalAlignment="Left" FontSize="20" Margin="553,294,0,0" VerticalAlignment="Top" Width="281" SelectedDate="{Binding Path=DateUntil, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}"  Focusable="False">
             <DatePicker.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>

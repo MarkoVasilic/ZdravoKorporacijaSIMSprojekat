@@ -25,6 +25,11 @@ namespace Controller
             return AppointmentService.GetAllAppointmentsBySecretary();
         }
 
+        public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
+        {
+            return AppointmentService.GetAllFutureAppointmentsByPatient();
+        }
+
         public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);
