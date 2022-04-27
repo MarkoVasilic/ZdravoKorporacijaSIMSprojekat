@@ -8,14 +8,6 @@
     "RoomId": 11
   },
   {
-    "StartTime": "2023-03-03T22:00:00",
-    "Duration": 60,
-    "Id": 37,
-    "PatientJmbg": "1111111111111",
-    "DoctorJmbg": "1231231231231",
-    "RoomId": 11
-  },
-  {
     "StartTime": "2023-03-05T09:00:00",
     "Duration": 60,
     "Id": 10,
@@ -157,6 +149,14 @@
     "Id": 35,
     "PatientJmbg": "1111111111111",
     "DoctorJmbg": "4444444444444",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-04-27T13:29:42.6356111+02:00",
+    "Duration": 15,
+    "Id": 53,
+    "PatientJmbg": "1123456789111",
+    "DoctorJmbg": "1231231231231",
     "RoomId": 11
   }
 ]

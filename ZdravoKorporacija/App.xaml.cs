@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using Repository;
 using Service;
 using System;
@@ -13,14 +14,21 @@ namespace ZdravoKorporacija
 {
     public partial class App : Application
     {
-        public PatientController? patientController { get; set; }
-        public RoomController? roomController { get; set; }
+        public static User loggedUser { get; set; }
+        public static String userRole { get; set; }
+        public static PatientController? patientController { get; set; }
+        public static RoomController? roomController { get; set; }
 
-        public DoctorController? doctorController { get; set; }
-        public AppointmentController? appointmentController { get; set; }
+        public static DoctorController? doctorController { get; set; }
+
+        public static SecretaryController? secretaryController { get; set; }
+        public static ManagerController? managerController { get; set; }
+        public static AppointmentController? appointmentController { get; set; }
 
         public App()
         {
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
@@ -32,6 +40,10 @@ namespace ZdravoKorporacija
             appointmentController = new AppointmentController(appointmentService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
+            ManagerService managerService = new ManagerService(managerRepository);
+            SecretaryService secretaryService = new SecretaryService(secretaryRepository);
+            managerController = new ManagerController(managerService);
+            secretaryController = new SecretaryController(secretaryService);
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
             EquipmentController equipmentController = new EquipmentController(equipmentService);
@@ -99,7 +111,11 @@ namespace ZdravoKorporacija
                 d.toString();*/
 
             //equipmentController.CreateDisplacement(7, 1, 1, 1, DateTime.Now);
-            equipmentService.EquipmentDisplacement();
+            //equipmentService.EquipmentDisplacement();
+            /*secretaryController.CreateSecretary("Marko", "Vasilic", "mare", "konj", "1515151515151", new DateTime(1998, 9, 15),
+                Gender.MALE, "marko@vasilic.com", "060606060", "Novi Sad");
+            managerController.CreateManager("Nadja", "Kanjuh", "djana", "mama", "3434343434343", new DateTime(2000, 7, 24),
+                Gender.FEMALE, "nadja@kanjuh.com", "070707070", "Novi Sad");*/
         }
 
 

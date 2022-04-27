@@ -2,37 +2,65 @@
 using ZdravoKorporacija.View;
 using ZdravoKorporacija.View.RoomCRUD;
 using ZdravoKorporacija.View.SecretaryUI;
+using Model;
+using System;
 
 namespace ZdravoKorporacija
 {
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
         }
-
-        private void Button_Click_Secretary(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            SecretaryWindow secretaryWindow = new SecretaryWindow();
-            secretaryWindow.Show();
-        }
+            Window window = null;
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Password;
+            Manager manager = App.managerController.getManagerByUsername(username);
+            Secretary secretary = App.secretaryController.getSecretaryByUsername(username);
+            Patient patient = App.patientController.getPatientByUsername(username);
+            Doctor doctor = App.doctorController.getDoctorByUsername(username);
+            if (manager != null)
+            {
+                App.loggedUser = manager;
+                App.userRole = "manager";
+                window = new ManagerHomePage();
+            }
+            else if (secretary != null)
+            {
+                App.loggedUser = secretary;
+                App.userRole = "secretary";
+                window = new SecretaryWindow();
+            }
+            else if (patient != null)
+            {
+                App.loggedUser = patient;
+                App.userRole = "patient";
+                window = new PatientHomeWindow();
+            }
+            else if (doctor != null)
+            {
+                App.loggedUser = doctor;
+                App.userRole = "doctor";
+                //window = ;
+            }
+            else
+            {
+                MessageBox.Show("Username not registered!");
+            }
 
-        private void Button_Click_Manager(object sender, RoutedEventArgs e)
-        {
-            ManagerHomePage managerHomePage = new ManagerHomePage();
-            managerHomePage.Show();
-        }
-
-        private void Button_Click_Patient(object sender, RoutedEventArgs e)
-        {
-            PatientHomeWindow patientHomePage = new PatientHomeWindow();
-            patientHomePage.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (password == App.loggedUser.Password)
+            {
+                window.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Wrong password!");
+            }
         }
     }
 }

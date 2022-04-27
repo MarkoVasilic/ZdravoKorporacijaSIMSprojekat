@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using ZdravoKorporacija;
 using ZdravoKorporacija.DTO;
 
 namespace Service
@@ -114,7 +115,7 @@ namespace Service
                 return "Doctor with that JMBG doesn't exist!";
             }
             int id = GenerateNewId();
-            Appointment appointment = new Appointment(date, 15, id, "1111111111111", doctorJmbg, 11);
+            Appointment appointment = new Appointment(date, 15, id, App.loggedUser.Jmbg, doctorJmbg, 11);
             AppointmentRepository.SaveAppointment(appointment);
             if (!appointment.validateAppointment())
             {

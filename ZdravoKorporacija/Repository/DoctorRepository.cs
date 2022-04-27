@@ -23,6 +23,37 @@ namespace Repository
             return null;
         }
 
+        public Doctor? FindOneByUsername(string username)
+        {
+            List<Doctor> doctors = GetValues();
+            foreach (Doctor doctor in doctors)
+                if (doctor.Username.Equals(username))
+                    return doctor;
+
+            return null;
+        }
+
+        public void SaveDoctor(Doctor DoctorToMake)
+        {
+            var values = GetValues();
+            values.Add(DoctorToMake);
+            Save(values);
+        }
+
+        public void RemoveDoctor(string jmbg)
+        {
+            var values = GetValues();
+            values.RemoveAll(value => value.Jmbg.Equals(jmbg));
+            Save(values);
+        }
+
+        public void RemoveAll()
+        {
+            var values = GetValues();
+            values.Clear();
+            Save(values);
+        }
+
         public List<Model.Doctor>? FindAllBySpeciality(String speciality)
         {
             List<Doctor> doctors = GetValues();
