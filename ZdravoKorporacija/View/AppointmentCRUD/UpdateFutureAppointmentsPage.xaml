@@ -9,7 +9,7 @@
       Title="UpadteAppointmentsPage" Background="#FF4FC3A0">
 
     <Grid Background="#FF4FC3A0">
-        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms"  ItemsSource="{Binding Path=FutureAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="10,100,10,10">
+        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms"  ItemsSource="{Binding Path=Appointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="10,100,10,10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Doctor" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Patient" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>

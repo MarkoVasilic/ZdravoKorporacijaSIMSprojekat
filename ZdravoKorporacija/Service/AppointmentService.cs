@@ -56,7 +56,7 @@ namespace Service
                 Patient? patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
                 Room? room = RoomRepository.FindOneById(ap.RoomId);
                 possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
-                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration));
+                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration,ap.Id));
             }
             return possibleAppointmentsDTO;
         }

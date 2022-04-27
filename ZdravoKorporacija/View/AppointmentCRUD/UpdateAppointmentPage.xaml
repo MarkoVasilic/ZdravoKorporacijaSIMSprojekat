@@ -6,13 +6,23 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View"
         mc:Ignorable="d"
         Title="UpdateAppointmentPage" Height="768" Width="1024">
-    <Grid Background="Transparent">
-        <Label Content="Update an Appointment" FontSize="50" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Height="58" Margin="196,226,0,0" TextWrapping="Wrap" Text="Date:" FontSize="40" VerticalAlignment="Top" Width="172" RenderTransformOrigin="0.547,0.621"/>
-        <DatePicker  x:Name="datePicker" HorizontalAlignment="Center" Margin="0,241,0,0" VerticalAlignment="Top" Width="278" RenderTransformOrigin="0.502,0.857" Height="29"/>
-        <Button Content="Update" HorizontalAlignment="Left" Height="48"  FontSize="25" Margin="407,402,0,0" VerticalAlignment="Top" Width="201" Click="UpdateButton"/>
-        <TextBlock HorizontalAlignment="Left" Height="54" Margin="196,148,0,0" TextWrapping="Wrap" Text="ID:" FontSize="40" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.547,0.621"/>
-        <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="373,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="269" Height="32" BorderBrush="Black"/>
+    <Grid Background="#FF4FC3A0">
+        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms"  ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="10,100,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Doctor" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Patient" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="180" ></DataGridTextColumn>
+                <DataGridTemplateColumn Header="    Update" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnSelect" Content="Update"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
 

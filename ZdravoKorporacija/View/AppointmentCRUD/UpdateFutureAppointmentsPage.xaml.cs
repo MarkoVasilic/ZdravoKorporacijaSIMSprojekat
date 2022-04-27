@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
+using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
@@ -25,9 +26,8 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
        
         public UpdateFutureAppointmentsPage()
         {
-
             InitializeComponent();
-//            DataContext = new UpdateAppointmentVM();
+           DataContext = new UpdateAppointmentVM();
         }
 
 
