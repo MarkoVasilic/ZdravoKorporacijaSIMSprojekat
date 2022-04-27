@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
@@ -100,6 +101,7 @@ namespace ZdravoKorporacija
 
             //equipmentController.CreateDisplacement(7, 1, 1, 1, DateTime.Now);
             equipmentService.EquipmentDisplacement();
+
         }
 
 

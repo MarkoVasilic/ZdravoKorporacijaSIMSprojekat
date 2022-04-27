@@ -198,5 +198,13 @@
     "PatientJmbg": "1111111111111",
     "DoctorJmbg": "5151515151515",
     "RoomId": 11
+  },
+  {
+    "StartTime": "2022-04-29T09:00:00",
+    "Duration": 15,
+    "Id": 53,
+    "PatientJmbg": "1111111111111",
+    "DoctorJmbg": "5151515151515",
+    "RoomId": 11
   }
 ]
