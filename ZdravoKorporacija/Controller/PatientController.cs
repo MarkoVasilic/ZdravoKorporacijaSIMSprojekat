@@ -14,6 +14,11 @@ namespace Controller
             this.PatientService = patientService;
         }
 
+        public Patient? getPatientByUsername(String username)
+        {
+            return PatientService.GetOneByUsername(username);
+        }
+
         public List<Patient> GetAllPatients()
         {
             return PatientService.GetAllPatients();

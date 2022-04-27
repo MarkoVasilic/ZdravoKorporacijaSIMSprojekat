@@ -37,10 +37,43 @@ namespace Service
             return specialities;
         }
 
-        public List<Doctor> GetAll()
+        public List<Doctor> GetAllDoctors()
         {
             return DoctorRepository.FindAll();
         }
- 
+
+        public Doctor? GetOneByUsername(String username)
+        {
+            return DoctorRepository.FindOneByUsername(username);
+
+        }
+
+        public void CreateDoctor(bool speciality, String specialityType, string firstName, int roomId, string lastName, string username, string password,
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
+            string? address)
+        {
+            if (DoctorRepository.FindOneByJmbg(jmbg) != null)
+                throw new Exception("Doctor with that jmbg already exists!");
+            else if (DoctorRepository.FindOneByUsername(username) != null)
+                throw new Exception("Doctor with that username already exists!");
+            else
+            {
+                Doctor newDoctor = new Doctor(speciality, specialityType, roomId, firstName, lastName, username, password,
+                    jmbg, dateOfBirth, gender, email, telephone, address);
+                DoctorRepository.SaveDoctor(newDoctor);
+            }
+        }
+
+        public void DeleteDoctor(string jmbg)
+        {
+            if (DoctorRepository.FindOneByJmbg(jmbg) == null)
+            {
+                throw new Exception("Doctor with that jmbg doesn't exist!");
+            }
+            else
+            {
+                DoctorRepository.RemoveDoctor(jmbg);
+            }
+        }
     }
 }

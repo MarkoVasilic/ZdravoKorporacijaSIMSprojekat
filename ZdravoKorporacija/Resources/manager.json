@@ -1,0 +1,14 @@
+[
+  {
+    "FirstName": "Nadja",
+    "LastName": "Kanjuh",
+    "Username": "djana",
+    "Password": "mama",
+    "Jmbg": "3434343434343",
+    "DateOfBirth": "2000-07-24T00:00:00",
+    "Gender": 2,
+    "Email": "nadja@kanjuh.com",
+    "PhoneNumber": "070707070",
+    "Address": "Novi Sad"
+  }
+]

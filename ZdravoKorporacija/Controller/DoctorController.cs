@@ -29,9 +29,27 @@ namespace Controller
             return DoctorService.GetAllSpecialities();
         }
 
-        public List<Doctor> GetAll()
+        public List<Doctor> GetAllDoctors()
         {
-            return DoctorService.GetAll();
+            return DoctorService.GetAllDoctors();
+        }
+
+        public Doctor? getDoctorByUsername(String username)
+        {
+            return DoctorService.GetOneByUsername(username);
+        }
+
+        public void CreateDoctor(bool speciality, String specialityType, string firstName, int roomId, string lastName, string username, string password,
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
+            string? address)
+        {
+            DoctorService.CreateDoctor(speciality, specialityType, firstName, roomId, lastName, username, password,
+            jmbg, dateOfBirth, gender, email, phoneNumber, address);
+        }
+
+        public void DeleteDoctor(string jmbg)
+        {
+            DoctorService.DeleteDoctor(jmbg);
         }
 
     }

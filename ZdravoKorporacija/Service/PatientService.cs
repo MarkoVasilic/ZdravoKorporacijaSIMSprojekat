@@ -81,6 +81,12 @@ namespace Service
             return PatientRepository.FindOneByJmbg(jmbg);
         }
 
+        public Patient? GetOneByUsername(String username)
+        {
+            return PatientRepository.FindOneByUsername(username);
+
+        }
+
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
             Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,

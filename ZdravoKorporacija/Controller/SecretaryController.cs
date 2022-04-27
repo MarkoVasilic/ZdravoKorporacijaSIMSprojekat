@@ -1,3 +1,5 @@
+using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -5,34 +7,39 @@ namespace Controller
 {
     public class SecretaryController
     {
-        public Model.Patient CreateGuestAccount(String FirstName, String LastName, long JMBG)
+        private readonly SecretaryService SecretaryService;
+
+        public SecretaryController(SecretaryService secretaryService)
         {
-            throw new NotImplementedException();
+            this.SecretaryService = secretaryService;
         }
 
-        public List<Model.Patient> GetAllPatients()
+        public Secretary? getSecretaryByUsername(String username)
         {
-            throw new NotImplementedException();
+            return SecretaryService.GetOneByUsername(username);
         }
 
-        public Model.Patient CreatePatient(Model.Patient PatientToMake)
+        public List<Secretary> GetAllSecretary()
         {
-            throw new NotImplementedException();
+            return SecretaryService.GetAllSecretaries();
         }
 
-        public Boolean DeletePatient(long JMBG)
+        public void CreateSecretary(string firstName, string lastName, string username, string password,
+            string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
+            string? address)
         {
-            throw new NotImplementedException();
+            SecretaryService.CreateSecretary(firstName, lastName, username, password,
+            jmbg, dateOfBirth, gender, email, phoneNumber, address);
         }
 
-        public Boolean ModifyPatient(Model.Patient PatientToModify)
+        public void DeleteSecretary(string jmbg)
         {
-            throw new NotImplementedException();
+            SecretaryService.DeleteSecretary(jmbg);
         }
 
-        public Model.Patient GetOnePatient(long JMBG)
+        public Secretary? GetOneSecretary(string jmbg)
         {
-            throw new NotImplementedException();
+            return SecretaryService.GetOneByJmbg(jmbg);
         }
 
     }

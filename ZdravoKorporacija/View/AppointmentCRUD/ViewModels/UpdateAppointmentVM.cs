@@ -186,7 +186,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
                 roomRepository);
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
-            doctorsListToDoctorList(doctorController.GetAll());
+            doctorsListToDoctorList(doctorController.GetAllDoctors());
             possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
           //  possibleAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
             SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
