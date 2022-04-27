@@ -195,7 +195,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         private void possibleAppointmentsPatientExecute(object sender)
         {
-            appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary("1111111111111", SelectedDoctor.Jmbg, SelectedDoctor.RoomId,
+            appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary(App.loggedUser.Jmbg, SelectedDoctor.Jmbg, SelectedDoctor.RoomId,
                         DateFrom, DateUntil, 45, SelectedPriority));
             PatientWindowVM.NavigationService.Navigate(new PossibleAppointmentPatientPage(this));
         }
@@ -249,7 +249,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
                 ErrorMessagePossibleAppointments = "";
                 try
                 {
-                    appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary("1111111111111", SelectedDoctor.Jmbg, 1,
+                    appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary(App.loggedUser.Jmbg, SelectedDoctor.Jmbg, 1,
                         DateFrom, DateUntil, 45, SelectedPriority));
                     ErrorMessagePossibleAppointments = "";
                 }

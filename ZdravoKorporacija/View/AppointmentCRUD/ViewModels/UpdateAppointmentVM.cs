@@ -14,6 +14,7 @@ using ZdravoKorporacija.DTO;
 
 using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 using ZdravoKorporacija.View.AppointmentCRUD;
+using System.Windows;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 {
@@ -187,8 +188,8 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());
-            possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
-          //  possibleAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
+           // possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            possibleAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
             SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
@@ -216,6 +217,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         private void possibleAppointmentListToAppointmentList(List<PossibleAppointmentsDTO> possibleAppointmentsDTOs)
         {
             Appointments = new ObservableCollection<PossibleAppointmentsDTO>();
+
             foreach (var pa in possibleAppointmentsDTOs)
             {
                 if (pa.StartTime > DateTime.Now)
@@ -228,12 +230,12 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             try
             {
                 List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = appointmentController.GetPossibleAppointmentsBySecretary(SelectedAppointment.PatientJmbg,
-                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, DateTime.Today, DateTime.Today.AddDays(4), SelectedAppointment.Duration,
+                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.StartTime.AddDays(4), SelectedAppointment.Duration,
                 "time");
                 PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
                 foreach (var pa in possibleAppointmentsDTOs)
-                {
-                    PossibleAppointments.Add(pa);
+                {  
+                        PossibleAppointments.Add(pa);   
                 }
             }
             catch (Exception e)
@@ -251,7 +253,12 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         {
             SelectedAppointment = parameter as PossibleAppointmentsDTO;
             appointmentListToAppointmentList();
-            //PatientWindowVM.NavigationService.Navigate(new UpdateFutureAppointmentPage(this));
+            if (SelectedAppointment.StartTime.AddHours(-24) < System.DateTime.Now)
+            {
+                MessageBox.Show("Can't postpone an appointment 24 hours before initial date!");
+            }
+            else
+                PatientWindowVM.NavigationService.Navigate(new UpdateAppointmentPage(this));
         }
 
         private void deleteAppointmentExecute(object parameter)
@@ -265,9 +272,11 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         {
             SelectedNewAppointment = parameter as PossibleAppointmentsDTO;
             try
-            {
-                appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
-                PatientWindowVM.NavigationService.Navigate(new UpdateAppointmentPage());
+            {   
+                    appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
+                    MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
+                    PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+                
             }
             catch (Exception e)
             {

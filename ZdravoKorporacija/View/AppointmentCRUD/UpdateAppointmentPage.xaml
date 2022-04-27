@@ -6,23 +6,26 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View"
         mc:Ignorable="d"
         Title="UpdateAppointmentPage" Height="768" Width="1024">
-    <Grid Background="#FF4FC3A0">
-        <DataGrid Background="#FF4FC3A0" x:Name="dataGridRooms"  ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="352" VerticalAlignment="Top" Margin="10,100,10,10">
+    <Grid >
+        <DataGrid  x:Name="dataGridRooms" FontSize="16" ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Margin="0,245,20,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Doctor" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Patient" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="180" ></DataGridTextColumn>
-                <DataGridTemplateColumn Header="    Update" Width="*">
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="120" ></DataGridTextColumn>
+                <DataGridTemplateColumn Header="    Zakazi" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnSelect" Content="Update"/>
+                            <Button Name="btnSelect" Content="Zakazi" Command="{Binding SelectNewAppointmentCommand}" CommandParameter="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
+                                        DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGrid}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Home" FontSize="30" HorizontalAlignment="Left" Margin="281,632,0,0" VerticalAlignment="Top" Height="81" Width="382" Click="Button_Click"/>
+        <Label Content="Possible Appointment" FontSize="50" HorizontalAlignment="Left" Margin="252,72,0,0" VerticalAlignment="Top" Height="81" Width="570"/>
     </Grid>
 </Page>
 

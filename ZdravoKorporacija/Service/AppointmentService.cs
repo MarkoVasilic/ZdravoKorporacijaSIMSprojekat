@@ -49,7 +49,7 @@ namespace Service
 
         public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
         {
-            List<Appointment> appointments = AppointmentRepository.GetAllFutureByPatient("1111111111111");
+            List<Appointment> appointments = AppointmentRepository.GetAllFutureByPatient(App.loggedUser.Jmbg);
             List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();
             foreach (var ap in appointments)
             {

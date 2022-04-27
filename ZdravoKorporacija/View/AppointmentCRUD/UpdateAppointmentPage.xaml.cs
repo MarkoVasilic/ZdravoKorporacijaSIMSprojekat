@@ -4,6 +4,8 @@ using Service;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.View.AppointmentCRUD;
+using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
 
 namespace ZdravoKorporacija.View
 {
@@ -12,12 +14,18 @@ namespace ZdravoKorporacija.View
     /// </summary>
     public partial class UpdateAppointmentPage : Page
     {
-
-        public UpdateAppointmentPage()
+        private UpdateAppointmentVM updateAppointmentVM;
+        public UpdateAppointmentPage(UpdateAppointmentVM updateAppointmentVM)
         {
             InitializeComponent();
- 
+            this.updateAppointmentVM = updateAppointmentVM;
+            DataContext = updateAppointmentVM;
+
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AppointmentPage());
+        }
     }
 }
