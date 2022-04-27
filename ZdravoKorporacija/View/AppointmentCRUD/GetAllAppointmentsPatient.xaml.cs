@@ -21,8 +21,13 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
             AppointmentService appointmentService = new AppointmentService();
             appointmentController = new AppointmentController(appointmentService);
             this.DataContext = this;
-            appointments = new ObservableCollection<Appointment>(appointmentController.GetAppointmentsByPatientJmbg("1111111111111"));
+            appointments = new ObservableCollection<Appointment>(appointmentController.GetAppointmentsByPatientJmbg(App.loggedUser.Jmbg));
            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AppointmentPage());
         }
     }
 }

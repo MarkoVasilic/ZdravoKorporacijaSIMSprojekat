@@ -31,6 +31,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         private DateTime dateUntil;
         private ObservableCollection<Doctor> doctors;
         private ObservableCollection<PossibleAppointmentsDTO> possibleAppointments;
+        private ObservableCollection<PossibleAppointmentsDTO> futureAppointments;
         private String errorMessage;
         private String errorMessagePossibleAppointments;
         private String errorMessageConfirmAppointment;
@@ -39,6 +40,8 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public ICommand GetAllPossibleAppointmentsPatient { get; set; }
+
+        public ICommand GetAllFutureAppointmentsPatient { get; set; }
         public ICommand SelectedAppointmentCommand { get; set; }
 
         public ICommand GoBackCommand { get; set; }
@@ -70,6 +73,16 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             {
                 possibleAppointments = value;
                 OnPropertyChanged("PossibleAppointments");
+            }
+        }
+
+        public ObservableCollection<PossibleAppointmentsDTO> FutureAppointments
+        {
+            get => futureAppointments;
+            set
+            {
+                futureAppointments = value;
+                OnPropertyChanged("FutureAppointments");
             }
         }
 
@@ -149,7 +162,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         public CreateAppointmentVM()
         {
-            DoctorRepository doctorRepository = new DoctorRepository();  
+            DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
 
@@ -160,6 +173,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             doctorsListToDoctorList(doctorController.getAllBySpeciality("Physician"));
 
             GetAllPossibleAppointmentsPatient = new RelayCommand(possibleAppointmentsPatientExecute);
+            GetAllFutureAppointmentsPatient = new RelayCommand(futureAppointmentsPatientExecute); //moze biti problem i u samoj UpdateFutureAppointmentsPage zbog UpdateFutureAppointmentsPage(CreateAppointmentVM)
 
         }
 
@@ -171,11 +185,27 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
         }
 
+        public void SelectFutureAppointment()
+        {
+            Console.WriteLine("Usao u SelectFutureAppointment");
+            appointmentController.CreateAppointmentByPatient(selectedAppointment.StartTime, selectedAppointment.DoctorJmbg);
+            MessageBox.Show("Uspjesno zakazan pregled za " + selectedAppointment.StartTime);
+            PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+        }
+
         private void possibleAppointmentsPatientExecute(object sender)
         {
-            appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary("1111111111111", SelectedDoctor.Jmbg, SelectedDoctor.RoomId,
+            appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary(App.loggedUser.Jmbg, SelectedDoctor.Jmbg, SelectedDoctor.RoomId,
                         DateFrom, DateUntil, 45, SelectedPriority));
             PatientWindowVM.NavigationService.Navigate(new PossibleAppointmentPatientPage(this));
+        }
+
+
+        private void futureAppointmentsPatientExecute(object sender)
+        {
+            Console.WriteLine("Usao u futureAppointmentsPatientExecute");
+            futureAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
+            PatientWindowVM.NavigationService.Navigate(new UpdateFutureAppointmentsPage());
         }
 
 
@@ -198,6 +228,16 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             }
         }
 
+        private void futureAppointmentListToAppointmentList(List<PossibleAppointmentsDTO> appointmentsDTOs)
+        {
+            Console.WriteLine("Usao u futureAppointmentListToAppointmentList");
+            FutureAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
+            foreach (var pad in appointmentsDTOs)
+            {
+                FutureAppointments.Add(pad);
+            }
+        }
+
         private void searchAppointmentExecute(object parameter)
         {
             if (SelectedDoctor == null || DateFrom.Year == 1 || DateUntil.Year == 1)
@@ -209,8 +249,30 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
                 ErrorMessagePossibleAppointments = "";
                 try
                 {
-                    appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary("1111111111111", SelectedDoctor.Jmbg, 1,
+                    appointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsBySecretary(App.loggedUser.Jmbg, SelectedDoctor.Jmbg, 1,
                         DateFrom, DateUntil, 45, SelectedPriority));
+                    ErrorMessagePossibleAppointments = "";
+                }
+                catch (Exception e)
+                {
+                    ErrorMessagePossibleAppointments = e.Message;
+                }
+            }
+        }
+
+        private void searchFutureAppointmentExecute(object parameter)
+        {
+            Console.WriteLine("Usao u searchFutureAppointmentExecute");
+            if (SelectedDoctor == null || DateFrom.Year == 1 || DateUntil.Year == 1)
+            {
+                ErrorMessagePossibleAppointments = "All fields are necessary!";
+            }
+            else
+            {
+                ErrorMessagePossibleAppointments = "";
+                try
+                {
+                    futureAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
                     ErrorMessagePossibleAppointments = "";
                 }
                 catch (Exception e)
@@ -231,6 +293,28 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
                 appointmentController.CreateAppointmentByPatient(DateFrom, selectedDoctor.Jmbg);
 
             //    SecretaryWindowVM.NavigationService.Navigate(new SecretaryHomePage());
+            }
+            catch (Exception e)
+            {
+                ErrorMessageConfirmAppointment = e.Message;
+            }
+
+        }
+
+        private void selectFutureAppointmentExecute(object parameter)
+        {
+            Console.WriteLine("Usao u selectFutureAppointmentExecute");
+            selectedAppointment = parameter as PossibleAppointmentsDTO;
+            //  SecretaryWindowVM.NavigationService.Navigate(new ConfirmAppointmentInformations(this));
+        }
+        private void confirmFutureAppointmentExecute(object parameter)
+        {
+            try
+            {
+                Console.WriteLine("Usao u confirmFutureAppointmentExecute");
+                appointmentController.CreateAppointmentByPatient(DateFrom, selectedDoctor.Jmbg);
+
+                //    SecretaryWindowVM.NavigationService.Navigate(new SecretaryHomePage());
             }
             catch (Exception e)
             {

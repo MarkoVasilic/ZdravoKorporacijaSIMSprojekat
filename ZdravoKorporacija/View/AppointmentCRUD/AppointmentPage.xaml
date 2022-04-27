@@ -17,6 +17,6 @@
         <Button Content="Create Appointment" HorizontalAlignment="Left" Height="72" Margin="390,181,0,0" VerticalAlignment="Top" Width="212" Click="ButtonCreateAppointment"/>
         <Button Content="My Appointments" HorizontalAlignment="Left" Height="72" Margin="390,282,0,0" VerticalAlignment="Top" Width="212" RenderTransformOrigin="0.794,0.508" Click="MyAppointmentsButton"/>
         <Button Content="Delete Appointment" HorizontalAlignment="Left" Height="72" Margin="390,527,0,0" VerticalAlignment="Top" Width="212" Click="DeleteAppointmentButton"/>
-        <Button Content="Update Appointment" HorizontalAlignment="Left" Height="72" Margin="390,400,0,0" VerticalAlignment="Top" Width="212" Click="UpdateAppointmentButton" />
+        <Button Content="Update Appointment" HorizontalAlignment="Left" Height="72" Margin="390,400,0,0" VerticalAlignment="Top" Width="212"  Click="UpdateAppointmentButton"/>
     </Grid>
 </Page>
