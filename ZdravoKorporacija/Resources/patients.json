@@ -1,0 +1,126 @@
+[
+  {
+    "IsGuest": false,
+    "Allergens": [],
+    "BloodTypeEnum": 3,
+    "FirstName": "dsdsasd",
+    "LastName": "dsacasdcsa",
+    "Username": "konjiiiii",
+    "Password": "konjiiiii",
+    "Jmbg": "7778889994445",
+    "DateOfBirth": "2022-04-14T00:00:00",
+    "Gender": 1,
+    "Email": "aaa@cds.com",
+    "PhoneNumber": "342423",
+    "Address": "cdssaccascds cdsacscds csdavvfsfvfd vsdfvfvasvfs vsfsvsf vfsvsfavsfv vsfvfsafv vfsvsavsdv"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 1,
+    "FirstName": "milos",
+    "LastName": "milosevic",
+    "Username": "mikimilane",
+    "Password": "mackacka",
+    "Jmbg": "7458963215963",
+    "DateOfBirth": "2022-04-16T16:12:17.7395603+02:00",
+    "Gender": 1,
+    "Email": "milos@milos.com",
+    "PhoneNumber": "456789",
+    "Address": "neka dresa 12"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [],
+    "BloodTypeEnum": 4,
+    "FirstName": "marko",
+    "LastName": "vasilic",
+    "Username": "marko",
+    "Password": "sifra123",
+    "Jmbg": "1123456789111",
+    "DateOfBirth": "2022-03-28T00:00:00",
+    "Gender": 1,
+    "Email": "cdsa@cdds.coc",
+    "PhoneNumber": "212",
+    "Address": "sascdcsa"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "vfdsvdf",
+      "vfdsvdf",
+      "vsdfvdf"
+    ],
+    "BloodTypeEnum": 2,
+    "FirstName": "cdascasa",
+    "LastName": "csdcsa",
+    "Username": "lllllaaaa",
+    "Password": "aaaalllll",
+    "Jmbg": "7777788888999",
+    "DateOfBirth": "2022-03-31T00:00:00",
+    "Gender": 1,
+    "Email": "cdsacs@cds.com",
+    "PhoneNumber": "34232342",
+    "Address": "cdscsd cdascsad cdascasdc"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "vdsvfd",
+      "lazarrrr"
+    ],
+    "BloodTypeEnum": 6,
+    "FirstName": "lazar",
+    "LastName": "lazarobi",
+    "Username": "lakil",
+    "Password": "lazarlazar",
+    "Jmbg": "7536984215123",
+    "DateOfBirth": "2022-03-28T00:00:00",
+    "Gender": 1,
+    "Email": "dcas@cds.com",
+    "PhoneNumber": "3421",
+    "Address": "vfsvdf"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "kkokokko",
+    "LastName": "mcodsmavmsfom",
+    "Username": "kkokokko",
+    "Password": "sifra123",
+    "Jmbg": "6666655555777",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "cdsacs",
+      "cdascs",
+      "cdascs",
+      "cdacs",
+      "cdasc",
+      "cdacscsd",
+      "sdcascdsd"
+    ],
+    "BloodTypeEnum": 4,
+    "FirstName": "marko",
+    "LastName": "vasilic",
+    "Username": "marko",
+    "Password": "sifra123",
+    "Jmbg": "1111111111111",
+    "DateOfBirth": "2022-03-28T00:00:00",
+    "Gender": 1,
+    "Email": "cdsa@cdds.coc",
+    "PhoneNumber": "212",
+    "Address": "sascdcsa"
+  }
+]

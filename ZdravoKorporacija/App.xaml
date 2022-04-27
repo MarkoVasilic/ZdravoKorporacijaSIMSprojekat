@@ -1,0 +1,69 @@
+﻿<Application x:Class="ZdravoKorporacija.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ZdravoKorporacija"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="BellMTFont">.\Resources\Fonts\Bell_MT.ttf#Bell MT</FontFamily>
+        <Style x:Key="SecretaryTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="SecretaryListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Height" Value="80"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="SecretaryGreenButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="110"></Setter>
+            <Setter Property="Background" Value="#FF7DBE7F"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+        <Style x:Key="SecretaryRedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="110"></Setter>
+            <Setter Property="Background" Value="#FFE95555"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+        <Style x:Key="SecretaryDatePickerStyle" TargetType="{x:Type DatePicker}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Setter Property="Focusable" Value="False"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="SecretaryComboBoxStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5,5,5,5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="SecretaryTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#FFE95555"></Setter>
+            <Setter Property="Margin" Value="0 10 0 0"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Name": "sto",
+    "IsStatic": true,
+    "Quantity": 2,
+    "RoomId": 7
+  },
+  {
+    "Id": 2,
+    "Name": "igle",
+    "IsStatic": false,
+    "Quantity": 200,
+    "RoomId": null
+  },
+  {
+    "Id": 3,
+    "Name": "zavoj",
+    "IsStatic": false,
+    "Quantity": 50,
+    "RoomId": null
+  }
+]

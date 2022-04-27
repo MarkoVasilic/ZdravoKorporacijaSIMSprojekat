@@ -1,0 +1,86 @@
+﻿<Page x:Class="ZdravoKorporacija.View.SecretaryUI.ConfirmAppointmentInformations"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.SecretaryUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="430"
+      Background="#FFF3F2FC"
+      Title="ConfirmAppointmentInformations"
+      FontFamily="{StaticResource BellMTFont}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="380"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Confirm informations" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,0,1">
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Patient details:</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Full name:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.PatientFullName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Jmbg:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.PatientJmbg, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Doctor details:</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Full name:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.DoctorFullName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Speciality:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.DoctorSpeciality, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Room details:</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Room name:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.RoomName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Room ID:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.RoomId, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Width="120" FontWeight="Bold" Foreground="#FF7DBE7F"> Time details:</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Date and time:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.StartTime, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                    <TextBlock FontSize="18" Width="120"> Duration:</TextBlock>
+                    <TextBlock Text="{Binding Path=SelectedAppointment.Duration, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                    <TextBlock FontSize="18" FontWeight="SemiBold" Width="120" Margin="5 0 0 0"> minutes</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="{Binding Path=ErrorMessageConfirmAppointment, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
+            </TextBlock>
+        </StackPanel>
+        <Button Name="SearchButton" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+                Command="{Binding ConfirmAppointmentCommand}" Margin="0,10,10,0" Content="Confirm">
+        </Button>
+    </Grid>
+</Page>

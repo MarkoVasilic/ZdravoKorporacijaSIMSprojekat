@@ -1,0 +1,131 @@
+﻿<Page x:Class="ZdravoKorporacija.View.SecretaryUI.EditBasicInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.SecretaryUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="430"
+      Title="EditBasicInfo"
+      Background="#FFF3F2FC"
+      FontFamily="{StaticResource BellMTFont}">
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <Label Content="Basic info" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >First name:</TextBlock>
+                    <TextBox x:Name="FirstNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="FirstName" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Last name:</TextBlock>
+                    <TextBox x:Name="LastNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="LastName" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left">Date of birth:</TextBlock>
+                    <DatePicker Grid.Column="1" Margin="20 10 0 10" FontSize="18" Width="215" Style="{StaticResource SecretaryDatePickerStyle}"
+                                    SelectedDate="{Binding Path=DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayDateEnd="{x:Static sys:DateTime.Today}">
+                    </DatePicker>
+                </StackPanel>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"></ColumnDefinition>
+                        <ColumnDefinition Width="120"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock FontSize="18" >Gender:</TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <RadioButton x:Name = "Male" GroupName = "Gender" FontSize="18" Content="Male"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <RadioButton x:Name = "Female" GroupName = "Gender" FontSize="18" Content="Female"/>
+                    </StackPanel>
+                </Grid>
+                <StackPanel Grid.Row="6" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Blood type:</TextBlock>
+                    <ComboBox Name="BloodTypeComboBox" Style="{StaticResource SecretaryComboBoxStyle}" SelectedValuePath="Content" >
+                        <ComboBoxItem>NONE</ComboBoxItem>
+                        <ComboBoxItem>A+</ComboBoxItem>
+                        <ComboBoxItem>A-</ComboBoxItem>
+                        <ComboBoxItem>B+</ComboBoxItem>
+                        <ComboBoxItem>B-</ComboBoxItem>
+                        <ComboBoxItem>O+</ComboBoxItem>
+                        <ComboBoxItem>O-</ComboBoxItem>
+                        <ComboBoxItem>AB+</ComboBoxItem>
+                        <ComboBoxItem>AB-</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Row="7" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Phone Number:</TextBlock>
+                    <TextBox x:Name="PhoneNumberTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="PhoneNumber" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="8" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Email:</TextBlock>
+                    <TextBox x:Name="EmailTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
+                        <TextBox.Text>
+                            <Binding Path="Email" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="9" Grid.Column="1">
+                    <TextBlock Margin="0,10,0,10" FontSize="18" >Address:</TextBlock>
+                    <TextBox x:Name="AddressTextBox" Style="{StaticResource SecretaryTextBoxStyle}" Height="80"
+                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
+                        <TextBox.Text>
+                            <Binding Path="Address" Mode="TwoWay" UpdateSourceTrigger = "PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="10" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
+                    </TextBlock>
+                </StackPanel>
+                <Button Name="SaveButton" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+                Click="Save_Button_Click" Margin="0,10,10,0" Content="Save">
+                </Button>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
