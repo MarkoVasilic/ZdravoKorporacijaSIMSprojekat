@@ -27,17 +27,14 @@ namespace ZdravoKorporacija.View
         {
 
             Id = int.Parse(textBoxDeleteAppointment.Text);
-
-            errorMessage = appointmentController.DeleteAppointment(Id);
-
-            if (errorMessage.Length == 0)
+            try
             {
-
+                appointmentController.DeleteAppointment(Id);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(appointmentController.DeleteAppointment(Id), "Error");
-
+                errorMessage = ex.Message;
+                MessageBox.Show(errorMessage, "Error");
             }
 
         }

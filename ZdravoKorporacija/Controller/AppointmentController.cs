@@ -35,13 +35,13 @@ namespace Controller
             return AppointmentService.CreateAppointmentByPatient(startTime, doctorJmbg);
         }
 
-        public String DeleteAppointment(int appointmentId)
+        public void DeleteAppointment(int appointmentId)
         {
-            return AppointmentService.DeleteAppointment(appointmentId);
+            AppointmentService.DeleteAppointment(appointmentId);
         }
-        public String ModifyAppointment(int appointmentId, DateTime newDate)
+        public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            return AppointmentService.ModifyAppointment(newDate, appointmentId);
+            AppointmentService.ModifyAppointment(appointmentId, newDate);
         }
 
         public Appointment GetOneById(int appointmentId)
