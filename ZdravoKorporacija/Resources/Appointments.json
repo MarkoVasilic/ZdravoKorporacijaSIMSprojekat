@@ -8,22 +8,6 @@
     "RoomId": 11
   },
   {
-    "StartTime": "2023-03-05T09:00:00",
-    "Duration": 60,
-    "Id": 10,
-    "PatientJmbg": "1111111111111",
-    "DoctorJmbg": "1231231231231",
-    "RoomId": 11
-  },
-  {
-    "StartTime": "2023-03-05T17:00:00",
-    "Duration": 15,
-    "Id": 39,
-    "PatientJmbg": "1111111111111",
-    "DoctorJmbg": "1231231231231",
-    "RoomId": 11
-  },
-  {
     "StartTime": "2023-03-04T17:00:00",
     "Duration": 60,
     "Id": 40,
@@ -156,6 +140,22 @@
     "Duration": 15,
     "Id": 53,
     "PatientJmbg": "1123456789111",
+    "DoctorJmbg": "1231231231231",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2023-03-05T17:30:00",
+    "Duration": 60,
+    "Id": 10,
+    "PatientJmbg": "1111111111111",
+    "DoctorJmbg": "1231231231231",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2023-03-09T05:45:00",
+    "Duration": 15,
+    "Id": 39,
+    "PatientJmbg": "1111111111111",
     "DoctorJmbg": "1231231231231",
     "RoomId": 11
   }
