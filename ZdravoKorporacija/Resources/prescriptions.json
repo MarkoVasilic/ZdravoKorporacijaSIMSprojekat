@@ -1,10 +1,10 @@
-{
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
-}
+[
+  {
+    "Id": 1,
+    "Medication": "paracetamol",
+    "Amount": "200mg",
+    "Frequency": 3,
+    "From": "2022-04-28T00:15:00",
+    "To": "2023-04-28T00:15:00"
+  }
+]

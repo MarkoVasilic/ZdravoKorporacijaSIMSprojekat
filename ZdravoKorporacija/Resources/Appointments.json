@@ -1,6 +1,5 @@
 [
   {
-<<<<<<< HEAD
     "StartTime": "2022-04-28T00:15:00",
     "Duration": 15,
     "Id": 54,
@@ -13,7 +12,7 @@
     "Duration": 15,
     "Id": 56,
     "PatientJmbg": "7778889994445",
-    "DoctorJmbg": null,
+    "DoctorJmbg": "5454545454545",
     "RoomId": 11
   },
   {
@@ -22,19 +21,6 @@
     "Id": 58,
     "PatientJmbg": "7778889994445",
     "DoctorJmbg": "5454545454545",
-    "RoomId": 11
-  },
-  {
-    "StartTime": "2022-04-28T01:15:00",
-    "Duration": 15,
-    "Id": 55,
-    "PatientJmbg": "7778889994445",
-=======
-    "StartTime": "2020-03-03T16:00:00",
-    "Duration": 30,
-    "Id": 36,
-    "PatientJmbg": "1111111111111",
-    "DoctorJmbg": "1231231231231",
     "RoomId": 11
   },
   {
@@ -178,7 +164,6 @@
     "Duration": 60,
     "Id": 10,
     "PatientJmbg": "1111111111111",
->>>>>>> 3fc071e61d6496b0bb3e44f385554ca773d70ffb
     "DoctorJmbg": "1231231231231",
     "RoomId": 11
   },
@@ -236,6 +221,86 @@
     "Id": 68,
     "PatientJmbg": "7778889994445",
     "DoctorJmbg": "1231231231231",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-13T09:15:00",
+    "Duration": 15,
+    "Id": 69,
+    "PatientJmbg": "1111111111111",
+    "DoctorJmbg": "5151515151515",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-18T05:45:00",
+    "Duration": 15,
+    "Id": 70,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "5151515151515",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-27T08:15:00",
+    "Duration": 15,
+    "Id": 71,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "5454545454545",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-02T10:00:00",
+    "Duration": 15,
+    "Id": 72,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "5454545454545",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-07-02T16:30:00",
+    "Duration": 15,
+    "Id": 73,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "5151515151515",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-13T01:00:00",
+    "Duration": 15,
+    "Id": 74,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "1231231231231",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-07-03T01:15:00",
+    "Duration": 15,
+    "Id": 75,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "1231231231231",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-28T09:30:00",
+    "Duration": 15,
+    "Id": 76,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "4444444444444",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-05-11T17:30:00",
+    "Duration": 15,
+    "Id": 77,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "5454545454545",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-04-29T08:30:00",
+    "Duration": 15,
+    "Id": 78,
+    "PatientJmbg": "6666655555777",
+    "DoctorJmbg": "5151515151515",
     "RoomId": 11
   }
 ]

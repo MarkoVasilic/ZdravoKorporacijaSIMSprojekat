@@ -1,27 +1,42 @@
-﻿[
+[
   {
     "Id": 1,
-    "Title": "Dobrodosli u ZdravoKorporaciju",
-    "StartTime": "2022-02-02T00:15:00",
-    "UserJmbg": "1111111111111",
-    "Description": "Dobrodosli u ZdravoKorporaciju, najbolje mjesto za rehabilitaciju!",
+    "Title": "Dobrodosli u Zdravo Korporaciju",
+    "Description": "Poruka dobrodoslice gospodine Jovane!",
+    "StartTime": "2022-04-28T00:45:00",
+    "userJmbg": "1111111111111",
     "Seen": false
   },
   {
     "Id": 2,
-    "Title": "Otkazan Pregled",
-    "StartTime": "2022-04-28T00:15:00",
-    "UserJmbg": "1111111111111",
-    "Description": "Otkazan Vam je pregled kod Doktora Jovana Konjevica!",
+    "Title": "Vrijeme je za lijek",
+    "Description": "Popijte paracetamol 200mg danas u 15:00!",
+    "StartTime": "2022-04-28T00:45:00",
+    "userJmbg": "1111111111111",
     "Seen": false
-
   },
   {
     "Id": 3,
-    "Title": "Popijte Lijek",
-    "StartTime": "2022-04-28T00:15:00",
-    "UserJmbg": "1111111111111",
-    "Description": "Vrijeme Vam je da popijete Lijek, Paracetamol 200mg 15:00!",
+    "Title": "Otkazan pregled",
+    "Description": "Otkazan Vam je pregled kod doktora Jovana Konjevica!",
+    "StartTime": "2022-04-28T00:45:00",
+    "userJmbg": "1111111111111",
+    "Seen": false
+  },
+  {
+    "Id": 4,
+    "Title": "Vrijeme je za lijek",
+    "Description": "Popijte rapidol S 400mg danas u 10:00!",
+    "StartTime": "2022-04-28T00:45:00",
+    "userJmbg": "1111111111111",
+    "Seen": false
+  },
+  {
+    "Id": 5,
+    "Title": "Vrijeme je za lijek",
+    "Description": "Popijte rapidol S 400mg danas u 20:00!",
+    "StartTime": "2022-04-28T00:45:00",
+    "userJmbg": "1111111111111",
     "Seen": false
   }
 ]
