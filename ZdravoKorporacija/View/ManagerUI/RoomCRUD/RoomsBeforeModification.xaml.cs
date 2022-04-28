@@ -24,6 +24,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private RoomController roomController;
         public ObservableCollection<Room> rooms { get; set; }
+        public Room checkedRoom     { get; set; }
         public RoomsBeforeModification()
         {
             InitializeComponent();
@@ -44,8 +45,22 @@ namespace ZdravoKorporacija.View.RoomCRUD
         private void ModifyButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
-            ModifyRoom modifyRoom = new ModifyRoom();
+            ModifyRoom modifyRoom = new ModifyRoom(checkedRoom);
             modifyRoom.Show();
+        }
+
+        private void RadioButtonList_Checked(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(((RadioButton)sender).Tag);
+            int id = (int)((RadioButton)sender).Tag ;
+
+            foreach(Room r in rooms)
+            {
+                if (r.Id == id)
+                    checkedRoom = r;
+            }
+
+
         }
     }
 }

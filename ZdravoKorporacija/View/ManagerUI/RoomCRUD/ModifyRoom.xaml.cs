@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using Repository;
 using Service;
 using System;
@@ -11,9 +12,9 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private RoomController roomController;
 
-        public ModifyRoom()
+        public ModifyRoom(Room room)
         {
-            InitializeComponent();
+            Console.WriteLine(room.Name);
             InitializeComponent();
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);

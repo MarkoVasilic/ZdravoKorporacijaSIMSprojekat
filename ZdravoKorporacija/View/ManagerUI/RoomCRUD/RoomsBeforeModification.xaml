@@ -16,7 +16,7 @@
                 <DataGridTemplateColumn Header="Modify">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="RadioButtonList" GroupName="modifyRoomGroup" HorizontalAlignment="Center" IsChecked="{Binding Id}" ></RadioButton>
+                            <RadioButton x:Name="RadioButtonList" GroupName="modifyRoomGroup" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Id}"></RadioButton>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

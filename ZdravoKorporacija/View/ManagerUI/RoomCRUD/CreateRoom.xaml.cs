@@ -1,67 +1,54 @@
-﻿using Controller;
-using Model;
-using Repository;
-using Service;
+﻿using Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using ZdravoKorporacija.View.ManagerUI.ViewModels;
 
-namespace ZdravoKorporacija.View.RoomCRUD
+namespace ZdravoKorporacija.View.ManagerUI
 {
+    /// <summary>
+    /// Interaction logic for AddRoom.xaml
+    /// </summary>
     public partial class CreateRoom : Window
-
     {
 
-        private RoomType type;
-        private RoomController roomController;
+        private CreateRoomVM createRoomVM;
         public CreateRoom()
         {
             InitializeComponent();
-            RoomRepository roomRepository = new RoomRepository();
-            RoomService roomService = new RoomService(roomRepository);
-            roomController = new RoomController(roomService);
+            createRoomVM = new CreateRoomVM();
+            this.DataContext = createRoomVM;
         }
 
-        private void CreateRoomClick(object sender, RoutedEventArgs e)
+
+        public void Button_Create_Room_Click(object sender, RoutedEventArgs e)
         {
-            String name = textBoxName.Text;
+            if (RoomTypeComboBox.SelectedIndex == 0)
+            {
+                createRoomVM.setRoomType(RoomType.EXAMINATION);
+            }
+            else if (RoomTypeComboBox.SelectedIndex == 1)
+            {
+                createRoomVM.setRoomType(RoomType.CONFERENCE);
+            }
+            else if (RoomTypeComboBox.SelectedIndex == 2)
+            {
+                createRoomVM.setRoomType(RoomType.SURGERY);
+            }
+        }
 
-            if (name.Trim() == "")
-            {
-                MessageBox.Show("Please enter a name", "Error");
-                return;
-            }
-
-            String description = textBoxDescription.Text;
-
-            if (description.Trim() == "")
-            {
-                MessageBox.Show("Please enter a description", "Error");
-                return;
-            }
-
-            if (comboBoxType.SelectedIndex == 0)
-            {
-                type = RoomType.EXAMINATION;
-            }
-            else if (comboBoxType.SelectedIndex == 1)
-            {
-                type = RoomType.CONFERENCE;
-            }
-            else if (comboBoxType.SelectedIndex == 2)
-            {
-                type = RoomType.SURGERY;
-            }
-            else
-            {
-                MessageBox.Show("Please select a type", "Error");
-                return;
-            }
-
-           roomController.CreateRoom(name, description, type);
-            this.Close();
-            GetAllRooms allRooms = new GetAllRooms();
-            allRooms.Show();
-          
+        private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
