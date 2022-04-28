@@ -64,12 +64,5 @@ namespace ZdravoKorporacija.Repository
             return null;
         }
 
-        public void UpdateRoom(BasicRenovation renovationToModify)
-        {
-            var values = GetValues();
-            values[values.FindIndex(val => val.Id == renovationToModify.Id)] = renovationToModify;
-            Save(values);
-        }
-
     }
 }

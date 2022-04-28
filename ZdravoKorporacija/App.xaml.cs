@@ -33,11 +33,12 @@ namespace ZdravoKorporacija
             DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
-            DisplacementRepository displacementRepository = new DisplacementRepository();   
+            DisplacementRepository displacementRepository = new DisplacementRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository, basicRenovationRepository);
             appointmentController = new AppointmentController(appointmentService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
@@ -117,6 +118,13 @@ namespace ZdravoKorporacija
                 Gender.MALE, "marko@vasilic.com", "060606060", "Novi Sad");
             managerController.CreateManager("Nadja", "Kanjuh", "djana", "mama", "3434343434343", new DateTime(2000, 7, 24),
                 Gender.FEMALE, "nadja@kanjuh.com", "070707070", "Novi Sad");*/
+            //basicRenovationRepository.SaveBasicRenovation(new BasicRenovation(500, 5, DateTime.Now, 360, "nesto"));
+            /*List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = appointmentController.GetPossibleAppointmentsByManager(5, DateTime.Now,
+                DateTime.Now.AddDays(4), 60);
+            foreach (var pa in possibleAppointmentsDTOs)
+            {
+                Console.WriteLine(pa.StartTime);
+            }*/
         }
 
 

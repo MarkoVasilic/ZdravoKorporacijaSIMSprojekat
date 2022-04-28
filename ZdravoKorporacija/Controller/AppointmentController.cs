@@ -70,6 +70,11 @@ namespace Controller
                 dateFrom, dateUntil, duration, priority);
         }
 
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByManager(int roomId, DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return AppointmentService.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration);
+        }
+
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)
         {

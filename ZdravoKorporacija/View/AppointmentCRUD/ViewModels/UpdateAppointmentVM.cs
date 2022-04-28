@@ -15,6 +15,7 @@ using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 using ZdravoKorporacija.View.AppointmentCRUD;
 using System.Windows;
+using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 {
@@ -182,9 +183,10 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository);
+                roomRepository, basicRenovationRepository);
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());
