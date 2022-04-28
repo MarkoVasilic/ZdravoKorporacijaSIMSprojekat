@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
@@ -180,9 +181,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository);
+                roomRepository, basicRenovationRepository);
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());

@@ -12,17 +12,15 @@ namespace ZdravoKorporacija.Model
 
         public int Id { get; set; }
         public int RoomId { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime StartTime { get; set; }
         public int Duration { get; set; }
         public String Description  { get; set; }
 
-        public BasicRenovation(int id, int roomId, DateTime startDate, DateTime endDate, int duration, string description)
+        public BasicRenovation(int id, int roomId, DateTime startTime, int duration, string description)
         {
             Id = id;
             RoomId = roomId;
-            StartDate = startDate;
-            EndDate = endDate;
+            StartTime = startTime;
             Duration = duration;
             Description = description;
         }
@@ -32,7 +30,7 @@ namespace ZdravoKorporacija.Model
             Regex descriptionRegex = new Regex("^$|[a-zA-Z]+[a-zA-Z0-9_\\.\\s]*$");
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
 
-            if (Description== null || Description.Length < 3 || !descriptionRegex.IsMatch(Description))
+            if (Description == null || Description.Length < 3 || !descriptionRegex.IsMatch(Description))
             {
                 return false;
             }
@@ -43,10 +41,8 @@ namespace ZdravoKorporacija.Model
             else if (RoomId == null)
             {
                 return false;
-            }else if (StartDate == null || StartDate < DateTime.Now)
-            {
-                return false;
-            }else if(EndDate == null || EndDate < DateTime.Now || EndDate < StartDate)
+            }
+            else if (StartTime == null || StartTime < DateTime.Now)
             {
                 return false;
             }

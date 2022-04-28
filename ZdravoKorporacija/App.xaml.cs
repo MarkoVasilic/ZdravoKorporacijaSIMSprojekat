@@ -36,11 +36,12 @@ namespace ZdravoKorporacija
             DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
-            DisplacementRepository displacementRepository = new DisplacementRepository();   
+            DisplacementRepository displacementRepository = new DisplacementRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository, basicRenovationRepository);
             appointmentController = new AppointmentController(appointmentService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
