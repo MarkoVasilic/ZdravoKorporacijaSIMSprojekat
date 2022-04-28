@@ -8,7 +8,7 @@ namespace Repository
 {
     public class AppointmentRepository
     {
-        private readonly String AppointmentFilePath = @"..\..\..\Resources\Appointments.json";
+        private readonly String AppointmentFilePath = @"..\..\..\Resources\Notifications.json";
 
         public List<Appointment> FindAll()
         {

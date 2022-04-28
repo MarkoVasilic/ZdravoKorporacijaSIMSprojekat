@@ -8,9 +8,9 @@
         Title="GetAllAppointmentsPatient" Height="768" Width="1024">
     <Grid  Margin="50">
        
-        <DataGrid  FontSize ="16" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B" Margin="10,156,23,0">
+        <DataGrid  FontSize ="16" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B" Margin="10,156,23,1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="120"></DataGridTextColumn>
                 <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>

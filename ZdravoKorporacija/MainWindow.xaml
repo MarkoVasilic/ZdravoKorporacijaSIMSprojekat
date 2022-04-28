@@ -13,6 +13,7 @@
         </Grid.Background>
         <StackPanel VerticalAlignment="Top" Margin="0 70 0 0">
             <Label Content="Welcome to our hospital" HorizontalAlignment="Center" FontSize="34" FontWeight="Bold" Foreground="GreenYellow"/>
+            
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Border Background="White" BorderThickness="5" BorderBrush="Black">
