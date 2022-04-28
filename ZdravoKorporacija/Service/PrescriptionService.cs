@@ -37,8 +37,10 @@ namespace ZdravoKorporacija.Service
         {
             List<int> prescriptionIds = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
             List<Prescription> result = new List<Prescription>();
-            foreach(int id in prescriptionIds)
+            foreach (int id in prescriptionIds)
+            {
                 result.Add(PrescriptionRepository.FindOneById(id));
+            }
             return result;
 
         }

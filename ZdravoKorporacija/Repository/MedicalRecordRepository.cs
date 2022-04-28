@@ -11,7 +11,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class MedicalRecordRepository
     {
-        private readonly String MedicalRecordFilePath = @"..\..\..\Resources\anamnesis.json";
+        private readonly String MedicalRecordFilePath = @"..\..\..\Resources\medicalRecords.json";
 
         public List<MedicalRecord> FindAll()
         {

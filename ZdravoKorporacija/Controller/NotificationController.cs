@@ -9,7 +9,7 @@ using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Controller
 {
-    internal class NotificationController
+    public class NotificationController
     {
 
         private readonly NotificationService notificationService = new NotificationService();

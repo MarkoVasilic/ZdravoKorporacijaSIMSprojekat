@@ -12,6 +12,7 @@ namespace ZdravoKorporacija.Controller
     {
         private readonly PrescriptionService PrescriptionService;
 
+
         public PrescriptionController(PrescriptionService prescriptionService)
         {
             this.PrescriptionService = prescriptionService;
