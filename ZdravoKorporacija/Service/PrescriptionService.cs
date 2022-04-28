@@ -33,6 +33,15 @@ namespace ZdravoKorporacija.Service
             return PrescriptionRepository.FindOneById(prescriptionId);
         }
 
+        public List<Prescription>? GetAllByPatient(String patientJmbg)
+        {
+            List<int> prescriptionIds = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
+            List<Prescription> result = new List<Prescription>();
+            foreach(int id in prescriptionIds)
+                result.Add(PrescriptionRepository.FindOneById(id));
+            return result;
+
+        }
         private int GenerateNewId()
         {
             try

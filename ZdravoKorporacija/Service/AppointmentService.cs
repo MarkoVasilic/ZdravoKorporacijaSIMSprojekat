@@ -154,7 +154,7 @@ namespace Service
                 return "Patient with that JMBG doesn't exist!";
             }
             int id = GenerateNewId();
-            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, "4444444444444", 11);
+            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, App.loggedUser.Jmbg, 11);
             if (!appointment.validateAppointment())
             {
                 return "Something went wrong, new appointment isn't created!";
