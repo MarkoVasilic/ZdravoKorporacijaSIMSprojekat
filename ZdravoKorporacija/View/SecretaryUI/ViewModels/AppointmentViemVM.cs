@@ -226,7 +226,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             try
             {
                 List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = appointmentController.GetPossibleAppointmentsBySecretary(SelectedAppointment.PatientJmbg,
-                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, DateTime.Today, DateTime.Today.AddDays(4), SelectedAppointment.Duration,
+                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.StartTime.AddDays(4), SelectedAppointment.Duration,
                 "time");
                 PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
                 foreach (var pa in possibleAppointmentsDTOs)
