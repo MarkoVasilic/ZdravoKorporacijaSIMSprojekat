@@ -1,10 +1,7 @@
-{
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
-}
+[
+  {
+    "PatientJmbg": "1111111111111",
+    "PrescriptionIds": [ 1 ],
+    "AnamnesisIds": []
+  }
+]
