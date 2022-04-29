@@ -45,10 +45,10 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
         {
             notificationService.CreatePatientNotifications(); // ova linija ce ici u prescriptionService CreatePrescription
             List<Notification> notificationList = new List<Notification>();
-              notificationList = notificationService.ShowPatientNotification();
-              foreach (Notification notification in notificationList)
-              notification.ToStringNotification();
-           // NavigationService.Navigate(new NotificationsPage());
+             // notificationList = notificationService.ShowPatientNotification();
+             // foreach (Notification notification in notificationList)
+           //   notification.ToStringNotification();
+           NavigationService.Navigate(new NotificationsPage());
         }
     }
 }

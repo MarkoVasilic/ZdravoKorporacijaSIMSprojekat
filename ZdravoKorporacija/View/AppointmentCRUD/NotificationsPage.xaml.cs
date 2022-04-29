@@ -28,7 +28,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private NotificationService notificationService { set; get; }
 
-        private ObservableCollection<Notification> NotificationListObservable { get; set; }  
+        public List<Notification> NotificationListObservable { get; set; }  
         public NotificationsPage()
         {
             InitializeComponent();
@@ -37,9 +37,9 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             NotificationRepository notificationRepository = new NotificationRepository();
             prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository);
-            notificationService = new NotificationService(notificationRepository, prescriptionService); ;
+            notificationService = new NotificationService(notificationRepository, prescriptionService);
 
-            NotificationListObservable = new ObservableCollection<Notification>(notificationService.ShowPatientNotification());
+            NotificationListObservable = new List<Notification>(notificationService.ShowPatientNotification());
 
         }
 

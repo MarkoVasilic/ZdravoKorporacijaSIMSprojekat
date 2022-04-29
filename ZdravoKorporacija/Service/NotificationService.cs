@@ -92,9 +92,9 @@ namespace ZdravoKorporacija.Service
                for(int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
                 {
                     Id = GenerateNewId(); //generisemo novi ID za lijek
-                    Title ="Popijte lijek  "+prescription.Medication; //naslov = paracetamol
+                    Title ="Popijte:  "+prescription.Medication; //naslov = paracetamol
                     StartTime = prescription.From.AddHours(i*prescription.Frequency); //startTime  = StartTime lijeka
-                    Desc = "Obavjestenje: " + "Morate da popijete lijek " + prescription.Medication + " " + "Kolicina: " + prescription.Amount + " " + "Satnica: " + StartTime.Hour + "h !";
+                    Desc = "Obavjestenje: " + "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour + "h !";
                     
                         Notification notification = new Notification(Title, Desc, StartTime, userJmbg, Seen, Id);
                         CreateNotification(Title, Desc, StartTime, userJmbg, Seen, Id);

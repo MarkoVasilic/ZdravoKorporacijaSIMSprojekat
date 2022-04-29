@@ -71,7 +71,6 @@ namespace ZdravoKorporacija.Service
 
             MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
 
-
         }
 
         public void ModifyPrescription(int prescriptonId, String newMedication, String newAmount, int newFrequency, DateTime newFrom, DateTime newTo)
