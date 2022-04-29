@@ -4,6 +4,7 @@ using ZdravoKorporacija.View.RoomCRUD;
 using ZdravoKorporacija.View.SecretaryUI;
 using Model;
 using System;
+using ZdravoKorporacija.View.ManagerUI.Views;
 
 namespace ZdravoKorporacija
 {
@@ -27,7 +28,7 @@ namespace ZdravoKorporacija
             {
                 App.loggedUser = manager;
                 App.userRole = "manager";
-                window = new ManagerHomePage();
+                window = new ManagerHomeWindow();
             }
             else if (secretary != null)
             {

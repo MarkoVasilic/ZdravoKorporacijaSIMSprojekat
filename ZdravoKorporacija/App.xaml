@@ -65,5 +65,50 @@
             <Setter Property="Margin" Value="0 10 0 0"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>
+
+
+        
+        
+        
+        
+        <Style x:Key="ManagerTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="ManagerComboBoxStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5,5,5,5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+        <Style x:Key="ManagerGreenButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Background" Value="#FF7DBE7F"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+            
+        <Style x:Key="ManagerRedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Background" Value="#FFE95555"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        
+        
     </Application.Resources>
 </Application>

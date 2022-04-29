@@ -43,9 +43,9 @@ namespace ZdravoKorporacija.View.Equipment
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ManagerHomePage managerHomePage = new ManagerHomePage();
-            managerHomePage.Show();
+            //this.Close();
+            //ManagerHomePage managerHomePage = new ManagerHomePage();
+            //managerHomePage.Show();
         }
     }
 }

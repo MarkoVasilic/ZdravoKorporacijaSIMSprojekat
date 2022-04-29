@@ -37,16 +37,16 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ManagerHomePage menagerHomePage = new ManagerHomePage();
-            menagerHomePage.Show();
+            //this.Close();
+            //ManagerHomePage menagerHomePage = new ManagerHomePage();
+            //menagerHomePage.Show();
         }
 
         private void ModifyButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ModifyRoom modifyRoom = new ModifyRoom(checkedRoom);
-            modifyRoom.Show();
+            //this.Close();
+            //ModifyRoom modifyRoom = new ModifyRoom(checkedRoom);
+            //modifyRoom.Show();
         }
 
         private void RadioButtonList_Checked(object sender, RoutedEventArgs e)

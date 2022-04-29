@@ -54,7 +54,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 MessageBox.Show("Error");
                 this.Close();
                 ManagerHomePage managerHomePage = new ManagerHomePage();
-                managerHomePage.Show();
+               // managerHomePage.Show();
             }
 
 
