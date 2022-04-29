@@ -149,8 +149,8 @@ namespace ZdravoKorporacija
       
             //TESTIRANJE NOTIFIKACIJA I NJIHOVO PRIKAZIVANJE SAT VREMENA PRED EVENT
             //CreatePatientNotifications za pisanje u json i kreairanje za dati lijek, a ShowPatientNotification za slanje obavjestenja
-              /*  List<Notification> notificationList1 = new List<Notification>();
-                notificationList1 = notificationService.CreatePatientNotifications();
+             /* List<Notification> notificationList1 = new List<Notification>();
+                notificationList1 = notificationService.CreatePatientNotifications(); 
 
             List<Notification> notificationList = new List<Notification>();
             notificationList = notificationService.ShowPatientNotification();
