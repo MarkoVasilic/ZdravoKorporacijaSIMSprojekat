@@ -36,12 +36,26 @@ namespace ZdravoKorporacija.Service
         {
             return AnamnesisRepository.FindAllByDoctor(doctorJmbg);
         }
+
+        public List<Anamnesis>? GetAllByPatient(String patientJmbg)
+        {
+            List<Anamnesis> result = new List<Anamnesis>();
+            List<int> anamnesisIds = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
+            foreach(int id in anamnesisIds)
+            {
+                if (AnamnesisRepository.FindOneById(id) != null)
+                {
+                    result.Add(AnamnesisRepository.FindOneById(id));
+                }
+            }
+            return result;
+        }
         private int GenerateNewId()
         {
             try
             {
-                List<Anamnesis> anamneses = AnamnesisRepository.FindAll();
-                int currentMax = anamneses.Max(obj => obj.Id);
+                List<Anamnesis> anamnesis = AnamnesisRepository.FindAll();
+                int currentMax = anamnesis.Max(obj => obj.Id);
                 return currentMax + 1;
             }
             catch
