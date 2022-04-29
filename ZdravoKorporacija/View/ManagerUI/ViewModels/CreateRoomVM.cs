@@ -98,9 +98,11 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             RoomService roomService = new RoomService(roomRepository);
             RoomController = new RoomController(roomService);
             SaveCommand = new RelayCommand(saveExecute);
+            DeleteRoomCommand = new RelayCommand(deleteRoom);
         }
 
         public ICommand SaveCommand    { get; set; }
+        public ICommand DeleteRoomCommand   { get; set; }
 
 
         private void saveExecute(object parameter)
@@ -108,7 +110,10 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             
             try
             {
-                RoomController.CreateRoom(Room.Name, Room.Description, Room.Type); //da li ovako kupim ovo sve (zapravo da li je xaml dobar?)
+                //Console.WriteLine(Room.Name);
+                //Console.WriteLine(Room.Description);
+                //Console.WriteLine(Room.Type);
+                RoomController.CreateRoom(Room.Name, Room.Description, Room.Type); 
                 //otvaram novi prozor
          
                 GetAllRooms getAllRooms = new GetAllRooms();
@@ -118,7 +123,18 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             {
                 ErrorMessage = ex.Message;
             }
+        }
 
+        private void deleteRoom(object Parameter)
+        {
+            try
+            {
+                RoomController.DeleteRoom(Room.Id);
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }

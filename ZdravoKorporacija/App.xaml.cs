@@ -4,6 +4,7 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
@@ -26,11 +27,24 @@ namespace ZdravoKorporacija
         public static ManagerController? managerController { get; set; }
         public static AppointmentController? appointmentController { get; set; }
 
+        public static MedicalRecordController? medicalRecordController { get; set; }
+
+        public static NotificationController? notificationController { get; set; }
+
+        public static PrescriptionController? prescriptionController { get; set; }
         public App()
         {
+
+
+            MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
+            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository);
+            medicalRecordController = new MedicalRecordController(medicalRecordService);
+            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
+            PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository);
+            prescriptionController = new PrescriptionController(prescriptionService);
             NotificationRepository notificationRepository = new NotificationRepository();
-            NotificationService notificationService = new NotificationService(notificationRepository);
-            NotificationController notificationController = new NotificationController(notificationService);
+            NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
+            notificationController = new NotificationController(notificationService);
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -122,18 +136,27 @@ namespace ZdravoKorporacija
             managerController.CreateManager("Nadja", "Kanjuh", "djana", "mama", "3434343434343", new DateTime(2000, 7, 24),
                 Gender.FEMALE, "nadja@kanjuh.com", "070707070", "Novi Sad");*/
             //Notification n1 = new Notification("Nova", "2022", System.DateTime.Now, "1111111111111", false, 1);
-          //  n1.ToStringNotification();
+            //  n1.ToStringNotification();
 
-            List<Notification> notifications = new List<Notification>();
-            notifications = notificationController.GetAllNotifications();
-            foreach (Notification notification in notifications)
-            {
-                notification.ToStringNotification();
-            }
+            /* List<Notification> notifications = new List<Notification>();
+             notifications = notificationController.GetAllNotifications();
+             foreach (Notification notification in notifications)
+             {
+                 notification.ToStringNotification();
+             }*/
 
+            //  Console.WriteLine(medicalRecordController.GetOneByPatientJmbg("1111111111111").PrescriptionIds[0]);
+      
+            //TESTIRANJE NOTIFIKACIJA I NJIHOVO PRIKAZIVANJE SAT VREMENA PRED EVENT
+            //CreatePatientNotifications za pisanje u json i kreairanje za dati lijek, a ShowPatientNotification za slanje obavjestenja
+              /*  List<Notification> notificationList1 = new List<Notification>();
+                notificationList1 = notificationService.CreatePatientNotifications();
+
+            List<Notification> notificationList = new List<Notification>();
+            notificationList = notificationService.ShowPatientNotification();
+            foreach (Notification notification in notificationList)
+                notification.ToStringNotification(); */
         }
-
-
 
     }
 }

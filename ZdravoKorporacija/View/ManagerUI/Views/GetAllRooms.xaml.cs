@@ -28,7 +28,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
         {
             this.Close();
             ManagerHomePage managerHomePage = new ManagerHomePage();
-            managerHomePage.Show();
+           // managerHomePage.Show();
         }
     }
 }

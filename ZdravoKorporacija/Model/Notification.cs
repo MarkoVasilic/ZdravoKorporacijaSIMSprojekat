@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.Model
 {
-    internal class Notification
+    public class Notification
     {
-        public int Id;
+        public int Id { get; set; }
 
-        public String? Title;
+        public String? Title { get; set; }
 
-        public String? Description;
+        public String? Description { get; set; }
 
-        public DateTime StartTime;
+        public DateTime StartTime { get; set; }
 
-        public String? userJmbg;
+        public String? userJmbg { get; set; }
 
-        public bool Seen;
+        public bool Seen { get; set; }
 
         public Notification(string title, string description, DateTime startTime, string receiverJmbg, bool seen, int newId)
         {
