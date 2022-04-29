@@ -111,14 +111,14 @@ namespace ZdravoKorporacija.Service
             List<Notification> notificationsListToDisplay = new List<Notification>();
             List<Notification> returnList = new List<Notification>();
             notificationsListToDisplay = notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
-            Console.WriteLine(notificationsListToDisplay[0].StartTime);
-            Console.WriteLine(System.DateTime.Now);
+            Console.WriteLine("Medication StartTime: "+notificationsListToDisplay[0].StartTime);
+            Console.WriteLine("Current DateTime :  "+System.DateTime.Now);
+            Console.WriteLine("Notifications to be Made");
+            Console.WriteLine("-------------------------");
 
                 for (int i=0; i < notificationsListToDisplay.Count; i++) {
-                Console.WriteLine("Razlika je " + (System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours);
                 if (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours<=1) && (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours>=0)) && (DateTime.Now.Day==notificationsListToDisplay[i].StartTime.Day))
                 {
-                    Console.WriteLine("Ovo upisujem " + notificationsListToDisplay[i].StartTime);
                     returnList.Add(notificationsListToDisplay[i]);
                 }
                     
