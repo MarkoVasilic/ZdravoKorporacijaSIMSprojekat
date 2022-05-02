@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
+using Model;
+using Repository;
 
-namespace ZdravoKorporacija.Service
+namespace Service
 {
     public class PrescriptionService
     {
         private readonly PrescriptionRepository PrescriptionRepository;
         private readonly MedicalRecordRepository MedicalRecordRepository;
+        private readonly PatientRepository PatientRepository;
+        private readonly MedicationRepository MedicationRepository;
 
-        public PrescriptionService(PrescriptionRepository prescriptionRepository, MedicalRecordRepository medicalRecordRepository)
+        public PrescriptionService(PrescriptionRepository prescriptionRepository, MedicalRecordRepository medicalRecordRepository, PatientRepository patientRepository, MedicationRepository medicationRepository)
         {
-            this.PrescriptionRepository = prescriptionRepository;
-            this.MedicalRecordRepository = medicalRecordRepository;
+            PrescriptionRepository = prescriptionRepository;
+            MedicalRecordRepository = medicalRecordRepository;
+            PatientRepository = patientRepository;
+            MedicationRepository = medicationRepository;
         }
 
         public PrescriptionService()
@@ -62,15 +66,34 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             Prescription prescription = new Prescription(id, medication, amount, frequency, from, to);
+            List<String> allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
+            List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingerdients;
+            foreach(String ingredient in ingredients)
+            {
+                foreach(String allergen in allergens)
+                {
+                    if (ingredient.Equals(allergen))
+                    {
+                        throw new Exception("Patient is allergic to that medication!");
+                    }
+                }
+            }
+            if (!prescription.validatePrescription())
+            {
+                throw new Exception("Something went wrong, prescription isn't created!");
+            }
             PrescriptionRepository.SavePrescription(prescription);
 
             List<int> newPrescriptions = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
             newPrescriptions.Add(prescription.Id);
             MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg, newPrescriptions,
                                      MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
-
+            
+            if (!oneMedicalRecord.validateMedicalRecord())
+            {
+                throw new Exception("Something went wrong, medical record isn't updated!");
+            }
             MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
-
 
         }
 
@@ -81,6 +104,10 @@ namespace ZdravoKorporacija.Service
             Prescription newPrescription = new Prescription(onePrescription.Id, newMedication, newAmount,
                                                             newFrequency, newFrom, newTo);
 
+            if (!onePrescription.validatePrescription())
+            {
+                throw new Exception("Something went wrong, prescription isn't updated!");
+            }
             PrescriptionRepository.UpdatePrescription(newPrescription);
 
         }

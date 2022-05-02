@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZdravoKorporacija.Model;
+using Model;
 
-namespace ZdravoKorporacija.Repository
+namespace Repository
 {
     public class MedicalRecordRepository
     {

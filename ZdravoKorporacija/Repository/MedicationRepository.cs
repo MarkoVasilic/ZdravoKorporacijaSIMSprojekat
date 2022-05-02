@@ -3,9 +3,9 @@ using Model;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using ZdravoKorporacija.Model;
+using Model;
 
-namespace ZdravoKorporacija.Repository
+namespace Repository
 {
     public class MedicationRepository
     {
