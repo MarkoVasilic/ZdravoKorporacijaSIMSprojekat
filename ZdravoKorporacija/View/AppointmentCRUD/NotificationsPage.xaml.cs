@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
+using Service;
+using Repository;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
@@ -36,8 +38,10 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             NotificationRepository notificationRepository = new NotificationRepository();
-            prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository);
-            notificationService = new NotificationService(notificationRepository, prescriptionService);
+            PatientRepository patientRepository = new PatientRepository();
+            MedicationRepository medicationRepository = new MedicationRepository();
+            prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
+            notificationService = new NotificationService(notificationRepository, prescriptionService); ;
 
             NotificationListObservable = new List<Notification>(notificationService.ShowPatientNotification());
 

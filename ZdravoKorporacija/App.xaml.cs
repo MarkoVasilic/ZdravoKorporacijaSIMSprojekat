@@ -30,21 +30,9 @@ namespace ZdravoKorporacija
         public static MedicalRecordController? medicalRecordController { get; set; }
 
         public static NotificationController? notificationController { get; set; }
-
-        public static PrescriptionController? prescriptionController { get; set; }
         public App()
         {
 
-
-            MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
-            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository);
-            medicalRecordController = new MedicalRecordController(medicalRecordService);
-            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
-            PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository);
-            prescriptionController = new PrescriptionController(prescriptionService);
-            NotificationRepository notificationRepository = new NotificationRepository();
-            NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
-            notificationController = new NotificationController(notificationService);
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -66,6 +54,18 @@ namespace ZdravoKorporacija
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
             EquipmentController equipmentController = new EquipmentController(equipmentService);
+            MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
+            AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
+            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
+            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository);
+            MedicationRepository medicationRepository = new MedicationRepository();
+            MedicationService medicationService = new MedicationService();
+            PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
+            medicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
+            NotificationRepository notificationRepository = new NotificationRepository();
+            NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
+            notificationController = new NotificationController(notificationService);
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
             patientController.CreatePatient(false, alergeni, BloodType.A_POSITIVE, "milos", "milosevic", "mikimilane", "mackacka",
@@ -146,16 +146,16 @@ namespace ZdravoKorporacija
              }*/
 
             //  Console.WriteLine(medicalRecordController.GetOneByPatientJmbg("1111111111111").PrescriptionIds[0]);
-      
+
             //TESTIRANJE NOTIFIKACIJA I NJIHOVO PRIKAZIVANJE SAT VREMENA PRED EVENT
             //CreatePatientNotifications za pisanje u json i kreairanje za dati lijek, a ShowPatientNotification za slanje obavjestenja
-             /* List<Notification> notificationList1 = new List<Notification>();
-                notificationList1 = notificationService.CreatePatientNotifications(); 
+            /* List<Notification> notificationList1 = new List<Notification>();
+               notificationList1 = notificationService.CreatePatientNotifications(); 
 
-            List<Notification> notificationList = new List<Notification>();
-            notificationList = notificationService.ShowPatientNotification();
-            foreach (Notification notification in notificationList)
-                notification.ToStringNotification(); */
+           List<Notification> notificationList = new List<Notification>();
+           notificationList = notificationService.ShowPatientNotification();
+           foreach (Notification notification in notificationList)
+               notification.ToStringNotification(); */
         }
 
     }

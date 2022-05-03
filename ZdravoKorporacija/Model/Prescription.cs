@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ZdravoKorporacija.Model
+namespace Model
 {
     public class Prescription
     {
@@ -27,6 +28,23 @@ namespace ZdravoKorporacija.Model
             Frequency = frequency;
             From = from;
             To = to;
+        }
+        public Boolean validatePrescription()
+        {
+            Regex onlyNumberRegex = new Regex("^[0-9]+$");
+            if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
+                return false;
+            else if (Medication == null)
+                return false;
+            else if (Frequency == null)
+                return false;
+            else if (From == null || From < DateTime.Now)
+                return false;
+            if (To == null || To < DateTime.Now)
+                return false;
+            else
+                return true;
+
         }
     }
 
