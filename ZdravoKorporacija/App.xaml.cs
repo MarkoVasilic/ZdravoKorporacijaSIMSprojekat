@@ -18,6 +18,8 @@ namespace ZdravoKorporacija
     {
         public static User loggedUser { get; set; }
         public static String userRole { get; set; }
+
+        public static Window currentWindow { get; set; }
         public static PatientController? patientController { get; set; }
         public static RoomController? roomController { get; set; }
 
