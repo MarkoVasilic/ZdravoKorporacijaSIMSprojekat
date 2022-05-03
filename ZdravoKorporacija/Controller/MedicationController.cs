@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Service;
+using Model;
+using Service;
 
-namespace ZdravoKorporacija.Controller
+namespace Controller
 {
     public class MedicationController
     {

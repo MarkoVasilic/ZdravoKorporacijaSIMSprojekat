@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ZdravoKorporacija.Model
+namespace Model
 {
     public class Anamnesis
     {
@@ -13,6 +14,8 @@ namespace ZdravoKorporacija.Model
         public String Report;
         public DateTime DateTime; //datum i vreme izvestaja
         public String DoctorJmbg;
+
+        //null validacija, doctorJmbg
 
         public Anamnesis()
         {
@@ -25,6 +28,24 @@ namespace ZdravoKorporacija.Model
             Report = report;
             DateTime = dateTime;
             DoctorJmbg = doctorJmbg;
+        }
+
+        public Boolean validateAnamnesis()
+        {
+            Regex onlyNumberRegex = new Regex("^[0-9]+$");
+            if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
+                return false;
+            else if (Diagnosis == null)
+                return false;
+            else if (Report == null)
+                return false;
+            else if (DateTime == null)
+                return false;
+            else if (DoctorJmbg == null || DoctorJmbg.Length != 13 || !onlyNumberRegex.IsMatch(DoctorJmbg))
+                return false;
+            else
+                return true;
+
         }
     }
 }

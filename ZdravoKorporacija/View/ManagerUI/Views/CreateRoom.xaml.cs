@@ -11,15 +11,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.View.ManagerUI.ViewModels;
 
-namespace ZdravoKorporacija.View.ManagerUI
+namespace ZdravoKorporacija.View.ManagerUI.Views
 {
     /// <summary>
-    /// Interaction logic for AddRoom.xaml
+    /// Interaction logic for CreateRoom.xaml
     /// </summary>
-    public partial class CreateRoom : Window
+    public partial class CreateRoom : Page
     {
 
         private CreateRoomVM createRoomVM;
@@ -29,7 +30,6 @@ namespace ZdravoKorporacija.View.ManagerUI
             createRoomVM = new CreateRoomVM();
             this.DataContext = createRoomVM;
         }
-
 
         public void Button_Create_Room_Click(object sender, RoutedEventArgs e)
         {

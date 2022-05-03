@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,38 +22,34 @@ using Repository;
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
     /// <summary>
-    /// Interaction logic for PatientHomePage.xaml
+    /// Interaction logic for NotificationsPage.xaml
     /// </summary>
-    public partial class PatientHomePage : Page
+    public partial class NotificationsPage : Page
     {
         private PrescriptionService prescriptionService { set; get; }
 
         private NotificationService notificationService { set; get; }
-        public PatientHomePage()
+
+        public List<Notification> NotificationListObservable { get; set; }  
+        public NotificationsPage()
         {
             InitializeComponent();
+            DataContext = this;
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             NotificationRepository notificationRepository = new NotificationRepository();
             PatientRepository patientRepository = new PatientRepository();
             MedicationRepository medicationRepository = new MedicationRepository();
             prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
-            notificationService = new NotificationService(notificationRepository, prescriptionService);
+            notificationService = new NotificationService(notificationRepository, prescriptionService); ;
+
+            NotificationListObservable = new List<Notification>(notificationService.ShowPatientNotification());
+
         }
 
-        private void AppointmentsButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonNazad(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AppointmentPage());
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            notificationService.CreatePatientNotifications(); // ova linija ce ici u prescriptionService CreatePrescription
-            List<Notification> notificationList = new List<Notification>();
-             // notificationList = notificationService.ShowPatientNotification();
-             // foreach (Notification notification in notificationList)
-           //   notification.ToStringNotification();
-           NavigationService.Navigate(new NotificationsPage());
+            NavigationService.GoBack();
         }
     }
 }

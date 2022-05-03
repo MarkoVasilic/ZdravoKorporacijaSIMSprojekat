@@ -11,7 +11,7 @@ using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    internal class NotificationRepository
+    public class NotificationRepository
     {
         private readonly String NotificationFilePath = @"..\..\..\Resources\Notifications.json";
 
