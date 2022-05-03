@@ -124,5 +124,20 @@
     "Email": "stefi@cds.com",
     "PhoneNumber": "3422",
     "Address": "cdascsdcsd"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "lakii",
+    "LastName": "lakovic",
+    "Username": "lakii",
+    "Password": "sifra123",
+    "Jmbg": "7536987214563",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
   }
 ]

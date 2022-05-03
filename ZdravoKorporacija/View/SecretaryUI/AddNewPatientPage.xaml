@@ -27,7 +27,7 @@
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="140"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
@@ -167,8 +167,26 @@
                     <TextBox x:Name="PhoneNumberTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.PhoneNumber" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:OnlyNumbersValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="9" Grid.Column="1">
@@ -176,8 +194,26 @@
                     <TextBox x:Name="EmailTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Email" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:EmailValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="10" Grid.Column="1">
@@ -186,8 +222,26 @@
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
                         <TextBox.Text>
                             <Binding Path="Patient.Address" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:NecessaryFieldValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="11" Grid.Column="1" VerticalAlignment="Center">
@@ -198,8 +252,26 @@
                     <TextBox x:Name="UsernameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Username" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:UsernameValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="13" Grid.Column="1">
@@ -207,8 +279,26 @@
                     <TextBox x:Name="PasswordTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="Patient.Password" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:PasswordValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="14" Grid.Column="1" VerticalAlignment="Center">
