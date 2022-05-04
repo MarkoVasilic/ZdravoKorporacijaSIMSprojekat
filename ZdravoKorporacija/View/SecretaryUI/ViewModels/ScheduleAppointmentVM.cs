@@ -357,7 +357,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             {
                 appointmentController.CreateAppointmentBySecretary(selectedAppointment.PatientJmbg, selectedAppointment.DoctorJmbg,
                     selectedAppointment.RoomId, selectedAppointment.StartTime, selectedAppointment.Duration);
-                SecretaryWindowVM.NavigationService.Navigate(new SecretaryHomePage());
+                SecretaryWindowVM.NavigationService.Navigate(new AppointmentView());
             }
             catch (Exception e)
             {

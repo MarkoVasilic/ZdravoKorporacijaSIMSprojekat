@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
+using Service;
+using Model;
 
 namespace ZdravoKorporacija.Service
 {
@@ -81,20 +83,20 @@ namespace ZdravoKorporacija.Service
             String Desc = "";
             String Title = "";
             DateTime StartTime = System.DateTime.Now;
-            String userJmbg = "1111111111111"; //ostaje
+            String userJmbg = App.loggedUser.Jmbg; //ostaje
             bool Seen = false; //ostaje
 
 
-            prescriptionsList = prescriptionService.GetAllByPatient("1111111111111"); //dobavljamo sve terapije po pacijentu koji je ulogovan
+            prescriptionsList = prescriptionService.GetAllByPatient(App.loggedUser.Jmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
             foreach(Prescription prescription in prescriptionsList) //prolazimo kroz sve terapije i za svaku pojedinacno kreiramo sve notifikacije
             {
                 numberOfMedNotification = (prescription.To - prescription.From).Days*(24/prescription.Frequency); //koliko ukupno puta treba popiti lijek
                for(int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
                 {
                     Id = GenerateNewId(); //generisemo novi ID za lijek
-                    Title ="Popijte lijek  "+prescription.Medication; //naslov = paracetamol
+                    Title ="Popijte:  "+prescription.Medication; //naslov = paracetamol
                     StartTime = prescription.From.AddHours(i*prescription.Frequency); //startTime  = StartTime lijeka
-                    Desc = "Obavjestenje: " + "Morate da popijete lijek " + prescription.Medication + " " + "Kolicina: " + prescription.Amount + " " + "Satnica: " + StartTime.Hour + "h !";
+                    Desc = "Obavjestenje: " + "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour + "h !";
                     
                         Notification notification = new Notification(Title, Desc, StartTime, userJmbg, Seen, Id);
                         CreateNotification(Title, Desc, StartTime, userJmbg, Seen, Id);
@@ -110,15 +112,15 @@ namespace ZdravoKorporacija.Service
         {
             List<Notification> notificationsListToDisplay = new List<Notification>();
             List<Notification> returnList = new List<Notification>();
-            notificationsListToDisplay = notificationRepository.FindAllByUserJmbg("1111111111111");
-            Console.WriteLine(notificationsListToDisplay[0].StartTime);
-            Console.WriteLine(System.DateTime.Now);
+            notificationsListToDisplay = notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
+            Console.WriteLine("Medication StartTime: "+notificationsListToDisplay[0].StartTime);
+            Console.WriteLine("Current DateTime :  "+System.DateTime.Now);
+            Console.WriteLine("Notifications to be Made");
+            Console.WriteLine("-------------------------");
 
                 for (int i=0; i < notificationsListToDisplay.Count; i++) {
-                Console.WriteLine("Razlika je " + (System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours);
-                if ((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours<=1)
+                if (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours<=1) && (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours>=0)) && (DateTime.Now.Day==notificationsListToDisplay[i].StartTime.Day))
                 {
-                    Console.WriteLine("Ovo upisujem " + notificationsListToDisplay[i].StartTime);
                     returnList.Add(notificationsListToDisplay[i]);
                 }
                     

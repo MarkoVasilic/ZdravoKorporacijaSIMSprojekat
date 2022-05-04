@@ -1,10 +1,10 @@
 [
   {
     "Id": 1,
-    "Medication": "paracetamol",
+    "Medication": "Paracetamol",
     "Amount": "200mg",
     "Frequency": 1,
-    "From": "2022-04-28T00:20:00",
-    "To": "2022-04-29T00:20:00"
+    "From": "2022-04-29T00:20:00",
+    "To": "2022-04-30T00:20:00"
   }
 ]

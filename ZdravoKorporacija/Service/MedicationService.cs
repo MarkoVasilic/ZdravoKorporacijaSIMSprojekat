@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using Repository;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
+using Model;
+using Repository;
 
-namespace ZdravoKorporacija.Service
+namespace Service
 {
     public class MedicationService
     {
@@ -57,6 +57,10 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             Medication medication = new Medication(id, name, ingredients);
+            if (!medication.validateMedication())
+            {
+                throw new Exception("Something went wrong, medication isn't created!");
+            }
             MedicationRepository.SaveMedication(medication);
         }
 

@@ -18,6 +18,8 @@ namespace ZdravoKorporacija
     {
         public static User loggedUser { get; set; }
         public static String userRole { get; set; }
+
+        public static Window currentWindow { get; set; }
         public static PatientController? patientController { get; set; }
         public static RoomController? roomController { get; set; }
 
@@ -30,21 +32,9 @@ namespace ZdravoKorporacija
         public static MedicalRecordController? medicalRecordController { get; set; }
 
         public static NotificationController? notificationController { get; set; }
-
-        public static PrescriptionController? prescriptionController { get; set; }
         public App()
         {
 
-
-            MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
-            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository);
-            medicalRecordController = new MedicalRecordController(medicalRecordService);
-            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
-            PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository);
-            prescriptionController = new PrescriptionController(prescriptionService);
-            NotificationRepository notificationRepository = new NotificationRepository();
-            NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
-            notificationController = new NotificationController(notificationService);
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -66,8 +56,18 @@ namespace ZdravoKorporacija
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
             EquipmentController equipmentController = new EquipmentController(equipmentService);
-            BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
-            BasicRenovationController basicRenovationController = new BasicRenovationController(basicRenovationService);
+            MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
+            AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
+            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
+            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository);
+            MedicationRepository medicationRepository = new MedicationRepository();
+            MedicationService medicationService = new MedicationService();
+            PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
+            medicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
+            NotificationRepository notificationRepository = new NotificationRepository();
+            NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
+            notificationController = new NotificationController(notificationService);
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -155,66 +155,13 @@ namespace ZdravoKorporacija
 
             //TESTIRANJE NOTIFIKACIJA I NJIHOVO PRIKAZIVANJE SAT VREMENA PRED EVENT
             //CreatePatientNotifications za pisanje u json i kreairanje za dati lijek, a ShowPatientNotification za slanje obavjestenja
-            /*  List<Notification> notificationList1 = new List<Notification>();
-              notificationList1 = notificationService.CreatePatientNotifications();
+            /* List<Notification> notificationList1 = new List<Notification>();
+               notificationList1 = notificationService.CreatePatientNotifications(); 
 
-          List<Notification> notificationList = new List<Notification>();
-          notificationList = notificationService.ShowPatientNotification();
-          foreach (Notification notification in notificationList)
-              notification.ToStringNotification(); */
-
-
-            //ISPIS OPREME - IMAM I NA FRONTU (UPRAVNIK)
-            /*List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
-            foreach (Equipment equipment in equipmentList)
-                equipment.toString();*/
-
-
-            /*List<Displacement> displacementList = new List<Displacement>(equipmentController.GetAllDisplacements());
-           foreach (Displacement d in displacementList)
-               d.toString();*/
-
-            //POMERANJE OPREME - DANAS (UPRAVNIK)
-            /*equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
-            equipmentService.EquipmentDisplacement();*/
-
-            //ZAKAZIVANJE POMERANJA OPREME (UPRAVNIK)
-            /*equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2023, 3, 3));
-            equipmentService.EquipmentDisplacement();*/
-
-
-            //ISPIS SVIH DOSTUPNIH TERMINA + OSNOVNO RENOVIRANJE (UPRAVNIK)
-            /*int index = 0;
-            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 3, 3), new DateTime(2023, 3, 6), 60));
-            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
-            {
-                Console.WriteLine(index.ToString());
-                possibleAppointment.toStringManager();
-                index++;
-            }
-
-            string checkedAppointment;
-
-            Console.WriteLine("Unesite broj termina koji zelite");
-            checkedAppointment = Console.ReadLine();
-            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
-
-            string description;
-            Console.WriteLine("Unesite opis renoviranja:");
-            description = Console.ReadLine();
-            
-
-            for (int i = 0; i<possibleAppointmentsRenovation.Count; i++)
-            {
-                if(checkedAppointmentIndex == i)
-                {
-                    basicRenovationController.CreateBasicRenovation(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, description);
-                }
-            }
-            */
-
-
-
+           List<Notification> notificationList = new List<Notification>();
+           notificationList = notificationService.ShowPatientNotification();
+           foreach (Notification notification in notificationList)
+               notification.ToStringNotification(); */
         }
 
     }
