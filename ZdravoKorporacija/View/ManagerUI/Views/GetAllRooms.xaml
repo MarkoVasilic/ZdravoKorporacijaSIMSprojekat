@@ -1,21 +1,46 @@
-﻿<Window x:Class="ZdravoKorporacija.View.RoomCRUD.GetAllRooms"
+﻿<Page x:Class="ZdravoKorporacija.View.RoomCRUD.GetAllRooms"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.RoomCRUD"
+        xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
         mc:Ignorable="d"
         Title="GetAllRooms" Height="768" Width="1024" Background="LightYellow">
-    <Grid>
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="242" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+    </Page.CommandBindings>
+
+    <Grid MaxWidth="1024">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock
+             Text="Pregled prostorija" 
+             FontSize="30" 
+             FontWeight="bold" Margin="400 0 0 0" TextAlignment="Center"></TextBlock>
+
+            <Button Content="Odjavi se" Margin="180 0 0 425"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
+
+        </StackPanel>
+
+        <DataGrid x:Name="dataGridRooms"  ItemsSource="{Binding Rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionUnit="FullRow" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Room type" Binding="{Binding typeStr}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Description}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip prostorije" Binding="{Binding typeStr}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="58,627,0,0" VerticalAlignment="Top" Height="62" Width="174" Background="OrangeRed" FontSize="20" FontWeight="Bold" BorderBrush="Black" Click="BackButtonClick"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Rooms preview" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" />
+
+
+        <Button Content="Nazad" Grid.Row="2" Command="cmd:RoutedCommand.Back" Margin="46,171,828,-171" Style="{StaticResource ManagerRedButtonStyle}" IsDefault="True" />
     </Grid>
-</Window>
+</Page>

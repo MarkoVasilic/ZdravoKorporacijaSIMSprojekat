@@ -16,6 +16,8 @@ namespace ZdravoKorporacija.Model
         public int Duration { get; set; }
         public String Description  { get; set; }
 
+
+        public BasicRenovation() { }
         public BasicRenovation(int id, int roomId, DateTime startTime, int duration, string description)
         {
             Id = id;

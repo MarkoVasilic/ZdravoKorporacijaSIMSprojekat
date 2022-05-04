@@ -201,6 +201,7 @@ namespace Service
             Room selectedRoom = RoomRepository.FindOneById(roomId);
             foreach (var pa in possibleAppointments)
             {
+
                 if (pa > DateTime.Now.AddHours(1))
                 {
                     PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO("", "", "", "", "", roomId, selectedRoom.Name, pa, duration, -1);

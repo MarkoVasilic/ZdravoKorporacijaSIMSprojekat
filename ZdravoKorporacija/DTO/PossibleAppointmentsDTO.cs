@@ -31,5 +31,14 @@ namespace ZdravoKorporacija.DTO
             Duration = duration;
             AppointmentId = appointmentId;
         }
+
+        public void toStringManager()
+        {
+            Console.WriteLine("RoomID = " + RoomId);
+            Console.WriteLine("RoomName = " + RoomName);
+            Console.WriteLine("StartTime = " + StartTime);
+            Console.WriteLine("Duration = " + Duration);
+            Console.WriteLine();
+        }
     }
 }

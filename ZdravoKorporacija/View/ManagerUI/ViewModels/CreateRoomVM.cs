@@ -4,11 +4,13 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Navigation;
 using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 using ZdravoKorporacija.View.RoomCRUD;
 
@@ -23,7 +25,8 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public RoomController RoomController { get; set; }  
+        public RoomController RoomController { get; set; }
+        public ObservableCollection<Room> rooms;
 
 
         public Room Room
@@ -91,6 +94,19 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             Room.Type = roomType;
         }
 
+        public ObservableCollection<Room> Rooms
+        {
+            get
+            {
+                return rooms;
+            }
+            set
+            {
+                rooms = value;
+                OnPropertyChanged("Rooms");
+            }
+        }
+
         public CreateRoomVM()
         {
             Room = new Room();
@@ -98,11 +114,14 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             RoomService roomService = new RoomService(roomRepository);
             RoomController = new RoomController(roomService);
             SaveCommand = new RelayCommand(saveExecute);
-            DeleteRoomCommand = new RelayCommand(deleteRoom);
+            GetAllRoomsCommand = new RelayCommand(getAllRoomsManager);
+            Rooms = new ObservableCollection<Room>(RoomController.GetAllRooms());
+
         }
 
         public ICommand SaveCommand    { get; set; }
-        public ICommand DeleteRoomCommand   { get; set; }
+
+        public ICommand GetAllRoomsCommand { get; set; }
 
 
         private void saveExecute(object parameter)
@@ -113,11 +132,10 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
                 //Console.WriteLine(Room.Name);
                 //Console.WriteLine(Room.Description);
                 //Console.WriteLine(Room.Type);
-                RoomController.CreateRoom(Room.Name, Room.Description, Room.Type); 
-                //otvaram novi prozor
-         
-                GetAllRooms getAllRooms = new GetAllRooms();
-                getAllRooms.Show();
+                RoomController.CreateRoom(Room.Name, Room.Description, Room.Type);
+
+                ManagerWindowVM.NavigationService.Navigate(new GetAllRooms());
+                
             }
             catch(Exception ex)
             {
@@ -125,15 +143,22 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             }
         }
 
-        private void deleteRoom(object Parameter)
+      
+
+        private void getAllRoomsManager(object sender)
         {
-            try
+            roomsListToRoomList(RoomController.GetAllRooms());
+
+        }
+
+
+
+        private void roomsListToRoomList(List<Room> roomsToAdd)
+        {
+            Rooms = new ObservableCollection<Room>();
+            foreach (var r in roomsToAdd)
             {
-                RoomController.DeleteRoom(Room.Id);
-            }
-            catch(Exception ex)
-            {
-                ErrorMessage = ex.Message;
+                Rooms.Add(r);
             }
         }
     }

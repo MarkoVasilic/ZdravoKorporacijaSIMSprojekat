@@ -48,10 +48,10 @@ namespace ZdravoKorporacija
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
             DisplacementRepository displacementRepository = new DisplacementRepository();
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -66,6 +66,9 @@ namespace ZdravoKorporacija
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
             EquipmentController equipmentController = new EquipmentController(equipmentService);
+            BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
+            BasicRenovationController basicRenovationController = new BasicRenovationController(basicRenovationService);
+
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
             patientController.CreatePatient(false, alergeni, BloodType.A_POSITIVE, "milos", "milosevic", "mikimilane", "mackacka",
@@ -119,18 +122,21 @@ namespace ZdravoKorporacija
             //equipmentController.CreateEquipment("sto", true, 2, 7);
             //equipmentController.CreateEquipment("zavoj", false, 50, null);
 
-            //ISPIS OPREME
-            /*List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
-            foreach (Equipment equipment in equipmentList)
-                equipment.toString();*/
 
-            //equipmentController.CreateDisplacement(7, 8, 1, 1, new DateTime(2022, 4, 24));
             /*List<Displacement> displacementList = new List<Displacement>(equipmentController.GetAllDisplacements());
             foreach (Displacement d in displacementList)
                 d.toString();*/
 
-            //equipmentController.CreateDisplacement(7, 1, 1, 1, DateTime.Now);
-            //equipmentService.EquipmentDisplacement();
+            //pomeranje opreme - danas
+            /*equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
+            equipmentService.EquipmentDisplacement();*/
+
+            //pomeranje opreme - buducnost
+            /*equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2023, 3, 3));
+            equipmentService.EquipmentDisplacement();*/
+
+
+
             /*secretaryController.CreateSecretary("Marko", "Vasilic", "mare", "konj", "1515151515151", new DateTime(1998, 9, 15),
                 Gender.MALE, "marko@vasilic.com", "060606060", "Novi Sad");
             managerController.CreateManager("Nadja", "Kanjuh", "djana", "mama", "3434343434343", new DateTime(2000, 7, 24),
@@ -146,16 +152,69 @@ namespace ZdravoKorporacija
              }*/
 
             //  Console.WriteLine(medicalRecordController.GetOneByPatientJmbg("1111111111111").PrescriptionIds[0]);
-      
+
             //TESTIRANJE NOTIFIKACIJA I NJIHOVO PRIKAZIVANJE SAT VREMENA PRED EVENT
             //CreatePatientNotifications za pisanje u json i kreairanje za dati lijek, a ShowPatientNotification za slanje obavjestenja
-              /*  List<Notification> notificationList1 = new List<Notification>();
-                notificationList1 = notificationService.CreatePatientNotifications();
+            /*  List<Notification> notificationList1 = new List<Notification>();
+              notificationList1 = notificationService.CreatePatientNotifications();
 
-            List<Notification> notificationList = new List<Notification>();
-            notificationList = notificationService.ShowPatientNotification();
-            foreach (Notification notification in notificationList)
-                notification.ToStringNotification(); */
+          List<Notification> notificationList = new List<Notification>();
+          notificationList = notificationService.ShowPatientNotification();
+          foreach (Notification notification in notificationList)
+              notification.ToStringNotification(); */
+
+
+            //ISPIS OPREME - IMAM I NA FRONTU (UPRAVNIK)
+            /*List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
+            foreach (Equipment equipment in equipmentList)
+                equipment.toString();*/
+
+
+            /*List<Displacement> displacementList = new List<Displacement>(equipmentController.GetAllDisplacements());
+           foreach (Displacement d in displacementList)
+               d.toString();*/
+
+            //POMERANJE OPREME - DANAS (UPRAVNIK)
+            /*equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
+            equipmentService.EquipmentDisplacement();*/
+
+            //ZAKAZIVANJE POMERANJA OPREME (UPRAVNIK)
+            /*equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2023, 3, 3));
+            equipmentService.EquipmentDisplacement();*/
+
+
+            //ISPIS SVIH DOSTUPNIH TERMINA + OSNOVNO RENOVIRANJE (UPRAVNIK)
+            /*int index = 0;
+            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 3, 3), new DateTime(2023, 3, 6), 60));
+            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+            {
+                Console.WriteLine(index.ToString());
+                possibleAppointment.toStringManager();
+                index++;
+            }
+
+            string checkedAppointment;
+
+            Console.WriteLine("Unesite broj termina koji zelite");
+            checkedAppointment = Console.ReadLine();
+            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+
+            string description;
+            Console.WriteLine("Unesite opis renoviranja:");
+            description = Console.ReadLine();
+            
+
+            for (int i = 0; i<possibleAppointmentsRenovation.Count; i++)
+            {
+                if(checkedAppointmentIndex == i)
+                {
+                    basicRenovationController.CreateBasicRenovation(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, description);
+                }
+            }
+            */
+
+
+
         }
 
     }
