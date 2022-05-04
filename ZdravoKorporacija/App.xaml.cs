@@ -38,10 +38,10 @@ namespace ZdravoKorporacija
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
             DisplacementRepository displacementRepository = new DisplacementRepository();
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             PatientService patientService = new PatientService(patientRepository);
             patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -68,6 +68,7 @@ namespace ZdravoKorporacija
             NotificationRepository notificationRepository = new NotificationRepository();
             NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
             notificationController = new NotificationController(notificationService);
+
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
             patientController.CreatePatient(false, alergeni, BloodType.A_POSITIVE, "milos", "milosevic", "mikimilane", "mackacka",
@@ -121,18 +122,21 @@ namespace ZdravoKorporacija
             //equipmentController.CreateEquipment("sto", true, 2, 7);
             //equipmentController.CreateEquipment("zavoj", false, 50, null);
 
-            //ISPIS OPREME
-            /*List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
-            foreach (Equipment equipment in equipmentList)
-                equipment.toString();*/
 
-            //equipmentController.CreateDisplacement(7, 8, 1, 1, new DateTime(2022, 4, 24));
             /*List<Displacement> displacementList = new List<Displacement>(equipmentController.GetAllDisplacements());
             foreach (Displacement d in displacementList)
                 d.toString();*/
 
-            //equipmentController.CreateDisplacement(7, 1, 1, 1, DateTime.Now);
-            //equipmentService.EquipmentDisplacement();
+            //pomeranje opreme - danas
+            /*equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
+            equipmentService.EquipmentDisplacement();*/
+
+            //pomeranje opreme - buducnost
+            /*equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2023, 3, 3));
+            equipmentService.EquipmentDisplacement();*/
+
+
+
             /*secretaryController.CreateSecretary("Marko", "Vasilic", "mare", "konj", "1515151515151", new DateTime(1998, 9, 15),
                 Gender.MALE, "marko@vasilic.com", "060606060", "Novi Sad");
             managerController.CreateManager("Nadja", "Kanjuh", "djana", "mama", "3434343434343", new DateTime(2000, 7, 24),

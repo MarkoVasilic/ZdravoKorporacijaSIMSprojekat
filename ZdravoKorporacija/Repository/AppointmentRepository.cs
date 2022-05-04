@@ -73,6 +73,7 @@ namespace Repository
             return null;
         }
 
+
         public List<Appointment> FindAllByDoctorJmbg(String doctorJmbg)
         {
             var values = GetValues();

@@ -2,6 +2,7 @@
 using ZdravoKorporacija.View;
 using ZdravoKorporacija.View.RoomCRUD;
 using ZdravoKorporacija.View.SecretaryUI;
+using ZdravoKorporacija.View.DoctorUI;
 using Model;
 using System;
 using ZdravoKorporacija.View.ManagerUI.Views;
@@ -51,7 +52,7 @@ namespace ZdravoKorporacija
                 App.loggedUser = doctor;
                 App.userRole = "doctor";
                 correctUsername = true;
-                //window = ;
+                window = new DoctorWindow();
             }
             else
             {
