@@ -18,6 +18,7 @@ namespace ZdravoKorporacija
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             Window window = null;
+            bool correctUsername = false;
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Password;
             Manager manager = App.managerController.getManagerByUsername(username);
@@ -28,39 +29,44 @@ namespace ZdravoKorporacija
             {
                 App.loggedUser = manager;
                 App.userRole = "manager";
+                correctUsername = true;
                 window = new ManagerHomeWindow();
             }
             else if (secretary != null)
             {
                 App.loggedUser = secretary;
                 App.userRole = "secretary";
+                correctUsername = true;
                 window = new SecretaryWindow();
             }
             else if (patient != null)
             {
                 App.loggedUser = patient;
                 App.userRole = "patient";
+                correctUsername = true;
                 window = new PatientHomeWindow();
             }
             else if (doctor != null)
             {
                 App.loggedUser = doctor;
                 App.userRole = "doctor";
+                correctUsername = true;
                 //window = ;
             }
             else
             {
-                MessageBox.Show("Username not registered!");
+                MessageBox.Show("Wrong username!");
             }
 
-            if (password == App.loggedUser.Password)
+            if (correctUsername && password == App.loggedUser.Password)
             {
                 window.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Wrong password!");
+                if (correctUsername)
+                    MessageBox.Show("Wrong password!");
             }
         }
     }
