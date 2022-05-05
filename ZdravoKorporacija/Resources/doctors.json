@@ -12,7 +12,7 @@
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 7
   },
   {
     "Specialty": false,
@@ -27,7 +27,7 @@
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 11
   },
   {
     "Specialty": false,
@@ -42,7 +42,7 @@
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 12
   },
   {
     "Specialty": false,
@@ -57,7 +57,7 @@
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 14
   },
   {
     "Specialty": true,
@@ -72,6 +72,6 @@
     "Email": "djvan@gmail.com",
     "PhoneNumber": "06312323123",
     "Address": "Strazilovska 155",
-    "roomId": 3
+    "roomId": 5
   }
 ]
