@@ -24,7 +24,7 @@ namespace Model
         {
             Regex nameRegex = new Regex("^$|[a-zA-Z]+[a-zA-Z0-9_\\.\\s]*$");
 
-            if (Name == null || Name.Length < 3 || !nameRegex.IsMatch(Name))
+            if (Name == null || Name.Length < 2 || !nameRegex.IsMatch(Name))
             {
                 return false;
             }

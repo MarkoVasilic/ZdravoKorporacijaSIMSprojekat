@@ -1,23 +1,4 @@
 [
-  {
-    "Id": 500,
-    "RoomId": 5,
-    "StartTime": "2022-04-28T14:26:51.9465569+02:00",
-    "Duration": 360,
-    "Description": "nesto"
-  },
-  {
-    "Id": 501,
-    "RoomId": 5,
-    "StartTime": "2022-04-30T04:30:00",
-    "Duration": 60,
-    "Description": "nesto"
-  },
-  {
-    "Id": 502,
-    "RoomId": 5,
-    "StartTime": "2022-04-30T09:30:00",
-    "Duration": 60,
-    "Description": "nesto"
-  }
+ 
+ 
 ]

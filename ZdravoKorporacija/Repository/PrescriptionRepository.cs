@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using ZdravoKorporacija.Model;
-
-namespace ZdravoKorporacija.Repository
+using Model;
+namespace Repository
 {
     public class PrescriptionRepository
     {

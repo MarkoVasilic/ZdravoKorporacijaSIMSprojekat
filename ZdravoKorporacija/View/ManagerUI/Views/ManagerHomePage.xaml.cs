@@ -23,30 +23,22 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void DeleteRoomClick(object sender, RoutedEventArgs e)
         {
-            //this.Close();
-            //DeleteRoom deleteRoom = new DeleteRoom();
-            //deleteRoom.Show();
+            NavigationService.Navigate(new DeleteRoom());
         }
 
         private void AllRoomsClick(object sender, RoutedEventArgs e)
         {
-            //this.Close();
-            //GetAllRooms getAllRooms = new GetAllRooms();
-            //getAllRooms.Show();
+            NavigationService.Navigate(new GetAllRooms());
         }
 
         private void ModifyRoomClick(object sender, RoutedEventArgs e)
         {
-           // this.Close();
-            //RoomsBeforeModification roomsBeforeModification = new RoomsBeforeModification();
-            //roomsBeforeModification.Show();
+            NavigationService.Navigate(new RoomsBeforeModification());
         }
 
         private void EquipmentClick(object sender, RoutedEventArgs e)
         {
-            //this.Close();
-            //GetAllEquipment equipment = new GetAllEquipment();
-            //equipment.Show();
+            NavigationService.Navigate(new GetAllEquipment());
         }
     }
 }

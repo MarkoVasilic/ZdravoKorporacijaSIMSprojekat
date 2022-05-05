@@ -1,22 +1,50 @@
-﻿<Window x:Class="ZdravoKorporacija.View.Equipment.GetAllEquipment"
+﻿<Page x:Class="ZdravoKorporacija.View.Equipment.GetAllEquipment"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.Equipment"
+        xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
         mc:Ignorable="d"
         Title="GetAllEquipment" Height="768" Width="1024" Background="LightYellow">
-    <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,55,0,0" TextWrapping="Wrap" Text="Equipment preview" VerticalAlignment="Top" FontSize="25" FontWeight="Bold"/>
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="242" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Equipment type" Binding="{Binding IsStatic}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="58,627,0,0" VerticalAlignment="Top" Height="62" Width="174" Background="OrangeRed" FontSize="20" FontWeight="Bold" BorderBrush="Black" Click="BackButtonClick"/>
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+    </Page.CommandBindings>
+
+
+    <Grid MaxWidth="1024">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock
+             Text="Pregled opreme" 
+             FontSize="30" 
+             FontWeight="bold" Margin="420 0 0 0" TextAlignment="Center"></TextBlock>
+
+            <Button Content="Odjavi se" Margin="210 0 0 425"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
+
+        </StackPanel>
+
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="242" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tip opreme" Binding="{Binding IsStatic}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Content="Nazad" Grid.Row="2" Command="cmd:RoutedCommand.Back" Margin="-780 200 0 0" Style="{StaticResource ManagerRedButtonStyle}" IsDefault="True" />
+
+
+       
     </Grid>
-</Window>
+</Page>

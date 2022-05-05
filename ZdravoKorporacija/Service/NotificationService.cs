@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
+using Service;
+using Model;
 
 namespace ZdravoKorporacija.Service
 {

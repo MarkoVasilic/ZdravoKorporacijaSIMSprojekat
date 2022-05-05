@@ -30,6 +30,8 @@ namespace Service
                 throw new Exception("Patient with that username already exists!");
             else
             {
+                if (dateOfBirth == null)
+                    throw new Exception("You must enter date of birth!");
                 Patient newPatient = new Patient(isGuest, allergens, bloodType, firstName, lastName, username, password,
                     jmbg, dateOfBirth, gender, email, telephone, address);
                 if (!newPatient.validatePatient())
@@ -68,6 +70,8 @@ namespace Service
             }
             else
             {
+                if (dateOfBirth == null)
+                    throw new Exception("You must enter date of birth!");
                 Patient newPatient = new Patient(isGuest, allergens, bloodType, firstName, lastName, oldPatient.Username, oldPatient.Password,
             jmbg, dateOfBirth, gender, email, telephone, address);
                 if (!newPatient.validatePatient())
@@ -88,13 +92,14 @@ namespace Service
         }
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
-        {
+        { 
             Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,
                 null, Gender.NONE, null, null, null);
+            string retVal = guestPatient.validateGuest();
             if (PatientRepository.FindOneByJmbg(jmbg) != null)
                 throw new Exception("Patient with that jmbg doesn't exist!");
-            else if (!guestPatient.validateGuest())
-                throw new Exception("Something went wrong, patient account isn't saved!");
+            else if (retVal.Length != 0)
+                throw new Exception(retVal);
             else
             {
                 PatientRepository.SavePatient(guestPatient);

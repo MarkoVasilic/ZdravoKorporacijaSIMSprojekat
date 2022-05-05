@@ -3,62 +3,155 @@ using Model;
 using Repository;
 using Service;
 using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ZdravoKorporacija.View.RoomCRUD
 {
-    public partial class ModifyRoom : Window
+    public partial class ModifyRoom : Page
     {
 
         private RoomController roomController;
+        private Room room;
 
-        public ModifyRoom(Room room)
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
         {
-            Console.WriteLine(room.Name);
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private string name = "";
+        private string description = "";
+        private int roomId;
+        private string errorMessage;
+
+        public int RoomId
+        {
+            get { return roomId; }
+            set
+            {
+                roomId = value;
+                OnPropertyChanged("RoomId");
+            }
+        }
+
+        public string NameRoom
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
+        public Room Room
+        {
+            get
+            {
+                return room;
+            }
+            set
+            {
+                room = value;
+                OnPropertyChanged("Room");
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get
+            {
+                return errorMessage;
+            }
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged("ErrorMessage");
+            }
+        }
+
+
+        public ModifyRoom(int roomId)
+        {
+
             InitializeComponent();
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            textBoxName.Focus();
+            room = roomController.GetRoomById(roomId);
+            if (room is not null)
+            {
+                RoomId = room.Id;
+                NameRoom = Room.Name;
+                Description = Room.Description;
+            }
+            else
+            {
+                NavigationService.GoBack();
+            }
+            this.DataContext = this;
+            
         }
 
-        private void ModifyCLick(object sender, RoutedEventArgs e)
+        
+
+       /* private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RoomsBeforeModification());
+        }*/
+
+        private void Button_ModifyRoom_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                int roomId = int.Parse(textBoxId.Text);
-
-                String name = textBoxName.Text;
-                String description = textBoxDescription.Text;
-                if (name.Trim() == "")
-                {
-                    MessageBox.Show("Please enter a name", "Error");
-                }
-
-
-
-                if (description.Trim() == "")
-                {
-                    MessageBox.Show("Please enter a description", "Error");
-
-                }
-
-                roomController.ModifyRoom(roomId, name, description);
-
-                this.Close();
-
-                RoomsBeforeModification roomsBeforeModification = new RoomsBeforeModification();
-                roomsBeforeModification.Show();
+                roomController.ModifyRoom(RoomId, NameRoom, Description);
+                NavigationService.Navigate(new RoomsBeforeModification());
+                
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Error");
-                this.Close();
-                ManagerHomePage managerHomePage = new ManagerHomePage();
-               // managerHomePage.Show();
+                ErrorMessage = ex.Message;
+                //Console.WriteLine("GRESKA");
             }
+        }
 
+        private void Button_Click_Logout(object sender, RoutedEventArgs e)
+        {
 
+        }
 
+        public void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        public void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RoomsBeforeModification());
         }
     }
 }

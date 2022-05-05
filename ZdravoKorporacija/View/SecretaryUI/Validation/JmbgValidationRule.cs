@@ -12,7 +12,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.Validation
             {
                 var text = value as string;
                 if (text.Length != 13)
-                    return new ValidationResult(false, "This is necessary field, length must be 13!");
+                    return new ValidationResult(false, "This field is necessary, length must be 13!");
                 Regex r = new Regex("^[0-9]+$");
                 if (r.IsMatch(text))
                 {
