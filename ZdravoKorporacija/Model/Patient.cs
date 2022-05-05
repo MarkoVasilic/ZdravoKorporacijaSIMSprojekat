@@ -34,7 +34,7 @@ namespace Model
                 return false;
             else if (BloodTypeEnum == null || BloodTypeEnum == BloodType.NONE)
                 return false;
-            else if (Username == null || Username.Length < 5 || !usernameRegex.IsMatch(Username))
+            else if (Username == null || Username.Length < 3 || !usernameRegex.IsMatch(Username))
                 return false;
             else if (Password == null || Password.Length < 8)
                 return false;

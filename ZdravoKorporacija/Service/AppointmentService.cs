@@ -38,14 +38,18 @@ namespace Service
         {
             List<Appointment> appointments = AppointmentRepository.FindAll();
             List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();
-            foreach (var ap in appointments)
+            if (appointments.Count > 0)
             {
-                Doctor doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
-                Patient patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
-                Room room = RoomRepository.FindOneById(ap.RoomId);
-                possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
-                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.Id));
+                foreach (var ap in appointments)
+                {
+                    Doctor doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
+                    Patient patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
+                    Room room = RoomRepository.FindOneById(ap.RoomId);
+                    possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
+                        ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.Id));
+                }
             }
+            possibleAppointmentsDTO.Sort((x, y) => DateTime.Compare(x.StartTime.AddMinutes(x.Duration), y.StartTime.AddMinutes(y.Duration)));
             return possibleAppointmentsDTO;
         }
 
@@ -319,14 +323,14 @@ namespace Service
             List <Appointment> neededAppointments = new List<Appointment>();
             foreach (var app in allAppointments)
             {
-                if (app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (
+                if (app.StartTime > DateTime.Now && app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (
                     (doctorJmbg != null && app.DoctorJmbg == doctorJmbg) ||
                     (patientJmbg != null && app.PatientJmbg == patientJmbg) || (roomId != null && app.RoomId == roomId)))
                     neededAppointments.Add(app);
             }
             foreach (var br in allBasicRenovations)
             {
-                if (br.StartTime.AddMinutes(br.Duration) > dateFrom && br.StartTime < dateUntil && ( (roomId != null && br.RoomId == roomId)))
+                if (br.StartTime > DateTime.Now && br.StartTime.AddMinutes(br.Duration) > dateFrom && br.StartTime < dateUntil && ( (roomId != null && br.RoomId == roomId)))
                 {
                     Appointment basicRenovationAppointment = new Appointment(br.StartTime, br.Duration, -1, "", "", br.RoomId);
                     neededAppointments.Add(basicRenovationAppointment);

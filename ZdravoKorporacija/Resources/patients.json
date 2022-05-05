@@ -51,25 +51,6 @@
   {
     "IsGuest": false,
     "Allergens": [
-      "vfdsvdf",
-      "vfdsvdf",
-      "vsdfvdf"
-    ],
-    "BloodTypeEnum": 2,
-    "FirstName": "cdascasa",
-    "LastName": "csdcsa",
-    "Username": "pero",
-    "Password": "pero",
-    "Jmbg": "7777788888999",
-    "DateOfBirth": "2022-03-31T00:00:00",
-    "Gender": 1,
-    "Email": "cdsacs@cds.com",
-    "PhoneNumber": "34232342",
-    "Address": "cdscsd cdascsad cdascasdc"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
       "vdsvfd",
       "lazarrrr"
     ],
@@ -177,5 +158,23 @@
     "Email": "dsa@cds.com",
     "PhoneNumber": "132",
     "Address": "cdscsd"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "bgsf",
+      "bgfdbgf"
+    ],
+    "BloodTypeEnum": 5,
+    "FirstName": "Mil",
+    "LastName": "Milanovic",
+    "Username": "Mil",
+    "Password": "sifra123",
+    "Jmbg": "3698521477896",
+    "DateOfBirth": "2022-04-26T00:00:00",
+    "Gender": 1,
+    "Email": "cds@cds.com",
+    "PhoneNumber": "9199",
+    "Address": "cdpsmcs\r\ncdsacs\r\ncds996"
   }
 ]
