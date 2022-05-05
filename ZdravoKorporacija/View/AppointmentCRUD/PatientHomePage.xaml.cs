@@ -54,5 +54,13 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
            //   notification.ToStringNotification();
            NavigationService.Navigate(new NotificationsPage());
         }
+
+        private void logOutButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(null);
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+
+        }
     }
 }

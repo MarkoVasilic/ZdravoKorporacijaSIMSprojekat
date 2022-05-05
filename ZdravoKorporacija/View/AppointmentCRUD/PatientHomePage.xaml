@@ -15,6 +15,6 @@
 
         <Button  Content="Appointments" FontSize="20" HorizontalAlignment="Left" Height="102" Margin="348,247,0,0" VerticalAlignment="Top" Width="268" Click="AppointmentsButton_Click"/>
         <Button  Content="Notifications" FontSize="20" HorizontalAlignment="Left" Height="102" Margin="348,420,0,0" VerticalAlignment="Top" Width="268" Click="Button_Click"/>
-        <Label Content="Patient Home Page" FontSize="60" FontWeight="Bold" HorizontalAlignment="Center" Height="93" Margin="0,68,0,0" VerticalAlignment="Top" Width="636"/>
+        <Label Content="Patient Home Page" FontSize="60" FontWeight="Bold" Foreground="GreenYellow"  HorizontalAlignment="Center" Height="93" Margin="0,68,0,0" VerticalAlignment="Top" Width="636"/>
     </Grid>
 </Page>

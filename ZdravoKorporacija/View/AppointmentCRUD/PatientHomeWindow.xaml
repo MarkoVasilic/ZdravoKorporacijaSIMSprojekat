@@ -4,13 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="PatientHomeWindow" Height="768" Width="1024">
     <Grid>
-        <Frame x:Name="PatientMainFrame" Height="768" NavigationUIVisibility="Hidden"></Frame>
         <Grid.Background>
             <ImageBrush ImageSource="\Resources\Images\bolnicaHCI.jpg" Stretch="Fill"/>
         </Grid.Background>
-
+        <Frame x:Name="PatientMainFrame" Height="700" NavigationUIVisibility="Hidden"></Frame>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70">
+                </RowDefinition>
+                <RowDefinition>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="#FF242F41"/>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right">
+                <Button Height="70" Width="200" Margin="0 0 0 0" Click="LogOutButton" Content="Log Out" FontSize="20" FontWeight="Bold" Background="GreenYellow"></Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="CreateAppointmentPage" Height="768" Width="1024">
     <Grid Background="#FF4FC3A0" >
-        <Label Content="Zakazivanje Termina" FontSize="55" HorizontalAlignment="Center" Height="86" Margin="0,10,0,0" VerticalAlignment="Top" Width="568"/>
+        <Label Content="Zakazivanje Termina" FontSize="55" HorizontalAlignment="Left" Height="86" Margin="220,59,0,0" VerticalAlignment="Top" Width="568"/>
         <ComboBox  SelectedItem="{Binding SelectedDoctor}" ItemsSource="{Binding Doctors}"  HorizontalAlignment="Left" Margin="58,213,0,0" VerticalAlignment="Top" Width="281" Height="39">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -44,7 +44,7 @@
         <Label Content="Vrijeme:" FontSize="20" HorizontalAlignment="Left" Height="53" Margin="648,460,0,0" VerticalAlignment="Top" Width="281" RenderTransformOrigin="0.511,0.556"/>
         <Label Content="Doktor:" FontSize="20" HorizontalAlignment="Left" Height="53" Margin="648,510,0,0" VerticalAlignment="Top" Width="281" RenderTransformOrigin="0.511,0.556"/>
         <TextBlock Focusable="False" HorizontalAlignment="Left" Height="262" Margin="10,408,0,0" TextWrapping="Wrap" Text="U slučaju da nema raspoloživih termina za datog doktora, gleda se prioritet. Ukoliko ste odabrali 'VRIJEME', dobićete termin za datum koji ste naznačili ali kod drugog doktora. Ukoliko ste odabrali 'Doktor', dobićete prvi slobodan termin kod doktora kojeg ste odabrali" FontSize="20" FontStyle="Italic"  VerticalAlignment="Top" Width="460"/>
-        <Button Content="Prikaži Termine"  HorizontalAlignment="Left" Height="65" Margin="504,647,0,0" VerticalAlignment="Top" Width="190" Command="{Binding GetAllPossibleAppointmentsPatient}">
+        <Button Content="Prikaži Termine"  HorizontalAlignment="Left" Height="66" Margin="504,614,0,0" VerticalAlignment="Top" Width="190" Command="{Binding GetAllPossibleAppointmentsPatient}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
@@ -52,7 +52,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="Nazad"  HorizontalAlignment="Left" Height="65" Margin="714,647,0,0" VerticalAlignment="Top" Width="190" Click="ButtonBack">
+        <Button Content="Nazad"  HorizontalAlignment="Left" Height="65" Margin="739,615,0,0" VerticalAlignment="Top" Width="190" Click="ButtonBack">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>

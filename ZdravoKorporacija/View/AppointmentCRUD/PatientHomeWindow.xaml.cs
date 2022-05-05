@@ -15,6 +15,11 @@ namespace ZdravoKorporacija.View
             DataContext = new PatientWindowVM(this);
         }
 
-       
+        private void LogOutButton(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            this.Close();
+            main.Show();
+        }
     }
 }
