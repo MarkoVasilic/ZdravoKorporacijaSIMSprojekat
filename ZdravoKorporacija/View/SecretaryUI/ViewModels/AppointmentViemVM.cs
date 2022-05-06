@@ -6,11 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
@@ -24,16 +29,16 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private String patientJmbg { get; set; }
         private Doctor? selectedDoctor { get; set; }
         private Room? selectedRoom { get; set; }
-
+        private List<DateTime> newSelectedDates { get; set; }
         private PossibleAppointmentsDTO? selectedAppointment { get; set; }
         private PossibleAppointmentsDTO? selectedNewAppointment { get; set; }
         private DateTime startDate;
-        private String possibleAppointmentsVisibility;
         private String errorMessage;
         private ObservableCollection<Doctor> doctors;
         private ObservableCollection<Room> rooms;
         private ObservableCollection<PossibleAppointmentsDTO> appointments;
         private ObservableCollection<PossibleAppointmentsDTO> possibleAppointments;
+        private ListCollectionView lcv { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -41,6 +46,9 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public ICommand ModifyAppointmentCommand { get; set; }
         public ICommand DeleteAppointmentCommand { get; set; }
         public ICommand SelectNewAppointmentCommand { get; set; }
+        public ICommand SelectDatesCommand { get; set; }
+        public ICommand YesCommand { get; set; }
+        public ICommand NoCommand { get; set; }
 
         public ObservableCollection<Doctor> Doctors
         {
@@ -71,6 +79,15 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
         }
 
+        public List<DateTime> NewSelectedDates
+        {
+            get { return newSelectedDates; }
+            set
+            {
+                newSelectedDates = value;
+                OnPropertyChanged("NewSelectedDates");
+            }
+        }
         public Doctor SelectedDoctor
         {
             get { return selectedDoctor; }
@@ -140,16 +157,6 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
         }
 
-        public String PossibleAppointmentsVisibility
-        {
-            get { return possibleAppointmentsVisibility; }
-            set
-            {
-                possibleAppointmentsVisibility = value;
-                OnPropertyChanged("PossibleAppointmentsVisibility");
-            }
-        }
-
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -168,6 +175,16 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
         }
 
+        public ListCollectionView Lcv
+        {
+            get => lcv;
+            set
+            {
+                lcv = value;
+                OnPropertyChanged("Lcv");
+            }
+        }
+
         public AppointmentViemVM()
         {
             SecretaryWindowVM.setWindowTitle("Scheduled appointments");
@@ -180,17 +197,19 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository);
+                roomRepository, basicRenovationRepository);
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
-            doctorsListToDoctorList(doctorController.GetAll());
+            doctorsListToDoctorList(doctorController.GetAllDoctors());
             possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
             SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
             SelectNewAppointmentCommand = new RelayCommand(selectNewAppointmentExecute);
+            SelectDatesCommand = new RelayCommand(selectDatesExecute);
         }
 
         private void doctorsListToDoctorList(List<Doctor> doctors)
@@ -226,7 +245,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             try
             {
                 List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = appointmentController.GetPossibleAppointmentsBySecretary(SelectedAppointment.PatientJmbg,
-                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, DateTime.Today, DateTime.Today.AddDays(4), SelectedAppointment.Duration,
+                SelectedAppointment.DoctorJmbg, SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.StartTime.AddDays(4), SelectedAppointment.Duration,
                 "time");
                 PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
                 foreach (var pa in possibleAppointmentsDTOs)
@@ -242,8 +261,63 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 
         private void searchAppointmentExecute(object parameter)
         {
+            List<PossibleAppointmentsDTO> temp = appointmentController.GetAllAppointmentsBySecretary();
+            Appointments = new ObservableCollection<PossibleAppointmentsDTO>();
+            foreach (var ap in temp)
+            {
+                Boolean shouldAdd = true;
+                if (PatientJmbg != null && PatientJmbg.Length > 0)
+                {
+                    if (ap.PatientJmbg != PatientJmbg)
+                        shouldAdd = false;
+                }
+                if (SelectedDoctor != null)
+                {
+                    if (ap.DoctorJmbg != SelectedDoctor.Jmbg)
+                        shouldAdd = false;
+                }
+                if (SelectedRoom != null)
+                {
+                    if (ap.RoomId != SelectedRoom.Id)
+                        shouldAdd = false;
+                }
+                if (NewSelectedDates != null)
+                {
+                    Boolean isCorrectDate = false;
+                    foreach (var sd in NewSelectedDates)
+                    {
+                        if (ap.StartTime.Date == sd.Date)
+                        {
+                            isCorrectDate = true;
+                            break;
+                        }
+                    }
+                    if (!isCorrectDate)
+                        shouldAdd = false;
+                }
+                if (ap.StartTime < DateTime.Now)
+                    shouldAdd = false;
+                if (shouldAdd)
+                    Appointments.Add(ap);
+            }
+            Lcv = new ListCollectionView(Appointments);
+            Lcv.GroupDescriptions.Add(new PropertyGroupDescription("StartTime",new DateTimeToDateConverter()));
+        }
+        public class DateTimeToDateConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                var dt = value as DateTime?;
+                if (dt is null)
+                    return "";
+                else
+                    return dt?.Date.ToShortDateString();
+            }
 
-
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
         }
         private void modifyAppointmentExecute(object parameter)
         {
@@ -256,7 +330,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         {
             SelectedAppointment = parameter as PossibleAppointmentsDTO;
             appointmentController.DeleteAppointment(SelectedAppointment.AppointmentId);
-            possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            searchAppointmentExecute(null);
         }
 
         private void selectNewAppointmentExecute(object parameter)
@@ -272,6 +346,16 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 ErrorMessage = e.Message; 
             }
             
+        }
+
+        private void selectDatesExecute(object parameter)
+        {
+            SelectedDatesCollection dates = parameter as SelectedDatesCollection;
+            NewSelectedDates = new List<DateTime>();
+            foreach (var items in dates)
+            {
+                NewSelectedDates.Add(items);
+            }
         }
     }
 }

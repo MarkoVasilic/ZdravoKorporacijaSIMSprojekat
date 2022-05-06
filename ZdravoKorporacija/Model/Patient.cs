@@ -30,11 +30,11 @@ namespace Model
             Regex usernameRegex = new Regex("^$|[a-zA-Z]+[a-zA-Z0-9_\\.\\s]*$");
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             Regex emailRegex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-            if (validateGuest() == false)
+            if (validateGuest().Length != 0)
                 return false;
             else if (BloodTypeEnum == null || BloodTypeEnum == BloodType.NONE)
                 return false;
-            else if (Username == null || Username.Length < 5 || !usernameRegex.IsMatch(Username))
+            else if (Username == null || Username.Length < 3 || !usernameRegex.IsMatch(Username))
                 return false;
             else if (Password == null || Password.Length < 8)
                 return false;
@@ -51,18 +51,18 @@ namespace Model
 
         }
 
-        public Boolean validateGuest()
+        public String validateGuest()
         {
             Regex nameRegex = new Regex("^[a-zA-Z-\\s]+$");
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             if (FirstName == null || FirstName.Length < 3 || !nameRegex.IsMatch(FirstName))
-                return false;
+                return "First name length must be greater than 3!";
             else if (LastName == null || LastName.Length < 3 || !nameRegex.IsMatch(LastName))
-                return false;
+                return "Last name length must be greater than 3!";
             else if (Jmbg == null || Jmbg.Length != 13 || !onlyNumberRegex.IsMatch(Jmbg))
-                return false;
+                return "Jmbg can only be numbers and is necessary to input!";
             else
-                return true;
+                return "";
         }
     }
 }

@@ -22,7 +22,9 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
     {
         public AppointmentPage()
         {
+           
             InitializeComponent();
+            
         }
 
         private void ButtonCreateAppointment(object sender, RoutedEventArgs e)
@@ -42,13 +44,18 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
         private void UpdateAppointmentButton(object sender, RoutedEventArgs e)
         {
 
-            NavigationService.Navigate(new UpdateAppointmentPage());
+           NavigationService.Navigate(new UpdateFutureAppointmentsPage());
         }
 
         private void MyAppointmentsButton(object sender, RoutedEventArgs e)
         {
 
             NavigationService.Navigate(new GetAllAppointmentsPatient());
+        }
+
+        private void GoHomeButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack(); 
         }
     }
 }

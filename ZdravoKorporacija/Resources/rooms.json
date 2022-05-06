@@ -1,38 +1,10 @@
 [
   {
-    "Name": "skladiste",
-    "Id": 1,
-    "Description": "skladiste bolnice",
-    "Type": 3,
-    "typeStr": "STORAGE"
-  },
-  {
-    "Name": "sobicaneka",
-    "Id": 5,
-    "Description": "dasdsfdsfds",
-    "Type": 2,
-    "typeStr": "CONFERENCE"
-  },
-  {
     "Name": "NADJA",
     "Id": 7,
     "Description": "NADJA",
     "Type": 1,
     "typeStr": "EXAMINATION"
-  },
-  {
-    "Name": "nadjaprobaaA",
-    "Id": 8,
-    "Description": "nadjaprobaaaaaaA",
-    "Type": 1,
-    "typeStr": "EXAMINATION"
-  },
-  {
-    "Name": "sobaproba1",
-    "Id": 9,
-    "Description": "sobaproba",
-    "Type": 2,
-    "typeStr": "CONFERENCE"
   },
   {
     "Name": "SOBA",
@@ -47,5 +19,26 @@
     "Description": "sala za sast",
     "Type": 2,
     "typeStr": "CONFERENCE"
+  },
+  {
+    "Name": "operacija",
+    "Id": 13,
+    "Description": "soba za operaciju",
+    "Type": 1,
+    "typeStr": "EXAMINATION"
+  },
+  {
+    "Name": "soba A",
+    "Id": 14,
+    "Description": "sala za sastanke",
+    "Type": 2,
+    "typeStr": "CONFERENCE"
+  },
+  {
+    "Name": "operacijska sala",
+    "Id": 5,
+    "Description": "soba za operacije",
+    "Type": 4,
+    "typeStr": "SURGERY"
   }
 ]

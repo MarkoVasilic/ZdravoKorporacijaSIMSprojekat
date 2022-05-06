@@ -36,7 +36,7 @@
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Patient Jmbg:</TextBlock>
                     <TextBox x:Name="JmbgTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
-                            <Binding Path="Som" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                            <Binding Path="PatientJmbgFilter" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
@@ -45,7 +45,7 @@
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Patient First Name:</TextBlock>
                     <TextBox x:Name="FirstNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
-                            <Binding Path="som" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                            <Binding Path="FirstNameFilter" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
@@ -54,12 +54,12 @@
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Patient Last Name:</TextBlock>
                     <TextBox x:Name="LastNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
-                            <Binding Path="som" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                            <Binding Path="LastNameFilter" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
                 </StackPanel>
-                <Button Grid.Row="5" Grid.Column="1" Name="SearchPatientButton" HorizontalAlignment="Center" Content="Search" Style="{StaticResource SecretaryGreenButtonStyle}"/>
+                <Button Grid.Row="5" Grid.Column="1" Name="SearchPatientButton" HorizontalAlignment="Center" Content="Search" Command="{Binding SearchPatientCommand}" Style="{StaticResource SecretaryGreenButtonStyle}"/>
                 <Button Grid.Row="6" Grid.Column="1" x:Name="AddAccountButton" Background="Transparent" BorderBrush="Transparent" Command="{Binding AddAccountCommand}" VerticalAlignment="Center" HorizontalAlignment="Right" >
                     <materialDesign:PackIcon Height="30" Width="30" Kind="AccountAdd" Foreground="#FF7DBE7F"></materialDesign:PackIcon>
                 </Button>

@@ -7,15 +7,47 @@
         mc:Ignorable="d"
 
         Title="MainWindow" Height="768" Width="1024">
-    <Grid Margin="0,0,0,-6">
+    <Grid>
         <Grid.Background>
          <ImageBrush ImageSource="\Resources\Images\bolnicaHCI.jpg" Stretch="Fill"/>
-        </Grid.Background> 
-        <Button Content="Patient" HorizontalAlignment="Left" Margin="47,129,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719" Click="Button_Click_Patient"/>
-        <TextBox IsReadOnly="True" BorderThickness="0" Background ="Transparent" HorizontalAlignment="Left" Margin="332,27,0,0" TextWrapping="Wrap" Text="Zdravo Corporation" VerticalAlignment="Top" Width="486" Height="73" FontSize="54" FontFamily="Britannic Bold" AllowDrop="True"/>
-        <Button Content="Secretary" HorizontalAlignment="Left" Margin="47,250,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719" Click="Button_Click_Secretary"/>
-        <Button Content="Manager" HorizontalAlignment="Left" Margin="47,394,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719" Click="Button_Click_Manager"/>
-        <Button Content="Doctor" HorizontalAlignment="Left" Margin="47,539,0,0" VerticalAlignment="Top" Height="87" Width="159" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.48,1.719"/>
+        </Grid.Background>
+        <StackPanel VerticalAlignment="Top" Margin="0 70 0 0">
+            <Label Content="Welcome to our hospital" HorizontalAlignment="Center" FontSize="34" FontWeight="Bold" Foreground="GreenYellow"/>
+            
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border Background="White" BorderThickness="5" BorderBrush="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                        <Label Content="Login" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <TextBlock Margin="0,10,0,10" FontSize="20" >Username:</TextBlock>
+                        <TextBox x:Name="UsernameTextBox" Height="30" BorderThickness="2" FontSize="20">
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1">
+                        <TextBlock Margin="0,10,0,10" FontSize="20" >Password:</TextBlock>
+                        <PasswordBox x:Name="PasswordTextBox" Height="30" BorderThickness="2" FontSize="20">
+                        </PasswordBox>
+                    </StackPanel>
+                    <Button Grid.Row="3" Grid.Column="1" Name="LoginButton" HorizontalAlignment="Center" Content="Confirm" Height="30" Width="110" Background="Green" FontSize="18" Click="LoginButton_Click"/>
+                </Grid>
+                
+            </Border>
+        </StackPanel>
 
 
     </Grid>

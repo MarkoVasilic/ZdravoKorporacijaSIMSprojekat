@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
@@ -247,9 +248,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository);
+                roomRepository, basicRenovationRepository);
             appointmentController = new AppointmentController(appointmentService);
             specialitiesListToStringList(doctorController.GetAllSpecialities());
             roomsListToRoomList(roomController.GetAllRooms());
@@ -355,7 +357,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             {
                 appointmentController.CreateAppointmentBySecretary(selectedAppointment.PatientJmbg, selectedAppointment.DoctorJmbg,
                     selectedAppointment.RoomId, selectedAppointment.StartTime, selectedAppointment.Duration);
-                SecretaryWindowVM.NavigationService.Navigate(new SecretaryHomePage());
+                SecretaryWindowVM.NavigationService.Navigate(new AppointmentView());
             }
             catch (Exception e)
             {

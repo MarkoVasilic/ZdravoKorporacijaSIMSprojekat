@@ -5,14 +5,14 @@
     "FirstName": "Aleksandra",
     "LastName": "Petrovic",
     "Username": "petrovicaa",
-    "Password": "sifra123",
+    "Password": "petrovic",
     "Jmbg": "1231231231231",
     "DateOfBirth": "2022-04-10T15:22:34.4259553+02:00",
     "Gender": 1,
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 7
   },
   {
     "Specialty": false,
@@ -27,29 +27,29 @@
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 11
   },
   {
     "Specialty": false,
     "SpecialtyType": "Physician",
     "FirstName": "Nadja",
     "LastName": "Kanjuh",
-    "Username": "petrovicaa",
-    "Password": "sifra123",
+    "Username": "nadja",
+    "Password": "123232342",
     "Jmbg": "5151515151515",
     "DateOfBirth": "2022-04-10T15:22:34.4259553+02:00",
     "Gender": 1,
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 12
   },
   {
     "Specialty": false,
     "SpecialtyType": "Physician",
     "FirstName": "Marko",
     "LastName": "Vasilic",
-    "Username": "petrovicaa",
+    "Username": "markoo",
     "Password": "sifra123",
     "Jmbg": "5454545454545",
     "DateOfBirth": "2022-04-10T15:22:34.4259553+02:00",
@@ -57,7 +57,7 @@
     "Email": "petrovic@gmail.com",
     "PhoneNumber": "063123123",
     "Address": "Strazilovska 4",
-    "roomId": 1
+    "roomId": 14
   },
   {
     "Specialty": true,
@@ -72,6 +72,6 @@
     "Email": "djvan@gmail.com",
     "PhoneNumber": "06312323123",
     "Address": "Strazilovska 155",
-    "roomId": 3
+    "roomId": 5
   }
 ]

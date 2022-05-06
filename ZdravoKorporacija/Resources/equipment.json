@@ -1,12 +1,5 @@
 [
   {
-    "Id": 1,
-    "Name": "sto",
-    "IsStatic": true,
-    "Quantity": 2,
-    "RoomId": 7
-  },
-  {
     "Id": 2,
     "Name": "igle",
     "IsStatic": false,
@@ -19,5 +12,12 @@
     "IsStatic": false,
     "Quantity": 50,
     "RoomId": null
+  },
+  {
+    "Id": 1,
+    "Name": "sto",
+    "IsStatic": true,
+    "Quantity": 1,
+    "RoomId": 7
   }
 ]

@@ -10,6 +10,7 @@ namespace Model
         public String Description { get; set; }
         public RoomType Type { get; set; }
 
+        public Room() { }
         public String? typeStr { get => Enum.GetName<RoomType>(Type); set => Type = Enum.Parse<RoomType>(value); }
         public Room(String Name, int Id, String Description, RoomType Type)
         {
@@ -23,7 +24,7 @@ namespace Model
         {
             Regex nameRegex = new Regex("^$|[a-zA-Z]+[a-zA-Z0-9_\\.\\s]*$");
 
-            if (Name == null || Name.Length < 3 || !nameRegex.IsMatch(Name))
+            if (Name == null || Name.Length < 2 || !nameRegex.IsMatch(Name))
             {
                 return false;
             }

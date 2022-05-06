@@ -22,7 +22,7 @@ using ZdravoKorporacija.View.RoomCRUD;
 
 namespace ZdravoKorporacija.View.Equipment
 {
-    public partial class GetAllEquipment : Window
+    public partial class GetAllEquipment : Page
     {
         private EquipmentController equipmentController;
 
@@ -41,11 +41,25 @@ namespace ZdravoKorporacija.View.Equipment
 
         }
 
-        private void BackButtonClick(object sender, RoutedEventArgs e)
+
+        /*private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ManagerHomePage managerHomePage = new ManagerHomePage();
-            managerHomePage.Show();
+            NavigationService.Navigate(new ManagerHomePage());
+        }*/
+
+        private void Button_Click_Logout(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        public void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ManagerHomePage());
         }
     }
 }

@@ -1,0 +1,66 @@
+﻿<Page x:Class="ZdravoKorporacija.View.ManagerUI.Views.DeleteRoom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
+      xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      
+      Title="DeleteRoom" Background="LightYellow">
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="DeleteRoomHelp_CanExecute" Executed="DeleteRoomHelp_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+    </Page.CommandBindings>
+    <Page.Resources>
+        <Style x:Key="DisableFocus" TargetType="DataGridCell">
+            <Setter Property="Focusable" Value="False"></Setter> </Style>
+    </Page.Resources> 
+
+    <Grid MaxWidth="1024">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock
+             Text="Brisanje prostorije" 
+             FontSize="30" 
+             FontWeight="bold" Margin="390 0 0 0" TextAlignment="Center"></TextBlock>
+
+            <Button Content="Odjavi se" Margin="180 0 0 425"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
+
+        </StackPanel>
+
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="234"  CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Description}" Width="234"  CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip sobe" Binding="{Binding typeStr}" Width="234"  CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Izbriši" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Izbriši" x:Name="DeleteRoomButton" Tag="{Binding Id}" Click="DeleteRoomClick">
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="55 200 0 0 ">
+            <Button Content="Nazad"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}" />
+            <Button Content="Pomoć"  Margin="600, 0, 0, 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

@@ -3,10 +3,10 @@
     "IsGuest": false,
     "Allergens": [],
     "BloodTypeEnum": 3,
-    "FirstName": "dsdsasd",
-    "LastName": "dsacasdcsa",
-    "Username": "konjiiiii",
-    "Password": "konjiiiii",
+    "FirstName": "Petar",
+    "LastName": "Jecmenic",
+    "Username": "joco",
+    "Password": "joco",
     "Jmbg": "7778889994445",
     "DateOfBirth": "2022-04-14T00:00:00",
     "Gender": 1,
@@ -51,25 +51,6 @@
   {
     "IsGuest": false,
     "Allergens": [
-      "vfdsvdf",
-      "vfdsvdf",
-      "vsdfvdf"
-    ],
-    "BloodTypeEnum": 2,
-    "FirstName": "cdascasa",
-    "LastName": "csdcsa",
-    "Username": "lllllaaaa",
-    "Password": "aaaalllll",
-    "Jmbg": "7777788888999",
-    "DateOfBirth": "2022-03-31T00:00:00",
-    "Gender": 1,
-    "Email": "cdsacs@cds.com",
-    "PhoneNumber": "34232342",
-    "Address": "cdscsd cdascsad cdascasdc"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
       "vdsvfd",
       "lazarrrr"
     ],
@@ -86,21 +67,6 @@
     "Address": "vfsvdf"
   },
   {
-    "IsGuest": true,
-    "Allergens": [],
-    "BloodTypeEnum": 0,
-    "FirstName": "kkokokko",
-    "LastName": "mcodsmavmsfom",
-    "Username": "kkokokko",
-    "Password": "sifra123",
-    "Jmbg": "6666655555777",
-    "DateOfBirth": null,
-    "Gender": 0,
-    "Email": "",
-    "PhoneNumber": "",
-    "Address": ""
-  },
-  {
     "IsGuest": false,
     "Allergens": [
       "cdsacs",
@@ -112,15 +78,103 @@
       "sdcascdsd"
     ],
     "BloodTypeEnum": 4,
-    "FirstName": "marko",
-    "LastName": "vasilic",
-    "Username": "marko",
-    "Password": "sifra123",
+    "FirstName": "Jovan",
+    "LastName": "Konjevic",
+    "Username": "jovan",
+    "Password": "jovan",
     "Jmbg": "1111111111111",
     "DateOfBirth": "2022-03-28T00:00:00",
     "Gender": 1,
     "Email": "cdsa@cdds.coc",
     "PhoneNumber": "212",
     "Address": "sascdcsa"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "cdascds"
+    ],
+    "BloodTypeEnum": 2,
+    "FirstName": "Stefan",
+    "LastName": "Stefanovic",
+    "Username": "stefi",
+    "Password": "stefanoivc",
+    "Jmbg": "1596357841236",
+    "DateOfBirth": "2022-04-12T00:00:00",
+    "Gender": 1,
+    "Email": "stefi@cds.com",
+    "PhoneNumber": "3422",
+    "Address": "cdascsdcsd"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "lakii",
+    "LastName": "lakovic",
+    "Username": "lakii",
+    "Password": "sifra123",
+    "Jmbg": "7536987214563",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "fvdsvdf",
+      "vsdfv",
+      "novi alergen"
+    ],
+    "BloodTypeEnum": 1,
+    "FirstName": "Lazar",
+    "LastName": "Vasilci",
+    "Username": "lakiiii",
+    "Password": "cdskomcomsad",
+    "Jmbg": "7894651321593",
+    "DateOfBirth": "2022-04-28T00:00:00",
+    "Gender": 1,
+    "Email": "laal@cds.com",
+    "PhoneNumber": "41342",
+    "Address": "csavf"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "alerege1",
+      "vfd",
+      "novi alergen"
+    ],
+    "BloodTypeEnum": 4,
+    "FirstName": "Milan",
+    "LastName": "Milanovic",
+    "Username": "mikiiiii",
+    "Password": "cdscascds",
+    "Jmbg": "1616545616103",
+    "DateOfBirth": "2022-04-25T00:00:00",
+    "Gender": 1,
+    "Email": "dsa@cds.com",
+    "PhoneNumber": "132",
+    "Address": "cdscsd"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "bgsf",
+      "bgfdbgf"
+    ],
+    "BloodTypeEnum": 5,
+    "FirstName": "Mil",
+    "LastName": "Milanovic",
+    "Username": "Mil",
+    "Password": "sifra123",
+    "Jmbg": "3698521477896",
+    "DateOfBirth": "2022-04-26T00:00:00",
+    "Gender": 1,
+    "Email": "cds@cds.com",
+    "PhoneNumber": "9199",
+    "Address": "cdpsmcs\r\ncdsacs\r\ncds996"
   }
 ]

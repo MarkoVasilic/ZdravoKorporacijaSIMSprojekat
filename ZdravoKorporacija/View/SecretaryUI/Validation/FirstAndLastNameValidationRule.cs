@@ -12,7 +12,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.Validation
             {
                 var text = value as string;
                 if (text.Length == 0)
-                    return new ValidationResult(false, "This is necessary field!");
+                    return new ValidationResult(false, "This field is necessary!");
 
                 Regex r = new Regex("^[a-zA-Z-\\s]+$");
                 if (r.IsMatch(text))

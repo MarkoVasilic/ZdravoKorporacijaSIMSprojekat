@@ -25,6 +25,11 @@ namespace Controller
             return AppointmentService.GetAllAppointmentsBySecretary();
         }
 
+        public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
+        {
+            return AppointmentService.GetAllFutureAppointmentsByPatient();
+        }
+
         public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);
@@ -63,6 +68,11 @@ namespace Controller
         {
             return AppointmentService.GetPossibleAppointmentsBySecretary(patientJmbg, doctorJmbg, roomId,
                 dateFrom, dateUntil, duration, priority);
+        }
+
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByManager(int roomId, DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return AppointmentService.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration);
         }
 
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
