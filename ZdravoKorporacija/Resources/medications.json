@@ -2,11 +2,18 @@
   {
     "Id": 1,
     "Name": "Berodual",
-    "Ingredients": [ "ipratropium bromide", "fenoterol" ]
+    "Ingerdients": [
+      "ipratropium bromide",
+      "fenoterol"
+    ]
   },
   {
     "Id": 2,
     "Name": "Paracetamol",
-    "Ingredients": [ "potassium sorbate", "purified talc", "stearic acid", "povidone" ]
+    "Ingerdients": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ]
   }
 ]

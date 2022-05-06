@@ -68,6 +68,10 @@ namespace Service
             Prescription prescription = new Prescription(id, medication, amount, frequency, from, to);
             List<String> allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
             List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingerdients;
+            if (ingredients == null)
+            {
+                throw new Exception("Prescribed medication is not available!");
+            }
             foreach(String ingredient in ingredients)
             {
                 foreach(String allergen in allergens)
@@ -103,6 +107,36 @@ namespace Service
             var onePrescription = PrescriptionRepository.FindOneById(prescriptonId);
             Prescription newPrescription = new Prescription(onePrescription.Id, newMedication, newAmount,
                                                             newFrequency, newFrom, newTo);
+
+            List<String> allergens = new List<String>();
+            List<String> ingredients = MedicationRepository.FindOneByName(newMedication).Ingerdients;
+            if (ingredients == null)
+            {
+                throw new Exception("Prescribed medication is not available!");
+            }
+            List<MedicalRecord>  medicalRecords = MedicalRecordRepository.FindAll();
+            foreach(MedicalRecord mr in medicalRecords)
+            {
+                List<int> pr = mr.PrescriptionIds;
+                foreach(int id in pr)
+                {
+                    if (id == prescriptonId)
+                    {
+                        allergens = PatientRepository.FindOneByJmbg(mr.PatientJmbg).Allergens;
+                    }
+                }
+            }
+
+            foreach (String ingredient in ingredients)
+            {
+                foreach (String allergen in allergens)
+                {
+                    if (ingredient.Equals(allergen))
+                    {
+                        throw new Exception("Patient is allergic to that medication!");
+                    }
+                }
+            }
 
             if (!onePrescription.validatePrescription())
             {

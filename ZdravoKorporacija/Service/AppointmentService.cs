@@ -126,6 +126,25 @@ namespace Service
             return AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
         }
 
+        public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
+        {
+            List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
+
+            List<Appointment> appointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            foreach(Appointment app in appointments)
+            {
+                AppointmentDTO appointmentDTO = new AppointmentDTO();
+                appointmentDTO.Id = app.Id;
+                appointmentDTO.PatientJmbg = app.PatientJmbg;
+                appointmentDTO.PatientFirstName = PatientRepository.FindOneByJmbg(app.PatientJmbg).FirstName;
+                appointmentDTO.PatientLastName = PatientRepository.FindOneByJmbg(app.PatientJmbg).LastName;
+                appointmentDTO.StartTime = app.StartTime;
+                appointmentDTO.RoomName = RoomRepository.FindOneById(app.RoomId).Name;
+                appointmentDTOs.Add(appointmentDTO);
+            }
+            return appointmentDTOs;
+        }
+
         public List<Appointment> GetAppointmentsByPatientJmbg(String patientJmbg)
         {
             return AppointmentRepository.FindAllByPatientJmbg(patientJmbg);
