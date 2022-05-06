@@ -9,14 +9,14 @@
     "BloodTypeEnum": 3,
     "FirstName": "Petar",
     "LastName": "Jecmenic",
-    "Username": "joco",
-    "Password": "joco",
+    "Username": "pero",
+    "Password": "peropero",
     "Jmbg": "7778889994445",
-    "DateOfBirth": "2022-04-14T00:00:00",
+    "DateOfBirth": "2002-04-14T00:00:00",
     "Gender": 1,
     "Email": "aaa@cds.com",
     "PhoneNumber": "342423",
-    "Address": "cdssaccascds cdsacscds csdavvfsfvfd vsdfvfvasvfs vsfsvsf vfsvsfavsfv vsfvfsafv vfsvsavsdv"
+    "Address": "Pere Jecmenica 12, Novi Sad"
   },
   {
     "IsGuest": false,
@@ -26,77 +26,76 @@
       "treci alergen"
     ],
     "BloodTypeEnum": 1,
-    "FirstName": "milos",
-    "LastName": "milosevic",
+    "FirstName": "Milos",
+    "LastName": "Milosevic",
     "Username": "mikimilane",
     "Password": "mackacka",
     "Jmbg": "7458963215963",
-    "DateOfBirth": "2022-04-16T16:12:17.7395603+02:00",
+    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
     "Gender": 1,
     "Email": "milos@milos.com",
     "PhoneNumber": "456789",
-    "Address": "neka dresa 12"
+    "Address": "neka adresa 12"
   },
   {
     "IsGuest": false,
     "Allergens": [],
     "BloodTypeEnum": 4,
-    "FirstName": "marko",
-    "LastName": "vasilic",
-    "Username": "marko",
-    "Password": "sifra123",
+    "FirstName": "Zana",
+    "LastName": "Zanovic",
+    "Username": "zanaa",
+    "Password": "znaicaaa",
     "Jmbg": "1123456789111",
-    "DateOfBirth": "2022-03-28T00:00:00",
-    "Gender": 1,
+    "DateOfBirth": "1999-03-28T00:00:00",
+    "Gender": 2,
     "Email": "cdsa@cdds.coc",
     "PhoneNumber": "212",
-    "Address": "sascdcsa"
+    "Address": "Pa Pa Pavla 15, Beograd"
   },
   {
     "IsGuest": false,
     "Allergens": [
-      "vdsvfd",
-      "lazarrrr"
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
     ],
     "BloodTypeEnum": 6,
-    "FirstName": "lazar",
-    "LastName": "lazarobi",
+    "FirstName": "Lazar",
+    "LastName": "Lazarobi",
     "Username": "lakil",
     "Password": "lazarlazar",
     "Jmbg": "7536984215123",
-    "DateOfBirth": "2022-03-28T00:00:00",
+    "DateOfBirth": "2002-03-28T00:00:00",
     "Gender": 1,
     "Email": "dcas@cds.com",
     "PhoneNumber": "3421",
-    "Address": "vfsvdf"
+    "Address": "Beogradska 18, Novi Sad"
   },
   {
     "IsGuest": false,
     "Allergens": [
-      "cdsacs",
-      "cdascs",
-      "cdascs",
-      "cdacs",
-      "cdasc",
-      "cdacscsd",
-      "sdcascdsd"
+      "cetvrti alergen",
+      "peti alergen",
+      "sesti alergen"
     ],
     "BloodTypeEnum": 4,
-    "FirstName": "Jovan",
-    "LastName": "Konjevic",
-    "Username": "jovan",
-    "Password": "jovan",
+    "FirstName": "Ana",
+    "LastName": "Anovic",
+    "Username": "anaa",
+    "Password": "anaanaana",
     "Jmbg": "1111111111111",
-    "DateOfBirth": "2022-03-28T00:00:00",
-    "Gender": 1,
+    "DateOfBirth": "2006-03-28T00:00:00",
+    "Gender": 2,
     "Email": "cdsa@cdds.coc",
-    "PhoneNumber": "212",
-    "Address": "sascdcsa"
+    "PhoneNumber": "212324423",
+    "Address": "Novosadska 1, Beograd"
   },
   {
     "IsGuest": false,
     "Allergens": [
-      "cdascds"
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
     ],
     "BloodTypeEnum": 2,
     "FirstName": "Stefan",
@@ -104,81 +103,10 @@
     "Username": "stefi",
     "Password": "stefanoivc",
     "Jmbg": "1596357841236",
-    "DateOfBirth": "2022-04-12T00:00:00",
+    "DateOfBirth": "2002-04-12T00:00:00",
     "Gender": 1,
     "Email": "stefi@cds.com",
     "PhoneNumber": "3422",
-    "Address": "cdascsdcsd"
-  },
-  {
-    "IsGuest": true,
-    "Allergens": [],
-    "BloodTypeEnum": 0,
-    "FirstName": "lakii",
-    "LastName": "lakovic",
-    "Username": "lakii",
-    "Password": "sifra123",
-    "Jmbg": "7536987214563",
-    "DateOfBirth": null,
-    "Gender": 0,
-    "Email": "",
-    "PhoneNumber": "",
-    "Address": ""
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
-      "fvdsvdf",
-      "vsdfv",
-      "novi alergen"
-    ],
-    "BloodTypeEnum": 1,
-    "FirstName": "Lazar",
-    "LastName": "Vasilci",
-    "Username": "lakiiii",
-    "Password": "cdskomcomsad",
-    "Jmbg": "7894651321593",
-    "DateOfBirth": "2022-04-28T00:00:00",
-    "Gender": 1,
-    "Email": "laal@cds.com",
-    "PhoneNumber": "41342",
-    "Address": "csavf"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
-      "alerege1",
-      "vfd",
-      "novi alergen"
-    ],
-    "BloodTypeEnum": 4,
-    "FirstName": "Milan",
-    "LastName": "Milanovic",
-    "Username": "mikiiiii",
-    "Password": "cdscascds",
-    "Jmbg": "1616545616103",
-    "DateOfBirth": "2022-04-25T00:00:00",
-    "Gender": 1,
-    "Email": "dsa@cds.com",
-    "PhoneNumber": "132",
-    "Address": "cdscsd"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
-      "bgsf",
-      "bgfdbgf"
-    ],
-    "BloodTypeEnum": 5,
-    "FirstName": "Mil",
-    "LastName": "Milanovic",
-    "Username": "Mil",
-    "Password": "sifra123",
-    "Jmbg": "3698521477896",
-    "DateOfBirth": "2022-04-26T00:00:00",
-    "Gender": 1,
-    "Email": "cds@cds.com",
-    "PhoneNumber": "9199",
-    "Address": "cdpsmcs\r\ncdsacs\r\ncds996"
+    "Address": "Stefana Stefanovica 18, Rijeka"
   }
 ]
