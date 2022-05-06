@@ -1,7 +1,11 @@
 [
   {
     "IsGuest": false,
-    "Allergens": [],
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
     "BloodTypeEnum": 3,
     "FirstName": "Petar",
     "LastName": "Jecmenic",

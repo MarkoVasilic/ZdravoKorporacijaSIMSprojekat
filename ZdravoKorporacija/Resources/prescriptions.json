@@ -6,5 +6,29 @@
     "Frequency": 1,
     "From": "2022-04-29T00:20:00",
     "To": "2022-04-30T00:20:00"
+  },
+  {
+    "Id": 2,
+    "Medication": "Paracetamol",
+    "Amount": "300mg",
+    "Frequency": 10,
+    "From": "2022-06-06T00:00:00",
+    "To": "2022-07-07T00:00:00"
+  },
+  {
+    "Id": 3,
+    "Medication": "Paracetamol",
+    "Amount": "200mg",
+    "Frequency": 8,
+    "From": "2022-06-06T00:00:00",
+    "To": "2022-07-07T00:00:00"
+  },
+  {
+    "Id": 4,
+    "Medication": "Berodual",
+    "Amount": "500mg",
+    "Frequency": 3,
+    "From": "2022-06-06T00:00:00",
+    "To": "2022-07-10T00:00:00"
   }
 ]

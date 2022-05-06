@@ -37,7 +37,7 @@
     "Id": 42,
     "PatientJmbg": "1123456789111",
     "DoctorJmbg": "1231231231231",
-    "RoomId": 8
+    "RoomId": 7
   },
   {
     "StartTime": "2022-04-24T09:15:00",
