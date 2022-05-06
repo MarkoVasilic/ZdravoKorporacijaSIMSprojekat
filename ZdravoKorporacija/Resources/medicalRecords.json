@@ -2,10 +2,7 @@
   {
     "PatientJmbg": "7778889994445",
     "PrescriptionIds": [
-      1,
-      2,
-      3,
-      4
+      1
     ],
     "AnamnesisIds": [
       2,
