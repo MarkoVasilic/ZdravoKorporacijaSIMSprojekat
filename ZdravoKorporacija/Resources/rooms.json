@@ -1,43 +1,51 @@
 [
   {
-    "Name": "NADJA",
+    "Name": "Exam 1",
     "Id": 7,
-    "Description": "NADJA",
+    "Description": "Examination 1",
     "Type": 1,
     "typeStr": "EXAMINATION"
   },
   {
-    "Name": "SOBA",
-    "Id": 11,
-    "Description": "sjfnsm",
-    "Type": 2,
-    "typeStr": "CONFERENCE"
-  },
-  {
-    "Name": "sala za sast",
-    "Id": 12,
-    "Description": "sala za sast",
-    "Type": 2,
-    "typeStr": "CONFERENCE"
-  },
-  {
-    "Name": "operacija",
+    "Name": "Exam 2",
     "Id": 13,
-    "Description": "soba za operaciju",
+    "Description": "Examination 2",
     "Type": 1,
     "typeStr": "EXAMINATION"
   },
   {
-    "Name": "soba A",
-    "Id": 14,
-    "Description": "sala za sastanke",
+    "Name": "Exam 3",
+    "Id": 22,
+    "Description": "Examination 3",
+    "Type": 1,
+    "typeStr": "EXAMINATION"
+  },
+
+  {
+    "Name": "Conf 1",
+    "Id": 11,
+    "Description": "Conference 1",
     "Type": 2,
     "typeStr": "CONFERENCE"
   },
   {
-    "Name": "operacijska sala",
+    "Name": "Conf 2",
+    "Id": 12,
+    "Description": "Conference 2",
+    "Type": 2,
+    "typeStr": "CONFERENCE"
+  },
+  {
+    "Name": "Surg 1",
+    "Id": 14,
+    "Description": "Surgery 1",
+    "Type": 4,
+    "typeStr": "SURGERY"
+  },
+  {
+    "Name": "Surg 2",
     "Id": 5,
-    "Description": "soba za operacije",
+    "Description": "Surgery 2",
     "Type": 4,
     "typeStr": "SURGERY"
   }

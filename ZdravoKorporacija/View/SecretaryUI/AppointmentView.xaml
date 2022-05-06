@@ -137,8 +137,9 @@
                                 <StackPanel Grid.Row="4" Grid.Column="0">
                                     <TextBlock Text="Duration:" FontSize="18"></TextBlock>
                                 </StackPanel>
-                                <StackPanel Grid.Row="4" Grid.Column="1">
+                                <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
                                     <TextBlock Text="{Binding Duration}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                                    <TextBlock Text="minutes" FontSize="18" FontWeight="SemiBold" Margin="10 0 0 0"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Grid.Row="5" Grid.Column="0">
                                     <TextBlock Text="Room:" FontSize="18"></TextBlock>

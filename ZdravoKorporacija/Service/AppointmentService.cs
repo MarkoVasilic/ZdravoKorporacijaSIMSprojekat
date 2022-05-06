@@ -215,6 +215,43 @@ namespace Service
             return retValue;
         }
 
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            if (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null)
+                throw new Exception("Patient with that JMBG doesn't exist!");
+            else if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+                throw new Exception("Doctor with that JMBG doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            int roomId = sentDoctor.RoomId;
+            possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                dateFrom, dateUntil, duration);
+            while (possibleAppointments.Count == 0)
+            {
+                dateFrom = dateUntil;
+                dateUntil = dateUntil.AddDays(5);
+                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                dateFrom, dateUntil, duration);
+            }
+            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
+            Patient selectedPatient = PatientRepository.FindOneByJmbg(patientJmbg);
+            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            Room selectedRoom = RoomRepository.FindOneById(roomId);
+            foreach (var pa in possibleAppointments)
+            {
+                if (pa > DateTime.Now.AddHours(1))
+                {
+                    PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, selectedPatient.FirstName + " " + selectedPatient.LastName, doctorJmbg,
+                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);
+                    retValue.Add(possibleAppointmentsDTO);
+                }
+            }
+            return retValue;
+        }
+
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
