@@ -31,20 +31,17 @@
             <TextBlock
              Text="Pregled prostorija" 
              FontSize="30" 
-              Margin="420 0 0 0" TextAlignment="Center" Foreground="black"></TextBlock>
-
-            <Button Content="Odjavi se" Margin="150 0 0 550"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
-
+              Margin="420 10 0 0" TextAlignment="Center" Foreground="black"></TextBlock>
         </StackPanel>
 
 
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Margin="60 -440 0 0 " TextWrapping="Wrap" Text="Izaberi prostoriju:" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Margin="60 -400 0 0 " TextWrapping="Wrap" Text="Izaberi prostoriju:" VerticalAlignment="Top" FontSize="20"/>
 
 
 
         <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="58,194,58,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25" BorderThickness="3" BorderBrush="#b09e99">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Opis" Binding="{Binding Description}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tip prostorije" Binding="{Binding typeStr}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
@@ -59,9 +56,9 @@
         </DataGrid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="-45 75 0 0 ">
-            <Button Content="Nazad" Margin="100 0 0 0"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}"  />
-            <Button Content="Izmeni"  Margin="230, 0, 0, 0" Click="ModifyButtonClick"  Style="{StaticResource ManagerGreenButtonStyle}"/>
-            <Button Content="Pomoć"  Margin="230, 0, 0, 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
+            <Button Content="Nazad" Margin="100 50 0 0"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}"  />
+            <Button Content="Izmeni"  Margin="230, 50, 0, 0" Click="ModifyButtonClick"  Style="{StaticResource ManagerGreenButtonStyle}"/>
+            <Button Content="Pomoć"  Margin="230, 50, 0, 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
         </StackPanel>
 
     </Grid>

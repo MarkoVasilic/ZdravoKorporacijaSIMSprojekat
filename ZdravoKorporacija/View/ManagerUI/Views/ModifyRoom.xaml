@@ -26,10 +26,7 @@
             <TextBlock
              Text="Izmena prostorije" 
              FontSize="30" 
-             Margin="390 0 0 0" TextAlignment="Center" Foreground="Black"></TextBlock>
-
-            <Button Content="Odjavi se" Margin="180 0 0 0"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
-
+             Margin="390 5 0 0" TextAlignment="Center" Foreground="Black"></TextBlock>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="0 120 0 0 ">

@@ -19,9 +19,6 @@
     <Grid Margin="20 10" MaxWidth="1024">
 
 
-
-
-
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -36,8 +33,6 @@
              Text="Kreiranje prostorije" 
              FontSize="30" 
               Margin="380 0 0 0" TextAlignment="Center" Foreground="Black"></TextBlock>
-
-            <Button Content="Odjavi se" Margin="170 0 0 0"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
 
         </StackPanel>
 

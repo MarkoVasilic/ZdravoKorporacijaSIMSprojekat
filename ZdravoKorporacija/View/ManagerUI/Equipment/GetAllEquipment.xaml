@@ -26,15 +26,12 @@
             <TextBlock
              Text="Pregled opreme" 
              FontSize="30" 
-             FontWeight="bold" Margin="420 0 0 0" TextAlignment="Center"></TextBlock>
-
-            <Button Content="Odjavi se" Margin="210 0 0 425"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
-
+             Margin="420 10 0 0" TextAlignment="Center"></TextBlock>
         </StackPanel>
 
         <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25" BorderThickness="3" BorderBrush="#b09e99" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
                     <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tip opreme" Binding="{Binding IsStatic}" Width="*"></DataGridTextColumn>
                     <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width="*"></DataGridTextColumn>
@@ -42,7 +39,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button Content="Nazad" Grid.Row="2" Command="cmd:RoutedCommand.Back" Margin="-780 200 0 0" Style="{StaticResource ManagerRedButtonStyle}" IsDefault="True" />
+            <Button Content="Nazad" Grid.Row="2" Command="cmd:RoutedCommand.Back" Margin="-780 135 0 0" Style="{StaticResource ManagerRedButtonStyle}" IsDefault="True" />
 
 
        

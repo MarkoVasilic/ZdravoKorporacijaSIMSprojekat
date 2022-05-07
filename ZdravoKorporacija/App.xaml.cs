@@ -194,13 +194,13 @@ namespace ZdravoKorporacija
                notification.ToStringNotification(); */
 
             //ISPIS OPREME - IMAM I NA FRONTU (UPRAVNIK)
-           /* List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
-            foreach (Equipment equipment in equipmentList)
-                equipment.toString();*/
+            /* List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
+             foreach (Equipment equipment in equipmentList)
+                 equipment.toString();*/
 
 
             //POMERANJE OPREME - danas
-           //equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
+            //equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
             //equipmentService.EquipmentDisplacement();
 
             //POMERANJE OPREME - buducnost
@@ -208,35 +208,44 @@ namespace ZdravoKorporacija
             //equipmentService.EquipmentDisplacement();
 
             //ISPIS SVIH DOSTUPNIH TERMINA + OSNOVNO RENOVIRANJE (UPRAVNIK)
-           /*int index = 0;
-            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 3, 3), new DateTime(2023, 3, 6), 60));
-            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
-            {
-                Console.WriteLine(index.ToString());
-                possibleAppointment.toStringManager();
-                index++;
-            }
+            /*int index = 0;
+             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 3, 3), new DateTime(2023, 3, 6), 60));
+             foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+             {
+                 Console.WriteLine(index.ToString());
+                 possibleAppointment.toStringManager();
+                 index++;
+             }
 
-            string checkedAppointment;
+             string checkedAppointment;
 
-            Console.WriteLine("Unesite broj termina koji zelite");
-            checkedAppointment = Console.ReadLine();
-            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+             Console.WriteLine("Unesite broj termina koji zelite");
+             checkedAppointment = Console.ReadLine();
+             int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
 
-            string description;
-            Console.WriteLine("Unesite opis renoviranja:");
-            description = Console.ReadLine();
-            
+             string description;
+             Console.WriteLine("Unesite opis renoviranja:");
+             description = Console.ReadLine();
 
-            for (int i = 0; i<possibleAppointmentsRenovation.Count; i++)
-            {
-                if(checkedAppointmentIndex == i)
-                {
-                    basicRenovationController.CreateBasicRenovation(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, description);
-                }
-            }*/
-            
 
+             for (int i = 0; i<possibleAppointmentsRenovation.Count; i++)
+             {
+                 if(checkedAppointmentIndex == i)
+                 {
+                     basicRenovationController.CreateBasicRenovation(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, description);
+                 }
+             }*/
+
+
+            //FILTRIRANJE - test
+            /*List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(equipmentController.Filter(false));
+            foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
+                equipmentDTO.toString();*/
+
+            //PRETRAGA PO NAZIVU - test
+           /* List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(equipmentController.Search("sto"));
+            foreach (EquipmentDTO eq in equipmentDTOs)
+                eq.toString(); */
 
 
         }

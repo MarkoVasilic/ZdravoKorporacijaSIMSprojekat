@@ -236,6 +236,64 @@ namespace ZdravoKorporacija.Service
         }
 
 
+        public List<EquipmentDTO> Filter(Boolean isStaticEquipment)
+        {
+
+            List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(GetEquipmentDTOs());
+            List<EquipmentDTO> staticEquipment = new List<EquipmentDTO>();
+            List<EquipmentDTO> dynamicEquipment = new List<EquipmentDTO>();
+
+            if(isStaticEquipment == true)
+            {
+
+                foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
+                {
+                    if(equipmentDTO.IsStatic == "STATIC")
+                    {
+                        staticEquipment.Add(equipmentDTO);
+                    }
+                }
+
+                return staticEquipment;
+
+
+            }
+            else
+            {
+
+                foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
+                {
+                    if (equipmentDTO.IsStatic == "DYNAMIC")
+                    {
+                        dynamicEquipment.Add(equipmentDTO);
+                    }
+                }
+
+                return dynamicEquipment;
+
+            }
+        }
+
+        public List<EquipmentDTO> Search(string name)
+        {
+            List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(GetEquipmentDTOs());
+            List<EquipmentDTO> resultingEquipment = new List<EquipmentDTO>();
+
+
+            foreach(EquipmentDTO equipmentDTO in equipmentDTOs)
+            {
+
+                if(equipmentDTO.Name == name)
+                {
+                    resultingEquipment.Add(equipmentDTO);
+                }
+            }
+
+            return resultingEquipment;
+
+        }
+
+
 
 
 
