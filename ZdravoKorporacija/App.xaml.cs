@@ -60,7 +60,7 @@ namespace ZdravoKorporacija
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
             AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
-            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository);
+            MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicationRepository medicationRepository = new MedicationRepository();
             MedicationService medicationService = new MedicationService();
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
@@ -100,22 +100,55 @@ namespace ZdravoKorporacija
             //Console.WriteLine("Modify result = " + appointmentController.ModifyAppointment(38, new DateTime(2035, 5, 5)));
             //Console.WriteLine("Delete result = " + appointmentController.DeleteAppointment(38));
 
+            //**********************************************************       KT3      ********************************************************************
+
+
+
+
+
+            //LISTA ZAKAZANIH TERMINA I KARTON ZA ODREDJENI TERMIN
+            List<AppointmentDTO> appointmentListDoctor = new List<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("4444444444444"));
+            foreach (AppointmentDTO appointmentDTO in appointmentListDoctor)
+                appointmentDTO.ToString();
+            Console.WriteLine("Unesite Id appointmenta za koji zelite medicinski karton");
+            int app = Int16.Parse(Console.ReadLine());
+            MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByAppointmentId(app);
+            medicalRecordDTO.ToString();
+
+            //ANAMNEZE
+            //medicalRecordController.CreateAnamnesis("7778889994445", "novaDijagnoza", "noviIzvestaj");
+            //medicalRecordController.ModifyAnamnesis(8, "modOdbranaDiagnose", "modOdbranaReport");
+
+            //RECEPTI
+            //medicalRecordController.CreatePrescription("7778889994445", "Berodual", "200mg", 8, new DateTime(2022, 6,6), new DateTime(2022, 7, 7));
+            //medicalRecordController.ModifyPrescription(4, "Berodual", "500mg", 3, new DateTime(2022, 6, 6), new DateTime(2022, 7, 10));
+
+            //ISPIS KARTONA PACIJENT JMBG(Anamneze pacijenta i recepti)
+            /*MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByPatientJmbg("7778889994445");
+            medicalRecordDTO.ToString();*/
+
+
+
+
+            //***********************************************************************************************************************************************
+
+
+
+
 
             //ISPIS SVIH APPOINTMENTA
             /*List<Appointment> appointmentList = new List<Appointment>(appointmentController.GetAllAppointments());
             foreach (Appointment appointment in appointmentList)
               appointment.toString();*/
 
+            //ISPIS SVIH APPOINTMENTA ZA DOKTORA
+            /*List<Appointment> appointmentListDoctor = new List<Appointment>(appointmentController.GetAppointmentsByDoctorJmbg("1231231231231"));
+            foreach (Appointment appointment in appointmentListDoctor)
+              appointment.toString();*/
 
             //ISPIS SVIH APPOINTMENTA ZA PACIJENTA
             /*List<Appointment> appointmentListPatient = new List<Appointment>(appointmentController.GetAppointmentsByPatientJmbg("1111111111111"));
             foreach (Appointment appointment in appointmentListPatient)
-              appointment.toString();*/
-
-
-            //ISPIS SVIH APPOINTMENTA ZA DOKTORA
-            /*List<Appointment> appointmentListDoctor = new List<Appointment>(appointmentController.GetAppointmentsByDoctorJmbg("4444444444444"));
-            foreach (Appointment appointment in appointmentListDoctor)
               appointment.toString();*/
 
             //appointmentService.GetPossibleAppointmentsBySecretary("1111111111111", "1231231231231", 11, new DateTime(2023, 3, 3),

@@ -1,7 +1,7 @@
 [
   {
     "Id": 1,
-    "Medication": "Paracetamol",
+    "Medication": "Berodual",
     "Amount": "200mg",
     "Frequency": 1,
     "From": "2022-05-05T00:20:00",

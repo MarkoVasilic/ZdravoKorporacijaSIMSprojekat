@@ -12,7 +12,7 @@ namespace Model
         public int Id;
         public String Medication;
         public String Amount;
-        public int Frequency;   //na koliko sati
+        public int Frequency;
         public DateTime From;
         public DateTime To;
 
@@ -45,6 +45,16 @@ namespace Model
             else
                 return true;
 
+        }
+
+        public void ToString()
+        {
+            Console.WriteLine("ID: " + Id);
+            Console.WriteLine("Medication: " + Medication);
+            Console.WriteLine("Amount: " + Amount);
+            Console.WriteLine("Frequency: " + Frequency);
+            Console.WriteLine("From: " + From);
+            Console.WriteLine("To: " + To);
         }
     }
 

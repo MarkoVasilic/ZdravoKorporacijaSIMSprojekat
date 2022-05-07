@@ -68,23 +68,30 @@ namespace Service
         public void CreateAnamnesis(String patientJmbg, String diagnosis, String report)
         {
             int id = GenerateNewId();
-            Anamnesis anamnesis = new Anamnesis(id, diagnosis, report, DateTime.Now, App.loggedUser.Jmbg);   //doctorJmbg
+            Anamnesis anamnesis = new Anamnesis(id, diagnosis, report, DateTime.Now, "4444444444444");   //doctorJmbg
             if (!anamnesis.validateAnamnesis())
             {
                 throw new Exception("Something went wrong, anamnesis isn't created!");
             }
             AnamnesisRepository.SaveAnamnesis(anamnesis);
 
-            List<int> newAnamnesis = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
-            newAnamnesis.Add(anamnesis.Id);
-            MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg,
+            if (MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg) == null)
+            {
+                throw new Exception("Medical Record for patient with that jmbg doesn't exists");
+            }
+            else
+            {
+                List<int> newAnamnesis = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
+                newAnamnesis.Add(anamnesis.Id);
+                MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg,
                 MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds, newAnamnesis);
 
-            if (!oneMedicalRecord.validateMedicalRecord())
-            {
-                throw new Exception("Something went wrong, medical record isn't updated!");
+                if (!oneMedicalRecord.validateMedicalRecord())
+                {
+                    throw new Exception("Something went wrong, medical record isn't updated!");
+                }
+                MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
             }
-            MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
 
         }
 
@@ -92,8 +99,7 @@ namespace Service
         {
 
             var oneAnamnesis = AnamnesisRepository.FindOneById(anamnesisId);
-            Anamnesis newAnamnesis = new Anamnesis(oneAnamnesis.Id, diagnosis, report, DateTime.Now, App.loggedUser.Jmbg); //vreme postaje vreme izmene,
-                                                                                                                           //docotorJmbg iz ulogovanog
+            Anamnesis newAnamnesis = new Anamnesis(oneAnamnesis.Id, diagnosis, report, DateTime.Now, "4444444444444"); //vreme postaje vreme izmene
 
             if (!oneAnamnesis.validateAnamnesis())
             {

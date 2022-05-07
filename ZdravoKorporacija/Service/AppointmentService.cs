@@ -38,14 +38,18 @@ namespace Service
         {
             List<Appointment> appointments = AppointmentRepository.FindAll();
             List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();
-            foreach (var ap in appointments)
+            if (appointments.Count > 0)
             {
-                Doctor doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
-                Patient patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
-                Room room = RoomRepository.FindOneById(ap.RoomId);
-                possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
-                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.Id));
+                foreach (var ap in appointments)
+                {
+                    Doctor doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
+                    Patient patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
+                    Room room = RoomRepository.FindOneById(ap.RoomId);
+                    possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
+                        ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.Id));
+                }
             }
+            possibleAppointmentsDTO.Sort((x, y) => DateTime.Compare(x.StartTime.AddMinutes(x.Duration), y.StartTime.AddMinutes(y.Duration)));
             return possibleAppointmentsDTO;
         }
 
@@ -120,6 +124,25 @@ namespace Service
         public List<Appointment> GetAppointmentsByDoctorJmbg(String doctorJmbg)
         {
             return AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+        }
+
+        public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
+        {
+            List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
+
+            List<Appointment> appointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            foreach(Appointment app in appointments)
+            {
+                AppointmentDTO appointmentDTO = new AppointmentDTO();
+                appointmentDTO.Id = app.Id;
+                appointmentDTO.PatientJmbg = app.PatientJmbg;
+                appointmentDTO.PatientFirstName = PatientRepository.FindOneByJmbg(app.PatientJmbg).FirstName;
+                appointmentDTO.PatientLastName = PatientRepository.FindOneByJmbg(app.PatientJmbg).LastName;
+                appointmentDTO.StartTime = app.StartTime;
+                appointmentDTO.RoomName = RoomRepository.FindOneById(app.RoomId).Name;
+                appointmentDTOs.Add(appointmentDTO);
+            }
+            return appointmentDTOs;
         }
 
         public List<Appointment> GetAppointmentsByPatientJmbg(String patientJmbg)
@@ -205,6 +228,43 @@ namespace Service
                 if (pa > DateTime.Now.AddHours(1))
                 {
                     PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO("", "", "", "", "", roomId, selectedRoom.Name, pa, duration, -1);
+                    retValue.Add(possibleAppointmentsDTO);
+                }
+            }
+            return retValue;
+        }
+
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            if (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null)
+                throw new Exception("Patient with that JMBG doesn't exist!");
+            else if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+                throw new Exception("Doctor with that JMBG doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            int roomId = sentDoctor.RoomId;
+            possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                dateFrom, dateUntil, duration);
+            while (possibleAppointments.Count == 0)
+            {
+                dateFrom = dateUntil;
+                dateUntil = dateUntil.AddDays(5);
+                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                dateFrom, dateUntil, duration);
+            }
+            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
+            Patient selectedPatient = PatientRepository.FindOneByJmbg(patientJmbg);
+            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            Room selectedRoom = RoomRepository.FindOneById(roomId);
+            foreach (var pa in possibleAppointments)
+            {
+                if (pa > DateTime.Now.AddHours(1))
+                {
+                    PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, selectedPatient.FirstName + " " + selectedPatient.LastName, doctorJmbg,
+                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);
                     retValue.Add(possibleAppointmentsDTO);
                 }
             }
@@ -319,14 +379,14 @@ namespace Service
             List <Appointment> neededAppointments = new List<Appointment>();
             foreach (var app in allAppointments)
             {
-                if (app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (
+                if (app.StartTime > DateTime.Now && app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (
                     (doctorJmbg != null && app.DoctorJmbg == doctorJmbg) ||
                     (patientJmbg != null && app.PatientJmbg == patientJmbg) || (roomId != null && app.RoomId == roomId)))
                     neededAppointments.Add(app);
             }
             foreach (var br in allBasicRenovations)
             {
-                if (br.StartTime.AddMinutes(br.Duration) > dateFrom && br.StartTime < dateUntil && ( (roomId != null && br.RoomId == roomId)))
+                if (br.StartTime > DateTime.Now && br.StartTime.AddMinutes(br.Duration) > dateFrom && br.StartTime < dateUntil && ( (roomId != null && br.RoomId == roomId)))
                 {
                     Appointment basicRenovationAppointment = new Appointment(br.StartTime, br.Duration, -1, "", "", br.RoomId);
                     neededAppointments.Add(basicRenovationAppointment);

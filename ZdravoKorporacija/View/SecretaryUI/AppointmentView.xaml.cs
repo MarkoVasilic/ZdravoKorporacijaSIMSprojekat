@@ -21,6 +21,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
         public AppointmentView()
         {
             InitializeComponent();
+            
             DataContext = new AppointmentViemVM();
         }
     }

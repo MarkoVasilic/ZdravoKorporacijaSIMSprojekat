@@ -35,6 +35,11 @@ namespace Controller
             return MedicalRecordService.GetOneByPatientJmbg(patientJmbg);
         }
 
+        public MedicalRecordDTO? GetOneMedicalRecorByAppointmentId(int appointmentId)
+        {
+            return MedicalRecordService.GetOneByAppointmentId(appointmentId);
+        }
+
         public Anamnesis? GetOneAnamnesisById(int anamnesisId)
         {
             return AnamnesisService.GetOneById(anamnesisId);
