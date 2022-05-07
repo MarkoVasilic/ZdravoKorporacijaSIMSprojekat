@@ -1,4 +1,9 @@
 [
- 
- 
+  {
+    "Id": 1,
+    "RoomId": 12,
+    "StartTime": "2023-03-05T16:30:00",
+    "Duration": 60,
+    "Description": "krecenje"
+  }
 ]

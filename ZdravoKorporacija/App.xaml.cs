@@ -68,6 +68,8 @@ namespace ZdravoKorporacija
             NotificationRepository notificationRepository = new NotificationRepository();
             NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
             notificationController = new NotificationController(notificationService);
+            BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
+            BasicRenovationController basicRenovationController = new BasicRenovationController(basicRenovationService);
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -127,13 +129,7 @@ namespace ZdravoKorporacija
             foreach (Displacement d in displacementList)
                 d.toString();*/
 
-            //pomeranje opreme - danas
-            /*equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
-            equipmentService.EquipmentDisplacement();*/
 
-            //pomeranje opreme - buducnost
-            /*equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2023, 3, 3));
-            equipmentService.EquipmentDisplacement();*/
 
 
 
@@ -162,6 +158,53 @@ namespace ZdravoKorporacija
            notificationList = notificationService.ShowPatientNotification();
            foreach (Notification notification in notificationList)
                notification.ToStringNotification(); */
+
+            //ISPIS OPREME - IMAM I NA FRONTU (UPRAVNIK)
+           /* List<Equipment> equipmentList = new List<Equipment>(equipmentController.GetAllEquipment());
+            foreach (Equipment equipment in equipmentList)
+                equipment.toString();*/
+
+
+            //POMERANJE OPREME - danas
+           //equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
+            //equipmentService.EquipmentDisplacement();
+
+            //POMERANJE OPREME - buducnost
+            //equipmentController.CreateDisplacement(5, 11, 1, new DateTime(2023, 3, 3));
+            //equipmentService.EquipmentDisplacement();
+
+            //ISPIS SVIH DOSTUPNIH TERMINA + OSNOVNO RENOVIRANJE (UPRAVNIK)
+           /*int index = 0;
+            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 3, 3), new DateTime(2023, 3, 6), 60));
+            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+            {
+                Console.WriteLine(index.ToString());
+                possibleAppointment.toStringManager();
+                index++;
+            }
+
+            string checkedAppointment;
+
+            Console.WriteLine("Unesite broj termina koji zelite");
+            checkedAppointment = Console.ReadLine();
+            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+
+            string description;
+            Console.WriteLine("Unesite opis renoviranja:");
+            description = Console.ReadLine();
+            
+
+            for (int i = 0; i<possibleAppointmentsRenovation.Count; i++)
+            {
+                if(checkedAppointmentIndex == i)
+                {
+                    basicRenovationController.CreateBasicRenovation(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, description);
+                }
+            }*/
+            
+
+
+
         }
 
     }

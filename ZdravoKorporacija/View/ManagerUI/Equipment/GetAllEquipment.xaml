@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View.Equipment"
         xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
         mc:Ignorable="d"
-        Title="GetAllEquipment" Height="768" Width="1024" Background="LightYellow">
+        Title="GetAllEquipment" Height="768" Width="1024" Background="#fee9e1">
 
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
@@ -32,7 +32,7 @@
 
         </StackPanel>
 
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="242" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25" BorderThickness="3" BorderBrush="#b09e99" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
                     <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"></DataGridTextColumn>

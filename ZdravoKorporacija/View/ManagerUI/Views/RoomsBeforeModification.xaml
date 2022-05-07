@@ -6,7 +6,7 @@
         xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.RoomCRUD"
         mc:Ignorable="d"
-        Title="RoomsBeforeModification" Height="768" Width="1024" Background="LightYellow">
+        Title="RoomsBeforeModification" Height="768" Width="1024" Background="#fee9e1">
 
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="ModifyRoomHelp_CanExecute" Executed="ModifyRoomHelp_Executed"></CommandBinding>
@@ -31,7 +31,7 @@
             <TextBlock
              Text="Pregled prostorija" 
              FontSize="30" 
-             FontWeight="bold" Margin="420 0 0 0" TextAlignment="Center"></TextBlock>
+              Margin="420 0 0 0" TextAlignment="Center" Foreground="black"></TextBlock>
 
             <Button Content="Odjavi se" Margin="150 0 0 550"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
 
@@ -42,7 +42,7 @@
 
 
 
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="232" VerticalAlignment="Top" Margin="58,194,58,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="58,194,58,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25" BorderThickness="3" BorderBrush="#b09e99">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
