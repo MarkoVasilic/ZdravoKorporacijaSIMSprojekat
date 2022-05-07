@@ -30,6 +30,8 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         private Room? selectedRoom { get; set; }
 
         private PossibleAppointmentsDTO? selectedAppointment { get; set; }
+
+        private Appointment? selectedAppointmentDelete { get; set; }
         private PossibleAppointmentsDTO? selectedNewAppointment { get; set; }
         private DateTime startDate;
         private String possibleAppointmentsVisibility;
@@ -45,6 +47,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         public ICommand ModifyAppointmentCommand { get; set; }
         public ICommand DeleteAppointmentCommand { get; set; }
         public ICommand SelectNewAppointmentCommand { get; set; }
+        
 
         public ObservableCollection<Doctor> Doctors
         {
@@ -101,6 +104,16 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             {
                 selectedAppointment = value;
                 OnPropertyChanged("SelectedAppointment");
+            }
+        }
+
+        public Appointment SelectedAppointmentDelete
+        {
+            get { return selectedAppointmentDelete; }
+            set
+            {
+                selectedAppointmentDelete = value;
+                OnPropertyChanged("SelectedAppointmentDelete");
             }
         }
 
@@ -265,9 +278,8 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         private void deleteAppointmentExecute(object parameter)
         {
-            SelectedAppointment = parameter as PossibleAppointmentsDTO;
-            appointmentController.DeleteAppointment(SelectedAppointment.AppointmentId);
-            possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            SelectedAppointmentDelete = parameter as Appointment;
+            appointmentController.DeleteAppointment(SelectedAppointmentDelete.Id);
         }
 
         private void selectNewAppointmentExecute(object parameter)

@@ -173,7 +173,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             doctorsListToDoctorList(doctorController.getAllBySpeciality("Physician"));
 
             GetAllPossibleAppointmentsPatient = new RelayCommand(possibleAppointmentsPatientExecute);
-            GetAllFutureAppointmentsPatient = new RelayCommand(futureAppointmentsPatientExecute); //moze biti problem i u samoj UpdateFutureAppointmentsPage zbog UpdateFutureAppointmentsPage(CreateAppointmentVM)
+            GetAllFutureAppointmentsPatient = new RelayCommand(futureAppointmentsPatientExecute); 
 
         }
 
@@ -187,7 +187,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         public void SelectFutureAppointment()
         {
-            Console.WriteLine("Usao u SelectFutureAppointment");
+            
             appointmentController.CreateAppointmentByPatient(selectedAppointment.StartTime, selectedAppointment.DoctorJmbg);
             MessageBox.Show("Uspjesno zakazan pregled za " + selectedAppointment.StartTime);
             PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());

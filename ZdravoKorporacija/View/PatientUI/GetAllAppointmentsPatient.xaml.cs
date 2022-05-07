@@ -27,7 +27,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AppointmentPage());
+            NavigationService.GoBack();
         }
     }
 }

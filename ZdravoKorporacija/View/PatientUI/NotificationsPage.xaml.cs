@@ -18,6 +18,7 @@ using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using Service;
 using Repository;
+using System.Data;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
@@ -49,7 +50,19 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private void ButtonNazad(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new PatientHomePage());
+        }
+
+        private void DeleteNotificationButton(object sender, RoutedEventArgs e)
+        {
+            /*  Console.WriteLine(((Button)sender).Tag as string);
+              int ID = Int32.Parse(((Button)sender).Tag as string);
+              Console.Write("ID = " + ID);
+              notificationService.DeleteNotification(ID); */
+            Notification obj = ((FrameworkElement)sender).DataContext as Notification;
+            MessageBox.Show("Notifikacija uspjesno obrisana!");
+            notificationService.DeleteNotification(obj.Id);
+            NavigationService.Navigate(new NotificationsPage());
         }
     }
 }
