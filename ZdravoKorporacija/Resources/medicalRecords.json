@@ -1,7 +1,14 @@
 [
   {
     "PatientJmbg": "7778889994445",
-    "PrescriptionIds": [ 1 ],
-    "AnamnesisIds": [2]
+    "PrescriptionIds": [
+      1
+    ],
+    "AnamnesisIds": [
+      2,
+      4,
+      7,
+      8
+    ]
   }
 ]

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.RoomCRUD"
         mc:Ignorable="d"
-        Title="ManagerHomePage" Height="450" Width="800" Background="LightYellow">
+        Title="ManagerHomePage" Height="450" Width="800" Background="#fee9e1">
     <Grid>
         <Button Content="Create room" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Click="CreateRoomClick"/>
         <Button Content="Delete room" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Background="LightGreen" FontSize="16" Height="34" Width="138" Margin="0,163,0,0" Click="DeleteRoomClick"/>
