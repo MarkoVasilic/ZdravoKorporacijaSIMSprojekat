@@ -18,8 +18,8 @@ namespace ZdravoKorporacija.View
 
         private void ButtonBack(object sender, RoutedEventArgs e)
         {
-           
-            NavigationService.Navigate(new AppointmentPage());
+
+            NavigationService.GoBack();
         }
 
     }

@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View"
         mc:Ignorable="d"
         Title="UpdateAppointmentPage" Height="768" Width="1024">
-    <Grid >
-        <DataGrid  x:Name="dataGridRooms" FontSize="16" ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Margin="0,245,20,0">
+    <Grid Background="#FF242F41">
+        <DataGrid  x:Name="dataGridRooms" RowBackground="SteelBlue" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background ="SteelBlue" ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Margin="0,245,0,0" FontFamily="Georgia">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Doctor" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Patient" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
                 <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="120" ></DataGridTextColumn>
-                <DataGridTemplateColumn Header="    Zakazi" Width="*">
+                <DataGridTemplateColumn Header="                  Zakazi" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="btnSelect" Content="Zakazi" Command="{Binding SelectNewAppointmentCommand}" CommandParameter="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridRow}}"
@@ -24,8 +24,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Home" FontSize="30" HorizontalAlignment="Left" Margin="281,632,0,0" VerticalAlignment="Top" Height="81" Width="382" Click="Button_Click"/>
-        <Label Content="Possible Appointment" FontSize="50" HorizontalAlignment="Left" Margin="252,72,0,0" VerticalAlignment="Top" Height="81" Width="570"/>
+        <Button Content="Nazad" FontSize="30" HorizontalAlignment="Center" Margin="0,634,0,0" VerticalAlignment="Top" Height="81" Width="382" Click="Button_Click" Background="#FF6B7B73"/>
+        <Label Content="Possible Appointment" Foreground="MediumAquamarine" FontFamily="Bahnschrift SemiBold" FontSize="50" HorizontalAlignment="Left" Margin="252,72,0,0" VerticalAlignment="Top" Height="81" Width="570"/>
     </Grid>
 </Page>
 
