@@ -17,13 +17,11 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
     {
 
         private CreateRoomVM createRoomVM;
-        private ManagerHomeWindow managerHomeWindow;
         public CreateRoom()
         {
             InitializeComponent();
             createRoomVM = new CreateRoomVM();
             this.DataContext = createRoomVM;
-            managerHomeWindow = new ManagerHomeWindow();
             textBoxName.Focus();
         }
 
@@ -73,7 +71,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         private void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Nadja");
+           // Console.WriteLine("Nadja");
             NavigationService.Navigate(new ManagerHomePage());
         }
 

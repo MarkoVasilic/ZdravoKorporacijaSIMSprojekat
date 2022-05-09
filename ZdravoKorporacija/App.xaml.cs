@@ -198,11 +198,11 @@ namespace ZdravoKorporacija
 
 
             //POMERANJE OPREME - danas
-            //equipmentController.CreateDisplacement(7, 5, 1, DateTime.Today);
+            //equipmentController.CreateDisplacement(5, 7, 1, DateTime.Today);
             //equipmentService.EquipmentDisplacement();
 
             //POMERANJE OPREME - buducnost
-            //equipmentController.CreateDisplacement(5, 11, 1, new DateTime(2023, 3, 3));
+            //equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2022, 2, 2));
             //equipmentService.EquipmentDisplacement();
 
             //ISPIS SVIH DOSTUPNIH TERMINA + OSNOVNO RENOVIRANJE (UPRAVNIK)

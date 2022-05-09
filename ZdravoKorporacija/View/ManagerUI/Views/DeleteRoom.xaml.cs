@@ -67,6 +67,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             int roomId = (int)((Button)sender).Tag;
             if (roomId == null) return;
             roomController.DeleteRoom(roomId);
+            MessageBox.Show("Prostorija je uspešno obrisana.", "Obaveštenje", MessageBoxButton.OK);
             NavigationService.Navigate(new DeleteRoom());
             Rooms = new ObservableCollection<Room>(roomController.GetAllRooms());
         }

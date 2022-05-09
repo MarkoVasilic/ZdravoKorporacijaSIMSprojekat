@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 using ZdravoKorporacija.View.RoomCRUD;
@@ -129,6 +133,8 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
                 //Console.WriteLine(Room.Description);
                 //Console.WriteLine(Room.Type);
                 RoomController.CreateRoom(Room.Name, Room.Description, Room.Type);
+
+                MessageBox.Show("Prostorija je uspešno kreirana.", "Obaveštenje", MessageBoxButton.OK);
 
                 ManagerWindowVM.NavigationService.Navigate(new GetAllRooms());
 

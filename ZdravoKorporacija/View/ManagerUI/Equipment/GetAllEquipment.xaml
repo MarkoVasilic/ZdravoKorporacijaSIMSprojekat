@@ -11,37 +11,78 @@
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
     </Page.CommandBindings>
+    <Page.Resources>
+        <Style x:Key="DisableFocus" TargetType="DataGridCell">
+            <Setter Property="Focusable" Value="False"></Setter>
+        </Style>
+    </Page.Resources>
 
 
     <Grid MaxWidth="1024">
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock
+
+                <TextBlock Grid.Row="0"
              Text="Pregled opreme" 
              FontSize="30" 
-             Margin="420 10 0 0" TextAlignment="Center"></TextBlock>
-        </StackPanel>
+             Margin="0 10 0 0" TextAlignment="Center"></TextBlock>
 
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25" BorderThickness="3" BorderBrush="#b09e99" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Tip opreme" Binding="{Binding IsStatic}" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="*"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                <DataGrid Grid.Row="1" x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,40,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25">
+                    <DataGrid.Resources>
+                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="Background" Value="#fee9e1"></Setter>
+                        </Style>
+                        <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tip opreme" Binding="{Binding IsStatic}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
 
-            <Button Content="Nazad" Grid.Row="2" Command="cmd:RoutedCommand.Back" Margin="-780 135 0 0" Style="{StaticResource ManagerRedButtonStyle}" IsDefault="True" />
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <TextBlock Text="Pretraži po nazivu: " FontSize="20" Margin="48 40 0 0"></TextBlock>
+                    <TextBox  Width="250" 
+                     Height="30" Margin="35 35 0 0" Style="{StaticResource ManagerTextBoxStyle}" Background="#fad4c0" Text="{Binding EquipmentName}">
+                    </TextBox>
+                    <Button Content="Pretraži" Margin="47 32 0 0"  Style="{StaticResource ManagerHelpOk}" Click="SearchButtonCLick"></Button>
+                </StackPanel>
 
 
-       
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="48 40 0 0">
+                    <TextBlock Text="Filtriraj po vrsti:" FontSize="20" ></TextBlock>
+                    <ComboBox Name="EquipmentTypeComboBox"  Margin="69 0 0 0"
+                             SelectedValuePath="Content" Grid.Row="1" Width="250" Height="30" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >
+                        <ComboBoxItem>Statička</ComboBoxItem>
+                        <ComboBoxItem>Dinamička</ComboBoxItem>
+                    </ComboBox>
+                    <Button Content="Filtriraj" Margin="45 0 0 0"  Style="{StaticResource ManagerHelpOk}" Click ="FilteringButtonClick"></Button>
+                </StackPanel>
+
+
+                <TextBlock Grid.Row="4" Text="Izveštaj o kompletnoj opremi u bolnici: " FontSize="20" Margin="48 40 0 0"> </TextBlock>
+
+                <Button Grid.Row="5" Content="Nazad" Style="{StaticResource ManagerRedButtonStyle}" Margin="45,-10,828,-171" Command="cmd:RoutedCommand.Back" ></Button>
+                
+                
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -16,11 +16,17 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
       
         }
 
-        private void Button_Click_Logout(object sender, RoutedEventArgs e)
+        private void Logout_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Logout_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
             this.Close();
             window.Show();
         }
+
     }
 }
