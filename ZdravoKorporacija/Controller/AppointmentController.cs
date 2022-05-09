@@ -43,6 +43,11 @@ namespace Controller
         {
             AppointmentService.DeleteAppointment(appointmentId);
         }
+
+        public void DeleteAppointmentsForOnePatient(String patientJmbg)
+        {
+            AppointmentService.DeleteAppointmentsForOnePatient(patientJmbg);
+        }
         public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
             AppointmentService.ModifyAppointment(appointmentId, newDate);

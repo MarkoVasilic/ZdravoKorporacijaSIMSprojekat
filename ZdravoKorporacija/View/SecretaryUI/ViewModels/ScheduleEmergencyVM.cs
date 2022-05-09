@@ -145,7 +145,6 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             SecretaryWindowVM.setWindowTitle("Schedule emergency appointment");
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
-            patientController = new PatientController(patientService);
             DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
@@ -156,6 +155,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
                 roomRepository, basicRenovationRepository);
+            patientController = new PatientController(patientService, appointmentService);
             appointmentController = new AppointmentController(appointmentService);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
@@ -256,13 +256,13 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 if (SelectedRescheduleAppointment != null)
                 {
                     appointmentController.ModifyAppointment(SelectedRescheduleAppointment.AppointmentId, SelectedRescheduleAppointment.NewStartTime);
+                    notificationController.CreatePatientNotificationForAppointmentReschedule(SelectedRescheduleAppointment.PatientJmbg, SelectedRescheduleAppointment.DoctorFullName,
+                    SelectedRescheduleAppointment.OldStartTime, SelectedRescheduleAppointment.NewStartTime, SelectedRescheduleAppointment.RoomName);
+                    notificationController.CreateDoctorNotificationForEmergency(SelectedRescheduleAppointment.DoctorJmbg, SelectedRescheduleAppointment.PatientFullName,
+                        SelectedRescheduleAppointment.OldStartTime, SelectedRescheduleAppointment.NewStartTime, SelectedAppointment.StartTime, SelectedRescheduleAppointment.RoomName);
                 }
                 appointmentController.CreateAppointmentBySecretary(SelectedAppointment.PatientJmbg, SelectedAppointment.DoctorJmbg,
-                    SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.Duration);
-                notificationController.CreatePatientNotificationForAppointmentReschedule(SelectedRescheduleAppointment.PatientJmbg, SelectedRescheduleAppointment.DoctorFullName,
-                    SelectedRescheduleAppointment.OldStartTime, SelectedRescheduleAppointment.NewStartTime, SelectedRescheduleAppointment.RoomName);
-                notificationController.CreateDoctorNotificationForEmergency(SelectedRescheduleAppointment.DoctorJmbg, SelectedRescheduleAppointment.PatientFullName,
-                    SelectedRescheduleAppointment.OldStartTime, SelectedRescheduleAppointment.NewStartTime, SelectedAppointment.StartTime, SelectedRescheduleAppointment.RoomName);
+                    SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.Duration); 
                 SecretaryWindowVM.NavigationService.Navigate(new AppointmentView());
             }
             catch (Exception e)

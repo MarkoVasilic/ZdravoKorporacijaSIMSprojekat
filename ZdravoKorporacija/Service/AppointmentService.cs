@@ -93,6 +93,11 @@ namespace Service
             }
         }
 
+        public void DeleteAppointmentsForOnePatient(String patientJmbg)
+        {
+            AppointmentRepository.RemoveAppointmentsForOnePatient(patientJmbg);
+        }
+
         public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
 

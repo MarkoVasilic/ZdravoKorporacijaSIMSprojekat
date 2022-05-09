@@ -8,10 +8,12 @@ namespace Controller
     public class PatientController
     {
         private readonly PatientService PatientService;
+        private readonly AppointmentService AppointmentService;
 
-        public PatientController(PatientService patientService)
+        public PatientController(PatientService patientService, AppointmentService appointmentService)
         {
             this.PatientService = patientService;
+            this.AppointmentService = appointmentService;
         }
 
         public Patient? getPatientByUsername(String username)
@@ -41,6 +43,7 @@ namespace Controller
         public void DeletePatient(string jmbg)
         {
             PatientService.DeletePatient(jmbg);
+            AppointmentService.DeleteAppointmentsForOnePatient(jmbg);
         }
 
         public void DeleteAllPatients()

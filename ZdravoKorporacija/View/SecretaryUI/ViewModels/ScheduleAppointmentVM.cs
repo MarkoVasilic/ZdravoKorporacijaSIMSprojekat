@@ -237,7 +237,6 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             SecretaryWindowVM.setWindowTitle("Schedule appointment");
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
-            patientController = new PatientController(patientService);
             DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
@@ -248,6 +247,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
                 roomRepository, basicRenovationRepository);
+            patientController = new PatientController(patientService, appointmentService);
             appointmentController = new AppointmentController(appointmentService);
             specialitiesListToStringList(doctorController.GetAllSpecialities());
             roomsListToRoomList(roomController.GetAllRooms());

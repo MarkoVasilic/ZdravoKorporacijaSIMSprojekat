@@ -58,6 +58,12 @@ namespace Repository
             Save(values);
         }
 
+        public void RemoveAppointmentsForOnePatient(String patientjmbg)
+        {
+            var values = GetValues();
+            values.RemoveAll(val => val.PatientJmbg == patientjmbg);
+            Save(values);
+        }
 
         public Appointment? FindOneById(int appointmentId)
         {
