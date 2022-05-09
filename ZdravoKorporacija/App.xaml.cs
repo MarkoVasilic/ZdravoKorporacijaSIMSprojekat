@@ -41,9 +41,9 @@ namespace ZdravoKorporacija
             PatientRepository patientRepository = new PatientRepository();
             DisplacementRepository displacementRepository = new DisplacementRepository();
             PatientService patientService = new PatientService(patientRepository);
-            patientController = new PatientController(patientService);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository, basicRenovationRepository);
+            patientController = new PatientController(patientService, appointmentService);
             appointmentController = new AppointmentController(appointmentService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);

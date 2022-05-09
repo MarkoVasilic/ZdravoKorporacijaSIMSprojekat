@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -37,9 +38,19 @@ namespace ZdravoKorporacija.View.SecretaryUI
             InitializeComponent();
             SelectedPatient = selectedPatient;
             initializeBindingFields();
+            DoctorRepository doctorRepository = new DoctorRepository();
+            DoctorService doctorService = new DoctorService(doctorRepository);
+            DoctorController doctorController = new DoctorController(doctorService);
+            RoomRepository roomRepository = new RoomRepository();
+            RoomService roomService = new RoomService(roomRepository);
+            RoomController roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
             PatientRepository patientRepository = new PatientRepository();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
+                roomRepository, basicRenovationRepository);
             PatientService patientService = new PatientService(patientRepository);
-            PatientController = new PatientController(patientService);
+            PatientController = new PatientController(patientService,appointmentService);
             this.DataContext = this;
         }
 
