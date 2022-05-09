@@ -25,5 +25,16 @@ namespace ZdravoKorporacija.DTO
             RoomName = roomName;
             RoomId = roomId;
         }
+
+
+        public void toString()
+        {
+            Console.WriteLine("ID = " + Id);
+            Console.WriteLine("EquipmentName = " + Name);
+            Console.WriteLine("isStatic = " + IsStatic);
+            Console.WriteLine("Quantity = " + Quantity);
+            Console.WriteLine("RoomName = " + RoomName);
+            Console.WriteLine();
+        }
     }
 }

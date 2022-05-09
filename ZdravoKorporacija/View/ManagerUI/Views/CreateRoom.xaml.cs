@@ -48,12 +48,6 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             NavigationService.Navigate(new ManagerHomePage());
         }
 
-        private void Button_Click_Logout(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            managerHomeWindow.Close();
-            mainWindow.Show();
-        }
 
         /* private void ButtonHelp(object sender, RoutedEventArgs e)
          {

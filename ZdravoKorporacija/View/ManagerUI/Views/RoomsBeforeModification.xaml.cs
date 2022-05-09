@@ -79,5 +79,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
         {
             NavigationService.Navigate(new ManagerHomePage());
         }
+
+
     }
 }

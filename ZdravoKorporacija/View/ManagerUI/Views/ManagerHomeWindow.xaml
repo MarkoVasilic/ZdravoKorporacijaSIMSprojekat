@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
         mc:Ignorable="d"
-        Title="ManagerHomeWindow" Height="768" Width="1024" Background="LightYellow" WindowState="Maximized">
+        Title="ManagerHomeWindow" Height="768" Width="1024" Background="#fee9e1" WindowState="Maximized">
     <Grid>
         <Frame x:Name="ManagerMainFrame" Height="768" NavigationUIVisibility="Hidden"></Frame>
+        <Button Content="Odjavi se" Margin="700 0 0 700"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
     </Grid>
 </Window>

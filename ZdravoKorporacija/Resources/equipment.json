@@ -18,6 +18,13 @@
     "Name": "sto",
     "IsStatic": true,
     "Quantity": 1,
-    "RoomId": 7
+    "RoomId": 5
+  },
+  {
+    "Id": 4,
+    "Name": "sto",
+    "IsStatic": true,
+    "Quantity": 1,
+    "RoomId": 22
   }
 ]

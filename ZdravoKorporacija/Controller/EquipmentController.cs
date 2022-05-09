@@ -46,6 +46,16 @@ namespace ZdravoKorporacija.Controller
             EquipmentService.EquipmentDisplacement();
         }
 
+        public List<EquipmentDTO> Filter(Boolean isStaticEquipment)
+        {
+            return EquipmentService.Filter(isStaticEquipment);
+        }
+
+        public List<EquipmentDTO> Search(string name)
+        {
+            return EquipmentService.Search(name);
+        }
+
 
 
     }

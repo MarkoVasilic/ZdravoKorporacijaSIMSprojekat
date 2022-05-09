@@ -1,193 +1,1537 @@
 [
   {
     "Id": 1,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0h !",
-    "StartTime": "2022-05-05T00:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 2,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1h !",
-    "StartTime": "2022-05-05T01:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 3,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2h !",
-    "StartTime": "2022-05-05T02:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 4,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3h !",
-    "StartTime": "2022-05-05T03:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 5,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4h !",
-    "StartTime": "2022-05-05T04:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 6,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5h !",
-    "StartTime": "2022-05-05T05:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 7,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6h !",
-    "StartTime": "2022-05-05T06:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 8,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7h !",
-    "StartTime": "2022-05-05T07:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 9,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8h !",
-    "StartTime": "2022-05-05T08:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 10,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9h !",
-    "StartTime": "2022-05-05T09:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 11,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10h !",
-    "StartTime": "2022-05-05T10:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 12,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11h !",
-    "StartTime": "2022-05-05T11:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 13,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12h !",
-    "StartTime": "2022-05-05T12:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 14,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13h !",
-    "StartTime": "2022-05-05T13:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 15,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14h !",
-    "StartTime": "2022-05-05T14:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 16,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15h !",
-    "StartTime": "2022-05-05T15:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 17,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16h !",
-    "StartTime": "2022-05-05T16:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 18,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17h !",
-    "StartTime": "2022-05-05T17:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 19,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18h !",
-    "StartTime": "2022-05-05T18:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 20,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19h !",
-    "StartTime": "2022-05-05T19:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 21,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20h !",
-    "StartTime": "2022-05-05T20:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 22,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21h !",
-    "StartTime": "2022-05-05T21:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 23,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22h !",
-    "StartTime": "2022-05-05T22:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },
   {
     "Id": 24,
-    "Title": "Popijte:  Paracetamol",
-    "Description": "Obavjestenje: Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23h !",
-    "StartTime": "2022-05-05T23:20:00",
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 25,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 26,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 27,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 28,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 29,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 30,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 31,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 32,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 33,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 34,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 35,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 36,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 37,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 38,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 39,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 40,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 41,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 42,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 43,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 44,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 45,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 46,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 47,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 48,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 49,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 50,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 51,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 52,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 53,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 54,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 55,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 56,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 57,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 58,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 59,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 60,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 61,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 62,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 63,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 64,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 65,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 66,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 67,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 68,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 69,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 70,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 71,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 72,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 73,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 74,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 75,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 76,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 77,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 78,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 79,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 80,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 81,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 82,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 83,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 84,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 85,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 86,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 87,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 88,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 89,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 90,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 91,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 92,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 93,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 94,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 95,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 96,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 97,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 98,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 99,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 100,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 101,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 102,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 103,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 104,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 105,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 106,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 107,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 108,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 109,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 110,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 111,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 112,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 113,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 114,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 115,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 116,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 117,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 118,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 119,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 120,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 121,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 122,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 123,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 124,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 125,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 126,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 127,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 128,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 129,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 130,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 131,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 132,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 133,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 134,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 135,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 136,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 137,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 138,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 139,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 140,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 141,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 142,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 143,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 144,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 145,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 146,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 147,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 148,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 149,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 150,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 151,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 152,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 153,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 154,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 155,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 156,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 157,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 158,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 159,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 160,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 161,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 162,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 163,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 164,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 165,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 166,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 167,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 168,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 169,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-06T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 170,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-06T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 171,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-06T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 172,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-06T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 173,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-06T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 174,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-06T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 175,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-06T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 176,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-06T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 177,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-06T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 178,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-06T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 179,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-06T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 180,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-06T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 181,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-06T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 182,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-06T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 183,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-06T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 184,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-06T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 185,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-06T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 186,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-06T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 187,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-06T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 188,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-06T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 189,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-06T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 190,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-06T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 191,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-06T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 192,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-06T23:13:00",
     "userJmbg": "7778889994445",
     "Seen": false
   },

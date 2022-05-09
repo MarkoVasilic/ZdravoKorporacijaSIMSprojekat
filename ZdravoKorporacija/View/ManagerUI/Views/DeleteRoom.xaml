@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       
-      Title="DeleteRoom" Background="LightYellow">
+      Title="DeleteRoom" Background="#fee9e1">
 
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="DeleteRoomHelp_CanExecute" Executed="DeleteRoomHelp_Executed"></CommandBinding>
@@ -32,13 +32,11 @@
             <TextBlock
              Text="Brisanje prostorije" 
              FontSize="30" 
-             FontWeight="bold" Margin="390 0 0 0" TextAlignment="Center"></TextBlock>
-
-            <Button Content="Odjavi se" Margin="180 0 0 425"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
+             Margin="390 10 0 0" TextAlignment="Center" Foreground="Black"></TextBlock>
 
         </StackPanel>
 
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25" BorderThickness="3" BorderBrush="#b09e99">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="234"  CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
@@ -47,8 +45,8 @@
                 <DataGridTemplateColumn Header="Izbriši" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Izbriši" x:Name="DeleteRoomButton" Tag="{Binding Id}" Click="DeleteRoomClick">
-                            </Button>
+                            <Button Content="Izbriši" x:Name="DeleteRoomButton" Tag="{Binding Id}" Click="DeleteRoomClick" Background="#FFE8B4A0"/>
+
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

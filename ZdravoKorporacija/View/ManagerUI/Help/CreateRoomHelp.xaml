@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Help"
         mc:Ignorable="d"
-        Title="CreateRoomHelp" Height="450" Width="600" Background="LightYellow" BorderBrush="Black">
+        Title="CreateRoomHelp" Height="450" Width="600" Background="#fee9e1" BorderBrush="Black">
     <Grid>
 
         <Grid.RowDefinitions>

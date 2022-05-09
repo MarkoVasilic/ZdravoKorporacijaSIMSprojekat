@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View.AppointmentCRUD"
         mc:Ignorable="d"
         Title="GetAllAppointmentsPatient" Height="768" Width="1024">
-    <Grid  Margin="50">
-       
-        <DataGrid  FontSize ="16" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="auto" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B" Margin="10,156,23,1">
+    <Grid  Margin="50"  Background="#FF242F41">
+
+        <DataGrid RowBackground="SteelBlue" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background="SteelBlue" FontFamily="Georgia" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B" Margin="0,156,0,0">
             <DataGrid.Columns>
+
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="120"></DataGridTextColumn>
                 <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="180"></DataGridTextColumn>
@@ -18,8 +19,14 @@
                 <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="120"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Home" FontSize="25" HorizontalAlignment="Left" Margin="306,542,0,0" VerticalAlignment="Top" Width="298" Height="69" Click="Button_Click"/>
-        <Label Content="My Appointments" FontSize="60" HorizontalAlignment="Left" Margin="219,38,0,0" VerticalAlignment="Top" Width="532" Height="82"/>
+        <Button Content="Nazad" FontSize="25" FontWeight="DemiBold" Background="#FF6B7B73" HorizontalAlignment="Left" Margin="306,542,0,0" VerticalAlignment="Top" Width="298" Height="69" Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Prethodni Termini" FontSize="60"  Foreground="MediumAquamarine" HorizontalAlignment="Left" Margin="219,38,0,0" VerticalAlignment="Top" Width="532" Height="82"/>
 
     </Grid>
 </Page>

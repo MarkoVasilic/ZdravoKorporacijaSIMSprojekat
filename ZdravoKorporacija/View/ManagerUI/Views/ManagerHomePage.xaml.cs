@@ -25,7 +25,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
             NavigationService.Navigate(new DeleteRoom());
         }
 
-        private void AllRoomsClick(object sender, RoutedEventArgs e)
+        private void GetAllRoomsClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new GetAllRooms());
         }
@@ -35,9 +35,39 @@ namespace ZdravoKorporacija.View.RoomCRUD
             NavigationService.Navigate(new RoomsBeforeModification());
         }
 
-        private void EquipmentClick(object sender, RoutedEventArgs e)
+        private void GetEquipmentClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new GetAllEquipment());
+        }
+
+        private void EquipmentDisplacementClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateMedicationClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ModifyMedicationClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RoomsRenovationClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ProfileClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GradesClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

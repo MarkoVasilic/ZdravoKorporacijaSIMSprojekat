@@ -13,7 +13,14 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
             InitializeComponent();
             DataContext = new ManagerWindowVM(this);
+      
         }
 
+        private void Button_Click_Logout(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            this.Close();
+            window.Show();
+        }
     }
 }

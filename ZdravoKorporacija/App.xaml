@@ -96,7 +96,7 @@
         <Style x:Key="ManagerGreenButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="50"></Setter>
             <Setter Property="Width" Value="150"></Setter>
-            <Setter Property="Background" Value="LightGreen"></Setter>
+            <Setter Property="Background" Value="#FF7ED1C7"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
@@ -110,7 +110,7 @@
         <Style x:Key="ManagerRedButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="50"></Setter>
             <Setter Property="Width" Value="150"></Setter>
-            <Setter Property="Background" Value="OrangeRed"></Setter>
+            <Setter Property="Background" Value="#c0fdfb"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
@@ -125,7 +125,7 @@
         <Style x:Key="ManagerLogOutButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="50"></Setter>
             <Setter Property="Width" Value="150"></Setter>
-            <Setter Property="Background" Value="LightSalmon"></Setter>
+            <Setter Property="Background" Value="#c0fdfb"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
@@ -140,7 +140,7 @@
         <Style x:Key="ManagerHelpButton" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="50"></Setter>
             <Setter Property="Width" Value="150"></Setter>
-            <Setter Property="Background" Value="LightBlue"></Setter>
+            <Setter Property="Background" Value="#c0fdfb"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
@@ -154,7 +154,7 @@
         <Style x:Key="ManagerHelpOk" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Width" Value="80"></Setter>
-            <Setter Property="Background" Value="LightGreen"></Setter>
+            <Setter Property="Background" Value="#64b6ac"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
@@ -165,6 +165,7 @@
             </Style.Resources>
             
         </Style>
+
 
 
     </Application.Resources>

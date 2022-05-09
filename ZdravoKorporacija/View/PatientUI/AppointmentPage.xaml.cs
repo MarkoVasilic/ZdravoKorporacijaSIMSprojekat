@@ -44,7 +44,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private void GoHomeButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new PatientHomePage()); 
         }
     }
 }

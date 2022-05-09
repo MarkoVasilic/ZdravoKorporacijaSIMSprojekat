@@ -24,5 +24,10 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
             CreateAppointmentVM.SelectedAppointment = obj;
             CreateAppointmentVM.SelectAppointment();
         }
+
+        private void NazadButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

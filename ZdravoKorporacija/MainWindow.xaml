@@ -43,7 +43,7 @@
                         <PasswordBox x:Name="PasswordTextBox" Height="30" BorderThickness="2" FontSize="20">
                         </PasswordBox>
                     </StackPanel>
-                    <Button Grid.Row="3" Grid.Column="1" Name="LoginButton" HorizontalAlignment="Center" Content="Confirm" Height="30" Width="110" Background="Green" FontSize="18" Click="LoginButton_Click"/>
+                    <Button Grid.Row="3" Grid.Column="1" Name="LoginButton" HorizontalAlignment="Center" Content="Confirm" Height="30" Width="110" Background="Green" FontSize="18" Click="LoginButton_Click" IsDefault="True"/>
                 </Grid>
                 
             </Border>

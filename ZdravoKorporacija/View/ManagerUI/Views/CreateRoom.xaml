@@ -7,19 +7,16 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="CreateRoom" Background="LightYellow"  >
+      Title="CreateRoom" Background="#fee9e1"  >
 
-  
+
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="CreateRoomHelp_CanExecute" Executed="CreateRoomHelp_Executed"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
-    </Page.CommandBindings> 
-       
-    
-    <Grid Margin="20 10" MaxWidth="1024">
+    </Page.CommandBindings>
 
-     
-           
+
+    <Grid Margin="20 10" MaxWidth="1024">
 
 
         <Grid.RowDefinitions>
@@ -33,11 +30,9 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock
-             Text="Kreiranje prostoriju" 
+             Text="Kreiranje prostorije" 
              FontSize="30" 
-             FontWeight="bold" Margin="380 0 0 0" TextAlignment="Center"></TextBlock>
-
-            <Button Content="Odjavi se" Margin="170 0 0 0"  Click="Button_Click_Logout" Style="{StaticResource ManagerLogOutButtonStyle}"/>
+              Margin="380 0 0 0" TextAlignment="Center" Foreground="Black"></TextBlock>
 
         </StackPanel>
 
@@ -47,12 +42,12 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Naziv" Grid.Row="0" HorizontalAlignment="Center" FontSize="20"/>
+            <TextBlock Text="Naziv" Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Foreground="Black"/>
             <TextBox Grid.Row="1" 
                      Margin="0 5 0 0 "
                      Width="400" 
                      Height="35"
-                     Text="{Binding Room.Name}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxName"/>
+                     Text="{Binding Room.Name}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxName" Background="#fad4c0"  />
 
         </Grid>
 
@@ -62,12 +57,12 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Opis" Grid.Row="0" HorizontalAlignment="Center" FontSize="20"/>
+            <TextBlock Text="Opis" Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Foreground="black"/>
             <TextBox Grid.Row="1"
                      Margin="0 5 0 0 "
                      Width="400"
                      Height="35"
-                     Text="{Binding Room.Description}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxDescription"/>
+                     Text="{Binding Room.Description}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxDescription" Background="#fad4c0"/>
         </Grid>
 
         <Grid Grid.Row="3" Margin="0 80 0 0 ">
@@ -76,9 +71,9 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Tip" Grid.Row="0" HorizontalAlignment="Center" FontSize="20"/>
+            <TextBlock Text="Tip" Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Foreground="Black"/>
             <ComboBox Name="RoomTypeComboBox"  Margin="8,0,8,8" Height="35"
-                             SelectedValuePath="Content" Grid.Row="1" Width="400" Style="{StaticResource ManagerComboBoxStyle}" >
+                             SelectedValuePath="Content" Grid.Row="1" Width="400" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >
                 <ComboBoxItem>Prostorija za pregled</ComboBoxItem>
                 <ComboBoxItem>Prostorija za sastanke</ComboBoxItem>
                 <ComboBoxItem>Operacijska sala</ComboBoxItem>
