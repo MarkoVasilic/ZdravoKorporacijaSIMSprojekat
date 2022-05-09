@@ -11,7 +11,13 @@
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
     </Page.CommandBindings>
-    
+
+    <Page.Resources>
+        <Style x:Key="DisableFocus" TargetType="DataGridCell">
+            <Setter Property="Focusable" Value="False"></Setter>
+        </Style>
+    </Page.Resources>
+
 
     <Grid>
 
@@ -31,11 +37,21 @@
         </StackPanel>
 
         <DataGrid x:Name="dataGridRooms"  ItemsSource="{Binding Rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,186,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionUnit="FullRow" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5"  FontSize="13" ColumnHeaderHeight="25">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    <Setter Property="Background" Value="#fee9e1"></Setter>
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Opis" Binding="{Binding Description}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tip prostorije" Binding="{Binding typeStr}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Description}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip prostorije" Binding="{Binding typeStr}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,32 @@ namespace ZdravoKorporacija.View.Equipment
         private EquipmentController equipmentController;
 
         public ObservableCollection<EquipmentDTO> equipment { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private Boolean isStaticEquipment;
+
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if(PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+
+        }
+
+        private string equipmentName = "";
+
+        public string EquipmentName
+        {
+            get { return equipmentName; }
+            set
+            {
+                equipmentName = value;
+                OnPropertyChanged("EquipmentName");
+            }
+        }
+
         public GetAllEquipment()
         {
             InitializeComponent();
@@ -47,10 +74,6 @@ namespace ZdravoKorporacija.View.Equipment
             NavigationService.Navigate(new ManagerHomePage());
         }*/
 
-        private void Button_Click_Logout(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         public void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -60,6 +83,27 @@ namespace ZdravoKorporacija.View.Equipment
         public void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             NavigationService.Navigate(new ManagerHomePage());
+        }
+
+        private void SearchButtonCLick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GetAllEquipment());
+            equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Search(EquipmentName));
+        }
+
+        private void FilteringButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (EquipmentTypeComboBox.SelectedIndex == 0)
+            {
+                isStaticEquipment = true;
+            }else if (EquipmentTypeComboBox.SelectedIndex == 1)
+            {
+                isStaticEquipment = false;
+            }
+
+
+            equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(isStaticEquipment));
+            NavigationService.Navigate(new GetAllEquipment());
         }
     }
 }

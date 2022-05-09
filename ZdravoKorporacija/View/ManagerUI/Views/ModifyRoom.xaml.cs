@@ -129,6 +129,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
             try
             {
                 roomController.ModifyRoom(RoomId, NameRoom, Description);
+                MessageBox.Show("Prostorija je uspešno modifikovana.", "Obaveštenje", MessageBoxButton.OK);
                 NavigationService.Navigate(new RoomsBeforeModification());
                 
             }

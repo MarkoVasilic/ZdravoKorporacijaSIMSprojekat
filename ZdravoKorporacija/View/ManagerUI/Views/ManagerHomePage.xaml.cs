@@ -28,6 +28,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void GetAllRoomsClick(object sender, RoutedEventArgs e)
         {
+           
             NavigationService.Navigate(new GetAllRooms());
         }
 

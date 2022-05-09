@@ -24,7 +24,7 @@
                         <RowDefinition Height="69.81"></RowDefinition>
                         <RowDefinition Height="69.81"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Background="#c0fdfb" Content="Pregled svih prostorija"  BorderBrush="Transparent" FontSize="25" FontWeight="Bold"  Click="GetAllRoomsClick"></Button>
+                    <Button x:Name="firstButton" Grid.Row="0" Background="#c0fdfb" Content="Pregled svih prostorija"  BorderBrush="Transparent" FontSize="25" FontWeight="Bold"  Click="GetAllRoomsClick" IsDefault="True"></Button>
                     <Button Grid.Row="1" Background="#c0fdfb"  Content="Kreiranje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="CreateRoomClick"></Button>
                     <Button Grid.Row="2" Background="#c0fdfb" Content="Izmena prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyRoomClick" ></Button>
                     <Button Grid.Row="3" Background="#c0fdfb" Content="Brisanje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="DeleteRoomClick"></Button>

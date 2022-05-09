@@ -24,5 +24,12 @@ namespace ZdravoKorporacija.View.ManagerUI.Commands
             }
             );
 
+        public static readonly RoutedUICommand Logout = new RoutedUICommand(
+            "Logout", "LogoutButton", typeof(RoutedCommand), new InputGestureCollection()
+            {
+                new KeyGesture(Key.L, ModifierKeys.Control)
+            }
+            );
+
     }
 }

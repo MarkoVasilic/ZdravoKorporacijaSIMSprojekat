@@ -212,7 +212,7 @@ namespace ZdravoKorporacija.Service
                 Equipment equipment = EquipmentRepository.FindOneById(displacement.StaticEquipmentId);
                 
 
-                if (displacement.DisplacementDate == System.DateTime.Today)
+                if (displacement.DisplacementDate <= System.DateTime.Today)
                 {
                     if(equipment != null)
                     {
