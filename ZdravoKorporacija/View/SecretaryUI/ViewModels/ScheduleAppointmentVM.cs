@@ -6,11 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
@@ -24,7 +20,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public RoomController roomController { get; set; }
         public AppointmentController appointmentController { get; set; }
         private Patient? selectedPatient { get; set; }
-        private Doctor? selectedDoctor  { get; set; }
+        private Doctor? selectedDoctor { get; set; }
         private Room? selectedRoom { get; set; }
         private int selectedDuration { get; set; }
         private String selectedPriority { get; set; }
@@ -65,7 +61,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
         }
         public ObservableCollection<String> DoctorSpecialities
-        { 
+        {
             get => doctorSpecialities;
             set
             {
@@ -110,7 +106,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 OnPropertyChanged("ErrorMessage");
             }
         }
-        
+
         public string ErrorMessagePossibleAppointments
         {
             get => errorMessagePossibleAppointments;
@@ -129,7 +125,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 OnPropertyChanged("ErrorMessageConfirmAppointment");
             }
         }
-        
+
 
         public Patient SelectedPatient
         {
@@ -320,7 +316,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         {
             SecretaryWindowVM.NavigationService.Navigate(new SelectAppointmentInfo(this));
         }
-        
+
 
         private void searchAppointmentExecute(object parameter)
         {
@@ -349,7 +345,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void selectAppointmentExecute(object parameter)
         {
             SelectedAppointment = parameter as PossibleAppointmentsDTO;
-            SecretaryWindowVM.NavigationService.Navigate(new ConfirmAppointmentInformations(this));
+            SecretaryWindowVM.NavigationService.Navigate(new ConfirmAppointmentInformations(this, null));
         }
         private void confirmAppointmentExecute(object parameter)
         {
@@ -363,9 +359,9 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             {
                 ErrorMessageConfirmAppointment = e.Message;
             }
-            
+
         }
 
-        
+
     }
 }

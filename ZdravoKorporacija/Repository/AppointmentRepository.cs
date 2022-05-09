@@ -84,6 +84,16 @@ namespace Repository
             return result;
         }
 
+        public List<Appointment> FindAllByRoomId(int id)
+        {
+            var values = GetValues();
+            List<Appointment> result = new List<Appointment>();
+            foreach (Appointment appointment in values)
+                if (appointment.RoomId.Equals(id))
+                    result.Add(appointment);
+            return result;
+        }
+
         public List<Appointment> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(AppointmentFilePath));

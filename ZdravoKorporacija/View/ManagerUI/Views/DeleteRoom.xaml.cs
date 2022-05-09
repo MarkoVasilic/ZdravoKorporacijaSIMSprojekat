@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ZdravoKorporacija.View.RoomCRUD;
-using ZdravoKorporacija.View.ManagerUI.ViewModels;
-using Controller;
+﻿using Controller;
+using Model;
 using Repository;
 using Service;
-using Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Navigation;
 using ZdravoKorporacija.View.ManagerUI.Help;
+using ZdravoKorporacija.View.RoomCRUD;
 
 namespace ZdravoKorporacija.View.ManagerUI.Views
 {
@@ -64,16 +53,16 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             roomController = new RoomController(roomService);
             Rooms = new ObservableCollection<Room>(roomController.GetAllRooms());
             this.DataContext = this;
-            
+
         }
 
-       /* private void Button_Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ManagerHomePage());
-        }*/
+        /* private void Button_Back_Click(object sender, RoutedEventArgs e)
+         {
+             NavigationService.Navigate(new ManagerHomePage());
+         }*/
 
 
-        private void DeleteRoomClick (object sender, RoutedEventArgs e)
+        private void DeleteRoomClick(object sender, RoutedEventArgs e)
         {
             int roomId = (int)((Button)sender).Tag;
             if (roomId == null) return;

@@ -48,7 +48,7 @@
                     </TextBlock>
                 </StackPanel>
                 <Button Name="SearchButton" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
-                Margin="0,10,10,0" Content="Search">
+                Command="{Binding SearchPatientCommand}" Margin="0,10,10,0" Content="Search">
                 </Button>
                 <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
                     <Label Content="Or make a guest account" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>

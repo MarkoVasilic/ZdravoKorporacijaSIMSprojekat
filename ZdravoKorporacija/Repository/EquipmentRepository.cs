@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
@@ -24,14 +21,14 @@ namespace ZdravoKorporacija.Repository
         public List<Equipment> FindAllByRoomId(int roomId)
         {
             List<Equipment> values = new List<Equipment>();
-            List <Equipment> equipments = GetValues();
-            foreach(Equipment eq in equipments)
+            List<Equipment> equipments = GetValues();
+            foreach (Equipment eq in equipments)
             {
-                if(eq.RoomId == roomId)
+                if (eq.RoomId == roomId)
                     values.Add(eq);
             }
             return values;
-            
+
         }
 
         public void SaveEquipment(Equipment equipmentToMake)

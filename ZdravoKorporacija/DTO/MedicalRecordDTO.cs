@@ -1,10 +1,6 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -71,7 +67,7 @@ namespace ZdravoKorporacija.DTO
             Console.WriteLine("Prescriptions: ");
             if (Prescriptions != null)
             {
-                foreach(Prescription prescription in Prescriptions)
+                foreach (Prescription prescription in Prescriptions)
                 {
                     prescription.ToString();
                     Console.Write("\n");

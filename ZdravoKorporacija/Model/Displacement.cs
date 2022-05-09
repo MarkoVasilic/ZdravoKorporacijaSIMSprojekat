@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.Model
 {
@@ -13,8 +9,8 @@ namespace ZdravoKorporacija.Model
         public int StartRoom { get; set; }
         public int EndRoom { get; set; }
         public int StaticEquipmentId { get; set; }
-        public int StaticEquipmentQuantity  { get; set; }
-        public DateTime DisplacementDate    { get; set; }
+        public int StaticEquipmentQuantity { get; set; }
+        public DateTime DisplacementDate { get; set; }
 
         public Displacement(int id, int startRoom, int endRoom, int staticEquipmentId, int staticEquipmentQuantity, DateTime displacementDate)
         {

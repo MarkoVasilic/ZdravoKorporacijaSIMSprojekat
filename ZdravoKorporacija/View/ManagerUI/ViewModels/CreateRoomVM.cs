@@ -6,11 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 using ZdravoKorporacija.View.RoomCRUD;
 
@@ -57,7 +53,7 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             set
             {
                 name = value;
-                OnPropertyChanged("Username");    
+                OnPropertyChanged("Username");
             }
         }
 
@@ -119,14 +115,14 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
 
         }
 
-        public ICommand SaveCommand    { get; set; }
+        public ICommand SaveCommand { get; set; }
 
         public ICommand GetAllRoomsCommand { get; set; }
 
 
         private void saveExecute(object parameter)
         {
-            
+
             try
             {
                 //Console.WriteLine(Room.Name);
@@ -135,15 +131,15 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
                 RoomController.CreateRoom(Room.Name, Room.Description, Room.Type);
 
                 ManagerWindowVM.NavigationService.Navigate(new GetAllRooms());
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
             }
         }
 
-      
+
 
         private void getAllRoomsManager(object sender)
         {

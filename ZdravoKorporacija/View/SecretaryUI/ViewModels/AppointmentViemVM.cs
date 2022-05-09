@@ -7,10 +7,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -301,7 +297,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                     Appointments.Add(ap);
             }
             Lcv = new ListCollectionView(Appointments);
-            Lcv.GroupDescriptions.Add(new PropertyGroupDescription("StartTime",new DateTimeToDateConverter()));
+            Lcv.GroupDescriptions.Add(new PropertyGroupDescription("StartTime", new DateTimeToDateConverter()));
         }
         public class DateTimeToDateConverter : IValueConverter
         {
@@ -343,9 +339,9 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
             catch (Exception e)
             {
-                ErrorMessage = e.Message; 
+                ErrorMessage = e.Message;
             }
-            
+
         }
 
         private void selectDatesExecute(object parameter)

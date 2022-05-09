@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
 using ZdravoKorporacija.View.ManagerUI.Views;
 using ZdravoKorporacija.View.RoomCRUD;
 
@@ -16,7 +11,7 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
         public static ManagerHomePage ManagerHomePage;
         public static NavigationService? NavigationService { get; set; }
 
-         public ManagerWindowVM(ManagerHomeWindow managerHomeWindow)
+        public ManagerWindowVM(ManagerHomeWindow managerHomeWindow)
         {
             ManagerHomeWindow = managerHomeWindow;
             ManagerHomePage = new ManagerHomePage();

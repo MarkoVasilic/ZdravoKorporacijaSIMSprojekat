@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.View.Equipment;
-using ZdravoKorporacija.View.ManagerUI;
 using ZdravoKorporacija.View.ManagerUI.Views;
 
 namespace ZdravoKorporacija.View.RoomCRUD
@@ -18,7 +17,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateRoom()); 
+            NavigationService.Navigate(new CreateRoom());
         }
 
         private void DeleteRoomClick(object sender, RoutedEventArgs e)

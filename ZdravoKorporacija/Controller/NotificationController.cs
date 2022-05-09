@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Controller
@@ -14,7 +10,7 @@ namespace ZdravoKorporacija.Controller
 
         private readonly NotificationService notificationService = new NotificationService();
 
-       public  NotificationController(NotificationService Service)
+        public NotificationController(NotificationService Service)
         {
             this.notificationService = Service;
         }
@@ -37,6 +33,16 @@ namespace ZdravoKorporacija.Controller
         public Notification GetOneById(int notificationId)
         {
             return notificationService.GetOneById(notificationId);
+        }
+
+        public void CreatePatientNotificationForAppointmentReschedule(String patientJmbg, String doctorFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, String roomName)
+        {
+            notificationService.CreatePatientNotificationForAppointmentReschedule(patientJmbg, doctorFullName, oldAppointmentTime, newAppointmentTime, roomName);
+        }
+
+        public void CreateDoctorNotificationForEmergency(String doctorJmbg, String patientFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, DateTime emergencyTime, String roomName)
+        {
+            notificationService.CreateDoctorNotificationForEmergency(doctorJmbg, patientFullName, oldAppointmentTime, newAppointmentTime, emergencyTime, roomName);
         }
     }
 }

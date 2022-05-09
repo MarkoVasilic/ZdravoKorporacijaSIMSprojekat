@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Model;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
-using Service;
-using Model;
 
 namespace ZdravoKorporacija.Service
 {
@@ -17,8 +15,8 @@ namespace ZdravoKorporacija.Service
 
 
         public NotificationService() { }
-        public NotificationService(NotificationRepository repository, PrescriptionService prescriptionService) 
-        { 
+        public NotificationService(NotificationRepository repository, PrescriptionService prescriptionService)
+        {
             this.notificationRepository = repository;
             this.prescriptionService = prescriptionService;
         }
@@ -68,16 +66,35 @@ namespace ZdravoKorporacija.Service
         public Notification CreateNotification(string title, string description, DateTime startTime, string receiverJmbg, bool seen, int newId)
         {
             int id = GenerateNewId();
-            Notification notification = new Notification(title, description,startTime,receiverJmbg,seen, id);
+            Notification notification = new Notification(title, description, startTime, receiverJmbg, seen, id);
             notificationRepository.SaveNotification(notification);
             return notification;
 
         }
 
-        public List<Notification> CreatePatientNotifications() 
+        public void CreatePatientNotificationForAppointmentReschedule(String patientJmbg, String doctorFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, String roomName)
+        {
+            int id = GenerateNewId();
+            String title = "Reschedule of appointment";
+            String description = "Your appointment with doctor " + doctorFullName + " on date " + oldAppointmentTime + " in room " + roomName + " have been rescheduled to date " + newAppointmentTime;
+            Notification notification = new Notification(title, description, DateTime.Now, patientJmbg, false, id);
+            notificationRepository.SaveNotification(notification);
+        }
+
+        public void CreateDoctorNotificationForEmergency(String doctorJmbg, String patientFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, DateTime emergencyTime, String roomName)
+        {
+            int id = GenerateNewId();
+            String title = "Emergency appointment";
+            String description = "Your appointment with patient " + patientFullName + " on date " + oldAppointmentTime + " in room " + roomName + " have been rescheduled to date " + newAppointmentTime + ", there is emergency you need to attend now at room " +
+                roomName + " on date " + emergencyTime;
+            Notification notification = new Notification(title, description, DateTime.Now, doctorJmbg, false, id);
+            notificationRepository.SaveNotification(notification);
+        }
+
+        public List<Notification> CreatePatientNotifications()
         {
             List<Notification> notificationsList = new List<Notification>();
-            List<Prescription>  prescriptionsList = new List<Prescription>();
+            List<Prescription> prescriptionsList = new List<Prescription>();
             int numberOfMedNotification = 0;
             int Id = 0;
             String Desc = "";
@@ -88,42 +105,43 @@ namespace ZdravoKorporacija.Service
 
 
             prescriptionsList = prescriptionService.GetAllByPatient(App.loggedUser.Jmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
-            foreach(Prescription prescription in prescriptionsList) //prolazimo kroz sve terapije i za svaku pojedinacno kreiramo sve notifikacije
+            foreach (Prescription prescription in prescriptionsList) //prolazimo kroz sve terapije i za svaku pojedinacno kreiramo sve notifikacije
             {
-                numberOfMedNotification = (prescription.To - prescription.From).Days*(24/prescription.Frequency); //koliko ukupno puta treba popiti lijek
-               for(int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
+                numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); //koliko ukupno puta treba popiti lijek
+                for (int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
                 {
                     Id = GenerateNewId(); //generisemo novi ID za lijek
-                    Title ="Popijte:  "+prescription.Medication; //naslov = paracetamol
-                    StartTime = prescription.From.AddHours(i*prescription.Frequency); //startTime  = StartTime lijeka
+                    Title = "Popijte:  " + prescription.Medication; //naslov = paracetamol
+                    StartTime = prescription.From.AddHours(i * prescription.Frequency); //startTime  = StartTime lijeka
                     Desc = "Obavjestenje: " + "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour + "h !";
-                    
-                        Notification notification = new Notification(Title, Desc, StartTime, userJmbg, Seen, Id);
-                        CreateNotification(Title, Desc, StartTime, userJmbg, Seen, Id);
-                        notificationsList.Add(notification);
-                    
+
+                    Notification notification = new Notification(Title, Desc, StartTime, userJmbg, Seen, Id);
+                    CreateNotification(Title, Desc, StartTime, userJmbg, Seen, Id);
+                    notificationsList.Add(notification);
+
                 }
             }
 
             return notificationsList;
         }
 
-        public List<Notification> ShowPatientNotification() 
+        public List<Notification> ShowPatientNotification()
         {
             List<Notification> notificationsListToDisplay = new List<Notification>();
             List<Notification> returnList = new List<Notification>();
             notificationsListToDisplay = notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
-            Console.WriteLine("Medication StartTime: "+notificationsListToDisplay[0].StartTime);
-            Console.WriteLine("Current DateTime :  "+System.DateTime.Now);
+            Console.WriteLine("Medication StartTime: " + notificationsListToDisplay[0].StartTime);
+            Console.WriteLine("Current DateTime :  " + System.DateTime.Now);
             Console.WriteLine("Notifications to be Made");
             Console.WriteLine("-------------------------");
 
-                for (int i=0; i < notificationsListToDisplay.Count; i++) {
-                if (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours<=1) && (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours>=0)) && (DateTime.Now.Day==notificationsListToDisplay[i].StartTime.Day))
+            for (int i = 0; i < notificationsListToDisplay.Count; i++)
+            {
+                if (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours <= 1) && (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours >= 0)) && (DateTime.Now.Day == notificationsListToDisplay[i].StartTime.Day))
                 {
                     returnList.Add(notificationsListToDisplay[i]);
                 }
-                    
+
 
             }
             return returnList;

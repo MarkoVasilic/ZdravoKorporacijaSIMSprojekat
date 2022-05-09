@@ -1,8 +1,4 @@
-﻿using Controller;
-using Repository;
-using Service;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.View.AppointmentCRUD;
 using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;

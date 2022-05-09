@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using ZdravoKorporacija.View.AppointmentCRUD;
 using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
 
 namespace ZdravoKorporacija.View
@@ -15,6 +14,6 @@ namespace ZdravoKorporacija.View
             DataContext = new PatientWindowVM(this);
         }
 
-       
+
     }
 }

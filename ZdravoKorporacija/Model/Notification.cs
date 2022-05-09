@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.Model
 {
@@ -43,14 +39,14 @@ namespace ZdravoKorporacija.Model
                 return false;
             else if (Title == null)
                 return false;
-            else if (Id == null ||  !onlyNumberRegex.IsMatch(userJmbg))
+            else if (Id == null || !onlyNumberRegex.IsMatch(userJmbg))
                 return false;
             else
                 return true;
 
         }
 
-        public  void ToStringNotification()
+        public void ToStringNotification()
         {
             Console.WriteLine("ID = " + Id);
             Console.WriteLine("userJMBG = " + userJmbg);
@@ -60,6 +56,6 @@ namespace ZdravoKorporacija.Model
             Console.WriteLine("Seen = " + Seen);
             Console.WriteLine();
         }
-    
+
     }
 }

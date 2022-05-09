@@ -1,9 +1,4 @@
-﻿using Controller;
-using Model;
-using Repository;
-using Service;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ZdravoKorporacija.View.ManagerUI.ViewModels;
@@ -20,7 +15,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
             InitializeComponent();
             createRoomVM = new CreateRoomVM();
             DataContext = createRoomVM;
-      
+
         }
 
 

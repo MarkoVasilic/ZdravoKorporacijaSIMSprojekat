@@ -3,7 +3,6 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using ZdravoKorporacija;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
@@ -64,7 +63,7 @@ namespace Service
                 Patient? patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
                 Room? room = RoomRepository.FindOneById(ap.RoomId);
                 possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
-                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration,ap.Id));
+                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.Id));
             }
             return possibleAppointmentsDTO;
         }
@@ -131,7 +130,7 @@ namespace Service
             List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
 
             List<Appointment> appointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
-            foreach(Appointment app in appointments)
+            foreach (Appointment app in appointments)
             {
                 AppointmentDTO appointmentDTO = new AppointmentDTO();
                 appointmentDTO.Id = app.Id;
@@ -270,6 +269,106 @@ namespace Service
             }
             return retValue;
         }
+        private void ValidateParametersForScheduleEmergency (String patientJmbg, String doctorSpeciality)
+        {
+            if (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null)
+                throw new Exception("Patient with that JMBG doesn't exist!");
+            else if (doctorSpeciality == null || DoctorRepository.FindAllBySpeciality(doctorSpeciality) == null)
+                throw new Exception("There are no doctors with that speciality!");
+            else
+                return;
+        }
+        private Boolean ValidateAppointmentTimeForScheduleEmergency(DateTime startTime, int duration)
+        {
+            if ((startTime > DateTime.Now && startTime < DateTime.Now.AddMinutes(75)) ||
+                    (startTime.AddMinutes(duration) > DateTime.Now &&
+                    startTime.AddMinutes(duration) < DateTime.Now.AddMinutes(75)) ||
+                    (startTime < DateTime.Now && startTime.AddMinutes(duration) > DateTime.Now.AddMinutes(75)))
+                return true;
+            return false;
+        }
+        private Boolean IsOccupied(List<Appointment> appointmentList){
+            Boolean isOccupied = false;
+            foreach (var appointment in appointmentList)
+            {
+                if (ValidateAppointmentTimeForScheduleEmergency(appointment.StartTime, appointment.Duration))
+                {
+                    isOccupied = true;
+                    break;
+                }
+            }
+            return isOccupied;
+        }
+
+        private Boolean IsRoomOccupiedByBasicRenovation(Room room)
+        {
+            Boolean roomIsOccupied = false;
+            List<BasicRenovation> roomBasicRenovations = BasicRenovationRepository.FindAllByRoomId(room.Id);
+            foreach (var roomBasicRenovation in roomBasicRenovations)
+            {
+                if (ValidateAppointmentTimeForScheduleEmergency(roomBasicRenovation.StartTime, roomBasicRenovation.Duration))
+                {
+                    roomIsOccupied = true;
+                    break;
+                }
+            }
+            return roomIsOccupied;
+        }
+
+        public PossibleAppointmentsDTO ScheduleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
+        {
+            ValidateParametersForScheduleEmergency(patientJmbg, doctorSpeciality);
+            Patient patient = PatientRepository.FindOneByJmbg(patientJmbg);
+            List<Doctor> doctors = DoctorRepository.FindAllBySpeciality(doctorSpeciality);
+            foreach (var doctor in doctors)
+            {
+                List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
+                if (!IsOccupied(doctorAppointments))
+                {
+                    List<Room> rooms = RoomRepository.FindAll();
+                    foreach (var room in rooms)
+                    {
+                        List<Appointment> roomAppointments = AppointmentRepository.FindAllByRoomId(room.Id);
+                        if (!IsOccupied(roomAppointments) && !IsRoomOccupiedByBasicRenovation(room))
+                        {
+                            return new PossibleAppointmentsDTO(patientJmbg, patient.FirstName + " " + patient.LastName, doctor.Jmbg,
+                        doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, room.Id, room.Name, DateTime.Now.AddMinutes(5), 60, 0);
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<ModifyAppointmentForEmergencyDto> RescheduleAppointmentsForEmergency(String patientJmbg, String doctorSpeciality)
+        {
+            ValidateParametersForScheduleEmergency(patientJmbg, doctorSpeciality);
+            Patient patient = PatientRepository.FindOneByJmbg(patientJmbg);
+            List<Doctor> doctors = DoctorRepository.FindAllBySpeciality(doctorSpeciality);
+            List<ModifyAppointmentForEmergencyDto> appointmentsToReschedule = new List<ModifyAppointmentForEmergencyDto>();
+            foreach (var doctor in doctors)
+            {
+                List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
+                foreach (var appointment in doctorAppointments)
+                {
+                    if (appointment.StartTime > DateTime.Now && appointment.StartTime < DateTime.Now.AddMinutes(75))
+                    {
+                        Room room = RoomRepository.FindOneById(appointment.RoomId);
+                        Patient patientInOldAppointment = PatientRepository.FindOneByJmbg(appointment.PatientJmbg);
+                        List<PossibleAppointmentsDTO> newPossibleAppointments = GetPossibleAppointmentsBySecretary(patientJmbg, doctor.Jmbg,
+                            room.Id, DateTime.Now.AddHours(3), DateTime.Now.AddDays(5), appointment.Duration, "doctor");
+                        newPossibleAppointments.Sort((x, y) => DateTime.Compare(x.StartTime, y.StartTime));
+                        appointmentsToReschedule.Add(new ModifyAppointmentForEmergencyDto(appointment.PatientJmbg, patientInOldAppointment.FirstName + " " + patientInOldAppointment.LastName, doctor.Jmbg,
+                        doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, room.Id, room.Name, appointment.StartTime,
+                        newPossibleAppointments[0].StartTime, appointment.Duration, appointment.Id));
+                        break;
+                    }
+                }
+            }
+            if (appointmentsToReschedule != null)
+                appointmentsToReschedule.Sort((x, y) => DateTime.Compare(x.NewStartTime, y.NewStartTime));
+            return appointmentsToReschedule;
+        }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
@@ -280,7 +379,7 @@ namespace Service
                 throw new Exception("Doctor with that JMBG doesn't exist!");
             else if (RoomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");
-            else if (dateFrom > dateUntil)                 
+            else if (dateFrom > dateUntil)
                 throw new Exception("Dates are not valid!");
             List<DateTime> possibleAppointments = new List<DateTime>();
             Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
@@ -376,7 +475,7 @@ namespace Service
         {
             List<Appointment> allAppointments = this.GetAllAppointments();
             List<BasicRenovation> allBasicRenovations = BasicRenovationRepository.FindAll();
-            List <Appointment> neededAppointments = new List<Appointment>();
+            List<Appointment> neededAppointments = new List<Appointment>();
             foreach (var app in allAppointments)
             {
                 if (app.StartTime > DateTime.Now && app.StartTime.AddMinutes(app.Duration) > dateFrom && app.StartTime < dateUntil && (
@@ -386,7 +485,7 @@ namespace Service
             }
             foreach (var br in allBasicRenovations)
             {
-                if (br.StartTime > DateTime.Now && br.StartTime.AddMinutes(br.Duration) > dateFrom && br.StartTime < dateUntil && ( (roomId != null && br.RoomId == roomId)))
+                if (br.StartTime > DateTime.Now && br.StartTime.AddMinutes(br.Duration) > dateFrom && br.StartTime < dateUntil && ((roomId != null && br.RoomId == roomId)))
                 {
                     Appointment basicRenovationAppointment = new Appointment(br.StartTime, br.Duration, -1, "", "", br.RoomId);
                     neededAppointments.Add(basicRenovationAppointment);

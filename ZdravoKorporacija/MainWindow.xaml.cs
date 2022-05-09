@@ -1,17 +1,15 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 using ZdravoKorporacija.View;
-using ZdravoKorporacija.View.RoomCRUD;
-using ZdravoKorporacija.View.SecretaryUI;
 using ZdravoKorporacija.View.DoctorUI;
-using Model;
-using System;
 using ZdravoKorporacija.View.ManagerUI.Views;
+using ZdravoKorporacija.View.SecretaryUI;
 
 namespace ZdravoKorporacija
 {
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
         {
             InitializeComponent();

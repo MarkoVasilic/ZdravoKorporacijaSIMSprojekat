@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
-using Repository;
 
 namespace Service
 {
@@ -72,9 +70,9 @@ namespace Service
             {
                 throw new Exception("Prescribed medication is not available!");
             }
-            foreach(String ingredient in ingredients)
+            foreach (String ingredient in ingredients)
             {
-                foreach(String allergen in allergens)
+                foreach (String allergen in allergens)
                 {
                     if (ingredient.Equals(allergen))
                     {
@@ -92,7 +90,7 @@ namespace Service
             newPrescriptions.Add(prescription.Id);
             MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg, newPrescriptions,
                                      MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
-            
+
             if (!oneMedicalRecord.validateMedicalRecord())
             {
                 throw new Exception("Something went wrong, medical record isn't updated!");
@@ -114,11 +112,11 @@ namespace Service
             {
                 throw new Exception("Prescribed medication is not available!");
             }
-            List<MedicalRecord>  medicalRecords = MedicalRecordRepository.FindAll();
-            foreach(MedicalRecord mr in medicalRecords)
+            List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
+            foreach (MedicalRecord mr in medicalRecords)
             {
                 List<int> pr = mr.PrescriptionIds;
-                foreach(int id in pr)
+                foreach (int id in pr)
                 {
                     if (id == prescriptonId)
                     {

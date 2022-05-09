@@ -64,7 +64,8 @@ namespace Service
             Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
             if (oldPatient == null)
                 throw new Exception("Patient with that jmbg doesn't exist!");
-            else if (isGuest == true) {
+            else if (isGuest == true)
+            {
                 oldPatient.Allergens = allergens;
                 PatientRepository.UpdatePatient(oldPatient);
             }
@@ -92,7 +93,7 @@ namespace Service
         }
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
-        { 
+        {
             Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,
                 null, Gender.NONE, null, null, null);
             string retVal = guestPatient.validateGuest();

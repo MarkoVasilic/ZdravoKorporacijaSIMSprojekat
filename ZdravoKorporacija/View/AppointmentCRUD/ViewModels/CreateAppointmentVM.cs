@@ -6,9 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
@@ -284,7 +281,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         private void selectAppointmentExecute(object parameter)
         {
             selectedAppointment = parameter as PossibleAppointmentsDTO;
-          //  SecretaryWindowVM.NavigationService.Navigate(new ConfirmAppointmentInformations(this));
+            //  SecretaryWindowVM.NavigationService.Navigate(new ConfirmAppointmentInformations(this));
         }
         private void confirmAppointmentExecute(object parameter)
         {
@@ -292,7 +289,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             {
                 appointmentController.CreateAppointmentByPatient(DateFrom, selectedDoctor.Jmbg);
 
-            //    SecretaryWindowVM.NavigationService.Navigate(new SecretaryHomePage());
+                //    SecretaryWindowVM.NavigationService.Navigate(new SecretaryHomePage());
             }
             catch (Exception e)
             {

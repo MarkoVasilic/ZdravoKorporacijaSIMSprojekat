@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
@@ -210,11 +208,11 @@ namespace ZdravoKorporacija.Service
             foreach (Displacement displacement in displacements)
             {
                 Equipment equipment = EquipmentRepository.FindOneById(displacement.StaticEquipmentId);
-                
+
 
                 if (displacement.DisplacementDate == System.DateTime.Today)
                 {
-                    if(equipment != null)
+                    if (equipment != null)
                     {
                         equipment.RoomId = displacement.EndRoom;
                     }
@@ -222,8 +220,8 @@ namespace ZdravoKorporacija.Service
                     {
                         throw new Exception("Equipment with that identification number doesn't exist.");
                     }
-                    
-                    if(EquipmentRepository.FindOneByRoomId(displacement.EndRoom) == null) //da mi se ne bi svaki put upisivala 
+
+                    if (EquipmentRepository.FindOneByRoomId(displacement.EndRoom) == null) //da mi se ne bi svaki put upisivala 
                     {
                         EquipmentRepository.SaveEquipment(equipment);
                     }

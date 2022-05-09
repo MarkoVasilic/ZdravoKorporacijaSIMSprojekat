@@ -1,12 +1,8 @@
-﻿using Repository;
+﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.DTO;
-using Model;
-using Repository;
 
 namespace Service
 {
@@ -42,11 +38,11 @@ namespace Service
             MedicalRecord medicalRecord = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg);
             List<Anamnesis> anamnesis = new List<Anamnesis>();
             List<Prescription> prescriptions = new List<Prescription>();
-            foreach(int id in medicalRecord.AnamnesisIds)
+            foreach (int id in medicalRecord.AnamnesisIds)
             {
                 anamnesis.Add(AnamnesisRepository.FindOneById(id));
             }
-            foreach(int id in medicalRecord.PrescriptionIds)
+            foreach (int id in medicalRecord.PrescriptionIds)
             {
                 prescriptions.Add(PrescriptionRepository.FindOneById(id));
             }

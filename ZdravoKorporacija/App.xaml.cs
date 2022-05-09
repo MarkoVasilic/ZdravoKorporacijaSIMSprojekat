@@ -4,11 +4,9 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
@@ -105,13 +103,13 @@ namespace ZdravoKorporacija
 
 
             //LISTA ZAKAZANIH TERMINA I KARTON ZA ODREDJENI TERMIN
-            List<AppointmentDTO> appointmentListDoctor = new List<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("4444444444444"));
+            /*List<AppointmentDTO> appointmentListDoctor = new List<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("4444444444444"));
             foreach (AppointmentDTO appointmentDTO in appointmentListDoctor)
                 appointmentDTO.ToString();
             Console.WriteLine("Unesite Id appointmenta za koji zelite medicinski karton");
             int app = Int16.Parse(Console.ReadLine());
             MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByAppointmentId(app);
-            medicalRecordDTO.ToString();
+            medicalRecordDTO.ToString();*/
 
             //ANAMNEZE
             //medicalRecordController.CreateAnamnesis("7778889994445", "novaDijagnoza", "noviIzvestaj");
@@ -195,6 +193,16 @@ namespace ZdravoKorporacija
            notificationList = notificationService.ShowPatientNotification();
            foreach (Notification notification in notificationList)
                notification.ToStringNotification(); */
+
+            //PossibleAppointmentsDTO possibleAppointmentsDTO = appointmentController.ScheduleEmergencyAppointment("7778889994445", "Cardiologist");
+            //Console.WriteLine(possibleAppointmentsDTO.StartTime + possibleAppointmentsDTO.DoctorFullName + possibleAppointmentsDTO.PatientFullName + possibleAppointmentsDTO.Duration);
+            /*List<ModifyAppointmentForEmergencyDto> modifyAppointmentForEmergencyDtos = appointmentController.ModifyAppointmentsForEmergency("7778889994445", "Cardiologist");
+            foreach (var ma in modifyAppointmentForEmergencyDtos)
+            {
+                Console.WriteLine("1.\n");
+                Console.WriteLine(ma.DoctorFullName + ma.PatientFullName + ma.RoomName + ma.OldStartTime + ma.NewStartTime + ma.Duration);
+                Console.WriteLine("\n");
+            }*/
         }
 
     }

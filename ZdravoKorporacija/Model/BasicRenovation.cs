@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.Model
 {
@@ -14,7 +10,7 @@ namespace ZdravoKorporacija.Model
         public int RoomId { get; set; }
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
-        public String Description  { get; set; }
+        public String Description { get; set; }
 
 
         public BasicRenovation() { }

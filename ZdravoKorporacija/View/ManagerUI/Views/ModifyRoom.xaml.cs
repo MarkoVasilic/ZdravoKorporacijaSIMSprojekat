@@ -114,15 +114,15 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 NavigationService.GoBack();
             }
             this.DataContext = this;
-            
+
         }
 
-        
 
-       /* private void Button_Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new RoomsBeforeModification());
-        }*/
+
+        /* private void Button_Back_Click(object sender, RoutedEventArgs e)
+         {
+             NavigationService.Navigate(new RoomsBeforeModification());
+         }*/
 
         private void Button_ModifyRoom_Click(object sender, RoutedEventArgs e)
         {
@@ -130,9 +130,9 @@ namespace ZdravoKorporacija.View.RoomCRUD
             {
                 roomController.ModifyRoom(RoomId, NameRoom, Description);
                 NavigationService.Navigate(new RoomsBeforeModification());
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
                 //Console.WriteLine("GRESKA");

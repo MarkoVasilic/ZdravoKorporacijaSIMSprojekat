@@ -16,7 +16,7 @@ namespace Controller
 
         public void CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
-           RoomService.CreateRoom(roomName, roomDescription, roomType);
+            RoomService.CreateRoom(roomName, roomDescription, roomType);
         }
 
         public List<Room> GetAllRooms()

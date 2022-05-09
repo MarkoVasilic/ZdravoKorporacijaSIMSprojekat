@@ -108,5 +108,35 @@
     "Email": "stefi@cds.com",
     "PhoneNumber": "3422",
     "Address": "Stefana Stefanovica 18, Rijeka"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "Doris",
+    "LastName": "Dorisovic",
+    "Username": "Doris",
+    "Password": "sifra123",
+    "Jmbg": "1111555599123",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "FirstName": "Lionel",
+    "LastName": "Messi",
+    "Username": "Lionel",
+    "Password": "sifra123",
+    "Jmbg": "9996663331112",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
   }
 ]

@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
@@ -37,6 +34,16 @@ namespace ZdravoKorporacija.Repository
         {
             var values = GetValues();
             return values;
+        }
+
+        public List<BasicRenovation> FindAllByRoomId(int id)
+        {
+            var values = GetValues();
+            List<BasicRenovation> result = new List<BasicRenovation>();
+            foreach (BasicRenovation basicRenovation in values)
+                if (basicRenovation.RoomId.Equals(id))
+                    result.Add(basicRenovation);
+            return result;
         }
 
         public void SaveBasicRenovation(BasicRenovation renovationToMake)

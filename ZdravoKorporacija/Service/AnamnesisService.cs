@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
-using Repository;
-using ZdravoKorporacija;
 
 namespace Service
 {
@@ -42,7 +39,7 @@ namespace Service
         {
             List<Anamnesis> result = new List<Anamnesis>();
             List<int> anamnesisIds = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
-            foreach(int id in anamnesisIds)
+            foreach (int id in anamnesisIds)
             {
                 if (AnamnesisRepository.FindOneById(id) != null)
                 {

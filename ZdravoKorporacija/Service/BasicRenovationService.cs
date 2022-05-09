@@ -1,11 +1,7 @@
 ﻿using Repository;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -23,7 +19,7 @@ namespace ZdravoKorporacija.Service
         }
 
 
-        public void CreateBasicRenovation(int roomId, DateTime startTime,  int duration, string description)
+        public void CreateBasicRenovation(int roomId, DateTime startTime, int duration, string description)
         {
             int basicRenovationId = GenerateNewId();
 
@@ -35,7 +31,7 @@ namespace ZdravoKorporacija.Service
             }
 
             BasicRenovationRepository.SaveBasicRenovation(basicRenovation);
-            
+
 
         }
 

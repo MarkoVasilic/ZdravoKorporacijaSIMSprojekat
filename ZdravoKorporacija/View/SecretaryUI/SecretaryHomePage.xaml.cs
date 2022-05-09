@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using System.Windows.Controls;
 using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI

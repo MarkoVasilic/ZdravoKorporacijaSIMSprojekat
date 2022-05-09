@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Controller
@@ -20,7 +16,7 @@ namespace ZdravoKorporacija.Controller
 
         public void CreateBasicRenovation(int roomId, DateTime startTime, int duration, string description)
         {
-            BasicRenovationService.CreateBasicRenovation( roomId, startTime, duration, description);
+            BasicRenovationService.CreateBasicRenovation(roomId, startTime, duration, description);
         }
     }
 }

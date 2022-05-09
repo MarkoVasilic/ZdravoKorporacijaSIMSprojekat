@@ -1,9 +1,8 @@
-﻿using System;
-using Model;
+﻿using Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-using Model;
 
 namespace Repository
 {

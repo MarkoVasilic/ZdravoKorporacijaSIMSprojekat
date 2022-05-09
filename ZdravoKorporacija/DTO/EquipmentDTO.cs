@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -13,8 +9,8 @@ namespace ZdravoKorporacija.DTO
         public String Name { get; set; }
         public String IsStatic { get; set; }
         public int Quantity { get; set; }
-        public String RoomName  { get; set; }
-        public int? RoomId   { get; set; }
+        public String RoomName { get; set; }
+        public int? RoomId { get; set; }
 
         public EquipmentDTO()
         {

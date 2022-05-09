@@ -1,23 +1,12 @@
-﻿using System;
+﻿using Repository;
+using Service;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
-using Service;
-using Repository;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD
 {
@@ -30,7 +19,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private NotificationService notificationService { set; get; }
 
-        public List<Notification> NotificationListObservable { get; set; }  
+        public List<Notification> NotificationListObservable { get; set; }
         public NotificationsPage()
         {
             InitializeComponent();

@@ -6,16 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
-
-using ZdravoKorporacija.View.AppointmentCRUD.Commands;
-using ZdravoKorporacija.View.AppointmentCRUD;
-using System.Windows;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 
 namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 {
@@ -190,7 +185,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             appointmentController = new AppointmentController(appointmentService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());
-           // possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            // possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
             possibleAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
             SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
@@ -236,8 +231,8 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
                 "time");
                 PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
                 foreach (var pa in possibleAppointmentsDTOs)
-                {  
-                        PossibleAppointments.Add(pa);   
+                {
+                    PossibleAppointments.Add(pa);
                 }
             }
             catch (Exception e)
@@ -274,11 +269,11 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         {
             SelectedNewAppointment = parameter as PossibleAppointmentsDTO;
             try
-            {   
-                    appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
-                    MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
-                    PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
-                
+            {
+                appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
+                MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
+                PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+
             }
             catch (Exception e)
             {
