@@ -19,7 +19,7 @@ namespace Controller
             PrescriptionService = prescriptionService;
         }
 
-        public List<MedicalRecord> GetAllMedicalRecords()
+        public List<MedicalRecordDTO> GetAllMedicalRecords()
         {
             return MedicalRecordService.GetAll();
         }
@@ -79,8 +79,10 @@ namespace Controller
         public void CreatePrescription(String patientJmbg, String medication, String amount, int frequency, DateTime from, DateTime to)
         {
             PrescriptionService.CreatePrescription(patientJmbg, medication, amount, frequency, from, to);
-
-
+        }
+        public void CreateMedicalRecord(String patientJmbg)
+        {
+            MedicalRecordService.CreateMedicalRecord(patientJmbg);
         }
 
 

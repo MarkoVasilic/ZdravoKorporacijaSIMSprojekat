@@ -1,5 +1,9 @@
 ﻿using System.Windows.Controls;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
+using Controller;
+using Service;
+using ZdravoKorporacija.DTO;
+using System.Collections.ObjectModel;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
@@ -8,9 +12,12 @@ namespace ZdravoKorporacija.View.DoctorUI
     /// </summary>
     public partial class DoctorHomePage : Page
     {
+        private AppointmentController AppointmentController;
+
+        public ObservableCollection<AppointmentDTO> appointments { get; set; }
         public DoctorHomePage(DoctorWindowVM doctorWindowVM)
         {
-            DoctorWindowVM.setWindowTitle("Appointment Schendule");
+            DoctorWindowVM.setWindowTitle("Appointment Schedule");
             InitializeComponent();
             DataContext = doctorWindowVM;
         }

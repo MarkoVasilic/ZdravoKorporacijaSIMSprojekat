@@ -39,7 +39,7 @@ namespace ZdravoKorporacija.DTO
             Console.WriteLine("Last Name: " + LastName);
             Console.WriteLine("Jmbg: " + Jmbg);
             Console.WriteLine("Date of Birth: " + DateOfBirth);
-            Console.WriteLine("Gender: " + Gender.MALE);
+            Console.WriteLine("Gender: " + Gender);
             Console.Write("Allergens: ");
             if (Allergens != null)
             {

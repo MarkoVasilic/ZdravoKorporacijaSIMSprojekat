@@ -1,4 +1,10 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Navigation;
 using ZdravoKorporacija.View.DoctorUI.Commands;
 
@@ -8,16 +14,16 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
     {
         public static DoctorWindow? DoctorWindow;
         public static DoctorHomePage DoctorHomePage;
+        public static MedicalRecords medicalRecords;
         public static NavigationService? NavigationService;
 
-        public ICommand HomeCommand { get; set; }
-        public ICommand MedicalRecordsCommand { get; set; }
-        public ICommand AppointmentsCommand { get; set; }
-        public ICommand VerificationsCommand { get; set; }
-        public ICommand AbsenceRequestsCommand { get; set; }
+        public ICommand HomeCommand { get; set; }   //Appointments
+        public ICommand PatientsCommand { get; set; }
+        //public ICommand VerificationsCommand { get; set; }
+        //public ICommand AbsenceRequestsCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
-        public ICommand ProfileCommand { get; set; }
-        public ICommand NotificationsCommand { get; set; }
+        //public ICommand ProfileCommand { get; set; }
+        //public ICommand NotificationsCommand { get; set; }
 
         public static void setWindowTitle(string newTitle)
         {
@@ -32,12 +38,19 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             NavigationService = DoctorWindow.DoctorMainFrame.NavigationService;
             HomeCommand = new RelayCommand(homeExecute);
             LogOutCommand = new RelayCommand(logOutExecute);
+            PatientsCommand = new RelayCommand(medicalRecordsExecute);
         }
 
         private void homeExecute(object parametar)
         {
-            setWindowTitle("Appointment Schendule");
+            setWindowTitle("Appointment Schedule");
             NavigationService.Navigate(DoctorHomePage);
+        }
+
+        private void medicalRecordsExecute(object parametar)
+        {
+            setWindowTitle("Medical Records");
+            NavigationService.Navigate(new MedicalRecords());
         }
 
         private void logOutExecute(object parameter)
@@ -46,6 +59,9 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             DoctorWindow.Close();
             window.Show();
         }
+
+
+
 
 
 
