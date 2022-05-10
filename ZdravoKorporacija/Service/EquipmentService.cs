@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.Service
             this.DisplacementRepository = displacementRepository;
         }
 
-        public void CreateEquipment(String equipmentName, Boolean isStatic, int Quantitity, int? RoomId)
+        public void CreateEquipment(String equipmentName, Boolean isStatic, int? Quantitity, int? RoomId, DateTime? DynamicAddDate)
         {
             int equipmentId = GenerateNewId();
 
@@ -41,7 +41,7 @@ namespace ZdravoKorporacija.Service
                     }
                     else
                     {
-                        Equipment newEquipmentStatic = new Equipment(equipmentId, equipmentName, true, 1, RoomId);
+                        Equipment newEquipmentStatic = new Equipment(equipmentId, equipmentName, true, 1, RoomId, null);
                         if (!newEquipmentStatic.validateEquipment())
                         {
                             throw new Exception("Something went wrong, equipment isn't saved");
@@ -51,7 +51,7 @@ namespace ZdravoKorporacija.Service
                 }
                 else
                 {
-                    Equipment newEquipmentDinamic = new Equipment(equipmentId, equipmentName, false, Quantitity, null);
+                    Equipment newEquipmentDinamic = new Equipment(equipmentId, equipmentName, false, Quantitity, null, DynamicAddDate);
                     if (!newEquipmentDinamic.validateEquipment())
                     {
                         throw new Exception("Something went wrong, equipment isn't saved");
@@ -126,8 +126,10 @@ namespace ZdravoKorporacija.Service
                 {
                     equipmentDTO.RoomName = RoomRepository.FindOneById(equipment.RoomId).Name;
                 }
-
-                EquipmentDTOList.Add(equipmentDTO);
+                if (!equipment.IsStatic && equipment.DynamicAddDate <= DateTime.Now)
+                    EquipmentDTOList.Add(equipmentDTO);
+                else if (equipment.IsStatic)
+                    EquipmentDTOList.Add(equipmentDTO);
 
             }
 

@@ -16,9 +16,9 @@ namespace ZdravoKorporacija.Controller
             this.EquipmentService = equipmentService;
         }
 
-        public void CreateEquipment(String equipmentName, Boolean isStatic, int Quantitity, int? RoomId)
+        public void CreateEquipment(String equipmentName, Boolean isStatic, int? Quantitity, int? RoomId, DateTime? DynamicAddDate)
         {
-            EquipmentService.CreateEquipment(equipmentName, isStatic, Quantitity, RoomId);
+            EquipmentService.CreateEquipment(equipmentName, isStatic, Quantitity, RoomId, DynamicAddDate);
         }
 
         public List<Equipment> GetAllEquipment()

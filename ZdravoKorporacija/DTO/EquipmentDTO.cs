@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.DTO
         public int Id { get; set; }
         public String Name { get; set; }
         public String IsStatic { get; set; }
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
         public String RoomName { get; set; }
         public int? RoomId { get; set; }
 
@@ -16,7 +16,7 @@ namespace ZdravoKorporacija.DTO
         {
 
         }
-        public EquipmentDTO(int id, string name, string isStatic, int quantity, string roomName, int? roomId)
+        public EquipmentDTO(int id, string name, string isStatic, int? quantity, string roomName, int? roomId)
         {
             Id = id;
             Name = name;

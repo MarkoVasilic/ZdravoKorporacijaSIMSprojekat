@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:ZdravoKorporacija.View.SecretaryUI"
       mc:Ignorable="d" 
       Title="OrderEquipmentPage"
@@ -11,6 +12,50 @@
       FontFamily="{StaticResource BellMTFont}">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Select equipment" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <ComboBox Name="DynamicEquimpentComboBox" Style="{StaticResource SecretaryComboBoxStyle}" SelectedValuePath="Content" >
+                <ComboBoxItem>IV bag</ComboBoxItem>
+                <ComboBoxItem>Flexible tube</ComboBoxItem>
+                <ComboBoxItem>Needle</ComboBoxItem>
+                <ComboBoxItem>Securement device</ComboBoxItem>
+                <ComboBoxItem>Prep, scrub, and alcohol pads</ComboBoxItem>
+                <ComboBoxItem>Gloves</ComboBoxItem>
+                <ComboBoxItem>Medical tape</ComboBoxItem>
+                <ComboBoxItem>Scalpels</ComboBoxItem>
+                <ComboBoxItem>Scissors</ComboBoxItem>
+                <ComboBoxItem>Medical mask</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Insert quantity" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+            <xctk:IntegerUpDown Name="MyUpDownControl" Width="100" Height="30" FontSize="18" AllowTextInput="False"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <TextBlock Text="{Binding Path=ErrorMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
+            </TextBlock>
+        </StackPanel>
+        <Button Name="OrderButton" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+               Click="Order_Button_Click"  Content="Order">
+        </Button>
     </Grid>
 </Page>

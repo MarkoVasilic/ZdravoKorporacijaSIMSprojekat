@@ -8,16 +8,19 @@ namespace ZdravoKorporacija.Model
         public int Id { get; set; }
         public String Name { get; set; }
         public Boolean IsStatic { get; set; }
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
         public int? RoomId { get; set; }
 
-        public Equipment(int id, String name, bool isStatic, int quantity, int? roomId)
+        public DateTime? DynamicAddDate { get; set; }
+
+        public Equipment(int id, String name, bool isStatic, int? quantity, int? roomId, DateTime? dynamicAddDate)
         {
             Id = id;
             Name = name;
             IsStatic = isStatic;
             Quantity = quantity;
             RoomId = roomId;
+            DynamicAddDate = dynamicAddDate;
         }
 
         public Boolean validateEquipment()

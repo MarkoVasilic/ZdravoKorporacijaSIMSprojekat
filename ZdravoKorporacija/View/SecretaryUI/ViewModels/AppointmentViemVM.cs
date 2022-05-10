@@ -25,7 +25,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private String patientJmbg { get; set; }
         private Doctor? selectedDoctor { get; set; }
         private Room? selectedRoom { get; set; }
-        private List<DateTime> newSelectedDates { get; set; }
+        private ObservableCollection<DateTime> newSelectedDates { get; set; }
         private PossibleAppointmentsDTO? selectedAppointment { get; set; }
         private PossibleAppointmentsDTO? selectedNewAppointment { get; set; }
         private DateTime startDate;
@@ -75,7 +75,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
         }
 
-        public List<DateTime> NewSelectedDates
+        public ObservableCollection<DateTime> NewSelectedDates
         {
             get { return newSelectedDates; }
             set
@@ -206,6 +206,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
             SelectNewAppointmentCommand = new RelayCommand(selectNewAppointmentExecute);
             SelectDatesCommand = new RelayCommand(selectDatesExecute);
+            NewSelectedDates = new ObservableCollection<DateTime>();
         }
 
         private void doctorsListToDoctorList(List<Doctor> doctors)
@@ -277,7 +278,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                     if (ap.RoomId != SelectedRoom.Id)
                         shouldAdd = false;
                 }
-                if (NewSelectedDates != null)
+                if (NewSelectedDates != null && NewSelectedDates.Count > 0)
                 {
                     Boolean isCorrectDate = false;
                     foreach (var sd in NewSelectedDates)
@@ -347,9 +348,9 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void selectDatesExecute(object parameter)
         {
             SelectedDatesCollection dates = parameter as SelectedDatesCollection;
-            NewSelectedDates = new List<DateTime>();
+            NewSelectedDates.Clear();
             foreach (var items in dates)
-            {
+            { 
                 NewSelectedDates.Add(items);
             }
         }

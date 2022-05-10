@@ -15,6 +15,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public ICommand SheduleAppointmentCommand { get; set; }
         public ICommand PatientAccountsCommand { get; set; }
         public ICommand ScheduleEmergencyCommand { get; set; }
+        public ICommand OrderEquipmentCommand { get; set; }
 
         public static void setWindowTitle(string newTitle)
         {
@@ -33,6 +34,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             SheduleAppointmentCommand = new RelayCommand(sheduleAppointmentExecute);
             PatientAccountsCommand = new RelayCommand(patientAccountsExecute);
             ScheduleEmergencyCommand = new RelayCommand(scheduleEmergencyExecute);
+            OrderEquipmentCommand = new RelayCommand(orderEquipmentExecute);
         }
 
         private void homeExecute(object parameter)
@@ -66,6 +68,11 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void scheduleEmergencyExecute(object parameter)
         {
             NavigationService.Navigate(new ScheduleEmergencyView());
+        }
+
+        private void orderEquipmentExecute(object parameter)
+        {
+            NavigationService.Navigate(new OrderEquipmentPage(this));
         }
     }
 }

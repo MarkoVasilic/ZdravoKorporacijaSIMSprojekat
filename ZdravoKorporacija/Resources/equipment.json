@@ -4,27 +4,47 @@
     "Name": "igle",
     "IsStatic": false,
     "Quantity": 200,
-    "RoomId": null
+    "RoomId": null,
+    "DynamicAddDate": null
   },
   {
     "Id": 3,
     "Name": "zavoj",
     "IsStatic": false,
     "Quantity": 50,
-    "RoomId": null
+    "RoomId": null,
+    "DynamicAddDate": null
   },
   {
     "Id": 4,
     "Name": "sto",
     "IsStatic": true,
     "Quantity": 1,
-    "RoomId": 22
+    "RoomId": 22,
+    "DynamicAddDate": null
   },
   {
     "Id": 1,
     "Name": "sto",
     "IsStatic": true,
     "Quantity": 1,
-    "RoomId": 5
+    "RoomId": 5,
+    "DynamicAddDate": null
+  },
+  {
+    "Id": 5,
+    "Name": "Needle",
+    "IsStatic": false,
+    "Quantity": 7,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-10T10:40:34.9399382+02:00"
+  },
+  {
+    "Id": 6,
+    "Name": "IV bag",
+    "IsStatic": false,
+    "Quantity": 4,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-13T10:42:55.121306+02:00"
   }
 ]
