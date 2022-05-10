@@ -101,17 +101,20 @@ namespace ZdravoKorporacija
             //**********************************************************       KT3      ********************************************************************
 
 
-
+            //medicalRecordController.GetAllMedicalRecords();
+            List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
+            foreach (MedicalRecordDTO medicalRecordDTO in medicalRecordDTOs)
+                medicalRecordDTO.ToString();
 
 
             //LISTA ZAKAZANIH TERMINA I KARTON ZA ODREDJENI TERMIN
-            List<AppointmentDTO> appointmentListDoctor = new List<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("4444444444444"));
+            /*List<AppointmentDTO> appointmentListDoctor = new List<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("4444444444444"));
             foreach (AppointmentDTO appointmentDTO in appointmentListDoctor)
                 appointmentDTO.ToString();
             Console.WriteLine("Unesite Id appointmenta za koji zelite medicinski karton");
             int app = Int16.Parse(Console.ReadLine());
             MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByAppointmentId(app);
-            medicalRecordDTO.ToString();
+            medicalRecordDTO.ToString();*/
 
             //ANAMNEZE
             //medicalRecordController.CreateAnamnesis("7778889994445", "novaDijagnoza", "noviIzvestaj");
@@ -123,7 +126,7 @@ namespace ZdravoKorporacija
 
             //ISPIS KARTONA PACIJENT JMBG(Anamneze pacijenta i recepti)
             /*MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByPatientJmbg("7778889994445");
-            medicalRecordDTO.ToString();*/
+            medicalRecordDTO.ToString();
 
 
 

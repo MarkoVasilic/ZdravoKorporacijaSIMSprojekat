@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
         mc:Ignorable="d"
-        Title="DoctorWindow" Height="800" Width="1280"
+        Title="DoctorWindow" TextBlock.TextAlignment="Center" Height="800" Width="1280"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Frame x:Name="DoctorMainFrame"></Frame>
@@ -21,23 +21,22 @@
                 <ColumnDefinition Width="395"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Rectangle Grid.Row="0" Grid.ColumnSpan="3" Fill="White"></Rectangle>
-            <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Fill="#FF080830"></Rectangle>
+           
             <StackPanel Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <TextBlock x:Name="WindowTitle" FontSize="45" FontWeight="Bold" Foreground="White" Text="{Binding Path=Title, Mode=OneWay}"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
-                <Button x:Name="ButtonHome" Content="Home" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="4, 0, 5, 0" BorderBrush="Transparent"></Button>
-                <Button x:Name="ButtonMedicalRecords" Content="Patients" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="2, 0, 5, 0" BorderBrush="Transparent"></Button>
-                <Button x:Name="ButtonAppointments" Content="Appointments" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="2, 0, 5, 0" BorderBrush="Transparent"></Button>
-                <Button x:Name="ButtonVerifications" Content="Verifications" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="2, 0, 5, 0" BorderBrush="Transparent"></Button>
-                <Button x:Name="ButtonAbsenceRequests" Content="AbsenceRequests" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="2, 0, 5, 0" BorderBrush="Transparent"></Button>
+                <Button x:Name="ButtonAppointments" Content="Appointments" Command="{Binding HomeCommand}" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="5, 0, 5, 0" BorderBrush="Transparent"></Button>
+                <Button x:Name="ButtonMedicalRecords" Content="Patients" Command="{Binding PatientsCommand}" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="5, 0, 5, 0" BorderBrush="Transparent"></Button>
+                <Button x:Name="ButtonVerifications" Content="Verifications" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="5, 0, 5, 0" BorderBrush="Transparent"></Button>
+                <Button x:Name="ButtonAbsenceRequests" Content="AbsenceRequests" FontSize="30" Background="Transparent" VerticalAlignment="Center" Margin="5, 0, 5, 0" BorderBrush="Transparent"></Button>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
-                <Button x:Name="ButtonLogOut" Background="Transparent" VerticalAlignment="Center" Margin="2, 0, 2, 0" BorderBrush="Transparent" Height="62" Width="64">
+                <Button x:Name="ButtonNotifications" Background="Transparent" VerticalAlignment="Center" Margin="2, 0, 2, 0" BorderBrush="Transparent" Height="62" Width="64">
                     <materialDesign:PackIcon Kind="Notifications" Height="116" Width="50" VerticalAlignment="Center"></materialDesign:PackIcon>
                 </Button>
                 <Button x:Name="ButtonProfile" Content="Aleksandra Pretovic" FontSize="30" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 0, 5, 0" BorderBrush="Transparent"></Button>
-                <Button x:Name="ButtonNotifications" Command="{Binding LogOutCommand}" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2, 0, 2, 0" BorderBrush="Transparent">
+                <Button x:Name="ButtonLogOut" Command="{Binding LogOutCommand}" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2, 0, 2, 0" BorderBrush="Transparent">
                     <materialDesign:PackIcon Kind="Logout" Height="73" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"></materialDesign:PackIcon>
                 </Button>
             </StackPanel>

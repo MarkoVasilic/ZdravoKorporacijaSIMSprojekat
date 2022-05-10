@@ -31,9 +31,41 @@ namespace Service
         {
         }
 
-        public List<MedicalRecord> GetAll()
+        public List<MedicalRecordDTO> GetAll()
         {
-            return MedicalRecordRepository.FindAll();
+            List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>();
+            List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
+            //Console.WriteLine(medicalRecords.Count());
+            foreach(MedicalRecord medicalRecord in medicalRecords)
+            {
+
+                MedicalRecordDTO medicalRecordDTO = new MedicalRecordDTO();
+                String patientJmbg = medicalRecord.PatientJmbg;
+                List<Anamnesis> anamnesis = new List<Anamnesis>();
+                List<Prescription> prescriptions = new List<Prescription>();
+                foreach (int id in medicalRecord.AnamnesisIds)
+                {
+                    anamnesis.Add(AnamnesisRepository.FindOneById(id));
+                }
+                foreach (int id in medicalRecord.PrescriptionIds)
+                {
+                    prescriptions.Add(PrescriptionRepository.FindOneById(id));
+                }
+                medicalRecordDTO.FirstName = PatientRepository.FindOneByJmbg(patientJmbg).FirstName;
+                medicalRecordDTO.LastName = PatientRepository.FindOneByJmbg(patientJmbg).LastName;
+                medicalRecordDTO.Jmbg = PatientRepository.FindOneByJmbg(patientJmbg).Jmbg;
+                medicalRecordDTO.DateOfBirth = PatientRepository.FindOneByJmbg(patientJmbg).DateOfBirth;
+                medicalRecordDTO.Gender = PatientRepository.FindOneByJmbg(patientJmbg).Gender;
+                medicalRecordDTO.Allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
+                medicalRecordDTO.BloodTypeEnum = PatientRepository.FindOneByJmbg(patientJmbg).BloodTypeEnum;
+                medicalRecordDTO.Anamnesis = anamnesis;
+                medicalRecordDTO.Prescriptions = prescriptions;
+
+                medicalRecordDTOs.Add(medicalRecordDTO);
+
+            }
+
+            return medicalRecordDTOs;
         }
 
         public MedicalRecordDTO? GetOneByPatientJmbg(String patientJmbg)
@@ -103,6 +135,20 @@ namespace Service
                 throw new Exception("Something went wrong, medical record isn't updated!");
             }
             MedicalRecordRepository.UpdateMedicalRecord(newMedicalRecord);
+        }
+
+        public void CreateMedicalRecord(String patientJmbg)
+        {
+            MedicalRecord medicalRecord = new MedicalRecord();
+            medicalRecord.PatientJmbg = patientJmbg;
+            medicalRecord.AnamnesisIds = new List<int>();
+            medicalRecord.PrescriptionIds = new List<int>();
+
+            if (!medicalRecord.validateMedicalRecord())
+            {
+                throw new Exception("Something went wrong, medical record isn't created!");
+            }
+            MedicalRecordRepository.SaveMedicalRecord(medicalRecord);
         }
     }
 }

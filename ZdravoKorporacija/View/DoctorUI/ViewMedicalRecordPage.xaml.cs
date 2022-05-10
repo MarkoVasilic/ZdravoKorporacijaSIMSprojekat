@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKorporacija.View.DoctorUI.ViewModel;
-
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
     /// <summary>
-    /// Interaction logic for DoctorHomeWindow.xaml
+    /// Interaction logic for ViewMedicalRecordPage.xaml
     /// </summary>
-    public partial class DoctorWindow : Window
+    public partial class ViewMedicalRecordPage : Page
     {
-        public DoctorWindow()
+        public ViewMedicalRecordPage()
         {
             InitializeComponent();
-            DataContext = new DoctorWindowVM(this);
         }
     }
 }

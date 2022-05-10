@@ -1,0 +1,30 @@
+﻿<Page x:Class="ZdravoKorporacija.View.DoctorUI.MedicalRecords"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Medical Records"
+      Background="MidnightBlue">
+
+    <Grid MaxWidth="1024" Margin="5, 50, 5, 5">
+        <DataGrid x:Name="dataGridMedicalRecords"  ItemsSource="{Binding medicalrecords, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20, 70, 20, 20" ScrollViewer.CanContentScroll="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="VIEW" Click="ViewMedicalRecord"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Page>
