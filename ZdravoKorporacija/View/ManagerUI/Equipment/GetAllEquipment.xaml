@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.Equipment"
         xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="GetAllEquipment" Height="768" Width="1024" Background="#fee9e1">
 
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="EquipmentHelp_CanExecute" Executed="EquipmentHelp_Executed"></CommandBinding>
     </Page.CommandBindings>
     <Page.Resources>
         <Style x:Key="DisableFocus" TargetType="DataGridCell">
@@ -37,7 +39,7 @@
              FontSize="30" 
              Margin="0 10 0 0" TextAlignment="Center"></TextBlock>
 
-                <DataGrid Grid.Row="1" x:Name="dataGridRooms" ItemsSource="{Binding equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,40,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25">
+                <DataGrid Grid.Row="1" x:Name="dataGridRooms" ItemsSource="{Binding Equipment, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46,40,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25">
                     <DataGrid.Resources>
                         <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="FontWeight" Value="Bold"></Setter>
@@ -60,7 +62,7 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <TextBlock Text="Pretraži po nazivu: " FontSize="20" Margin="48 40 0 0"></TextBlock>
                     <TextBox  Width="250" 
-                     Height="30" Margin="35 35 0 0" Style="{StaticResource ManagerTextBoxStyle}" Background="#fad4c0" Text="{Binding EquipmentName}">
+                     Height="30" Margin="35 35 0 0" Style="{StaticResource ManagerTextBoxStyle}" Background="#fad4c0" Text="{Binding EquipmentName}" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                     </TextBox>
                     <Button Content="Pretraži" Margin="47 32 0 0"  Style="{StaticResource ManagerHelpOk}" Click="SearchButtonCLick"></Button>
                 </StackPanel>
@@ -76,11 +78,17 @@
                     <Button Content="Filtriraj" Margin="45 0 0 0"  Style="{StaticResource ManagerHelpOk}" Click ="FilteringButtonClick"></Button>
                 </StackPanel>
 
+                <StackPanel Grid.Row="4" Margin="48 40 0 0">
+                    <TextBlock Text="Izveštaj o kompletnoj opremi u bolnici " FontSize="20" ></TextBlock>
+                    <Button Margin="-230 -35 0 0" Click ="PDFClick" Height="40" Width="40" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Kind="FilePdfBox" Width="130" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#64b6ac"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
 
-                <TextBlock Grid.Row="4" Text="Izveštaj o kompletnoj opremi u bolnici: " FontSize="20" Margin="48 40 0 0"> </TextBlock>
-
-                <Button Grid.Row="5" Content="Nazad" Style="{StaticResource ManagerRedButtonStyle}" Margin="45,-10,828,-171" Command="cmd:RoutedCommand.Back" ></Button>
-                
+                <StackPanel Grid.Row="5" >
+                    <Button  Content="Nazad" Style="{StaticResource ManagerRedButtonStyle}" Margin="45,-65,828,-171" Command="cmd:RoutedCommand.Back" ></Button>
+                    <Button Content="Pomoć"  Margin="700 25 0 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
+                </StackPanel>
                 
             </Grid>
         </ScrollViewer>

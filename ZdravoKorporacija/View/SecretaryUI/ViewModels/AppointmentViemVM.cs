@@ -201,6 +201,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());
             possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            NewSelectedDates = new List<DateTime>();
             SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
@@ -352,6 +353,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             foreach (var items in dates)
             { 
                 NewSelectedDates.Add(items);
+                OnPropertyChanged("NewSelectedDates");
             }
         }
     }

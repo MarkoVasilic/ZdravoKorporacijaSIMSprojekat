@@ -43,31 +43,32 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void EquipmentDisplacementClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EquipmentDisplacement());
         }
 
         private void CreateMedicationClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new CreateMedication());
         }
 
         private void ModifyMedicationClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new MedicationsBeforeModification());
         }
 
         private void RoomsRenovationClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new RoomRenovation());
         }
 
         private void ProfileClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ProfilePreview());
         }
 
         private void GradesClick(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new GradesPreview());
 
         }
     }

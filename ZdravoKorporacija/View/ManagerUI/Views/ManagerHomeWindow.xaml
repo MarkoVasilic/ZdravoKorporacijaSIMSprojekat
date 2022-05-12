@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
         xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
         mc:Ignorable="d"
-        Title="ManagerHomeWindow" Height="768" Width="1024" Background="#fee9e1" WindowState="Maximized">
+        Title="ManagerHomeWindow" Height="768" Width="1024" Background="#fee9e1">
 
     
 
     <Grid>
         <Frame x:Name="ManagerMainFrame" Height="768" NavigationUIVisibility="Hidden"></Frame>
-        <Button Content="Odjavi se" Margin="700 0 0 700" Style="{StaticResource ManagerLogOutButtonStyle}" />
+        <Button Content="Odjavi se" Margin="700 0 0 650" Style="{StaticResource ManagerLogOutButtonStyle}" Command="cmd:RoutedCommand.Logout"/>
     </Grid>
 </Window>

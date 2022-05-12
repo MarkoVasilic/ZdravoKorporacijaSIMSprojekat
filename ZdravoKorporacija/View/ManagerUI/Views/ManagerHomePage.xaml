@@ -6,39 +6,57 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View.RoomCRUD"
         mc:Ignorable="d"
         Title="ManagerHomePage" Height="768" Width="1024" Background="#fee9e1">
+    
+ 
+    
     <Grid>
-        <Grid>
-            <Image Margin="250 0 0 0" Source="\Resources\Images\nadja_pocetna.png" Stretch="Fill" Height="400" Width="430"></Image>
-            <StackPanel Orientation="Vertical" Background="#c0fdfb"  Margin="-722 0 0 0" Height="768" Width="300"  >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                        <RowDefinition Height="69.81"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="firstButton" Grid.Row="0" Background="#c0fdfb" Content="Pregled svih prostorija"  BorderBrush="Transparent" FontSize="25" FontWeight="Bold"  Click="GetAllRoomsClick" IsDefault="True"></Button>
-                    <Button Grid.Row="1" Background="#c0fdfb"  Content="Kreiranje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="CreateRoomClick"></Button>
-                    <Button Grid.Row="2" Background="#c0fdfb" Content="Izmena prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyRoomClick" ></Button>
-                    <Button Grid.Row="3" Background="#c0fdfb" Content="Brisanje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="DeleteRoomClick"></Button>
-                    <Button Grid.Row="4" Background="#c0fdfb"  Content="Pregled opreme" FontSize="25"  BorderBrush="Transparent"  FontWeight="Bold" Click="GetEquipmentClick"></Button>
-                    <Button Grid.Row="5" Background="#c0fdfb"  Content="Prebacivanje opreme" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="EquipmentDisplacementClick"></Button>
-                    <Button Grid.Row="6" Background="#c0fdfb"  Content="Unos leka" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="CreateMedicationClick"></Button>
-                    <Button Grid.Row="7" Background="#c0fdfb"  Content="Modifikacija leka" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyMedicationClick"></Button>
-                    <Button Grid.Row="8" Background="#c0fdfb"  Content="Renoviranje prostorija" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="RoomsRenovationClick"></Button>
-                    <Button Grid.Row="9" Background="#c0fdfb"  Content="Ocene" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="GradesClick"></Button>
-                    <Button Grid.Row="10" Background="#c0fdfb" Content="Pregled profila" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ProfileClick"></Button>
-                </Grid>
-            </StackPanel>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Column="0" Background="#c0fdfb">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="firstButton" Grid.Row="0" Background="#c0fdfb" Content="Pregled svih prostorija"  BorderBrush="Transparent" FontSize="25" FontWeight="Bold"  Click="GetAllRoomsClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="1" Background="#c0fdfb"  Content="Kreiranje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="CreateRoomClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="2" Background="#c0fdfb" Content="Izmena prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyRoomClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="3" Background="#c0fdfb" Content="Brisanje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="DeleteRoomClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="4" Background="#c0fdfb"  Content="Pregled opreme" FontSize="25"  BorderBrush="Transparent"  FontWeight="Bold" Click="GetEquipmentClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="5" Background="#c0fdfb"  Content="Prebacivanje opreme" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="EquipmentDisplacementClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="6" Background="#c0fdfb"  Content="Unos leka" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="CreateMedicationClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="7" Background="#c0fdfb"  Content="Modifikacija leka" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyMedicationClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="8" Background="#c0fdfb"  Content="Renoviranje prostorija" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="RoomsRenovationClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="9" Background="#c0fdfb"  Content="Ocene" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="GradesClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="10" Background="#c0fdfb" Content="Pregled profila" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ProfileClick" Style="{StaticResource BtnStyleFocus}"></Button>
 
         </Grid>
 
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row ="1" Margin="0 0 0 0" Source="\Resources\Images\nadja_pocetna.png" Stretch="Fill" Height="400" Width="430"></Image>
+
+        </Grid>
+        
+        
     </Grid>
 </Page>
