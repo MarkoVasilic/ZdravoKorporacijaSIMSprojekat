@@ -1,4 +1,5 @@
 ﻿using Repository;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -11,17 +12,19 @@ using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
+using ZdravoKorporacija.View.ManagerUI.Help;
 using ZdravoKorporacija.View.RoomCRUD;
 
 namespace ZdravoKorporacija.View.Equipment
 {
-    public partial class GetAllEquipment : Page
+    public partial class GetAllEquipment : Page, INotifyPropertyChanged
     {
         private EquipmentController equipmentController;
 
         public ObservableCollection<EquipmentDTO> equipment { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
 
         private Boolean isStaticEquipment;
 
@@ -43,6 +46,15 @@ namespace ZdravoKorporacija.View.Equipment
             {
                 equipmentName = value;
                 OnPropertyChanged("EquipmentName");
+            }
+        }
+        public ObservableCollection<EquipmentDTO> Equipment
+        {
+            get { return equipment; }
+            set
+            {
+                equipment = value;
+                OnPropertyChanged("Equipment");
             }
         }
 
@@ -79,8 +91,7 @@ namespace ZdravoKorporacija.View.Equipment
 
         private void SearchButtonCLick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new GetAllEquipment());
-            equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Search(EquipmentName));
+            Equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Search(EquipmentName));
         }
 
         private void FilteringButtonClick(object sender, RoutedEventArgs e)
@@ -92,10 +103,26 @@ namespace ZdravoKorporacija.View.Equipment
             {
                 isStaticEquipment = false;
             }
+            
+
+            Equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(isStaticEquipment));
+        }
 
 
-            equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(isStaticEquipment));
-            NavigationService.Navigate(new GetAllEquipment());
+        public void EquipmentHelp_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        public void EquipmentHelp_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            EquipmentHelp equipmentHelp = new EquipmentHelp();
+            equipmentHelp.Show();
+        }
+
+        private void PDFClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

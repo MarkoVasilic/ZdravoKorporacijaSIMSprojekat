@@ -55,7 +55,7 @@
                 <DataGridTemplateColumn Header="Izbriši" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Izbriši" x:Name="DeleteRoomButton" Tag="{Binding Id}" Click="DeleteRoomClick" Background="#FFE8B4A0"/>
+                            <Button Content="Izbriši" x:Name="DeleteRoomButton" Tag="{Binding Id}" Click="DeleteRoomClick" Background="#FFE8B4A0" FontWeight="Bold"/>
 
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

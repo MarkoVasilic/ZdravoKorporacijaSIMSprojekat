@@ -40,7 +40,7 @@
                      Margin="0 5 0 0 "
                      Width="400" 
                      Height="35"
-                     Text="{Binding NameRoom}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxName" Background="#fad4c0"/>
+                     Text="{Binding NameRoom}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxName" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
 
         </Grid>
 
@@ -55,12 +55,12 @@
                      Margin="0 5 0 0 "
                      Width="400"
                      Height="35"
-                     Text="{Binding Description}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxDescription" Background="#fad4c0"/>
+                     Text="{Binding Description}" Style="{StaticResource ManagerTextBoxStyle}" x:Name="textBoxDescription" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
         </Grid>
 
        
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="120 250 0 0 ">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="120 230 0 0 ">
             <Button Content="Nazad"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}" />
             <Button Content="Potvrdi izmenu"  Margin="160, 0, 0, 0" Click="Button_ModifyRoom_Click" Style="{StaticResource ManagerGreenButtonStyle}"/>
         </StackPanel>
