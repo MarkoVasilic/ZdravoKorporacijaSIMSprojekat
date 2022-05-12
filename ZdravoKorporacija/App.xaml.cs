@@ -102,9 +102,9 @@ namespace ZdravoKorporacija
 
 
             //medicalRecordController.GetAllMedicalRecords();
-            List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
+            /*List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
             foreach (MedicalRecordDTO medicalRecordDTO in medicalRecordDTOs)
-                medicalRecordDTO.ToString();
+                medicalRecordDTO.ToString();*/
 
 
             //LISTA ZAKAZANIH TERMINA I KARTON ZA ODREDJENI TERMIN
@@ -200,8 +200,8 @@ namespace ZdravoKorporacija
 
 
             //POMERANJE OPREME - danas
-            //equipmentController.CreateDisplacement(5, 7, 1, DateTime.Today);
-            //equipmentService.EquipmentDisplacement();
+            equipmentController.CreateDisplacement(5, 7, 1, DateTime.Today);
+            equipmentService.EquipmentDisplacement();
 
             //POMERANJE OPREME - buducnost
             //equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2022, 2, 2));

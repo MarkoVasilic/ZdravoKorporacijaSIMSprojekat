@@ -1,34 +1,10 @@
 [
   {
-    "Id": 2,
-    "Name": "igle",
-    "IsStatic": false,
-    "Quantity": 200,
-    "RoomId": null,
-    "DynamicAddDate": null
-  },
-  {
-    "Id": 3,
-    "Name": "zavoj",
-    "IsStatic": false,
-    "Quantity": 50,
-    "RoomId": null,
-    "DynamicAddDate": null
-  },
-  {
     "Id": 4,
     "Name": "sto",
     "IsStatic": true,
     "Quantity": 1,
     "RoomId": 22,
-    "DynamicAddDate": null
-  },
-  {
-    "Id": 1,
-    "Name": "sto",
-    "IsStatic": true,
-    "Quantity": 1,
-    "RoomId": 5,
     "DynamicAddDate": null
   },
   {
@@ -46,5 +22,21 @@
     "Quantity": 4,
     "RoomId": null,
     "DynamicAddDate": "2022-05-13T10:42:55.121306+02:00"
+  },
+  {
+    "Id": 1,
+    "Name": "sto",
+    "IsStatic": true,
+    "Quantity": 1,
+    "RoomId": 7,
+    "DynamicAddDate": null
+  },
+  {
+    "Id": 7,
+    "Name": "Prep, scrub, and alcohol pads",
+    "IsStatic": false,
+    "Quantity": 10,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-10T20:51:09.7952421+02:00"
   }
 ]

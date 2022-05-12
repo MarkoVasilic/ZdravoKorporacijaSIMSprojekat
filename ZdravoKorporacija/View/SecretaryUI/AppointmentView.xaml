@@ -76,7 +76,7 @@
                         </i:Interaction.Triggers>
                     </Calendar>
                     <TextBlock FontSize="18" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center">Selected dates:</TextBlock>
-                    <ListBox Margin="0 10 0 0" Width="180" x:Name="SelectedDatesListBox" Style="{StaticResource SecretaryListBoxStyle}"  ItemsSource="{Binding Path=NewSelectedDates, Mode=OneWay, NotifyOnSourceUpdated=True}">
+                    <ListBox Margin="0 10 0 0" Width="180" x:Name="SelectedDatesListBox" Style="{StaticResource SecretaryListBoxStyle}"  ItemsSource="{Binding Path=NewSelectedDates, Mode=OneWay}">
                     </ListBox>
                 </StackPanel>
                 <Button Grid.Row="6" Grid.Column="1" Name="SearchAppointmentButton" HorizontalAlignment="Center" Content="Search" Command="{Binding SearchAppointmentCommand}" Style="{StaticResource SecretaryGreenButtonStyle}"/>
