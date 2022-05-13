@@ -293,31 +293,45 @@ namespace Service
             return false;
         }
         private Boolean IsOccupied(List<Appointment> appointmentList){
-            Boolean isOccupied = false;
             foreach (var appointment in appointmentList)
             {
                 if (ValidateAppointmentTimeForScheduleEmergency(appointment.StartTime, appointment.Duration))
                 {
-                    isOccupied = true;
-                    break;
+                    return true;
                 }
             }
-            return isOccupied;
+            return false;
         }
 
         private Boolean IsRoomOccupiedByBasicRenovation(Room room)
         {
-            Boolean roomIsOccupied = false;
             List<BasicRenovation> roomBasicRenovations = BasicRenovationRepository.FindAllByRoomId(room.Id);
             foreach (var roomBasicRenovation in roomBasicRenovations)
             {
                 if (ValidateAppointmentTimeForScheduleEmergency(roomBasicRenovation.StartTime, roomBasicRenovation.Duration))
                 {
-                    roomIsOccupied = true;
-                    break;
+                    return true;
                 }
             }
-            return roomIsOccupied;
+            return false; ;
+        }
+
+        private PossibleAppointmentsDTO getPossibleEmergencyAppointment(List<Appointment> doctorAppointments, Patient patient, Doctor doctor)
+        {
+            if (!IsOccupied(doctorAppointments))
+            {
+                List<Room> rooms = RoomRepository.FindAll();
+                foreach (var room in rooms)
+                {
+                    List<Appointment> roomAppointments = AppointmentRepository.FindAllByRoomId(room.Id);
+                    if (!IsOccupied(roomAppointments) && !IsRoomOccupiedByBasicRenovation(room))
+                    {
+                        return new PossibleAppointmentsDTO(patient.Jmbg, patient.FirstName + " " + patient.LastName, doctor.Jmbg,
+                    doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, room.Id, room.Name, DateTime.Now.AddMinutes(5), 60, 0);
+                    }
+                }
+            }
+            return null;
         }
 
         public PossibleAppointmentsDTO ScheduleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
@@ -328,19 +342,9 @@ namespace Service
             foreach (var doctor in doctors)
             {
                 List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
-                if (!IsOccupied(doctorAppointments))
-                {
-                    List<Room> rooms = RoomRepository.FindAll();
-                    foreach (var room in rooms)
-                    {
-                        List<Appointment> roomAppointments = AppointmentRepository.FindAllByRoomId(room.Id);
-                        if (!IsOccupied(roomAppointments) && !IsRoomOccupiedByBasicRenovation(room))
-                        {
-                            return new PossibleAppointmentsDTO(patientJmbg, patient.FirstName + " " + patient.LastName, doctor.Jmbg,
-                        doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, room.Id, room.Name, DateTime.Now.AddMinutes(5), 60, 0);
-                        }
-                    }
-                }
+                PossibleAppointmentsDTO possibleEmergencyAppointment = getPossibleEmergencyAppointment(doctorAppointments, patient, doctor);
+                if (possibleEmergencyAppointment != null)
+                    return possibleEmergencyAppointment;
             }
             return null;
         }
@@ -354,24 +358,31 @@ namespace Service
             foreach (var doctor in doctors)
             {
                 List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
-                foreach (var appointment in doctorAppointments)
-                {
-                    if (appointment.StartTime > DateTime.Now && appointment.StartTime < DateTime.Now.AddMinutes(75))
-                    {
-                        Room room = RoomRepository.FindOneById(appointment.RoomId);
-                        Patient patientInOldAppointment = PatientRepository.FindOneByJmbg(appointment.PatientJmbg);
-                        List<PossibleAppointmentsDTO> newPossibleAppointments = GetPossibleAppointmentsBySecretary(patientJmbg, doctor.Jmbg,
-                            room.Id, DateTime.Now.AddHours(3), DateTime.Now.AddDays(5), appointment.Duration, "doctor");
-                        newPossibleAppointments.Sort((x, y) => DateTime.Compare(x.StartTime, y.StartTime));
-                        appointmentsToReschedule.Add(new ModifyAppointmentForEmergencyDto(appointment.PatientJmbg, patientInOldAppointment.FirstName + " " + patientInOldAppointment.LastName, doctor.Jmbg,
-                        doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, room.Id, room.Name, appointment.StartTime,
-                        newPossibleAppointments[0].StartTime, appointment.Duration, appointment.Id));
-                        break;
-                    }
-                }
+                appointmentsToReschedule.AddRange(getPossibleAppointmentsToReschedule(doctorAppointments, doctor, patientJmbg));
             }
             if (appointmentsToReschedule != null)
                 appointmentsToReschedule.Sort((x, y) => DateTime.Compare(x.NewStartTime, y.NewStartTime));
+            return appointmentsToReschedule;
+        }
+
+        private List<ModifyAppointmentForEmergencyDto> getPossibleAppointmentsToReschedule(List<Appointment> doctorAppointments, Doctor doctor, String patientJmbg)
+        {
+            List<ModifyAppointmentForEmergencyDto> appointmentsToReschedule = new List<ModifyAppointmentForEmergencyDto>();
+            foreach (var appointment in doctorAppointments)
+            {
+                if (appointment.StartTime > DateTime.Now && appointment.StartTime < DateTime.Now.AddMinutes(75))
+                {
+                    Room room = RoomRepository.FindOneById(appointment.RoomId);
+                    Patient patientInOldAppointment = PatientRepository.FindOneByJmbg(appointment.PatientJmbg);
+                    List<PossibleAppointmentsDTO> newPossibleAppointments = GetPossibleAppointmentsBySecretary(patientJmbg, doctor.Jmbg,
+                        room.Id, DateTime.Now.AddHours(3), DateTime.Now.AddDays(5), appointment.Duration, "doctor");
+                    newPossibleAppointments.Sort((x, y) => DateTime.Compare(x.StartTime, y.StartTime));
+                    appointmentsToReschedule.Add(new ModifyAppointmentForEmergencyDto(appointment.PatientJmbg, patientInOldAppointment.FirstName + " " + patientInOldAppointment.LastName, doctor.Jmbg,
+                    doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, room.Id, room.Name, appointment.StartTime,
+                    newPossibleAppointments[0].StartTime, appointment.Duration, appointment.Id));
+                    break;
+                }
+            }
             return appointmentsToReschedule;
         }
 

@@ -1742,5 +1742,21 @@
     "StartTime": "2022-05-09T13:12:37.4713399+02:00",
     "userJmbg": "5151515151515",
     "Seen": false
+  },
+  {
+    "Id": 193,
+    "Title": "Reschedule of appointment",
+    "Description": "Your appointment with doctor Marko Vasilic on date 13.5.2022. 13:31:58 in room Exam 1 have been rescheduled to date 14.5.2022. 00:14:49",
+    "StartTime": "2022-05-13T12:59:56.2382773+02:00",
+    "userJmbg": "1111555599123",
+    "Seen": false
+  },
+  {
+    "Id": 194,
+    "Title": "Emergency appointment",
+    "Description": "Your appointment with patient Doris Dorisovic on date 13.5.2022. 13:31:58 in room Exam 1 have been rescheduled to date 14.5.2022. 00:14:49, there is emergency you need to attend now at room Exam 1 on date 13.5.2022. 13:04:54",
+    "StartTime": "2022-05-13T12:59:56.2607184+02:00",
+    "userJmbg": "5454545454545",
+    "Seen": false
   }
 ]
