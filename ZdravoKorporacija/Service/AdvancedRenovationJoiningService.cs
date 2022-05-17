@@ -66,6 +66,7 @@ namespace ZdravoKorporacija.Service
                     EquipmentService.DeleteDisplacementByStartRoomId(advancedRenovation.SecondStartRoom);
                     EquipmentService.DeleteDisplacementByEndRoomId(advancedRenovation.SecondStartRoom);
                     RoomService.DeleteRoom(advancedRenovation.SecondStartRoom);
+                    advancedRenovationIds.Add(advancedRenovation.Id);
 
                 }
                 else

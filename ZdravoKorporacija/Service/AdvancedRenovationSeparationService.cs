@@ -78,7 +78,7 @@ namespace ZdravoKorporacija.Service
 
             }
 
-            for (int i = 0; i < advancedRenovationIds.Count; i++)
+            for (int i = 0; i <advancedRenovationIds.Count; i++)
             {
                 AdvancedRenovationSeparationRepository.RemoveAdvancedRenovationSeparation(advancedRenovationSeparations[i].Id);
             }

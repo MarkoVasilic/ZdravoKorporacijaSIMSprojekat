@@ -73,6 +73,9 @@ namespace ZdravoKorporacija
             AdvancedRenovationSeparationRepository advancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
             AdvancedRenovationSeparationService advancedRenovationSeparationService = new AdvancedRenovationSeparationService(advancedRenovationSeparationRepository, roomService);
             AdvancedRenovationSeparationController advancedRenovationSeparationController = new AdvancedRenovationSeparationController(advancedRenovationSeparationService);
+            AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService);
+            AdvancedRenovationJoiningController advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
 
 
 
@@ -314,6 +317,34 @@ namespace ZdravoKorporacija
 
             //advancedRenovationSeparationController.Separate();
 
+
+            //NAPREDNO RENOVIRANJE - SPAJANJE
+            /* int index = 0;
+              List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 24, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+              {
+                  Console.WriteLine(index.ToString());
+                  possibleAppointment.toStringManager();
+                  index++;
+              }
+
+
+              string checkedAppointment;
+
+              Console.WriteLine("Unesite broj termina koji zelite");
+              checkedAppointment = Console.ReadLine();
+              int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+
+              for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
+              {
+                  if (checkedAppointmentIndex == i)
+                  {
+                     advancedRenovationJoiningController.Create(23, 24, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
+                  }
+              }
+            */
+
+            //advancedRenovationJoiningController.Join();
 
 
 
