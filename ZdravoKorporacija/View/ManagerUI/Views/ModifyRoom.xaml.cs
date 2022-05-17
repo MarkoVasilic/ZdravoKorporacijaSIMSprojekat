@@ -136,8 +136,8 @@ namespace ZdravoKorporacija.View.RoomCRUD
             catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
-                //Console.WriteLine("GRESKA");
-            }
+                MessageBox.Show(ErrorMessage, "Greška");
+             }
         }
 
         private void Button_Click_Logout(object sender, RoutedEventArgs e)

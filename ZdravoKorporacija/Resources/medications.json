@@ -2,18 +2,33 @@
   {
     "Id": 1,
     "Name": "Berodual",
-    "Ingerdients": [
+    "Ingredients": [
       "ipratropium bromide",
       "fenoterol"
-    ]
+    ],
+    "Status": 1,
+    "Substitution": "zamena1"
   },
   {
     "Id": 2,
     "Name": "Paracetamol",
-    "Ingerdients": [
+    "Ingredients": [
       "prvi alergen",
       "drugi alergen",
       "treci alergen"
-    ]
+    ],
+    "Status": 1,
+    "Substitution": "zamena2"
+  },
+  {
+    "Id": 3,
+    "Name": "Brufen",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2",
+      "sastojak3"
+    ],
+    "Status": 1,
+    "Substitution": "zamena2"
   }
 ]

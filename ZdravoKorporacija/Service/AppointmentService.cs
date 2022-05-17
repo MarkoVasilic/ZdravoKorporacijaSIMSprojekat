@@ -98,6 +98,11 @@ namespace Service
             AppointmentRepository.RemoveAppointmentsForOnePatient(patientJmbg);
         }
 
+        public void DeleteAppointmentByRoomId(int roomId)
+        {
+            AppointmentRepository.RemoveAppointmentByRoomId(roomId);
+        }
+
         public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
 

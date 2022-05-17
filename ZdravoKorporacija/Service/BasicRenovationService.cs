@@ -35,6 +35,10 @@ namespace ZdravoKorporacija.Service
 
         }
 
+        public void DeleteByRoomId(int roomId)
+        {
+            BasicRenovationRepository.RemoveBasicRenovationByRoomId(roomId);
+        }
 
 
         public int GenerateNewId()

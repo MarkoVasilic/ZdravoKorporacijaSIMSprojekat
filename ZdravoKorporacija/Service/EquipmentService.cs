@@ -236,42 +236,30 @@ namespace ZdravoKorporacija.Service
         }
 
 
-        public List<EquipmentDTO> Filter(Boolean isStaticEquipment)
+
+        public List<EquipmentDTO> Filter(String equipmentType)
+        {
+            return GetEquipmentByType(equipmentType);
+           
+        }
+
+
+        public List<EquipmentDTO> GetEquipmentByType(String equipmentType)
         {
 
             List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(GetEquipmentDTOs());
-            List<EquipmentDTO> staticEquipment = new List<EquipmentDTO>();
-            List<EquipmentDTO> dynamicEquipment = new List<EquipmentDTO>();
+            List<EquipmentDTO> foundEquipment = new List<EquipmentDTO>();
 
-            if(isStaticEquipment == true)
+            foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
             {
-
-                foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
+                if (equipmentDTO.IsStatic == equipmentType)
                 {
-                    if(equipmentDTO.IsStatic == "STATIC")
-                    {
-                        staticEquipment.Add(equipmentDTO);
-                    }
+                    foundEquipment.Add(equipmentDTO);
                 }
-
-                return staticEquipment;
-
-
             }
-            else
-            {
 
-                foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
-                {
-                    if (equipmentDTO.IsStatic == "DYNAMIC")
-                    {
-                        dynamicEquipment.Add(equipmentDTO);
-                    }
-                }
+            return foundEquipment;
 
-                return dynamicEquipment;
-
-            }
         }
 
         public List<EquipmentDTO> Search(string name)
@@ -293,9 +281,20 @@ namespace ZdravoKorporacija.Service
 
         }
 
+        public void DeleteByRoomId (int roomId)
+        {
+            EquipmentRepository.RemoveEquipmentByRoom(roomId);
+        }
 
+        public void DeleteDisplacementByStartRoomId (int roomId)
+        {
+            DisplacementRepository.RemoveDisplacementByStartRoomId(roomId);
+        }
 
-
+        public void DeleteDisplacementByEndRoomId(int roomId)
+        {
+            DisplacementRepository.RemoveDisplacementByEndRoomId(roomId);
+        }
 
     }
 }

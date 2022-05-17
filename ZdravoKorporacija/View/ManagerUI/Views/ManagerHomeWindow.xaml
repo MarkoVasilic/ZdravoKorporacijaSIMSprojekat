@@ -8,10 +8,14 @@
         mc:Ignorable="d"
         Title="ManagerHomeWindow" Height="768" Width="1024" Background="#fee9e1">
 
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Logout" CanExecute="Logout_CanExecute" Executed="Logout_Executed"></CommandBinding>
+    </Window.CommandBindings>
+
     
 
     <Grid>
         <Frame x:Name="ManagerMainFrame" Height="768" NavigationUIVisibility="Hidden"></Frame>
-        <Button Content="Odjavi se" Margin="700 0 0 650" Style="{StaticResource ManagerLogOutButtonStyle}" Command="cmd:RoutedCommand.Logout"/>
+        <Button Content="Odjavi se" Margin="780 0 0 650" Style="{StaticResource ManagerLogOutButtonStyle}" Command="cmd:RoutedCommand.Logout"/>
     </Grid>
 </Window>

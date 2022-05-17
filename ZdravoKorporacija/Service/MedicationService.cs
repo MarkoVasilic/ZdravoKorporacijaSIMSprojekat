@@ -16,9 +16,8 @@ namespace Service
             this.MedicationRepository = medicationRepository;
         }
 
-        public MedicationService()
-        {
-        }
+        public MedicationService() { }
+
 
         public List<Medication> GetAll()
         {
@@ -35,7 +34,7 @@ namespace Service
             return MedicationRepository.FindOneById(medicationId);
         }
 
-        private int GenerateNewId()
+        public int GenerateNewId()
         {
             try
             {
@@ -49,15 +48,71 @@ namespace Service
             }
         }
 
-        public void CreateMedication(String name, List<String> ingredients)
+
+        public void Create(String name, List<String> ingredients, String alternative)
         {
             int id = GenerateNewId();
-            Medication medication = new Medication(id, name, ingredients);
+            CheckBeforeCreating(id, name);
+            Medication newMedication = new Medication(id, name, ingredients, MedicationStatus.UNVERIFIED, alternative);
+            Validate(newMedication);
+            MedicationRepository.SaveMedication(newMedication);
+        }
+
+        public void CheckBeforeCreating(int id, String name)
+        {
+            
+            if(MedicationRepository.FindOneById(id) != null)
+            {
+                throw new Exception("Medication with that ID already exists!");
+            }
+            else if (MedicationRepository.FindOneByName(name) != null)
+            {
+                throw new Exception("Medication with that name already exists!");
+            }
+
+        }
+
+        public void Modify(int id, String name, List<String> ingredients, String alternative)
+        {
+
+            CheckBeforeModification(id);
+            Medication oldMedication = MedicationRepository.FindOneById(id);
+            Medication newMedication = new Medication(oldMedication.Id, name, ingredients, MedicationStatus.UNVERIFIED, alternative);
+            Validate(newMedication);
+            MedicationRepository.UpdateMedication(newMedication);
+            
+        }
+
+
+        public void CheckBeforeModification(int id)
+        {
+            if (MedicationRepository.FindOneById(id) == null)
+                throw new Exception("Medication with that identification number doesn't exist");
+            
+        }
+
+        public void Validate(Medication medication)
+        {
             if (!medication.validateMedication())
             {
-                throw new Exception("Something went wrong, medication isn't created!");
+                throw new Exception("Something went wrong");
             }
-            MedicationRepository.SaveMedication(medication);
+        }
+
+        public List<Medication> GetRejected()
+        {
+            List<Medication> medications = new List<Medication>(GetAll());
+            List<Medication> foundMedications = new List<Medication>();
+
+            foreach(Medication medication in medications)
+            {
+                if(medication.Status == MedicationStatus.REJECTED)
+                {
+                    foundMedications.Add(medication);
+                }
+            }
+
+            return foundMedications;
         }
 
 

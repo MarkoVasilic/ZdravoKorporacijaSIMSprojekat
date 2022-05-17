@@ -142,6 +142,7 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
+                MessageBox.Show(ErrorMessage, "Greška");
             }
         }
 

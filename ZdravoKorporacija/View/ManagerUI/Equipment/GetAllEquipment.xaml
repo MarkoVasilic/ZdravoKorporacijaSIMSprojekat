@@ -87,7 +87,7 @@
 
                 <StackPanel Grid.Row="5" >
                     <Button  Content="Nazad" Style="{StaticResource ManagerRedButtonStyle}" Margin="45,-65,828,-171" Command="cmd:RoutedCommand.Back" ></Button>
-                    <Button Content="Pomoć"  Margin="700 25 0 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
+                    <Button Content="Pomoć"  Margin="780 25 0 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
                 </StackPanel>
                 
             </Grid>

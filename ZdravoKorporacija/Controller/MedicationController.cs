@@ -29,9 +29,19 @@ namespace Controller
             return MedicationService.GetOneById(medicationId);
         }
 
-        public void CreateMedication(String name, List<String> ingredients)
+        public void Create(String name, List<String> ingredients, String alternative)
         {
-            MedicationService.CreateMedication(name, ingredients);
+            MedicationService.Create(name, ingredients, alternative);
+        }
+
+        public void Modify(int id, String name, List<String> ingredients, String alternative)
+        {
+            MedicationService.Modify(id, name, ingredients, alternative);
+        }
+
+        public List<Medication> GetRejected()
+        {
+            return MedicationService.GetRejected();
         }
 
     }
