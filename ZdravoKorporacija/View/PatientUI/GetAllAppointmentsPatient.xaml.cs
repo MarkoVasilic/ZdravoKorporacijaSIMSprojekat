@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD
+namespace ZdravoKorporacija.View.PatientUI
 {
 
     public partial class GetAllAppointmentsPatient : Page
@@ -22,12 +22,12 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
             appointmentController = new AppointmentController(appointmentService);
             this.DataContext = this;
             appointments = new ObservableCollection<Appointment>(appointmentController.GetAppointmentsByPatientJmbg(App.loggedUser.Jmbg));
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new PatientHomePage());
         }
     }
 }

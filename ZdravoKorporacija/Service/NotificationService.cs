@@ -136,15 +136,10 @@ namespace ZdravoKorporacija.Service
             Console.WriteLine("-------------------------");
 
                 for (int i=0; i < notificationsListToDisplay.Count; i++) {
-                if (((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours <= 1) && ((System.DateTime.Now - notificationsListToDisplay[i].StartTime).Hours >= -24))
-                {
-                    if ((System.DateTime.Now > notificationsListToDisplay[i].StartTime) && ((System.DateTime.Now.Date==notificationsListToDisplay[i].StartTime.Date) || (System.DateTime.Now.Date==notificationsListToDisplay[i].StartTime.Date.AddDays(1))))
-                    {
+                    if ((((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) <= 1) && ((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) > -8)) || (System.DateTime.Now > notificationsListToDisplay[i].StartTime))
+                        {   
                         returnList.Add(notificationsListToDisplay[i]);
-                    }
-                }
-                    
-
+                        }
             }
             return returnList;
 

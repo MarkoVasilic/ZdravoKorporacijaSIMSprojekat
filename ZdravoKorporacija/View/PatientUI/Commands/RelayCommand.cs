@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD.Commands
+namespace ZdravoKorporacija.View.PatientUI.Commands
 {
     internal class RelayCommand : ICommand
     {

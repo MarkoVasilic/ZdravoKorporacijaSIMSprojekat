@@ -8,8 +8,7 @@ using ZdravoKorporacija.View.SecretaryUI;
 namespace ZdravoKorporacija
 {
     public partial class MainWindow : Window
-    {
-
+    {  
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +23,10 @@ namespace ZdravoKorporacija
             Secretary secretary = App.secretaryController.getSecretaryByUsername(username);
             Patient patient = App.patientController.getPatientByUsername(username);
             Doctor doctor = App.doctorController.getDoctorByUsername(username);
+            DateTime currentDate = System.DateTime.Now.Date;
+            DateTime firstDayInMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+
+
             if (manager != null)
             {
                 App.loggedUser = manager;
@@ -43,6 +46,20 @@ namespace ZdravoKorporacija
                 App.loggedUser = patient;
                 App.userRole = "patient";
                 correctUsername = true;
+                Console.WriteLine("Your current TrollCounter: " + App.patientController.getTrollCounterByPatient(patient.Jmbg));
+                if (currentDate == firstDayInMonth.Date)
+                {
+                    // patient.trollCounter = 0; //patient.resetTrolLCounter();
+                    App.patientController.resetTrollCounterByPatient(patient.Jmbg);
+                    Console.WriteLine("iniitializing troll counter to 0 firstDayInMonth" + App.patientController.getTrollCounterByPatient(patient.Jmbg));
+                }
+
+                if (App.patientController.getTrollCounterByPatient(patient.Jmbg) >= 4)
+                {
+                    MessageBox.Show("Blocked - AntiTroll: " + App.patientController.getTrollCounterByPatient(patient.Jmbg) + " Tries");
+                    this.Close();
+                }
+                
                 window = new PatientHomeWindow();
             }
             else if (doctor != null)

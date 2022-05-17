@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD
+namespace ZdravoKorporacija.View.PatientUI
 {
     /// <summary>
     /// Interaction logic for PossibleAppointmentPatientPage.xaml
@@ -20,6 +20,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private void btnView_Click(object sender, RoutedEventArgs e)
         {
+
             PossibleAppointmentsDTO obj = ((FrameworkElement)sender).DataContext as PossibleAppointmentsDTO;
             CreateAppointmentVM.SelectedAppointment = obj;
             CreateAppointmentVM.SelectAppointment();

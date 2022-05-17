@@ -20,15 +20,14 @@
             <StackPanel Grid.Row="0" HorizontalAlignment="Right">
                 <Button Height="70" Width="200" Margin="0 0 0 0" Click="LogOutButton" Content="Odjavi se" FontSize="20" FontWeight="Bold" Background="SteelBlue"/>
             </StackPanel>
-            <StackPanel Width="30" Height="30">
-            <Button  Background="Transparent" BorderBrush="Transparent" Click="HomeButton">
-                    <materialDesign:PackIcon Height="30" Width="30" Kind="Home" Foreground="#FF6B7B73"></materialDesign:PackIcon>
-            </Button>
+            <StackPanel Width="32" Height="32">
+                <Button  Background="Transparent" BorderBrush="Transparent" Click="HomeButton">
+                    <materialDesign:PackIcon Height="30" Width="30" Kind="HospitalBuilding" Foreground="#FF6B7B73"></materialDesign:PackIcon>
+                </Button>
             </StackPanel>
-            <StackPanel Grid.Row="0" HorizontalAlignment="Left">
+            <StackPanel HorizontalAlignment="Left">
                 <Button Height="70" Width="270" Margin="0 0 0 0" Click="InfoButton" Content="Moj Profil" FontSize="20" FontWeight="Bold" Background="SteelBlue"></Button>
             </StackPanel>
-       
         </Grid>
     </Grid>
 </Window>

@@ -11,7 +11,7 @@ using Service;
 using Repository;
 using ZdravoKorporacija.View.PatientUI;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD
+namespace ZdravoKorporacija.View.PatientUI
 {
     /// <summary>
     /// Interaction logic for PatientHomePage.xaml

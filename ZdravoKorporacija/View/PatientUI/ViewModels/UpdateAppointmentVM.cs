@@ -9,10 +9,13 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Repository;
-using ZdravoKorporacija.View.AppointmentCRUD.Commands;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
+using ZdravoKorporacija.View.PatientUI.Commands;
+using ZdravoKorporacija.View.PatientUI;
+using System.Windows;
+using ZdravoKorporacija.Repository;
+
+namespace ZdravoKorporacija.View.PatientUI.ViewModels
 {
     public class UpdateAppointmentVM : INotifyPropertyChanged
     {
@@ -24,9 +27,11 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
         private Doctor? selectedDoctor { get; set; }
         private Room? selectedRoom { get; set; }
 
+        private Patient? loggedPatient { get; set; }
+
         private PossibleAppointmentsDTO? selectedAppointment { get; set; }
 
-        private Appointment? selectedAppointmentDelete { get; set; }
+        private PossibleAppointmentsDTO? selectedAppointmentDelete { get; set; }
         private PossibleAppointmentsDTO? selectedNewAppointment { get; set; }
         private DateTime startDate;
         private String possibleAppointmentsVisibility;
@@ -82,6 +87,16 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
                 OnPropertyChanged("SelectedDoctor");
             }
         }
+
+        public Patient LoggedPatient
+        {
+            get { return loggedPatient; }
+            set
+            {
+                loggedPatient = value;
+                OnPropertyChanged("LoggedPatient");
+            }
+        }
         public Room SelectedRoom
         {
             get { return selectedRoom; }
@@ -102,7 +117,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             }
         }
 
-        public Appointment SelectedAppointmentDelete
+        public PossibleAppointmentsDTO SelectedAppointmentDelete
         {
             get { return selectedAppointmentDelete; }
             set
@@ -204,6 +219,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
             SelectNewAppointmentCommand = new RelayCommand(selectNewAppointmentExecute);
+
         }
 
         private void doctorsListToDoctorList(List<Doctor> doctors)
@@ -237,6 +253,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         private void appointmentListToAppointmentList()
         {
+
             try
             {
                 List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = appointmentController.GetPossibleAppointmentsBySecretary(SelectedAppointment.PatientJmbg,
@@ -273,19 +290,45 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
 
         private void deleteAppointmentExecute(object parameter)
         {
-            SelectedAppointmentDelete = parameter as Appointment;
-            appointmentController.DeleteAppointment(SelectedAppointmentDelete.Id);
+            SelectedAppointmentDelete = parameter as PossibleAppointmentsDTO;
+            appointmentController.DeleteAppointment(SelectedAppointmentDelete.AppointmentId);
+            //logika za antiTroll
+            if (patientController.getTrollCounterByPatient(App.loggedUser.Jmbg) >= 4)
+            {
+
+                MessageBox.Show("TROLL ALERT: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
+                PatientWindowVM.NavigationService.Navigate(new PatientHomePage());
+                System.Environment.Exit(0);
+
+            }
+            patientController.incrementTrollCounterByPatient(App.loggedUser.Jmbg);
+            possibleAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
+
         }
 
         private void selectNewAppointmentExecute(object parameter)
         {
+            if (patientController.getTrollCounterByPatient(App.loggedUser.Jmbg) >= 4)
+            {
+
+                MessageBox.Show("TROLL ALERT: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
+                PatientWindowVM.NavigationService.Navigate(new PatientHomePage());
+                System.Environment.Exit(0);
+
+            }
+
             SelectedNewAppointment = parameter as PossibleAppointmentsDTO;
+            Console.WriteLine("troll: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
+            patientController.incrementTrollCounterByPatient(App.loggedUser.Jmbg);
             try
             {
-                appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
-                MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
-                PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
 
+                Console.WriteLine("troll: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
+
+                    appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
+                    MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
+                    PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+                
             }
             catch (Exception e)
             {
@@ -293,5 +336,6 @@ namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
             }
 
         }
+
     }
 }

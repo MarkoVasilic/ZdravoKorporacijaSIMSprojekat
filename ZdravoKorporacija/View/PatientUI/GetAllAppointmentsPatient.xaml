@@ -1,14 +1,14 @@
-﻿<Page x:Class="ZdravoKorporacija.View.AppointmentCRUD.GetAllAppointmentsPatient"
+﻿<Page x:Class="ZdravoKorporacija.View.PatientUI.GetAllAppointmentsPatient"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKorporacija.View.AppointmentCRUD"
+        xmlns:local="clr-namespace:ZdravoKorporacija.View.PatientUI"
         mc:Ignorable="d"
         Title="GetAllAppointmentsPatient" Height="768" Width="1024">
-    <Grid  Margin="50"  Background="#FF242F41">
+    <Grid  Margin="0" Background="#FF242F41">
 
-        <DataGrid RowBackground="SteelBlue" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background="SteelBlue" FontFamily="Georgia" x:Name="dataGridRooms" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Foreground="#FF121010" BorderBrush="#FF004AFF" OpacityMask="#FF0B1B5B" Margin="0,156,0,0">
+        <DataGrid ItemsSource="{Binding Path=appointments}" RowBackground="SteelBlue" RowHeight="40" Background="SteelBlue" ColumnHeaderHeight="30" FontSize="16"   Margin="46,165,36,303" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" Height="225" Width="auto">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="120"></DataGridTextColumn>

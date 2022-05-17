@@ -18,10 +18,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
-using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD
+namespace ZdravoKorporacija.View.PatientUI
 {
     /// <summary>
     /// Interaction logic for UpdateFutureAppointmentsPage.xaml

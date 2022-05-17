@@ -92,6 +92,30 @@ namespace Service
 
         }
 
+        public int getTrollCounterByPatient(string jmbg)
+        {
+            Patient patient = PatientRepository.FindOneByJmbg(jmbg);
+            return patient.trollCounter;
+        }
+
+        public void incrementTrollCounterByPatient(string jmbg)
+        {
+            Patient patient = PatientRepository.FindOneByJmbg(jmbg);
+             patient.trollCounter++;
+            PatientRepository.UpdatePatient(patient);
+
+        }
+        public void resetTrollCounterByPatient(string jmbg)
+        {
+            Patient patient = PatientRepository.FindOneByJmbg(jmbg);
+            patient.trollCounter=0;
+            PatientRepository.UpdatePatient(patient);
+
+        }
+
+
+
+
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
             Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,

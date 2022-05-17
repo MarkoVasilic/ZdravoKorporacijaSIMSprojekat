@@ -1,6 +1,8 @@
 ﻿using System.Windows.Navigation;
+using ZdravoKorporacija.View;
+using ZdravoKorporacija.View.PatientUI;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD.ViewModels
+namespace ZdravoKorporacija.View.PatientUI.ViewModels
 {
     internal class PatientWindowVM
     {

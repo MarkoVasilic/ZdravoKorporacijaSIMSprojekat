@@ -11,7 +11,7 @@ using Service;
 using Repository;
 using System.Data;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD
+namespace ZdravoKorporacija.View.PatientUI
 {
     /// <summary>
     /// Interaction logic for NotificationsPage.xaml
