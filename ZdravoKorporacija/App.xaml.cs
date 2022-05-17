@@ -287,33 +287,32 @@ namespace ZdravoKorporacija
 
 
             //NAPREDNO RENOVIRANJE - RAZDVAJANJE
-           /* int index = 0;
-            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
-            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
-            {
-                Console.WriteLine(index.ToString());
-                possibleAppointment.toStringManager();
-                index++;
-            }
+            /* int index = 0;
+             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+             foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+             {
+                 Console.WriteLine(index.ToString());
+                 possibleAppointment.toStringManager();
+                 index++;
+             }
 
 
-            string checkedAppointment;
+             string checkedAppointment;
 
-            Console.WriteLine("Unesite broj termina koji zelite");
-            checkedAppointment = Console.ReadLine();
-            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+             Console.WriteLine("Unesite broj termina koji zelite");
+             checkedAppointment = Console.ReadLine();
+             int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
 
-            for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
-            {
-                if (checkedAppointmentIndex == i)
-                {
-                    advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
-                }
-            }*/
+             for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
+             {
+                 if (checkedAppointmentIndex == i)
+                 {
+                     advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
+                 }
+             }*/
 
 
-           //advancedRenovationSeparationController.Separate();
-            
+            //advancedRenovationSeparationController.Separate();
 
 
 

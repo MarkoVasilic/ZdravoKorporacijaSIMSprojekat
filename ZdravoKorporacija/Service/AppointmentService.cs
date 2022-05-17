@@ -17,6 +17,8 @@ namespace Service
         readonly DoctorRepository DoctorRepository = new DoctorRepository();
         readonly RoomRepository RoomRepository = new RoomRepository();
         readonly BasicRenovationRepository BasicRenovationRepository = new BasicRenovationRepository();
+        readonly AdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
+        readonly AdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
         public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository,
             DoctorRepository doctorRepository, RoomRepository roomRepository, BasicRenovationRepository basicRenovationRepository)
         {
@@ -214,6 +216,36 @@ namespace Service
             AppointmentRepository.SaveAppointment(appointment);
         }
 
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            if (RoomRepository.FindOneById(firstRoomId) == null || RoomRepository.FindOneById(secondRoomId) == null)
+                throw new Exception("One of the rooms doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+            List<DateTime> possibleAppointmentsForFirstRoom = new List<DateTime>();
+            List<DateTime> possibleAppointmentsForSecondRoom = new List<DateTime>();
+            possibleAppointmentsForFirstRoom = findPossibleStartTimesOfAppointment("", "", firstRoomId,
+                    dateFrom, dateUntil, duration);
+            possibleAppointmentsForSecondRoom = findPossibleStartTimesOfAppointment("", "", secondRoomId,
+                    dateFrom, dateUntil, duration);
+            if (possibleAppointmentsForFirstRoom.Count == 0 || possibleAppointmentsForSecondRoom.Count == 0)
+                throw new Exception("There are not free appointments for given parameters!");
+            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
+            foreach (var pf in possibleAppointmentsForFirstRoom)
+            {
+                foreach (var ps in possibleAppointmentsForSecondRoom)
+                {
+                    if (pf == ps && pf > DateTime.Now.AddHours(1))
+                    {
+                        PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO("", "", "", "", "", -1, "", pf, duration, -1);
+                        retValue.Add(possibleAppointmentsDTO);
+                    }
+                }
+            }
+            return retValue;
+        }
+
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByManager(int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
@@ -234,6 +266,37 @@ namespace Service
                 if (pa > DateTime.Now.AddHours(1))
                 {
                     PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO("", "", "", "", "", roomId, selectedRoom.Name, pa, duration, -1);
+                    retValue.Add(possibleAppointmentsDTO);
+                }
+            }
+            return retValue;
+        }
+
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForFreeDays(String doctorJmbg,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+                throw new Exception("Doctor with that JMBG doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            possibleAppointments = findPossibleStartTimesOfAppointment("", doctorJmbg, -1,
+                dateFrom, dateUntil, duration);
+            while (possibleAppointments.Count == 0)
+            {
+                dateFrom = dateUntil;
+                dateUntil = dateUntil.AddDays(5);
+                possibleAppointments = findPossibleStartTimesOfAppointment("", doctorJmbg, -1,
+                dateFrom, dateUntil, duration);
+            }
+            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
+            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            foreach (var pa in possibleAppointments)
+            {
+                if (pa > DateTime.Now.AddHours(1))
+                {
+                    PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO("", " ", doctorJmbg,
+                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, selectedDoctor.SpecialtyType, -1, "", pa, duration, -1);
                     retValue.Add(possibleAppointmentsDTO);
                 }
             }
@@ -461,19 +524,29 @@ namespace Service
             if (neededAppointments.Count == 0)
             {
                 var firstDate = dateFrom;
-                while (firstDate < dateUntil && firstDate < dateFrom.AddDays(5))
+                if (duration > 900)
                 {
-                    freePeriod.Add((firstDate.AddHours(8).AddMinutes(15), firstDate.AddDays(1).AddMinutes(-15)));
-                    firstDate = firstDate.AddDays(1);
+                    while (freePeriod.Count < 3)
+                    {
+                        freePeriod.Add((firstDate.AddHours(8).AddMinutes(15), firstDate.AddHours(8).AddMinutes(duration + 15)));
+                        firstDate = firstDate.AddHours(8).AddMinutes(duration + 15);
+                    }
                 }
-
+                else
+                {
+                    while (firstDate < dateUntil && firstDate < dateFrom.AddDays(5))
+                    {
+                        freePeriod.Add((firstDate.AddHours(8).AddMinutes(15), firstDate.AddDays(1).AddMinutes(-15)));
+                        firstDate = firstDate.AddDays(1);
+                    }
+                }
             }
             else
                 freePeriod = findFreePeriods(neededAppointments, dateFrom, dateUntil, duration);
 
             for (int i = 0; i < freePeriod.Count; i++)
             {
-                if (freePeriod[i].Item1.AddHours(9) < freePeriod[i].Item2)
+                if (freePeriod[i].Item1.AddHours(9) < freePeriod[i].Item2 && duration < 540)
                 {
                     newFreePeriod.AddRange(splitPeriod(freePeriod[i]));
                 }
@@ -560,7 +633,7 @@ namespace Service
                 {
                     if (counter == 10)
                         break;
-                    if (newFreePeriod[i].Item1.AddMinutes(duration) < newFreePeriod[i].Item2)
+                    if (newFreePeriod[i].Item1.AddMinutes(duration) <= newFreePeriod[i].Item2)
                     {
                         possibleAppointments.Add(newFreePeriod[i].Item1);
                         newFreePeriod[i] = (newFreePeriod[i].Item1.AddMinutes(duration + 15), newFreePeriod[i].Item2);

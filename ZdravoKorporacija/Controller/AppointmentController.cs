@@ -98,7 +98,17 @@ namespace Controller
             return AppointmentService.GetPossibleAppointmentsByDoctor(patientJmbg, doctorJmbg,
                 dateFrom, dateUntil, duration);
         }
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return AppointmentService.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
+        }
 
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForFreeDays(String doctorJmbg,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return AppointmentService.GetPossibleAppointmentsForFreeDays(doctorJmbg, dateFrom, dateUntil, duration);
+        }
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)
         {
