@@ -24,6 +24,21 @@ namespace Controller
             return PatientService.GetAllPatients();
         }
 
+        public int getTrollCounterByPatient(string jmbg)
+        {
+            return PatientService.getTrollCounterByPatient(jmbg);
+        }
+
+        public void incrementTrollCounterByPatient(string jmbg)
+        {
+            PatientService.incrementTrollCounterByPatient(jmbg);
+        }
+
+        public void resetTrollCounterByPatient(string jmbg)
+        {
+            PatientService.resetTrollCounterByPatient(jmbg);
+        }
+
         public void CreatePatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
             string firstName, string lastName, string username, string password,
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,

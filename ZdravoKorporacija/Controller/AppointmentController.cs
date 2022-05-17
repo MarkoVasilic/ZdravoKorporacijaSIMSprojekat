@@ -34,9 +34,9 @@ namespace Controller
             return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);
         }
 
-        public String CreateAppointmentByPatient(DateTime startTime, String doctorJmbg)
+        public void CreateAppointmentByPatient(DateTime startTime, String doctorJmbg)
         {
-            return AppointmentService.CreateAppointmentByPatient(startTime, doctorJmbg);
+            AppointmentService.CreateAppointmentByPatient(startTime, doctorJmbg);
         }
 
         public void DeleteAppointment(int appointmentId)

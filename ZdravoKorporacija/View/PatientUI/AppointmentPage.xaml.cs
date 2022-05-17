@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoKorporacija.View.AppointmentCRUD
+namespace ZdravoKorporacija.View.PatientUI
 {
     /// <summary>
     /// Interaction logic for AppointmentPage.xaml
@@ -29,7 +29,7 @@ namespace ZdravoKorporacija.View.AppointmentCRUD
 
         private void ButtonCreateAppointment(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateAppointmentPage()); 
+          //  NavigationService.Navigate(new CreateAppointmentPage()); 
 
         }
 

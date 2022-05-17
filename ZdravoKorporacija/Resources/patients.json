@@ -6,26 +6,8 @@
       "drugi alergen",
       "treci alergen"
     ],
-    "BloodTypeEnum": 3,
-    "FirstName": "Petar",
-    "LastName": "Jecmenic",
-    "Username": "joco",
-    "Password": "joco",
-    "Jmbg": "7778889994445",
-    "DateOfBirth": "2002-04-14T00:00:00",
-    "Gender": 1,
-    "Email": "aaa@cds.com",
-    "PhoneNumber": "342423",
-    "Address": "Pere Jecmenica 12, Novi Sad"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
     "BloodTypeEnum": 1,
+    "trollCounter": 0,
     "FirstName": "Milos",
     "LastName": "Milosevic",
     "Username": "mikimilane",
@@ -41,6 +23,7 @@
     "IsGuest": false,
     "Allergens": [],
     "BloodTypeEnum": 4,
+    "trollCounter": 0,
     "FirstName": "Zana",
     "LastName": "Zanovic",
     "Username": "zanaa",
@@ -60,6 +43,7 @@
       "treci alergen"
     ],
     "BloodTypeEnum": 6,
+    "trollCounter": 0,
     "FirstName": "Lazar",
     "LastName": "Lazarobi",
     "Username": "lakil",
@@ -79,6 +63,7 @@
       "sesti alergen"
     ],
     "BloodTypeEnum": 4,
+    "trollCounter": 0,
     "FirstName": "Ana",
     "LastName": "Anovic",
     "Username": "anaa",
@@ -98,6 +83,7 @@
       "treci alergen"
     ],
     "BloodTypeEnum": 2,
+    "trollCounter": 0,
     "FirstName": "Stefan",
     "LastName": "Stefanovic",
     "Username": "stefi",
@@ -108,5 +94,25 @@
     "Email": "stefi@cds.com",
     "PhoneNumber": "3422",
     "Address": "Stefana Stefanovica 18, Rijeka"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 3,
+    "trollCounter": 0,
+    "FirstName": "Petar",
+    "LastName": "Jecmenic",
+    "Username": "joco",
+    "Password": "joco",
+    "Jmbg": "7778889994445",
+    "DateOfBirth": "2002-04-14T00:00:00",
+    "Gender": 1,
+    "Email": "aaa@cds.com",
+    "PhoneNumber": "342423",
+    "Address": "Pere Jecmenica 12, Novi Sad"
   }
 ]

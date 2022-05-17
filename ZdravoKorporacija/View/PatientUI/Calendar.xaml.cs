@@ -13,21 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace ZdravoKorporacija.View.PatientUI
 {
     /// <summary>
-    /// Interaction logic for PatientInfoPage.xaml
+    /// Interaction logic for Calendar.xaml
     /// </summary>
-    public partial class PatientInfoPage : Page
+    public partial class Calendar : Page
     {
-        public PatientInfoPage()
+        public Calendar()
         {
             InitializeComponent();
-        }
-
-        private void ProfilNazadButton(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
         }
     }
 }

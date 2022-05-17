@@ -10,6 +10,8 @@ namespace Model
         public List<String> Allergens { get; set; }
         public BloodType BloodTypeEnum { get; set; }
 
+        public  int trollCounter { set; get; }
+
         public Patient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
             string firstName, string lastName, string username, string password,
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
@@ -18,6 +20,7 @@ namespace Model
             this.IsGuest = isGuest;
             this.Allergens = allergens ?? new List<String>();
             this.BloodTypeEnum = bloodType;
+            this.trollCounter = 0;
         }
 
         public Patient() : base()
@@ -49,6 +52,12 @@ namespace Model
             else
                 return true;
 
+        }
+
+        public void incrementTrollCounter()
+        {
+            this.trollCounter++;
+            Console.WriteLine("THIS:" + this);
         }
 
         public String validateGuest()

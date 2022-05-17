@@ -150,24 +150,21 @@ namespace Service
             return AppointmentRepository.FindAllByPatientJmbg(patientJmbg);
         }
 
-        public String CreateAppointmentByPatient(DateTime date, String doctorJmbg)
+        public void CreateAppointmentByPatient(DateTime date, String doctorJmbg)
         {
             if (DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
             {
-                return "Doctor with that JMBG doesn't exist!";
+                throw new Exception("Doctor with that JMBG doesn't exist!");
             }
             int id = GenerateNewId();
-            Appointment appointment = new Appointment(date, 15, id, App.loggedUser.Jmbg, doctorJmbg, 11);
+            Doctor? temp = new Doctor();
+            temp = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            Appointment appointment = new Appointment(date, 15, id, App.loggedUser.Jmbg, doctorJmbg, temp.RoomId);
             AppointmentRepository.SaveAppointment(appointment);
             if (!appointment.validateAppointment())
             {
-                return "Something went wrong, new appointment isn't created!";
+                throw new Exception("Something went wrong, new appointment isn't created!");
             }
-            else
-            {
-                return "";
-            }
-
         }
 
         public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)

@@ -4,8 +4,8 @@ using Service;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.View.AppointmentCRUD;
-using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
+using ZdravoKorporacija.View.PatientUI;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 
 namespace ZdravoKorporacija.View
 {

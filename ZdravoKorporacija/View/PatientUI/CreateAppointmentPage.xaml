@@ -100,8 +100,12 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <RadioButton x:Name="Vrijeme"  Grid.Column="5" Content="" HorizontalAlignment="Right" Margin="0,13,5,0" Grid.Row="7" VerticalAlignment="Top"/>
-        <RadioButton x:Name="Ljekar"  Grid.Column="5" Content="" HorizontalAlignment="Left" Margin="10,65,0,0" Grid.Row="7" VerticalAlignment="Top" IsChecked="True"/>
+        <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock Text="{Binding Path=ErrorMessagePossibleAppointments, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="20,10,0,0" FontSize="22" Foreground="#FFE95555">
+            </TextBlock>
+        </StackPanel>
+        <RadioButton IsChecked="{Binding TimePriority}"  x:Name="Vrijeme"  Grid.Column="5" Content="" HorizontalAlignment="Right" Margin="0,13,5,0" Grid.Row="7" VerticalAlignment="Top"/>
+        <RadioButton  x:Name="Ljekar"  Grid.Column="5" Content="" HorizontalAlignment="Left" Margin="10,65,0,0" Grid.Row="7" VerticalAlignment="Top" IsChecked="True"/>
     </Grid>
 
 </Page>

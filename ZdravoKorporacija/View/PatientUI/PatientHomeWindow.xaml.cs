@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Navigation;
-using ZdravoKorporacija.View.AppointmentCRUD;
-using ZdravoKorporacija.View.AppointmentCRUD.ViewModels;
+using ZdravoKorporacija.View.PatientUI;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 using ZdravoKorporacija.View.PatientUI;
 
 namespace ZdravoKorporacija.View

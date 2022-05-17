@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using ZdravoKorporacija.View.AppointmentCRUD.Commands;
+using ZdravoKorporacija.View.PatientUI.Commands;
 using ZdravoKorporacija.View.RoomCRUD;
 
 namespace ZdravoKorporacija.View.ManagerUI.ViewModels
