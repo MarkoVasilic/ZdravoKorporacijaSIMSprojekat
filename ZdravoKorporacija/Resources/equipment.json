@@ -32,6 +32,14 @@
     "DynamicAddDate": "2022-05-10T20:51:09.7952421+02:00"
   },
   {
+    "Id": 8,
+    "Name": "Securement device",
+    "IsStatic": false,
+    "Quantity": 4,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-19T15:26:14.1314551+02:00"
+  },
+  {
     "Id": 1,
     "Name": "sto",
     "IsStatic": true,
