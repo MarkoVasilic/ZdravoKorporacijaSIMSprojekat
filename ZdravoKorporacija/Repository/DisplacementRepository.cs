@@ -42,6 +42,19 @@ namespace ZdravoKorporacija.Repository
             return values;
         }
 
+        public void RemoveDisplacementByStartRoomId(int roomId)
+        {
+            var values = GetValues();
+            values.RemoveAll(val => val.StartRoom == roomId);
+            Save(values);
+        }
+        public void RemoveDisplacementByEndRoomId(int roomId)
+        {
+            var values = GetValues();
+            values.RemoveAll(val => val.EndRoom == roomId);
+            Save(values);
+        }
+
         public Model.Displacement? FindOneById(int? id)
         {
             List<Displacement> displacements = GetValues();

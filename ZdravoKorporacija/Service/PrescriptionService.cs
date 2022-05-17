@@ -65,7 +65,7 @@ namespace Service
             int id = GenerateNewId();
             Prescription prescription = new Prescription(id, medication, amount, frequency, from, to);
             List<String> allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
-            List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingerdients;
+            List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingredients;
             if (ingredients == null)
             {
                 throw new Exception("Prescribed medication is not available!");
@@ -107,7 +107,7 @@ namespace Service
                                                             newFrequency, newFrom, newTo);
 
             List<String> allergens = new List<String>();
-            List<String> ingredients = MedicationRepository.FindOneByName(newMedication).Ingerdients;
+            List<String> ingredients = MedicationRepository.FindOneByName(newMedication).Ingredients;
             if (ingredients == null)
             {
                 throw new Exception("Prescribed medication is not available!");

@@ -32,7 +32,7 @@ namespace ZdravoKorporacija
         public static NotificationController? notificationController { get; set; }
         public App()
         {
-
+            
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -60,7 +60,8 @@ namespace ZdravoKorporacija
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicationRepository medicationRepository = new MedicationRepository();
-            MedicationService medicationService = new MedicationService();
+            MedicationService medicationService = new MedicationService(medicationRepository);
+            MedicationController medicationController = new MedicationController(medicationService);
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             medicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
             NotificationRepository notificationRepository = new NotificationRepository();
@@ -68,6 +69,11 @@ namespace ZdravoKorporacija
             notificationController = new NotificationController(notificationService);
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
             BasicRenovationController basicRenovationController = new BasicRenovationController(basicRenovationService);
+            RoomService roomService = new RoomService(roomRepository);
+            AdvancedRenovationSeparationRepository advancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
+            AdvancedRenovationSeparationService advancedRenovationSeparationService = new AdvancedRenovationSeparationService(advancedRenovationSeparationRepository, roomService);
+            AdvancedRenovationSeparationController advancedRenovationSeparationController = new AdvancedRenovationSeparationController(advancedRenovationSeparationService);
+
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -200,8 +206,8 @@ namespace ZdravoKorporacija
 
 
             //POMERANJE OPREME - danas
-            equipmentController.CreateDisplacement(5, 7, 1, DateTime.Today);
-            equipmentService.EquipmentDisplacement();
+            //equipmentController.CreateDisplacement(5, 7, 1, DateTime.Today);
+            //equipmentService.EquipmentDisplacement();
 
             //POMERANJE OPREME - buducnost
             //equipmentController.CreateDisplacement(7, 5, 1, new DateTime(2022, 2, 2));
@@ -243,9 +249,73 @@ namespace ZdravoKorporacija
                 equipmentDTO.toString();*/
 
             //PRETRAGA PO NAZIVU - test
-           /* List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(equipmentController.Search("sto"));
-            foreach (EquipmentDTO eq in equipmentDTOs)
-                eq.toString(); */
+            /* List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(equipmentController.Search("sto"));
+             foreach (EquipmentDTO eq in equipmentDTOs)
+                 eq.toString(); */
+
+            //KREIRANJE LEKA
+            /*List<String> ingredients = new List<String>();
+            ingredients.Add("sastojak1");
+            ingredients.Add("sastojak2");
+            ingredients.Add("sastojak3");
+
+             medicationController.Create("Aspirin", ingredients, "zamena1");*/
+
+            //PREGLED SVIH LEKOVA
+            /*List<Medication> medications = new List<Medication>(medicationController.GetAll());
+            foreach (Medication m in medications)
+                m.toString();*/
+
+            /*List<String> ingredients1 = new List<String>();
+            ingredients1.Add("sastojak6");
+            ingredients1.Add("sastojak5");
+            ingredients1.Add("sastojak7");*/
+
+
+            //MODIFIKACIJA LEKOVA
+            //medicationController.Modify(3, "Brufen", ingredients1, "zamena2");
+
+            //PREGLED SVIH LEKOVA NAKON MODIFIKACIJE
+            /*List<Medication> medications = new List<Medication>(medicationController.GetAll());
+            foreach (Medication m in medications)
+                m.toString();*/
+
+            //PREGLED SVIH ODBIJENIH
+            /*List<Medication> rejectedMedications = new List<Medication>(medicationController.GetRejected());
+            foreach (Medication med in rejectedMedications)
+                med.toString();*/
+
+
+            //NAPREDNO RENOVIRANJE - RAZDVAJANJE
+           /* int index = 0;
+            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+            {
+                Console.WriteLine(index.ToString());
+                possibleAppointment.toStringManager();
+                index++;
+            }
+
+
+            string checkedAppointment;
+
+            Console.WriteLine("Unesite broj termina koji zelite");
+            checkedAppointment = Console.ReadLine();
+            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+
+            for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
+            {
+                if (checkedAppointmentIndex == i)
+                {
+                    advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
+                }
+            }*/
+
+
+           //advancedRenovationSeparationController.Separate();
+            
+
+
 
 
         }

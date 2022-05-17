@@ -26,7 +26,7 @@ namespace ZdravoKorporacija.View.Equipment
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
-        private Boolean isStaticEquipment;
+        private String equipmentType = " ";
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -98,14 +98,14 @@ namespace ZdravoKorporacija.View.Equipment
         {
             if (EquipmentTypeComboBox.SelectedIndex == 0)
             {
-                isStaticEquipment = true;
+                equipmentType = "STATIC";
             }else if (EquipmentTypeComboBox.SelectedIndex == 1)
             {
-                isStaticEquipment = false;
+                equipmentType = "DYNAMIC";
             }
             
 
-            Equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(isStaticEquipment));
+           Equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(equipmentType));
         }
 
 

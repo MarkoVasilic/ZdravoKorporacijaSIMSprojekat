@@ -10,6 +10,8 @@
   <ItemGroup>
     <None Remove="Resources\Fonts\Bell_MT.ttf" />
     <None Remove="Resources\Images\bolnicaHCI.jpg" />
+    <None Remove="Resources\Images\nadja_pocetna.jpg" />
+    <None Remove="Resources\Images\nadja_pocetna.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,18 @@
     <Resource Include="Resources\Images\bolnicaHCI.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\nadja_pocetna.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\nadja_pocetna.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Images\nadja_pocetna_slika.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

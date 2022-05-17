@@ -65,6 +65,13 @@ namespace Repository
             Save(values);
         }
 
+        public void RemoveAppointmentByRoomId(int roomId)
+        {
+            var values = GetValues();
+            values.RemoveAll(val => val.RoomId == roomId);
+            Save(values);
+        }
+
         public Appointment? FindOneById(int appointmentId)
         {
             var values = GetValues();
