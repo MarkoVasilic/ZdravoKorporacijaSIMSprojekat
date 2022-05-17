@@ -54,5 +54,21 @@
     "StaticEquipmentId": 1,
     "StaticEquipmentQuantity": 1,
     "DisplacementDate": "2022-05-13T00:00:00+02:00"
+  },
+  {
+    "Id": 8,
+    "StartRoom": 5,
+    "EndRoom": 7,
+    "StaticEquipmentId": 1,
+    "StaticEquipmentQuantity": 1,
+    "DisplacementDate": "2022-05-16T00:00:00+02:00"
+  },
+  {
+    "Id": 9,
+    "StartRoom": 5,
+    "EndRoom": 7,
+    "StaticEquipmentId": 1,
+    "StaticEquipmentQuantity": 1,
+    "DisplacementDate": "2022-05-16T00:00:00+02:00"
   }
 ]
