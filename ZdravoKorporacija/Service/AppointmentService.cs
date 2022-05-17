@@ -566,6 +566,8 @@ namespace Service
         {
             List<Appointment> allAppointments = this.GetAllAppointments();
             List<BasicRenovation> allBasicRenovations = BasicRenovationRepository.FindAll();
+            List<AdvancedRenovationJoining> advancedRenovationJoinings = AdvancedRenovationJoiningRepository.FindAll();
+            List<AdvancedRenovationSeparation> advancedRenovationSeparations = AdvancedRenovationSeparationRepository.FindAll();
             List<Appointment> neededAppointments = new List<Appointment>();
             foreach (var app in allAppointments)
             {
@@ -580,6 +582,27 @@ namespace Service
                 {
                     Appointment basicRenovationAppointment = new Appointment(br.StartTime, br.Duration, -1, "", "", br.RoomId);
                     neededAppointments.Add(basicRenovationAppointment);
+                }
+            }
+            foreach (var ars in advancedRenovationSeparations)
+            {
+                if (ars.StartTime > DateTime.Now && ars.StartTime.AddMinutes(ars.Duration) > dateFrom && ars.StartTime < dateUntil && ((roomId != null && ars.StartRoomId == roomId)))
+                {
+                    Appointment advancedRenovationAppointment = new Appointment(ars.StartTime, ars.Duration, -1, "", "", ars.StartRoomId);
+                    neededAppointments.Add(advancedRenovationAppointment);
+                }
+            }
+            foreach (var ars in advancedRenovationJoinings)
+            {
+                if (ars.StartTime > DateTime.Now && ars.StartTime.AddMinutes(ars.Duration) > dateFrom && ars.StartTime < dateUntil && ((roomId != null && (ars.FirstStartRoom == roomId || ars.SecondStartRoom == roomId))))
+                {
+                    int whatRoomId = -1;
+                    if (ars.FirstStartRoom == roomId)
+                        whatRoomId = ars.FirstStartRoom;
+                    else
+                        whatRoomId = ars.SecondStartRoom;
+                    Appointment advancedRenovationAppointment = new Appointment(ars.StartTime, ars.Duration, -1, "", "", whatRoomId);
+                    neededAppointments.Add(advancedRenovationAppointment);
                 }
             }
             neededAppointments.Sort((x, y) => DateTime.Compare(x.StartTime.AddMinutes(x.Duration), y.StartTime.AddMinutes(y.Duration)));
