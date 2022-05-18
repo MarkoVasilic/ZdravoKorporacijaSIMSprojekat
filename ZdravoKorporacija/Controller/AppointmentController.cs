@@ -104,7 +104,7 @@ namespace Controller
             return AppointmentService.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
         }
 
-        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForFreeDays(String doctorJmbg,
+        public PossibleAppointmentsDTO GetPossibleAppointmentsForFreeDays(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
             return AppointmentService.GetPossibleAppointmentsForFreeDays(doctorJmbg, dateFrom, dateUntil, duration);

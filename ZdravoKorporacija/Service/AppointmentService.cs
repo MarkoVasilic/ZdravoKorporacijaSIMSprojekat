@@ -272,35 +272,60 @@ namespace Service
             return retValue;
         }
 
-        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForFreeDays(String doctorJmbg,
+        public PossibleAppointmentsDTO GetPossibleAppointmentsForFreeDays(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
             if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
                 throw new Exception("Doctor with that JMBG doesn't exist!");
-            else if (dateFrom > dateUntil)
+            else if (dateFrom > dateUntil || DateTime.Now.AddDays(2) > dateFrom)
                 throw new Exception("Dates are not valid!");
             List<DateTime> possibleAppointments = new List<DateTime>();
-            possibleAppointments = findPossibleStartTimesOfAppointment("", doctorJmbg, -1,
-                dateFrom, dateUntil, duration);
-            while (possibleAppointments.Count == 0)
+            dateFrom = new DateTime(dateFrom.Year, dateFrom.Month, dateFrom.Day, 0, 0, 0);
+            dateUntil = new DateTime(dateUntil.Year, dateUntil.Month, dateUntil.Day, 0, 0, 0);
+            DateTime current = dateFrom;
+            while (current != dateUntil.AddDays(1))
             {
-                dateFrom = dateUntil;
-                dateUntil = dateUntil.AddDays(5);
-                possibleAppointments = findPossibleStartTimesOfAppointment("", doctorJmbg, -1,
-                dateFrom, dateUntil, duration);
+                possibleAppointments.Add(current);
+                current = current.AddDays(1);
             }
-            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
-            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
-            foreach (var pa in possibleAppointments)
+            List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            foreach (var da in doctorAppointments)
             {
-                if (pa > DateTime.Now.AddHours(1))
+                if (da.StartTime >= dateFrom && da.StartTime <= dateUntil)
                 {
-                    PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO("", " ", doctorJmbg,
-                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, selectedDoctor.SpecialtyType, -1, "", pa, duration, -1);
-                    retValue.Add(possibleAppointmentsDTO);
+                    DateTime whatDateToRemove = possibleAppointments[0];
+                    foreach (var pa in possibleAppointments)
+                    {
+                        if (pa.Date == da.StartTime.Date)
+                        {
+                            whatDateToRemove = pa;
+                            break;
+                        }
+                    }
+                    possibleAppointments.Remove(whatDateToRemove);
                 }
             }
-            return retValue;
+            DateTime startDate = possibleAppointments[0];
+            int counter = 1;
+            for (int i = 1; i < possibleAppointments.Count - 1; i++)
+            {
+                if (counter == duration)
+                    break;
+                else if (possibleAppointments[i].Date.AddDays(1) == possibleAppointments[i + 1])
+                    counter++;
+                else
+                {
+                    counter = 1;
+                    i++;
+                    startDate = possibleAppointments[i];
+                }
+            }
+            if (counter == duration)
+            {
+                return new PossibleAppointmentsDTO("", "", doctorJmbg, "", "", -1, "", startDate, duration, -1);
+            }
+            else
+                return null;
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
