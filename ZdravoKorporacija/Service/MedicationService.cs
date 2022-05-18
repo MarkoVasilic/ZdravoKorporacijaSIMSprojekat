@@ -93,7 +93,7 @@ namespace Service
 
         public void Validate(Medication medication)
         {
-            if (!medication.validateMedication())
+            if (!medication.Validate())
             {
                 throw new Exception("Something went wrong");
             }

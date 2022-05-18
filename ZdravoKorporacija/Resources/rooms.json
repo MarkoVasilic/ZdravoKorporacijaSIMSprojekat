@@ -49,9 +49,16 @@
     "typeStr": "SURGERY"
   },
   {
-    "Name": "spojena soba",
+    "Name": "soba razdvojena 1",
     "Id": 23,
-    "Description": "moja spojena soba",
+    "Description": "razdvojena je1",
+    "Type": 1,
+    "typeStr": "EXAMINATION"
+  },
+  {
+    "Name": "soba razdvojena 2",
+    "Id": 24,
+    "Description": "razdvojena je2",
     "Type": 2,
     "typeStr": "CONFERENCE"
   }

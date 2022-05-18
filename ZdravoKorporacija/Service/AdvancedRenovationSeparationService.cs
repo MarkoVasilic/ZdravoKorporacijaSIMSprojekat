@@ -32,7 +32,7 @@ namespace ZdravoKorporacija.Service
 
             AdvancedRenovationSeparation advancedRenovationSeparation = new AdvancedRenovationSeparation(advancedRenovationId, startRoomId, startTime, duration, resultFirstRoomName, resultSecondRoomName, resultFirstRoomDescription, resultSecondRoomDescription, firstRoomType, secondRoomType);
 
-            if (!advancedRenovationSeparation.validate())
+            if (!advancedRenovationSeparation.Validate())
             {
                 throw new Exception("Something went wrong, renovation isn't saved");
             }
@@ -56,14 +56,11 @@ namespace ZdravoKorporacija.Service
             foreach(AdvancedRenovationSeparation advancedRenovationSeparation in advancedRenovationSeparations)
             {
                 Room oldRoom = RoomService.GetRoomById(advancedRenovationSeparation.StartRoomId);
-                Console.WriteLine(advancedRenovationSeparation.StartTime <= DateTime.Today);
                 if (advancedRenovationSeparation.StartTime <= DateTime.Today)
                 {
                     if(oldRoom != null)
                     {
-                        oldRoom.Name = advancedRenovationSeparation.ResultFirstRoomName;
-                        oldRoom.Description = advancedRenovationSeparation.ResultFirstRoomDescription;
-                        oldRoom.Type = advancedRenovationSeparation.FirstRoomType;
+                        ChangeRoomInformation(advancedRenovationSeparation, oldRoom);
                         RoomService.ModifyRoomForRenovation(oldRoom.Id, oldRoom.Name, oldRoom.Description, oldRoom.Type);
                         RoomService.CreateRoom(advancedRenovationSeparation.ResultSecondRoomName, advancedRenovationSeparation.ResultSecondRoomDescription, advancedRenovationSeparation.SecondRoomType);
                         advancedRenovationIds.Add(advancedRenovationSeparation.Id);
@@ -74,8 +71,6 @@ namespace ZdravoKorporacija.Service
                     }
                    
                 }
-
-
             }
 
             for (int i = 0; i <advancedRenovationIds.Count; i++)
@@ -83,6 +78,13 @@ namespace ZdravoKorporacija.Service
                 AdvancedRenovationSeparationRepository.RemoveAdvancedRenovationSeparation(advancedRenovationSeparations[i].Id);
             }
 
+        }
+
+        public void ChangeRoomInformation(AdvancedRenovationSeparation advancedRenovationSeparation, Room room)
+        {
+            room.Name = advancedRenovationSeparation.ResultFirstRoomName;
+            room.Description = advancedRenovationSeparation.ResultFirstRoomDescription;
+            room.Type = advancedRenovationSeparation.FirstRoomType;
         }
 
         public int GenerateNewId()

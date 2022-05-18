@@ -38,7 +38,7 @@ namespace ZdravoKorporacija.Model
             SecondRoomType = secondRoomType;
         }
 
-        public Boolean validate()
+        public Boolean Validate()
         {
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
 

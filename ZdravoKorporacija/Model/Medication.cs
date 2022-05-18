@@ -28,7 +28,7 @@ namespace Model
 
         }
 
-        public Boolean validateMedication()
+        public Boolean Validate()
         {
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))

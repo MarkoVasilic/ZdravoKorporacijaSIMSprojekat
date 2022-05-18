@@ -290,7 +290,7 @@ namespace ZdravoKorporacija
 
 
             //NAPREDNO RENOVIRANJE - RAZDVAJANJE
-            /* int index = 0;
+             /*int index = 0;
              List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
              {
@@ -312,14 +312,14 @@ namespace ZdravoKorporacija
                  {
                      advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
                  }
-             }*/
+             }
+             */
 
-
-            //advancedRenovationSeparationController.Separate();
+            advancedRenovationSeparationController.Separate();
 
 
             //NAPREDNO RENOVIRANJE - SPAJANJE
-            /* int index = 0;
+             /*int index = 0;
               List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 24, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
               foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
               {
@@ -341,8 +341,8 @@ namespace ZdravoKorporacija
                   {
                      advancedRenovationJoiningController.Create(23, 24, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
                   }
-              }
-            */
+              }*/
+            
 
             //advancedRenovationJoiningController.Join();
 

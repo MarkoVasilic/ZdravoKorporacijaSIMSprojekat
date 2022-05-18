@@ -56,16 +56,9 @@ namespace ZdravoKorporacija.Service
 
                 if (oldRoom != null)
                 {
-                    oldRoom.Name = advancedRenovation.ResultRoomName;
-                    oldRoom.Description = advancedRenovation.ResultRoomDescription;
-                    oldRoom.Type = advancedRenovation.ResultRoomType;
+                    ChangeRoomInformations(advancedRenovation, oldRoom);
                     RoomService.ModifyRoomForRenovation(oldRoom.Id, oldRoom.Name, oldRoom.Description, oldRoom.Type);
-                    AppointmentService.DeleteAppointmentByRoomId(advancedRenovation.SecondStartRoom);
-                    BasicRenovationService.DeleteByRoomId(advancedRenovation.SecondStartRoom);
-                    EquipmentService.DeleteByRoomId(advancedRenovation.SecondStartRoom);
-                    EquipmentService.DeleteDisplacementByStartRoomId(advancedRenovation.SecondStartRoom);
-                    EquipmentService.DeleteDisplacementByEndRoomId(advancedRenovation.SecondStartRoom);
-                    RoomService.DeleteRoom(advancedRenovation.SecondStartRoom);
+                    DeleteEverythingForRoom(advancedRenovation.SecondStartRoom);
                     advancedRenovationIds.Add(advancedRenovation.Id);
 
                 }
@@ -73,8 +66,6 @@ namespace ZdravoKorporacija.Service
                 {
                     throw new Exception("Room with that identification number doesn't exist");
                 }
-               
-
             }
 
             for (int i = 0; i < advancedRenovationIds.Count; i++)
@@ -82,6 +73,24 @@ namespace ZdravoKorporacija.Service
                 AdvancedRenovationJoiningRepository.RemoveAdvancedRenovationJoining(advancedRenovationIds[i]);
             }
 
+        }
+
+        public void ChangeRoomInformations(AdvancedRenovationJoining advancedRenovationJoining, Room room)
+        {
+            room.Name = advancedRenovationJoining.ResultRoomName;
+            room.Description = advancedRenovationJoining.ResultRoomDescription;
+            room.Type = advancedRenovationJoining.ResultRoomType;
+
+        }
+
+        public void DeleteEverythingForRoom(int roomId)
+        {
+            AppointmentService.DeleteAppointmentByRoomId(roomId);
+            BasicRenovationService.DeleteByRoomId(roomId);
+            EquipmentService.DeleteByRoomId(roomId);
+            EquipmentService.DeleteDisplacementByStartRoomId(roomId);
+            EquipmentService.DeleteDisplacementByEndRoomId(roomId);
+            RoomService.DeleteRoom(roomId);
         }
 
 
