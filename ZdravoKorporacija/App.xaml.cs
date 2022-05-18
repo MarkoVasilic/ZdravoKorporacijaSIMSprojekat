@@ -319,8 +319,7 @@ namespace ZdravoKorporacija
                  {
                      advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
                  }
-             }
-             */
+             }*/
 
             //advancedRenovationSeparationController.Separate();
             appointmentController.GetPossibleAppointmentsForFreeDays("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
