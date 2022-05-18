@@ -41,6 +41,22 @@ namespace Repository
             return result;
         }
 
+        //Nova metoda za jovanovo ocijenivanje pregleda i doktora
+        public List<Appointment> GetAllPastAppointmentsByPatient(String patientJmbg)
+        {
+            var values = GetValues();
+            List<Model.Appointment> result = new List<Model.Appointment>();
+            foreach (Appointment appointment in values)
+                if (appointment.PatientJmbg.Equals(patientJmbg))
+                {
+                    if (appointment.StartTime < System.DateTime.Now)
+                    {
+                        result.Add(appointment);
+                    }
+                }
+            return result;
+        }
+
 
 
 

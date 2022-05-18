@@ -1,0 +1,13 @@
+﻿[
+  {
+    "Id": 1,
+    "AppointmentId": 1,
+    "HospitalRating": 5,
+    "DoctorRating": 4,
+    "Desc": "Bolnica fenomenalno cista i doktor izuzetno profesionalan!",
+    "RatingDate": "2022-05-10T00:27:29.9947826+02:00",
+    "PatientId": "7778889994445",
+    "DoctorId": "1231231231231"
+
+  }
+]

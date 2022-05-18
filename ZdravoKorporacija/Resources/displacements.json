@@ -62,5 +62,29 @@
     "StaticEquipmentId": 1,
     "StaticEquipmentQuantity": 1,
     "DisplacementDate": "2022-05-17T00:00:00+02:00"
+  },
+  {
+    "Id": 9,
+    "StartRoom": 5,
+    "EndRoom": 7,
+    "StaticEquipmentId": 1,
+    "StaticEquipmentQuantity": 1,
+    "DisplacementDate": "2022-05-17T00:00:00+02:00"
+  },
+  {
+    "Id": 10,
+    "StartRoom": 5,
+    "EndRoom": 7,
+    "StaticEquipmentId": 1,
+    "StaticEquipmentQuantity": 1,
+    "DisplacementDate": "2022-05-17T00:00:00+02:00"
+  },
+  {
+    "Id": 11,
+    "StartRoom": 5,
+    "EndRoom": 7,
+    "StaticEquipmentId": 1,
+    "StaticEquipmentQuantity": 1,
+    "DisplacementDate": "2022-05-17T00:00:00+02:00"
   }
 ]
