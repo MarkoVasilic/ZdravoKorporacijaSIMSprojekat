@@ -1,8 +1,10 @@
 ﻿using Controller;
 using Service;
 using Repository;
+using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,26 +17,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
-using Model;
-using System.Collections.ObjectModel;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
     /// <summary>
-    /// Interaction logic for ViewMedicalRecordPage.xaml
+    /// Interaction logic for PrescriptionsPage.xaml
     /// </summary>
-    public partial class ViewMedicalRecordPage : Page
+    public partial class PrescriptionsPage : Page
     {
         public MedicalRecordController MedicalRecordController { get; set; }
-
-        public MedicalRecordDTO MedicalRecordDTO { get; set; }
-        public ObservableCollection<Anamnesis> Anamensis { get; set; }
-
-        public ViewMedicalRecordPage(String Jmbg)
+        public ObservableCollection<Prescription> Prescriptions { get; set; }
+        public PrescriptionsPage(String Jmbg)
         {
-            DoctorWindowVM.setWindowTitle("Medical Record");
+            InitializeComponent();
+            this.DataContext = this;
+            DoctorWindowVM.setWindowTitle("Prescriptions");
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
@@ -46,31 +44,14 @@ namespace ZdravoKorporacija.View.DoctorUI
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
-            this.MedicalRecordDTO = MedicalRecordController.GetOneMedicalRecorByPatientJmbg(Jmbg);
-            this.Anamensis = new ObservableCollection<Anamnesis>(this.MedicalRecordDTO.Anamnesis);
-            this.DataContext = this;
-            InitializeComponent();
-
+            List<Prescription> prescriptions = MedicalRecordController.GetOneMedicalRecorByPatientJmbg(Jmbg).Prescriptions;
+            this.Prescriptions = new ObservableCollection<Prescription>(prescriptions);
+            
         }
 
-        private void ViewPrescriptions(object sender, RoutedEventArgs e)
+        private void AddPrescriptionButton_Click(object sender, RoutedEventArgs e)
         {
-            String Jmbg = (String)((Button)sender).CommandParameter;
-            NavigationService.Navigate(new PrescriptionsPage(Jmbg));
-        }
-
-        private void AddAnamnesisButton_Click(object sender, RoutedEventArgs e)
-        {
-            String Jmbg = (String)((Button)sender).CommandParameter;
-            NavigationService.Navigate(new AddAnamnesisPage(Jmbg));
-
-        }
-
-        private void ModifyAnamnesis(object sender, RoutedEventArgs e)
-        {
-            Anamnesis Anamnesis = (Anamnesis)((Button)sender).CommandParameter;
-            int id = Anamnesis.Id;
-            NavigationService.Navigate(new ModifyAnamnesisPage(id));
+            //
         }
     }
 }

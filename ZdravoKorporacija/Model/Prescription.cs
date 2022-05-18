@@ -5,12 +5,12 @@ namespace Model
 {
     public class Prescription
     {
-        public int Id;
-        public String Medication;
-        public String Amount;
-        public int Frequency;
-        public DateTime From;
-        public DateTime To;
+        public int Id { get; set; }
+        public String Medication { get; set; }
+        public String Amount { get; set; }
+        public int Frequency { get; set; }
+        public DateTime From { get; set; }
+        public DateTime To { get; set; }
 
         public Prescription()
         {

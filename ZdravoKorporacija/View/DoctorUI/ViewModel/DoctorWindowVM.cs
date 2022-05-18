@@ -24,6 +24,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         public ICommand LogOutCommand { get; set; }
         //public ICommand ProfileCommand { get; set; }
         //public ICommand NotificationsCommand { get; set; }
+        public ICommand ViewMedicalRecordCommand { get; set; }
 
         public static void setWindowTitle(string newTitle)
         {
@@ -39,6 +40,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             HomeCommand = new RelayCommand(homeExecute);
             LogOutCommand = new RelayCommand(logOutExecute);
             PatientsCommand = new RelayCommand(medicalRecordsExecute);
+            ViewMedicalRecordCommand = new RelayCommand(viewMedicalRecordExecute);
         }
 
         private void homeExecute(object parametar)
@@ -49,8 +51,14 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
 
         private void medicalRecordsExecute(object parametar)
         {
-            setWindowTitle("Medical Records");
+            setWindowTitle("Patients");
             NavigationService.Navigate(new MedicalRecords());
+        }
+
+        private void viewMedicalRecordExecute(object parametar)
+        {
+            setWindowTitle("Medical Record");
+            NavigationService.Navigate(new ViewMedicalRecordPage(parametar as String));
         }
 
         private void logOutExecute(object parameter)

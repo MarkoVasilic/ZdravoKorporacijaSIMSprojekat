@@ -13,10 +13,13 @@ namespace ZdravoKorporacija.DTO
         public Gender Gender { get; set; }
         public List<String>? Allergens { get; set; }
         public BloodType BloodTypeEnum { get; set; }
+        public String PhoneNumber { get; set; }
+        public String Email { get; set; }
+        public String Address { get; set; }
         public List<Anamnesis>? Anamnesis { get; set; }
         public List<Prescription>? Prescriptions { get; set; }
 
-        public MedicalRecordDTO(string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, List<string>? allergens, BloodType bloodTypeEnum, List<Anamnesis>? anamnesis, List<Prescription>? prescriptions)
+        public MedicalRecordDTO(string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, List<string>? allergens, BloodType bloodTypeEnum, String phoneNumber, string email, string address, List<Anamnesis>? anamnesis, List<Prescription>? prescriptions)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -25,6 +28,9 @@ namespace ZdravoKorporacija.DTO
             Gender = gender;
             Allergens = allergens;
             BloodTypeEnum = bloodTypeEnum;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Address = address;
             Anamnesis = anamnesis;
             Prescriptions = prescriptions;
         }

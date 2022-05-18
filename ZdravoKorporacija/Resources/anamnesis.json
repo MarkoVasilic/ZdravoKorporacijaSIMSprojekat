@@ -7,13 +7,6 @@
     "DoctorJmbg": "1231231231231"
   },
   {
-    "Id": 2,
-    "Diagnosis": "Covid19",
-    "Report": "Sweating, headache, dehydration, general weakness.",
-    "DateTime": "2022-05-02T00:15:00",
-    "DoctorJmbg": "1231231231231"
-  },
-  {
     "Id": 4,
     "Diagnosis": "Fever",
     "Report": "new Report",
@@ -35,17 +28,52 @@
     "DoctorJmbg": "4444444444444"
   },
   {
-    "Id": 7,
-    "Diagnosis": "Fever",
-    "Report": "new Report",
-    "DateTime": "2022-05-05T17:41:29.0223918+02:00",
+    "Id": 9,
+    "Diagnosis": "novaa",
+    "Report": "fghjkl",
+    "DateTime": "2022-05-16T19:41:50.05619+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 2,
+    "Diagnosis": "Covid19",
+    "Report": "Sweating, weakness",
+    "DateTime": "2022-05-17T19:31:01.4211849+02:00",
     "DoctorJmbg": "4444444444444"
   },
   {
     "Id": 8,
-    "Diagnosis": "modOdbranaDiagnose",
-    "Report": "modOdbranaReport",
-    "DateTime": "2022-05-06T00:13:52.798977+02:00",
+    "Diagnosis": "modDiagnose",
+    "Report": "m",
+    "DateTime": "2022-05-17T19:35:33.6313333+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 7,
+    "Diagnosis": "modify",
+    "Report": "new Report",
+    "DateTime": "2022-05-17T21:27:34.8042355+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 11,
+    "Diagnosis": "new anamnesis",
+    "Report": "new report",
+    "DateTime": "2022-05-18T11:43:58.2169745+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 12,
+    "Diagnosis": "proba ",
+    "Report": "peoba",
+    "DateTime": "2022-05-18T11:44:13.2640579+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 10,
+    "Diagnosis": "radi",
+    "Report": "radi",
+    "DateTime": "2022-05-18T11:47:25.5165129+02:00",
     "DoctorJmbg": "4444444444444"
   }
 ]
