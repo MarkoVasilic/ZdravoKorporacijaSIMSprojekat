@@ -30,6 +30,8 @@ namespace ZdravoKorporacija
         public static MedicalRecordController? medicalRecordController { get; set; }
 
         public static NotificationController? notificationController { get; set; }
+
+        public static RatingController? ratingController { get; set; }
         public App()
         {
             
@@ -76,7 +78,9 @@ namespace ZdravoKorporacija
             AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
             AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService);
             AdvancedRenovationJoiningController advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
-
+            RatingRepository ratingRepository = new RatingRepository();
+            RatingService ratingService = new RatingService(ratingRepository, appointmentRepository);
+            ratingController = new RatingController(ratingService);
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -322,35 +326,35 @@ namespace ZdravoKorporacija
             appointmentController.GetPossibleAppointmentsForFreeDays("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
 
             //NAPREDNO RENOVIRANJE - SPAJANJE
-             /*int index = 0;
-              List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 24, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
-              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
-              {
-                  Console.WriteLine(index.ToString());
-                  possibleAppointment.toStringManager();
-                  index++;
-              }
+            /*int index = 0;
+             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 24, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+             foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+             {
+                 Console.WriteLine(index.ToString());
+                 possibleAppointment.toStringManager();
+                 index++;
+             }
 
 
-              string checkedAppointment;
+             string checkedAppointment;
 
-              Console.WriteLine("Unesite broj termina koji zelite");
-              checkedAppointment = Console.ReadLine();
-              int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+             Console.WriteLine("Unesite broj termina koji zelite");
+             checkedAppointment = Console.ReadLine();
+             int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
 
-              for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
-              {
-                  if (checkedAppointmentIndex == i)
-                  {
-                     advancedRenovationJoiningController.Create(23, 24, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
-                  }
-              }*/
-            
+             for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
+             {
+                 if (checkedAppointmentIndex == i)
+                 {
+                    advancedRenovationJoiningController.Create(23, 24, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
+                 }
+             }*/
+
 
             //advancedRenovationJoiningController.Join();
 
 
-
+            ratingController.Create(1, 5, 5, "Fenomenalno");
         }
 
     }

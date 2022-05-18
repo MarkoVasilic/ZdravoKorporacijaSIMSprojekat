@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.Service
 
         public RatingService() { }
 
-        public List<Rating> GetAllRatings()
+        public List<Rating> GetAll()
         {
             return RatingRepository.FindAll();
         }
@@ -43,7 +43,7 @@ namespace ZdravoKorporacija.Service
             }
         }
 
-        public void DeleteRating(int ratingId)
+        public void Delete(int ratingId)
         {
             if (RatingRepository.FindOneById(ratingId) == null)
             {
@@ -51,30 +51,9 @@ namespace ZdravoKorporacija.Service
             }
             else
             {
-                RatingRepository.RemoveRating(ratingId);
+                RatingRepository.Remove(ratingId);
             }
         }
-
-        /* public void ModifyRating(int ratingId, DateTime newDate)
-         {
-
-             var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
-             if (oneAppointment == null)
-             {
-                 throw new Exception("Appointment with that id doesn't exist!");
-             }
-             else
-             {
-                 Appointment newAppointment = new Appointment(newDate, oneAppointment.Duration, oneAppointment.Id, oneAppointment.PatientJmbg,
-                     oneAppointment.DoctorJmbg, oneAppointment.RoomId);
-                 if (!newAppointment.validateAppointment())
-                 {
-                     throw new Exception("Something went wrong, new appointment isn't modified!");
-                 }
-                 AppointmentRepository.UpdateAppointment(newAppointment);
-             }
-
-         } */
 
 
         public Rating? GetOneById(int ratingId)
@@ -85,23 +64,17 @@ namespace ZdravoKorporacija.Service
 
         public List<Rating> GetRatingsByDoctorJmbg(String doctorJmbg)
         {
-            return RatingRepository.FindAllByDoctorJmbg(doctorJmbg);
+            return RatingRepository.FindAllRatingsByDoctorJmbg(doctorJmbg);
         }
 
-        public void CreateRatingByPatient(int appointmentId,int hospitalRating,int doctorRating,String desc)
+        public void Create(int appointmentId,int hospitalRating,int doctorRating,String desc)
         {
             int id = GenerateNewId();
             Appointment appointment = AppointmentRepository.FindOneById(appointmentId);
-
-            Rating rating = new Rating(id, appointment.Id, hospitalRating, doctorRating, desc, System.DateTime.Now, App.loggedUser.Jmbg, appointment.DoctorJmbg);
+            
+            Rating rating = new Rating(id, appointment.Id, hospitalRating, doctorRating, desc, System.DateTime.Now, "7778889994445", appointment.DoctorJmbg);
             RatingRepository.SaveRating(rating);
             
-            //izmjeniti VALIDACIJU
-          /*  if (!appointment.validateAppointment())
-            {
-                throw new Exception("Something went wrong, new appointment isn't created!");
-            }
-          */
         }
 
     }

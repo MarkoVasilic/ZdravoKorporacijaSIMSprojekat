@@ -20,7 +20,7 @@ namespace ZdravoKorporacija.Repository
         }
 
         //Metoda za upravnika, da dobavi sve ocijene za konkretnog doktora
-        public List<Rating> FindAllByDoctorJmbg(String doctorJmbg)
+        public List<Rating> FindAllRatingsByDoctorJmbg(String doctorJmbg)
         {
             var values = GetValues();
             List<Rating> result = new List<Rating>();
@@ -37,7 +37,7 @@ namespace ZdravoKorporacija.Repository
             Save(values);
         }
 
-        public void RemoveRating(int ratingId)
+        public void Remove(int ratingId)
         {
             var values = GetValues();
             values.RemoveAll(val => val.Id == ratingId);
@@ -70,7 +70,7 @@ namespace ZdravoKorporacija.Repository
         }
 
 
-        public void UpdateRating(Rating ratingToModify)
+        public void Update(Rating ratingToModify)
         {
             var oneRating = FindOneById(ratingToModify.Id);
             if (oneRating != null)

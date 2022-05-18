@@ -17,14 +17,14 @@ namespace ZdravoKorporacija.Controller
             this.RatingService = ratingService;
         }
 
-        public List<Rating> GetAllRatings()
+        public List<Rating> GetAll()
         {
-            return RatingService.GetAllRatings();
+            return RatingService.GetAll();
         }
 
         public void DeleteRating(int ratingId)
         {
-            RatingService.DeleteRating(ratingId);
+            RatingService.Delete(ratingId);
         }
 
         public Rating GetOneById(int ratingId)
@@ -37,9 +37,9 @@ namespace ZdravoKorporacija.Controller
             return RatingService.GetRatingsByDoctorJmbg(doctorJmbg);
         }
 
-        public void CreateRatingByPatient(int appointmentId, int hospitalRating, int doctorRating, String desc)
+        public void Create(int appointmentId, int hospitalRating, int doctorRating, String desc)
         {
-            RatingService.CreateRatingByPatient(appointmentId, hospitalRating, doctorRating, desc);
+            RatingService.Create(appointmentId, hospitalRating, doctorRating, desc);
         }
 
     }

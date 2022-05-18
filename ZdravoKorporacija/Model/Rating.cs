@@ -24,7 +24,7 @@ namespace ZdravoKorporacija.Model
             this.AppointmentId = appointmentId;
             this.HospitalRating = hospitalRating;
             this.DoctorRating = doctorRating;
-            this.Desc = "";
+            this.Desc = desc;
             this.RatingDate = dateTime;
             this.PatientId = patientId;
             this.DoctorId = doctorId;
