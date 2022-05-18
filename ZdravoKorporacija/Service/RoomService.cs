@@ -84,20 +84,20 @@ namespace Service
 
         }
 
-        public void ModifyRoomForRenovation(int roomId, String roomName, String roomDescription, RoomType roomType)
+        public void ModifyRoomForRenovation(Room room)
         {
-            if (RoomRepository.FindOneById(roomId) == null)
+            if (RoomRepository.FindOneById(room.Id) == null)
             {
                 throw new Exception("Prostorija sa tim ID-em ne postoji");
             }
-            else if (RoomRepository.FindOneByName(roomName) != null)
+            else if (RoomRepository.FindOneByName(room.Name) != null)
             {
                 throw new Exception("Prostorija sa tim nazivom vec postoji.");
             }
             else
             {
-                Room oldRoom = RoomRepository.FindOneById(roomId);
-                Room newRoom = new Room(roomName, oldRoom.Id, roomDescription, roomType);
+                Room oldRoom = RoomRepository.FindOneById(room.Id);
+                Room newRoom = new Room(room.Name, oldRoom.Id, room.Description, room.Type);
 
                 if (!newRoom.validateRoom())
                 {

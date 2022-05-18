@@ -315,7 +315,7 @@ namespace ZdravoKorporacija
              }
              */
 
-            advancedRenovationSeparationController.Separate();
+            //advancedRenovationSeparationController.Separate();
 
 
             //NAPREDNO RENOVIRANJE - SPAJANJE
