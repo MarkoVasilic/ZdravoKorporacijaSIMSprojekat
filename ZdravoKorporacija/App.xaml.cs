@@ -313,7 +313,7 @@ namespace ZdravoKorporacija
 
 
             //advancedRenovationSeparationController.Separate();
-
+            appointmentController.GetPossibleAppointmentsForFreeDays("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
 
 
 
