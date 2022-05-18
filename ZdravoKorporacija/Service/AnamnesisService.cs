@@ -10,11 +10,13 @@ namespace Service
     {
         private readonly AnamnesisRepository AnamnesisRepository;
         private readonly MedicalRecordRepository MedicalRecordRepository;
+        private readonly DoctorRepository DoctorRepository;
 
-        public AnamnesisService(AnamnesisRepository anamnesisRepository, MedicalRecordRepository medicalRecordRepository)
+        public AnamnesisService(AnamnesisRepository anamnesisRepository, MedicalRecordRepository medicalRecordRepository, DoctorRepository doctorRepository)
         {
-            this.AnamnesisRepository = anamnesisRepository;
-            this.MedicalRecordRepository = medicalRecordRepository;
+            AnamnesisRepository = anamnesisRepository;
+            MedicalRecordRepository = medicalRecordRepository;
+            DoctorRepository = doctorRepository;
         }
 
         public AnamnesisService()
@@ -98,7 +100,7 @@ namespace Service
             var oneAnamnesis = AnamnesisRepository.FindOneById(anamnesisId);
             Anamnesis newAnamnesis = new Anamnesis(oneAnamnesis.Id, diagnosis, report, DateTime.Now, "4444444444444"); //vreme postaje vreme izmene
 
-            if (!oneAnamnesis.validateAnamnesis())
+            if (!newAnamnesis.validateAnamnesis())
             {
                 throw new Exception("Something went wrong, anamnesis isn't updated!");
             }

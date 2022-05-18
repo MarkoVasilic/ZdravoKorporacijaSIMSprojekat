@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using System.ComponentModel;
+using System.Windows.Navigation;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
@@ -27,6 +28,7 @@ namespace ZdravoKorporacija.View.DoctorUI
     public partial class MedicalRecords : Page
     {
         private MedicalRecordController medicalRecordController;
+
 
         public ObservableCollection<MedicalRecordDTO> medicalrecords { get; set; }
         public MedicalRecords()
@@ -38,17 +40,23 @@ namespace ZdravoKorporacija.View.DoctorUI
             PatientRepository patientRepository = new PatientRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             MedicationRepository medicationRepository = new MedicationRepository();
+            DoctorRepository doctorRepository = new DoctorRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             medicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
             this.DataContext = this;
             medicalrecords = new ObservableCollection<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
+            
         }
 
 
         private void ViewMedicalRecord(object sender, RoutedEventArgs e)
         {
+            String Jmbg = (String)((Button)sender).CommandParameter;
+            NavigationService.Navigate(new ViewMedicalRecordPage(Jmbg));
+
+
         }
     }
 }

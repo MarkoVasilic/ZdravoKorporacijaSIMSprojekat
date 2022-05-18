@@ -7,9 +7,10 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
         mc:Ignorable="d"
         Title="DoctorWindow" TextBlock.TextAlignment="Center" Height="800" Width="1280"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Times New Roman">
     <Grid>
-        <Frame x:Name="DoctorMainFrame"></Frame>
+        <Frame x:Name="DoctorMainFrame" Height="720"></Frame>
         <Grid x:Name="GridBackground">
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"></RowDefinition>
@@ -21,8 +22,8 @@
                 <ColumnDefinition Width="395"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Rectangle Grid.Row="0" Grid.ColumnSpan="3" Fill="White"></Rectangle>
-           
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top">
+
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FF01041C">
                 <TextBlock x:Name="WindowTitle" FontSize="45" FontWeight="Bold" Foreground="White" Text="{Binding Path=Title, Mode=OneWay}"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">

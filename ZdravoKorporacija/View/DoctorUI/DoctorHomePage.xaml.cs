@@ -19,7 +19,7 @@ namespace ZdravoKorporacija.View.DoctorUI
         {
             DoctorWindowVM.setWindowTitle("Appointment Schedule");
             InitializeComponent();
-            DataContext = doctorWindowVM;
+            this.DataContext = doctorWindowVM;
         }
     }
 }

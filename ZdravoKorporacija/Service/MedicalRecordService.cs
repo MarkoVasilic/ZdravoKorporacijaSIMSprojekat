@@ -31,31 +31,10 @@ namespace Service
         {
             List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>();
             List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
-            //Console.WriteLine(medicalRecords.Count());
             foreach(MedicalRecord medicalRecord in medicalRecords)
             {
 
-                MedicalRecordDTO medicalRecordDTO = new MedicalRecordDTO();
-                String patientJmbg = medicalRecord.PatientJmbg;
-                List<Anamnesis> anamnesis = new List<Anamnesis>();
-                List<Prescription> prescriptions = new List<Prescription>();
-                foreach (int id in medicalRecord.AnamnesisIds)
-                {
-                    anamnesis.Add(AnamnesisRepository.FindOneById(id));
-                }
-                foreach (int id in medicalRecord.PrescriptionIds)
-                {
-                    prescriptions.Add(PrescriptionRepository.FindOneById(id));
-                }
-                medicalRecordDTO.FirstName = PatientRepository.FindOneByJmbg(patientJmbg).FirstName;
-                medicalRecordDTO.LastName = PatientRepository.FindOneByJmbg(patientJmbg).LastName;
-                medicalRecordDTO.Jmbg = PatientRepository.FindOneByJmbg(patientJmbg).Jmbg;
-                medicalRecordDTO.DateOfBirth = PatientRepository.FindOneByJmbg(patientJmbg).DateOfBirth;
-                medicalRecordDTO.Gender = PatientRepository.FindOneByJmbg(patientJmbg).Gender;
-                medicalRecordDTO.Allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
-                medicalRecordDTO.BloodTypeEnum = PatientRepository.FindOneByJmbg(patientJmbg).BloodTypeEnum;
-                medicalRecordDTO.Anamnesis = anamnesis;
-                medicalRecordDTO.Prescriptions = prescriptions;
+                MedicalRecordDTO medicalRecordDTO = GetOneByPatientJmbg(medicalRecord.PatientJmbg);
 
                 medicalRecordDTOs.Add(medicalRecordDTO);
 
@@ -86,6 +65,9 @@ namespace Service
             medicalRecordDTO.Gender = PatientRepository.FindOneByJmbg(patientJmbg).Gender;
             medicalRecordDTO.Allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
             medicalRecordDTO.BloodTypeEnum = PatientRepository.FindOneByJmbg(patientJmbg).BloodTypeEnum;
+            medicalRecordDTO.PhoneNumber = PatientRepository.FindOneByJmbg(patientJmbg).PhoneNumber;
+            medicalRecordDTO.Email = PatientRepository.FindOneByJmbg(patientJmbg).Email;
+            medicalRecordDTO.Address = PatientRepository.FindOneByJmbg(patientJmbg).Address;
             medicalRecordDTO.Anamnesis = anamnesis;
             medicalRecordDTO.Prescriptions = prescriptions;
 

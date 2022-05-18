@@ -6,13 +6,10 @@ namespace Model
     public class Anamnesis
     {
         public int Id;
-        public String Diagnosis;
-        public String Report;
-        public DateTime DateTime; //datum i vreme izvestaja
-        public String DoctorJmbg;
-
-        //null validacija, doctorJmbg
-
+        public String Diagnosis { get; set; }
+        public String Report { get; set; }
+        public DateTime DateTime { get; set; } //datum i vreme izvestaja
+        public String DoctorJmbg { get; set; }
         public Anamnesis()
         {
         }
@@ -31,9 +28,9 @@ namespace Model
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
                 return false;
-            else if (Diagnosis == null)
+            else if (Diagnosis.Length < 2)
                 return false;
-            else if (Report == null)
+            else if (Report.Length < 2)
                 return false;
             else if (DateTime == null)
                 return false;
@@ -50,7 +47,7 @@ namespace Model
             Console.WriteLine("Diagnosis: " + Diagnosis);
             Console.WriteLine("Report: " + Report);
             Console.WriteLine("DateTime: " + DateTime);
-            Console.WriteLine("DoctorJmbg: " + DoctorJmbg);
+            Console.WriteLine("Doctor: " + DoctorJmbg);
             Console.WriteLine();
         }
     }

@@ -56,7 +56,7 @@ namespace ZdravoKorporacija
             EquipmentController equipmentController = new EquipmentController(equipmentService);
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicationRepository medicationRepository = new MedicationRepository();
@@ -101,10 +101,9 @@ namespace ZdravoKorporacija
             //**********************************************************       KT3      ********************************************************************
 
 
-            //medicalRecordController.GetAllMedicalRecords();
-            List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
+            /*List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
             foreach (MedicalRecordDTO medicalRecordDTO in medicalRecordDTOs)
-                medicalRecordDTO.ToString();
+                medicalRecordDTO.ToString();*/
 
 
             //LISTA ZAKAZANIH TERMINA I KARTON ZA ODREDJENI TERMIN
@@ -115,6 +114,9 @@ namespace ZdravoKorporacija
             int app = Int16.Parse(Console.ReadLine());
             MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByAppointmentId(app);
             medicalRecordDTO.ToString();*/
+
+            //medicalRecordController.GetOneMedicalRecorByPatientJmbg("7778889994445");
+            //medicalRecordController.GetOneAnamnesisById(2);
 
             //ANAMNEZE
             //medicalRecordController.CreateAnamnesis("7778889994445", "novaDijagnoza", "noviIzvestaj");
