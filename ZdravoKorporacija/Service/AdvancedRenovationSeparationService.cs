@@ -55,27 +55,33 @@ namespace ZdravoKorporacija.Service
 
             foreach(AdvancedRenovationSeparation advancedRenovationSeparation in advancedRenovationSeparations)
             {
-                Room oldRoom = RoomService.GetRoomById(advancedRenovationSeparation.StartRoomId);
-                if (advancedRenovationSeparation.StartTime <= DateTime.Today)
-                {
-                    if(oldRoom != null)
-                    {
-                        ChangeRoomInformation(advancedRenovationSeparation, oldRoom);
-                        RoomService.ModifyRoomForRenovation(oldRoom.Id, oldRoom.Name, oldRoom.Description, oldRoom.Type);
-                        RoomService.CreateRoom(advancedRenovationSeparation.ResultSecondRoomName, advancedRenovationSeparation.ResultSecondRoomDescription, advancedRenovationSeparation.SecondRoomType);
-                        advancedRenovationIds.Add(advancedRenovationSeparation.Id);
-                    }
-                    else
-                    {
-                        throw new Exception("Room with that identification number doesn't exits");
-                    }
-                   
-                }
+                PerformSeparation(advancedRenovationSeparation, advancedRenovationIds);
             }
 
             for (int i = 0; i <advancedRenovationIds.Count; i++)
             {
                 AdvancedRenovationSeparationRepository.RemoveAdvancedRenovationSeparation(advancedRenovationSeparations[i].Id);
+            }
+        }
+
+
+        public void PerformSeparation(AdvancedRenovationSeparation advancedRenovationSeparation, List<int> renovationIds)
+        {
+
+            Room oldRoom = RoomService.GetRoomById(advancedRenovationSeparation.StartRoomId);
+            if(advancedRenovationSeparation.StartTime <= DateTime.Today)
+            {
+                if (oldRoom != null)
+                {
+                    ChangeRoomInformation(advancedRenovationSeparation, oldRoom);
+                    RoomService.ModifyRoomForRenovation(oldRoom);
+                    RoomService.CreateRoom(advancedRenovationSeparation.ResultSecondRoomName, advancedRenovationSeparation.ResultSecondRoomDescription, advancedRenovationSeparation.SecondRoomType);
+                    renovationIds.Add(advancedRenovationSeparation.Id);
+                }
+                else
+                {
+                    throw new Exception("Room with that identification number doesn't exits");
+                }
             }
 
         }

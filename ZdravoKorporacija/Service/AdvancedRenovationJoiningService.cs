@@ -51,21 +51,7 @@ namespace ZdravoKorporacija.Service
 
             foreach (AdvancedRenovationJoining advancedRenovation in advancedRenovations)
             {
-
-                Room oldRoom = RoomService.GetRoomById(advancedRenovation.FirstStartRoom);
-
-                if (oldRoom != null)
-                {
-                    ChangeRoomInformations(advancedRenovation, oldRoom);
-                    RoomService.ModifyRoomForRenovation(oldRoom.Id, oldRoom.Name, oldRoom.Description, oldRoom.Type);
-                    DeleteEverythingForRoom(advancedRenovation.SecondStartRoom);
-                    advancedRenovationIds.Add(advancedRenovation.Id);
-
-                }
-                else
-                {
-                    throw new Exception("Room with that identification number doesn't exist");
-                }
+                PerformJoining(advancedRenovation, advancedRenovationIds);
             }
 
             for (int i = 0; i < advancedRenovationIds.Count; i++)
@@ -75,7 +61,30 @@ namespace ZdravoKorporacija.Service
 
         }
 
-        public void ChangeRoomInformations(AdvancedRenovationJoining advancedRenovationJoining, Room room)
+        public void PerformJoining(AdvancedRenovationJoining advancedRenovation, List<int> renovationIds)
+        {
+
+            Room oldRoom = RoomService.GetRoomById(advancedRenovation.FirstStartRoom);
+
+            if(advancedRenovation.StartTime <= DateTime.Today)
+            {
+                if (oldRoom != null)
+                {
+                    ChangeRoomInformation(advancedRenovation, oldRoom);
+                    RoomService.ModifyRoomForRenovation(oldRoom);
+                    DeleteEverythingForRoom(advancedRenovation.SecondStartRoom);
+                    renovationIds.Add(advancedRenovation.Id);
+
+                }
+                else
+                {
+                    throw new Exception("Room with that identification number doesn't exist");
+                }
+            }
+        }
+
+
+        public void ChangeRoomInformation(AdvancedRenovationJoining advancedRenovationJoining, Room room)
         {
             room.Name = advancedRenovationJoining.ResultRoomName;
             room.Description = advancedRenovationJoining.ResultRoomDescription;
