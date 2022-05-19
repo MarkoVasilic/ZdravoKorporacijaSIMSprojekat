@@ -93,10 +93,10 @@ namespace Controller
             return AppointmentService.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
-            DateTime dateFrom, DateTime dateUntil, int duration)
+            DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
             return AppointmentService.GetPossibleAppointmentsByDoctor(patientJmbg, doctorJmbg,
-                dateFrom, dateUntil, duration);
+                dateFrom, dateUntil, duration, priority);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
             DateTime dateFrom, DateTime dateUntil, int duration)

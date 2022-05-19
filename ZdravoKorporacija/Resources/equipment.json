@@ -46,5 +46,13 @@
     "Quantity": 1,
     "RoomId": 7,
     "DynamicAddDate": null
+  },
+  {
+    "Id": 9,
+    "Name": "Prep, scrub, and alcohol pads",
+    "IsStatic": false,
+    "Quantity": 5,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-22T13:16:17.8130903+02:00"
   }
 ]

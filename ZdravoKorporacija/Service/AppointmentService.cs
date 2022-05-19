@@ -331,7 +331,7 @@ namespace Service
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
-            DateTime dateFrom, DateTime dateUntil, int duration)
+            DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
             if (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null)
                 throw new Exception("Patient with that JMBG doesn't exist!");
@@ -341,15 +341,39 @@ namespace Service
                 throw new Exception("Dates are not valid!");
             List<DateTime> possibleAppointments = new List<DateTime>();
             Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
             int roomId = sentDoctor.RoomId;
-            possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
-                dateFrom, dateUntil, duration);
-            while (possibleAppointments.Count == 0)
+            if (priority == "doctor")
             {
-                dateFrom = dateUntil;
-                dateUntil = dateUntil.AddDays(5);
                 possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
-                dateFrom, dateUntil, duration);
+                    dateFrom, dateUntil, duration);
+                while (possibleAppointments.Count == 0)
+                {
+                    dateFrom = dateUntil;
+                    dateUntil = dateUntil.AddDays(5);
+                    possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                    dateFrom, dateUntil, duration);
+                }
+            }
+            else
+            {
+                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                    dateFrom, dateUntil, duration);
+                while (possibleAppointments.Count == 0)
+                {
+                    foreach (var doc in doctorsNeeded)
+                    {
+                        doctorJmbg = doc.Jmbg;
+                        if (roomId == -1)
+                            roomId = doc.RoomId;
+                        possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                        dateFrom, dateUntil, duration);
+                        if (possibleAppointments.Count != 0)
+                            break;
+                    }
+                    if (possibleAppointments.Count == 0)
+                        throw new Exception("There are not free appointments for given parameters!");
+                }
             }
             List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
             Patient selectedPatient = PatientRepository.FindOneByJmbg(patientJmbg);

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
@@ -200,7 +201,15 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             }
             else
             {
-                ErrorMessageSearch = "Patient with that jmbg doesn't exist!";
+                Regex r = new Regex("^[0-9]+$");
+                if (!r.IsMatch(SearchJmbg))
+                {
+                    ErrorMessageSearch = "You must enter only digits!";
+                }
+                else if (SearchJmbg.Length != 13)
+                    ErrorMessageSearch = "Length must be 13!";
+                else
+                    ErrorMessageSearch = "Patient with that jmbg doesn't exist!";
             }
 
         }

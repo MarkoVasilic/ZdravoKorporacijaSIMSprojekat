@@ -69,7 +69,7 @@ namespace Model
             else if (LastName == null || LastName.Length < 3 || !nameRegex.IsMatch(LastName))
                 return "Last name length must be greater than 3!";
             else if (Jmbg == null || Jmbg.Length != 13 || !onlyNumberRegex.IsMatch(Jmbg))
-                return "Jmbg can only be numbers and is necessary to input!";
+                return "Jmbg can only be 13 digits and is necessary to input!";
             else
                 return "";
         }
