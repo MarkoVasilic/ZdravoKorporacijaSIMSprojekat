@@ -339,6 +339,8 @@ namespace Service
                 throw new Exception("Doctor with that JMBG doesn't exist!");
             else if (dateFrom > dateUntil)
                 throw new Exception("Dates are not valid!");
+            else if (dateFrom < DateTime.Now)
+                throw new Exception("Can't create appointment in the past!");
             List<DateTime> possibleAppointments = new List<DateTime>();
             Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
             List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
@@ -364,8 +366,7 @@ namespace Service
                     foreach (var doc in doctorsNeeded)
                     {
                         doctorJmbg = doc.Jmbg;
-                        if (roomId == -1)
-                            roomId = doc.RoomId;
+                        roomId = doc.RoomId;
                         possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
                         dateFrom, dateUntil, duration);
                         if (possibleAppointments.Count != 0)
@@ -395,7 +396,14 @@ namespace Service
         {
             int id = GenerateNewId();
             Appointment appointment = new Appointment(appointmentToCreate.StartTime, appointmentToCreate.Duration, id, appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId);
-            AppointmentRepository.SaveAppointment(appointment);
+            if (!appointment.validateAppointment())
+            {
+                throw new Exception("Something went wrong, new appointment isn't created!");
+            }
+            else
+            {
+                AppointmentRepository.SaveAppointment(appointment);
+            }
         }
         public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
         {
@@ -404,7 +412,7 @@ namespace Service
             {
                 throw new Exception("Only doctors with specialization can perform operation!");
             }
-            if (appointmentToCreate.DoctorJmbg.Equals("4444444444444")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
+            if (appointmentToCreate.DoctorJmbg.Equals("1231231231231")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
             {
                 CreateAppointmentByDoctor(appointmentToCreate);
             }

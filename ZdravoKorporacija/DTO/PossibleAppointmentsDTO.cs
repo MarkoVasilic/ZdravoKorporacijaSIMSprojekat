@@ -42,12 +42,8 @@ namespace ZdravoKorporacija.DTO
         }
         public void ToStringPossible()
         {
-            Console.WriteLine("Id = " + AppointmentId);
-            Console.WriteLine("Doctor Jmbg = " + DoctorJmbg);
             Console.WriteLine("Doctor = " + DoctorFullName);
             Console.WriteLine("Doctor Specialty = " + DoctorSpeciality);
-            Console.WriteLine("RoomID = " + RoomId);
-            Console.WriteLine("Room Name = " + RoomName);
             Console.WriteLine("StartTime = " + StartTime);
             Console.WriteLine("Duration = " + Duration);
             Console.WriteLine();

@@ -144,12 +144,23 @@ namespace ZdravoKorporacija
             /*MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByPatientJmbg("7778889994445");
             medicalRecordDTO.ToString();*/
 
-            List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "1231231231231", new DateTime(2022, 6, 6), new DateTime(2022, 6, 7), 45);
+            List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "1231231231231", new DateTime(2022, 4, 10), new DateTime(2022, 7, 11), 60, "doctor");
+            int i = -1;
             foreach (PossibleAppointmentsDTO appointment in possibleAppointments)
-                appointment.ToStringChoosen();
-            //appointmentController.CreateAppointmentByDoctor();
+            {
+                i++;
+                Console.WriteLine("Id = " + i);
+                appointment.ToStringPossible();
+            }
+            Console.WriteLine("Izaberite jedan od ponudjenih termina");
+            int app = Int16.Parse(Console.ReadLine());
+            PossibleAppointmentsDTO choosenAppointment = possibleAppointments[app];
+            appointmentController.CreateAppointmentByDoctor(choosenAppointment);
+            Console.WriteLine("Uspesno zakazan termin za pacijenta: ");
+            choosenAppointment.ToStringChoosen();
 
-            
+
+
 
 
 
