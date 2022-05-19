@@ -142,7 +142,14 @@ namespace ZdravoKorporacija
 
             //ISPIS KARTONA PACIJENT JMBG(Anamneze pacijenta i recepti)
             /*MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByPatientJmbg("7778889994445");
-            medicalRecordDTO.ToString();
+            medicalRecordDTO.ToString();*/
+
+            List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "1231231231231", new DateTime(2022, 6, 6), new DateTime(2022, 6, 7), 45);
+            foreach (PossibleAppointmentsDTO appointment in possibleAppointments)
+                appointment.ToStringChoosen();
+            //appointmentController.CreateAppointmentByDoctor();
+
+            
 
 
 
