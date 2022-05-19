@@ -20,7 +20,6 @@ namespace Service
         readonly BasicRenovationRepository BasicRenovationRepository = new BasicRenovationRepository();
         readonly AdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
         readonly AdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
-        readonly NotificationService NotificationService = new NotificationService();
         public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository,
             DoctorRepository doctorRepository, RoomRepository roomRepository, BasicRenovationRepository basicRenovationRepository)
         {
@@ -373,8 +372,6 @@ namespace Service
             int id = GenerateNewId();
             Appointment appointment = new Appointment(appointmentToCreate.StartTime, appointmentToCreate.Duration, id, appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId);
             AppointmentRepository.SaveAppointment(appointment);
-            NotificationService.CreateNotification("Appointment", "New appointment created", appointmentToCreate.StartTime, appointmentToCreate.DoctorJmbg, false, NotificationService.GenerateNewId());
-            NotificationService.CreateNotification("Appointment", "You have new appointment scheduled", appointmentToCreate.StartTime, appointmentToCreate.PatientJmbg, false, NotificationService.GenerateNewId());
         }
         public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
         {
@@ -386,9 +383,6 @@ namespace Service
             if (appointmentToCreate.DoctorJmbg.Equals("4444444444444")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
             {
                 CreateAppointmentByDoctor(appointmentToCreate);
-                NotificationService.CreateNotification("Appointment", "New operation created",appointmentToCreate.StartTime, "4444444444444", false, NotificationService.GenerateNewId());
-                NotificationService.CreateNotification("Appointment", "You have new operation scheduled", appointmentToCreate.StartTime, appointmentToCreate.PatientJmbg, false, NotificationService.GenerateNewId());
-
             }
 
         }
