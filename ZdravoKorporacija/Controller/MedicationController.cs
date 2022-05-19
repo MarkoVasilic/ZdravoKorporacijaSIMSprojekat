@@ -44,6 +44,21 @@ namespace Controller
             return MedicationService.GetRejected();
         }
 
+        public List<Medication> GetAllUnverifiedMedications()
+        {
+            return MedicationService.GetAllUnverifiedMedications();
+        }
+
+        public void VerifyMedication(int medicationId)
+        {
+            MedicationService.VerifyMedication(medicationId);
+        }
+
+        public void RejectMedication(int medicationId, String reason)
+        {
+            MedicationService.RejectMedication(medicationId, reason);
+        }
+
     }
 
 

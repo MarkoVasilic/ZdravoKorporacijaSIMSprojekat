@@ -34,7 +34,7 @@ namespace Repository
             return null;
         }
 
-        public List<AbsenceRequest>? FindAllByDoctor(String doctorJmbg)
+        public List<AbsenceRequest>? FindAllByDoctorJmbg(String doctorJmbg)
         {
             var values = GetValues();
             List<AbsenceRequest> result = new List<AbsenceRequest>();
@@ -44,12 +44,12 @@ namespace Repository
             return result;
         }
 
-        public List<AbsenceRequest>? FindAllByDoctorSpecialtyType(String doctorJmbg)
+        public List<AbsenceRequest>? FindAllByDoctorSpecialtyType(String doctorSpecialtyType)
         {
             var values = GetValues();
             List<AbsenceRequest> result = new List<AbsenceRequest>();
             foreach (AbsenceRequest absenceRequest in values)
-                if (absenceRequest.DoctorJmbg.Equals(doctorJmbg))
+                if (absenceRequest.DoctorScecialtyType.Equals(doctorSpecialtyType))
                     result.Add(absenceRequest);
             return result;
         }

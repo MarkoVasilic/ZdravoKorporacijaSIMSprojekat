@@ -297,32 +297,32 @@ namespace ZdravoKorporacija
 
 
             //NAPREDNO RENOVIRANJE - RAZDVAJANJE
-             /*int index = 0;
-             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
-             foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
-             {
-                 Console.WriteLine(index.ToString());
-                 possibleAppointment.toStringManager();
-                 index++;
-             }
+            /*int index = 0;
+            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+            {
+                Console.WriteLine(index.ToString());
+                possibleAppointment.toStringManager();
+                index++;
+            }
 
 
-             string checkedAppointment;
+            string checkedAppointment;
 
-             Console.WriteLine("Unesite broj termina koji zelite");
-             checkedAppointment = Console.ReadLine();
-             int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+            Console.WriteLine("Unesite broj termina koji zelite");
+            checkedAppointment = Console.ReadLine();
+            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
 
-             for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
-             {
-                 if (checkedAppointmentIndex == i)
-                 {
-                     advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
-                 }
-             }*/
+            for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
+            {
+                if (checkedAppointmentIndex == i)
+                {
+                    advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
+                }
+            }*/
 
             //advancedRenovationSeparationController.Separate();
-            appointmentController.GetPossibleAppointmentsForFreeDays("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
+            //appointmentController.GetPossibleAppointmentsForAbsence("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
 
             //NAPREDNO RENOVIRANJE - SPAJANJE
             /*int index = 0;
@@ -353,7 +353,9 @@ namespace ZdravoKorporacija
             //advancedRenovationJoiningController.Join();
 
 
-            ratingController.Create(1, 5, 5, "Fenomenalno");
+            //ratingController.Create(1, 5, 5, "Fenomenalno");
+            //int a = (int)(DateTime.Today.AddDays(2) - DateTime.Today).TotalDays;
+            //Console.WriteLine(a);
         }
 
     }

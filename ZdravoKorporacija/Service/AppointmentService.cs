@@ -7,6 +7,7 @@ using ZdravoKorporacija;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace Service
 {
@@ -19,6 +20,7 @@ namespace Service
         readonly BasicRenovationRepository BasicRenovationRepository = new BasicRenovationRepository();
         readonly AdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
         readonly AdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
+        readonly NotificationService NotificationService = new NotificationService();
         public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository,
             DoctorRepository doctorRepository, RoomRepository roomRepository, BasicRenovationRepository basicRenovationRepository)
         {
@@ -178,7 +180,7 @@ namespace Service
             }
         }
 
-        public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
+        /*public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
         {
             if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
             {
@@ -196,7 +198,7 @@ namespace Service
                 return "";
             }
 
-        }
+        }*/
 
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)
@@ -272,9 +274,10 @@ namespace Service
             return retValue;
         }
 
-        public PossibleAppointmentsDTO GetPossibleAppointmentsForFreeDays(String doctorJmbg,
+        public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
+            //int duration = (dateUntil - dateFrom).TotalDays;
             if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
                 throw new Exception("Doctor with that JMBG doesn't exist!");
             else if (dateFrom > dateUntil || DateTime.Now.AddDays(2) > dateFrom)
@@ -358,11 +361,36 @@ namespace Service
                 if (pa > DateTime.Now.AddHours(1))
                 {
                     PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, selectedPatient.FirstName + " " + selectedPatient.LastName, doctorJmbg,
-                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);
+                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);//generateNewId
                     retValue.Add(possibleAppointmentsDTO);
                 }
             }
             return retValue;
+        }
+
+        public void CreateAppointmentByDoctor(PossibleAppointmentsDTO appointmentToCreate)
+        {
+            int id = GenerateNewId();
+            Appointment appointment = new Appointment(appointmentToCreate.StartTime, appointmentToCreate.Duration, id, appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId);
+            AppointmentRepository.SaveAppointment(appointment);
+            NotificationService.CreateNotification("Appointment", "New appointment created", appointmentToCreate.StartTime, appointmentToCreate.DoctorJmbg, false, NotificationService.GenerateNewId());
+            NotificationService.CreateNotification("Appointment", "You have new appointment scheduled", appointmentToCreate.StartTime, appointmentToCreate.PatientJmbg, false, NotificationService.GenerateNewId());
+        }
+        public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
+        {
+            Boolean specialty = DoctorRepository.FindOneByJmbg(appointmentToCreate.DoctorJmbg).Specialty;
+            if (specialty == false)
+            {
+                throw new Exception("Only doctors with specialization can perform operation!");
+            }
+            if (appointmentToCreate.DoctorJmbg.Equals("4444444444444")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
+            {
+                CreateAppointmentByDoctor(appointmentToCreate);
+                NotificationService.CreateNotification("Appointment", "New operation created",appointmentToCreate.StartTime, "4444444444444", false, NotificationService.GenerateNewId());
+                NotificationService.CreateNotification("Appointment", "You have new operation scheduled", appointmentToCreate.StartTime, appointmentToCreate.PatientJmbg, false, NotificationService.GenerateNewId());
+
+            }
+
         }
         private void ValidateParametersForScheduleEmergency (String patientJmbg, String doctorSpeciality)
         {

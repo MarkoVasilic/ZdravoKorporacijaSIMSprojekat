@@ -29,10 +29,10 @@ namespace Controller
             return AppointmentService.GetAllFutureAppointmentsByPatient();
         }
 
-        public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
+        /*public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);
-        }
+        }*/
 
         public void CreateAppointmentByPatient(DateTime startTime, String doctorJmbg)
         {
@@ -104,16 +104,26 @@ namespace Controller
             return AppointmentService.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
         }
 
-        public PossibleAppointmentsDTO GetPossibleAppointmentsForFreeDays(String doctorJmbg,
+        public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
-            return AppointmentService.GetPossibleAppointmentsForFreeDays(doctorJmbg, dateFrom, dateUntil, duration);
+            return AppointmentService.GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, duration);
         }
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)
         {
             AppointmentService.CreateAppointmentBySecretary(patientJmbg, doctorJmbg, roomId,
                 startTime, duration);
+        }
+
+        public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
+        {
+            AppointmentService.CreateOperationAppointment(appointmentToCreate);
+        }
+
+        public void CreateAppointmentByDoctor(PossibleAppointmentsDTO appointmentToCreate)
+        {
+            AppointmentService.CreateAppointmentByDoctor(appointmentToCreate);
         }
 
     }

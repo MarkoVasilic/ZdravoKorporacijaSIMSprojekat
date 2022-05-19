@@ -72,6 +72,25 @@ namespace Service
 
         }
 
+        public List<Medication> GetAllUnverifiedMedications()
+        {
+            return MedicationRepository.FindAllUnverifiedMedications();
+        }
+
+        public void VerifyMedication(int medicationId)
+        {
+            Medication medication = GetOneById(medicationId);
+            medication.Status = MedicationStatus.VERIFIED;
+            MedicationRepository.UpdateMedication(medication);
+        }
+
+        public void RejectMedication(int medicationId, String reason)
+        {
+            Medication medication = GetOneById(medicationId);
+            medication.Status = MedicationStatus.REJECTED;
+            MedicationRepository.UpdateMedication(medication);
+        }
+
         public void Modify(int id, String name, List<String> ingredients, String alternative)
         {
 

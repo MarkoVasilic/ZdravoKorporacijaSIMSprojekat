@@ -21,7 +21,7 @@ namespace ZdravoKorporacija.Service
             this.prescriptionService = prescriptionService;
         }
 
-        private int GenerateNewId()
+        public int GenerateNewId()
         {
             try
             {

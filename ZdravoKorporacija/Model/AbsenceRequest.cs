@@ -10,21 +10,29 @@ namespace Model
     {
         public int Id { get; set; }
         public String DoctorJmbg { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-        public int Interval { get; set; }
+        public String DoctorScecialtyType { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
+        public int IntervalInDays { get; set; }
         public String Reason { get; set; }
-        public Boolean Emergency { get; set; }
+        public Boolean isUgent { get; set; }
+        public AbsenceRequestState State { get; set; }
 
-        public AbsenceRequest(int id, string doctorJmbg, DateTime from, DateTime to, int interval, string reason, bool emergency)
+        public AbsenceRequest(int id, string doctorJmbg, string doctorScecialtyType, DateTime dateFrom, DateTime dateTo, int intervalInDays, string reason, bool isUgent, AbsenceRequestState state)
         {
             Id = id;
             DoctorJmbg = doctorJmbg;
-            From = from;
-            To = to;
-            Interval = interval;
+            DoctorScecialtyType = doctorScecialtyType;
+            DateFrom = dateFrom;
+            DateTo = dateTo;
+            IntervalInDays = intervalInDays;
             Reason = reason;
-            Emergency = emergency;
+            this.isUgent = isUgent;
+            State = state;
+        }
+
+        public AbsenceRequest()
+        {
         }
     }
 }

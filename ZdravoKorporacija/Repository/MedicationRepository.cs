@@ -58,6 +58,8 @@ namespace Repository
             return null;
         }
 
+        
+
         public void UpdateMedication(Medication medicationToModify)
         {
             var oneMedication = FindOneById(medicationToModify.Id);
@@ -68,6 +70,16 @@ namespace Repository
                 values.Add(medicationToModify);
                 Save(values);
             }
+        }
+
+        public List<Medication>? FindAllUnverifiedMedications()
+        {
+            var values = GetValues();
+            List<Medication> result = new List<Medication>();
+            foreach (Medication medication in values)
+                if (medication.Status == MedicationStatus.UNVERIFIED)
+                    result.Add(medication);
+            return result;
         }
 
         public void SaveMedication(Medication medicationToSave)
