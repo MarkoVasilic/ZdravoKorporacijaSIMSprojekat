@@ -234,12 +234,12 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         {
             try
             {
-                SelectedAppointment = appointmentController.ScheduleEmergencyAppointment(SelectedPatient.Jmbg, SelectedSpeciality);
+                SelectedAppointment = appointmentController.FindPossibleEmergencyAppointment(SelectedPatient.Jmbg, SelectedSpeciality);
                 if (SelectedAppointment != null)
                     SecretaryWindowVM.NavigationService.Navigate(new ConfirmAppointmentInformations(null, this));
                 else
                 {
-                    appointmentListToAppointmentList(appointmentController.RescheduleAppointmentsForEmergency(SelectedPatient.Jmbg, SelectedSpeciality));
+                    appointmentListToAppointmentList(appointmentController.FindAppointmentsToRescheduleForEmergency(SelectedPatient.Jmbg, SelectedSpeciality));
                     SecretaryWindowVM.NavigationService.Navigate(new EmergencyRescheduleAppointments(this));
                 }
             }

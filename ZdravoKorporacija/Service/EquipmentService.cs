@@ -51,13 +51,23 @@ namespace ZdravoKorporacija.Service
                 }
                 else
                 {
-                    Equipment newEquipmentDinamic = new Equipment(equipmentId, equipmentName, false, Quantitity, null, DynamicAddDate);
-                    if (!newEquipmentDinamic.validateEquipment())
+                    Equipment equipment = EquipmentRepository.FindOneByName(equipmentName);
+                    if (equipment != null)
                     {
-                        throw new Exception("Something went wrong, equipment isn't saved");
+                        equipment.Quantity = Quantitity + equipment.Quantity;
+                        EquipmentRepository.UpdateEquipment(equipment);
                     }
-                    EquipmentRepository.SaveEquipment(newEquipmentDinamic);
+                    else
+                    {
+                        Equipment newEquipmentDinamic = new Equipment(equipmentId, equipmentName, false, Quantitity,
+                            null, DynamicAddDate);
+                        if (!newEquipmentDinamic.validateEquipment())
+                        {
+                            throw new Exception("Something went wrong, equipment isn't saved");
+                        }
 
+                        EquipmentRepository.SaveEquipment(newEquipmentDinamic);
+                    }
                 }
 
             }

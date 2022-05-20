@@ -74,7 +74,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 try
                 {
                     EquipmentController.CreateEquipment(DynamicEquimpentComboBox.SelectedValue.ToString(), false, MyUpDownControl.Value, null, DateTime.Now.AddDays(3));
-                    NavigationService.Navigate(new SecretaryHomePage(secretaryWindowVM));
+                    NavigationService.Navigate(new OrderEquipmentPage(secretaryWindowVM));
                 }
                 catch (Exception ex)
                 {

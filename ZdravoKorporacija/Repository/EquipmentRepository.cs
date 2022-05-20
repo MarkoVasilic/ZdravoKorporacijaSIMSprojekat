@@ -71,6 +71,18 @@ namespace ZdravoKorporacija.Repository
             return null;
         }
 
+        public void UpdateEquipment(Equipment equipmentToModify)
+        {
+            var oneEquipment = FindOneById(equipmentToModify.Id);
+            if (oneEquipment != null)
+            {
+                var values = GetValues();
+                values.RemoveAll(value => value.Id.Equals(oneEquipment.Id));
+                values.Add(equipmentToModify);
+                Save(values);
+            }
+        }
+
 
         public void RemoveEquipment(int equipmentId)
         {
