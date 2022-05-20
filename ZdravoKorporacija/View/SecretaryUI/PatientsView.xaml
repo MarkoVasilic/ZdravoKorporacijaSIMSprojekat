@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:val="clr-namespace:ZdravoKorporacija.View.SecretaryUI.Validation"
       xmlns:local="clr-namespace:ZdravoKorporacija.View.SecretaryUI"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
@@ -17,9 +18,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
-                    <RowDefinition Height="80"></RowDefinition>
-                    <RowDefinition Height="80"></RowDefinition>
-                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -37,8 +38,26 @@
                     <TextBox x:Name="JmbgTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
                             <Binding Path="PatientJmbgFilter" Mode="OneWayToSource" UpdateSourceTrigger = "PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:FilterJmbgValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
+                                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="1">
