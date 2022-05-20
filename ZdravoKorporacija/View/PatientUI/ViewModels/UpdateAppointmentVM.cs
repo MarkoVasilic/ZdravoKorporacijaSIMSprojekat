@@ -293,6 +293,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             SelectedAppointmentDelete = parameter as PossibleAppointmentsDTO;
             appointmentController.DeleteAppointment(SelectedAppointmentDelete.AppointmentId);
             //logika za antiTroll
+
             if (patientController.getTrollCounterByPatient(App.loggedUser.Jmbg) >= 4)
             {
 
@@ -302,12 +303,14 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
 
             }
             patientController.incrementTrollCounterByPatient(App.loggedUser.Jmbg);
+            Console.WriteLine("(DELETE)Current troll counter: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
             possibleAppointmentListToAppointmentList(appointmentController.GetAllFutureAppointmentsByPatient());
 
         }
 
         private void selectNewAppointmentExecute(object parameter)
         {
+
             if (patientController.getTrollCounterByPatient(App.loggedUser.Jmbg) >= 4)
             {
 
@@ -320,6 +323,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             SelectedNewAppointment = parameter as PossibleAppointmentsDTO;
             Console.WriteLine("troll: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
             patientController.incrementTrollCounterByPatient(App.loggedUser.Jmbg);
+            Console.WriteLine("(UPDATE)Current troll counter: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
             try
             {
 

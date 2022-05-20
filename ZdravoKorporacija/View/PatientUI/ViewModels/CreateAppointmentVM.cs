@@ -220,8 +220,8 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
                 //OVO RADI
                // MessageBox.Show("Uspjesno zakazan pregled za " + selectedAppointment.StartTime);
                ErrorMessageConfirmAppointment = "Uspjesno zakazan pregled! Datum: "+selectedAppointment.StartTime;
-                Thread.Sleep(2500);
-                PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+                Thread.Sleep(500);
+                PatientWindowVM.NavigationService.Navigate(new UpdateFutureAppointmentsPage());
 
             }
             catch (Exception ex)

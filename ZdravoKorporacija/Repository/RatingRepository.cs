@@ -30,6 +30,15 @@ namespace ZdravoKorporacija.Repository
             return result;
         }
 
+        public bool FindOneByAppointemntId(int appointmentId)
+        {
+            var values = GetValues();
+            foreach (Rating rating in values)
+                if (rating.AppointmentId.Equals(appointmentId))
+                    return true;
+            return false;
+        }
+
         public void SaveRating(Rating ratingToSave)
         {
             var values = GetValues();

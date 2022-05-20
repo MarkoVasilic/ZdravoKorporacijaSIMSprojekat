@@ -67,15 +67,22 @@ namespace ZdravoKorporacija.Service
             return RatingRepository.FindAllRatingsByDoctorJmbg(doctorJmbg);
         }
 
+        public bool FindByAppointmentId(int appointmentId)
+        {
+            return RatingRepository.FindOneByAppointemntId(appointmentId);
+        }
+
         public void Create(int appointmentId,int hospitalRating,int doctorRating,String desc)
         {
             int id = GenerateNewId();
             Appointment appointment = AppointmentRepository.FindOneById(appointmentId);
             
-            Rating rating = new Rating(id, appointment.Id, hospitalRating, doctorRating, desc, System.DateTime.Now, "7778889994445", appointment.DoctorJmbg);
+            Rating rating = new Rating(id, appointment.Id, hospitalRating, doctorRating, desc, System.DateTime.Now, App.loggedUser.Jmbg, appointment.DoctorJmbg);
             RatingRepository.SaveRating(rating);
             
         }
+
+        
 
     }
 }

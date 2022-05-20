@@ -353,7 +353,7 @@ namespace ZdravoKorporacija
             //advancedRenovationJoiningController.Join();
 
 
-            ratingController.Create(1, 5, 5, "Fenomenalno");
+            //ratingController.Create(1, 5, 5, "Fenomenalno");
         }
 
     }

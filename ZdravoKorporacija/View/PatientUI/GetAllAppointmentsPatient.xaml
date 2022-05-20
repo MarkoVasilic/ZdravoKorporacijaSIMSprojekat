@@ -8,15 +8,22 @@
         Title="GetAllAppointmentsPatient" Height="768" Width="1024">
     <Grid  Margin="0" Background="#FF242F41">
 
-        <DataGrid ItemsSource="{Binding Path=appointments}" RowBackground="SteelBlue" RowHeight="40" Background="SteelBlue" ColumnHeaderHeight="30" FontSize="16"   Margin="46,165,36,303" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" Height="225" Width="auto">
+        <DataGrid ItemsSource="{Binding Path=appointments}" SelectedItem="{Binding SelectedCustomer}" RowBackground="SteelBlue" RowHeight="40" Background="#FF242F41" ColumnHeaderHeight="30" FontSize="16"   Margin="0,202,0,340" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single"  Width="auto" x:Name="dataGridRating">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="DoctorID" Binding="{Binding DoctorJmbg}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn Header="PatientID" Binding="{Binding PatientJmbg}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding AppointmentId}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ljekar" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Vrijeme" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="120"></DataGridTextColumn>
+                <DataGridTemplateColumn  Header="     Ocijeni" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnSelect" Background="Gold" Content="Ocijeni" Click="OcijeniButtonClick"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Nazad" FontSize="25" FontWeight="DemiBold" Background="#FF6B7B73" HorizontalAlignment="Left" Margin="306,542,0,0" VerticalAlignment="Top" Width="298" Height="69" Click="Button_Click">
@@ -26,7 +33,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Label Content="Prethodni Termini" FontSize="60"  Foreground="MediumAquamarine" HorizontalAlignment="Left" Margin="219,38,0,0" VerticalAlignment="Top" Width="532" Height="82"/>
+        <Label Content="Prethodni Termini" FontSize="60"  Foreground="MediumAquamarine" HorizontalAlignment="Left" Margin="259,78,0,0" VerticalAlignment="Top" Width="532" Height="82"/>
 
     </Grid>
 </Page>
