@@ -8,14 +8,6 @@
     "DynamicAddDate": null
   },
   {
-    "Id": 5,
-    "Name": "Needle",
-    "IsStatic": false,
-    "Quantity": 7,
-    "RoomId": null,
-    "DynamicAddDate": "2022-05-10T10:40:34.9399382+02:00"
-  },
-  {
     "Id": 6,
     "Name": "IV bag",
     "IsStatic": false,
@@ -32,14 +24,6 @@
     "DynamicAddDate": "2022-05-10T20:51:09.7952421+02:00"
   },
   {
-    "Id": 8,
-    "Name": "Securement device",
-    "IsStatic": false,
-    "Quantity": 4,
-    "RoomId": null,
-    "DynamicAddDate": "2022-05-19T15:26:14.1314551+02:00"
-  },
-  {
     "Id": 1,
     "Name": "sto",
     "IsStatic": true,
@@ -48,11 +32,35 @@
     "DynamicAddDate": null
   },
   {
-    "Id": 9,
-    "Name": "Prep, scrub, and alcohol pads",
+    "Id": 8,
+    "Name": "Securement device",
     "IsStatic": false,
-    "Quantity": 5,
+    "Quantity": 10,
     "RoomId": null,
-    "DynamicAddDate": "2022-05-22T13:16:17.8130903+02:00"
+    "DynamicAddDate": "2022-05-19T15:26:14.1314551+02:00"
+  },
+  {
+    "Id": 9,
+    "Name": "Medical mask",
+    "IsStatic": false,
+    "Quantity": 12,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-23T13:10:41.6067623+02:00"
+  },
+  {
+    "Id": 10,
+    "Name": "Gloves",
+    "IsStatic": false,
+    "Quantity": 4,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-23T13:12:25.2994476+02:00"
+  },
+  {
+    "Id": 11,
+    "Name": "Flexible tube",
+    "IsStatic": false,
+    "Quantity": 2,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-23T13:12:33.0742552+02:00"
   }
 ]

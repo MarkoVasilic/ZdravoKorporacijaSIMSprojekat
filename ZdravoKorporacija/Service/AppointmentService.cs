@@ -527,7 +527,7 @@ namespace Service
             return null;
         }
 
-        public PossibleAppointmentsDTO ScheduleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
+        public PossibleAppointmentsDTO FindPossibleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
         {
             ValidateParametersForScheduleEmergency(patientJmbg, doctorSpeciality);
             Patient patient = PatientRepository.FindOneByJmbg(patientJmbg);
@@ -542,7 +542,7 @@ namespace Service
             return null;
         }
 
-        public List<ModifyAppointmentForEmergencyDto> RescheduleAppointmentsForEmergency(String patientJmbg, String doctorSpeciality)
+        public List<ModifyAppointmentForEmergencyDto> FindAppointmentsToRescheduleForEmergency(String patientJmbg, String doctorSpeciality)
         {
             ValidateParametersForScheduleEmergency(patientJmbg, doctorSpeciality);
             Patient patient = PatientRepository.FindOneByJmbg(patientJmbg);

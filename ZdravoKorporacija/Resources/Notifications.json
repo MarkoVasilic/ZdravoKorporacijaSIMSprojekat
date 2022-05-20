@@ -794,16 +794,16 @@
   {
     "Id": 243,
     "Title": "Reschedule of appointment",
-    "Description": "Your appointment with doctor Veljko Veljkovic on date 19.5.2022. 13:40:17 in room Exam 2 have been rescheduled to date 19.5.2022. 16:31:00",
-    "StartTime": "2022-05-19T13:16:04.4421281+02:00",
-    "userJmbg": "7778889994445",
+    "Description": "Your appointment with doctor Veljko Veljkovic on date 20.5.2022. 13:45:25 in room Exam 2 have been rescheduled to date 20.5.2022. 16:16:00",
+    "StartTime": "2022-05-20T13:01:13.1949089+02:00",
+    "userJmbg": "1111111111111",
     "Seen": false
   },
   {
     "Id": 244,
     "Title": "Emergency appointment",
-    "Description": "Your appointment with patient Petar Jecmenic on date 19.5.2022. 13:40:17 in room Exam 2 have been rescheduled to date 19.5.2022. 16:31:00, there is emergency you need to attend now at room Exam 2 on date 19.5.2022. 13:21:03",
-    "StartTime": "2022-05-19T13:16:04.4527004+02:00",
+    "Description": "Your appointment with patient Ana Anovic on date 20.5.2022. 13:45:25 in room Exam 2 have been rescheduled to date 20.5.2022. 16:16:00, there is emergency you need to attend now at room Exam 2 on date 20.5.2022. 13:06:11",
+    "StartTime": "2022-05-20T13:01:13.2028075+02:00",
     "userJmbg": "6666666666666",
     "Seen": false
   }

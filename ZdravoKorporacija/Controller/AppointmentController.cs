@@ -72,13 +72,13 @@ namespace Controller
         {
             return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
-        public PossibleAppointmentsDTO ScheduleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
+        public PossibleAppointmentsDTO FindPossibleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
         {
-            return AppointmentService.ScheduleEmergencyAppointment(patientJmbg, doctorSpeciality);
+            return AppointmentService.FindPossibleEmergencyAppointment(patientJmbg, doctorSpeciality);
         }
-        public List<ModifyAppointmentForEmergencyDto> RescheduleAppointmentsForEmergency(String patientJmbg, String doctorSpeciality)
+        public List<ModifyAppointmentForEmergencyDto> FindAppointmentsToRescheduleForEmergency(String patientJmbg, String doctorSpeciality)
         {
-            return AppointmentService.RescheduleAppointmentsForEmergency(patientJmbg, doctorSpeciality);
+            return AppointmentService.FindAppointmentsToRescheduleForEmergency(patientJmbg, doctorSpeciality);
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId,
