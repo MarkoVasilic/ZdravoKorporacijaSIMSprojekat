@@ -49,7 +49,7 @@ namespace Repository
             foreach (Appointment appointment in values)
                 if (appointment.PatientJmbg.Equals(patientJmbg))
                 {
-                    if (appointment.StartTime < System.DateTime.Now)
+                    if (appointment.StartTime < System.DateTime.Now || appointment.StartTime.Year < System.DateTime.Now.Year)
                     {
                         result.Add(appointment);
                     }

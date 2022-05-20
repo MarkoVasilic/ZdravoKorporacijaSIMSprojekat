@@ -4,39 +4,19 @@
     "AppointmentId": 1,
     "HospitalRating": 5,
     "DoctorRating": 4,
-    "Desc": "Bolnica fenomenalno cista i doktor izuzetno profesionalan!",
+    "Desc": "Bolnica fenomenalno opremljena i doktor izuzetno profesionalan!",
     "RatingDate": "2022-05-10T00:27:29.9947826+02:00",
     "DoctorId": "1231231231231",
     "PatientId": "7778889994445"
   },
   {
     "Id": 2,
-    "AppointmentId": 1,
+    "AppointmentId": 5,
     "HospitalRating": 5,
     "DoctorRating": 5,
-    "Desc": "",
-    "RatingDate": "2022-05-18T21:41:39.8559886+02:00",
-    "DoctorId": "1231231231231",
-    "PatientId": "7778889994445"
-  },
-  {
-    "Id": 3,
-    "AppointmentId": 1,
-    "HospitalRating": 5,
-    "DoctorRating": 5,
-    "Desc": "Fenomenalno",
-    "RatingDate": "2022-05-18T21:43:02.9289284+02:00",
-    "DoctorId": "1231231231231",
-    "PatientId": "7778889994445"
-  },
-  {
-    "Id": 4,
-    "AppointmentId": 1,
-    "HospitalRating": 5,
-    "DoctorRating": 5,
-    "Desc": "Fenomenalno",
-    "RatingDate": "2022-05-18T21:46:05.2928387+02:00",
-    "DoctorId": "1231231231231",
+    "Desc": "Super",
+    "RatingDate": "2022-05-20T12:58:26.3012039+02:00",
+    "DoctorId": "5151515151515",
     "PatientId": "7778889994445"
   }
 ]

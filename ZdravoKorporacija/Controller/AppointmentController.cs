@@ -29,7 +29,12 @@ namespace Controller
             return AppointmentService.GetAllFutureAppointmentsByPatient();
         }
 
-        /*public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
+        public List<PossibleAppointmentsDTO> GetAllPastAppointmentsByPatient()
+        {
+            return AppointmentService.GetAllPastAppointmentsByPatient();
+        }
+
+        public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
         {
             return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);
         }*/
