@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
@@ -81,6 +82,10 @@ namespace ZdravoKorporacija
             RatingRepository ratingRepository = new RatingRepository();
             RatingService ratingService = new RatingService(ratingRepository, appointmentRepository);
             ratingController = new RatingController(ratingService);
+            AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
+            AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
+
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -144,7 +149,13 @@ namespace ZdravoKorporacija
             /*MedicalRecordDTO medicalRecordDTO = medicalRecordController.GetOneMedicalRecorByPatientJmbg("7778889994445");
             medicalRecordDTO.ToString();*/
 
-            List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "1231231231231", new DateTime(2022, 4, 10), new DateTime(2022, 7, 11), 60, "doctor");
+            //****************************
+            //********************************************************KT4*****************************************************************************
+            //****************************
+
+            //* Create Appointment Doctor *//
+
+            /*List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "1231231231231", new DateTime(2022, 7, 9), new DateTime(2022, 7, 10), 60, "doctor");
             int i = -1;
             foreach (PossibleAppointmentsDTO appointment in possibleAppointments)
             {
@@ -152,12 +163,89 @@ namespace ZdravoKorporacija
                 Console.WriteLine("Id = " + i);
                 appointment.ToStringPossible();
             }
-            Console.WriteLine("Izaberite jedan od ponudjenih termina");
+            Console.WriteLine("Choose appointment: ");
             int app = Int16.Parse(Console.ReadLine());
             PossibleAppointmentsDTO choosenAppointment = possibleAppointments[app];
             appointmentController.CreateAppointmentByDoctor(choosenAppointment);
-            Console.WriteLine("Uspesno zakazan termin za pacijenta: ");
+            Console.WriteLine("Created appointment: ");
             choosenAppointment.ToStringChoosen();
+            Console.WriteLine("Doctor notification created: ");
+            notificationController.CreateNotification("Appointment", "You have new appointment scheduled!", choosenAppointment.StartTime, choosenAppointment.DoctorJmbg, false).ToStringNotification();
+            Console.WriteLine("Patient notification created: ");
+            notificationController.CreateNotification("Appointment", "You have new appointment scheduled!", choosenAppointment.StartTime, choosenAppointment.PatientJmbg, false).ToStringNotification();
+            */
+
+
+            //*  Create Operation - samo kod sebe moze da zakaze i samo specijalista *// 
+
+            //ako nije specijalista ne moze da zakaze
+            //List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "4444444444444", new DateTime(2022, 7, 10), new DateTime(2022, 7, 11), 60, "doctor");
+
+            /*List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor("7458963215963", "1231231231231", new DateTime(2022, 7, 10), new DateTime(2022, 7, 11), 60, "doctor");
+            int i = -1;
+            if (!doctorRepository.FindOneByJmbg("1231231231231").Specialty)
+            {
+                Console.WriteLine("Only doctors with specialization can schedule operation!");
+            }
+            else
+            {
+                foreach (PossibleAppointmentsDTO appointment in possibleAppointments)
+                {
+                    i++;
+                    Console.WriteLine("Id = " + i);
+                    appointment.ToStringPossible();
+                }
+                Console.WriteLine("Choose appointment: ");
+                int app = Int16.Parse(Console.ReadLine());
+                PossibleAppointmentsDTO choosenAppointment = possibleAppointments[app];
+                appointmentController.CreateOperationAppointment(choosenAppointment);
+                Console.WriteLine("Created appointment: ");
+                choosenAppointment.ToStringChoosen();
+                Console.WriteLine("Doctor notification created: ");
+                notificationController.CreateNotification("Appointment", "You have new operation scheduled!", choosenAppointment.StartTime, choosenAppointment.DoctorJmbg, false).ToStringNotification();
+                Console.WriteLine("Patient notification created: ");
+                notificationController.CreateNotification("Appointment", "You have new operation scheduled!", choosenAppointment.StartTime, choosenAppointment.PatientJmbg, false).ToStringNotification();
+
+            }*/
+
+            /*List<Notification> notifications = notificationController.GetAllByUserJmbg("1231231231231");
+            foreach(Notification n in notifications)
+            {
+                n.ToStringNotification();
+            }*/
+
+            //* VERIFIKACIJA I ODBIJANJE LEKA *//
+
+            /*List<Medication> medications = medicationController.GetAllUnverifiedMedications();
+            foreach(Medication medication in medications)
+            {
+                medication.toString();
+            }*/
+
+            //Verifikcija
+
+            /*Console.WriteLine("Choose medication Id to verify: ");
+            int app = Int16.Parse(Console.ReadLine());
+            medicationController.VerifyMedication(app);*/
+
+            //* Odbijanje *//
+
+            /*Console.WriteLine("Choose medication Id to reject: ");
+            int app = Int16.Parse(Console.ReadLine());
+            Console.WriteLine("Enter reason of rejection: ");
+            String reason = Console.ReadLine();
+            medicationController.RejectMedication(app, reason);
+            notificationController.CreateNotification("Medication rejection", reason, DateTime.Now.AddMinutes(1), "3434343434343", false); //manager jmbg
+            */
+
+            /* zahtev za odsustvo */
+            //absenceRequestController.CreateAbsenceRequest(new DateTime(2022, 7, 20), new DateTime(2022, 7, 25), false, "Godisnji Odmor");
+
+            //mora biti 2 dana ranije
+            //absenceRequestController.CreateAbsenceRequest(new DateTime(2022, 5, 21), new DateTime(2022, 8, 12), false, "Godisnji odnomr");
+
+            /* hitan zahtev */
+            //absenceRequestController.CreateAbsenceRequest(new DateTime(2022, 7, 5), new DateTime(2022, 7, 10), true, "Hitno bolovanje");
 
 
 
@@ -165,8 +253,12 @@ namespace ZdravoKorporacija
 
 
 
+
+
+
+            //*************************************
             //***********************************************************************************************************************************************
-
+            //*************************************
 
 
 

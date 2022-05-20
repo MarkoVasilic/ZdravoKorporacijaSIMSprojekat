@@ -63,13 +63,20 @@ namespace ZdravoKorporacija.Service
             return notificationRepository.FindOneById(notificationId);
         }
 
-        public Notification CreateNotification(string title, string description, DateTime startTime, string receiverJmbg, bool seen, int newId)
+        public List<Notification> GetAllByUserJmbg(String Jmbg)
+        {
+            return notificationRepository.FindAllByUserJmbg(Jmbg);
+        }
+
+        public Notification CreateNotification(string title, string description, DateTime startTime, string receiverJmbg, bool seen)
         {
             int id = GenerateNewId();
             Notification notification = new Notification(title, description, startTime, receiverJmbg, seen, id);
+            if (!notification.validateNotification())
+                throw new Exception("Something went wrong, new notification isn't created!");
             notificationRepository.SaveNotification(notification);
             return notification;
-
+            
         }
 
         public void CreatePatientNotificationForAppointmentReschedule(String patientJmbg, String doctorFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, String roomName)
@@ -110,13 +117,12 @@ namespace ZdravoKorporacija.Service
                 numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); //koliko ukupno puta treba popiti lijek
                 for (int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
                 {
-                    Id = GenerateNewId(); //generisemo novi ID za lijek
+                 
                     Title = prescription.Medication; //naslov = paracetamol
                     StartTime = prescription.From.AddHours(i*prescription.Frequency); //startTime  = StartTime lijeka
                     Desc = "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour +":"+StartTime.Minute + "h !";
                     
-                        Notification notification = new Notification(Title, Desc, StartTime, userJmbg, Seen, Id);
-                        CreateNotification(Title, Desc, StartTime, userJmbg, Seen, Id);
+                        Notification notification = CreateNotification(Title, Desc, StartTime, userJmbg, Seen);
                         notificationsList.Add(notification);
                     
                 }

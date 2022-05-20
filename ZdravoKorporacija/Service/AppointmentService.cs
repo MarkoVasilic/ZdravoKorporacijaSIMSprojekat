@@ -276,39 +276,38 @@ namespace Service
         public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
-            //int duration = (dateUntil - dateFrom).TotalDays;
-            if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
-                throw new Exception("Doctor with that JMBG doesn't exist!");
-            else if (dateFrom > dateUntil || DateTime.Now.AddDays(2) > dateFrom)
-                throw new Exception("Dates are not valid!");
+            ValidateInputParametersForAbsence(doctorJmbg, dateFrom, dateUntil);
+
+            PossibleAppointmentsDTO absentRequest;
             List<DateTime> possibleAppointments = new List<DateTime>();
+            List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
             dateFrom = new DateTime(dateFrom.Year, dateFrom.Month, dateFrom.Day, 0, 0, 0);
             dateUntil = new DateTime(dateUntil.Year, dateUntil.Month, dateUntil.Day, 0, 0, 0);
             DateTime current = dateFrom;
+
+            GetAllAppointmentsForAbsencePeriod(dateUntil, possibleAppointments, current);
+            removeOccupiedDatesFromPossibleAppointment(dateFrom, dateUntil, possibleAppointments, doctorAppointments);
+
+            DateTime startDate = possibleAppointments[0];
+            int counter = 1;
+
+            IsThereEnoughPossibleAppointments(duration, possibleAppointments, ref startDate, ref counter);
+            absentRequest = (counter == duration) ? new PossibleAppointmentsDTO("", "", doctorJmbg, "", "", -1, "", startDate, duration, -1) : null;
+
+            return absentRequest;
+        }
+
+        private static void GetAllAppointmentsForAbsencePeriod(DateTime dateUntil, List<DateTime> possibleAppointments, DateTime current)
+        {
             while (current != dateUntil.AddDays(1))
             {
                 possibleAppointments.Add(current);
                 current = current.AddDays(1);
             }
-            List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
-            foreach (var da in doctorAppointments)
-            {
-                if (da.StartTime >= dateFrom && da.StartTime <= dateUntil)
-                {
-                    DateTime whatDateToRemove = possibleAppointments[0];
-                    foreach (var pa in possibleAppointments)
-                    {
-                        if (pa.Date == da.StartTime.Date)
-                        {
-                            whatDateToRemove = pa;
-                            break;
-                        }
-                    }
-                    possibleAppointments.Remove(whatDateToRemove);
-                }
-            }
-            DateTime startDate = possibleAppointments[0];
-            int counter = 1;
+        }
+
+        private static void IsThereEnoughPossibleAppointments(int duration, List<DateTime> possibleAppointments, ref DateTime startDate, ref int counter)
+        {
             for (int i = 1; i < possibleAppointments.Count - 1; i++)
             {
                 if (counter == duration)
@@ -322,16 +321,121 @@ namespace Service
                     startDate = possibleAppointments[i];
                 }
             }
-            if (counter == duration)
+        }
+
+        private static void removeOccupiedDatesFromPossibleAppointment(DateTime dateFrom, DateTime dateUntil, List<DateTime> possibleAppointments, List<Appointment> doctorAppointments)
+        {
+            foreach (var da in doctorAppointments)
             {
-                return new PossibleAppointmentsDTO("", "", doctorJmbg, "", "", -1, "", startDate, duration, -1);
+                if (da.StartTime >= dateFrom && da.StartTime <= dateUntil)
+                {
+                    DateTime whatDateToRemove = possibleAppointments[0];
+                    whatDateToRemove = FindDateToRemove(possibleAppointments, da, whatDateToRemove);
+                    possibleAppointments.Remove(whatDateToRemove);
+                }
             }
-            else
-                return null;
+        }
+
+        private static DateTime FindDateToRemove(List<DateTime> possibleAppointments, Appointment da, DateTime whatDateToRemove)
+        {
+            foreach (var pa in possibleAppointments)
+            {
+                if (pa.Date == da.StartTime.Date)
+                {
+                    whatDateToRemove = pa;
+                    break;
+                }
+            }
+
+            return whatDateToRemove;
+        }
+
+        private void ValidateInputParametersForAbsence(string doctorJmbg, DateTime dateFrom, DateTime dateUntil)
+        {
+            if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+                throw new Exception("Doctor with that JMBG doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+            else if((DateTime.Today.AddDays(2) > dateFrom))
+                throw new Exception("Choosen date must be al least 2 days erlier!");
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
+        {
+            ValidateInputParametersForDoctorAppointment(patientJmbg, doctorJmbg, dateFrom, dateUntil);
+
+            List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = new List<PossibleAppointmentsDTO>();
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
+            int roomId = sentDoctor.RoomId;
+
+            if (priority == "doctor")
+                possibleAppointments = FindPossibleAppointmentsForDoctorPriority(patientJmbg, doctorJmbg, ref dateFrom, ref dateUntil, duration, roomId);
+            else
+                possibleAppointments = FindPossibleAppointmentsForTimePriority(patientJmbg, ref doctorJmbg, dateFrom, dateUntil, duration, doctorsNeeded, ref roomId);
+
+            Patient selectedPatient = PatientRepository.FindOneByJmbg(patientJmbg);
+            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            Room selectedRoom = RoomRepository.FindOneById(roomId);
+
+            GetAllPossibleAppointmentsDTOByDoctor(patientJmbg, doctorJmbg, duration, possibleAppointmentsDTOs, possibleAppointments, sentDoctor, roomId, selectedPatient, selectedDoctor, selectedRoom);
+            
+            return possibleAppointmentsDTOs;
+        }
+
+        private static void GetAllPossibleAppointmentsDTOByDoctor(string patientJmbg, string doctorJmbg, int duration, List<PossibleAppointmentsDTO> possibleAppointmentsDTOs, List<DateTime> possibleAppointments, Doctor sentDoctor, int roomId, Patient selectedPatient, Doctor selectedDoctor, Room selectedRoom)
+        {
+            foreach (var pa in possibleAppointments)
+            {
+                if (pa > DateTime.Now.AddHours(1))
+                {
+                    PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, selectedPatient.FirstName + " " + selectedPatient.LastName, doctorJmbg,
+                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);
+                    possibleAppointmentsDTOs.Add(possibleAppointmentsDTO);
+                }
+            }
+        }
+
+        private List<DateTime> FindPossibleAppointmentsForTimePriority(string patientJmbg, ref string doctorJmbg, DateTime dateFrom, DateTime dateUntil, int duration, List<Doctor> doctorsNeeded, ref int roomId)
+        {
+            List<DateTime> possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                                dateFrom, dateUntil, duration);
+            while (possibleAppointments.Count == 0)
+            {
+                foreach (var doc in doctorsNeeded)
+                {
+                    doctorJmbg = doc.Jmbg;
+                    roomId = doc.RoomId;
+                    possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                    dateFrom, dateUntil, duration);
+                    if (possibleAppointments.Count != 0)
+                        break;
+                }
+                if (possibleAppointments.Count == 0)
+                    throw new Exception("There are not free appointments for given parameters!");
+            }
+
+            return possibleAppointments;
+        }
+
+        private List<DateTime> FindPossibleAppointmentsForDoctorPriority(string patientJmbg, string doctorJmbg, ref DateTime dateFrom, ref DateTime dateUntil, int duration, int roomId)
+        {
+            List<DateTime> possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                                dateFrom, dateUntil, duration);
+            while (possibleAppointments.Count == 0)
+            {
+                dateFrom = dateUntil;
+                dateUntil = dateUntil.AddDays(5);
+                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
+                dateFrom, dateUntil, duration);
+            }
+
+            return possibleAppointments;
+        }
+
+        private void ValidateInputParametersForDoctorAppointment(string patientJmbg, string doctorJmbg, DateTime dateFrom, DateTime dateUntil)
         {
             if (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null)
                 throw new Exception("Patient with that JMBG doesn't exist!");
@@ -341,81 +445,26 @@ namespace Service
                 throw new Exception("Dates are not valid!");
             else if (dateFrom < DateTime.Now)
                 throw new Exception("Can't create appointment in the past!");
-            List<DateTime> possibleAppointments = new List<DateTime>();
-            Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
-            List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
-            int roomId = sentDoctor.RoomId;
-            if (priority == "doctor")
-            {
-                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
-                    dateFrom, dateUntil, duration);
-                while (possibleAppointments.Count == 0)
-                {
-                    dateFrom = dateUntil;
-                    dateUntil = dateUntil.AddDays(5);
-                    possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
-                    dateFrom, dateUntil, duration);
-                }
-            }
-            else
-            {
-                possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
-                    dateFrom, dateUntil, duration);
-                while (possibleAppointments.Count == 0)
-                {
-                    foreach (var doc in doctorsNeeded)
-                    {
-                        doctorJmbg = doc.Jmbg;
-                        roomId = doc.RoomId;
-                        possibleAppointments = findPossibleStartTimesOfAppointment(patientJmbg, doctorJmbg, roomId,
-                        dateFrom, dateUntil, duration);
-                        if (possibleAppointments.Count != 0)
-                            break;
-                    }
-                    if (possibleAppointments.Count == 0)
-                        throw new Exception("There are not free appointments for given parameters!");
-                }
-            }
-            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
-            Patient selectedPatient = PatientRepository.FindOneByJmbg(patientJmbg);
-            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
-            Room selectedRoom = RoomRepository.FindOneById(roomId);
-            foreach (var pa in possibleAppointments)
-            {
-                if (pa > DateTime.Now.AddHours(1))
-                {
-                    PossibleAppointmentsDTO possibleAppointmentsDTO = new PossibleAppointmentsDTO(patientJmbg, selectedPatient.FirstName + " " + selectedPatient.LastName, doctorJmbg,
-                       selectedDoctor.FirstName + " " + selectedDoctor.LastName, sentDoctor.SpecialtyType, roomId, selectedRoom.Name, pa, duration, -1);//generateNewId
-                    retValue.Add(possibleAppointmentsDTO);
-                }
-            }
-            return retValue;
         }
 
         public void CreateAppointmentByDoctor(PossibleAppointmentsDTO appointmentToCreate)
         {
             int id = GenerateNewId();
             Appointment appointment = new Appointment(appointmentToCreate.StartTime, appointmentToCreate.Duration, id, appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId);
+            
             if (!appointment.validateAppointment())
-            {
                 throw new Exception("Something went wrong, new appointment isn't created!");
-            }
-            else
-            {
-                AppointmentRepository.SaveAppointment(appointment);
-            }
+            AppointmentRepository.SaveAppointment(appointment);
+            
         }
         public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
         {
             Boolean specialty = DoctorRepository.FindOneByJmbg(appointmentToCreate.DoctorJmbg).Specialty;
-            if (specialty == false)
-            {
+            if (!specialty)
                 throw new Exception("Only doctors with specialization can perform operation!");
-            }
+
             if (appointmentToCreate.DoctorJmbg.Equals("1231231231231")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
-            {
                 CreateAppointmentByDoctor(appointmentToCreate);
-            }
 
         }
         private void ValidateParametersForScheduleEmergency (String patientJmbg, String doctorSpeciality)

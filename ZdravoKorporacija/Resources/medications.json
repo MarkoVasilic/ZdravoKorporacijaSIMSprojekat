@@ -7,18 +7,7 @@
       "fenoterol"
     ],
     "Status": 1,
-    "Substitution": "zamena1"
-  },
-  {
-    "Id": 2,
-    "Name": "Paracetamol",
-    "Ingredients": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "Status": 1,
-    "Substitution": "zamena2"
+    "Alternative": null
   },
   {
     "Id": 3,
@@ -29,6 +18,17 @@
       "sastojak3"
     ],
     "Status": 1,
-    "Substitution": "zamena2"
+    "Alternative": null
+  },
+  {
+    "Id": 2,
+    "Name": "Paracetamol",
+    "Ingredients": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "Status": 1,
+    "Alternative": null
   }
 ]
