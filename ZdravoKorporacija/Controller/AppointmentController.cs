@@ -34,11 +34,6 @@ namespace Controller
             return AppointmentService.GetAllPastAppointmentsByPatient();
         }
 
-        public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
-        {
-            return AppointmentService.CreateAppointmentByDoctor(startTime, duration, patientJmbg);
-        }*/
-
         public void CreateAppointmentByPatient(DateTime startTime, String doctorJmbg)
         {
             AppointmentService.CreateAppointmentByPatient(startTime, doctorJmbg);
