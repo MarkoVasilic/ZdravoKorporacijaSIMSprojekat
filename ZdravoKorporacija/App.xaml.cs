@@ -377,9 +377,9 @@ namespace ZdravoKorporacija
             /*List<String> ingredients = new List<String>();
             ingredients.Add("sastojak1");
             ingredients.Add("sastojak2");
-            ingredients.Add("sastojak3");
+            ingredients.Add("sastojak3");*/
 
-             medicationController.Create("Aspirin", ingredients, "zamena1");*/
+             //medicationController.Create("Aspirin", ingredients, "zamena1");
 
             //PREGLED SVIH LEKOVA
             /*List<Medication> medications = new List<Medication>(medicationController.GetAll());
@@ -393,7 +393,7 @@ namespace ZdravoKorporacija
 
 
             //MODIFIKACIJA LEKOVA
-            //medicationController.Modify(3, "Brufen", ingredients1, "zamena2");
+            //medicationController.Modify(3, "neki lek", ingredients, "zamena2");
 
             //PREGLED SVIH LEKOVA NAKON MODIFIKACIJE
             /*List<Medication> medications = new List<Medication>(medicationController.GetAll());
@@ -407,8 +407,8 @@ namespace ZdravoKorporacija
 
 
             //NAPREDNO RENOVIRANJE - RAZDVAJANJE
-            /*int index = 0;
-            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(23, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+           /* int index = 0;
+            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
             foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
             {
                 Console.WriteLine(index.ToString());
@@ -435,8 +435,8 @@ namespace ZdravoKorporacija
             //appointmentController.GetPossibleAppointmentsForAbsence("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
 
             //NAPREDNO RENOVIRANJE - SPAJANJE
-            /*int index = 0;
-             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 24, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
+            int index = 0;
+             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 5, new DateTime(2023, 5, 4), new DateTime(2023, 5, 16), 60));
              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
              {
                  Console.WriteLine(index.ToString());
@@ -455,9 +455,9 @@ namespace ZdravoKorporacija
              {
                  if (checkedAppointmentIndex == i)
                  {
-                    advancedRenovationJoiningController.Create(23, 24, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
+                    advancedRenovationJoiningController.Create(12,5, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
                  }
-             }*/
+             }
 
 
             //advancedRenovationJoiningController.Join();

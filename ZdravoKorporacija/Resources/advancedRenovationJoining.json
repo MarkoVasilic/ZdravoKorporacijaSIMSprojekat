@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "Id": 1,
+    "StartTime": "2023-05-08T16:30:00",
+    "Duration": 60,
+    "FirstStartRoom": 12,
+    "SecondStartRoom": 5,
+    "ResultRoomName": "spojena soba",
+    "ResultRoomDescription": "moja spojena soba",
+    "ResultRoomType": 2
+  }
+]

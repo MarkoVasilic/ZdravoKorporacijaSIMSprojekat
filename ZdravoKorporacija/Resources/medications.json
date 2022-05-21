@@ -10,17 +10,6 @@
     "Alternative": null
   },
   {
-    "Id": 3,
-    "Name": "Brufen",
-    "Ingredients": [
-      "sastojak1",
-      "sastojak2",
-      "sastojak3"
-    ],
-    "Status": 1,
-    "Alternative": null
-  },
-  {
     "Id": 2,
     "Name": "Paracetamol",
     "Ingredients": [
@@ -30,5 +19,27 @@
     ],
     "Status": 1,
     "Alternative": null
+  },
+  {
+    "Id": 4,
+    "Name": "Aspirin",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2",
+      "sastojak3"
+    ],
+    "Status": 1,
+    "Alternative": "zamena1"
+  },
+  {
+    "Id": 3,
+    "Name": "neki lek",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2",
+      "sastojak3"
+    ],
+    "Status": 1,
+    "Alternative": "zamena2"
   }
 ]
