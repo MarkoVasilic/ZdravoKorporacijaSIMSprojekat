@@ -63,6 +63,7 @@ namespace Model
                 Console.WriteLine("No ingredients");
             }
             Console.WriteLine("Status = " + Status);
+            Console.WriteLine("Zamena = " + Alternative);
             Console.WriteLine();
         }
 
