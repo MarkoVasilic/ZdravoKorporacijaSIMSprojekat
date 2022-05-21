@@ -38,14 +38,14 @@ namespace ZdravoKorporacija.Repository
             return values;
         }
 
-        public void SaveAdvancedRenovationSeparation(AdvancedRenovationSeparation renovationToMake)
+        public void SaveSeparation(AdvancedRenovationSeparation renovationToMake)
         {
             var values = GetValues();
             values.Add(renovationToMake);
             Save(values);
         }
 
-        public void RemoveAdvancedRenovationSeparation(int renovationId)
+        public void RemoveSeparation(int renovationId)
         {
             var values = GetValues();
             values.RemoveAll(val => val.Id == renovationId);

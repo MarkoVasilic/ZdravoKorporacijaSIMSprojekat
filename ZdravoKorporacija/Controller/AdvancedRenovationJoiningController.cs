@@ -24,9 +24,9 @@ namespace ZdravoKorporacija.Controller
             AdvancedRenovationJoiningService.Create(firstStartRoom, secondStartroom, startTime, duration, resultRoomName, resultRoomDescription, resultRoomType);
         }
 
-        public void Join()
+        public void JoinRooms()
         {
-            AdvancedRenovationJoiningService.Join();
+            AdvancedRenovationJoiningService.JoinRooms();
         }
 
         public List<AdvancedRenovationJoining> GetAll()

@@ -30,12 +30,12 @@ namespace Repository
             return values;
         }
 
-        public Medication? FindOneById(int medicationId)
+        public Medication? FindOneById(int id)
         {
             var values = GetValues();
             foreach (var val in values)
             {
-                if (val.Id == medicationId)
+                if (val.Id == id)
                 {
                     return val;
                 }
@@ -44,12 +44,12 @@ namespace Repository
             return null;
         }
 
-        public Medication? FindOneByName(String medicationName)
+        public Medication? FindOneByName(String name)
         {
             var values = GetValues();
             foreach (var val in values)
             {
-                if (val.Name.Equals(medicationName))
+                if (val.Name.Equals(name))
                 {
                     return val;
                 }
@@ -60,7 +60,7 @@ namespace Repository
 
         
 
-        public void UpdateMedication(Medication medicationToModify)
+        public void Update(Medication medicationToModify)
         {
             var oneMedication = FindOneById(medicationToModify.Id);
             if (oneMedication != null)
@@ -72,7 +72,7 @@ namespace Repository
             }
         }
 
-        public List<Medication>? FindAllUnverifiedMedications()
+        public List<Medication>? FindAllUnverified()
         {
             var values = GetValues();
             List<Medication> result = new List<Medication>();

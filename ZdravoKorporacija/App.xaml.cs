@@ -435,7 +435,7 @@ namespace ZdravoKorporacija
             //appointmentController.GetPossibleAppointmentsForAbsence("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
 
             //NAPREDNO RENOVIRANJE - SPAJANJE
-            int index = 0;
+           /* int index = 0;
              List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 5, new DateTime(2023, 5, 4), new DateTime(2023, 5, 16), 60));
              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
              {
@@ -457,7 +457,7 @@ namespace ZdravoKorporacija
                  {
                     advancedRenovationJoiningController.Create(12,5, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
                  }
-             }
+             }*/
 
 
             //advancedRenovationJoiningController.Join();
