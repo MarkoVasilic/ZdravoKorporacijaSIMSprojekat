@@ -23,9 +23,9 @@ namespace ZdravoKorporacija.Controller
             AdvancedRenovationSeparationService.Create(startRoomId, startTime, duration, resultFirstRoomName, resultSecondRoomName, resultFirstRoomDescription, resultSecondRoomDescription, firstRoomType, secondRoomType);
         }
 
-        public void Separate()
+        public void SeparateRooms()
         {
-            AdvancedRenovationSeparationService.Separate();
+            AdvancedRenovationSeparationService.SeparateRooms();
         }
     }
 }

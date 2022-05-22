@@ -24,14 +24,14 @@ namespace Service
             return MedicationRepository.FindAll();
         }
 
-        public Medication GetOneByName(String medicationName)
+        public Medication GetOneByName(String name)
         {
-            return MedicationRepository.FindOneByName(medicationName);
+            return MedicationRepository.FindOneByName(name);
         }
 
-        public Medication GetOneById(int medicationId)
+        public Medication GetOneById(int id)
         {
-            return MedicationRepository.FindOneById(medicationId);
+            return MedicationRepository.FindOneById(id);
         }
 
         public int GenerateNewId()
@@ -72,23 +72,23 @@ namespace Service
 
         }
 
-        public List<Medication> GetAllUnverifiedMedications()
+        public List<Medication> GetAllUnverified()
         {
-            return MedicationRepository.FindAllUnverifiedMedications();
+            return MedicationRepository.FindAllUnverified();
         }
 
-        public void VerifyMedication(int medicationId)
+        public void Verify(int id)
         {
-            Medication medication = GetOneById(medicationId);
+            Medication medication = GetOneById(id);
             medication.Status = MedicationStatus.VERIFIED;
-            MedicationRepository.UpdateMedication(medication);
+            MedicationRepository.Update(medication);
         }
 
-        public void RejectMedication(int medicationId, String reason)
+        public void Reject(int id)
         {
-            Medication medication = GetOneById(medicationId);
+            Medication medication = GetOneById(id);
             medication.Status = MedicationStatus.REJECTED;
-            MedicationRepository.UpdateMedication(medication);
+            MedicationRepository.Update(medication);
         }
 
         public void Modify(int id, String name, List<String> ingredients, String alternative)
@@ -98,7 +98,7 @@ namespace Service
             Medication oldMedication = MedicationRepository.FindOneById(id);
             Medication newMedication = new Medication(oldMedication.Id, name, ingredients, MedicationStatus.UNVERIFIED, alternative);
             Validate(newMedication);
-            MedicationRepository.UpdateMedication(newMedication);
+            MedicationRepository.Update(newMedication);
             
         }
 
@@ -118,7 +118,7 @@ namespace Service
             }
         }
 
-        public List<Medication> GetRejected()
+        public List<Medication> GetAllRejected()
         {
             List<Medication> medications = new List<Medication>(GetAll());
             List<Medication> foundMedications = new List<Medication>();

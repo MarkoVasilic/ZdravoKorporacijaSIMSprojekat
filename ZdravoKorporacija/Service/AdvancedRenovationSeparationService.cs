@@ -37,7 +37,7 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, renovation isn't saved");
             }
 
-            AdvancedRenovationSeparationRepository.SaveAdvancedRenovationSeparation(advancedRenovationSeparation);
+            AdvancedRenovationSeparationRepository.SaveSeparation(advancedRenovationSeparation);
         }
 
 
@@ -48,7 +48,7 @@ namespace ZdravoKorporacija.Service
 
 
 
-        public void Separate()
+        public void SeparateRooms()
         {
             List<AdvancedRenovationSeparation> advancedRenovationSeparations = GetAll();
             List<int> advancedRenovationIds = new List<int>();
@@ -60,7 +60,7 @@ namespace ZdravoKorporacija.Service
 
             for (int i = 0; i <advancedRenovationIds.Count; i++)
             {
-                AdvancedRenovationSeparationRepository.RemoveAdvancedRenovationSeparation(advancedRenovationSeparations[i].Id);
+                AdvancedRenovationSeparationRepository.RemoveSeparation(advancedRenovationSeparations[i].Id);
             }
         }
 

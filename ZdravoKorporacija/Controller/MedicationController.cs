@@ -19,14 +19,14 @@ namespace Controller
             return MedicationService.GetAll();
         }
 
-        public Medication GetOneByName(String medicationName)
+        public Medication GetOneByName(String name)
         {
-            return MedicationService.GetOneByName(medicationName);
+            return MedicationService.GetOneByName(name);
         }
 
-        public Medication GetOneById(int medicationId)
+        public Medication GetOneById(int id)
         {
-            return MedicationService.GetOneById(medicationId);
+            return MedicationService.GetOneById(id);
         }
 
         public void Create(String name, List<String> ingredients, String alternative)
@@ -39,24 +39,24 @@ namespace Controller
             MedicationService.Modify(id, name, ingredients, alternative);
         }
 
-        public List<Medication> GetRejected()
+        public List<Medication> GetAllRejected()
         {
-            return MedicationService.GetRejected();
+            return MedicationService.GetAllRejected();
         }
 
-        public List<Medication> GetAllUnverifiedMedications()
+        public List<Medication> GetAllUnverified()
         {
-            return MedicationService.GetAllUnverifiedMedications();
+            return MedicationService.GetAllUnverified();
         }
 
-        public void VerifyMedication(int medicationId)
+        public void Verify(int id)
         {
-            MedicationService.VerifyMedication(medicationId);
+            MedicationService.Verify(id);
         }
 
-        public void RejectMedication(int medicationId, String reason)
+        public void Reject(int id)
         {
-            MedicationService.RejectMedication(medicationId, reason);
+            MedicationService.Reject(id);
         }
 
     }

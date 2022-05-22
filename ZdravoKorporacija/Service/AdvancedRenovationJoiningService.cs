@@ -39,12 +39,12 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, renovation isn't saved");
             }
 
-            AdvancedRenovationJoiningRepository.SaveAdvancedRenovationJoining(advancedRenovationJoining);
+            AdvancedRenovationJoiningRepository.SaveJoining(advancedRenovationJoining);
         }
 
 
 
-        public void Join()
+        public void JoinRooms()
         {
             List<AdvancedRenovationJoining> advancedRenovations = GetAll();
             List<int> advancedRenovationIds = new List<int>();
@@ -56,7 +56,7 @@ namespace ZdravoKorporacija.Service
 
             for (int i = 0; i < advancedRenovationIds.Count; i++)
             {
-                AdvancedRenovationJoiningRepository.RemoveAdvancedRenovationJoining(advancedRenovationIds[i]);
+                AdvancedRenovationJoiningRepository.RemoveJoining(advancedRenovationIds[i]);
             }
 
         }
