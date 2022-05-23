@@ -34,6 +34,18 @@ namespace Repository
             return null;
         }
 
+        public void UpdateAbsenceRequest(AbsenceRequest absenceRequestToModify)
+        {
+            var oneAbsceneRequest = FindOneById(absenceRequestToModify.Id);
+            if (oneAbsceneRequest != null)
+            {
+                var values = GetValues();
+                values.RemoveAll(value => value.Id.Equals(oneAbsceneRequest.Id));
+                values.Add(absenceRequestToModify);
+                Save(values);
+            }
+        }
+
         public List<AbsenceRequest>? FindAllByDoctorJmbg(String doctorJmbg)
         {
             var values = GetValues();
