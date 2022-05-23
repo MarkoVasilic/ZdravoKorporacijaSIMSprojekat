@@ -5,6 +5,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Documents;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
@@ -85,7 +86,7 @@ namespace ZdravoKorporacija
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
             AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
-
+            MeetingControler meetingControler = new MeetingControler();
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -466,6 +467,13 @@ namespace ZdravoKorporacija
             //ratingController.Create(1, 5, 5, "Fenomenalno");
             //int a = (int)(DateTime.Today.AddDays(2) - DateTime.Today).TotalDays;
             //Console.WriteLine(a);
+
+            List<String> useri = new List<String>();
+            useri.Add("4444444444444");
+            useri.Add("1231231231231");
+            List<PossibleMeetingDTO> possibleMeetingDtos =
+                appointmentController.GetPossibleMeetingAppointments(useri, 7, DateTime.Now, DateTime.Now.AddDays(5), 120);
+            meetingControler.CreateMeeting(possibleMeetingDtos[0].UserJmbgs, possibleMeetingDtos[0].RoomId, possibleMeetingDtos[0].StartTime, possibleMeetingDtos[0].Duration);
         }
 
     }

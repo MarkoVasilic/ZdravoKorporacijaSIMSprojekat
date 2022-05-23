@@ -72,6 +72,12 @@ namespace Controller
         {
             return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
+
+        public List<PossibleMeetingDTO> GetPossibleMeetingAppointments(List<String> userJmbgs, int roomId,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return AppointmentService.GetPossibleMeetingAppointments(userJmbgs, roomId, dateFrom, dateUntil, duration);
+        }
         public PossibleAppointmentsDTO FindPossibleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
         {
             return AppointmentService.FindPossibleEmergencyAppointment(patientJmbg, doctorSpeciality);

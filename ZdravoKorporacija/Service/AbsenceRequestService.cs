@@ -26,6 +26,33 @@ namespace Service
         {
         }
 
+        public List<AbsenceRequest> GetOnHoldAbsceneRequests()
+        {
+            List<AbsenceRequest> absenceRequests = AbsenceRequestRepository.FindAll();
+            List<AbsenceRequest> absenceRequestsOnHold = new List<AbsenceRequest>();
+            foreach (var absenceRequest in absenceRequests)
+            {
+                if(absenceRequest.State == AbsenceRequestState.ON_HOLD)
+                    absenceRequestsOnHold.Add(absenceRequest);
+            }
+
+            return absenceRequestsOnHold;
+        }
+
+        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState)
+        {
+            AbsenceRequest absenceRequestToChangeState = AbsenceRequestRepository.FindOneById(absceneRequestId);
+            if (absenceRequestToChangeState != null)
+            {
+                absenceRequestToChangeState.State = absenceRequestState;
+                AbsenceRequestRepository.UpdateAbsenceRequest(absenceRequestToChangeState);
+            }
+            else
+            {
+                throw new Exception("There is no abscene request with that id!");
+            }
+        }
+
         public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
         {
             //hard code ulogovan doctor
