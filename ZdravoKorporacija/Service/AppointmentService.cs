@@ -504,12 +504,13 @@ namespace Service
             return possibleMeetingDtos;
         }
 
-        private void ValidateParametersForScheduleMeeting(List<String> doctorJmbgs, int roomId, DateTime dateFrom, DateTime dateUntil)
+        private void ValidateParametersForScheduleMeeting(List<String> userJmbgs, int roomId, DateTime dateFrom, DateTime dateUntil)
         {
-            foreach (var doctorJmbg in doctorJmbgs)
+            foreach (var userJmbg in userJmbgs)
             {
-                if (doctorJmbg == null || DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
-                    throw new Exception("One of the doctors doesn't exist!");
+                if (userJmbg == null || (DoctorRepository.FindOneByJmbg(userJmbg) == null && ManagerRepository.FindOneByJmbg(userJmbg) == null
+                    && SecretaryRepository.FindOneByJmbg(userJmbg) == null))
+                    throw new Exception("One of the users doesn't exist!");
             }
             if (RoomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");

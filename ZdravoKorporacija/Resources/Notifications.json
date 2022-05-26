@@ -806,5 +806,37 @@
     "StartTime": "2022-05-20T13:01:13.2028075+02:00",
     "userJmbg": "6666666666666",
     "Seen": false
+  },
+  {
+    "Id": 245,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 1.6.2022. 08:15:00 in room Surg 2",
+    "StartTime": "2022-05-26T18:07:55.8766278+02:00",
+    "userJmbg": "4444444444444",
+    "Seen": false
+  },
+  {
+    "Id": 246,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 1.6.2022. 08:15:00 in room Surg 2",
+    "StartTime": "2022-05-26T18:07:55.8899877+02:00",
+    "userJmbg": "1515151515151",
+    "Seen": false
+  },
+  {
+    "Id": 247,
+    "Title": "Absence request",
+    "Description": "Your absence request has been declined!\nReason: jbg brate sta da ti kazem",
+    "StartTime": "2022-05-26T18:11:12.7830549+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 248,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 27.5.2022. 01:00:00 in room Conf 2",
+    "StartTime": "2022-05-26T20:02:28.6614387+02:00",
+    "userJmbg": "1515151515151",
+    "Seen": false
   }
 ]
