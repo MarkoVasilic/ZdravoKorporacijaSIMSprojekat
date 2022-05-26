@@ -45,6 +45,11 @@ namespace ZdravoKorporacija.Controller
             notificationService.CreatePatientNotificationForAppointmentReschedule(patientJmbg, doctorFullName, oldAppointmentTime, newAppointmentTime, roomName);
         }
 
+        public void CreateUserNotification(String title, String description, String doctorJmbg)
+        {
+            notificationService.CreateUserNotification(title, description, doctorJmbg);
+        }
+
         public void CreateDoctorNotificationForEmergency(String doctorJmbg, String patientFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, DateTime emergencyTime, String roomName)
         {
             notificationService.CreateDoctorNotificationForEmergency(doctorJmbg, patientFullName, oldAppointmentTime, newAppointmentTime, emergencyTime, roomName);

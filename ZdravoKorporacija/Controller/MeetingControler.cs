@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Service;
 
@@ -19,6 +20,11 @@ namespace ZdravoKorporacija.Controller
         public List<Meeting> GetAllMeetings()
         {
             return MeetingService.GetAllMeetings();
+        }
+
+        public List<PossibleMeetingDTO> GetAllMeetingsAsPossibleMeetingsDto()
+        {
+            return MeetingService.GetAllMeetingsAsPossibleMeetingsDto();
         }
 
         public void CreateMeeting(List<String> userJmbgs, int roomId, DateTime startTime, int duration)

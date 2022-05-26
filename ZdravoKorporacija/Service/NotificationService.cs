@@ -88,6 +88,13 @@ namespace ZdravoKorporacija.Service
             notificationRepository.SaveNotification(notification);
         }
 
+        public void CreateUserNotification(String title, String description, String doctorJmbg)
+        {
+            int id = GenerateNewId();
+            Notification notification = new Notification(title, description, DateTime.Now, doctorJmbg, false, id);
+            notificationRepository.SaveNotification(notification);
+        }
+
         public void CreateDoctorNotificationForEmergency(String doctorJmbg, String patientFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, DateTime emergencyTime, String roomName)
         {
             int id = GenerateNewId();
