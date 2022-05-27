@@ -153,10 +153,7 @@ namespace Service
         }
 
 
-        public List<Appointment> GetAppointmentsByDoctorJmbg(String doctorJmbg)
-        {
-            return AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
-        }
+     
 
         public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
         {
@@ -198,26 +195,6 @@ namespace Service
                 throw new Exception("Something went wrong, new appointment isn't created!");
             }
         }
-
-        /*public String CreateAppointmentByDoctor(DateTime startTime, int duration, String patientJmbg)
-        {
-            if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
-            {
-                return "Patient with that JMBG doesn't exist!";
-            }
-            int id = GenerateNewId();
-            Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, App.loggedUser.Jmbg, 11);
-            if (!appointment.validateAppointment())
-            {
-                return "Something went wrong, new appointment isn't created!";
-            }
-            else
-            {
-                AppointmentRepository.SaveAppointment(appointment);
-                return "";
-            }
-
-        }*/
 
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)

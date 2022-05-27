@@ -35,14 +35,14 @@ namespace ZdravoKorporacija.Service
             foreach (var meet in meetings)
             {
                 Room room = roomRepository.FindOneById(meet.RoomId);
-                possibleMeetingDtos.Add(new PossibleMeetingDTO(meet.UserJmbgs, createFullNamesOfUser(meet.UserJmbgs),
+                possibleMeetingDtos.Add(new PossibleMeetingDTO(meet.UserJmbgs, CreateFullNamesOfUser(meet.UserJmbgs),
                     meet.RoomId, room.Name, meet.StartTime, meet.Duration));
             }
 
             return possibleMeetingDtos;
         }
 
-        private List<String> createFullNamesOfUser(List<String> userJmbgs)
+        private List<String> CreateFullNamesOfUser(List<String> userJmbgs)
         {
             List<String> userFullNames = new List<string>();
             foreach (var userJmbg in userJmbgs)
@@ -71,7 +71,7 @@ namespace ZdravoKorporacija.Service
             MeetingRepository.SaveMeeting(meeting);
         }
 
-        public int GenerateNewId()
+        private int GenerateNewId()
         {
             try
             {
