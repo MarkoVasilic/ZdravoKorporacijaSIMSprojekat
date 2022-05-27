@@ -1,6 +1,4 @@
 ﻿using System.Windows.Navigation;
-using ZdravoKorporacija.View;
-using ZdravoKorporacija.View.PatientUI;
 
 namespace ZdravoKorporacija.View.PatientUI.ViewModels
 {

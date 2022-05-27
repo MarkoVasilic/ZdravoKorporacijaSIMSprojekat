@@ -1,5 +1,4 @@
 ﻿using Controller;
-using Model;
 using Repository;
 using Service;
 using System.Collections.ObjectModel;
@@ -29,10 +28,12 @@ namespace ZdravoKorporacija.View.PatientUI
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService();
             ratingService = new RatingService(ratingRepository, appointmentRepository);
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;
             appointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetAllPastAppointmentsByPatient());
-                for(int i = 0; i < appointments.Count; i++)
+            for (int i = 0; i < appointments.Count; i++)
             {
 
                 if (ratingService.FindByAppointmentId(appointments[i].AppointmentId) == true)
@@ -40,7 +41,7 @@ namespace ZdravoKorporacija.View.PatientUI
                     appointments.RemoveAt(i);
                 }
             }
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,4 +56,4 @@ namespace ZdravoKorporacija.View.PatientUI
             NavigationService.Navigate(new AppointmentRatingPage());
         }
     }
-} 
+}

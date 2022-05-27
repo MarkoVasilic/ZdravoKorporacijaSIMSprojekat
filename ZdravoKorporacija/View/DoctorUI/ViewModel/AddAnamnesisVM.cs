@@ -1,15 +1,8 @@
-﻿using Model;
-using Controller;
-using Service;
+﻿using Controller;
 using Repository;
+using Service;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using ZdravoKorporacija.View.DoctorUI.Commands;
 
 namespace ZdravoKorporacija.View.DoctorUI.ViewModel

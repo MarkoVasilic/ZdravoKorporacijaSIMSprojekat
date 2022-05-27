@@ -7,9 +7,6 @@ using System.Windows.Navigation;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
-using Service;
-using Repository;
-using System.Data;
 
 namespace ZdravoKorporacija.View.PatientUI
 {

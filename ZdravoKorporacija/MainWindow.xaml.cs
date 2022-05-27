@@ -9,7 +9,7 @@ using ZdravoKorporacija.View.SecretaryUI;
 namespace ZdravoKorporacija
 {
     public partial class MainWindow : Window
-    {  
+    {
         public MainWindow()
         {
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace ZdravoKorporacija
                     MessageBox.Show("Blocked - AntiTroll: " + App.patientController.getTrollCounterByPatient(patient.Jmbg) + " Tries");
                     this.Close();
                 }
-                
+
                 window = new PatientHomeWindow();
             }
             else if (doctor != null)

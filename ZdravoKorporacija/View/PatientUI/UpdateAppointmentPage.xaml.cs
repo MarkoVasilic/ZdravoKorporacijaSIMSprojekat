@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.View.PatientUI;
 using ZdravoKorporacija.View.PatientUI.ViewModels;
 
 namespace ZdravoKorporacija.View

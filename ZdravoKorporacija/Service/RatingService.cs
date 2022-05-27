@@ -3,8 +3,6 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -72,17 +70,17 @@ namespace ZdravoKorporacija.Service
             return RatingRepository.FindOneByAppointemntId(appointmentId);
         }
 
-        public void Create(int appointmentId,int hospitalRating,int doctorRating,String desc)
+        public void Create(int appointmentId, int hospitalRating, int doctorRating, String desc)
         {
             int id = GenerateNewId();
             Appointment appointment = AppointmentRepository.FindOneById(appointmentId);
-            
+
             Rating rating = new Rating(id, appointment.Id, hospitalRating, doctorRating, desc, System.DateTime.Now, App.loggedUser.Jmbg, appointment.DoctorJmbg);
             RatingRepository.SaveRating(rating);
-            
+
         }
 
-        
+
 
     }
 }

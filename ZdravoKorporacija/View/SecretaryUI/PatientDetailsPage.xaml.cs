@@ -38,16 +38,12 @@ namespace ZdravoKorporacija.View.SecretaryUI
         {
             InitializeComponent();
             DoctorRepository doctorRepository = new DoctorRepository();
-            DoctorService doctorService = new DoctorService(doctorRepository);
-            DoctorController doctorController = new DoctorController(doctorService);
             RoomRepository roomRepository = new RoomRepository();
-            RoomService roomService = new RoomService(roomRepository);
-            RoomController roomController = new RoomController(roomService);
             BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             PatientRepository patientRepository = new PatientRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+                roomRepository);
             PatientService patientService = new PatientService(patientRepository);
             PatientController = new PatientController(patientService, appointmentService);
             this.Patient = patient;

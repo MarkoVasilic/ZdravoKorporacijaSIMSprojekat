@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Controller;
+﻿using Controller;
 using Model;
 using Repository;
 using Service;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
@@ -19,12 +16,12 @@ using ZdravoKorporacija.View.SecretaryUI.DTO;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 {
-    public class ScheduleMeetingVM: INotifyPropertyChanged
+    public class ScheduleMeetingVM : INotifyPropertyChanged
     {
         public DoctorController doctorController { get; set; }
         public ManagerController managerController { get; set; }
-        public SecretaryController secretaryController{ get; set; }
-        public RoomController roomController{ get; set; }
+        public SecretaryController secretaryController { get; set; }
+        public RoomController roomController { get; set; }
         public MeetingControler meetingControler { get; set; }
         public NotificationController notificationController { get; set; }
         public AppointmentController appointmentController { get; set; }
@@ -195,28 +192,26 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         {
             SecretaryWindowVM.setWindowTitle("Schedule meeting");
             PatientRepository patientRepository = new PatientRepository();
-            PatientService patientService = new PatientService(patientRepository);
             DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+                roomRepository);
             ManagerRepository managerRepository = new ManagerRepository();
             ManagerService managerService = new ManagerService(managerRepository);
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             SecretaryService secretaryService = new SecretaryService(secretaryRepository);
-            MeetingRepository meetingRepository = new MeetingRepository();
-            MeetingService meetingService = new MeetingService();
             meetingControler = new MeetingControler();
             roomController = new RoomController(roomService);
             doctorController = new DoctorController(doctorService);
             managerController = new ManagerController(managerService);
             secretaryController = new SecretaryController(secretaryService);
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
@@ -328,8 +323,8 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void addDoctorExecute(object parameter)
         {
             if (!DoctorsNames.Contains(SelectedDoctorsNames))
-                    DoctorsNames.Add(SelectedDoctorsNames);
-                    
+                DoctorsNames.Add(SelectedDoctorsNames);
+
         }
         private void removeDoctorExecute(object parameter)
         {

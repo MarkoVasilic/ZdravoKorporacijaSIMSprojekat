@@ -2,7 +2,6 @@
 using System.Windows.Navigation;
 using ZdravoKorporacija.View.PatientUI;
 using ZdravoKorporacija.View.PatientUI.ViewModels;
-using ZdravoKorporacija.View.PatientUI;
 
 namespace ZdravoKorporacija.View
 {
@@ -12,7 +11,7 @@ namespace ZdravoKorporacija.View
     public partial class PatientHomeWindow : Window
     {
         public static NavigationService NavigationService { get; set; }
-        
+
         public PatientHomeWindow()
         {
             InitializeComponent();

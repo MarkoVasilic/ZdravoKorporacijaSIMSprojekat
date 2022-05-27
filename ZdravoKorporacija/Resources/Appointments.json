@@ -184,11 +184,11 @@
     "RoomId": 5
   },
   {
-    "StartTime": "2022-05-30T08:30:00",
-    "Duration": 300,
+    "StartTime": "2022-06-02T08:15:00",
+    "Duration": 150,
     "Id": 23,
     "PatientJmbg": "1123456789111",
-    "DoctorJmbg": "1231231231231",
+    "DoctorJmbg": "6666666666666",
     "RoomId": 12
   }
 ]

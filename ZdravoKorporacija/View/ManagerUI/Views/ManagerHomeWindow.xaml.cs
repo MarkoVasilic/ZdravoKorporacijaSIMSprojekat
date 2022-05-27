@@ -14,7 +14,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
             InitializeComponent();
             DataContext = new ManagerWindowVM(this);
-      
+
         }
 
         private void Logout_CanExecute(object sender, CanExecuteRoutedEventArgs e)

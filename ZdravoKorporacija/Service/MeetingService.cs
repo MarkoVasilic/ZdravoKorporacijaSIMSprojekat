@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
-using Repository;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
@@ -14,9 +12,9 @@ namespace ZdravoKorporacija.Service
     public class MeetingService
     {
         private readonly MeetingRepository MeetingRepository = new MeetingRepository();
-        private readonly DoctorRepository doctorRepository= new DoctorRepository();
-        private readonly ManagerRepository managerRepository= new ManagerRepository();
-        private readonly SecretaryRepository secretaryRepository= new SecretaryRepository();
+        private readonly DoctorRepository doctorRepository = new DoctorRepository();
+        private readonly ManagerRepository managerRepository = new ManagerRepository();
+        private readonly SecretaryRepository secretaryRepository = new SecretaryRepository();
         private readonly RoomRepository roomRepository = new RoomRepository();
 
         public MeetingService()

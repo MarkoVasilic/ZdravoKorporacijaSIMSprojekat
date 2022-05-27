@@ -1,11 +1,8 @@
 ﻿using Model;
-using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -53,12 +50,12 @@ namespace ZdravoKorporacija.Service
             List<AdvancedRenovationSeparation> advancedRenovationSeparations = GetAll();
             List<int> advancedRenovationIds = new List<int>();
 
-            foreach(AdvancedRenovationSeparation advancedRenovationSeparation in advancedRenovationSeparations)
+            foreach (AdvancedRenovationSeparation advancedRenovationSeparation in advancedRenovationSeparations)
             {
                 PerformSeparation(advancedRenovationSeparation, advancedRenovationIds);
             }
 
-            for (int i = 0; i <advancedRenovationIds.Count; i++)
+            for (int i = 0; i < advancedRenovationIds.Count; i++)
             {
                 AdvancedRenovationSeparationRepository.RemoveSeparation(advancedRenovationSeparations[i].Id);
             }
@@ -69,7 +66,7 @@ namespace ZdravoKorporacija.Service
         {
 
             Room oldRoom = RoomService.GetRoomById(advancedRenovationSeparation.StartRoomId);
-            if(advancedRenovationSeparation.StartTime <= DateTime.Today)
+            if (advancedRenovationSeparation.StartTime <= DateTime.Today)
             {
                 if (oldRoom != null)
                 {

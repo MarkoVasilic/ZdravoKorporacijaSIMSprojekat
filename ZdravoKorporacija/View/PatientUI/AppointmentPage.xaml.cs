@@ -18,7 +18,7 @@ namespace ZdravoKorporacija.View.PatientUI
 
         private void ButtonCreateAppointment(object sender, RoutedEventArgs e)
         {
-          //  NavigationService.Navigate(new CreateAppointmentPage()); 
+            //  NavigationService.Navigate(new CreateAppointmentPage()); 
 
         }
 
@@ -44,7 +44,7 @@ namespace ZdravoKorporacija.View.PatientUI
 
         private void GoHomeButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PatientHomePage()); 
+            NavigationService.Navigate(new PatientHomePage());
         }
     }
 }

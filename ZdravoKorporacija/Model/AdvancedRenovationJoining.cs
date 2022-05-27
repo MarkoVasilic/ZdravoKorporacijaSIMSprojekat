@@ -1,10 +1,6 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.Model
 {
@@ -43,7 +39,8 @@ namespace ZdravoKorporacija.Model
             else if (FirstStartRoom == null)
             {
                 return false;
-            }else if(SecondStartRoom == null)
+            }
+            else if (SecondStartRoom == null)
             {
                 return false;
             }

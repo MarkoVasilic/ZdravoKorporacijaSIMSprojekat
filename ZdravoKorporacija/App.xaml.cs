@@ -3,12 +3,8 @@ using Model;
 using Repository;
 using Service;
 using System;
-using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Documents;
 using ZdravoKorporacija.Controller;
-using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
@@ -36,7 +32,7 @@ namespace ZdravoKorporacija
         public static RatingController? ratingController { get; set; }
         public App()
         {
-            
+
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -46,9 +42,11 @@ namespace ZdravoKorporacija
             DisplacementRepository displacementRepository = new DisplacementRepository();
             PatientService patientService = new PatientService(patientRepository);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository, basicRenovationRepository);
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
             patientController = new PatientController(patientService, appointmentService);
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
             ManagerService managerService = new ManagerService(managerRepository);
@@ -380,7 +378,7 @@ namespace ZdravoKorporacija
             ingredients.Add("sastojak2");
             ingredients.Add("sastojak3");*/
 
-             //medicationController.Create("Aspirin", ingredients, "zamena1");
+            //medicationController.Create("Aspirin", ingredients, "zamena1");
 
             //PREGLED SVIH LEKOVA
             /*List<Medication> medications = new List<Medication>(medicationController.GetAll());
@@ -408,36 +406,8 @@ namespace ZdravoKorporacija
 
 
             //NAPREDNO RENOVIRANJE - RAZDVAJANJE
-           /* int index = 0;
-            List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
-            foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
-            {
-                Console.WriteLine(index.ToString());
-                possibleAppointment.toStringManager();
-                index++;
-            }
-
-
-            string checkedAppointment;
-
-            Console.WriteLine("Unesite broj termina koji zelite");
-            checkedAppointment = Console.ReadLine();
-            int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
-
-            for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
-            {
-                if (checkedAppointmentIndex == i)
-                {
-                    advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
-                }
-            }*/
-
-            //advancedRenovationSeparationController.Separate();
-            //appointmentController.GetPossibleAppointmentsForAbsence("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
-
-            //NAPREDNO RENOVIRANJE - SPAJANJE
-           /* int index = 0;
-             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 5, new DateTime(2023, 5, 4), new DateTime(2023, 5, 16), 60));
+            /* int index = 0;
+             List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(12, new DateTime(2023, 5, 15), new DateTime(2023, 5, 16), 60));
              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
              {
                  Console.WriteLine(index.ToString());
@@ -456,9 +426,37 @@ namespace ZdravoKorporacija
              {
                  if (checkedAppointmentIndex == i)
                  {
-                    advancedRenovationJoiningController.Create(12,5, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
+                     advancedRenovationSeparationController.Create(possibleAppointmentsRenovation[i].RoomId, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "soba razdvojena 1", "soba razdvojena 2", "razdvojena je1", "razdvojena je2", RoomType.EXAMINATION, RoomType.CONFERENCE);
                  }
              }*/
+
+            //advancedRenovationSeparationController.Separate();
+            //appointmentController.GetPossibleAppointmentsForAbsence("1231231231231", DateTime.Now.AddDays(3), DateTime.Now.AddDays(15), 5);
+
+            //NAPREDNO RENOVIRANJE - SPAJANJE
+            /* int index = 0;
+              List<PossibleAppointmentsDTO> possibleAppointmentsRenovation = new List<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(23, 5, new DateTime(2023, 5, 4), new DateTime(2023, 5, 16), 60));
+              foreach (PossibleAppointmentsDTO possibleAppointment in possibleAppointmentsRenovation)
+              {
+                  Console.WriteLine(index.ToString());
+                  possibleAppointment.toStringManager();
+                  index++;
+              }
+
+
+              string checkedAppointment;
+
+              Console.WriteLine("Unesite broj termina koji zelite");
+              checkedAppointment = Console.ReadLine();
+              int checkedAppointmentIndex = Convert.ToInt32(checkedAppointment);
+
+              for (int i = 0; i < possibleAppointmentsRenovation.Count; i++)
+              {
+                  if (checkedAppointmentIndex == i)
+                  {
+                     advancedRenovationJoiningController.Create(12,5, possibleAppointmentsRenovation[i].StartTime, possibleAppointmentsRenovation[i].Duration, "spojena soba", "moja spojena soba", RoomType.CONFERENCE);
+                  }
+              }*/
 
 
             //advancedRenovationJoiningController.Join();
@@ -468,7 +466,7 @@ namespace ZdravoKorporacija
             //int a = (int)(DateTime.Today.AddDays(2) - DateTime.Today).TotalDays;
             //Console.WriteLine(a);
 
-            
+
         }
 
     }

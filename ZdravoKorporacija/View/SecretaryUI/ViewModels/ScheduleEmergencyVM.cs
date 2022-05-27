@@ -33,7 +33,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public RoomController roomController { get; set; }
         public NotificationController notificationController { get; set; }
         public AppointmentController appointmentController { get; set; }
-    public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private string errorMessage;
         private string errorMessageSearch;
@@ -152,12 +152,13 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+                roomRepository);
             patientController = new PatientController(patientService, appointmentService);
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
@@ -271,7 +272,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                         SelectedRescheduleAppointment.OldStartTime, SelectedRescheduleAppointment.NewStartTime, SelectedAppointment.StartTime, SelectedRescheduleAppointment.RoomName);
                 }
                 appointmentController.CreateAppointmentBySecretary(SelectedAppointment.PatientJmbg, SelectedAppointment.DoctorJmbg,
-                    SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.Duration); 
+                    SelectedAppointment.RoomId, SelectedAppointment.StartTime, SelectedAppointment.Duration);
                 SecretaryWindowVM.NavigationService.Navigate(new AppointmentView());
             }
             catch (Exception e)

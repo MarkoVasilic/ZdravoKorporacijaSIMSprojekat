@@ -1,10 +1,6 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ZdravoKorporacija.Model
 {
@@ -17,7 +13,7 @@ namespace ZdravoKorporacija.Model
         public String ResultFirstRoomName { get; set; }
         public String ResultSecondRoomName { get; set; }
         public String ResultFirstRoomDescription { get; set; }
-        public String ResultSecondRoomDescription  { get; set; }
+        public String ResultSecondRoomDescription { get; set; }
         public RoomType FirstRoomType { get; set; }
         public RoomType SecondRoomType { get; set; }
 
@@ -53,22 +49,28 @@ namespace ZdravoKorporacija.Model
             else if (StartTime == null || StartTime < DateTime.Now)
             {
                 return false;
-            }else if(ResultFirstRoomName == null || ResultFirstRoomName.Length < 2)
+            }
+            else if (ResultFirstRoomName == null || ResultFirstRoomName.Length < 2)
             {
                 return false;
-            }else if (ResultSecondRoomName == null || ResultSecondRoomName.Length < 2)
+            }
+            else if (ResultSecondRoomName == null || ResultSecondRoomName.Length < 2)
             {
                 return false;
-            }else if (ResultFirstRoomDescription == null || ResultFirstRoomDescription.Length < 2)
+            }
+            else if (ResultFirstRoomDescription == null || ResultFirstRoomDescription.Length < 2)
             {
                 return false;
-            }else if (ResultSecondRoomDescription == null || ResultSecondRoomDescription.Length < 2)
+            }
+            else if (ResultSecondRoomDescription == null || ResultSecondRoomDescription.Length < 2)
             {
                 return false;
-            }else if (FirstRoomType == null)
+            }
+            else if (FirstRoomType == null)
             {
                 return false;
-            }else if (SecondRoomType == null)
+            }
+            else if (SecondRoomType == null)
             {
                 return false;
             }

@@ -11,7 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
@@ -192,15 +192,16 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+                roomRepository);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
             patientController = new PatientController(patientService, appointmentService);
-            appointmentController = new AppointmentController(appointmentService);
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());
-            possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
+            possibleAppointmentListToAppointmentList(appointmentController.GetPossibleAppointmentsDtos());
             SearchAppointmentCommand = new RelayCommand(searchAppointmentExecute);
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
@@ -258,7 +259,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 
         private void searchAppointmentExecute(object parameter)
         {
-            List<PossibleAppointmentsDTO> temp = appointmentController.GetAllAppointmentsBySecretary();
+            List<PossibleAppointmentsDTO> temp = appointmentController.GetPossibleAppointmentsDtos();
             Appointments = new ObservableCollection<PossibleAppointmentsDTO>();
             foreach (var ap in temp)
             {

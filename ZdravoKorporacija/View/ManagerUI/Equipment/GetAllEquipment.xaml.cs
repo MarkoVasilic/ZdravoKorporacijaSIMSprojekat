@@ -2,9 +2,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,7 +27,7 @@ namespace ZdravoKorporacija.View.Equipment
 
         protected virtual void OnPropertyChanged(string name)
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
@@ -99,13 +96,14 @@ namespace ZdravoKorporacija.View.Equipment
             if (EquipmentTypeComboBox.SelectedIndex == 0)
             {
                 equipmentType = "STATIC";
-            }else if (EquipmentTypeComboBox.SelectedIndex == 1)
+            }
+            else if (EquipmentTypeComboBox.SelectedIndex == 1)
             {
                 equipmentType = "DYNAMIC";
             }
-            
 
-           Equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(equipmentType));
+
+            Equipment = new ObservableCollection<EquipmentDTO>(equipmentController.Filter(equipmentType));
         }
 
 

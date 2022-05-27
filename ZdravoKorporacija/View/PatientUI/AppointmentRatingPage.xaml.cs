@@ -1,18 +1,8 @@
 ﻿using Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
@@ -24,7 +14,7 @@ namespace ZdravoKorporacija.View.PatientUI
     /// </summary>
     public partial class AppointmentRatingPage : Page
     {
-        private int SelectedDoctorRating{get; set;}
+        private int SelectedDoctorRating { get; set; }
         private int SelectedHospitalRating { get; set; }
         private String Comment { get; set; }
 
@@ -72,7 +62,7 @@ namespace ZdravoKorporacija.View.PatientUI
             if (commentTextBox.Text == "//Unesite komentar... ")
                 Comment = "";
 
-            MessageBox.Show("Ocijena za doktora: " + SelectedDoctorRating + " Ocijena za Bolnicu: " + SelectedHospitalRating + " Dodatni komentar: " + Comment + " Appointment ID: "+ GetAllAppointmentsPatient.AppointmentToBeRatedId);
+            MessageBox.Show("Ocijena za doktora: " + SelectedDoctorRating + " Ocijena za Bolnicu: " + SelectedHospitalRating + " Dodatni komentar: " + Comment + " Appointment ID: " + GetAllAppointmentsPatient.AppointmentToBeRatedId);
             ratingController.Create(GetAllAppointmentsPatient.AppointmentToBeRatedId, SelectedHospitalRating, SelectedDoctorRating, Comment);
             NavigationService.Navigate(new GetAllAppointmentsPatient());
         }
