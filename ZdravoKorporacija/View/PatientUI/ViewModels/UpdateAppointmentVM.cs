@@ -9,11 +9,9 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
-
-using ZdravoKorporacija.View.PatientUI.Commands;
-using ZdravoKorporacija.View.PatientUI;
-using System.Windows;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
+using ZdravoKorporacija.View.PatientUI.Commands;
 
 namespace ZdravoKorporacija.View.PatientUI.ViewModels
 {
@@ -47,7 +45,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
         public ICommand ModifyAppointmentCommand { get; set; }
         public ICommand DeleteAppointmentCommand { get; set; }
         public ICommand SelectNewAppointmentCommand { get; set; }
-        
+
 
         public ObservableCollection<Doctor> Doctors
         {
@@ -208,9 +206,11 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+                roomRepository);
             patientController = new PatientController(patientService, appointmentService);
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             roomsListToRoomList(roomController.GetAllRooms());
             doctorsListToDoctorList(doctorController.GetAllDoctors());
             // possibleAppointmentListToAppointmentList(appointmentController.GetAllAppointmentsBySecretary());
@@ -329,10 +329,10 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
 
                 Console.WriteLine("troll: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
 
-                    appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
-                    MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
-                    PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
-                
+                appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
+                MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
+                PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
+
             }
             catch (Exception e)
             {

@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
@@ -64,6 +61,17 @@ namespace ZdravoKorporacija.Repository
             return null;
         }
 
+        public List<AdvancedRenovationJoining> FindAllByRoomId(int id)
+        {
+            List<AdvancedRenovationJoining> advancedRenovationJoining = GetValues();
+            List<AdvancedRenovationJoining> renovationJoinings = new List<AdvancedRenovationJoining>();
+            foreach (var arj in advancedRenovationJoining)
+            {
+                if (arj.FirstStartRoom == id || arj.SecondStartRoom == id)
+                    renovationJoinings.Add(arj);
+            }
 
+            return renovationJoinings;
+        }
     }
 }

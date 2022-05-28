@@ -31,7 +31,7 @@ namespace Service
         {
             List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>();
             List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
-            foreach(MedicalRecord medicalRecord in medicalRecords)
+            foreach (MedicalRecord medicalRecord in medicalRecords)
             {
 
                 MedicalRecordDTO medicalRecordDTO = GetOneByPatientJmbg(medicalRecord.PatientJmbg);

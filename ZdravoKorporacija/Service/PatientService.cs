@@ -101,14 +101,14 @@ namespace Service
         public void incrementTrollCounterByPatient(string jmbg)
         {
             Patient patient = PatientRepository.FindOneByJmbg(jmbg);
-             patient.trollCounter++;
+            patient.trollCounter++;
             PatientRepository.UpdatePatient(patient);
 
         }
         public void resetTrollCounterByPatient(string jmbg)
         {
             Patient patient = PatientRepository.FindOneByJmbg(jmbg);
-            patient.trollCounter=0;
+            patient.trollCounter = 0;
             PatientRepository.UpdatePatient(patient);
 
         }

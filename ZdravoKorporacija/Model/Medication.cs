@@ -12,7 +12,7 @@ namespace Model
         public MedicationStatus Status { get; set; }
 
         public String Alternative { get; set; }
-        
+
 
         public Medication()
         {
@@ -33,13 +33,13 @@ namespace Model
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
                 return false;
-            else if (Name == null || Name.Length <2)
+            else if (Name == null || Name.Length < 2)
                 return false;
             else if (Ingredients == null)
                 return false;
             else if (Status == null)
                 return false;
-            else if (Alternative == null || Alternative.Length <2)
+            else if (Alternative == null || Alternative.Length < 2)
                 return false;
             else
                 return true;
@@ -51,7 +51,7 @@ namespace Model
             Console.WriteLine("ID = " + Id);
             Console.WriteLine("Name = " + Name);
             Console.WriteLine("Ingredients = ");
-            if(Ingredients != null)
+            if (Ingredients != null)
             {
                 foreach (string ingredient in Ingredients)
                 {

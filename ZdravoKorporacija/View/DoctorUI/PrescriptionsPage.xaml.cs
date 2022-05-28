@@ -1,22 +1,12 @@
 ﻿using Controller;
-using Service;
-using Repository;
 using Model;
+using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
 
 namespace ZdravoKorporacija.View.DoctorUI
@@ -46,7 +36,7 @@ namespace ZdravoKorporacija.View.DoctorUI
             MedicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
             List<Prescription> prescriptions = MedicalRecordController.GetOneMedicalRecorByPatientJmbg(Jmbg).Prescriptions;
             this.Prescriptions = new ObservableCollection<Prescription>(prescriptions);
-            
+
         }
 
         private void AddPrescriptionButton_Click(object sender, RoutedEventArgs e)

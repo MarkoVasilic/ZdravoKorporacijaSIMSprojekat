@@ -3,12 +3,8 @@ using Model;
 using Repository;
 using Service;
 using System;
-using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Documents;
 using ZdravoKorporacija.Controller;
-using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
@@ -36,7 +32,7 @@ namespace ZdravoKorporacija
         public static RatingController? ratingController { get; set; }
         public App()
         {
-            
+
             ManagerRepository managerRepository = new ManagerRepository();
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -46,9 +42,11 @@ namespace ZdravoKorporacija
             DisplacementRepository displacementRepository = new DisplacementRepository();
             PatientService patientService = new PatientService(patientRepository);
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository, basicRenovationRepository);
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
             patientController = new PatientController(patientService, appointmentService);
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
             ManagerService managerService = new ManagerService(managerRepository);

@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
@@ -246,9 +247,11 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+                roomRepository);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
             patientController = new PatientController(patientService, appointmentService);
-            appointmentController = new AppointmentController(appointmentService);
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             specialitiesListToStringList(doctorController.GetAllSpecialities());
             roomsListToRoomList(roomController.GetAllRooms());
             SearchPatientCommand = new RelayCommand(searchPatientExecute);

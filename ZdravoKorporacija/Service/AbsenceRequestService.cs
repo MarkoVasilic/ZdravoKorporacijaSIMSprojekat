@@ -1,10 +1,8 @@
-﻿using System;
-using Model;
+﻿using Model;
 using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
 
@@ -13,7 +11,7 @@ namespace Service
     public class AbsenceRequestService
     {
         private readonly AbsenceRequestRepository AbsenceRequestRepository;
-        private readonly AppointmentService AppointmentService = new AppointmentService();
+        private readonly ScheduleService scheduleService = new ScheduleService();
         private readonly DoctorRepository DoctorRepository;
 
         public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, DoctorRepository doctorRepository)
@@ -32,7 +30,7 @@ namespace Service
             List<AbsenceRequest> absenceRequestsOnHold = new List<AbsenceRequest>();
             foreach (var absenceRequest in absenceRequests)
             {
-                if(absenceRequest.State == AbsenceRequestState.ON_HOLD)
+                if (absenceRequest.State == AbsenceRequestState.ON_HOLD)
                     absenceRequestsOnHold.Add(absenceRequest);
             }
 
@@ -59,7 +57,7 @@ namespace Service
             String doctorJmbg = "1231231231231";
             String doctorSpecialtyType = DoctorRepository.FindOneByJmbg(doctorJmbg).SpecialtyType; //doktor moze samo za sebe, jmbg ulogovanog doktora
             int interval = (int)(dateUntil - dateFrom).TotalDays;
-            PossibleAppointmentsDTO possibleAppointmentsDTO = AppointmentService.GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, interval);
+            PossibleAppointmentsDTO possibleAppointmentsDTO = scheduleService.GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, interval);
 
             if (isUrgent)
                 CreateUgrentAbsenceRequest(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval);

@@ -114,5 +114,21 @@
     "Email": "aaa@cds.com",
     "PhoneNumber": "342423",
     "Address": "Pere Jecmenica 12, Novi Sad"
+  },
+  {
+    "IsGuest": true,
+    "Allergens": [],
+    "BloodTypeEnum": 0,
+    "trollCounter": 0,
+    "FirstName": "Neko",
+    "LastName": "Nekovic",
+    "Username": "Neko",
+    "Password": "sifra123",
+    "Jmbg": "7777777777777",
+    "DateOfBirth": null,
+    "Gender": 0,
+    "Email": "",
+    "PhoneNumber": "",
+    "Address": ""
   }
 ]

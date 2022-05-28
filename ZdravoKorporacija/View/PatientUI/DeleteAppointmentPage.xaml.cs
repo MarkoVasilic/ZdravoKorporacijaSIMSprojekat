@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.View
 {
@@ -20,7 +21,9 @@ namespace ZdravoKorporacija.View
             InitializeComponent();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService();
-            appointmentController = new AppointmentController(appointmentService);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
         }
 
         private void DeleteAppointmentButton(object sender, RoutedEventArgs e)

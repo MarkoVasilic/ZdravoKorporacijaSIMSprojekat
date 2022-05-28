@@ -6,7 +6,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
@@ -76,16 +75,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             Patient = new Patient();
             Patient.IsGuest = false;
             DoctorRepository doctorRepository = new DoctorRepository();
-            DoctorService doctorService = new DoctorService(doctorRepository);
-            DoctorController doctorController = new DoctorController(doctorService);
             RoomRepository roomRepository = new RoomRepository();
-            RoomService roomService = new RoomService(roomRepository);
-            RoomController roomController = new RoomController(roomService);
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             PatientRepository patientRepository = new PatientRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
-                roomRepository, basicRenovationRepository);
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
             PatientService patientService = new PatientService(patientRepository);
             PatientController = new PatientController(patientService, appointmentService);
             PatientAllergens = new ObservableCollection<string>();

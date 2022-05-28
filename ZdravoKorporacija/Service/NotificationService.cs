@@ -76,7 +76,7 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, new notification isn't created!");
             notificationRepository.SaveNotification(notification);
             return notification;
-            
+
         }
 
         public void CreatePatientNotificationForAppointmentReschedule(String patientJmbg, String doctorFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, String roomName)
@@ -124,14 +124,14 @@ namespace ZdravoKorporacija.Service
                 numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); //koliko ukupno puta treba popiti lijek
                 for (int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
                 {
-                 
+
                     Title = prescription.Medication; //naslov = paracetamol
-                    StartTime = prescription.From.AddHours(i*prescription.Frequency); //startTime  = StartTime lijeka
-                    Desc = "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour +":"+StartTime.Minute + "h !";
-                    
-                        Notification notification = CreateNotification(Title, Desc, StartTime, userJmbg, Seen);
-                        notificationsList.Add(notification);
-                    
+                    StartTime = prescription.From.AddHours(i * prescription.Frequency); //startTime  = StartTime lijeka
+                    Desc = "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour + ":" + StartTime.Minute + "h !";
+
+                    Notification notification = CreateNotification(Title, Desc, StartTime, userJmbg, Seen);
+                    notificationsList.Add(notification);
+
                 }
             }
 
@@ -148,11 +148,12 @@ namespace ZdravoKorporacija.Service
             Console.WriteLine("Notifications to be Made");
             Console.WriteLine("-------------------------");
 
-                for (int i=0; i < notificationsListToDisplay.Count; i++) {
-                    if ((((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) <= 1) && ((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) > -8)) || (System.DateTime.Now > notificationsListToDisplay[i].StartTime))
-                        {   
-                        returnList.Add(notificationsListToDisplay[i]);
-                        }
+            for (int i = 0; i < notificationsListToDisplay.Count; i++)
+            {
+                if ((((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) <= 1) && ((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) > -8)) || (System.DateTime.Now > notificationsListToDisplay[i].StartTime))
+                {
+                    returnList.Add(notificationsListToDisplay[i]);
+                }
             }
             return returnList;
 

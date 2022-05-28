@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace ZdravoKorporacija.View.SecretaryUI.Validation
@@ -20,7 +15,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.Validation
                 if (!r.IsMatch(text) && text.Length > 0)
                 {
                     return new ValidationResult(false, "You must enter only digits!");
-                    
+
                 }
                 if (text.Length > 0 && text.Length != 13)
                 {

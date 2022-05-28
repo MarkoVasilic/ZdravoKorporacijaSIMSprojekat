@@ -20,7 +20,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public ICommand AbsenceRequestCommand { get; set; }
         public ICommand ScheduledMeetingsCommand { get; set; }
         public ICommand NotificationCommand { get; set; }
-        
+
 
         public static void setWindowTitle(string newTitle)
         {

@@ -250,7 +250,7 @@ namespace ZdravoKorporacija.Service
         public List<EquipmentDTO> Filter(String equipmentType)
         {
             return GetEquipmentByType(equipmentType);
-           
+
         }
 
 
@@ -278,10 +278,10 @@ namespace ZdravoKorporacija.Service
             List<EquipmentDTO> resultingEquipment = new List<EquipmentDTO>();
 
 
-            foreach(EquipmentDTO equipmentDTO in equipmentDTOs)
+            foreach (EquipmentDTO equipmentDTO in equipmentDTOs)
             {
 
-                if(equipmentDTO.Name == name)
+                if (equipmentDTO.Name == name)
                 {
                     resultingEquipment.Add(equipmentDTO);
                 }
@@ -291,12 +291,12 @@ namespace ZdravoKorporacija.Service
 
         }
 
-        public void DeleteByRoomId (int roomId)
+        public void DeleteByRoomId(int roomId)
         {
             EquipmentRepository.RemoveEquipmentByRoom(roomId);
         }
 
-        public void DeleteDisplacementByStartRoomId (int roomId)
+        public void DeleteDisplacementByStartRoomId(int roomId)
         {
             DisplacementRepository.RemoveDisplacementByStartRoomId(roomId);
         }

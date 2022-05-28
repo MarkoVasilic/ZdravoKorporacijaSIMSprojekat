@@ -1,9 +1,8 @@
-﻿using System.Windows.Controls;
-using ZdravoKorporacija.View.DoctorUI.ViewModel;
-using Controller;
-using Service;
-using ZdravoKorporacija.DTO;
+﻿using Controller;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.View.DoctorUI.ViewModel;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {

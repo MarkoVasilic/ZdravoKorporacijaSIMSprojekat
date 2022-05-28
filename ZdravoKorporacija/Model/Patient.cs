@@ -10,7 +10,7 @@ namespace Model
         public List<String> Allergens { get; set; }
         public BloodType BloodTypeEnum { get; set; }
 
-        public  int trollCounter { set; get; }
+        public int trollCounter { set; get; }
 
         public Patient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
             string firstName, string lastName, string username, string password,

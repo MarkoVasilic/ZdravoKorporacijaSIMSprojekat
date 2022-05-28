@@ -1,5 +1,4 @@
 ﻿using Model;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -71,7 +70,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         private void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-           // Console.WriteLine("Nadja");
+            // Console.WriteLine("Nadja");
             NavigationService.Navigate(new ManagerHomePage());
         }
 

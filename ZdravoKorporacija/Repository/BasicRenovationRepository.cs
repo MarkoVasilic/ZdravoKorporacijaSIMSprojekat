@@ -60,7 +60,7 @@ namespace ZdravoKorporacija.Repository
             Save(values);
         }
 
-        public void RemoveBasicRenovationByRoomId (int roomId)
+        public void RemoveBasicRenovationByRoomId(int roomId)
         {
             var values = GetValues();
             values.RemoveAll(val => val.RoomId == roomId);

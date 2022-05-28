@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Controller;
+﻿using Controller;
 using Model;
 using Repository;
 using Service;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
@@ -18,10 +15,10 @@ using ZdravoKorporacija.View.SecretaryUI.DTO;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 {
-    public class AbsceneRequestsVM: INotifyPropertyChanged
+    public class AbsceneRequestsVM : INotifyPropertyChanged
     {
         public DoctorController doctorController { get; set; }
-        public AbsenceRequestController absenceRequestController{ get; set; }
+        public AbsenceRequestController absenceRequestController { get; set; }
         public NotificationController notificationController { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -1,19 +1,9 @@
 ﻿using Repository;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
@@ -64,9 +54,9 @@ namespace ZdravoKorporacija.View.SecretaryUI
         {
             if (DynamicEquimpentComboBox.SelectedValue == null || DynamicEquimpentComboBox.SelectedValue.ToString().Length < 1)
                 ErrorMessage = "Select equipment you want to order!";
-            else if(MyUpDownControl.Value == null)
+            else if (MyUpDownControl.Value == null)
                 ErrorMessage = "Select quantity of equipment you want to order!";
-            else if(MyUpDownControl.Value <= 0)
+            else if (MyUpDownControl.Value <= 0)
                 ErrorMessage = "Quantity must be positive!";
             else
             {

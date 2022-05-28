@@ -59,7 +59,7 @@
     "Id": 11,
     "Name": "Flexible tube",
     "IsStatic": false,
-    "Quantity": 2,
+    "Quantity": 7,
     "RoomId": null,
     "DynamicAddDate": "2022-05-23T13:12:33.0742552+02:00"
   }

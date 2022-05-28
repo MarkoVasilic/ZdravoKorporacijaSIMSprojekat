@@ -131,7 +131,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
             {
                 ErrorMessage = ex.Message;
                 MessageBox.Show(ErrorMessage, "Greška");
-             }
+            }
         }
 
         private void Button_Click_Logout(object sender, RoutedEventArgs e)

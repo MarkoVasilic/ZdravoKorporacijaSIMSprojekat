@@ -60,8 +60,8 @@ namespace Service
 
         public void CheckBeforeCreating(int id, String name)
         {
-            
-            if(MedicationRepository.FindOneById(id) != null)
+
+            if (MedicationRepository.FindOneById(id) != null)
             {
                 throw new Exception("Medication with that ID already exists!");
             }
@@ -99,7 +99,7 @@ namespace Service
             Medication newMedication = new Medication(oldMedication.Id, name, ingredients, MedicationStatus.UNVERIFIED, alternative);
             Validate(newMedication);
             MedicationRepository.Update(newMedication);
-            
+
         }
 
 
@@ -107,7 +107,7 @@ namespace Service
         {
             if (MedicationRepository.FindOneById(id) == null)
                 throw new Exception("Medication with that identification number doesn't exist");
-            
+
         }
 
         public void Validate(Medication medication)
@@ -123,9 +123,9 @@ namespace Service
             List<Medication> medications = new List<Medication>(GetAll());
             List<Medication> foundMedications = new List<Medication>();
 
-            foreach(Medication medication in medications)
+            foreach (Medication medication in medications)
             {
-                if(medication.Status == MedicationStatus.REJECTED)
+                if (medication.Status == MedicationStatus.REJECTED)
                 {
                     foundMedications.Add(medication);
                 }

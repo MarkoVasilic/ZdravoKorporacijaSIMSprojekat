@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Controller;
+﻿using Controller;
 using Model;
 using Repository;
 using Service;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
@@ -18,14 +15,14 @@ using ZdravoKorporacija.View.SecretaryUI.Commands;
 
 namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
 {
-    public class CheckScheduledMeetingsVM: INotifyPropertyChanged
+    public class CheckScheduledMeetingsVM : INotifyPropertyChanged
     {
         private DoctorController doctorController { get; set; }
         private ManagerController managerController { get; set; }
         private SecretaryController secretaryController { get; set; }
         private RoomController roomController { get; set; }
         private MeetingControler meetingControler { get; set; }
-        private ObservableCollection<Doctor>  doctors;
+        private ObservableCollection<Doctor> doctors;
         private Doctor selectedDoctor;
         private ObservableCollection<Room> rooms;
         private Room selectedRoom;
@@ -120,8 +117,6 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
-            MeetingRepository meetingRepository = new MeetingRepository();
-            MeetingService meetingService = new MeetingService();
             meetingControler = new MeetingControler();
             doctorsToDoctorsObservable(doctorController.GetAllDoctors(), managerController.GetAllManager(), secretaryController.GetAllSecretary());
             roomsToRoomsObservable(roomController.GetAllRooms());
@@ -191,7 +186,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                     Meetings.Add(me);
                 }
             }
-            if(visible)
+            if (visible)
                 MeetingsVisibility = "Visible";
             else
                 MeetingsVisibility = "Hidden";

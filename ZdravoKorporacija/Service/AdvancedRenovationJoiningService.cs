@@ -3,8 +3,6 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -66,7 +64,7 @@ namespace ZdravoKorporacija.Service
 
             Room oldRoom = RoomService.GetRoomById(advancedRenovation.FirstStartRoom);
 
-            if(advancedRenovation.StartTime <= DateTime.Today)
+            if (advancedRenovation.StartTime <= DateTime.Today)
             {
                 if (oldRoom != null)
                 {
