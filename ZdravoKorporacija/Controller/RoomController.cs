@@ -50,5 +50,10 @@ namespace Controller
             return RoomService.GetRoomById(roomId);
         }
 
+        public List<Room> GetAllExceptOne(int id)
+        {
+            return RoomService.GetAllExceptOne(id);
+        }
+
     }
 }

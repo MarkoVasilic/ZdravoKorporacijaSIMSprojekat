@@ -138,5 +138,21 @@ namespace Service
             }
         }
 
+        public List<Room> GetAllExceptOne(int id)
+        {
+            List <Room> rooms = GetAllRooms();
+            List<Room> resultRooms = new List<Room>();
+
+            foreach(Room room in rooms)
+            {
+                if (room.Id != id)
+                {
+                    resultRooms.Add(room);
+                }
+            }
+
+            return resultRooms;
+        }
+
     }
 }

@@ -58,11 +58,6 @@ namespace Controller
             return AppointmentService.GetOneById(appointmentId);
         }
 
-        public List<Model.Appointment> GetAppointmentsByDoctorJmbg(String doctorJmbg)
-        {
-            return AppointmentService.GetAppointmentsByDoctorJmbg(doctorJmbg);
-        }
-
         public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
         {
             return AppointmentService.GetAppointmentsByDoctorJmbgDTO(doctorJmbg);

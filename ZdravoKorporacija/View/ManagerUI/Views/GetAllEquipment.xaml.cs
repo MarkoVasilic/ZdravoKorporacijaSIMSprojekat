@@ -14,6 +14,9 @@ using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.ManagerUI.Help;
 using ZdravoKorporacija.View.RoomCRUD;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace ZdravoKorporacija.View.Equipment
 {
@@ -122,7 +125,24 @@ namespace ZdravoKorporacija.View.Equipment
 
         private void PDFClick(object sender, RoutedEventArgs e)
         {
+            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Oprema.pdf", FileMode.Create));
+            doc.Open();
+            string header = "DOSTUPNA OPREMA U BOLNICI \n\n";
+            string text = "";
+            iTextSharp.text.Paragraph p2 = new iTextSharp.text.Paragraph("");
+            iTextSharp.text.Paragraph paragraph = new iTextSharp.text.Paragraph(header);
+            doc.Add(paragraph);
+            foreach(var eq in equipment)
+            {
+                text += eq.toString();
+                p2 = new iTextSharp.text.Paragraph(text);
+            }
 
+            doc.Add(p2);
+            doc.Close();
+
+            MessageBox.Show("Izveštaj o opremi je kreiran.", "Obaveštenje", MessageBoxButton.OK);
         }
     }
 }

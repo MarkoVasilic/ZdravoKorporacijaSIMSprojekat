@@ -56,6 +56,10 @@ namespace ZdravoKorporacija.Controller
             return EquipmentService.Search(name);
         }
 
+        public List<EquipmentDTO> GetAllByRoomId(int roomId)
+        {
+            return EquipmentService.GetAllByRoomId(roomId);
+        }
 
 
     }

@@ -27,14 +27,16 @@ namespace ZdravoKorporacija.DTO
         }
 
 
-        public void toString()
+        public String toString()
         {
-            Console.WriteLine("ID = " + Id);
-            Console.WriteLine("EquipmentName = " + Name);
-            Console.WriteLine("isStatic = " + IsStatic);
-            Console.WriteLine("Quantity = " + Quantity);
-            Console.WriteLine("RoomName = " + RoomName);
-            Console.WriteLine();
+
+            String txt = "";
+            txt += "Equipment name:" + Name + "\n";
+            txt += "Type:" + IsStatic + "\n";
+            txt += "Quantity:" + Quantity + "\n";
+            txt += "Room:" + RoomName + "\n";
+            txt += "\n";
+            return txt;
         }
     }
 }

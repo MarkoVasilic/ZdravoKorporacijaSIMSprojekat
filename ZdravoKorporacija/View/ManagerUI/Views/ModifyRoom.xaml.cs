@@ -118,12 +118,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
         }
 
 
-
-        /* private void Button_Back_Click(object sender, RoutedEventArgs e)
-         {
-             NavigationService.Navigate(new RoomsBeforeModification());
-         }*/
-
         private void Button_ModifyRoom_Click(object sender, RoutedEventArgs e)
         {
             try

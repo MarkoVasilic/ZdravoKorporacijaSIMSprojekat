@@ -38,5 +38,15 @@ namespace Model
             }
             else return true;
         }
+
+
+        public void toString()
+        {
+            Console.WriteLine("ID = " + Id);
+            Console.WriteLine("RoomsName = " + Name);
+            Console.WriteLine("RoomDescription" +Description);
+            Console.WriteLine("RoomType = " + Type);
+            Console.WriteLine();
+        }
     }
 }

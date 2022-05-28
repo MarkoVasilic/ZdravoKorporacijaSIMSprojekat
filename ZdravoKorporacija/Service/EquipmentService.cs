@@ -306,5 +306,40 @@ namespace ZdravoKorporacija.Service
             DisplacementRepository.RemoveDisplacementByEndRoomId(roomId);
         }
 
+        public List<EquipmentDTO> GetAllByRoomId(int roomId)
+        {
+            List<Equipment> equipment = EquipmentRepository.FindAllByRoomId(roomId);
+            List<EquipmentDTO> equipmentDTO = new List<EquipmentDTO> ();
+
+            foreach(Equipment eq in equipment)
+            {
+                EquipmentDTO eqDTO = new EquipmentDTO();
+                eqDTO.Id = eq.Id;
+                eqDTO.Name = eq.Name;
+                eqDTO.Quantity = eq.Quantity;
+                eqDTO.RoomId = eq.RoomId;
+
+                if (eq.IsStatic == true)
+                {
+                    eqDTO.IsStatic = "STATIC";
+                }
+                else
+                {
+                    eqDTO.IsStatic = "DYNAMIC";
+                }
+
+                if (eq.RoomId == null)
+                {
+                    eqDTO.RoomName = "/";
+                }
+                else
+                {
+                    eqDTO.RoomName = RoomRepository.FindOneById(eq.RoomId).Name;
+                }
+                equipmentDTO.Add(eqDTO);    
+            }
+            return equipmentDTO;
+        }
+
     }
 }
