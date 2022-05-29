@@ -56,7 +56,17 @@ namespace Service
             List<Appointment> appointments = AppointmentRepository.GetAllPastAppointmentsByPatient(App.loggedUser.Jmbg);
             return CreatePossibleAppointmentsDtos(appointments);
         }
-
+        public List<PossibleAppointmentsDTO> GetAllByJmbgAndDate(DateTime date)
+        {
+            List<PossibleAppointmentsDTO> appointments = this.GetAllFutureAppointmentsByPatient();
+            List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();
+            foreach (var ap in appointments)
+            {
+                if (date.Date == ap.StartTime.Date)
+                    possibleAppointmentsDTO.Add(ap);
+            }
+            return possibleAppointmentsDTO;
+        }
         private List<PossibleAppointmentsDTO> CreatePossibleAppointmentsDtos(List<Appointment> appointments)
         {
             List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();

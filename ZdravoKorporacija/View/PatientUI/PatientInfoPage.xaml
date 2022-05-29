@@ -10,46 +10,55 @@
       Title="PatientInfoPage">
 
     <Grid Background="#FF242F41">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"></ColumnDefinition>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="0.1"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
-
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Content="Moj Profil" FontSize="60" FontWeight="Bold" Foreground="MediumAquamarine" Margin="4,0,0,0"></Label>
-        <TextBlock Text="Ime:" Grid.Row="3" Grid.Column="1" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center"  ></TextBlock>
-        <TextBox  Grid.Row="3" FontSize="25" HorizontalContentAlignment="Left" Grid.Column="2" Width="340"  HorizontalAlignment="Left" MaxHeight="40"></TextBox>
-        <TextBlock Text="Prezime:" Grid.Row="5" Grid.Column="1" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center"  ></TextBlock>
-        <TextBox   Grid.Row="5" FontSize="25" HorizontalContentAlignment="Left" Grid.Column="2" Width="340"  HorizontalAlignment="Left" MaxHeight="40"></TextBox>
-        <TextBlock Text="Datum Rođenja:"  Grid.Row="7" Grid.Column="1" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center" Margin="0 0 10 0" ></TextBlock>
-        <DatePickerTextBox Grid.Row="7" Grid.Column="2" FontSize="25" Width="340" HorizontalAlignment="Left" MaxHeight="40" Text=""></DatePickerTextBox>
-        <TextBlock Text="Email:" Grid.Row="9" Grid.Column="1" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center"  ></TextBlock>
-        <TextBox   Grid.Row="9"  FontSize="25" HorizontalContentAlignment="Left"  Grid.Column="2" Width="340"  HorizontalAlignment="Left" MaxHeight="40"></TextBox>
-        <TextBlock Text="Kontakt:" Grid.Row="11" Grid.Column="1" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center"  ></TextBlock>
-        <TextBox  Grid.Row="11" FontSize="25" HorizontalContentAlignment="Left"  Grid.Column="2" Width="340"   HorizontalAlignment="Left"  MaxHeight="40"></TextBox>
-        <TextBlock Text="Adresa:" Grid.Row="13" Grid.Column="1" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center"  ></TextBlock>
-        <PasswordBox  Grid.Row="13" FontSize="25" HorizontalContentAlignment="Left"  Grid.Column="2" Width="340"  HorizontalAlignment="Left" MaxHeight="40"></PasswordBox>
-        <Button Content="Sačuvaj" Width="250" FontSize="25" FontWeight="DemiBold" Background="MediumAquamarine" Height="60"  HorizontalAlignment="Left" Grid.Column="1" Grid.ColumnSpan="2" Margin="106,5,0,5" Grid.Row="15"></Button>
-        <Button Content="Nazad" Width="250" FontSize="25" FontWeight="DemiBold" Background="#FF6B7B73" Height="60"  HorizontalAlignment="Left" Grid.Column="2" Margin="170,5,0,5" Grid.Row="15" Click="ProfilNazadButton"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="60" FontWeight="Bold" Foreground="MediumAquamarine" HorizontalAlignment="Center">Moj Profil</Label>
+        <TextBlock  Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">Ime:</TextBlock>
+        <TextBlock Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">Prezime:</TextBlock>
+        <TextBlock Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">Adresa:</TextBlock>
+        <TextBlock Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">Email:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">korisničko ime:</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">lozinka:</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">datum rođenja: </TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine">kontakt telefon: </TextBlock>
+        <TextBox x:Name="Ime" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="200" HorizontalAlignment="Left" Margin="200 0 0 0" Height="40" FontSize="25" FontFamily="DemiBold"></TextBox>
+        <TextBox x:Name="Prezime" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="200" HorizontalAlignment="Left"  Margin="200 0 0 0" Height="40" FontSize="25" FontFamily="DemiBold"></TextBox>
+        <TextBox x:Name="Adresa" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Width="200" HorizontalAlignment="Left"  Margin="200 0 0 0" Height="40" FontSize="20" FontFamily="DemiBold"></TextBox>
+        <TextBox x:Name="Email" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Width="200" HorizontalAlignment="Left" Margin="200 0 0 0"  VerticalAlignment="Top" Height="40" FontSize="25" FontFamily="DemiBold"></TextBox>
+        <TextBox x:Name="Username" Grid.Row="2" Grid.Column="3" Width="200" HorizontalAlignment="Left" Height="40" FontSize="25" FontFamily="DemiBold"></TextBox>
+        <PasswordBox x:Name="Password" Grid.Row="3" Grid.Column="3" Width="200" HorizontalAlignment="Left" Height="40" FontSize="25" FontFamily="DemiBold"></PasswordBox>
+        <TextBox x:Name="PhoneNumber" Grid.Row="5" Grid.Column="3" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" FontSize="25" FontFamily="DemiBold"></TextBox>
+        <DatePicker x:Name="DateOfBirth"  Grid.Row="6" Grid.Column="3" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" FontSize="30" FontFamily="DemiBold" ></DatePicker>
+        <Button Grid.Column="1" Grid.Row="8" Height="60" Width="200" Background="MediumAquamarine" FontSize="25" FontWeight="DemiBold" Click="modifyPatient">Sačuvaj
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="8" Height="60" Width="200" Background="#FF6B7B73" FontSize="25" FontWeight="DemiBold" Click="ProfilNazadButton">Nazad
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

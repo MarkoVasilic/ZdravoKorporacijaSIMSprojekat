@@ -26,6 +26,8 @@ namespace Repository
             return result;
         }
 
+
+
         public List<Appointment> GetAllFutureByPatient(String patientJmbg)
         {
             var values = GetValues();
@@ -150,6 +152,7 @@ namespace Repository
         {
             File.WriteAllText(AppointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
+
 
     }
 }

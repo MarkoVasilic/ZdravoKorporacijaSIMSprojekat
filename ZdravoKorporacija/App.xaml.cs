@@ -30,6 +30,8 @@ namespace ZdravoKorporacija
         public static NotificationController? notificationController { get; set; }
 
         public static RatingController? ratingController { get; set; }
+
+        public static NoteController? noteController { get; set; }
         public App()
         {
 

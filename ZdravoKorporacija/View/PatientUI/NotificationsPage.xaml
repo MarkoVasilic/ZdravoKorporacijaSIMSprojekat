@@ -28,8 +28,14 @@
             <ColumnDefinition Width="40"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label Content="   Moja Obavještenja" FontSize="60"  FontWeight="Bold" Grid.Row="1" Grid.Column="3" FontFamily="Cambria Math" Foreground="MediumAquamarine" Grid.ColumnSpan="2" Margin="20,20,50,0"/>
-        <Button Content="Nazad" FontWeight="DemiBold" FontSize="20" Grid.Column="3" Height="60" Width="250" Grid.Row="4" Background="#FF6B7B73" FontFamily="Cambria Math" Click="ButtonNazad" Margin="182,20,182,20"/>
-        <ListView Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Name="NotificationsListView"  ItemsSource="{Binding NotificationListObservable}"  Background="SteelBlue" Height="auto">
+        <Button Content="Nazad" FontWeight="DemiBold" FontSize="25" Grid.Column="3" Height="60" Width="250" Grid.Row="4" Background="#FF6B7B73"  Click="ButtonNazad" Margin="307,20,40,20">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <ListView Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Name="NotificationsListView"  ItemsSource="{Binding NotificationListObservable}"  Background="MediumAquamarine"  Height="auto">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Black" Margin=" 0 10 0 10">
@@ -74,5 +80,12 @@
                 </DataTemplate>
             </ListView.ItemTemplate>    
         </ListView>
+        <Button Content="Kreiraj Notifikaciju" FontWeight="DemiBold" FontSize="25" Grid.Column="3" Height="60" Width="250" Grid.Row="4" Background="MediumAquamarine"  Click="ButtonCreateNotification" Margin="20,20,320,20">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

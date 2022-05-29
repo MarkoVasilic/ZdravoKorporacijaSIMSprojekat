@@ -6,5 +6,21 @@
     "Frequency": 1,
     "From": "2022-05-13T00:13:00",
     "To": "2022-05-14T00:13:00"
+  },
+  {
+    "Id": 2,
+    "Medication": "Omeprol",
+    "Amount": "400g",
+    "Frequency": 4,
+    "From": "2022-06-13T00:13:00",
+    "To": "2022-06-14T00:13:00"
+  },
+  {
+    "Id": 3,
+    "Medication": "Paracetamol",
+    "Amount": "12mg",
+    "Frequency": 7,
+    "From": "2022-07-13T00:13:00",
+    "To": "2022-07-14T00:13:00"
   }
 ]

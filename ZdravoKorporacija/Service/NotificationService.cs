@@ -72,8 +72,8 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             Notification notification = new Notification(title, description, startTime, receiverJmbg, seen, id);
-            if (!notification.validateNotification())
-                throw new Exception("Something went wrong, new notification isn't created!");
+           // if (!notification.validateNotification())
+             //   throw new Exception("Something went wrong, new notification isn't created!");
             notificationRepository.SaveNotification(notification);
             return notification;
 

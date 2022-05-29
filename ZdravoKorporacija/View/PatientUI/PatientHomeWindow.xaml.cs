@@ -2,6 +2,8 @@
 using System.Windows.Navigation;
 using ZdravoKorporacija.View.PatientUI;
 using ZdravoKorporacija.View.PatientUI.ViewModels;
+using ZdravoKorporacija.View.PatientUI;
+using System;
 
 namespace ZdravoKorporacija.View
 {
@@ -11,6 +13,7 @@ namespace ZdravoKorporacija.View
     public partial class PatientHomeWindow : Window
     {
         public static NavigationService NavigationService { get; set; }
+        public String LoggedUser = App.loggedUser.FirstName + " " + App.loggedUser.LastName;
 
         public PatientHomeWindow()
         {
@@ -18,6 +21,7 @@ namespace ZdravoKorporacija.View
             DataContext = new PatientWindowVM(this);
             NavigationService = PatientMainFrame.NavigationService;
             ResizeMode = ResizeMode.NoResize;
+            LoggedUser = App.loggedUser.FirstName + " " + App.loggedUser.LastName;
 
         }
 
@@ -31,13 +35,28 @@ namespace ZdravoKorporacija.View
         private void HomeButton(object sender, RoutedEventArgs e)
         {
             PatientHomePage home = new PatientHomePage();
-            NavigationService.Navigate(home);
+            NavigationService.Navigate(new Calendar());
         }
 
-        private void InfoButton(object sender, RoutedEventArgs e)
+
+        private void InfoButton2(object sender, RoutedEventArgs e)
         {
             PatientInfoPage patientInfo = new PatientInfoPage();
             NavigationService.Navigate(patientInfo);
         }
+
+        private void infoButton(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            PatientInfoPage patientInfo = new PatientInfoPage();
+            NavigationService.Navigate(patientInfo);
+        }
+
+
+        // Treba ubaciti i material design i textbox u button i tek onda horizontal aligment left
+
+
+        // <StackPanel HorizontalAlignment="Left">
+        //<Button Height = "70" Width="270" Margin="0 0 0 0" Click="InfoButton" Content="Moj Profil" FontSize="20" FontWeight="Bold" Background="SteelBlue"></Button>
+        //</StackPanel>
     }
 }

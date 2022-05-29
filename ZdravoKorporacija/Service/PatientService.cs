@@ -81,6 +81,25 @@ namespace Service
             }
         }
 
+        public void ModifyInfo(
+    string firstName, string lastName, DateTime? dateOfBirth, string? email, string? telephone,
+    string? address, string Username, string Password,string jmbg)
+        {
+            Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
+            if (oldPatient == null)
+                throw new Exception("Patient with that jmbg doesn't exist!");
+            else
+            {
+                if (dateOfBirth == null)
+                    throw new Exception("You must enter date of birth!");
+                Patient newPatient = new Patient(false, oldPatient.Allergens, oldPatient.BloodTypeEnum, firstName, lastName, Username, Password,jmbg,
+             dateOfBirth, oldPatient.Gender, email, telephone, address);
+               // if (!newPatient.validatePatient())
+                 //   throw new Exception("Something went wrong, patient account isn't changed!");
+                PatientRepository.UpdatePatient(newPatient);
+            }
+        }
+
         public Patient? GetOneByJmbg(string jmbg)
         {
             return PatientRepository.FindOneByJmbg(jmbg);

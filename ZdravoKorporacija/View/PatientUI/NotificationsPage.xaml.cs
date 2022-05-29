@@ -52,5 +52,10 @@ namespace ZdravoKorporacija.View.PatientUI
             notificationService.DeleteNotification(obj.Id);
             NavigationService.Navigate(new NotificationsPage());
         }
+
+        private void ButtonCreateNotification(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CreateNotificationPage());
+        }
     }
 }

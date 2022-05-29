@@ -4,11 +4,80 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.PatientUI"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="PatientTherapyPage">
 
     <Grid Background="#FF242F41">
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Content="Moje Terapije" Foreground="MediumAquamarine" FontSize="60" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"></Label>
+        <ListView ItemsSource="{Binding prescriptions}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Background="MediumAquamarine" Margin="0 20 0 20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <Grid Height="250" Width="575" Background="MediumAquamarine" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="275"></ColumnDefinition>
+                                <ColumnDefinition Width="200"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="120 0 0 0" FontSize="25" FontWeight="Bold" Text="{Binding Medication}"></TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Količina: " HorizontalAlignment="Left" FontSize="20" FontWeight="DemiBold"></TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="Dnevno: " HorizontalAlignment="Left" FontSize="20" FontWeight="DemiBold"></TextBlock>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="Datum OD:  " HorizontalAlignment="Left" FontSize="20" FontWeight="DemiBold"></TextBlock>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="Datum DO:  " HorizontalAlignment="Left" FontSize="20" FontWeight="DemiBold"></TextBlock>
+                            <TextBlock Margin="100 0 0 0"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"  FontSize="20" Text="{Binding Amount}"></TextBlock>
+                            <TextBlock Margin="100 0 0 0"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"  FontSize="20" Text="{Binding Frequency}"></TextBlock>
+                            <TextBlock Margin="120 0 0 0" Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="2" HorizontalAlignment="Left"  FontSize="20" Text="{Binding From}"></TextBlock>
+                            <TextBlock Margin="120 0 0 0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"  FontSize="20" Text="{Binding To}"></TextBlock>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Column="4" Grid.Row="3" MaxWidth="200" Width="200" HorizontalAlignment="Center" Content="Nazad" Background="#FF6B7B73" FontWeight="DemiBold" FontSize="25" Click="GoBackButton">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="8" Height="70" Width="70" HorizontalAlignment="Center" Background="Transparent" Click="Button_ClickPDF" BorderBrush="Transparent" VerticalAlignment="Center">
+            <materialDesign:PackIcon Grid.Row="3" Grid.Column="2" Height="70" Width="70" Kind="FilePdfBox" Foreground="#FFE95555" BorderBrush="Transparent" RenderTransformOrigin="0.472,0.2" HorizontalAlignment="Center"/>
+        </Button>
+        <TextBlock Text="generiši PDF" FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" Foreground="#FF6B7B73" VerticalAlignment="Top" Grid.Column="7" Grid.Row="2" Margin="7,274,0,0" Grid.ColumnSpan="3" Height="29"></TextBlock>
     </Grid>
 </Page>

@@ -77,5 +77,10 @@ namespace ZdravoKorporacija.View.PatientUI
         {
             NavigationService.Navigate(new PatientNotesPage());
         }
+
+        private void KartonButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PatientMedicalRecordPage());
+        }
     }
 }

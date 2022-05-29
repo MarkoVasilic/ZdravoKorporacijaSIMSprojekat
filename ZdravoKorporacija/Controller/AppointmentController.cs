@@ -49,6 +49,10 @@ namespace Controller
         {
             return AppointmentService.GetAllPastAppointmentsByPatient();
         }
+        public List<PossibleAppointmentsDTO> GetAllByJmbgAndDate(DateTime dateTime)
+        {
+            return AppointmentService.GetAllByJmbgAndDate(dateTime);
+        }
         public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
         {
             return AppointmentService.GetAppointmentsByDoctorJmbgDTO(doctorJmbg);

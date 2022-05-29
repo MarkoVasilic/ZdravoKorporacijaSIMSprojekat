@@ -28,7 +28,7 @@
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="Ocijeni Pregled" FontSize="60" Foreground="MediumAquamarine" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Ocijenite Ljekara" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="3" Text="Ocijenite Bolnicu" Foreground="MediumAquamarine" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <ComboBox FontFamily="Symbol" FontSize="20" FontWeight="DemiBold" x:Name="doctorComboBox" Height="40" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+        <ComboBox Background="#FFB8FAE3" FontFamily="Symbol" FontSize="20" FontWeight="DemiBold" x:Name="doctorComboBox" Height="40" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="1" x:Name="oneD" IsSelected="True"></ComboBoxItem>
             <ComboBoxItem Content="2" x:Name="twoD"></ComboBoxItem>
             <ComboBoxItem Content="3" x:Name="threeD"></ComboBoxItem>
@@ -50,7 +50,7 @@
             <TextBlock   Text="         5 - Perfektno " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="Gold"></TextBlock>
         </StackPanel>
         <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="MediumAquamarine" FontSize="30" Text="Komenatar:"></TextBlock>
-        <TextBox Text="//Unesite komentar... "  FontSize="15" x:Name="commentTextBox" Height="100" VerticalAlignment="Top" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" GotFocus="onFocus"></TextBox>
+        <TextBox Text="//Unesite komentar... " FontSize="15" x:Name="commentTextBox" Height="100" VerticalAlignment="Top" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" GotFocus="onFocus"></TextBox>
         <Button Grid.Column="3" Content="Nazad" Grid.ColumnSpan="2" FontSize="25" FontWeight="DemiBold" Background="#FF6B7B73" Height="60" Margin="157,130,71,-20" Width="200" Grid.Row="5" Grid.RowSpan="2" Click="NazadButtonClick"/>
         <Button Grid.Column="2" Content="Ocijeni" Grid.ColumnSpan="2" FontSize="25" FontWeight="DemiBold" Background="MediumAquamarine" Height="60" Margin="10,130,240,-20" Width="200" Grid.Row="5" Grid.RowSpan="2" Click="OcijeniButtonClick"/>
     </Grid>
