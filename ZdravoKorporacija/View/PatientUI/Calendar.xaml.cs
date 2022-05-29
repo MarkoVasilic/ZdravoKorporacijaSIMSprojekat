@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.View.PatientUI
 {
@@ -36,8 +37,13 @@ namespace ZdravoKorporacija.View.PatientUI
         {
             InitializeComponent();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService();
-            appointmentController = new AppointmentController(appointmentService);
+            RoomRepository roomRepository = new RoomRepository();
+            DoctorRepository doctorRepository = new DoctorRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository,patientRepository,doctorRepository,roomRepository);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             Appointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetAllFutureAppointmentsByPatient());
            //selectedDate = new DateTime(2022,5,10);
             //appointments = appointmentController.GetAllByJmbgAndDate(selectedDate);
