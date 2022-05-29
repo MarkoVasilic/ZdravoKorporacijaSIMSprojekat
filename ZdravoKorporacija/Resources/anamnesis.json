@@ -50,22 +50,22 @@
   },
   {
     "Id": 7,
-    "Diagnosis": "modify",
-    "Report": "new Report",
+    "Diagnosis": "Appendicitis",
+    "Report": "neophodno operativno lecenje.",
     "DateTime": "2022-05-17T21:27:34.8042355+02:00",
     "DoctorJmbg": "4444444444444"
   },
   {
     "Id": 11,
-    "Diagnosis": "new anamnesis",
-    "Report": "new report",
+    "Diagnosis": "gastritis",
+    "Report": "dijetalno-higijenska ishrana i omeprol.",
     "DateTime": "2022-05-18T11:43:58.2169745+02:00",
     "DoctorJmbg": "4444444444444"
   },
   {
     "Id": 12,
-    "Diagnosis": "proba ",
-    "Report": "peoba",
+    "Diagnosis": "distorsio",
+    "Report": "povrijedjen skocni zblog, odraditi snimak i previjanje.",
     "DateTime": "2022-05-18T11:44:13.2640579+02:00",
     "DoctorJmbg": "4444444444444"
   },

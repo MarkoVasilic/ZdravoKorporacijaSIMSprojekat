@@ -26,7 +26,7 @@ namespace Model
             To = to;
         }
         public Boolean validatePrescription()
-        {
+        {   
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
                 return false;
@@ -43,7 +43,7 @@ namespace Model
 
         }
 
-        public void ToString()
+        public String ToString()
         {
             Console.WriteLine("ID: " + Id);
             Console.WriteLine("Medication: " + Medication);
@@ -51,7 +51,18 @@ namespace Model
             Console.WriteLine("Frequency: " + Frequency);
             Console.WriteLine("From: " + From);
             Console.WriteLine("To: " + To);
+            // return "Recepti: \n\n\n" + " ID: \n\n\n" + Id + "Lijek: \n" + Medication + "Količina: \n" + Amount + "Frekvencija: \n" + Frequency + " Datum OD: \n" + From + " Datum DO: \n" + To + "\n" + "-------------------------------- \n";
+            String txt = "";
+            txt += "ID : " + Id + "\n";
+            txt += "Medication : " + Medication + "\n";
+            txt += "Amount : " + Amount + "\n";
+            txt += "Frequency : " + Frequency + "\n";
+            txt += "From : " + From + "\n";
+            txt += "To : " + To + "\n";
+            txt += "---------------------- \n";
+            return txt;
         }
+
     }
 
 

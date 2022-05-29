@@ -10,8 +10,20 @@
 
     <Grid  Background="#FF242F41">
 
-        <DataGrid RowBackground="SteelBlue" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background ="#FF242F41" x:Name="dataGridRooms"  ItemsSource="{Binding Path=Appointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" VerticalAlignment="Top" Margin="10,200,10,0" FontFamily="Georgia" Width="auto">
+        <DataGrid RowBackground="MediumAquamarine" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background ="#FF6B7B73" x:Name="dataGridRooms"  ItemsSource="{Binding Path=Appointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" VerticalAlignment="Top" Margin="10,200,10,0" FontFamily="Georgia" Width="auto">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="DemiBold"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    <Setter Property="Background" Value="#FF6B7B73"></Setter>
+                    <Setter Property="Height" Value="300"></Setter>
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
+ 
                 <DataGridTextColumn  Header="Ljekar" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn  Header="Pacijent" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn  Header="Vrijeme" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>

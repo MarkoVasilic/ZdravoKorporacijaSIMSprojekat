@@ -815,5 +815,20 @@ namespace Service
             possibleAppointments.Sort((x, y) => DateTime.Compare(x, y));
             return possibleAppointments;
         }
+        public List<PossibleAppointmentsDTO> GetAllByJmbgAndDate(DateTime date)
+        {
+            List<PossibleAppointmentsDTO> appointments = this.GetAllFutureAppointmentsByPatient();
+            List<PossibleAppointmentsDTO> possibleAppointmentsDTO = new List<PossibleAppointmentsDTO>();
+            foreach (var ap in appointments)
+            {
+                Doctor? doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
+                Patient? patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
+                Room? room = RoomRepository.FindOneById(ap.RoomId);
+                if(date.Date == ap.StartTime.Date)
+                possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg, patient.FirstName + " " + patient.LastName,
+                    ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId, room.Name, ap.StartTime, ap.Duration, ap.AppointmentId));
+            }
+            return possibleAppointmentsDTO;
+        }
     }
 }

@@ -34,7 +34,6 @@ namespace ZdravoKorporacija.View.PatientUI
             appointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetAllPastAppointmentsByPatient());
                 for(int i = 0; i < appointments.Count; i++)
             {
-
                 if (ratingService.FindByAppointmentId(appointments[i].AppointmentId) == true)
                 {
                     appointments.RemoveAt(i);

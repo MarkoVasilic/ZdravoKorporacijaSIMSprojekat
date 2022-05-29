@@ -6,9 +6,9 @@ namespace Model
 {
     public class MedicalRecord
     {
-        public String PatientJmbg;
-        public List<int> PrescriptionIds;
-        public List<int> AnamnesisIds;
+        public String PatientJmbg { get; set; }
+        public List<int> PrescriptionIds { get; set; }
+        public List<int> AnamnesisIds { get; set; }
 
         public MedicalRecord()
         {

@@ -25,21 +25,25 @@
         <StackPanel Orientation="Vertical" Background="MediumAquamarine"  Margin="5 0 0 0" Grid.Row="1" Grid.RowSpan="2">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
                         <RowDefinition Height="85"></RowDefinition>
                         <RowDefinition Height="85"></RowDefinition>
                         <RowDefinition Height="85"></RowDefinition>
                         <RowDefinition Height="85"></RowDefinition>
                         <RowDefinition Height="85"></RowDefinition>
                         <RowDefinition Height="95"></RowDefinition>
-                    </Grid.RowDefinitions>
+                        <RowDefinition Height="95"></RowDefinition>
+                </Grid.RowDefinitions>
                     <Button Grid.Row="1" Content="Obavještenja" BorderBrush="Transparent" FontSize="25" FontWeight="DemiBold" Background="MediumAquamarine"  Click="Button_Click"></Button>
                     <Button Grid.Row="2" Background="MediumAquamarine"  Content="Zakazivanje Termina" FontSize="25" BorderBrush="Transparent"  FontWeight="DemiBold" Click="CreateAppointmentButton"></Button>
                     <Button Grid.Row="3" Background="MediumAquamarine" Content="Zakazani Termini" FontSize="25" BorderBrush="Transparent"  FontWeight="DemiBold" Click="FutureAppointmentButton" ></Button>
                     <Button Grid.Row="4" Background="MediumAquamarine" Content="Prethodni Termini" FontSize="25" BorderBrush="Transparent"  FontWeight="DemiBold" Click="PastAppointmentsButton"></Button>
-                    <Button Grid.Row="5" Background="MediumAquamarine"  Content="Terapije" FontSize="25"  BorderBrush="Transparent"  FontWeight="DemiBold" Click="TherapyButton"></Button>
+                    <Button Grid.Row="5" Content="Terapije" Background="MediumAquamarine" FontSize="25"  BorderBrush="Transparent"  FontWeight="DemiBold" Click="TherapyButton"></Button>
                     <Button Grid.Row="6" Background="MediumAquamarine"  Content="Bilješke" FontSize="25" BorderBrush="Transparent"  FontWeight="DemiBold" Click="NotesButton"></Button>
-                </Grid>
+                    <Button Grid.Row="7" Background="MediumAquamarine"  Content="Karton" FontSize="25" BorderBrush="Transparent"  FontWeight="DemiBold" Click="KartonButton"></Button>
+
+
+            </Grid>
             </StackPanel>
             <Label Content="Zdravo-Korporacija" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="60" Foreground="MediumAquamarine"  FontWeight="Bold" Margin="75 0 0 8" FontFamily="Bahnschrift SemiBold"></Label>
     </Grid>

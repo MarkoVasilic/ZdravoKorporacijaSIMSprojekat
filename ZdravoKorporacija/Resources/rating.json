@@ -18,5 +18,25 @@
     "RatingDate": "2022-05-20T12:58:26.3012039+02:00",
     "DoctorId": "5151515151515",
     "PatientId": "7778889994445"
+  },
+  {
+    "Id": 3,
+    "AppointmentId": 14,
+    "HospitalRating": 5,
+    "DoctorRating": 5,
+    "Desc": "",
+    "RatingDate": "2022-05-24T16:31:29.6556766+02:00",
+    "DoctorId": "1231231231231",
+    "PatientId": "7778889994445"
+  },
+  {
+    "Id": 4,
+    "AppointmentId": 14,
+    "HospitalRating": 5,
+    "DoctorRating": 5,
+    "Desc": "suepr sjajno",
+    "RatingDate": "2022-05-24T19:17:08.7583505+02:00",
+    "DoctorId": "1231231231231",
+    "PatientId": "7778889994445"
   }
 ]

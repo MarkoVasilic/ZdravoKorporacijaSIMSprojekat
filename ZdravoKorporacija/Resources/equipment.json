@@ -62,5 +62,13 @@
     "Quantity": 2,
     "RoomId": null,
     "DynamicAddDate": "2022-05-23T13:12:33.0742552+02:00"
+  },
+  {
+    "Id": 12,
+    "Name": "Needle",
+    "IsStatic": false,
+    "Quantity": 6,
+    "RoomId": null,
+    "DynamicAddDate": "2022-05-27T19:20:22.6843013+02:00"
   }
 ]

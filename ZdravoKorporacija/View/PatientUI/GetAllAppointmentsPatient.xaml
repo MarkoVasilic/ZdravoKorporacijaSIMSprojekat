@@ -8,7 +8,18 @@
         Title="GetAllAppointmentsPatient" Height="768" Width="1024">
     <Grid  Margin="0" Background="#FF242F41">
 
-        <DataGrid ItemsSource="{Binding Path=appointments}" SelectedItem="{Binding SelectedCustomer}" RowBackground="SteelBlue" RowHeight="40" Background="#FF242F41" ColumnHeaderHeight="30" FontSize="16"   Margin="0,202,0,340" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single"  Width="auto" x:Name="dataGridRating">
+        <DataGrid ItemsSource="{Binding Path=appointments}" SelectedItem="{Binding SelectedCustomer}" RowBackground="MediumAquamarine"  RowHeight="40" Background="#FF6B7B73" ColumnHeaderHeight="30" FontSize="16"   Margin="0,202,0,340" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single"  Width="auto" x:Name="dataGridRating">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="DemiBold"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    <Setter Property="Background" Value="#FF6B7B73"></Setter>
+                    <Setter Property="Height" Value="300"></Setter>
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="ID" Binding="{Binding AppointmentId}" Width="120"></DataGridTextColumn>
@@ -17,7 +28,7 @@
                 <DataGridTextColumn Header="Vrijeme" Binding="{Binding StartTime}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
                 <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="120"></DataGridTextColumn>
-                <DataGridTemplateColumn  Header="     Ocijeni" Width="*">
+                <DataGridTemplateColumn  Header="  Ocijeni" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="btnSelect" Background="Gold" Content="Ocijeni" Click="OcijeniButtonClick"/>

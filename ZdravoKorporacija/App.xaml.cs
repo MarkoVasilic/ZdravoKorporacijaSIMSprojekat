@@ -33,6 +33,8 @@ namespace ZdravoKorporacija
         public static NotificationController? notificationController { get; set; }
 
         public static RatingController? ratingController { get; set; }
+
+        public static NoteController? noteController { get; set; }
         public App()
         {
             
@@ -85,7 +87,9 @@ namespace ZdravoKorporacija
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
             AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
-
+            NoteRepository noteRepository = new NoteRepository();
+            NoteService noteService = new NoteService(noteRepository);
+            noteController = new NoteController(noteService);
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -466,6 +470,14 @@ namespace ZdravoKorporacija
             //ratingController.Create(1, 5, 5, "Fenomenalno");
             //int a = (int)(DateTime.Today.AddDays(2) - DateTime.Today).TotalDays;
             //Console.WriteLine(a);
+
+        //    List<PossibleAppointmentsDTO> aps = new List<PossibleAppointmentsDTO>();
+           // DateTime date = new DateTime(2022,5,10);
+            //aps = appointmentController.GetAllByJmbgAndDate(date);
+          //  foreach (PossibleAppointmentsDTO ap in aps)
+            //    Console.WriteLine("Datumi: "+ap.StartTime.Date+" ID: "+ap.AppointmentId+" Doctor: "+ap.DoctorFullName);
+
+
         }
 
     }
