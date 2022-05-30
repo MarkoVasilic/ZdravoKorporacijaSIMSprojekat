@@ -24,6 +24,11 @@ namespace Service
         {
         }
 
+        public List<AbsenceRequest> GetAllByDoctorJmbg(String jmbg)
+        {
+            return AbsenceRequestRepository.FindAllByDoctorJmbg(jmbg);
+        }
+
         public List<AbsenceRequest> GetOnHoldAbsceneRequests()
         {
             List<AbsenceRequest> absenceRequests = AbsenceRequestRepository.FindAll();

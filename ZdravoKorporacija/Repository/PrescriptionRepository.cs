@@ -3,66 +3,82 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-namespace Repository
+using System.Linq;
+
+namespace Repository;
+
+public class PrescriptionRepository
 {
-    public class PrescriptionRepository
+    private readonly String PrescriptionFilePath = @"..\..\..\Resources\prescriptions.json";
+
+    private int GenerateNewId()
     {
-        private readonly String PrescriptionFilePath = @"..\..\..\Resources\prescriptions.json";
-
-        public List<Prescription> FindAll()
+        try
         {
-            var values = GetValues();
-
-            return values;
+            List<Prescription> prescriptions = FindAll();
+            int currentMax = prescriptions.Max(obj => obj.Id);
+            return currentMax + 1;
         }
-
-        public Prescription? FindOneById(int prescriptionId)
+        catch
         {
-            var values = GetValues();
-            foreach (var val in values)
-            {
-                if (val.Id == prescriptionId)
-                {
-                    return val;
-                }
-            }
-
-            return null;
+            return 1;
         }
+    }
 
-        public void UpdatePrescription(Prescription prescriptionToModify)
+    public List<Prescription> FindAll()
+    {
+        var values = GetValues();
+
+        return values;
+    }
+
+    public Prescription? FindOneById(int prescriptionId)
+    {
+        var values = GetValues();
+        foreach (var val in values)
         {
-            var onePrescription = FindOneById(prescriptionToModify.Id);
-            if (onePrescription != null)
+            if (val.Id == prescriptionId)
             {
-                var values = GetValues();
-                values.RemoveAll(value => value.Id.Equals(prescriptionToModify.Id));
-                values.Add(prescriptionToModify);
-                Save(values);
+                return val;
             }
         }
 
-        public List<Prescription> GetValues()
-        {
-            var values = JsonConvert.DeserializeObject<List<Prescription>>(File.ReadAllText(PrescriptionFilePath));
-            if (values == null)
-            {
-                values = new List<Prescription>();
-            }
+        return null;
+    }
 
-            return values;
-        }
-
-        public void SavePrescription(Prescription prescriptionToSave)
+    public void UpdatePrescription(Prescription prescriptionToModify)
+    {
+        var onePrescription = FindOneById(prescriptionToModify.Id);
+        if (onePrescription != null)
         {
             var values = GetValues();
-            values.Add(prescriptionToSave);
+            values.RemoveAll(value => value.Id.Equals(prescriptionToModify.Id));
+            values.Add(prescriptionToModify);
             Save(values);
         }
+    }
 
-        public void Save(List<Prescription> values)
+    public List<Prescription> GetValues()
+    {
+        var values = JsonConvert.DeserializeObject<List<Prescription>>(File.ReadAllText(PrescriptionFilePath));
+        if (values == null)
         {
-            File.WriteAllText(PrescriptionFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            values = new List<Prescription>();
         }
+
+        return values;
+    }
+
+    public void SavePrescription(Prescription prescriptionToSave)
+    {
+        var values = GetValues();
+        prescriptionToSave.Id = GenerateNewId();
+        values.Add(prescriptionToSave);
+        Save(values);
+    }
+
+    public void Save(List<Prescription> values)
+    {
+        File.WriteAllText(PrescriptionFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
     }
 }

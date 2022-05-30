@@ -119,7 +119,11 @@ namespace ZdravoKorporacija
 
             //**********************************************************       KT3      ********************************************************************
 
-
+            /*List<AbsenceRequest> rs = absenceRequestController.GetAllByDoctorJmbg("1231231231231");
+            foreach(AbsenceRequest r in rs)
+            {
+                r.ToString();
+            }*/
             //medicalRecordController.GetAllMedicalRecords();
             /*List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>(medicalRecordController.GetAllMedicalRecords());
             foreach (MedicalRecordDTO medicalRecordDTO in medicalRecordDTOs)
@@ -143,7 +147,7 @@ namespace ZdravoKorporacija
             //medicalRecordController.ModifyAnamnesis(8, "modOdbranaDiagnose", "modOdbranaReport");
 
             //RECEPTI
-            //medicalRecordController.CreatePrescription("7778889994445", "Berodual", "200mg", 8, new DateTime(2022, 6,6), new DateTime(2022, 7, 7));
+            //medicalRecordController.CreatePrescription("1111111111111", "Berodual", "200mg", 8, new DateTime(2022, 6,6), new DateTime(2022, 7, 7));
             //medicalRecordController.ModifyPrescription(4, "Berodual", "500mg", 3, new DateTime(2022, 6, 6), new DateTime(2022, 7, 10));
 
             //ISPIS KARTONA PACIJENT JMBG(Anamneze pacijenta i recepti)
