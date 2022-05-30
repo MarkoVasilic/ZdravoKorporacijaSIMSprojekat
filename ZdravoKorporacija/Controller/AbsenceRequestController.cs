@@ -14,6 +14,11 @@ namespace Controller
             AbsenceRequestService = absenceRequestService;
         }
 
+        public List<AbsenceRequest> GetAllByDoctorJmbg(String jmbg)
+        {
+            return AbsenceRequestService.GetAllByDoctorJmbg(jmbg);
+        }
+
         public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
         {
             AbsenceRequestService.CreateAbsenceRequest(dateFrom, dateUntil, isUrgent, reason);
