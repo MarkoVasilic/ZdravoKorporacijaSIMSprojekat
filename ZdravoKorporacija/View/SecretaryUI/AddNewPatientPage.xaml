@@ -14,9 +14,10 @@
       FontFamily="{StaticResource BellMTFont}">
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
@@ -42,10 +43,19 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="40"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Button Name="StartDemoButton" HorizontalAlignment="Left" Margin="0 30 0 0" Style="{StaticResource SecretaryGreenButtonStyle}" Background="DeepSkyBlue"
+                            Click="Start_Demo_Button_Click" Content="Start demo">
+                    </Button>
+                    <TextBlock x:Name="SecondsLeftTextBlock" FontSize="18" Foreground="DeepSkyBlue" VerticalAlignment="Center" Margin="60 30 0 0" Width="30" Visibility="Hidden"></TextBlock>
+                    <Button Name="StopDemoButton" HorizontalAlignment="Right" Margin="20 30 0 0" Style="{StaticResource SecretaryRedButtonStyle}"
+                            Click="Stop_Demo_Button_Click" Content="Stop demo" Visibility="Hidden">
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <Label Content="Enter Basic info" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Grid.Column="1">
+                <StackPanel Grid.Row="3" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >First name:</TextBlock>
                     <TextBox x:Name="FirstNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -72,7 +82,7 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="3" Grid.Column="1">
+                <StackPanel Grid.Row="4" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Last name:</TextBlock>
                     <TextBox x:Name="LastNameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -99,7 +109,7 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="4" Grid.Column="1">
+                <StackPanel Grid.Row="5" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Jmbg:</TextBlock>
                     <TextBox x:Name="JmbgTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -126,13 +136,13 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+                <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
                     <TextBlock FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left">Date of birth:</TextBlock>
-                    <DatePicker  Margin="20 10 0 10" FontSize="18" Width="215" Style="{StaticResource SecretaryDatePickerStyle}"
+                    <DatePicker x:Name="DateOfBirthPicker"  Margin="20 10 0 10" FontSize="18" Width="215" Style="{StaticResource SecretaryDatePickerStyle}"
                                     SelectedDate="{Binding Path=Patient.DateOfBirth, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateEnd="{x:Static sys:DateTime.Today}">
                     </DatePicker>
                 </StackPanel>
-                <Grid Grid.Row="6" Grid.Column="1">
+                <Grid Grid.Row="7" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120"></ColumnDefinition>
                         <ColumnDefinition Width="120"></ColumnDefinition>
@@ -148,7 +158,7 @@
                         <RadioButton x:Name = "Female" GroupName = "Gender" FontSize="18" Content="Female"/>
                     </StackPanel>
                 </Grid>
-                <StackPanel Grid.Row="7" Grid.Column="1">
+                <StackPanel Grid.Row="8" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Blood type:</TextBlock>
                     <ComboBox Name="BloodTypeComboBox" Style="{StaticResource SecretaryComboBoxStyle}" SelectedValuePath="Content" >
                         <ComboBoxItem>NONE</ComboBoxItem>
@@ -162,7 +172,7 @@
                         <ComboBoxItem>AB-</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Grid.Row="8" Grid.Column="1">
+                <StackPanel Grid.Row="9" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Phone Number:</TextBlock>
                     <TextBox x:Name="PhoneNumberTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -189,7 +199,7 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="9" Grid.Column="1">
+                <StackPanel Grid.Row="10" Grid.Column="1">
                     <TextBlock Margin="10,0,0,10" FontSize="18" >Email:</TextBlock>
                     <TextBox x:Name="EmailTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -216,7 +226,7 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="10" Grid.Column="1">
+                <StackPanel Grid.Row="11" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Address:</TextBlock>
                     <TextBox x:Name="AddressTextBox" Style="{StaticResource SecretaryTextBoxStyle}" Height="80"
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
@@ -244,10 +254,10 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="11" Grid.Column="1" VerticalAlignment="Center">
+                <StackPanel Grid.Row="12" Grid.Column="1" VerticalAlignment="Center">
                     <Label Content="Enter credentials" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Grid.Row="12" Grid.Column="1">
+                <StackPanel Grid.Row="13" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Username:</TextBlock>
                     <TextBox x:Name="UsernameTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -274,7 +284,7 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="13" Grid.Column="1">
+                <StackPanel Grid.Row="14" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Password:</TextBlock>
                     <TextBox x:Name="PasswordTextBox" Style="{StaticResource SecretaryTextBoxStyle}">
                         <TextBox.Text>
@@ -301,10 +311,10 @@
                         </Validation.ErrorTemplate>
                     </TextBox>
                 </StackPanel>
-                <StackPanel Grid.Row="14" Grid.Column="1" VerticalAlignment="Center">
+                <StackPanel Grid.Row="15" Grid.Column="1" VerticalAlignment="Center">
                     <Label Content="Enter allergens" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Grid.Row="15" Grid.Column="1">
+                <StackPanel Grid.Row="16" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Allergens:</TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <ListBox x:Name="AllergensListBox" Style="{StaticResource SecretaryListBoxStyle}" Width="280"
@@ -315,10 +325,10 @@
                         </Button>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Row="16" Grid.Column="1">
+                <StackPanel Grid.Row="17" Grid.Column="1">
                     <TextBlock Margin="0,10,0,10" FontSize="18" >Add new allergen:</TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox x:Name="AddAllergenTextBox" Text="{Binding Path=Allergen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                  Style="{StaticResource SecretaryTextBoxStyle}" Width="280">
                         </TextBox>
                         <Button x:Name="AddAllergenButton" Margin="20 0 0 0" Background="Transparent" BorderBrush="Transparent" Command="{Binding AddAllergenCommand}" VerticalAlignment="Center" HorizontalAlignment="Right" >
@@ -326,11 +336,11 @@
                         </Button>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Row="17" Grid.Column="1">
+                <StackPanel Grid.Row="18" Grid.Column="1">
                     <TextBlock Text="{Binding Path=ErrorMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" FontSize="14" Foreground="#FFE95555">
                     </TextBlock>
                 </StackPanel>
-                <Button Name="SaveButton" Grid.Row="18" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
+                <Button Name="SaveButton" Grid.Row="19" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource SecretaryGreenButtonStyle}"
                 Command="{Binding SaveCommand}" Click="Save_Button_Click" Margin="0,10,10,0" Content="Save">
                 </Button>
             </Grid>

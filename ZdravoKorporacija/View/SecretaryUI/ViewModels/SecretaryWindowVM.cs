@@ -20,8 +20,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         public ICommand AbsenceRequestCommand { get; set; }
         public ICommand ScheduledMeetingsCommand { get; set; }
         public ICommand NotificationCommand { get; set; }
-
-
+        public ICommand WeeklyReportCommand { get; set; }
         public static void setWindowTitle(string newTitle)
         {
             SecretaryWindow.WindowTitle.Text = newTitle;
@@ -44,6 +43,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsenceRequestCommand = new RelayCommand(absenceRequestExecute);
             ScheduledMeetingsCommand = new RelayCommand(scheduledMeetingsExecute);
             NotificationCommand = new RelayCommand(notificationExecute);
+            WeeklyReportCommand = new RelayCommand(weeklyReportExecute);
         }
         private void notificationExecute(object parameter)
         {
@@ -100,6 +100,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void absenceRequestExecute(object parameter)
         {
             NavigationService.Navigate(new AbsceneRequestsPage());
+        }
+        private void weeklyReportExecute(object parameter)
+        {
+            NavigationService.Navigate(new CurrentWeekReportPage());
         }
     }
 }
