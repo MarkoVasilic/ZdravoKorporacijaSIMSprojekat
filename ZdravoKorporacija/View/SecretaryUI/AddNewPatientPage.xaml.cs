@@ -192,7 +192,11 @@ namespace ZdravoKorporacija.View.SecretaryUI
          {
              try
              {
-                 for (int i = 1; i <= value.Length; i++)
+                 this.Dispatcher.Invoke((Action)(() =>
+                 {
+                     textBox.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                 }));
+                for (int i = 1; i <= value.Length; i++)
                  {
                      this.Dispatcher.Invoke((Action)(() =>
                      {
@@ -200,6 +204,10 @@ namespace ZdravoKorporacija.View.SecretaryUI
                      }));
                      Thread.Sleep(150);
                  }
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    textBox.BorderBrush = new SolidColorBrush(Colors.Gray);
+                }));
              }
              catch (Exception ex) { }
 
@@ -211,6 +219,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
              {
                  this.Dispatcher.Invoke((Action)(() =>
                  {
+                     DateOfBirthPicker.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
                      DateOfBirthPicker.IsEnabled = true;
                      DateOfBirthPicker.IsDropDownOpen = true;
                      DateOfBirthPicker.Text = new DateTime(1983, 10, 3).ToString();
@@ -218,6 +227,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
                  Thread.Sleep(300);
                  this.Dispatcher.Invoke((Action)(() =>
                  {
+                     DateOfBirthPicker.BorderBrush = new SolidColorBrush(Colors.Gray);
                      DateOfBirthPicker.IsDropDownOpen = false;
                      DateOfBirthPicker.IsEnabled = false;
                  }));
@@ -251,6 +261,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
              {
                  this.Dispatcher.Invoke((Action)(() =>
                  {
+                     comboBox.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
                      comboBox.IsDropDownOpen = true;
                  }));
                  Thread.Sleep(450);
@@ -258,6 +269,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
                  {
                      comboBox.SelectedIndex = 4;
                      comboBox.IsDropDownOpen = false;
+                     comboBox.BorderBrush = new SolidColorBrush(Colors.Gray);
                  }));
              }
              catch (Exception ex) { }
