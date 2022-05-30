@@ -46,44 +46,22 @@ namespace Service
             return result;
 
         }
-        private int GenerateNewId()
-        {
-            try
-            {
-                List<Prescription> prescriptions = PrescriptionRepository.FindAll();
-                int currentMax = prescriptions.Max(obj => obj.Id);
-                return currentMax + 1;
-            }
-            catch
-            {
-                return 1;
-            }
-        }
 
         public void CreatePrescription(String patientJmbg, String medication, String amount, int frequency, DateTime from, DateTime to)
         {
-            int id = GenerateNewId();
-            Prescription prescription = new Prescription(id, medication, amount, frequency, from, to);
+            Prescription prescription = new Prescription(-1, medication, amount, frequency, from, to);
             List<String> allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
             List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingredients;
+
             if (ingredients == null)
-            {
                 throw new Exception("Prescribed medication is not available!");
-            }
-            foreach (String ingredient in ingredients)
-            {
-                foreach (String allergen in allergens)
-                {
-                    if (ingredient.Equals(allergen))
-                    {
-                        throw new Exception("Patient is allergic to that medication!");
-                    }
-                }
-            }
+
+            if(isAllergic(allergens, ingredients))
+                throw new Exception("Patient is allergic to that medication!");
+
             if (!prescription.validatePrescription())
-            {
                 throw new Exception("Something went wrong, prescription isn't created!");
-            }
+
             PrescriptionRepository.SavePrescription(prescription);
 
             List<int> newPrescriptions = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
@@ -92,11 +70,24 @@ namespace Service
                                      MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
 
             if (!oneMedicalRecord.validateMedicalRecord())
-            {
                 throw new Exception("Something went wrong, medical record isn't updated!");
-            }
             MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
 
+        }
+
+        private Boolean isAllergic(List<string> allergens, List<string> ingredients)
+        {
+            foreach (String ingredient in ingredients)
+            {
+                foreach (String allergen in allergens)
+                {
+                    if (ingredient.Equals(allergen))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public void ModifyPrescription(int prescriptonId, String newMedication, String newAmount, int newFrequency, DateTime newFrom, DateTime newTo)
@@ -109,9 +100,8 @@ namespace Service
             List<String> allergens = new List<String>();
             List<String> ingredients = MedicationRepository.FindOneByName(newMedication).Ingredients;
             if (ingredients == null)
-            {
                 throw new Exception("Prescribed medication is not available!");
-            }
+
             List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
             foreach (MedicalRecord mr in medicalRecords)
             {
@@ -125,21 +115,11 @@ namespace Service
                 }
             }
 
-            foreach (String ingredient in ingredients)
-            {
-                foreach (String allergen in allergens)
-                {
-                    if (ingredient.Equals(allergen))
-                    {
-                        throw new Exception("Patient is allergic to that medication!");
-                    }
-                }
-            }
+            if (isAllergic(allergens, ingredients))
+                throw new Exception("Patient is allergic to that medication!");
 
             if (!onePrescription.validatePrescription())
-            {
                 throw new Exception("Something went wrong, prescription isn't updated!");
-            }
             PrescriptionRepository.UpdatePrescription(newPrescription);
 
         }

@@ -28,9 +28,9 @@ namespace Model
         public Boolean validatePrescription()
         {
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
-            if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
-                return false;
-            else if (Medication == null)
+           // if (Id == null || !onlyNumberRegex.IsMatch(Id.ToString()))
+              //  return false;
+             if (Medication == null)
                 return false;
             else if (Frequency == null)
                 return false;

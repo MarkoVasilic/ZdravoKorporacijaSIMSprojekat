@@ -10,13 +10,6 @@
     "AnamnesisIds": []
   },
   {
-    "PatientJmbg": "1111111111111",
-    "PrescriptionIds": [],
-    "AnamnesisIds": [
-      2
-    ]
-  },
-  {
     "PatientJmbg": "7778889994445",
     "PrescriptionIds": [
       1
@@ -30,6 +23,16 @@
       10,
       11,
       12
+    ]
+  },
+  {
+    "PatientJmbg": "1111111111111",
+    "PrescriptionIds": [
+      2,
+      3
+    ],
+    "AnamnesisIds": [
+      2
     ]
   }
 ]

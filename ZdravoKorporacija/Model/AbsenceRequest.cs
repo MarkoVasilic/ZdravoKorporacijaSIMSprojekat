@@ -34,5 +34,18 @@ namespace Model
         public AbsenceRequest()
         {
         }
+
+        public void ToString()
+        {
+            Console.WriteLine("ID: " + Id);
+            Console.WriteLine("DoctorJmbg: " + DoctorJmbg);
+            Console.WriteLine("Specialty: " + DoctorScecialtyType);
+            Console.WriteLine("From: " + DateFrom);
+            Console.WriteLine("To: " + DateTo);
+            Console.WriteLine("To: " + IntervalInDays);
+            Console.WriteLine("To: " + Reason);
+            Console.WriteLine("To: " + isUgent);
+            Console.WriteLine("To: " + State);
+        }
     }
 }
