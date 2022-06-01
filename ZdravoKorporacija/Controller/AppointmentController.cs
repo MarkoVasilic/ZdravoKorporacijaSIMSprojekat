@@ -132,5 +132,7 @@ namespace Controller
         {
             return EmergencyService.FindAppointmentsToRescheduleForEmergency(patientJmbg, doctorSpeciality);
         }
+
+        
     }
 }

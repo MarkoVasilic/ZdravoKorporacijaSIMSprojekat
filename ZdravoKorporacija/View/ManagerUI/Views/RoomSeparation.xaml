@@ -1,14 +1,13 @@
-﻿<Page x:Class="ZdravoKorporacija.View.ManagerUI.CreateDisplacement"
+﻿<Page x:Class="ZdravoKorporacija.View.ManagerUI.Views.RoomSeparation"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI"
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
       xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
-      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-       d:DesignHeight="768" d:DesignWidth="1024" Background="#fee9e1"
-      Title="CreateDisplacement">
+      Height="768" Width="1024" Background="#fee9e1"
+      Title="RoomSeparation">
 
 
     <Page.CommandBindings>
@@ -22,7 +21,11 @@
     </Page.Resources>
 
     <Grid>
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -30,15 +33,16 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+
         <TextBlock Grid.Row="0"
-             Text="Prebacivanje opreme" 
+             Text="Razdvajanje prostorija" 
              FontSize="30" 
               Margin="0 5 0 0" TextAlignment="Center" Foreground="Black">
         </TextBlock>
 
-        <TextBlock Grid.Row="1" Text="Izaberi prostoriju u koju želiš da prebaciš opremu" FontSize="20" Margin="46 35 0 0">
-            
-        </TextBlock>  
+        <TextBlock Grid.Row="1" Text="Izaberi prostoriju za razdvajanje:" FontSize="20" Margin="46 35 0 0">
+
+        </TextBlock>
 
         <DataGrid Grid.Row="2" x:Name="dataGridRooms"  ItemsSource="{Binding Rooms, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="46 10,46,0"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionUnit="FullRow" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5"  FontSize="13" ColumnHeaderHeight="25">
             <DataGrid.Resources>
@@ -66,15 +70,43 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <TextBlock Text="Unesi datum prebacivanja (format mesec/dan/godina):" FontSize="20" Margin="48 40 0 0"></TextBlock>
-            <DatePicker Height="25" Width="150" Margin="50 43 0 0" SelectedDate="{Binding Path=DisplacementDate, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}" >
-            </DatePicker>
+        <TextBlock Grid.Row="3" Text="Informacije o prvoj prostoriji" FontSize="20"  Margin="48 10 0 0" FontWeight="Bold"></TextBlock>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <TextBlock Text="Naziv" Margin=" 48 20 0 0 " FontSize="20"></TextBlock>
+            <TextBox x:Name="firstRoomName" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding FirstRoomName}"></TextBox>
+            <TextBlock Text="Opis" Margin=" 50 20 0 0 " FontSize="20"></TextBlock>
+            <TextBox x:Name="firstRoomDescription" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding FirstRoomDescription}"></TextBox>
+            <TextBlock Text="Tip" Margin=" 50 20 0 0 " FontSize="20"></TextBlock>
+            <ComboBox Name="firstRoomTypeComboBox"  Margin="20,18,0,0" Height="30"
+                             SelectedValuePath="Content" Width="200" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >
+                <ComboBoxItem>Prostorija za pregled</ComboBoxItem>
+                <ComboBoxItem>Prostorija za sastanke</ComboBoxItem>
+                <ComboBoxItem>Operacijska sala</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="-45 75 0 0 ">
-            <Button Content="Nazad" Margin="100 50 0 0"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}"  />
-            <Button Content="Zakaži"  Margin="230, 50, 0, 0" Click="CreateDisplacement_Click"  Style="{StaticResource ManagerGreenButtonStyle}"/>
+        <TextBlock Grid.Row="5" Text="Informacije o drugoj prostoriji" FontSize="20"  Margin="48 15 0 0" FontWeight="Bold">
+        </TextBlock>
+
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <TextBlock Text="Naziv" Margin=" 48 20 0 0 " FontSize="20"></TextBlock>
+            <TextBox x:Name="secondRoomName" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding SecondRoomName}"></TextBox>
+            <TextBlock Text="Opis" Margin=" 50 20 0 0 " FontSize="20"></TextBlock>
+            <TextBox x:Name="secondRoomDescription" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding SecondRoomDescription}"></TextBox>
+            <TextBlock Text="Tip" Margin=" 50 20 0 0 " FontSize="20"></TextBlock>
+            <ComboBox Name="secondRoomTypeComboBox"  Margin="20,18,0,0" Height="30"
+                             SelectedValuePath="Content" Width="200" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >
+                <ComboBoxItem>Prostorija za pregled</ComboBoxItem>
+                <ComboBoxItem>Prostorija za sastanke</ComboBoxItem>
+                <ComboBoxItem>Operacijska sala</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal">
+            <Button Content="Nazad" Margin="55 25 0 0"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}"  />
+            <Button Content="Traži termine"  Margin="170, 25, 0, 0" Click="PossibleAppoitments_Click"  Style="{StaticResource ManagerGreenButtonStyle}"/>
         </StackPanel>
 
 

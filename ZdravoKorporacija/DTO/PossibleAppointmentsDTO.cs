@@ -34,6 +34,8 @@ namespace ZdravoKorporacija.DTO
             AppointmentId = appointmentId;
         }
 
+        public PossibleAppointmentsDTO() { }
+
         public void toStringManager()
         {
             Console.WriteLine("RoomID = " + RoomId);
