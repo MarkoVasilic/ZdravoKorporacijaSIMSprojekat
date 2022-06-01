@@ -5,5 +5,12 @@
     "StartTime": "2023-03-05T16:30:00",
     "Duration": 60,
     "Description": "krecenje"
+  },
+  {
+    "Id": 2,
+    "RoomId": 13,
+    "StartTime": "2022-06-01T09:48:00",
+    "Duration": 78,
+    "Description": "fklndl"
   }
 ]

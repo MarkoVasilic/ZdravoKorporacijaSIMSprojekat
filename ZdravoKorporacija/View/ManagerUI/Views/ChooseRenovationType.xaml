@@ -1,0 +1,73 @@
+﻿<Page x:Class="ZdravoKorporacija.View.ManagerUI.Views.ChooseRenovationType"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
+      xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+        d:DesignHeight="768" d:DesignWidth="1024" Background="#fee9e1"
+      Title="ChooseRenovationType">
+    
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="RenovationHelp_CanExecute" Executed="RenovationHelp_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+    </Page.CommandBindings>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+             Text="Renoviranje" 
+             FontSize="30" 
+              Margin="0 5 0 0" TextAlignment="Center" Foreground="Black">
+        </TextBlock>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="40 75 0 0">
+            <TextBlock Text="Datum početka (format mesec/dan/godina):" FontSize="20"></TextBlock>
+            <DatePicker x:Name="firstDatePicker" Height="25" Width="200" Margin="50 0 0 0" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}" >
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="40 80 0 0">
+            <TextBlock Text="Datum kraja (format mesec/dan/godina):" FontSize="20"></TextBlock>
+            <DatePicker Height="25" Width="200" Margin="79 0 0 0" SelectedDate="{Binding Path=DateUntil, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}" >
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="40 80 0 0">
+            <TextBlock Text="Potrebno vreme (u minutima):" FontSize="20"></TextBlock>
+            <TextBox Margin="175 0 0 0" Width="200" x:Name="textBoxDuration" Text="{Binding Duration}" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="40 80 0 0">
+            <TextBlock Text="Vrsta renoviranja:" FontSize="20"></TextBlock>
+            <ComboBox Name="RenovationTypeComboBox"  Margin="287 0 0 0" Height="35"
+                             SelectedValuePath="Content" Grid.Row="1" Width="200" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >
+                <ComboBoxItem>Osnovno renoviranje</ComboBoxItem>
+                <ComboBoxItem>Spajanje prostorija</ComboBoxItem>
+                <ComboBoxItem>Razdvajanje prostorija</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="-60 170 0 0 ">
+            <Button Content="Nazad" Margin="100 0 0 0" Style="{StaticResource ManagerRedButtonStyle}" Command="cmd:RoutedCommand.Back"/>
+            <Button Content="Potvrdi"  Margin="230, 0, 0, 0" Click="StartRenovationClick" Style="{StaticResource ManagerGreenButtonStyle}"/>
+            <Button Content="Pomoć"  Margin="230, 0, 0, 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
+        </StackPanel>
+
+
+
+
+    </Grid>
+</Page>

@@ -1,26 +1,6 @@
 [
   {
     "IsGuest": false,
-    "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "BloodTypeEnum": 1,
-    "trollCounter": 0,
-    "FirstName": "Milos",
-    "LastName": "Milosevic",
-    "Username": "mikimilane",
-    "Password": "mackacka",
-    "Jmbg": "7458963215963",
-    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
-    "Gender": 1,
-    "Email": "milos@milos.com",
-    "PhoneNumber": "456789",
-    "Address": "neka adresa 12"
-  },
-  {
-    "IsGuest": false,
     "Allergens": [],
     "BloodTypeEnum": 4,
     "trollCounter": 0,
@@ -130,5 +110,25 @@
     "Email": "",
     "PhoneNumber": "",
     "Address": ""
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "drugi alergen",
+      "treci alergen",
+      "novi alergen"
+    ],
+    "BloodTypeEnum": 1,
+    "trollCounter": 0,
+    "FirstName": "Milos",
+    "LastName": "Milosevic",
+    "Username": "mikimilane",
+    "Password": "mackacka",
+    "Jmbg": "7458963215963",
+    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
+    "Gender": 1,
+    "Email": "milos@milos.com",
+    "PhoneNumber": "456789",
+    "Address": "neka adresa 12"
   }
 ]

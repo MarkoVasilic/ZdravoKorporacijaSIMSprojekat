@@ -470,7 +470,11 @@ namespace ZdravoKorporacija
              foreach (EquipmentDTO eq in equipmentDTOs)
                  eq.toString();*/
 
-            equipmentController.EquipmentDisplacement();
+
+            //NE KOMENTARISATI - KAKO BI SE DESILO SVAKI PUT KAD SE POKRENE APLIKACIJA
+            //equipmentController.EquipmentDisplacement();
+            //advancedRenovationJoiningController.JoinRooms();
+            //advancedRenovationSeparationController.SeparateRooms();
             
         }
 

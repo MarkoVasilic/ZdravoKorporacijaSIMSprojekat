@@ -58,7 +58,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void RoomsRenovationClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RoomRenovation());
+            NavigationService.Navigate(new ChooseRenovationType());
         }
 
         private void ProfileClick(object sender, RoutedEventArgs e)
