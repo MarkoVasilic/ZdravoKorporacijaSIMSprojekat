@@ -26,7 +26,7 @@ namespace ZdravoKorporacija.Service
         {
             return NoteRepository.FindAll();
         }
-
+                
         public Note GetOneById(int noteId)
         {
             return NoteRepository.FindOneById(noteId);
@@ -61,6 +61,13 @@ namespace ZdravoKorporacija.Service
             {
                 NoteRepository.Remove(noteID);
             }
+        }
+
+        public void Create(String Title, String Content)
+        {
+            int id = GenerateNewId();
+            Note newNote = new Note(id, Title, Content, System.DateTime.Now, App.loggedUser.Jmbg);
+            NoteRepository.SaveNote(newNote);
         }
 
 
