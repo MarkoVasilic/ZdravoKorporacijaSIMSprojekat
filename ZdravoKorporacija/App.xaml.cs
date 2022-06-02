@@ -87,6 +87,9 @@ namespace ZdravoKorporacija
             AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
             MeetingControler meetingControler = new MeetingControler();
+            NoteRepository noteRepository = new NoteRepository();
+            NoteService noteService = new NoteService(noteRepository);
+            noteController = new NoteController(noteService);
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };

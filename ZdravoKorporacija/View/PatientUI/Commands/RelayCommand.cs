@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace ZdravoKorporacija.View.PatientUI.Commands
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object>? executeAction;
         private Predicate<object>? canExecute;
@@ -25,7 +25,11 @@ namespace ZdravoKorporacija.View.PatientUI.Commands
             return canExecute(parameter);
         }
 
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public void Execute(object? parameter)
         {

@@ -43,7 +43,7 @@ namespace ZdravoKorporacija.View.PatientUI
         {
 
             Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
-            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Test2.pdf", FileMode.Create));
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("../../../Resources/Test2.pdf", FileMode.Create));
             doc.Open();
             string header = "VAŠI RECEPTI \n";
             string text = "";
@@ -68,7 +68,7 @@ namespace ZdravoKorporacija.View.PatientUI
 
 
 
-            MessageBox.Show("USPJESNO KREAIRAN FAJL");
+            MessageBox.Show("Uspješno izgenerisan PDF!\n putanja:  Resources folder","USPJEŠNO!",MessageBoxButton.OK,MessageBoxImage.None);
         }
 
         private void GoBackButton(object sender, RoutedEventArgs e)

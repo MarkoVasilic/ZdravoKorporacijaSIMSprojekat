@@ -6,6 +6,7 @@
       xmlns:schedule="http://schemas.syncfusion.com/wpf"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:ZdravoKorporacija.View.PatientUI"
+       xmlns:viewmodels="clr-namespace:ZdravoKorporacija.View.PatientUI.ViewModels"  d:DataContext="{d:DesignInstance Type=viewmodels:CalendarVM}"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024" d:Background="DarkSlateGray"
       Title="Calendar">
@@ -24,14 +25,14 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="55" FontWeight="Bold" Foreground="MediumAquamarine">Moji pregledi</Label>
         <Calendar x:Name="calendarControl" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Row="2" Margin="106,130,0,0"/>
-        <Button Grid.Column="0" Grid.Row="3" Width ="200" Background="#FF6B7B73" Content="Nazad" FontSize="25" FontWeight="DemiBold" Click="GoBackButton"  HorizontalAlignment="Left" Margin="96,0,0,0">
+        <Button Grid.Column="0" Grid.Row="3" Width ="200" Background="#FF6B7B73" Content="Nazad" FontSize="25" FontWeight="DemiBold" Command="{Binding BackCommand}"  HorizontalAlignment="Left" Margin="96,0,0,0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <ListView ItemsSource="{Binding Appointments}" Background="MediumAquamarine" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0 0 0 0">
+        <ListView ItemsSource="{Binding Appointments}" x:Name="AppointmentsListView" Background="MediumAquamarine" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0 0 0 0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0.3" BorderBrush="Black">
@@ -49,31 +50,44 @@
                                 <RowDefinition Height="50"></RowDefinition>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" FontSize="25" FontWeight="DemiBold">ID:</TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="25" FontWeight="DemiBold">Doktor:</TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="25" FontWeight="DemiBold">Ljekar:</TextBlock>
                             <TextBlock Grid.Row="2" Grid.Column="0" FontSize="25" FontWeight="DemiBold">Vrijeme:</TextBlock>
                             <TextBlock Grid.Row="3" Grid.Column="0" FontSize="25" FontWeight="DemiBold">Soba:</TextBlock>
-                            <TextBlock Grid.Row="4" Grid.Column="0" FontSize="25" FontWeight="DemiBold">Trajanje:</TextBlock>
+                            <TextBlock Grid.Row="4" Grid.Column="0" FontSize="25" FontWeight="DemiBold">Specijalizacija:</TextBlock>
 
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding AppointmentId}" FontSize="25" ></TextBlock>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding DoctorFullName}" FontSize="25" ></TextBlock>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding StartTime}" FontSize="25" ></TextBlock>
                             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding RoomName}" FontSize="25" ></TextBlock>
-                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Duration}" FontSize="25"  ></TextBlock>
-                            <Button Grid.Row="5" Grid.Column="0" Content="Otkaži" FontSize="25" FontWeight="DemiBold" Width="306" Height="50" Background="DarkGreen" HorizontalAlignment="Center"></Button>
-                            <Button Grid.Row="5" Grid.Column="1" Content="Odloži" FontSize="25" FontWeight="DemiBold" Width="296" Margin="0 0 20 0" Height="50" Background="MediumSpringGreen" HorizontalAlignment="Center"></Button>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding DoctorSpeciality}" FontSize="25"  ></TextBlock>
+                            <Button Grid.Row="5" Grid.Column="0" Content="Otkaži" FontSize="25" FontWeight="DemiBold" Width="306" Height="50"  HorizontalAlignment="Center" Command="{Binding ElementName=AppointmentsListView,Path=DataContext.DeleteCommand}"  CommandParameter="{Binding AppointmentId}" Background="Green"></Button>
+                            <Button Grid.Row="5" Grid.Column="1" Content="Odloži" FontSize="25" FontWeight="DemiBold" Width="296" Margin="0 0 20 0" Height="50" Background="MediumSpringGreen" HorizontalAlignment="Center" Command="{Binding ElementName=AppointmentsListView,Path=DataContext.PostponeCommand}"  CommandParameter="{Binding AppointmentId}"></Button>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Label Grid.Row="2" HorizontalAlignment="Left" FontSize="30" FontWeight="Bold" Foreground="MediumAquamarine" Content="Datum pretrage:" Margin="75,74,0,328" Width="392" Grid.ColumnSpan="2"/>
-        <Button Grid.Column="0" Grid.Row="2" Width ="118" Background="MediumAquamarine" Content="Pretraži" FontSize="25" FontWeight="DemiBold" Click="pretarziButton"  HorizontalAlignment="Left" Margin="136,313,0,99">
+        <Button Grid.Column="0" Grid.Row="2" Width ="118" Background="MediumAquamarine" Content="Pretraži" FontSize="25" FontWeight="DemiBold" Command="{Binding SearchCommand}"  HorizontalAlignment="Left" Margin="136,313,0,99">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
                 </Style>
             </Button.Resources>
         </Button>
+        <ToggleButton x:Name="TogglePopupButton" Height="30" Width="60" HorizontalAlignment="Left" Background="#FF05B4F0" FontSize="12" FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" VerticalAlignment="Bottom">
+            <StackPanel>
+
+                <Popup Name="myPopup" IsOpen="{Binding IsChecked, ElementName=TogglePopupButton}">
+                    <Border BorderThickness="1">
+                        <TextBlock Name="myPopupText" Background="#FF05B4F0"  Foreground="Black " TextAlignment="Center" Padding="30" TextWrapping="Wrap" Width="400" Height="90">
+                            Prikazani su svi Zakazani pregledi. Za lakše pretraživanje koristiti kalendar. Odaberite datum pregleda i pretražite vaše preglede za odabrani datum!
+                        </TextBlock>
+                    </Border>
+                </Popup>
+                <TextBlock Background="#FF05B4F0" Foreground="Black"><Run  Text="POMOĆ!" /></TextBlock>
+            </StackPanel>
+        </ToggleButton>
 
     </Grid>
 </Page>

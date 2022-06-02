@@ -17,6 +17,8 @@ namespace ZdravoKorporacija.Controller
             this.NoteService = noteService;
         }
 
+        
+
         public NoteController() { }
 
 
@@ -30,19 +32,6 @@ namespace ZdravoKorporacija.Controller
             return NoteService.GetOneById(noteId);
         }
 
-        public int GenerateNewId()
-        {
-            try
-            {
-                List<Note> notes = NoteService.GetAll();
-                int currentMax = notes.Max(obj => obj.Id);
-                return currentMax + 1;
-            }
-            catch
-            {
-                return 1;
-            }
-        }
 
         public List<Note> FindAllByPatientJmbg(String patientJmbg)
         {
@@ -59,6 +48,11 @@ namespace ZdravoKorporacija.Controller
             {
                 NoteService.Delete(noteID);
             }
+        }
+        
+        public void Create(String Title, String Content)
+        {
+            NoteService.Create(Title, Content);
         }
 
 

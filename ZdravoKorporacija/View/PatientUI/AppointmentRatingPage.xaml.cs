@@ -62,7 +62,7 @@ namespace ZdravoKorporacija.View.PatientUI
             if (commentTextBox.Text == "//Unesite komentar... ")
                 Comment = "";
 
-            MessageBox.Show("Ocijena za doktora: " + SelectedDoctorRating + " Ocijena za Bolnicu: " + SelectedHospitalRating + " Dodatni komentar: " + Comment + " Appointment ID: " + GetAllAppointmentsPatient.AppointmentToBeRatedId);
+            MessageBox.Show("Uspješno ocijenjen pregled! \n ID: "+GetAllAppointmentsPatient.AppointmentToBeRatedId, "USPJEŠNO!", MessageBoxButton.OK, MessageBoxImage.None);
             ratingController.Create(GetAllAppointmentsPatient.AppointmentToBeRatedId, SelectedHospitalRating, SelectedDoctorRating, Comment);
             NavigationService.Navigate(new GetAllAppointmentsPatient());
         }

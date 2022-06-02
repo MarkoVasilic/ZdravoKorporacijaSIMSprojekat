@@ -138,25 +138,31 @@ namespace ZdravoKorporacija.Service
             return notificationsList;
         }
 
+
         public List<Notification> ShowPatientNotification()
         {
             List<Notification> notificationsListToDisplay = new List<Notification>();
             List<Notification> returnList = new List<Notification>();
             notificationsListToDisplay = notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
-            Console.WriteLine("Medication StartTime: " + notificationsListToDisplay[0].StartTime);
-            Console.WriteLine("Current DateTime :  " + System.DateTime.Now);
-            Console.WriteLine("Notifications to be Made");
-            Console.WriteLine("-------------------------");
 
             for (int i = 0; i < notificationsListToDisplay.Count; i++)
             {
-                if ((((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) <= 1) && ((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) > -8)) || (System.DateTime.Now > notificationsListToDisplay[i].StartTime))
+               // if ((((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) <= 1) && ((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) > -8)) || (System.DateTime.Now > notificationsListToDisplay[i].StartTime))
                 {
+                    if((((notificationsListToDisplay[i].StartTime - System.DateTime.Now).Hours <=1 && (notificationsListToDisplay[i].StartTime - System.DateTime.Now).Hours > 0)) || notificationsListToDisplay[i].StartTime < DateTime.Now)
+
                     returnList.Add(notificationsListToDisplay[i]);
                 }
             }
             return returnList;
 
+        }
+
+        public Notification CreateNotification(Notification notification)
+        {
+            notification.Id = GenerateNewId();
+            notificationRepository.SaveNotification(notification);
+            return notification;
         }
 
 

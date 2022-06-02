@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.View.PatientUI;
 using ZdravoKorporacija.View.PatientUI.ViewModels;
 
 namespace ZdravoKorporacija.View
@@ -9,18 +10,16 @@ namespace ZdravoKorporacija.View
     /// </summary>
     public partial class UpdateAppointmentPage : Page
     {
-        private UpdateAppointmentVM updateAppointmentVM;
-        public UpdateAppointmentPage(UpdateAppointmentVM updateAppointmentVM)
+        public UpdateAppointmentPage(int id)
         {
             InitializeComponent();
-            this.updateAppointmentVM = updateAppointmentVM;
-            DataContext = updateAppointmentVM;
+            DataContext = new  UpdateAppointmentVM(id);
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new PatientHomePage());
         }
     }
 }

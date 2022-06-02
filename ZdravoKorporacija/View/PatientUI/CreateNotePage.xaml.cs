@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 
 namespace ZdravoKorporacija.View.PatientUI
 {
@@ -20,9 +21,10 @@ namespace ZdravoKorporacija.View.PatientUI
     /// </summary>
     public partial class CreateNotePage : Page
     {
-        public CreateNotePage()
+        public CreateNotePage(int id)
         {
             InitializeComponent();
+            DataContext = new CreateNotePageVM(id);
         }
 
         private void GoBackNoteButton(object sender, RoutedEventArgs e)

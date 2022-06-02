@@ -50,7 +50,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <ListView ItemsSource="{Binding Anamensis}" Height="294" Width="550" Margin="0 20 0 0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="SteelBlue" Grid.RowSpan="2">
+        <ListView ItemsSource="{Binding AnamensisDTOs}" Height="294" Width="550" Margin="0 20 0 0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="SkyBlue" Grid.RowSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Black">
@@ -72,7 +72,7 @@
                             <TextBlock Text="Izvjestaj: " FontSize="20" FontWeight="DemiBold" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"></TextBlock>
                             <TextBlock Text="{Binding Diagnosis}" FontSize="20" FontWeight="DemiBold" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"></TextBlock>
                             <TextBlock Text="{Binding DateTime}" FontSize="20" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"></TextBlock>
-                            <TextBlock Text="{Binding DoctorJmbg}" FontSize="20" FontWeight="DemiBold" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Text="{Binding DoctorFullName}" FontSize="20" FontWeight="DemiBold" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"></TextBlock>
                             <TextBlock Text="{Binding Report}" FontSize="20" FontWeight="DemiBold" Grid.Row="3" TextWrapping="Wrap" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"></TextBlock>
                         </Grid>
                     </Border>

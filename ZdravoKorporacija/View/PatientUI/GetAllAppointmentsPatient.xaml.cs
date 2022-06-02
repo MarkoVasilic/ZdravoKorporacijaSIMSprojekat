@@ -25,8 +25,11 @@ namespace ZdravoKorporacija.View.PatientUI
         {
             InitializeComponent();
             RatingRepository ratingRepository = new RatingRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            RoomRepository roomRepository = new RoomRepository();
+            DoctorRepository doctorRepository = new DoctorRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository,patientRepository,doctorRepository,roomRepository);
             ratingService = new RatingService(ratingRepository, appointmentRepository);
             ScheduleService scheduleService = new ScheduleService();
             EmergencyService emergencyService = new EmergencyService();

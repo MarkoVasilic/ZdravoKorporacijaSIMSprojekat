@@ -27,6 +27,8 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
 
         private Patient? loggedPatient { get; set; }
 
+        private int IdForModification { get; set; }
+
         private PossibleAppointmentsDTO? selectedAppointment { get; set; }
 
         private PossibleAppointmentsDTO? selectedAppointmentDelete { get; set; }
@@ -193,7 +195,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             }
         }
 
-        public UpdateAppointmentVM()
+        public UpdateAppointmentVM(int id)
         {
             PatientRepository patientRepository = new PatientRepository();
             PatientService patientService = new PatientService(patientRepository);
@@ -219,6 +221,8 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             ModifyAppointmentCommand = new RelayCommand(modifyAppointmentExecute);
             DeleteAppointmentCommand = new RelayCommand(deleteAppointmentExecute);
             SelectNewAppointmentCommand = new RelayCommand(selectNewAppointmentExecute);
+            //  SelectedAppointment = appointmentController.GetOneById(id);
+            IdForModification = id;
 
         }
 
@@ -285,7 +289,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
                 MessageBox.Show("Can't postpone an appointment 24 hours before initial date!");
             }
             else
-                PatientWindowVM.NavigationService.Navigate(new UpdateAppointmentPage(this));
+                PatientWindowVM.NavigationService.Navigate(new UpdateAppointmentPage(SelectedAppointment.AppointmentId));
         }
 
         private void deleteAppointmentExecute(object parameter)
@@ -329,8 +333,8 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
 
                 Console.WriteLine("troll: " + patientController.getTrollCounterByPatient(App.loggedUser.Jmbg));
 
-                appointmentController.ModifyAppointment(SelectedAppointment.AppointmentId, SelectedNewAppointment.StartTime);
-                MessageBox.Show("Uspjesno zakazan pregled za " + SelectedNewAppointment.StartTime);
+                appointmentController.ModifyAppointment(IdForModification, SelectedNewAppointment.StartTime);
+                MessageBox.Show("Uspješno zakazan pregled za " + SelectedNewAppointment.StartTime, "USPJEŠNO!", MessageBoxButton.OK,MessageBoxImage.Information);
                 PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
 
             }

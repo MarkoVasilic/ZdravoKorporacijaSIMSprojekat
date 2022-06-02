@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.PatientUI"
+                    xmlns:viewmodels="clr-namespace:ZdravoKorporacija.View.PatientUI.ViewModels"  d:DataContext="{d:DesignInstance Type=viewmodels:CreateNotePageVM}"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024" d:Background="DarkSlateGray"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -30,18 +31,11 @@
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="1" Grid.Column="2" Content="Kreiraj Bilješku" FontSize="60" FontWeight="Bold" Foreground="MediumAquamarine" HorizontalAlignment="Center" Width="430"></Label>
+        <Label Grid.Row="1" Grid.Column="2" Content="Moja Bilješka" FontSize="60" FontWeight="Bold" Foreground="MediumAquamarine" HorizontalAlignment="Center" Width="430"></Label>
         <TextBlock Text="Naslov bilješke:" FontSize="27.5" FontWeight="DemiBold" Grid.Row="2" Grid.Column="1" Foreground="MediumAquamarine" HorizontalAlignment="Left" VerticalAlignment="Center" Height="36" Width="192"></TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" MaxHeight="40" VerticalAlignment="Top" Height="40" FontSize="25" FontFamily="Bold" Background="#FFB8FAE3"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" Margin="0,40,0,30" FontSize="25" FontFamily="Bold" Text="//Unesite tekst bilješke..." TextWrapping="Wrap" Background="#FFB8FAE3"></TextBox>
-        <Button Content="Sačuvaj" FontSize="25" Grid.Column="1" Grid.Row="5" MaxWidth="200" HorizontalAlignment="Left" Width="200" Background="MediumAquamarine" FontWeight="DemiBold" Click="SacuvajNoteButton">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="14"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Content="Nazad" FontSize="25" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Background="#FF6B7B73" FontWeight="DemiBold" Click="GoBackNoteButton">
+        <TextBox Text="{Binding Title, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" MaxHeight="40" VerticalAlignment="Top" Height="40" FontSize="25" FontFamily="Bold" Background="White"></TextBox>
+        <TextBox Text="{Binding Content, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" Margin="0,40,0,30" FontSize="25" FontFamily="Bold" TextWrapping="Wrap" Background="White"></TextBox>
+        <Button Content="Nazad" FontSize="25" Grid.Column="2" Grid.Row="5" Background="#FF6B7B73" FontWeight="DemiBold" Click="GoBackNoteButton" Margin="73,0,162,0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>

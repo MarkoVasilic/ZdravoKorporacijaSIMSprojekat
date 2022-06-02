@@ -28,7 +28,7 @@ namespace ZdravoKorporacija.View.PatientUI
 
         private void NazadButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new PatientHomePage());
         }
     }
 }

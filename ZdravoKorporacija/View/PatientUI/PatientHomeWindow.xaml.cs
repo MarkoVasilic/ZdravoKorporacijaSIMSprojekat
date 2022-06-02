@@ -27,15 +27,19 @@ namespace ZdravoKorporacija.View
 
         private void LogOutButton(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            this.Close();
-            main.Show();
+           var result = MessageBox.Show("Želite da se odjavite?","ODJAVI SE",MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow main = new MainWindow();
+                this.Close();
+                main.Show();
+            }
         }
 
         private void HomeButton(object sender, RoutedEventArgs e)
         {
             PatientHomePage home = new PatientHomePage();
-            NavigationService.Navigate(new Calendar());
+            NavigationService.Navigate(new PatientHomePage());
         }
 
 

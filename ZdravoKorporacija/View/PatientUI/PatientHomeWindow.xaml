@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
             <Rectangle Fill="#FF17202E"/>
             <StackPanel Grid.Row="0" HorizontalAlignment="Right">
-                <Button Height="70" Width="200" Margin="0 0 0 0" Click="LogOutButton" Content="Odjavi se" FontSize="20" FontWeight="Bold" Background="SteelBlue"/>
+                <Button Height="70" Width="200" Margin="0 0 0 0" Click="LogOutButton" Content="Odjavi se" FontSize="20" FontWeight="Bold" Background="#FF05B4F0"></Button>
             </StackPanel>
             <StackPanel Width="32" Height="32">
                 <Button  Background="Transparent" BorderBrush="Transparent" Click="HomeButton">

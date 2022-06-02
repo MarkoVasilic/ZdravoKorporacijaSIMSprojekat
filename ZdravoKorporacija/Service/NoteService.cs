@@ -63,6 +63,13 @@ namespace ZdravoKorporacija.Service
             }
         }
 
+        public void Create(String Title, String Content)
+        {
+            int id = GenerateNewId();
+            Note newNote = new Note(id, Title, Content, System.DateTime.Now, App.loggedUser.Jmbg);
+            NoteRepository.SaveNote(newNote);
+        }
+
 
 
     }

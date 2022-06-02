@@ -49,6 +49,7 @@ namespace Service
         public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
         {
             List<Appointment> appointments = AppointmentRepository.GetAllFutureByPatient(App.loggedUser.Jmbg);
+            appointments.Sort((emp1, emp2) => emp1.StartTime.CompareTo(emp2.StartTime));
             return CreatePossibleAppointmentsDtos(appointments);
         }
         public List<PossibleAppointmentsDTO> GetAllPastAppointmentsByPatient()
@@ -65,6 +66,7 @@ namespace Service
                 if (date.Date == ap.StartTime.Date)
                     possibleAppointmentsDTO.Add(ap);
             }
+            possibleAppointmentsDTO.Sort((emp1, emp2) => emp1.StartTime.Date.CompareTo(emp2.StartTime.Date));
             return possibleAppointmentsDTO;
         }
         private List<PossibleAppointmentsDTO> CreatePossibleAppointmentsDtos(List<Appointment> appointments)

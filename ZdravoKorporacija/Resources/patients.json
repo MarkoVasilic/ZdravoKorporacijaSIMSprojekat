@@ -96,26 +96,6 @@
     "Address": "Stefana Stefanovica 18, Rijeka"
   },
   {
-    "IsGuest": false,
-    "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "BloodTypeEnum": 3,
-    "trollCounter": 0,
-    "FirstName": "Petar",
-    "LastName": "Jecmenic",
-    "Username": "joco",
-    "Password": "joco",
-    "Jmbg": "7778889994445",
-    "DateOfBirth": "2000-08-03T00:00:00",
-    "Gender": 1,
-    "Email": "aaa@cds.com",
-    "PhoneNumber": "342423",
-    "Address": "Pere Jecmenica 12, Novi Sad"
-  },
-  {
     "IsGuest": true,
     "Allergens": [],
     "BloodTypeEnum": 0,
@@ -130,5 +110,25 @@
     "Email": "",
     "PhoneNumber": "",
     "Address": ""
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 3,
+    "trollCounter": 1,
+    "FirstName": "Jovan",
+    "LastName": "Konjevic",
+    "Username": "joco",
+    "Password": "jocojoco",
+    "Jmbg": "7778889994445",
+    "DateOfBirth": "2000-08-03T00:00:00",
+    "Gender": 1,
+    "Email": "pero@gmail.com",
+    "PhoneNumber": "0638162900",
+    "Address": "Pere Jecmenica 44"
   }
 ]

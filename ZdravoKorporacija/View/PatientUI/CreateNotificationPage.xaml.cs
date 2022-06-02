@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 
 namespace ZdravoKorporacija.View.PatientUI
 {
@@ -23,6 +24,7 @@ namespace ZdravoKorporacija.View.PatientUI
         public CreateNotificationPage()
         {
             InitializeComponent();
+            DataContext = new CreateNotificationPageVM();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

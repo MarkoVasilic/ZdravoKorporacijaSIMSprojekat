@@ -187,10 +187,10 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
-
-
+            PatientRepository patientRepository = new PatientRepository();
+            RoomRepository roomRepository = new RoomRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AppointmentService appointmentService = new AppointmentService();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository,patientRepository,doctorRepository,roomRepository);
             ScheduleService scheduleService = new ScheduleService();
             EmergencyService emergencyService = new EmergencyService();
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
@@ -217,11 +217,10 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             try
             {
                 appointmentController.CreateAppointmentByPatient(selectedAppointment.StartTime, selectedAppointment.DoctorJmbg);
-                //OVO RADI
-                // MessageBox.Show("Uspjesno zakazan pregled za " + selectedAppointment.StartTime);
-                ErrorMessageConfirmAppointment = "Uspjesno zakazan pregled! Datum: " + selectedAppointment.StartTime;
+                
+                 MessageBox.Show("Uspješno zakazan pregled za \n Datum: " + selectedAppointment.StartTime, "USPJEŠNO!", MessageBoxButton.OK,MessageBoxImage.Information);
                 Thread.Sleep(500);
-                PatientWindowVM.NavigationService.Navigate(new UpdateFutureAppointmentsPage());
+                PatientWindowVM.NavigationService.Navigate(new Calendar());
 
             }
             catch (Exception ex)
@@ -236,7 +235,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             {
                 appointmentController.CreateAppointmentByPatient(selectedAppointment.StartTime, selectedAppointment.DoctorJmbg);
                 //  MessageBox.Show("Uspjesno zakazan pregled za " + selectedAppointment.StartTime);
-                ErrorMessageConfirmAppointment = "Uspjesno zakazan pregled! " + selectedAppointment.StartTime;
+                ErrorMessageConfirmAppointment = "Uspješno zakazan pregled! " + selectedAppointment.StartTime;
                 PatientWindowVM.NavigationService.Navigate(new GetAllAppointmentsPatient());
 
             }
@@ -416,7 +415,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             try
             {
                 appointmentController.CreateAppointmentByPatient(DateFrom, selectedDoctor.Jmbg);
-                errorMessageConfirmAppointment = "Uspjesno zakazan pregled! ";
+                errorMessageConfirmAppointment = "Uspješno zakazan pregled! ";
 
             }
             catch (Exception e)
