@@ -79,5 +79,18 @@
             <materialDesign:PackIcon Grid.Row="3" Grid.Column="2" Height="70" Width="70" Kind="FilePdfBox" Foreground="#FFE95555" BorderBrush="Transparent" RenderTransformOrigin="0.472,0.2" HorizontalAlignment="Center"/>
         </Button>
         <TextBlock Text="generiši PDF" FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" Foreground="#FF6B7B73" VerticalAlignment="Top" Grid.Column="7" Grid.Row="2" Margin="7,274,0,0" Grid.ColumnSpan="3" Height="29"></TextBlock>
+        <ToggleButton x:Name="TogglePopupButton" Height="30" Width="60" HorizontalAlignment="Left" Background="#FF05B4F0" FontSize="12" FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <StackPanel>
+
+                <Popup Name="myPopup" IsOpen="{Binding IsChecked, ElementName=TogglePopupButton}">
+                    <Border BorderThickness="1">
+                        <TextBlock Name="myPopupText" Background="#FF05B4F0" Foreground="Black " TextAlignment="Center" Padding="30" TextWrapping="Wrap" Width="400" Height="90">
+                Prikazane su aktuelne terapije, postoji mogućnost generisanja PDF-a klikom na dugme sa desne strane. PDF se može naći u Resources Folderu!
+                        </TextBlock>
+                    </Border>
+                </Popup>
+                <TextBlock Background="#FF05B4F0" Foreground="Black"><Run  Text="POMOĆ!" /></TextBlock>
+            </StackPanel>
+        </ToggleButton>
     </Grid>
 </Page>

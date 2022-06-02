@@ -16,7 +16,8 @@ namespace ZdravoKorporacija.View.PatientUI
         public UpdateFutureAppointmentsPage()
         {
             InitializeComponent();
-            DataContext = new UpdateAppointmentVM();
+            int id = 44;
+           // DataContext = new UpdateAppointmentVM(id);
             /* PatientRepository patientRepository = new PatientRepository();
              PatientService patientService = new PatientService(patientRepository);
              DoctorRepository doctorRepository = new DoctorRepository();

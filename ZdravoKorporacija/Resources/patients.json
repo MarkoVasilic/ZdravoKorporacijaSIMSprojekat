@@ -1,6 +1,26 @@
 [
   {
     "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 1,
+    "trollCounter": 0,
+    "FirstName": "Milos",
+    "LastName": "Milosevic",
+    "Username": "mikimilane",
+    "Password": "mackacka",
+    "Jmbg": "7458963215963",
+    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
+    "Gender": 1,
+    "Email": "milos@milos.com",
+    "PhoneNumber": "456789",
+    "Address": "neka adresa 12"
+  },
+  {
+    "IsGuest": false,
     "Allergens": [],
     "BloodTypeEnum": 4,
     "trollCounter": 0,
@@ -76,26 +96,6 @@
     "Address": "Stefana Stefanovica 18, Rijeka"
   },
   {
-    "IsGuest": false,
-    "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "BloodTypeEnum": 3,
-    "trollCounter": 0,
-    "FirstName": "Petar",
-    "LastName": "Jecmenic",
-    "Username": "joco",
-    "Password": "joco",
-    "Jmbg": "7778889994445",
-    "DateOfBirth": "2000-08-03T00:00:00",
-    "Gender": 1,
-    "Email": "aaa@cds.com",
-    "PhoneNumber": "342423",
-    "Address": "Pere Jecmenica 12, Novi Sad"
-  },
-  {
     "IsGuest": true,
     "Allergens": [],
     "BloodTypeEnum": 0,
@@ -114,21 +114,21 @@
   {
     "IsGuest": false,
     "Allergens": [
+      "prvi alergen",
       "drugi alergen",
-      "treci alergen",
-      "novi alergen"
+      "treci alergen"
     ],
-    "BloodTypeEnum": 1,
-    "trollCounter": 0,
-    "FirstName": "Milos",
-    "LastName": "Milosevic",
-    "Username": "mikimilane",
-    "Password": "mackacka",
-    "Jmbg": "7458963215963",
-    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
+    "BloodTypeEnum": 3,
+    "trollCounter": 1,
+    "FirstName": "Jovan",
+    "LastName": "Konjevic",
+    "Username": "joco",
+    "Password": "jocojoco",
+    "Jmbg": "7778889994445",
+    "DateOfBirth": "2000-08-03T00:00:00",
     "Gender": 1,
-    "Email": "milos@milos.com",
-    "PhoneNumber": "456789",
-    "Address": "neka adresa 12"
+    "Email": "pero@gmail.com",
+    "PhoneNumber": "0638162900",
+    "Address": "Pere Jecmenica 44"
   }
 ]

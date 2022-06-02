@@ -55,12 +55,12 @@ namespace ZdravoKorporacija.View.PatientUI
 
         private void FutureAppointmentButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new UpdateFutureAppointmentsPage());
+            NavigationService.Navigate(new Calendar());
         }
 
         private void PastAppointmentsButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new GetAllAppointmentsPatient());
+            NavigationService.Navigate(new GetAllAppointmentsPatient ());
         }
 
         private void CreateAppointmentButton(object sender, RoutedEventArgs e)

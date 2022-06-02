@@ -86,5 +86,39 @@ namespace ZdravoKorporacija
                     MessageBox.Show("Wrong password!");
             }
         }
+
+
+        private void MouseOverVideo(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            sponzor.Visibility = Visibility.Visible;
+            Naslov.Visibility = Visibility.Collapsed;
+            konjevicVideo.Visibility = Visibility.Visible;
+            konjevicVideo.Play();
+            LoginPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void MouseLeaveVideo(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            sponzor.Visibility = Visibility.Collapsed;
+            Naslov.Visibility = Visibility.Visible;
+            konjevicVideo.Stop();
+            konjevicVideo.Visibility = Visibility.Collapsed;
+            LoginPanel.Visibility = Visibility.Visible;
+        }
+
+        private void onEnded(object sender, RoutedEventArgs e)
+        {
+            sponzor.Visibility = Visibility.Collapsed;
+            Naslov.Visibility = Visibility.Visible;
+            konjevicVideo.Stop();
+            konjevicVideo.Visibility = Visibility.Collapsed;
+            LoginPanel.Visibility = Visibility.Visible;
+
+            sponzor.Visibility = Visibility.Visible;
+            Naslov.Visibility = Visibility.Collapsed;
+            konjevicVideo.Visibility = Visibility.Visible;
+            konjevicVideo.Play();
+            LoginPanel.Visibility = Visibility.Collapsed;
+        }
     }
 }

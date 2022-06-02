@@ -10,7 +10,7 @@
 
     <Grid Background="#FF242F41">
 
-        <DataGrid   RowHeight="40"  RowBackground="SteelBlue" ColumnHeaderHeight="30" FontSize="16" Background="LightBlue" FontFamily="Georgia" x:Name="dataGridRooms"  ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False"  VerticalAlignment="Top" Margin="10,100,10,10" >
+        <DataGrid   RowHeight="40"  RowBackground="SteelBlue" ColumnHeaderHeight="30" FontSize="16" Background="LightBlue" FontFamily="Georgia" x:Name="dataGridRooms"  ItemsSource="{Binding Path=PossibleAppointments}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False"  VerticalAlignment="Top" Margin="10,146,10,0" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ljekar" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
@@ -26,14 +26,14 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Nazad" FontSize="20" FontWeight="DemiBold" Background="#FF6B7B73" HorizontalAlignment="Center" Margin="0,591,0,0" VerticalAlignment="Top" Width="270" Height="70" Click="NazadButton">
+        <Button Content="Nazad" FontSize="25" FontWeight="DemiBold" Background="#FF6B7B73" HorizontalAlignment="Center" Margin="0,635,0,0" VerticalAlignment="Top" Width="270" Height="60" Click="NazadButton">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <ToggleButton x:Name="TogglePopupButton" Height="30" Width="60" HorizontalAlignment="Left" Background="Aquamarine" FontSize="12" FontWeight="DemiBold" Margin="0,425,0,200">
+        <ToggleButton x:Name="TogglePopupButton" Height="30" Width="60" HorizontalAlignment="Left" Background="Aquamarine" FontSize="12" FontWeight="DemiBold" Margin="0,77,0,661">
             <StackPanel>
 
                 <Popup Name="myPopup" IsOpen="{Binding IsChecked, ElementName=TogglePopupButton}">
@@ -46,8 +46,5 @@
                 <TextBlock Background="Aquamarine" Foreground="Black"><Run  Text="POMOĆ!" /></TextBlock>
             </StackPanel>
         </ToggleButton>
-        <TextBlock  Text="{Binding Path=ErrorMessageConfirmAppointment, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" FontSize="50" Foreground="MediumAquamarine" HorizontalAlignment="Center" Margin="0,666,0,0" VerticalAlignment="Top" Height="58"  Width="638">
-
-        </TextBlock>
     </Grid>
 </Page>

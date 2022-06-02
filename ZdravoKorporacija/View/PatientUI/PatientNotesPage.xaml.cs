@@ -17,6 +17,7 @@ using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
+using ZdravoKorporacija.View.PatientUI.ViewModels;
 
 namespace ZdravoKorporacija.View.PatientUI
 {
@@ -28,51 +29,14 @@ namespace ZdravoKorporacija.View.PatientUI
         public static NoteController noteController { get; set; }
         public ObservableCollection<Note> notes { get; set; }
 
+
         public PatientNotesPage()
         {
-            NoteRepository noteRepository = new NoteRepository();
-            NoteService noteService = new NoteService(noteRepository);
-            NoteController noteController1 = new NoteController(noteService);
-            noteController = noteController1;
             InitializeComponent();
-            DataContext = this;
+            DataContext = new NotesPageVM();
 
-            notes = new ObservableCollection<Note>(noteController.FindAllByPatientJmbg(App.loggedUser.Jmbg));
-
-            for (int i = 0; i < notes.Count; i++)
-            {
-                Console.WriteLine(notes[i].Content);
-                Console.WriteLine("--------");
-                Console.WriteLine(notes[i].Content.Length);
-                Console.WriteLine("--------");
-                if (notes[i].Content.Length >= 150)
-                {
-                    Console.WriteLine("USAO SAM " + i);
-                    notes[i].Content = notes[i].Content.Substring(0, 150) + "...";
-                    Console.WriteLine(notes[i].Content.Substring(0, 150));
-                }
-            }
         }
 
-
-        private void GoBackButton(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
-        private void CreateNoteButton(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CreateNotePage());
-        }
-
-        private void OtvoriButton(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CreateNotePage());
-        }
-
-        private void IzmjenIButton(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CreateNotePage());
-        }
     }
 }
+

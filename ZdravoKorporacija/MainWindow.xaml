@@ -3,19 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
 
         Title="MainWindow" Height="768" Width="1024">
     <Grid>
         <Grid.Background>
-         <ImageBrush ImageSource="\Resources\Images\bolnicaHCI.jpg" Stretch="Fill"/>
+            <ImageBrush ImageSource="\Resources\Images\bolnicaHCI.jpg" Stretch="Fill"/>
         </Grid.Background>
+        <MediaElement x:Name="konjevicVideo" Source="Savina.mp4" LoadedBehavior="Manual" Stretch="Fill" Margin="5,3,0,5" MediaEnded="onEnded"></MediaElement>
         <StackPanel VerticalAlignment="Top" Margin="0 70 0 0">
-            <Label Content="Welcome to our hospital" HorizontalAlignment="Center" FontSize="34" FontWeight="Bold" Foreground="GreenYellow"/>
-            
+            <Label x:Name="Naslov" Content="Welcome to our hospital" HorizontalAlignment="Center" FontSize="34" FontWeight="Bold" Foreground="GreenYellow"/>
+
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel x:Name="LoginPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Border Background="White" BorderThickness="5" BorderBrush="Black">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -45,9 +47,13 @@
                     </StackPanel>
                     <Button Grid.Row="3" Grid.Column="1" Name="LoginButton" HorizontalAlignment="Center" Content="Confirm" Height="30" Width="110" Background="Green" FontSize="18" Click="LoginButton_Click" IsDefault="True"/>
                 </Grid>
-                
+
             </Border>
         </StackPanel>
+        <TextBlock x:Name="sponzor" Visibility="Collapsed" Text="Generalni sponzor: APARTMANI KONJEVIC" Foreground="GreenYellow" FontFamily="Cascadia Mono" FontSize="25" FontWeight="DemiBold" HorizontalAlignment="Left" Height="79" Margin="712,655,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" />
+        <Button Background="Transparent" BorderBrush="Transparent"  HorizontalAlignment="Left" Margin="921,10,0,0" VerticalAlignment="Top" Height="37" Width="93"  MouseEnter="MouseOverVideo" MouseLeave="MouseLeaveVideo">
+            <materialDesign:PackIcon Height="30" Width="30" Kind="Video"  Foreground="GreenYellow" ></materialDesign:PackIcon>
+        </Button>
 
 
     </Grid>
