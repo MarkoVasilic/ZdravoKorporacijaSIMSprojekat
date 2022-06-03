@@ -8,10 +8,11 @@ namespace ZdravoKorporacija.Controller
 {
     public class MeetingControler
     {
-        private readonly MeetingService MeetingService = new MeetingService();
+        private readonly MeetingService MeetingService;
 
-        public MeetingControler()
+        public MeetingControler(MeetingService meetingService)
         {
+            this.MeetingService = meetingService;
         }
 
         public List<Meeting> GetAllMeetings()

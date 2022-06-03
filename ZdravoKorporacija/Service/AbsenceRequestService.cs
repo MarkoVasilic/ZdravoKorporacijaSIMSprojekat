@@ -11,12 +11,13 @@ namespace Service
     public class AbsenceRequestService
     {
         private readonly AbsenceRequestRepository AbsenceRequestRepository;
-        private readonly ScheduleService scheduleService = new ScheduleService();
+        private readonly ScheduleService scheduleService;
         private readonly DoctorRepository DoctorRepository;
 
-        public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, DoctorRepository doctorRepository)
+        public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, ScheduleService scheduleService, DoctorRepository doctorRepository)
         {
             AbsenceRequestRepository = absenceRequestRepository;
+            this.scheduleService = scheduleService;
             DoctorRepository = doctorRepository;
         }
 

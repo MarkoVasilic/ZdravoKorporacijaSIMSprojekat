@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
 
@@ -195,8 +196,27 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository,
                 roomRepository);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
+            doctorController = new DoctorController(doctorService);
+            roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            doctorController = new DoctorController(doctorService);
+            roomController = new RoomController(roomService);
+            patientController = new PatientController(patientService, appointmentService);
+            doctorController = new DoctorController(doctorService);
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            roomController = new RoomController(roomService);
+            doctorController = new DoctorController(doctorService);
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             patientController = new PatientController(patientService, appointmentService);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             roomsListToRoomList(roomController.GetAllRooms());

@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.SecretaryUI.Commands;
@@ -117,7 +118,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
-            meetingControler = new MeetingControler();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
+                secretaryRepository, roomRepository);
+            meetingControler = new MeetingControler(meetingService);
             doctorsToDoctorsObservable(doctorController.GetAllDoctors(), managerController.GetAllManager(), secretaryController.GetAllSecretary());
             roomsToRoomsObservable(roomController.GetAllRooms());
             SearchMeetingCommand = new RelayCommand(searchMeetingExecute);

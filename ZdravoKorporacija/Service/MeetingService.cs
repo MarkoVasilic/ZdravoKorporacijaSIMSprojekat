@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -11,24 +12,32 @@ namespace ZdravoKorporacija.Service
 {
     public class MeetingService
     {
-        private readonly MeetingRepository MeetingRepository = new MeetingRepository();
-        private readonly DoctorRepository doctorRepository = new DoctorRepository();
-        private readonly ManagerRepository managerRepository = new ManagerRepository();
-        private readonly SecretaryRepository secretaryRepository = new SecretaryRepository();
-        private readonly RoomRepository roomRepository = new RoomRepository();
+        private readonly IMeetingRepository meetingRepository;
+        private readonly IDoctorRepository doctorRepository;
+        private readonly IManagerRepository managerRepository;
+        private readonly ISecretaryRepository secretaryRepository;
+        private readonly IRoomRepository roomRepository;
 
-        public MeetingService()
+
+        public MeetingService(IMeetingRepository meetingRepository, IDoctorRepository doctorRepository,
+            IManagerRepository managerRepository, ISecretaryRepository secretaryRepository,
+            IRoomRepository roomRepository)
         {
+            this.meetingRepository = meetingRepository;
+            this.doctorRepository = doctorRepository;
+            this.managerRepository = managerRepository;
+            this.secretaryRepository = secretaryRepository;
+            this.roomRepository = roomRepository;
         }
 
         public List<Meeting> GetAllMeetings()
         {
-            return MeetingRepository.FindAll();
+            return meetingRepository.FindAll();
         }
 
         public List<PossibleMeetingDTO> GetAllMeetingsAsPossibleMeetingsDto()
         {
-            List<Meeting> meetings = MeetingRepository.FindAll();
+            List<Meeting> meetings = meetingRepository.FindAll();
             List<PossibleMeetingDTO> possibleMeetingDtos = new List<PossibleMeetingDTO>();
             foreach (var meet in meetings)
             {
@@ -66,14 +75,14 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, meeting isn't saved");
             }
 
-            MeetingRepository.SaveMeeting(meeting);
+            meetingRepository.SaveMeeting(meeting);
         }
 
         private int GenerateNewId()
         {
             try
             {
-                List<Meeting> meetings = MeetingRepository.FindAll();
+                List<Meeting> meetings = meetingRepository.FindAll();
                 int currentMax = meetings.Max(obj => obj.Id);
                 return currentMax + 1;
             }

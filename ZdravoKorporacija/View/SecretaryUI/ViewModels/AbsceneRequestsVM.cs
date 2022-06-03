@@ -59,12 +59,24 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
+            ManagerRepository managerRepository = new ManagerRepository();
+            RoomRepository roomRepository = new RoomRepository();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             MedicationRepository medicationRepository = new MedicationRepository();
-            PatientRepository patientRepository = new PatientRepository();
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository,
                 medicalRecordRepository, patientRepository, medicationRepository);
             NotificationService notificationService =

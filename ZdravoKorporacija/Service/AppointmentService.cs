@@ -5,17 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using ZdravoKorporacija;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Interfaces;
 
 namespace Service
 {
     public class AppointmentService
     {
-        private readonly AppointmentRepository AppointmentRepository;
-        private readonly PatientRepository PatientRepository;
-        private readonly DoctorRepository DoctorRepository;
-        private readonly RoomRepository RoomRepository;
-        public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository,
-            DoctorRepository doctorRepository, RoomRepository roomRepository)
+        private readonly IAppointmentRepository AppointmentRepository;
+        private readonly IPatientRepository PatientRepository;
+        private readonly IDoctorRepository DoctorRepository;
+        private readonly IRoomRepository RoomRepository;
+        public AppointmentService(IAppointmentRepository appointmentRepository, IPatientRepository patientRepository,
+            IDoctorRepository doctorRepository, IRoomRepository roomRepository)
         {
             this.AppointmentRepository = appointmentRepository;
             this.PatientRepository = patientRepository;

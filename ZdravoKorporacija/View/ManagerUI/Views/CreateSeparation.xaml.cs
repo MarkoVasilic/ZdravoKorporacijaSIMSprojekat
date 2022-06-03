@@ -53,9 +53,20 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             PatientRepository patientRepository = new PatientRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             RoomService roomService = new RoomService(roomRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;

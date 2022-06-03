@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -10,17 +11,29 @@ namespace ZdravoKorporacija.Service
 {
     public class EmergencyService
     {
-        private readonly AppointmentRepository AppointmentRepository = new AppointmentRepository();
-        private readonly PatientRepository PatientRepository = new PatientRepository();
-        private readonly DoctorRepository DoctorRepository = new DoctorRepository();
-        readonly RoomRepository RoomRepository = new RoomRepository();
-        private readonly BasicRenovationRepository BasicRenovationRepository = new BasicRenovationRepository();
-        private readonly AdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-        private readonly AdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
-        private readonly ScheduleService scheduleService = new ScheduleService();
-        public EmergencyService()
-        {
+        private readonly IAppointmentRepository AppointmentRepository;
+        private readonly IPatientRepository PatientRepository;
+        private readonly IDoctorRepository DoctorRepository;
+        private readonly IRoomRepository RoomRepository;
+        private readonly IBasicRenovationRepository BasicRenovationRepository;
+        private readonly IAdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
+        private readonly IAdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository;
+        private readonly ScheduleService scheduleService;
 
+        public EmergencyService(IAppointmentRepository appointmentRepository, IPatientRepository patientRepository,
+            IDoctorRepository doctorRepository, IRoomRepository roomRepository,
+            IBasicRenovationRepository basicRenovationRepository,
+            IAdvancedRenovationJoiningRepository advancedRenovationJoining,
+            IAdvancedRenovationSeparationRepository advancedRenovationSeparation, ScheduleService scheduleService)
+        {
+            this.AppointmentRepository = appointmentRepository;
+            this.PatientRepository = patientRepository;
+            this.DoctorRepository = doctorRepository;
+            this.RoomRepository = roomRepository;
+            this.BasicRenovationRepository = basicRenovationRepository;
+            this.AdvancedRenovationJoiningRepository = advancedRenovationJoining;
+            this.AdvancedRenovationSeparationRepository = advancedRenovationSeparation;
+            this.scheduleService = scheduleService;
         }
         public PossibleAppointmentsDTO FindPossibleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
         {

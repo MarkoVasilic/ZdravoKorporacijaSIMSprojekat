@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.PatientUI.Commands;
 
@@ -105,8 +106,19 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             DoctorRepository doctorRepository = new DoctorRepository();
             PatientRepository patientRepository = new PatientRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             Appointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetAllFutureAppointmentsByPatient());
             SelectedDate = new DateTime();

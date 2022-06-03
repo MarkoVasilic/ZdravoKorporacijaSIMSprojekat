@@ -13,6 +13,7 @@ using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -105,11 +106,23 @@ namespace ZdravoKorporacija.View.SecretaryUI
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository,
                 doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
+            RoomService roomService = new RoomService(roomRepository);
+            roomController = new RoomController(roomService);
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             PatientService patientService = new PatientService(patientRepository);
             DoctorService doctorService = new DoctorService(doctorRepository);
-            RoomService roomService = new RoomService(roomRepository);
             patientController = new PatientController(patientService, appointmentService);
             doctorController = new DoctorController(doctorService);
             roomController = new RoomController(roomService);

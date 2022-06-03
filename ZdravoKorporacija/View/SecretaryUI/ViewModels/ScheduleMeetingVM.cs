@@ -204,13 +204,24 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             ManagerService managerService = new ManagerService(managerRepository);
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             SecretaryService secretaryService = new SecretaryService(secretaryRepository);
-            meetingControler = new MeetingControler();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
+                secretaryRepository, roomRepository);
+            meetingControler = new MeetingControler(meetingService);
             roomController = new RoomController(roomService);
             doctorController = new DoctorController(doctorService);
             managerController = new ManagerController(managerService);
             secretaryController = new SecretaryController(secretaryService);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();

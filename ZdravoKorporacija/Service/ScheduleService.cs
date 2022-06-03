@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -11,19 +12,35 @@ namespace ZdravoKorporacija.Service
 {
     public class ScheduleService
     {
-        private readonly AppointmentRepository AppointmentRepository = new AppointmentRepository();
-        private readonly PatientRepository PatientRepository = new PatientRepository();
-        private readonly DoctorRepository DoctorRepository = new DoctorRepository();
-        private readonly ManagerRepository ManagerRepository = new ManagerRepository();
-        private readonly SecretaryRepository SecretaryRepository = new SecretaryRepository();
-        private readonly RoomRepository RoomRepository = new RoomRepository();
-        private readonly BasicRenovationRepository BasicRenovationRepository = new BasicRenovationRepository();
-        private readonly AdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-        private readonly AdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
-        private readonly MeetingRepository MeetingRepository = new MeetingRepository();
+        private readonly IAppointmentRepository AppointmentRepository;
+        private readonly IPatientRepository PatientRepository;
+        private readonly IDoctorRepository DoctorRepository;
+        private readonly IRoomRepository RoomRepository;
+        private readonly IBasicRenovationRepository BasicRenovationRepository;
+        private readonly IAdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
+        private readonly IAdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository;
+        private readonly IManagerRepository ManagerRepository;
+        private readonly ISecretaryRepository SecretaryRepository;
+        private readonly IMeetingRepository MeetingRepository;
 
-        public ScheduleService() { }
-
+        public ScheduleService(IAppointmentRepository appointmentRepository, IPatientRepository patientRepository,
+            IDoctorRepository doctorRepository, IRoomRepository roomRepository,
+            IBasicRenovationRepository basicRenovationRepository,
+            IAdvancedRenovationJoiningRepository advancedRenovationJoining,
+            IAdvancedRenovationSeparationRepository advancedRenovationSeparation, IManagerRepository managerRepository,
+            ISecretaryRepository secretaryRepository, IMeetingRepository meetingRepository)
+        {
+            this.AppointmentRepository = appointmentRepository;
+            this.PatientRepository = patientRepository;
+            this.DoctorRepository = doctorRepository;
+            this.RoomRepository = roomRepository;
+            this.BasicRenovationRepository = basicRenovationRepository;
+            this.AdvancedRenovationJoiningRepository = advancedRenovationJoining;
+            this.AdvancedRenovationSeparationRepository = advancedRenovationSeparation;
+            this.ManagerRepository = managerRepository;
+            this.SecretaryRepository = secretaryRepository;
+            this.MeetingRepository = meetingRepository;
+        }
         public List<PossibleMeetingDTO> GetPossibleMeetingAppointments(List<String> userJmbgs, int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {

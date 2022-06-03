@@ -39,6 +39,10 @@ namespace ZdravoKorporacija
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
             RoomRepository roomRepository = new RoomRepository();
             PatientRepository patientRepository = new PatientRepository();
             DisplacementRepository displacementRepository = new DisplacementRepository();
@@ -46,8 +50,12 @@ namespace ZdravoKorporacija
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
             patientController = new PatientController(patientService, appointmentService);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
@@ -84,9 +92,11 @@ namespace ZdravoKorporacija
             RatingService ratingService = new RatingService(ratingRepository, appointmentRepository);
             ratingController = new RatingController(ratingService);
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
-            MeetingControler meetingControler = new MeetingControler();
+            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
+                secretaryRepository, roomRepository);
+            MeetingControler meetingControler = new MeetingControler(meetingService);
             NoteRepository noteRepository = new NoteRepository();
             NoteService noteService = new NoteService(noteRepository);
             noteController = new NoteController(noteService);
