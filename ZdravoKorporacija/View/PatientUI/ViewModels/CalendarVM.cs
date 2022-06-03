@@ -95,7 +95,13 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
         private void SearchExecute(object parameter)
         {
             Appointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetAllByJmbgAndDate(selectedDate));
-            MessageBox.Show("DATUM: " + selectedDate.Date);
+            if (Appointments.Count == 0)
+            {
+                MessageBox.Show("Nemate zakazanih termina u odabranom periodu!", "UPOZORENJE", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+                Console.WriteLine("S");
+                //MessageBox.Show("Odabrali ste datum pretrage: " + selectedDate.Date,"USPJESNO",MessageBoxButton.OK,MessageBoxImage.None);
         }
 
         private void setProperties()

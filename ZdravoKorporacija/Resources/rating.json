@@ -58,5 +58,15 @@
     "RatingDate": "2022-05-31T23:03:51.711565+02:00",
     "DoctorId": "1231231231231",
     "PatientId": "7778889994445"
+  },
+  {
+    "Id": 7,
+    "AppointmentId": 35,
+    "HospitalRating": 5,
+    "DoctorRating": 1,
+    "Desc": "sjajno",
+    "RatingDate": "2022-06-03T13:57:40.5036406+02:00",
+    "DoctorId": "4444444444444",
+    "PatientId": "7778889994445"
   }
 ]

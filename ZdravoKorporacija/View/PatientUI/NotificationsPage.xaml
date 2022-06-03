@@ -87,7 +87,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Obriši sve" FontWeight="DemiBold" FontSize="25" Grid.Row="1" Background="#FFED2222"  Command="{Binding DeleteAllCommand}" Margin="0,37,567,10" Grid.ColumnSpan="2" Grid.Column="2">
+        <Button Content="Obriši sve" FontWeight="DemiBold" Height="40" Width="120" VerticalAlignment="Bottom"  FontSize="25" Grid.Row="1" Background="#FFF64343"  Command="{Binding DeleteAllCommand}" Margin="0,37,567,10" Grid.ColumnSpan="2" Grid.Column="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>
