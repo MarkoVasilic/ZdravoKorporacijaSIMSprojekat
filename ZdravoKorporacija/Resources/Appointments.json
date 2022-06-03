@@ -232,14 +232,6 @@
     "RoomId": 7
   },
   {
-    "StartTime": "2022-06-06T08:30:00",
-    "Duration": 15,
-    "Id": 24,
-    "PatientJmbg": "7778889994445",
-    "DoctorJmbg": "5151515151515",
-    "RoomId": 7
-  },
-  {
     "StartTime": "2022-06-02T08:15:00",
     "Duration": 15,
     "Id": 35,
@@ -270,5 +262,13 @@
     "PatientJmbg": "7778889994445",
     "DoctorJmbg": "4444444444444",
     "RoomId": 13
+  },
+  {
+    "StartTime": "2022-06-07T18:00:00",
+    "Duration": 15,
+    "Id": 24,
+    "PatientJmbg": "7778889994445",
+    "DoctorJmbg": "5151515151515",
+    "RoomId": 7
   }
 ]

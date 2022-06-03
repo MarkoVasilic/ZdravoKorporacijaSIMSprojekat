@@ -72,8 +72,6 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             Notification notification = new Notification(title, description, startTime, receiverJmbg, seen, id);
-           // if (!notification.validateNotification())
-             //   throw new Exception("Something went wrong, new notification isn't created!");
             notificationRepository.SaveNotification(notification);
             return notification;
 
@@ -107,31 +105,25 @@ namespace ZdravoKorporacija.Service
 
         public List<Notification> CreatePatientNotifications()
         {
-            List<Notification> notificationsList = new List<Notification>();
-            List<Prescription> prescriptionsList = new List<Prescription>();
+
             int numberOfMedNotification = 0;
-            int Id = 0;
             String Desc = "";
             String Title = "";
             DateTime StartTime = System.DateTime.Now;
-            String userJmbg = App.loggedUser.Jmbg; //ostaje
-            bool Seen = false; //ostaje
-
-
-            prescriptionsList = prescriptionService.GetAllByPatient(App.loggedUser.Jmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
-            foreach (Prescription prescription in prescriptionsList) //prolazimo kroz sve terapije i za svaku pojedinacno kreiramo sve notifikacije
+            String userJmbg = App.loggedUser.Jmbg; 
+            bool Seen = false;
+            List<Notification> notificationsList = new List<Notification>();
+            List<Prescription> prescriptionsList = prescriptionService.GetAllByPatient(App.loggedUser.Jmbg); 
+            foreach (Prescription prescription in prescriptionsList) 
             {
-                numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); //koliko ukupno puta treba popiti lijek
-                for (int i = 0; i < numberOfMedNotification; i++) //kreiramo koliko je potrebno notifikacija
+                numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); 
+                for (int i = 0; i < numberOfMedNotification; i++) 
                 {
-
-                    Title = prescription.Medication; //naslov = paracetamol
-                    StartTime = prescription.From.AddHours(i * prescription.Frequency); //startTime  = StartTime lijeka
+                    Title = prescription.Medication; 
+                    StartTime = prescription.From.AddHours(i * prescription.Frequency); 
                     Desc = "Morate da popijete lijek " + prescription.Medication + " , " + "Kolicina: " + prescription.Amount + " , " + "Satnica: " + StartTime.Hour + ":" + StartTime.Minute + "h !";
-
                     Notification notification = CreateNotification(Title, Desc, StartTime, userJmbg, Seen);
                     notificationsList.Add(notification);
-
                 }
             }
 
@@ -144,18 +136,14 @@ namespace ZdravoKorporacija.Service
             List<Notification> notificationsListToDisplay = new List<Notification>();
             List<Notification> returnList = new List<Notification>();
             notificationsListToDisplay = notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
-
             for (int i = 0; i < notificationsListToDisplay.Count; i++)
             {
-               // if ((((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) <= 1) && ((System.DateTime.Now.Hour - notificationsListToDisplay[i].StartTime.Hour) > -8)) || (System.DateTime.Now > notificationsListToDisplay[i].StartTime))
+                if (((notificationsListToDisplay[i].StartTime - DateTime.Now).Hours <= 1 && (notificationsListToDisplay[i].StartTime - DateTime.Now).Hours > 0) || notificationsListToDisplay[i].StartTime < DateTime.Now)
                 {
-                    if((((notificationsListToDisplay[i].StartTime - System.DateTime.Now).Hours <=1 && (notificationsListToDisplay[i].StartTime - System.DateTime.Now).Hours > 0)) || notificationsListToDisplay[i].StartTime < DateTime.Now)
-
                     returnList.Add(notificationsListToDisplay[i]);
                 }
             }
             return returnList;
-
         }
 
         public void DeleteAll(String patientJmbg)
@@ -165,7 +153,6 @@ namespace ZdravoKorporacija.Service
             {
                 Console.WriteLine("ID: "+notifications[i].Id);
                 DeleteNotification(notifications[i].Id);
-                //notifications.RemoveAt(i);
             }
         }
 

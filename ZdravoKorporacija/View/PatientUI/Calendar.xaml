@@ -38,8 +38,8 @@
                     <Border BorderThickness="0.3" BorderBrush="Black">
                         <Grid Margin="5" Height="300" Width="570">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="306"></ColumnDefinition>
-                                <ColumnDefinition Width="306"></ColumnDefinition>
+                                <ColumnDefinition Width="290"></ColumnDefinition>
+                                <ColumnDefinition Width="290"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"></RowDefinition>
@@ -60,8 +60,8 @@
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding StartTime}" FontSize="25" ></TextBlock>
                             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding RoomName}" FontSize="25" ></TextBlock>
                             <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding DoctorSpeciality}" FontSize="25"  ></TextBlock>
-                            <Button Grid.Row="5" Grid.Column="0" Content="Otkaži" FontSize="25" FontWeight="DemiBold" Width="306" Height="50"  HorizontalAlignment="Center" Command="{Binding ElementName=AppointmentsListView,Path=DataContext.DeleteCommand}"  CommandParameter="{Binding AppointmentId}" Background="Green"></Button>
-                            <Button Grid.Row="5" Grid.Column="1" Content="Odloži" FontSize="25" FontWeight="DemiBold" Width="296" Margin="0 0 20 0" Height="50" Background="MediumSpringGreen" HorizontalAlignment="Center" Command="{Binding ElementName=AppointmentsListView,Path=DataContext.PostponeCommand}"  CommandParameter="{Binding AppointmentId}"></Button>
+                            <Button Grid.Row="5" Grid.Column="0" Content="Otkaži" FontSize="25" FontWeight="DemiBold" Width="300" Height="50"  HorizontalAlignment="Center" Command="{Binding ElementName=AppointmentsListView,Path=DataContext.DeleteCommand}"  CommandParameter="{Binding AppointmentId}" Background="Green"></Button>
+                            <Button Grid.Row="5" Grid.Column="1" Content="Odloži" FontSize="25" FontWeight="DemiBold" Width="290" Margin="0 0 0 0" Height="50" Background="MediumSpringGreen" HorizontalAlignment="Center" Command="{Binding ElementName=AppointmentsListView,Path=DataContext.PostponeCommand}"  CommandParameter="{Binding AppointmentId}"></Button>
                         </Grid>
                     </Border>
                 </DataTemplate>
