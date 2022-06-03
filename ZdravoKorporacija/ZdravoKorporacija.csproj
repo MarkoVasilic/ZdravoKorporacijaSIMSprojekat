@@ -12,6 +12,7 @@
     <None Remove="Resources\Images\bolnicaHCI.jpg" />
     <None Remove="Resources\Images\nadja_pocetna.jpg" />
     <None Remove="Resources\Images\nadja_pocetna.png" />
+    <None Remove="Resources\Test2.pdf" />
     <None Remove="Savina.mp4" />
   </ItemGroup>
 
@@ -33,6 +34,7 @@
     <PackageReference Include="MindFusion.Scheduling.Wpf" Version="3.5.1.2" />
     <PackageReference Include="ModernWpfUis.MahApps" Version="1.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="WpfExtendedControls" Version="1.0.4" />
   </ItemGroup>
 
   <ItemGroup>

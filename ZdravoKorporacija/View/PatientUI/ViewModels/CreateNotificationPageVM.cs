@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using ZdravoKorporacija.Model;
@@ -19,6 +20,11 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
         public Notification Notification { get; set; }
         public PrescriptionService PrescriptionService { private set; get; }
         public NotificationService NotificationService { private set; get; }
+
+        public Regex onlyNumber { get; set; }
+
+        public int hours;
+        public int minutes;
         
 
 
@@ -31,6 +37,9 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             Notification = new Notification();
             dateTime = DateTime.Now;
             Notification.userJmbg = App.loggedUser.Jmbg;
+            Hours = 14;
+            Minutes = 59;
+            onlyNumber = new Regex("[0-9]{1,2}");
         }
 
         public RelayCommand CreateNotificationCommand { get; private set; }
@@ -66,6 +75,26 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             }
         }
 
+        public int Hours
+        {
+            get => hours;
+            set
+            {
+                hours = value;
+                OnPropertyChanged("Hours");
+            }
+        }
+
+        public int Minutes
+        {
+            get => minutes;
+            set
+            {
+                minutes = value;
+                OnPropertyChanged("Minutes");
+            }
+        }
+
         private String title;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -83,18 +112,31 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
 
         public void CreateExecute(object parameter)
         {
+            DateTime temp = new DateTime(dateTime.Year,dateTime.Month,dateTime.Day,hours,minutes,dateTime.Second);
+            dateTime = temp;
             NotificationService.CreateNotification(title,description,dateTime,App.loggedUser.Jmbg,false);
-            MessageBox.Show("Uspješno kreirana notifikacija! \n  "+Notification.Description, "USPJEŠNO!", MessageBoxButton.OK, MessageBoxImage.None);
+            MessageBox.Show("Uspješno kreirana notifikacija! \n  "+dateTime, "USPJEŠNO!", MessageBoxButton.OK, MessageBoxImage.None);
             PatientWindowVM.NavigationService.Navigate(new NotificationsPage());
 
         }
 
         public bool CreateCanExecute(object parameter)
         {
-            if (Title == null || Description == null || Description.Length < 3)
-            {
-                return false;
-            }
+            String hoursString = "" + Hours;
+            String minutesString = "" + Minutes;
+            
+                if (Title == null
+                    || Description == null
+                    || Description.Length < 3
+                    || Hours == null
+                    || Minutes == null
+                    || !onlyNumber.IsMatch(hoursString)
+                    || !onlyNumber.IsMatch(minutesString)
+                    || Hours < 0)
+                {
+                    return false;
+                }
+            
             return true;
         }
 

@@ -9,6 +9,7 @@ using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.PatientUI.Commands;
 using System.Linq;
+using System;
 
 namespace ZdravoKorporacija.View.PatientUI.ViewModels
 {
@@ -37,6 +38,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
         public RelayCommand BackCommand { get; set; }
         public RelayCommand CreateCommand { get; set; }
         public RelayCommand DeleteCommand { get; set; }
+        public RelayCommand DeleteAllCommand { get; set; }
         #endregion
 
 
@@ -73,6 +75,19 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             BackCommand = new RelayCommand(BackExecute);
             CreateCommand = new RelayCommand(CreateExecute);
             DeleteCommand = new RelayCommand(DeleteExecute);
+            DeleteAllCommand = new RelayCommand(DeleteAllExecute);
+        }
+
+        private void DeleteAllExecute(object obj)
+        {
+
+           var result = MessageBox.Show("Da li ste sigurni da želite obrisati sve?","BRISANJE!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                App.notificationController.DeleteAll(App.loggedUser.Jmbg);
+                Notifications.Clear();
+               // PatientWindowVM.NavigationService.Refresh();
+            }
         }
         #endregion
     }

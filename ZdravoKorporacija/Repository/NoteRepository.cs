@@ -10,7 +10,7 @@ using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class NoteRepository
+    public class NoteRepository 
     {
         private readonly String NoteFilePath = @"..\..\..\Resources\notes.json";
 

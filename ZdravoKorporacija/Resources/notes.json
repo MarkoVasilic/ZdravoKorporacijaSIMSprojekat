@@ -33,5 +33,33 @@
     "Content": "Lozinka mora biti u nivou sa ostalim elementima.",
     "DateNote": "2022-06-02T14:37:15.8104789+02:00",
     "PatientId": "7778889994445"
+  },
+  {
+    "Id": 7,
+    "Title": "Principi",
+    "Content": "SDO",
+    "DateNote": "2022-06-03T12:30:25.5713483+02:00",
+    "PatientId": "7778889994445"
+  },
+  {
+    "Id": 8,
+    "Title": "Single responsibility",
+    "Content": "Svaka klasa ima jedan zadatak",
+    "DateNote": "2022-06-03T12:30:59.1512475+02:00",
+    "PatientId": "7778889994445"
+  },
+  {
+    "Id": 9,
+    "Title": "Dependency Injection",
+    "Content": "Dependency Injection treba da se proslijedi kroz konstruktor.",
+    "DateNote": "2022-06-03T12:33:33.6456992+02:00",
+    "PatientId": "7778889994445"
+  },
+  {
+    "Id": 10,
+    "Title": "Dependency",
+    "Content": "Uradjen u SIMS layers Demo Github vjezbe projektu bez interfejsa ali injektovano.",
+    "DateNote": "2022-06-03T12:38:34.75873+02:00",
+    "PatientId": "7778889994445"
   }
 ]

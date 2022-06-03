@@ -158,6 +158,17 @@ namespace ZdravoKorporacija.Service
 
         }
 
+        public void DeleteAll(String patientJmbg)
+        {
+            List<Notification> notifications = new List<Notification>(notificationRepository.FindAllByUserJmbg(patientJmbg));
+            for(int i = 0; i < notifications.Count; ++i)
+            {
+                Console.WriteLine("ID: "+notifications[i].Id);
+                DeleteNotification(notifications[i].Id);
+                //notifications.RemoveAt(i);
+            }
+        }
+
         public Notification CreateNotification(Notification notification)
         {
             notification.Id = GenerateNewId();

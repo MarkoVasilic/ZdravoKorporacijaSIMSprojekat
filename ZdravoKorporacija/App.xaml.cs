@@ -484,7 +484,7 @@ namespace ZdravoKorporacija
             //equipmentController.EquipmentDisplacement();
             //advancedRenovationJoiningController.JoinRooms();
             //advancedRenovationSeparationController.SeparateRooms();
-            
+
         }
 
     }

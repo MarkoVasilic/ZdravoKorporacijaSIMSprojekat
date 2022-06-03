@@ -16,11 +16,7 @@ namespace ZdravoKorporacija.View.PatientUI
     /// </summary>
     public partial class NotificationsPage : Page
     {
-        private PrescriptionService prescriptionService { set; get; }
 
-        private NotificationService notificationService { set; get; }
-
-        public List<Notification> NotificationListObservable { get; set; }
         public NotificationsPage()
         {
             InitializeComponent();

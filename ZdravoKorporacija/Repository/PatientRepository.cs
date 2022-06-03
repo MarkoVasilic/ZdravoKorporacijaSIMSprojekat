@@ -3,10 +3,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 
 namespace Repository
 {
-    public class PatientRepository
+    public class PatientRepository : IPatientRepository
+
     {
         private readonly String PatientFilePath = @"..\..\..\Resources\patients.json";
 
@@ -74,12 +76,12 @@ namespace Repository
             return null;
         }
 
-        private void Save(List<Patient> values)
+        public void Save(List<Patient> values)
         {
             File.WriteAllText(PatientFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-        private List<Patient> GetValues()
+        public List<Patient> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Patient>>(File.ReadAllText(PatientFilePath));
 

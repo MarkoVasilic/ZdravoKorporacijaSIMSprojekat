@@ -39,48 +39,55 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Black" Margin=" 0 10 0 10">
-                    <Grid Height="100">
-                        <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20"></ColumnDefinition>
-                        <ColumnDefinition Width="240"></ColumnDefinition>
-                            <ColumnDefinition Width ="*"></ColumnDefinition>
+                        <Grid Height="100" Width="765">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                                <ColumnDefinition Width="240"></ColumnDefinition>
+                                <ColumnDefinition Width ="*"></ColumnDefinition>
                                 <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition Width="10"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="40"></RowDefinition>
-                        </Grid.RowDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                 <TextBlock Text="ID: " FontSize="14" FontWeight="Bold"></TextBlock>
                                 <TextBlock Text="{Binding Id}" FontSize="14"></TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text="Naslov: " FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="{Binding Title}" FontSize="14"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text="Vrijeme: " FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="{Binding StartTime}" FontSize="14"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
-                            <TextBlock Text="Opis: " FontSize="14" FontWeight="Bold"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Description}" FontSize="14" ></TextBlock>
-                        </StackPanel>
+                                <TextBlock Text="Naslov: " FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Title}" FontSize="14"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Text="Vrijeme: " FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding StartTime}" FontSize="14"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+                                <TextBlock Text="Opis: " FontSize="14" FontWeight="Bold"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                                <TextBlock Text="{Binding Description}" FontSize="14" ></TextBlock>
+                            </StackPanel>
                             <Grid Grid.Row="0" Grid.Column="3" Grid.RowSpan="3" VerticalAlignment="Center" Background="Transparent">
                                 <Button  Tag="{Binding Id}"  Margin="5 0 0 0"  Command="{Binding ElementName=NotificationsListView,Path=DataContext.DeleteCommand}"  CommandParameter="{Binding Id}" Background="Transparent" BorderBrush="Transparent">
                                     <materialDesign:PackIcon Height="30" Width="30" Kind="Remove" Foreground="#FFE95555" ></materialDesign:PackIcon>
                                 </Button>
                             </Grid>
-                    </Grid>
+                        </Grid>
                     </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>    
+            </ListView.ItemTemplate>
         </ListView>
         <Button Content="Kreiraj Notifikaciju" FontWeight="DemiBold" FontSize="25" Grid.Column="3" Height="60" Width="250" Grid.Row="4" Background="MediumAquamarine"  Command="{Binding CreateCommand}" Margin="20,20,320,20">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Obriši sve" FontWeight="DemiBold" FontSize="25" Grid.Row="1" Background="#FFED2222"  Command="{Binding DeleteAllCommand}" Margin="0,37,567,10" Grid.ColumnSpan="2" Grid.Column="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="14"/>

@@ -4,11 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.PatientUI"
-        xmlns:viewmodels="clr-namespace:ZdravoKorporacija.View.PatientUI.ViewModels"
+        xmlns:viewmodels="clr-namespace:ZdravoKorporacija.View.PatientUI.ViewModels"       d:DataContext="{d:DesignInstance Type=viewmodels:CreateNotificationPageVM}"
+    xmlns:time="clr-namespace:WpfExtendedControls;assembly=WpfExtendedControls"
               xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="ZdravoKorporacija.View.PatientUI.CreateNotificationPage"
-    xmlns:mahs="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DataContext="{d:DesignInstance Type={x:Type viewmodels:CreateNotificationPageVM}}"
+    xmlns:mahs="http://materialdesigninxaml.net/winfx/xaml/themes" 
+
+
       mc:Ignorable="d" 
 
       d:DesignHeight="768" d:DesignWidth="1024"
@@ -35,8 +37,8 @@
         <Label FontSize="60" FontWeight="Bold" Grid.Column="2" Grid.Row="1" Foreground="MediumAquamarine" Content="Kreiraj Notifikaciju" VerticalAlignment="Top"/>
         <TextBlock FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"><Run Text="Naslov:"/></TextBlock>
         <TextBox x:Name="NoteTitleBox" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="30 0 0 0" Grid.Row="3"  Grid.Column="1" Height="50" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="25" FontWeight="DemiBold"/>
-        <TextBlock FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,20,0,0"><Run Text="Datum:"/></TextBlock>
-        <DatePicker x:Name="NoteDateBox" SelectedDate="{Binding SelectedDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" Height="50" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="25" FontWeight="DemiBold" Margin="370,10,0,10" DisplayDateStart="{x:Static sys:DateTime.Today}" />
+        <TextBlock FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="193,20,0,0"><Run Text="Datum:"/></TextBlock>
+        <DatePicker x:Name="NoteDateBox" SelectedDate="{Binding SelectedDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" Height="50" Width="250" HorizontalAlignment="Left" FontSize="25" FontWeight="DemiBold" Margin="130,10,0,10" DisplayDateStart="{x:Static sys:DateTime.Today}" />
 
         <TextBlock Margin="20 20" FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="Sadržaj:"/></TextBlock>
         <TextBox x:Name="NoteDescBox" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="30 20 0 20" Grid.Row="4" Grid.Column="1" Height="270" Width="800" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="28"/>
@@ -54,5 +56,21 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <TextBox Grid.Row="3" Grid.Column="2" Height="50" Width="95" HorizontalAlignment="Left" Text="{Binding Hours,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="35" SelectedText="14" TextAlignment="Center" FontWeight="DemiBold" Margin="434,10,0,10"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="2" Height="50" Width="95" HorizontalAlignment="Left" Text="{Binding Minutes,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedText="59" TextAlignment="Center" FontSize="35" FontWeight="DemiBold" Margin="535,10,0,10" Grid.ColumnSpan="2"></TextBox>
+        <TextBlock FontSize="30" FontWeight="DemiBold" Foreground="MediumAquamarine" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="474,28,0,0"><Run Text="Vrijeme:"/></TextBlock>
+        <ToggleButton x:Name="TogglePopupButton" Height="30" Width="60" HorizontalAlignment="Left" Background="#FF05B4F0" FontSize="12" FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <StackPanel>
+
+                <Popup Name="myPopup" IsOpen="{Binding IsChecked, ElementName=TogglePopupButton}">
+                    <Border BorderThickness="1">
+                        <TextBlock Name="myPopupText" Background="#FF05B4F0" Foreground="Black " TextAlignment="Center" Padding="30" TextWrapping="Wrap" Width="400" Height="90">
+                            Sva polja su obavezna. Prvo polje za Vrijeme odnosi se na Sate (0-24), Drugo polje odnosi se na minute (0-59)!
+                        </TextBlock>
+                    </Border>
+                </Popup>
+                <TextBlock Background="#FF05B4F0" Foreground="Black"><Run  Text="POMOĆ!" /></TextBlock>
+            </StackPanel>
+        </ToggleButton>
     </Grid>
 </Page>

@@ -60,5 +60,9 @@ namespace ZdravoKorporacija.Controller
             return notificationService.CreateNotification(title, description, startTime, receiverJmbg, seen);
 
         }
+        public void DeleteAll(String patientId)
+        {
+            notificationService.DeleteAll(patientId);
+        }
     }
 }

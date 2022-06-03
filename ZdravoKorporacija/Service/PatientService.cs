@@ -2,16 +2,17 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoKorporacija.Interfaces;
 
 namespace Service
 {
     public class PatientService
     {
-        private readonly PatientRepository PatientRepository;
+        private readonly IPatientRepository PatientRepository;
 
-        public PatientService(PatientRepository patientRepository)
+        public PatientService(IPatientRepository PatientRepository)
         {
-            this.PatientRepository = patientRepository;
+            this.PatientRepository = PatientRepository;
         }
 
         public List<Patient> GetAllPatients()
