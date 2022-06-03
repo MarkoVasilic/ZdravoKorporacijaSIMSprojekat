@@ -119,8 +119,17 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
             MeetingRepository meetingRepository = new MeetingRepository();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
             MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
-                secretaryRepository, roomRepository);
+                secretaryRepository, roomRepository, scheduleService);
             meetingControler = new MeetingControler(meetingService);
             doctorsToDoctorsObservable(doctorController.GetAllDoctors(), managerController.GetAllManager(), secretaryController.GetAllSecretary());
             roomsToRoomsObservable(roomController.GetAllRooms());

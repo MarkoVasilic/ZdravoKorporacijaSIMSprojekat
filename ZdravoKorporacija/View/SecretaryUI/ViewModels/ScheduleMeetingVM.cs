@@ -205,9 +205,6 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             SecretaryRepository secretaryRepository = new SecretaryRepository();
             SecretaryService secretaryService = new SecretaryService(secretaryRepository);
             MeetingRepository meetingRepository = new MeetingRepository();
-            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
-                secretaryRepository, roomRepository);
-            meetingControler = new MeetingControler(meetingService);
             roomController = new RoomController(roomService);
             doctorController = new DoctorController(doctorService);
             managerController = new ManagerController(managerService);
@@ -222,6 +219,9 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
                 doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
                 advancedRenovationSeparation, scheduleService);
+            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
+                secretaryRepository, roomRepository, scheduleService);
+            meetingControler = new MeetingControler(meetingService);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
@@ -356,7 +356,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 try
                 {
                     doctorsStringsToDoctorsList();
-                    meetingsListToMeetingsList(appointmentController.GetPossibleMeetingAppointments(SelectedDoctors, SelectedRoom.Id, DateFrom, DateUntil, SelectedDuration));
+                    meetingsListToMeetingsList(meetingControler.GetPossibleMeetingAppointments(SelectedDoctors, SelectedRoom.Id, DateFrom, DateUntil, SelectedDuration));
                     PossibleMeetingsVisibility = "Visible";
                     ErrorMessagePossibleMeetings = "";
                 }

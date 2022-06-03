@@ -72,7 +72,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
                 doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
                 advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository, appointmentRepository);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();

@@ -3,6 +3,8 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Repository;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
@@ -17,16 +19,60 @@ namespace ZdravoKorporacija.Service
         private readonly AppointmentService AppointmentService;
         private readonly BasicRenovationService BasicRenovationService;
         private readonly EquipmentService EquipmentService;
+        private readonly ScheduleService scheduleService;
 
-        public AdvancedRenovationJoiningService(IAdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService)
+        public AdvancedRenovationJoiningService(IAdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService, ScheduleService scheduleService)
         {
             AdvancedRenovationJoiningRepository = advancedRenovationJoiningRepository;
             RoomService = roomService;
             AppointmentService = appointmentService;
             BasicRenovationService = basicRenovationService;
             EquipmentService = equipmentService;
+            scheduleService = this.scheduleService;
+        }
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            List<String> doctorJmbgs = new List<String>();
+            doctorJmbgs.Add("");
+            ValidateInputParametersForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil);
+            List<DateTime> possibleAppointmentsForFirstRoom = scheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, firstRoomId,
+                dateFrom, dateUntil, duration);
+            List<DateTime> possibleAppointmentsForSecondRoom = scheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, secondRoomId,
+                dateFrom, dateUntil, duration);
+            if (possibleAppointmentsForFirstRoom.Count == 0 || possibleAppointmentsForSecondRoom.Count == 0)
+                throw new Exception("There are not free appointments for given parameters!");
+            return CreatePossibleAppointmentsDtosForRoomJoin(duration, possibleAppointmentsForFirstRoom, possibleAppointmentsForSecondRoom);
         }
 
+        private static List<PossibleAppointmentsDTO> CreatePossibleAppointmentsDtosForRoomJoin(int duration, List<DateTime> possibleAppointmentsForFirstRoom,
+            List<DateTime> possibleAppointmentsForSecondRoom)
+        {
+            List<PossibleAppointmentsDTO> retValue = new List<PossibleAppointmentsDTO>();
+            foreach (var firstRoom in possibleAppointmentsForFirstRoom)
+            {
+                foreach (var secondRoom in possibleAppointmentsForSecondRoom)
+                {
+                    if (firstRoom == secondRoom && firstRoom > DateTime.Now.AddHours(1))
+                    {
+                        PossibleAppointmentsDTO possibleAppointmentsDTO =
+                            new PossibleAppointmentsDTO("", "", "", "", "", -1, "", firstRoom, duration, -1);
+                        retValue.Add(possibleAppointmentsDTO);
+                    }
+                }
+            }
+
+            return retValue;
+        }
+
+        private void ValidateInputParametersForRoomJoin(int firstRoomId, int secondRoomId, DateTime dateFrom,
+            DateTime dateUntil)
+        {
+            if (RoomService.GetRoomById(firstRoomId) == null || RoomService.GetRoomById(secondRoomId) == null)
+                throw new Exception("One of the rooms doesn't exist!");
+            else if (dateFrom > dateUntil)
+                throw new Exception("Dates are not valid!");
+        }
 
         public void Create(int firstStartRoom, int secondStartroom, DateTime startTime, int duration, String resultRoomName, String resultRoomDescription, RoomType resultRoomType)
         {

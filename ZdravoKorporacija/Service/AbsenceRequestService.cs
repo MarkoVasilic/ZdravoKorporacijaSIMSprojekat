@@ -13,16 +13,95 @@ namespace Service
         private readonly AbsenceRequestRepository AbsenceRequestRepository;
         private readonly ScheduleService scheduleService;
         private readonly DoctorRepository DoctorRepository;
+        private readonly AppointmentRepository AppointmentRepository;
 
-        public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, ScheduleService scheduleService, DoctorRepository doctorRepository)
+        public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, ScheduleService scheduleService, DoctorRepository doctorRepository, AppointmentRepository appointmentRepository)
         {
             AbsenceRequestRepository = absenceRequestRepository;
             this.scheduleService = scheduleService;
             DoctorRepository = doctorRepository;
+            AppointmentRepository = appointmentRepository;
         }
 
         public AbsenceRequestService()
         {
+        }
+
+        public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            List<String> doctorJmbgs = new List<String>();
+            doctorJmbgs.Add(doctorJmbg);
+            scheduleService.ValidateInputParametersForGetPossibleAppointments("*", doctorJmbgs, -1, dateFrom, dateUntil);
+            if ((DateTime.Today.AddDays(2) > dateFrom))
+                throw new Exception("Chosen date must be al least 2 days earlier!");
+            dateFrom = dateFrom.Date;
+            dateUntil = dateUntil.Date;
+            List<DateTime> possibleStartDaysOfAbsencePeriod = GetListOfDaysForAbsencePeriod(dateUntil, dateFrom);
+            RemoveOccupiedDaysFromPossibleStartDaysOfAbscenePeriod(dateFrom, dateUntil, ref possibleStartDaysOfAbsencePeriod, doctorJmbg);
+            DateTime startDate = GetStartDateOfAbsencePeriod(duration, possibleStartDaysOfAbsencePeriod);
+            return (startDate.Year != 1) ? new PossibleAppointmentsDTO("", "", doctorJmbg, "", "", -1, "", startDate, duration, -1) : null;
+        }
+
+        private List<DateTime> GetListOfDaysForAbsencePeriod(DateTime dateUntil, DateTime dateFrom)
+        {
+            List<DateTime> possibleAppointments = new List<DateTime>();
+            while (dateFrom != dateUntil.AddDays(1))
+            {
+                possibleAppointments.Add(dateFrom);
+                dateFrom = dateFrom.AddDays(1);
+            }
+
+            return possibleAppointments;
+        }
+
+        private DateTime GetStartDateOfAbsencePeriod(int duration, List<DateTime> possibleStartDaysOfAbsencePeriod)
+        {
+            DateTime startDate = possibleStartDaysOfAbsencePeriod[0];
+            int counter = 1;
+            for (int i = 1; i < possibleStartDaysOfAbsencePeriod.Count - 1; i++)
+            {
+                if (counter == duration)
+                    break;
+                else if (possibleStartDaysOfAbsencePeriod[i].Date.AddDays(1) == possibleStartDaysOfAbsencePeriod[i + 1])
+                    counter++;
+                else
+                {
+                    counter = 1;
+                    i++;
+                    startDate = possibleStartDaysOfAbsencePeriod[i];
+                }
+            }
+
+            if (counter == duration) return startDate;
+            return new DateTime(1, 1, 1);
+        }
+
+        private void RemoveOccupiedDaysFromPossibleStartDaysOfAbscenePeriod(DateTime dateFrom, DateTime dateUntil, ref List<DateTime> possibleStartDaysOfAbsencePeriod, String doctorJmbg)
+        {
+            List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            foreach (var doctorAppointment in doctorAppointments)
+            {
+                if (doctorAppointment.StartTime >= dateFrom && doctorAppointment.StartTime <= dateUntil)
+                {
+                    DateTime whatDateToRemove = possibleStartDaysOfAbsencePeriod[0];
+                    whatDateToRemove = RemoveDate(possibleStartDaysOfAbsencePeriod, doctorAppointment, whatDateToRemove);
+                    possibleStartDaysOfAbsencePeriod.Remove(whatDateToRemove);
+                }
+            }
+        }
+        private static DateTime RemoveDate(List<DateTime> possibleAppointments, Appointment da, DateTime whatDateToRemove)
+        {
+            foreach (var pa in possibleAppointments)
+            {
+                if (pa.Date == da.StartTime.Date)
+                {
+                    whatDateToRemove = pa;
+                    break;
+                }
+            }
+
+            return whatDateToRemove;
         }
 
         public List<AbsenceRequest> GetAllByDoctorJmbg(String jmbg)
@@ -63,7 +142,7 @@ namespace Service
             String doctorJmbg = "1231231231231";
             String doctorSpecialtyType = DoctorRepository.FindOneByJmbg(doctorJmbg).SpecialtyType; //doktor moze samo za sebe, jmbg ulogovanog doktora
             int interval = (int)(dateUntil - dateFrom).TotalDays;
-            PossibleAppointmentsDTO possibleAppointmentsDTO = scheduleService.GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, interval);
+            PossibleAppointmentsDTO possibleAppointmentsDTO = GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, interval);
 
             if (isUrgent)
                 CreateUgrentAbsenceRequest(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval);

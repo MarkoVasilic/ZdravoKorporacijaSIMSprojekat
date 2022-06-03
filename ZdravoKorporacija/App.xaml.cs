@@ -86,16 +86,16 @@ namespace ZdravoKorporacija
             AdvancedRenovationSeparationService advancedRenovationSeparationService = new AdvancedRenovationSeparationService(advancedRenovationSeparationRepository, roomService);
             AdvancedRenovationSeparationController advancedRenovationSeparationController = new AdvancedRenovationSeparationController(advancedRenovationSeparationService);
             AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService);
+            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService);
             AdvancedRenovationJoiningController advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             RatingRepository ratingRepository = new RatingRepository();
             RatingService ratingService = new RatingService(ratingRepository, appointmentRepository);
             ratingController = new RatingController(ratingService);
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository, appointmentRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
             MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
-                secretaryRepository, roomRepository);
+                secretaryRepository, roomRepository, scheduleService);
             MeetingControler meetingControler = new MeetingControler(meetingService);
             NoteRepository noteRepository = new NoteRepository();
             NoteService noteService = new NoteService(noteRepository);

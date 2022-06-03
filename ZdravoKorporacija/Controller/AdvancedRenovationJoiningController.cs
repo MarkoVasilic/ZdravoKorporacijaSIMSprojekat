@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Service;
 
@@ -30,6 +31,11 @@ namespace ZdravoKorporacija.Controller
         public List<AdvancedRenovationJoining> GetAll()
         {
             return AdvancedRenovationJoiningService.GetAll();
+        }
+        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return AdvancedRenovationJoiningService.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
         }
     }
 

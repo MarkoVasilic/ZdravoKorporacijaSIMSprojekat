@@ -71,10 +71,10 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
             this.DataContext = this;
-            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, start, end, duration));
+            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, start, end, duration));
             setIndexesOfPossibleAppointments();
             AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService);
+            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService);
             advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             firstRenovationRoomId = firstRoomId;
             secondRenovationRoomId = secondRoomId;

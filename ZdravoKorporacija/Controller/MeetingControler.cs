@@ -30,6 +30,10 @@ namespace ZdravoKorporacija.Controller
             MeetingService.CreateMeeting(userJmbgs, roomId, startTime, duration);
         }
 
-
+        public List<PossibleMeetingDTO> GetPossibleMeetingAppointments(List<String> userJmbgs, int roomId,
+            DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            return MeetingService.GetPossibleMeetingAppointments(userJmbgs, roomId, dateFrom, dateUntil, duration);
+        }
     }
 }

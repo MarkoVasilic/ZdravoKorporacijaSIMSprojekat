@@ -93,21 +93,6 @@ namespace Controller
         {
             AppointmentService.CreateOperationAppointment(appointmentToCreate);
         }
-        public List<PossibleMeetingDTO> GetPossibleMeetingAppointments(List<String> userJmbgs, int roomId,
-            DateTime dateFrom, DateTime dateUntil, int duration)
-        {
-            return ScheduleService.GetPossibleMeetingAppointments(userJmbgs, roomId, dateFrom, dateUntil, duration);
-        }
-        public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
-            DateTime dateFrom, DateTime dateUntil, int duration)
-        {
-            return ScheduleService.GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, duration);
-        }
-        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
-            DateTime dateFrom, DateTime dateUntil, int duration)
-        {
-            return ScheduleService.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
-        }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
