@@ -3,10 +3,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 
 namespace Repository
 {
-    public class RoomRepository
+    public class RoomRepository : IRoomRepository
     {
         private readonly String RoomFilePath = @"..\..\..\Resources\rooms.json";
 
@@ -73,12 +74,12 @@ namespace Repository
 
         }
 
-        public void Save(List<Room> values)
+        private void Save(List<Room> values)
         {
             File.WriteAllText(RoomFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-        public List<Room> GetValues()
+        private List<Room> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Room>>(File.ReadAllText(RoomFilePath));
 

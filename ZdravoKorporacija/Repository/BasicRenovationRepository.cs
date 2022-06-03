@@ -2,23 +2,24 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class BasicRenovationRepository
+    public class BasicRenovationRepository : IBasicRenovationRepository
     {
 
         private readonly String BasicRenovationsFilePath = @"..\..\..\Resources\basicRenovations.json";
 
 
 
-        public void Save(List<BasicRenovation> values)
+        private void Save(List<BasicRenovation> values)
         {
             File.WriteAllText(BasicRenovationsFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-        public List<BasicRenovation> GetValues()
+        private List<BasicRenovation> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<BasicRenovation>>(File.ReadAllText(BasicRenovationsFilePath));
 

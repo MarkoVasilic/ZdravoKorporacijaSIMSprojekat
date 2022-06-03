@@ -3,15 +3,16 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKorporacija.Interfaces;
 
 namespace Service
 {
     public class RoomService
     {
 
-        private readonly RoomRepository RoomRepository;
+        private readonly IRoomRepository RoomRepository;
 
-        public RoomService(RoomRepository roomRepository)
+        public RoomService(IRoomRepository roomRepository)
         {
             this.RoomRepository = roomRepository;
         }

@@ -2,14 +2,15 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoKorporacija.Interfaces;
 
 namespace Service
 {
     public class SecretaryService
     {
-        private readonly SecretaryRepository SecretaryRepository;
+        private readonly ISecretaryRepository SecretaryRepository;
 
-        public SecretaryService(SecretaryRepository SecretaryRepository)
+        public SecretaryService(ISecretaryRepository SecretaryRepository)
         {
             this.SecretaryRepository = SecretaryRepository;
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -10,9 +11,9 @@ namespace ZdravoKorporacija.Service
     public class BasicRenovationService
     {
 
-        private readonly BasicRenovationRepository BasicRenovationRepository;
-        private readonly RoomRepository RoomRepository;
-        public BasicRenovationService(BasicRenovationRepository basicRenovationRepository, RoomRepository roomRepository)
+        private readonly IBasicRenovationRepository BasicRenovationRepository;
+        private readonly IRoomRepository RoomRepository;
+        public BasicRenovationService(IBasicRenovationRepository basicRenovationRepository, IRoomRepository roomRepository)
         {
             this.BasicRenovationRepository = basicRenovationRepository;
             this.RoomRepository = RoomRepository;

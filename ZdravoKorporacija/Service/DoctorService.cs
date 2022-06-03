@@ -2,14 +2,15 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoKorporacija.Interfaces;
 
 namespace Service
 {
     public class DoctorService
     {
-        private readonly DoctorRepository DoctorRepository;
+        private readonly IDoctorRepository DoctorRepository;
 
-        public DoctorService(DoctorRepository doctorRepository)
+        public DoctorService(IDoctorRepository doctorRepository)
         {
             this.DoctorRepository = doctorRepository;
         }

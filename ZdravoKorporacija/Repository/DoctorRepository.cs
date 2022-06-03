@@ -3,10 +3,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 
 namespace Repository
 {
-    public class DoctorRepository
+    public class DoctorRepository:IDoctorRepository
     {
         private readonly String doctorFilePath = @"..\..\..\Resources\doctors.json";
 

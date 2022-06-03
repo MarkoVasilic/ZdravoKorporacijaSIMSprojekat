@@ -3,10 +3,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class ManagerRepository
+    public class ManagerRepository : IManagerRepository
     {
         private readonly String ManagerFilePath = @"..\..\..\Resources\manager.json";
 

@@ -1,15 +1,16 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.Service
 {
     public class ManagerService
     {
-        private readonly ManagerRepository ManagerRepository;
+        private readonly IManagerRepository ManagerRepository;
 
-        public ManagerService(ManagerRepository ManagerRepository)
+        public ManagerService(IManagerRepository ManagerRepository)
         {
             this.ManagerRepository = ManagerRepository;
         }
