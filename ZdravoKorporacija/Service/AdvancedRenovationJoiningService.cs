@@ -3,6 +3,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -11,13 +12,13 @@ namespace ZdravoKorporacija.Service
     public class AdvancedRenovationJoiningService
     {
 
-        private readonly AdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
+        private readonly IAdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
         private readonly RoomService RoomService;
         private readonly AppointmentService AppointmentService;
         private readonly BasicRenovationService BasicRenovationService;
         private readonly EquipmentService EquipmentService;
 
-        public AdvancedRenovationJoiningService(AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService)
+        public AdvancedRenovationJoiningService(IAdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService)
         {
             AdvancedRenovationJoiningRepository = advancedRenovationJoiningRepository;
             RoomService = roomService;

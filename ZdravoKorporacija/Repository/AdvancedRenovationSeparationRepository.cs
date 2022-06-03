@@ -2,21 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class AdvancedRenovationSeparationRepository
+    public class AdvancedRenovationSeparationRepository: IAdvancedRenovationSeparationRepository
     {
 
         private readonly String SeparationFilePath = @"..\..\..\Resources\advancedRenovationSeparation.json";
 
-        public void Save(List<AdvancedRenovationSeparation> values)
+        private void Save(List<AdvancedRenovationSeparation> values)
         {
             File.WriteAllText(SeparationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-        public List<AdvancedRenovationSeparation> GetValues()
+        private List<AdvancedRenovationSeparation> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<AdvancedRenovationSeparation>>(File.ReadAllText(SeparationFilePath));
 

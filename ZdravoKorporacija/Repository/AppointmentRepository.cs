@@ -3,10 +3,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 
 namespace Repository
 {
-    public class AppointmentRepository
+    public class AppointmentRepository: IAppointmentRepository
     {
         private readonly String AppointmentFilePath = @"..\..\..\Resources\Appointments.json";
 
@@ -43,7 +44,6 @@ namespace Repository
             return result;
         }
 
-        //Nova metoda za jovanovo ocijenivanje pregleda i doktora
         public List<Appointment> GetAllPastAppointmentsByPatient(String patientJmbg)
         {
             var values = GetValues();
@@ -125,7 +125,7 @@ namespace Repository
             return result;
         }
 
-        public List<Appointment> GetValues()
+        private List<Appointment> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(AppointmentFilePath));
             if (values == null)
@@ -148,7 +148,7 @@ namespace Repository
             }
         }
 
-        public void Save(List<Appointment> values)
+        private void Save(List<Appointment> values)
         {
             File.WriteAllText(AppointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }

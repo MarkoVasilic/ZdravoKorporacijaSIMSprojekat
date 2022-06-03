@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class MeetingRepository
+    public class MeetingRepository: IMeetingRepository
     {
         private readonly String MeetingFilePath = @"..\..\..\Resources\meeting.json";
 
@@ -45,7 +46,7 @@ namespace ZdravoKorporacija.Repository
             return null;
         }
 
-        public List<Meeting> GetValues()
+        private List<Meeting> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Meeting>>(File.ReadAllText(MeetingFilePath));
             if (values == null)
@@ -68,7 +69,7 @@ namespace ZdravoKorporacija.Repository
             }
         }
 
-        public void Save(List<Meeting> values)
+        private void Save(List<Meeting> values)
         {
             File.WriteAllText(MeetingFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }

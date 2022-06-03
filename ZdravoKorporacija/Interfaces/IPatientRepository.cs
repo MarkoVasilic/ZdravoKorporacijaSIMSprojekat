@@ -23,9 +23,5 @@ namespace ZdravoKorporacija.Interfaces
 
         public Patient? FindOneByUsername(string username);
 
-        public void Save(List<Patient> values);
-
-        public List<Patient> GetValues();
-
     }
 }
