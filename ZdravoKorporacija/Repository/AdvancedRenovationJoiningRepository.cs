@@ -2,22 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class AdvancedRenovationJoiningRepository
+    public class AdvancedRenovationJoiningRepository: IAdvancedRenovationJoiningRepository
     {
 
         private readonly String JoiningFilePath = @"..\..\..\Resources\advancedRenovationJoining.json";
 
 
-        public void Save(List<AdvancedRenovationJoining> values)
+        private void Save(List<AdvancedRenovationJoining> values)
         {
             File.WriteAllText(JoiningFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-        public List<AdvancedRenovationJoining> GetValues()
+        private List<AdvancedRenovationJoining> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<AdvancedRenovationJoining>>(File.ReadAllText(JoiningFilePath));
 

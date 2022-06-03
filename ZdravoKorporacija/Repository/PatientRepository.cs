@@ -76,12 +76,12 @@ namespace Repository
             return null;
         }
 
-        public void Save(List<Patient> values)
+        private void Save(List<Patient> values)
         {
             File.WriteAllText(PatientFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
-        public List<Patient> GetValues()
+        private List<Patient> GetValues()
         {
             var values = JsonConvert.DeserializeObject<List<Patient>>(File.ReadAllText(PatientFilePath));
 
