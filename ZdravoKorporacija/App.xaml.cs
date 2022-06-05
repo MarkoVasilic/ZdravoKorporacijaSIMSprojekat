@@ -3,8 +3,10 @@ using Model;
 using Repository;
 using Service;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
@@ -406,7 +408,7 @@ namespace ZdravoKorporacija
                 m.toString();*/
 
             //PREGLED SVIH ODBIJENIH
-            /*List<Medication> rejectedMedications = new List<Medication>(medicationController.GetRejected());
+            /*List<Medication> rejectedMedications = new List<Medication>(medicationController.GetAllRejected());
             foreach (Medication med in rejectedMedications)
                 med.toString();*/
 
@@ -481,7 +483,14 @@ namespace ZdravoKorporacija
             //equipmentController.EquipmentDisplacement();
             //advancedRenovationJoiningController.JoinRooms();
             //advancedRenovationSeparationController.SeparateRooms();
-            
+
+            //SREDNJE OCENE DOKTORA I BOLNICE
+            //double prosecnaOcenaDoktora = ratingController.GetAverageRatingForDoctor("1231231231231");
+            //Console.WriteLine(prosecnaOcenaDoktora);
+            //double prosecnaOcenaBolnice = ratingController.GetAverageRatingForHospital();
+            //Console.WriteLine(prosecnaOcenaBolnice);
+
+
         }
 
     }

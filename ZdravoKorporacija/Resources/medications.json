@@ -7,7 +7,7 @@
       "fenoterol"
     ],
     "Status": 1,
-    "Alternative": null
+    "Alternative": "Efedrin"
   },
   {
     "Id": 2,
@@ -18,7 +18,7 @@
       "treci alergen"
     ],
     "Status": 1,
-    "Alternative": null
+    "Alternative": "Brufen"
   },
   {
     "Id": 4,
@@ -33,13 +33,14 @@
   },
   {
     "Id": 3,
-    "Name": "neki lek",
+    "Name": "lek za testiranje",
     "Ingredients": [
       "sastojak1",
       "sastojak2",
-      "sastojak3"
+      "sastojak3",
+      "sastojak5"
     ],
-    "Status": 1,
-    "Alternative": "zamena2"
+    "Status": 2,
+    "Alternative": "drugi lek za testiranje"
   }
 ]

@@ -1,0 +1,74 @@
+﻿<Window x:Class="ZdravoKorporacija.View.ManagerUI.Views.HospitalRatings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
+      xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
+      mc:Ignorable="d" 
+      Height="400" Width="600" Background="#fee9e1"
+      Title="HospitalRatings">
+
+
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+    </Window.CommandBindings>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+             Text="Ocene bolnice" 
+             FontSize="20" 
+             Margin="0 10 0 0" TextAlignment="Center" Foreground="black"></TextBlock>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Prosečna ocena:" FontSize="15" Margin="150 30 0 0" FontWeight="Bold"></TextBlock>
+            <TextBlock x:Name="prosecnaOcenaBolnice" Text="{Binding AverageHospitalRating, Mode=OneWay}" Margin="40 30 0 0" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" FontSize="15" Text="Statistika ocena" FontWeight="Bold" Margin="150 30 0 0"></TextBlock>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <TextBlock Text="Petice:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojPetica" Text="{Binding Fives, Mode=OneWay}" Margin="40 10 0 0" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <TextBlock Text="Četvorke:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojČetvoraka" Text="{Binding Fours, Mode=OneWay}" Margin="22 10 0 0" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <TextBlock Text="Trojke:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojTrojaka" Text="{Binding Threes, Mode=OneWay}" Margin="42 10 0 0" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <TextBlock Text="Dvojke:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojDvojaka" Text="{Binding Twos, Mode=OneWay}" Margin="37 10 0 0" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal">
+            <TextBlock Text="Jedinice:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojJedinica" Text="{Binding Ones, Mode=OneWay}" Margin="30 10 0 0" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+
+        <Button Grid.Row="8" Content="U redu" Command="cmd:RoutedCommand.Back" FontSize="15"  Margin="0 40 0 0" Style="{StaticResource ManagerRedButtonStyle}" IsDefault="True" Height="30" Width="65"/>
+      
+
+
+    </Grid>
+</Window>

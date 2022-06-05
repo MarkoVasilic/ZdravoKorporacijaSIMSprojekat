@@ -67,10 +67,18 @@
         </Style>
 
 
-        
-        
-        
-        
+        <Style x:Key="ManagerPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+
         <Style x:Key="ManagerTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="BorderThickness" Value="2,2,2,2"></Setter>

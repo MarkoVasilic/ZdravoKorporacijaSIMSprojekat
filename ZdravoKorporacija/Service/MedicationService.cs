@@ -120,18 +120,7 @@ namespace Service
 
         public List<Medication> GetAllRejected()
         {
-            List<Medication> medications = new List<Medication>(GetAll());
-            List<Medication> foundMedications = new List<Medication>();
-
-            foreach (Medication medication in medications)
-            {
-                if (medication.Status == MedicationStatus.REJECTED)
-                {
-                    foundMedications.Add(medication);
-                }
-            }
-
-            return foundMedications;
+            return MedicationRepository.FindAllRejected();
         }
 
 

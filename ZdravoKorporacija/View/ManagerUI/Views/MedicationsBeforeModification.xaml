@@ -4,11 +4,85 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
+      xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="768" d:DesignWidth="1024" Background="#fee9e1"
+      Height="768" Width="1024" Background="#fee9e1"
       Title="MedicationsBeforeModification">
 
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="ModifyRoomHelp_CanExecute" Executed="ModifyRoomHelp_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommand.Notification" CanExecute="GetNotifications_CanExecute" Executed="GetNotifications_Executed"></CommandBinding>
+    </Page.CommandBindings>
+    <Page.Resources>
+        <Style x:Key="DisableFocus" TargetType="DataGridCell">
+            <Setter Property="Focusable" Value="False"></Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock
+             Text="Odbijeni lekovi" 
+             FontSize="30" 
+              Margin="420 10 0 0" TextAlignment="Center" Foreground="black"></TextBlock>
+            <Button x:Name="notificationButton" Margin="-1050 10 0 0 " Width="100" Height="50" Background="Transparent" BorderBrush="Transparent"  Command="cmd:RoutedCommand.Help" Click="NotificationsClick">
+                <materialDesign:PackIcon Kind="Notifications" Width="100" Height="50" HorizontalAlignment="Center" Foreground="Black" Background="Transparent"/>
+            </Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Text="Izaberi lek koji želiš da modifikuješ:" FontSize="20" Margin="56, 35, 0, 0"></TextBlock>
+
+
+        <DataGrid Grid.Row="2" x:Name="dataGridRooms" ItemsSource="{Binding medications, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="350" VerticalAlignment="Top" Margin="58,10,58,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" RowHeight="55" Background="#fee9e1" RowBackground="#fad4c0" AlternatingRowBackground="#FFE8C3B5" FontSize="13" ColumnHeaderHeight="25">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    <Setter Property="Background" Value="#fee9e1"></Setter>
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="250" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Alternativa" Binding="{Binding Alternative}" Width="250" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Sastojci" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ListView x:Name="ingredientsListView" ItemsSource="{Binding Ingredients}" Background="Transparent">
+                            </ListView>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Izmeni">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton x:Name="RadioButtonList" GroupName="modifyRoomGroup" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Id}"></RadioButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="-45 130 0 0 ">
+            <Button Content="Nazad" Margin="100 50 0 0"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}"  />
+            <Button Content="Izmeni"  Margin="230, 50, 0, 0" Click="ModifyButtonClick"  Style="{StaticResource ManagerGreenButtonStyle}"/>
+            <Button Content="Pomoć"  Margin="230, 50, 0, 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
+        </StackPanel>
+
+
     </Grid>
 </Page>
