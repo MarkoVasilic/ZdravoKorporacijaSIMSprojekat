@@ -42,6 +42,12 @@ namespace ZdravoKorporacija.Controller
             return ManagerService.GetOneByJmbg(jmbg);
         }
 
+        public void ModifyManager(string firstName, string lastName, DateTime? dateOfBirth, string? email, string? telephone,
+        string? address, string username, string password, string jmbg)
+        {
+            ManagerService.ModifyManager(firstName, lastName, dateOfBirth, email, telephone, address, username, password, jmbg);
+        }
+
     }
 }
 

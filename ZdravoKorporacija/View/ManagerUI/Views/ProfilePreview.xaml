@@ -4,11 +4,97 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Views"
+      xmlns:cmd ="clr-namespace:ZdravoKorporacija.View.ManagerUI.Commands"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024" Background="#fee9e1"
       Title="ProfilePreview">
 
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
+    </Page.CommandBindings>
+
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+             Text="Lične informacije" 
+             FontSize="30" 
+              Margin="0 5 0 0" TextAlignment="Center" Foreground="Black">
+        </TextBlock>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Ime:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <TextBox 
+                     Margin="100 0 0 0 "
+                     Width="250" 
+                     Height="35" Style="{StaticResource ManagerTextBoxStyle}" x:Name="FirstName" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Prezime:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <TextBox 
+                     Margin="65 0 0 0 "
+                     Width="250" 
+                     Height="35" Style="{StaticResource ManagerTextBoxStyle}" x:Name="LastName" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Korisničko ime:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <TextBox 
+                     Margin="10 0 0 0 "
+                     Width="250" 
+                     Height="35" Style="{StaticResource ManagerTextBoxStyle}" x:Name="Username" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Lozinka:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <PasswordBox x:Name="Password" Margin="70 0 0 0" Height="35" Width="250" FontSize="20" Background="#fad4c0" Style="{StaticResource ManagerPasswordBoxStyle}" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center"></PasswordBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Adresa:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <TextBox 
+                     Margin="77 0 0 0 "
+                     Width="250" 
+                     Height="35" Style="{StaticResource ManagerTextBoxStyle}" x:Name="Address" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Email:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <TextBox 
+                     Margin="90 0 0 0 "
+                     Width="250" 
+                     Height="35" Style="{StaticResource ManagerTextBoxStyle}" x:Name="Email" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Kontakt telefon:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <TextBox 
+                     Margin="1 0 0 0 "
+                     Width="250" 
+                     Height="35" Style="{StaticResource ManagerTextBoxStyle}" x:Name="PhoneNumber" Background="#fad4c0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="280 0 0 0">
+            <TextBlock Text="Datum rođenja:" FontSize="20" Margin=" 0 25 0 0"></TextBlock>
+            <DatePicker x:Name="DateOfBirth" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" FontSize="20" Background="#fad4c0" Margin="8 0 0 0"></DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="0 -80 0 0">
+            <Button Content="Nazad" Margin="55 25 0 0"  Command="cmd:RoutedCommand.Back" Style="{StaticResource ManagerRedButtonStyle}"  />
+            <Button Content="Sačuvaj"  Margin="250, 25, 0, 0" Click="Save_Click"  Style="{StaticResource ManagerGreenButtonStyle}"/>
+        </StackPanel>
     </Grid>
 </Page>

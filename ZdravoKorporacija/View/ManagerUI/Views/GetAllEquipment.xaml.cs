@@ -124,7 +124,7 @@ namespace ZdravoKorporacija.View.Equipment
         private void PDFClick(object sender, RoutedEventArgs e)
         {
             Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
-            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Oprema.pdf", FileMode.Create));
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("../../../Resources/PDFs/Equipment.pdf", FileMode.Create));
             doc.Open();
             string header = "DOSTUPNA OPREMA U BOLNICI \n\n";
             string text = "";

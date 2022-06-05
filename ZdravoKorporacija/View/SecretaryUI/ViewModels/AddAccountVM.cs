@@ -111,7 +111,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 PatientController.CreatePatient(Patient.IsGuest, Patient.Allergens, Patient.BloodTypeEnum, Patient.FirstName, Patient.LastName,
                 Patient.Username, Patient.Password, Patient.Jmbg, Patient.DateOfBirth, Patient.Gender, Patient.Email, Patient.PhoneNumber,
                 Patient.Address);
-                SecretaryWindowVM.NavigationService.Navigate(new PatientsView());
+                
             }
             catch (Exception e)
             {

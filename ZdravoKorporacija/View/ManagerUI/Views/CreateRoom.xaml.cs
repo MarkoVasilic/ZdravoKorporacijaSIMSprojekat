@@ -40,18 +40,6 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             }
         }
 
-        /*private void Button_Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ManagerHomePage());
-        }*/
-
-
-        /* private void ButtonHelp(object sender, RoutedEventArgs e)
-         {
-            CreateRoomHelp createRoomHelp = new CreateRoomHelp();
-             createRoomHelp.Show();
-         }*/
-
         private void CreateRoomHelp_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;

@@ -1,12 +1,13 @@
-﻿<Window x:Class="ZdravoKorporacija.View.ManagerUI.Help.ModifyRoomHelp"
+﻿<Window x:Class="ZdravoKorporacija.View.ManagerUI.Help.ModifyMedicationHelp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Help"
         mc:Ignorable="d"
-        Title="ModifyRoomHelp" Height="450" Width="600" Background="#fee9e1" BorderBrush="Black">
+        Title="ModifyMedicationHelp" Height="450" Width="600" Background="#fee9e1" BorderBrush="Black">
     <Grid>
+
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -15,19 +16,19 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
-             Text="Pomoć pri modifikaciji prostorije" 
+             Text="Pomoć pri modifikaciji leka" 
              FontSize="20" 
              FontWeight="bold" TextAlignment="Center" HorizontalAlignment="Center">
         </TextBlock>
 
 
-        <TextBlock Grid.Row="1" FontSize="16" TextWrapping="WrapWithOverflow" Text="Kako biste zakazali :
+        <TextBlock Grid.Row="1" FontSize="16" TextWrapping="WrapWithOverflow" Text="U tabeli su vam prikazane svi odbijeni lekovi. Da biste modifikovali lek potrebno je:
                    
                    
                    
                    
                    
-                          1. pozicionirati se na red koji prikazuje prostoriju koju želite da modifikujete (pomoću strelica na tastaturi)
+                          1. pozicionirati se na red koji prikazuje lek koji želite da modifikujete (pomoću strelica na tastaturi)
                    
                    
                    
@@ -40,20 +41,30 @@
                    
                    
                    
-                   2. označiti prostoriju za modifikaciju (pritiskom na TAB ćete fokusirati radio button, a ukoliko nakon toga pritisnete i SPACE, uspešno ćete označiti prostoriju) 
+                   2. označiti lek za modifikaciju (pritiskom na TAB ćete fokusirati radio button, a ukoliko nakon toga pritisnete i SPACE, uspešno ćete označiti lek) 
                    
                    
                    
                    
                    
-                   Nakon što označite prostoriju i fokusirate dugme 'Izmeni' otvoriće se prozor gde je potrebno da unesete nove podatke o prostoriji i ukoliko izaberete dugme 'Potvrdi izmenu', soba će uspešno biti modifikovana. 
+                   Nakon što označite lek i fokusirate dugme 'Izmeni' otvoriće se prozor gde je potrebno da unesete nove podatke o leku i ukoliko izaberete dugme 'Potvrdi izmenu', lek će uspešno biti modifikovan. 
                    
                   
                    
                   
                    
                    Kroz sve elemente prozora se možete kretati pomoću tastera TAB. 
-                   Ukoliko želite da se vratite na početnu stranicu, dovoljno je da pritisnete pritisnete CTRL+B"
+                   Ukoliko želite da se vratite na početnu stranicu, dovoljno je da pritisnete pritisnete CTRL+B
+                   
+                   
+                   
+                   
+                   
+                   Takođe, pritiskom CTRL+N će vam se izlistati sve notifikacije u kojima možete da vidite šta treba da izmenite.
+                   
+                   
+                   "
+                   
                    
                    
                    

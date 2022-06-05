@@ -59,5 +59,24 @@ namespace ZdravoKorporacija.Service
                 ManagerRepository.RemoveManager(jmbg);
             }
         }
+
+
+        public void ModifyManager(string firstName, string lastName, DateTime? dateOfBirth, string? email, string? telephone,
+        string? address, string username, string password, string jmbg)
+        {
+            if (ManagerRepository.FindOneByUsername(username) == null)
+            {
+                throw new Exception("Manager with that username does not exist");
+            }
+            else
+            {
+                Manager oldManager = ManagerRepository.FindOneByJmbg(jmbg);
+                Manager newManager = new Manager(firstName, lastName, username, password, oldManager.Jmbg, dateOfBirth, oldManager.Gender, email, telephone, address);
+
+                ManagerRepository.UpdateManager(newManager);
+
+            }
+
+        }
     }
 }

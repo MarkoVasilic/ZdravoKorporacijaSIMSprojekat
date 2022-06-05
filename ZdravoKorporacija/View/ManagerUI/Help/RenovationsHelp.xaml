@@ -1,11 +1,11 @@
-﻿<Window x:Class="ZdravoKorporacija.View.ManagerUI.Help.ModifyRoomHelp"
+﻿<Window x:Class="ZdravoKorporacija.View.ManagerUI.Help.RenovationsHelp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.View.ManagerUI.Help"
         mc:Ignorable="d"
-        Title="ModifyRoomHelp" Height="450" Width="600" Background="#fee9e1" BorderBrush="Black">
+        Title="RenovationsHelp" Height="450" Width="600" Background="#fee9e1" BorderBrush="Black">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -15,19 +15,19 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
-             Text="Pomoć pri modifikaciji prostorije" 
+             Text="Pomoć pri zakazivanju renoviranja" 
              FontSize="20" 
              FontWeight="bold" TextAlignment="Center" HorizontalAlignment="Center">
         </TextBlock>
 
 
-        <TextBlock Grid.Row="1" FontSize="16" TextWrapping="WrapWithOverflow" Text="Kako biste zakazali :
+        <TextBlock Grid.Row="1" FontSize="16" TextWrapping="WrapWithOverflow" Text="Kako biste zakazali renoviranje potrebno je da:
                    
                    
                    
                    
                    
-                          1. pozicionirati se na red koji prikazuje prostoriju koju želite da modifikujete (pomoću strelica na tastaturi)
+                          1. uneste datum početka, datum kraja, trajanje, kao i da izaberete vrstu renoviranja
                    
                    
                    
@@ -40,20 +40,23 @@
                    
                    
                    
-                   2. označiti prostoriju za modifikaciju (pritiskom na TAB ćete fokusirati radio button, a ukoliko nakon toga pritisnete i SPACE, uspešno ćete označiti prostoriju) 
+                   Ukoliko izaberete osnovno renoviranje potrebno je da izaberete prostoriju, kao i da unesete opis osnovnog renoviranja. Nakon toga izlistaće vam se mogući termini, nakon čega treba da izaberete jedan.
                    
                    
                    
                    
                    
-                   Nakon što označite prostoriju i fokusirate dugme 'Izmeni' otvoriće se prozor gde je potrebno da unesete nove podatke o prostoriji i ukoliko izaberete dugme 'Potvrdi izmenu', soba će uspešno biti modifikovana. 
-                   
+                  Ukoliko izaberete spajanje prostorija potrebno je da izaberete dve prostorije koje želite da spojite, kao i da unesete informacije o novoj prostoriji. Nakon toga izlistaće vam se mogući termini, nakon čega treba da izaberete jedan.
+                  
                   
                    
                   
+                   
+                   Ukoliko izaberete razdvajanje prostorija, potrebno je da izaberete jednu prostoriju, kao i da unesete sve informacije o novim prostorijama. Nakon toga izlistaće vam se mogući termini, nakon čega treba da izaberete jedan.
+                   
                    
                    Kroz sve elemente prozora se možete kretati pomoću tastera TAB. 
-                   Ukoliko želite da se vratite na početnu stranicu, dovoljno je da pritisnete pritisnete CTRL+B"
+                   Ukoliko želite da se vratite na početnu ili prethodnu stranicu, dovoljno je da pritisnete pritisnete CTRL+B"
                    
                    
                    
@@ -61,6 +64,5 @@
                     Margin="0,0,0,140"/>
 
         <Button Grid.Row="2" Content="U redu" IsDefault="True" Margin="0, -120, 0, 0" Click="Button_Click_OK" Style="{StaticResource ManagerHelpOk}"/>
-
     </Grid>
 </Window>

@@ -134,10 +134,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
             }
         }
 
-        private void Button_Click_Logout(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         public void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

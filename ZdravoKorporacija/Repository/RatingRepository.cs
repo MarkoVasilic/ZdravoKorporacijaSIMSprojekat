@@ -17,21 +17,21 @@ namespace ZdravoKorporacija.Repository
         }
 
         //Metoda za upravnika, da dobavi sve ocijene za konkretnog doktora
-        public List<Rating> FindAllRatingsByDoctorJmbg(String doctorJmbg)
+        public List<Rating> FindAllByDoctorJmbg(String jmbg)
         {
             var values = GetValues();
             List<Rating> result = new List<Rating>();
             foreach (Rating rating in values)
-                if (rating.PatientId.Equals(doctorJmbg))
+                if (rating.DoctorId.Equals(jmbg))
                     result.Add(rating);
             return result;
         }
 
-        public bool FindOneByAppointemntId(int appointmentId)
+        public bool FindOneByAppointemntId(int id)
         {
             var values = GetValues();
             foreach (Rating rating in values)
-                if (rating.AppointmentId.Equals(appointmentId))
+                if (rating.AppointmentId.Equals(id))
                     return true;
             return false;
         }
@@ -43,19 +43,19 @@ namespace ZdravoKorporacija.Repository
             Save(values);
         }
 
-        public void Remove(int ratingId)
+        public void Remove(int id)
         {
             var values = GetValues();
-            values.RemoveAll(val => val.Id == ratingId);
+            values.RemoveAll(val => val.Id == id);
             Save(values);
         }
 
-        public Rating? FindOneById(int ratingId)
+        public Rating? FindOneById(int id)
         {
             var values = GetValues();
             foreach (var val in values)
             {
-                if (val.Id == ratingId)
+                if (val.Id == id)
                 {
                     return val;
                 }

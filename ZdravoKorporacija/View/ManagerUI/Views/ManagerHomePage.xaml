@@ -37,7 +37,7 @@
             <Button Grid.Row="2" Background="#c0fdfb" Content="Izmena prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyRoomClick" Style="{StaticResource BtnStyleFocus}"></Button>
             <Button Grid.Row="3" Background="#c0fdfb" Content="Brisanje prostorije" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="DeleteRoomClick" Style="{StaticResource BtnStyleFocus}"></Button>
             <Button Grid.Row="4" Background="#c0fdfb"  Content="Pregled opreme" FontSize="25"  BorderBrush="Transparent"  FontWeight="Bold" Click="GetEquipmentClick" Style="{StaticResource BtnStyleFocus}"></Button>
-            <Button Grid.Row="5" Background="#c0fdfb"  Content="Prebacivanje opreme" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="EquipmentDisplacementClick" Style="{StaticResource BtnStyleFocus}"></Button>
+            <Button Grid.Row="5" Background="#c0fdfb"  Content="Premeštanje opreme" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="EquipmentDisplacementClick" Style="{StaticResource BtnStyleFocus}"></Button>
             <Button Grid.Row="6" Background="#c0fdfb"  Content="Unos leka" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="CreateMedicationClick" Style="{StaticResource BtnStyleFocus}"></Button>
             <Button Grid.Row="7" Background="#c0fdfb"  Content="Modifikacija leka" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="ModifyMedicationClick" Style="{StaticResource BtnStyleFocus}"></Button>
             <Button Grid.Row="8" Background="#c0fdfb"  Content="Renoviranje prostorija" FontSize="25" BorderBrush="Transparent"  FontWeight="Bold" Click="RoomsRenovationClick" Style="{StaticResource BtnStyleFocus}"></Button>

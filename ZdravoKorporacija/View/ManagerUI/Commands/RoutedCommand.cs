@@ -26,5 +26,12 @@ namespace ZdravoKorporacija.View.ManagerUI.Commands
             }
             );
 
+        public static readonly RoutedUICommand Notification = new RoutedUICommand(
+           "Notification", "NotificationButton", typeof(RoutedCommand), new InputGestureCollection()
+           {
+                new KeyGesture(Key.N, ModifierKeys.Control)
+           }
+           );
+
     }
 }

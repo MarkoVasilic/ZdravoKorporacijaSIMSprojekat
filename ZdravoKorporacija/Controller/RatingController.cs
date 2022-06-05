@@ -19,25 +19,44 @@ namespace ZdravoKorporacija.Controller
             return RatingService.GetAll();
         }
 
-        public void DeleteRating(int ratingId)
+        public void Delete(int id)
         {
-            RatingService.Delete(ratingId);
+            RatingService.Delete(id);
         }
 
-        public Rating GetOneById(int ratingId)
+        public Rating GetOneById(int id)
         {
-            return RatingService.GetOneById(ratingId);
+            return RatingService.GetOneById(id);
         }
 
-        public List<Rating> GetRatingsByDoctorJmbg(String doctorJmbg)
+        public List<Rating> GetAllByDoctorJmbg(String jmbg)
         {
-            return RatingService.GetRatingsByDoctorJmbg(doctorJmbg);
+            return RatingService.GetAllByDoctorJmbg(jmbg);
         }
 
-        public void Create(int appointmentId, int hospitalRating, int doctorRating, String desc)
+        public void Create(int appointmentId, int hospitalRating, int doctorRating, String comment)
         {
-            RatingService.Create(appointmentId, hospitalRating, doctorRating, desc);
+            RatingService.Create(appointmentId, hospitalRating, doctorRating, comment);
         }
 
+        public double GetAverageRatingForDoctor(String doctorJmbg)
+        {
+            return RatingService.GetAverageRatingForDoctor(doctorJmbg);
+        }
+
+        public double GetAverageRatingForHospital()
+        {
+            return RatingService.GetAverageRatingForHospital();
+        }
+
+        public List<int> GetHistogramOfRatingsForHospital()
+        {
+            return RatingService.GetHistogramOfRatingsForHospital();
+        }
+
+        public List<int> GetHistogramOfRatingsForDoctor(String doctorJmbg)
+        {
+            return RatingService.GetHistogramOfRatingsForDoctor(doctorJmbg);
+        }
     }
 }

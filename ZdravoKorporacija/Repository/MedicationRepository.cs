@@ -82,6 +82,16 @@ namespace Repository
             return result;
         }
 
+        public List<Medication>? FindAllRejected()
+        {
+            var values = GetValues();
+            List<Medication> result = new List<Medication>();
+            foreach (Medication medication in values)
+                if (medication.Status == MedicationStatus.REJECTED)
+                    result.Add(medication);
+            return result;
+        }
+
         public void SaveMedication(Medication medicationToSave)
         {
             var values = GetValues();

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.View.ManagerUI.Help;
 using ZdravoKorporacija.View.RoomCRUD;
 
 namespace ZdravoKorporacija.View.ManagerUI.Views
@@ -81,7 +82,8 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         private void RenovationHelp_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-           
+            RenovationsHelp renovationsHelp = new RenovationsHelp();
+            renovationsHelp.Show();
         }
 
         private void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
