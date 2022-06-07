@@ -63,7 +63,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 ErrorMessage = "";
                 try
                 {
-                    EquipmentController.CreateEquipment(DynamicEquimpentComboBox.SelectedValue.ToString(), false, MyUpDownControl.Value, null, DateTime.Now.AddDays(3));
+                    EquipmentController.Create(DynamicEquimpentComboBox.SelectedValue.ToString(), false, MyUpDownControl.Value, null, DateTime.Now.AddDays(3));
                     NavigationService.Navigate(new OrderEquipmentPage(secretaryWindowVM));
                 }
                 catch (Exception ex)

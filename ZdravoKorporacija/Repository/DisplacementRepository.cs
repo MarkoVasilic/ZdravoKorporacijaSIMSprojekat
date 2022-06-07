@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class DisplacementRepository
+    public class DisplacementRepository : IDisplacementRepository
     {
 
         private readonly String DisplacementsFilePath = @"..\..\..\Resources\displacements.json";

@@ -99,11 +99,8 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             RemoveIngredientCommand = new RelayCommand(removeIngredientExecute);
             GetAllUnverifiedMedicationsCommand = new RelayCommand(getAllUnverifiedMedications);
             Medications = new ObservableCollection<Medication>(medicationController.GetAllUnverified());
-
-
+            
         }
-
-
 
         public ICommand SaveCommand { get; set; }
         public ICommand AddIngredientCommand { get; set; }

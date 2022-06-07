@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
 
@@ -12,18 +13,19 @@ namespace ZdravoKorporacija.Service
     {
 
 
-        private readonly EquipmentRepository EquipmentRepository;
-        private readonly RoomRepository RoomRepository;
-        private readonly DisplacementRepository DisplacementRepository;
+        private readonly IEquipmentRepository EquipmentRepository;
+        private readonly IRoomRepository RoomRepository;
+        private readonly IDisplacementRepository DisplacementRepository;
 
-        public EquipmentService(EquipmentRepository equipmentRepository, RoomRepository roomRepository, DisplacementRepository displacementRepository)
+        public EquipmentService(IEquipmentRepository equipmentRepository, IRoomRepository roomRepository, IDisplacementRepository displacementRepository)
         {
             this.EquipmentRepository = equipmentRepository;
             this.RoomRepository = roomRepository;
             this.DisplacementRepository = displacementRepository;
+
         }
 
-        public void CreateEquipment(String equipmentName, Boolean isStatic, int? Quantitity, int? RoomId, DateTime? DynamicAddDate)
+        public void Create(String name, Boolean isStatic, int? quantity, int? roomId, DateTime? dynamicAddDate)
         {
             int equipmentId = GenerateNewId();
 
@@ -33,56 +35,76 @@ namespace ZdravoKorporacija.Service
             }
             else
             {
-                if (isStatic == true)
-                {
-                    if (RoomRepository.FindOneById((int)RoomId) == null)
-                    {
-                        throw new Exception("Room doesn't exist");
-                    }
-                    else
-                    {
-                        Equipment newEquipmentStatic = new Equipment(equipmentId, equipmentName, true, 1, RoomId, null);
-                        if (!newEquipmentStatic.validateEquipment())
-                        {
-                            throw new Exception("Something went wrong, equipment isn't saved");
-                        }
-                        EquipmentRepository.SaveEquipment(newEquipmentStatic);
-                    }
-                }
-                else
-                {
-                    Equipment equipment = EquipmentRepository.FindOneByName(equipmentName);
-                    if (equipment != null)
-                    {
-                        equipment.Quantity = Quantitity + equipment.Quantity;
-                        EquipmentRepository.UpdateEquipment(equipment);
-                    }
-                    else
-                    {
-                        Equipment newEquipmentDinamic = new Equipment(equipmentId, equipmentName, false, Quantitity,
-                            null, DynamicAddDate);
-                        if (!newEquipmentDinamic.validateEquipment())
-                        {
-                            throw new Exception("Something went wrong, equipment isn't saved");
-                        }
-
-                        EquipmentRepository.SaveEquipment(newEquipmentDinamic);
-                    }
-                }
-
+                CheckTypeAndCreate(isStatic, equipmentId, name, roomId, quantity, dynamicAddDate);
             }
         }
 
-        public void DeleteEquipment(int equipmentId)
+
+        public void CheckTypeAndCreate(Boolean isStatic, int id, String name, int? roomId, int? quantity, DateTime? dynamicAddDate)
         {
-            if (EquipmentRepository.FindOneById(equipmentId) == null)
+            if(isStatic == true)
             {
-                throw new Exception("Equipment with that identification number doesn't exist");
+                CreateStatic(id, name, roomId);
             }
             else
             {
-                EquipmentRepository.RemoveEquipment(equipmentId);
+                CreateDynamic(id, name, quantity, dynamicAddDate);
             }
+            
+        }
+
+
+
+        public void CreateStatic(int id, String name, int? roomId)
+        {
+
+            if (RoomRepository.FindOneById((int)roomId) == null)
+            {
+                throw new Exception("Room doesn't exist");
+            }
+            else
+            {
+                Equipment newEquipmentStatic = new Equipment(id, name, true, 1, roomId, null);
+                if (!newEquipmentStatic.validate())
+                {
+                    throw new Exception("Something went wrong, equipment isn't saved");
+                }
+                EquipmentRepository.SaveEquipment(newEquipmentStatic);
+            }
+        }
+
+
+        public void CreateDynamic(int id, String name, int? quaninty, DateTime? dynamicAddDate)
+        {
+
+            Equipment equipment = EquipmentRepository.FindOneByName(name);
+            if (equipment != null)
+            {
+                equipment.Quantity = quaninty + equipment.Quantity;
+                EquipmentRepository.UpdateEquipment(equipment);
+            }
+            else
+            {
+                Equipment newEquipmentDynamic = new Equipment(id, name, false, quaninty,
+                    null, dynamicAddDate);
+                if (!newEquipmentDynamic.validate())
+                {
+                    throw new Exception("Something went wrong, equipment isn't saved");
+                }
+
+                EquipmentRepository.SaveEquipment(newEquipmentDynamic);
+            }
+
+        }
+
+        public void Delete(int id)
+        {
+            if (EquipmentRepository.FindOneById(id) == null)
+            {
+                throw new Exception("Equipment with that identification number doesn't exist");
+            }
+            EquipmentRepository.RemoveEquipment(id);
+            
         }
 
         public int GenerateNewId()
@@ -99,7 +121,7 @@ namespace ZdravoKorporacija.Service
             }
         }
 
-        public List<Equipment> GetAllEquipment()
+        public List<Equipment> GetAll()
         {
             return EquipmentRepository.FindAll();
         }
@@ -107,35 +129,14 @@ namespace ZdravoKorporacija.Service
 
         public List<EquipmentDTO> GetEquipmentDTOs()
         {
-            List<Equipment> EquipmentList = GetAllEquipment();
+            List<Equipment> EquipmentList = GetAll();
             List<EquipmentDTO> EquipmentDTOList = new List<EquipmentDTO>();
 
 
             foreach (Equipment equipment in EquipmentList)
             {
-                EquipmentDTO equipmentDTO = new EquipmentDTO();
-                equipmentDTO.Id = equipment.Id;
-                equipmentDTO.Name = equipment.Name;
-                equipmentDTO.Quantity = equipment.Quantity;
-                equipmentDTO.RoomId = equipment.RoomId;
+                EquipmentDTO equipmentDTO = SetEquipmentDTO(equipment);
 
-                if (equipment.IsStatic == true)
-                {
-                    equipmentDTO.IsStatic = "STATIC";
-                }
-                else
-                {
-                    equipmentDTO.IsStatic = "DYNAMIC";
-                }
-
-                if (equipment.RoomId == null)
-                {
-                    equipmentDTO.RoomName = "/";
-                }
-                else
-                {
-                    equipmentDTO.RoomName = RoomRepository.FindOneById(equipment.RoomId).Name;
-                }
                 if (!equipment.IsStatic && equipment.DynamicAddDate <= DateTime.Now)
                     EquipmentDTOList.Add(equipmentDTO);
                 else if (equipment.IsStatic)
@@ -146,115 +147,45 @@ namespace ZdravoKorporacija.Service
             return EquipmentDTOList;
         }
 
-        public int GenerateNewIdDisplacement()
+
+        public EquipmentDTO SetEquipmentDTO(Equipment equipment)
         {
-            try
+            EquipmentDTO equipmentDTO = new EquipmentDTO();
+            equipmentDTO.Id = equipment.Id;
+            equipmentDTO.Name = equipment.Name;
+            equipmentDTO.Quantity = equipment.Quantity;
+            equipmentDTO.RoomId = equipment.RoomId;
+
+            if (equipment.IsStatic == true)
             {
-                List<Displacement> displacements = DisplacementRepository.FindAll();
-                int currentMax = displacements.Max(obj => obj.Id);
-                return currentMax + 1;
-            }
-            catch
-            {
-                return 1;
-            }
-        }
-
-
-        public void CreateDisplacement(int startRoom, int endRoom, int equiomentId, DateTime displacementDate)
-        {
-            if (EquipmentRepository.FindOneById(equiomentId).IsStatic == true)
-            {
-
-                int displacementId = GenerateNewIdDisplacement();
-
-                if (RoomRepository.FindOneById(startRoom) == null)
-                {
-
-                    throw new Exception("Room with that identification number doesn't exist!");
-                }
-                else if (RoomRepository.FindOneById(endRoom) == null)
-                {
-
-                    throw new Exception("Room with that identification number doesn't exist!");
-                }
-                else if (EquipmentRepository.FindOneById(equiomentId) == null)
-                {
-                    throw new Exception("Equipment with that identification number doesn't exist!");
-                }
-                else if (DisplacementRepository.FindOneById(displacementId) != null)
-                {
-                    throw new Exception("Displacement with that identification number already exists!");
-                }
-                else
-                {
-                    Displacement displacement = new Displacement(displacementId, startRoom, endRoom, equiomentId, 1, displacementDate);
-                    if (!displacement.validateDisplacement())
-                    {
-                        throw new Exception("Something went wrong, displacement isn't saved");
-                    }
-
-                    DisplacementRepository.SaveDisplacement(displacement);
-                }
-
+                equipmentDTO.IsStatic = "STATIC";
             }
             else
             {
-                throw new Exception("Equipment must be static!");
+                equipmentDTO.IsStatic = "DYNAMIC";
             }
 
-        }
-
-
-        public List<Displacement> GetAllDisplacements()
-        {
-            return DisplacementRepository.FindAll();
-        }
-
-
-
-
-        public void EquipmentDisplacement()
-        {
-            List<Displacement> displacements = new List<Displacement>(GetAllDisplacements());
-            foreach (Displacement displacement in displacements)
+            if (equipment.RoomId == null)
             {
-                Equipment equipment = EquipmentRepository.FindOneById(displacement.StaticEquipmentId);
-
-
-                if (displacement.DisplacementDate <= System.DateTime.Today)
-                {
-                    if (equipment != null)
-                    {
-                        equipment.RoomId = displacement.EndRoom;
-                    }
-                    else
-                    {
-                        throw new Exception("Equipment with that identification number doesn't exist.");
-                    }
-
-                    if (EquipmentRepository.FindOneByRoomId(displacement.EndRoom) == null) //da mi se ne bi svaki put upisivala 
-                    {
-                        EquipmentRepository.SaveEquipment(equipment);
-                    }
-                    EquipmentRepository.RemoveEquipmentByRoom(displacement.StartRoom);
-
-
-                }
+                equipmentDTO.RoomName = "/";
+            }
+            else
+            {
+                equipmentDTO.RoomName = RoomRepository.FindOneById(equipment.RoomId).Name;
             }
 
+            return equipmentDTO;
         }
 
-
-
+     
         public List<EquipmentDTO> Filter(String equipmentType)
         {
-            return GetEquipmentByType(equipmentType);
+            return GetByType(equipmentType);
 
         }
 
 
-        public List<EquipmentDTO> GetEquipmentByType(String equipmentType)
+        public List<EquipmentDTO> GetByType(String equipmentType)
         {
 
             List<EquipmentDTO> equipmentDTOs = new List<EquipmentDTO>(GetEquipmentDTOs());
@@ -291,51 +222,20 @@ namespace ZdravoKorporacija.Service
 
         }
 
-        public void DeleteByRoomId(int roomId)
+        public void DeleteByRoomId(int id)
         {
-            EquipmentRepository.RemoveEquipmentByRoom(roomId);
+            EquipmentRepository.RemoveEquipmentByRoom(id);
         }
 
-        public void DeleteDisplacementByStartRoomId(int roomId)
-        {
-            DisplacementRepository.RemoveDisplacementByStartRoomId(roomId);
-        }
 
-        public void DeleteDisplacementByEndRoomId(int roomId)
+        public List<EquipmentDTO> GetAllByRoomId(int id)
         {
-            DisplacementRepository.RemoveDisplacementByEndRoomId(roomId);
-        }
-
-        public List<EquipmentDTO> GetAllByRoomId(int roomId)
-        {
-            List<Equipment> equipment = EquipmentRepository.FindAllByRoomId(roomId);
+            List<Equipment> equipment = EquipmentRepository.FindAllByRoomId(id);
             List<EquipmentDTO> equipmentDTO = new List<EquipmentDTO> ();
 
             foreach(Equipment eq in equipment)
             {
-                EquipmentDTO eqDTO = new EquipmentDTO();
-                eqDTO.Id = eq.Id;
-                eqDTO.Name = eq.Name;
-                eqDTO.Quantity = eq.Quantity;
-                eqDTO.RoomId = eq.RoomId;
-
-                if (eq.IsStatic == true)
-                {
-                    eqDTO.IsStatic = "STATIC";
-                }
-                else
-                {
-                    eqDTO.IsStatic = "DYNAMIC";
-                }
-
-                if (eq.RoomId == null)
-                {
-                    eqDTO.RoomName = "/";
-                }
-                else
-                {
-                    eqDTO.RoomName = RoomRepository.FindOneById(eq.RoomId).Name;
-                }
+                EquipmentDTO eqDTO = SetEquipmentDTO(eq);
                 equipmentDTO.Add(eqDTO);    
             }
             return equipmentDTO;

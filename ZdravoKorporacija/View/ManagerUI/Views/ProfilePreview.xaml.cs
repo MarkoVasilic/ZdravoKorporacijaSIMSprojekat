@@ -20,6 +20,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             InitializeComponent();
             manager = App.managerController.GetOneManager(App.loggedUser.Jmbg);
 
+            
             FirstName.Text = manager.FirstName;
             LastName.Text = manager.LastName;
             Address.Text = manager.Address;

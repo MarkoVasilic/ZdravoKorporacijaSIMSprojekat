@@ -64,7 +64,18 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             RoomService roomService = new RoomService(roomRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;
-            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration));
+            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
+            try
+            {
+                PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration));
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message, "Greška");
+                //kako da predjem na pocetnu sad
+            
+            }
+
             setIndexesOfPossibleAppointments();
             descriptionForRenovation = description;
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);

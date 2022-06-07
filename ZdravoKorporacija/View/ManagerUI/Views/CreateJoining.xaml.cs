@@ -70,12 +70,13 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
+            DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
             this.DataContext = this;
+            AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService, displacementService);
+            advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, start, end, duration));
             setIndexesOfPossibleAppointments();
-            AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService);
-            advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             firstRenovationRoomId = firstRoomId;
             secondRenovationRoomId = secondRoomId;
             durationToSend = duration;

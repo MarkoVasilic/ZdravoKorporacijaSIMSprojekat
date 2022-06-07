@@ -35,7 +35,8 @@ namespace ZdravoKorporacija.View.ManagerUI
         public int equipmentId { get; set; }
         public ObservableCollection<Room> Rooms { get; set; }
         private RoomController roomController;
-        private EquipmentController equipmentController;
+        //private EquipmentController equipmentController;
+        private DisplacementController displacementController;
         public DateTime displacementDate;
         public String errorMessage;
 
@@ -82,15 +83,17 @@ namespace ZdravoKorporacija.View.ManagerUI
             Rooms = new ObservableCollection<Room>(roomController.GetAllExceptOne(startRoom));
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             DisplacementRepository displacementRepository = new DisplacementRepository();
-            EquipmentService equipmenService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
-            equipmentController = new EquipmentController(equipmenService);
+            DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
+            displacementController = new DisplacementController(displacementService);
+
+            
         }
 
         private void CreateDisplacement_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                equipmentController.CreateDisplacement(startRoomId, checkedEndRoom, equipmentId, DisplacementDate);
+                displacementController.Create(startRoomId, checkedEndRoom, equipmentId, DisplacementDate);
                 MessageBox.Show("Premeštanje opreme je uspešno zakazano!", "Obaveštenje", MessageBoxButton.OK);
                 NavigationService.Navigate(new ManagerHomePage());
 

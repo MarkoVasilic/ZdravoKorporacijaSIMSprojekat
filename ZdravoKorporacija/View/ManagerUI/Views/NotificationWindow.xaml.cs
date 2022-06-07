@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicicalRecordRepository, patientRepository, medicationRepository);
             NotificationService notificationService = new NotificationService(notificationRepository, prescriptionService);
             notificationController = new NotificationController(notificationService);
-            Notifications = new ObservableCollection<Notification>(notificationController.GetAllByUserJmbg("3434343434343"));
+            notifications = new ObservableCollection<Notification>(notificationController.GetAllByUserJmbg("3434343434343"));
             this.DataContext = this;
 
         }
@@ -83,9 +83,11 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             int notificationId = (int)((Button)sender).Tag;
             if (notificationId == null) return;
             notificationController.DeleteNotification(notificationId);
-            Notifications.Remove(Notifications.Where(notification => notification.Id == notificationId).Single());
+            notifications.Remove(notifications.Where(notification => notification.Id == notificationId).Single());
             this.Close();
-            notificationWindow.Show();
+            NotificationWindow notificationWindow1 = new NotificationWindow();
+            notificationWindow1.Show();
+            
 
         }
     }

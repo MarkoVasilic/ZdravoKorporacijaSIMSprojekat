@@ -49,13 +49,34 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="250" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Alternativa" Binding="{Binding Alternative}" Width="250" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="250" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Alternativa" Binding="{Binding Alternative}" Width="250" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Sastojci" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView x:Name="ingredientsListView" ItemsSource="{Binding Ingredients}" Background="Transparent">
+                            <ListView x:Name="ingredientsListView" ItemsSource="{Binding Ingredients}" Background="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                             </ListView>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

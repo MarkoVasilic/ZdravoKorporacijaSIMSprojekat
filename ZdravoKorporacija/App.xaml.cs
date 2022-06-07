@@ -84,11 +84,12 @@ namespace ZdravoKorporacija
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
             BasicRenovationController basicRenovationController = new BasicRenovationController(basicRenovationService);
             RoomService roomService = new RoomService(roomRepository);
+            DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
             AdvancedRenovationSeparationRepository advancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
             AdvancedRenovationSeparationService advancedRenovationSeparationService = new AdvancedRenovationSeparationService(advancedRenovationSeparationRepository, roomService);
             AdvancedRenovationSeparationController advancedRenovationSeparationController = new AdvancedRenovationSeparationController(advancedRenovationSeparationService);
             AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService);
+            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService, displacementService);
             AdvancedRenovationJoiningController advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             RatingRepository ratingRepository = new RatingRepository();
             RatingService ratingService = new RatingService(ratingRepository, appointmentRepository);

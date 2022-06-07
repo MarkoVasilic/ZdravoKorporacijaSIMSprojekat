@@ -70,7 +70,9 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             RoomService roomService = new RoomService(roomRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;
+
             PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, startDate, dateUntil, duration));
+                       
             setIndexesOfPossibleAppointments();
             AdvancedRenovationSeparationRepository advancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
             AdvancedRenovationSeparationService advancedRenovationSeparationService = new AdvancedRenovationSeparationService(advancedRenovationSeparationRepository, roomService);

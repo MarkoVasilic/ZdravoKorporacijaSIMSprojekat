@@ -50,12 +50,26 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Početak" Binding="{Binding StartTime}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Početak" Binding="{Binding StartTime}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Izaberi" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="RadioButtonList" GroupName="selectRoomGroup" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding AppointmentId}" ></RadioButton>
+                            <RadioButton x:Name="RadioButtonList" GroupName="selectRoomGroup" VerticalAlignment="Center"  HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding AppointmentId}" ></RadioButton>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

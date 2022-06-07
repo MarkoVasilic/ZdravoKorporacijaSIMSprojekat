@@ -24,7 +24,7 @@ namespace ZdravoKorporacija.Model
 
 
 
-        public Boolean validateDisplacement()
+        public Boolean validate()
         {
             if (StartRoom == null)
             {

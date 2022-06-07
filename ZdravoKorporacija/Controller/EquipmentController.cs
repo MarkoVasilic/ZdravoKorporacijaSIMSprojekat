@@ -16,34 +16,19 @@ namespace ZdravoKorporacija.Controller
             this.EquipmentService = equipmentService;
         }
 
-        public void CreateEquipment(String equipmentName, Boolean isStatic, int? Quantitity, int? RoomId, DateTime? DynamicAddDate)
+        public void Create(String name, Boolean isStatic, int? quantity, int? roomId, DateTime? dynamicAddDate)
         {
-            EquipmentService.CreateEquipment(equipmentName, isStatic, Quantitity, RoomId, DynamicAddDate);
+            EquipmentService.Create(name, isStatic, quantity, roomId, dynamicAddDate);
         }
 
-        public List<Equipment> GetAllEquipment()
+        public List<Equipment> GetAll()
         {
-            return EquipmentService.GetAllEquipment();
+            return EquipmentService.GetAll();
         }
 
         public List<EquipmentDTO> GetEquipmentDTOs()
         {
             return EquipmentService.GetEquipmentDTOs();
-        }
-
-        public void CreateDisplacement(int startRoom, int endRoom, int equiomentId, DateTime displacementDate)
-        {
-            EquipmentService.CreateDisplacement(startRoom, endRoom, equiomentId, displacementDate);
-        }
-
-        public List<Displacement> GetAllDisplacements()
-        {
-            return EquipmentService.GetAllDisplacements();
-        }
-
-        public void EquipmentDisplacement()
-        {
-            EquipmentService.EquipmentDisplacement();
         }
 
         public List<EquipmentDTO> Filter(String equipmentType)
@@ -56,9 +41,9 @@ namespace ZdravoKorporacija.Controller
             return EquipmentService.Search(name);
         }
 
-        public List<EquipmentDTO> GetAllByRoomId(int roomId)
+        public List<EquipmentDTO> GetAllByRoomId(int id)
         {
-            return EquipmentService.GetAllByRoomId(roomId);
+            return EquipmentService.GetAllByRoomId(id);
         }
 
 

@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.Model
             DynamicAddDate = dynamicAddDate;
         }
 
-        public Boolean validateEquipment()
+        public Boolean validate()
         {
             Regex nameRegex = new Regex("^$|[a-zA-Z]+[a-zA-Z0-9_\\.\\s]*$");
 

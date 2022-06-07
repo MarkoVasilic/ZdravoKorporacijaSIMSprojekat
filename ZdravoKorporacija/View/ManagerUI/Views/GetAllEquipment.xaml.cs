@@ -140,7 +140,7 @@ namespace ZdravoKorporacija.View.Equipment
             doc.Add(p2);
             doc.Close();
 
-            MessageBox.Show("Izveštaj o opremi je kreiran.", "Obaveštenje", MessageBoxButton.OK);
+            MessageBox.Show("Izveštaj o opremi je kreiran. Izveštaj se nalazi u ../../ZdravoKorporacija/Resources/PDFs", "Obaveštenje", MessageBoxButton.OK);
         }
     }
 }

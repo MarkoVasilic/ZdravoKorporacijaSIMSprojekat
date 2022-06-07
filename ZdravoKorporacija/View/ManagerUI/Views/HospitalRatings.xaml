@@ -41,28 +41,28 @@
         <TextBlock Grid.Row="2" FontSize="15" Text="Statistika ocena" FontWeight="Bold" Margin="150 30 0 0"></TextBlock>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <TextBlock Text="Petice:" FontSize="15" Margin="150 10 0 0"></TextBlock>
-            <TextBlock x:Name="brojPetica" Text="{Binding Fives, Mode=OneWay}" Margin="40 10 0 0" FontSize="15" ></TextBlock>
+            <TextBlock Text="Broj petica:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojPetica" Text="{Binding Fives, Mode=OneWay}" Margin="34 10 0 0" FontSize="15" ></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <TextBlock Text="Četvorke:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock Text="Broj četvorki:" FontSize="15" Margin="150 10 0 0"></TextBlock>
             <TextBlock x:Name="brojČetvoraka" Text="{Binding Fours, Mode=OneWay}" Margin="22 10 0 0" FontSize="15" ></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <TextBlock Text="Trojke:" FontSize="15" Margin="150 10 0 0"></TextBlock>
-            <TextBlock x:Name="brojTrojaka" Text="{Binding Threes, Mode=OneWay}" Margin="42 10 0 0" FontSize="15" ></TextBlock>
+            <TextBlock Text="Broj trojki:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojTrojaka" Text="{Binding Threes, Mode=OneWay}" Margin="41 10 0 0" FontSize="15" ></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Orientation="Horizontal">
-            <TextBlock Text="Dvojke:" FontSize="15" Margin="150 10 0 0"></TextBlock>
-            <TextBlock x:Name="brojDvojaka" Text="{Binding Twos, Mode=OneWay}" Margin="37 10 0 0" FontSize="15" ></TextBlock>
+            <TextBlock Text="Broj dvojki:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojDvojaka" Text="{Binding Twos, Mode=OneWay}" Margin="36 10 0 0" FontSize="15" ></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Orientation="Horizontal">
-            <TextBlock Text="Jedinice:" FontSize="15" Margin="150 10 0 0"></TextBlock>
-            <TextBlock x:Name="brojJedinica" Text="{Binding Ones, Mode=OneWay}" Margin="30 10 0 0" FontSize="15" ></TextBlock>
+            <TextBlock Text="Broj jedinica:" FontSize="15" Margin="150 10 0 0"></TextBlock>
+            <TextBlock x:Name="brojJedinica" Text="{Binding Ones, Mode=OneWay}" Margin="25 10 0 0" FontSize="15" ></TextBlock>
         </StackPanel>
 
 

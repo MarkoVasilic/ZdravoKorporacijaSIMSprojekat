@@ -19,16 +19,18 @@ namespace ZdravoKorporacija.Service
         private readonly AppointmentService AppointmentService;
         private readonly BasicRenovationService BasicRenovationService;
         private readonly EquipmentService EquipmentService;
-        private readonly ScheduleService scheduleService;
+        private readonly ScheduleService ScheduleService;
+        private readonly DisplacementService DisplacementService;
 
-        public AdvancedRenovationJoiningService(IAdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService, ScheduleService scheduleService)
+        public AdvancedRenovationJoiningService(IAdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService, ScheduleService scheduleService, DisplacementService displacementService)
         {
             AdvancedRenovationJoiningRepository = advancedRenovationJoiningRepository;
             RoomService = roomService;
             AppointmentService = appointmentService;
             BasicRenovationService = basicRenovationService;
             EquipmentService = equipmentService;
-            scheduleService = this.scheduleService;
+            ScheduleService = scheduleService;
+            DisplacementService = displacementService;
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
             DateTime dateFrom, DateTime dateUntil, int duration)
@@ -36,9 +38,9 @@ namespace ZdravoKorporacija.Service
             List<String> doctorJmbgs = new List<String>();
             doctorJmbgs.Add("");
             ValidateInputParametersForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil);
-            List<DateTime> possibleAppointmentsForFirstRoom = scheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, firstRoomId,
+            List<DateTime> possibleAppointmentsForFirstRoom = ScheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, firstRoomId,
                 dateFrom, dateUntil, duration);
-            List<DateTime> possibleAppointmentsForSecondRoom = scheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, secondRoomId,
+            List<DateTime> possibleAppointmentsForSecondRoom = ScheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, secondRoomId,
                 dateFrom, dateUntil, duration);
             if (possibleAppointmentsForFirstRoom.Count == 0 || possibleAppointmentsForSecondRoom.Count == 0)
                 throw new Exception("There are not free appointments for given parameters!");
@@ -142,8 +144,8 @@ namespace ZdravoKorporacija.Service
             AppointmentService.DeleteAppointmentByRoomId(roomId);
             BasicRenovationService.DeleteByRoomId(roomId);
             EquipmentService.DeleteByRoomId(roomId);
-            EquipmentService.DeleteDisplacementByStartRoomId(roomId);
-            EquipmentService.DeleteDisplacementByEndRoomId(roomId);
+            DisplacementService.DeleteByStartRoomId(roomId);
+            DisplacementService.DeleteByEndRoomId(roomId);
             RoomService.DeleteRoom(roomId);
         }
 

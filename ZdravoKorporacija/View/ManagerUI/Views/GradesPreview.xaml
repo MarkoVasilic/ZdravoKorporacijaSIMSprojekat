@@ -56,12 +56,26 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ime" Binding="{Binding FirstName}" Width="350" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" Binding="{Binding FirstName}" Width="350" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Izaberi" Width="70">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="RadioButtonList" GroupName="doctorGroup" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Jmbg}"></RadioButton>
+                            <RadioButton x:Name="RadioButtonList" GroupName="doctorGroup" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Jmbg}"></RadioButton>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

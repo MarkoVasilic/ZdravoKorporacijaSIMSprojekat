@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
-    public class EquipmentRepository
+    public class EquipmentRepository : IEquipmentRepository
     {
 
 
@@ -91,10 +92,10 @@ namespace ZdravoKorporacija.Repository
             Save(values);
         }
 
-        public void RemoveEquipmentByRoom(int RoomId)
+        public void RemoveEquipmentByRoom(int roomId)
         {
             var values = GetValues();
-            values.RemoveAll(val => val.RoomId == RoomId);
+            values.RemoveAll(val => val.RoomId == roomId);
             Save(values);
         }
 

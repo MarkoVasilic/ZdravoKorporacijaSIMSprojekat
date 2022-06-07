@@ -53,15 +53,50 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tip opreme" Binding="{Binding IsStatic}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="*" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Tip opreme" Binding="{Binding IsStatic}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Soba" Binding="{Binding RoomName}" Width="*" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Izaberi">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="RadioButtonList" GroupName="selectEquipment" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Id}"></RadioButton>
+                            <RadioButton x:Name="RadioButtonList" GroupName="selectEquipment" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Id}"></RadioButton>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -1,3 +1,10 @@
 [
-  
+  {
+    "Id": 1,
+    "StartRoom": 7,
+    "EndRoom": 14,
+    "StaticEquipmentId": 1,
+    "StaticEquipmentQuantity": 1,
+    "DisplacementDate": "2022-06-22T00:00:00"
+  }
 ]

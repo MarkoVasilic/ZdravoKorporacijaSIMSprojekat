@@ -35,7 +35,7 @@
              Text="Odbijeni lekovi" 
              FontSize="30" 
               Margin="420 10 0 0" TextAlignment="Center" Foreground="black"></TextBlock>
-            <Button x:Name="notificationButton" Margin="-1050 10 0 0 " Width="100" Height="50" Background="Transparent" BorderBrush="Transparent"  Command="cmd:RoutedCommand.Help" Click="NotificationsClick">
+            <Button x:Name="notificationButton" Margin="-1050 10 0 0 " Width="100" Height="50" Background="Transparent" BorderBrush="Transparent"  Command="cmd:RoutedCommand.Notification">
                 <materialDesign:PackIcon Kind="Notifications" Width="100" Height="50" HorizontalAlignment="Center" Foreground="Black" Background="Transparent"/>
             </Button>
         </StackPanel>
@@ -56,13 +56,34 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="250" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Alternativa" Binding="{Binding Alternative}" Width="250" CellStyle="{StaticResource DisableFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="250" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Alternativa" Binding="{Binding Alternative}" Width="250" CellStyle="{StaticResource DisableFocus}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Sastojci" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView x:Name="ingredientsListView" ItemsSource="{Binding Ingredients}" Background="Transparent">
+                            <ListView x:Name="ingredientsListView" ItemsSource="{Binding Ingredients}" Background="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                             </ListView>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -70,7 +91,7 @@
                 <DataGridTemplateColumn Header="Izmeni">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="RadioButtonList" GroupName="modifyRoomGroup" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Id}"></RadioButton>
+                            <RadioButton x:Name="RadioButtonList" GroupName="modifyRoomGroup" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="RadioButtonList_Checked" Tag="{Binding Id}"></RadioButton>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
