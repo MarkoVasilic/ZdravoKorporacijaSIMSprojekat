@@ -3,8 +3,10 @@ using Model;
 using Repository;
 using Service;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 
@@ -84,9 +86,12 @@ namespace ZdravoKorporacija
             RatingService ratingService = new RatingService(ratingRepository, appointmentRepository);
             ratingController = new RatingController(ratingService);
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
             MeetingControler meetingControler = new MeetingControler();
+
+           // notificationController.CreateNotification("Rescheduled appointment",
+             //   "Appointment on 24/6/2022 moved from 4:00PM to 6:30PM", DateTime.Now, "1231231231231", false);
 
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
@@ -157,6 +162,12 @@ namespace ZdravoKorporacija
             //****************************
             //********************************************************KT4*****************************************************************************
             //****************************
+
+            List<AppointmentDTO> appointments = appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231");
+            foreach (AppointmentDTO app in appointments)
+            {
+                app.ToString();
+            }
 
             //* Create Appointment Doctor *//
 
@@ -476,8 +487,8 @@ namespace ZdravoKorporacija
              foreach (EquipmentDTO eq in equipmentDTOs)
                  eq.toString();*/
 
-            equipmentController.EquipmentDisplacement();
-            
+            //equipmentController.EquipmentDisplacement();
+
         }
 
     }

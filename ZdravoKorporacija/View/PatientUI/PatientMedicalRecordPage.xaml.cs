@@ -18,6 +18,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
+using ZdravoKorporacija.Controller;
 
 namespace ZdravoKorporacija.View.PatientUI
 {

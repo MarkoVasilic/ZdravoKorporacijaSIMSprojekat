@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Repository
+namespace ZdravoKorporacija.Repository
 {
     public class MedicalRecordRepository
     {

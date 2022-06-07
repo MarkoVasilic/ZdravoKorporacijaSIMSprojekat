@@ -37,7 +37,6 @@ namespace ZdravoKorporacija.View.PatientUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            notificationService.CreatePatientNotifications(); // ova linija ce ici u prescriptionService CreatePrescription
             List<Notification> notificationList = new List<Notification>();
             // notificationList = notificationService.ShowPatientNotification();
             // foreach (Notification notification in notificationList)

@@ -7,6 +7,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
+using ZdravoKorporacija.Controller;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
@@ -43,8 +46,6 @@ namespace ZdravoKorporacija.View.DoctorUI
         {
             String Jmbg = (String)((Button)sender).CommandParameter;
             NavigationService.Navigate(new ViewMedicalRecordPage(Jmbg));
-
-
         }
     }
 }

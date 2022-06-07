@@ -105,7 +105,7 @@ namespace ZdravoKorporacija.Service
             notificationRepository.SaveNotification(notification);
         }
 
-        public List<Notification> CreatePatientNotifications()
+        public List<Notification> CreatePatientNotifications(String patientJmbg)
         {
             List<Notification> notificationsList = new List<Notification>();
             List<Prescription> prescriptionsList = new List<Prescription>();
@@ -114,11 +114,11 @@ namespace ZdravoKorporacija.Service
             String Desc = "";
             String Title = "";
             DateTime StartTime = System.DateTime.Now;
-            String userJmbg = App.loggedUser.Jmbg; //ostaje
+            String userJmbg = patientJmbg;
             bool Seen = false; //ostaje
 
 
-            prescriptionsList = prescriptionService.GetAllByPatient(App.loggedUser.Jmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
+            prescriptionsList = prescriptionService.GetAllByPatient(patientJmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
             foreach (Prescription prescription in prescriptionsList) //prolazimo kroz sve terapije i za svaku pojedinacno kreiramo sve notifikacije
             {
                 numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); //koliko ukupno puta treba popiti lijek

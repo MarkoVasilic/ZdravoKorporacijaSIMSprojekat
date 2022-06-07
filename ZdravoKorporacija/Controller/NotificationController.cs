@@ -60,5 +60,10 @@ namespace ZdravoKorporacija.Controller
             return notificationService.CreateNotification(title, description, startTime, receiverJmbg, seen);
 
         }
+
+        public void CreatePatientNotification(String patientJmbg)
+        {
+            notificationService.CreatePatientNotifications(patientJmbg);
+        }
     }
 }

@@ -75,5 +75,33 @@
     "Report": "radi",
     "DateTime": "2022-05-18T11:47:25.5165129+02:00",
     "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 13,
+    "Diagnosis": "anamnesis",
+    "Report": "new anamnesis",
+    "DateTime": "2022-06-03T13:18:29.4266652+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 14,
+    "Diagnosis": "Covid19",
+    "Report": "dnwuihfirghuire",
+    "DateTime": "2022-06-07T19:27:04.8723606+02:00",
+    "DoctorJmbg": "1231231231231"
+  },
+  {
+    "Id": 15,
+    "Diagnosis": "modify",
+    "Report": "drftyuio",
+    "DateTime": "2022-06-07T21:37:41.1923097+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 16,
+    "Diagnosis": "dijgnoza",
+    "Report": "dfghjk",
+    "DateTime": "2022-06-07T21:44:56.7447205+02:00",
+    "DoctorJmbg": "1231231231231"
   }
 ]

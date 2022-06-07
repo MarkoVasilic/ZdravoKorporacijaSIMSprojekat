@@ -6,27 +6,25 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
       mc:Ignorable="d" 
       Title="DoctorHomePage"
-      Background="#FF01041C">
+      Background="#FF01041C"
+      FontFamily="Times New Roman">
 
     <Grid>
-        <DataGrid x:Name="DataGridDoctorAppointments" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding appointments, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 140 20 30" ScrollViewer.CanContentScroll="True" Height="auto" Width="1275" TextBlock.FontSize="24">
+        <DataGrid x:Name="DataGridDoctorAppointments" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding appointments, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 140 20 30" ScrollViewer.CanContentScroll="True" Height="auto" Width="auto" TextBlock.FontSize="24">
             <DataGrid.Columns>
-                <DataGridTextColumn TextBlock.FontSize="24" Header="JMBG" Binding="{Binding Diagnose}" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="First Name" Binding="{Binding Report}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn TextBlock.FontSize="24" Header="Last Name" Binding="{Binding DateTime}" Width="180"></DataGridTextColumn>
-                <DataGridTextColumn TextBlock.FontSize="24" Header="Description" Binding="{Binding Description}" Width="160"></DataGridTextColumn>
-                <DataGridTextColumn TextBlock.FontSize="24" Header="Date and Time" Binding="{Binding DateTime}" Width="270"></DataGridTextColumn>
-                <DataGridTextColumn TextBlock.FontSize="24" Header="Room" Binding="{Binding Room}" Width="85"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Jmbg" Binding="{Binding PatientJmbg}" Width="200"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="First Name" Binding="{Binding PatientFirstName}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Last Name" Binding="{Binding PatientLastName}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Date and Time" Binding="{Binding StartTime}" Width="270"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Room" Binding="{Binding RoomName}" Width="150"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Medical Record" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="ViewMedicalRecordButton" Content="VIEW" HorizontalContentAlignment="Center" Command="{Binding ViewMedicalRecordCommand}" TextBlock.FontSize="24"></Button>
+                            <Button x:Name="ViewMedicalRecordButton" Content="VIEW" HorizontalContentAlignment="Center" Click="ViewMedicalRecordButton_OnClick"  CommandParameter="{Binding Jmbg}" TextBlock.FontSize="24"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-
     </Grid>
 </Page>

@@ -3,8 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-namespace Repository
+namespace ZdravoKorporacija.Repository
 {
     public class AbsenceRequestRepository
     {
@@ -58,7 +57,7 @@ namespace Repository
             var values = GetValues();
             List<AbsenceRequest> result = new List<AbsenceRequest>();
             foreach (AbsenceRequest absenceRequest in values)
-                if (absenceRequest.DoctorScecialtyType.Equals(doctorSpecialtyType))
+                if (absenceRequest.DoctorSpecialtyType.Equals(doctorSpecialtyType))
                     result.Add(absenceRequest);
             return result;
         }

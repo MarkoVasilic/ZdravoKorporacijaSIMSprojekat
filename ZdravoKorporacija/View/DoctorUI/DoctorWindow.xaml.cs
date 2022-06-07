@@ -12,7 +12,7 @@ namespace ZdravoKorporacija.View.DoctorUI
         public DoctorWindow()
         {
             InitializeComponent();
-            DataContext = new DoctorWindowVM(this);
+            this.DataContext = new DoctorWindowVM(this);
         }
     }
 }

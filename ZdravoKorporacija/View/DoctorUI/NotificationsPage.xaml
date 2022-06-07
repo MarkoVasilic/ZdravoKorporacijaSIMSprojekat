@@ -1,0 +1,32 @@
+﻿<Page x:Class="ZdravoKorporacija.View.DoctorUI.NotificationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      mc:Ignorable="d" 
+      Title="NotificationsPage"
+      Background="#FF01041C"
+      FontFamily="Times New Roman">
+
+    <Grid MaxWidth="1024" Margin="5, 50, 5, 5" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <DataGrid x:Name="dataGridMedicalRecords"  ItemsSource="{Binding notifications, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20, 70, 20, 20" ScrollViewer.CanContentScroll="True" Height="500" Width="auto" TextBlock.FontSize="24">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Height" Value="70"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Title" Binding="{Binding Title}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="Description" Binding="{Binding Description}" Width="350">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Time" Binding="{Binding StartTime}" Width="300"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

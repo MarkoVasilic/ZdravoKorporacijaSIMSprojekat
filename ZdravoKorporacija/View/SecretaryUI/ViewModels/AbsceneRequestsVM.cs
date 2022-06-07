@@ -58,8 +58,9 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
+            ScheduleService scheduleService = new ScheduleService();
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, doctorRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
             NotificationRepository notificationRepository = new NotificationRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
@@ -86,7 +87,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             {
                 Doctor doctor = doctorController.GetOneDoctor(ar.DoctorJmbg);
                 String urgent = "";
-                if (ar.isUgent)
+                if (ar.isUrgent)
                     urgent = "Yes";
                 else
                     urgent = "No";

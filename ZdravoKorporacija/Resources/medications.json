@@ -1,13 +1,14 @@
 [
   {
-    "Id": 1,
-    "Name": "Berodual",
+    "Id": 4,
+    "Name": "Aspirin",
     "Ingredients": [
-      "ipratropium bromide",
-      "fenoterol"
+      "sastojak1",
+      "sastojak2",
+      "sastojak3"
     ],
-    "Status": 1,
-    "Alternative": null
+    "Status": 0,
+    "Alternative": "zamena1"
   },
   {
     "Id": 2,
@@ -17,19 +18,18 @@
       "drugi alergen",
       "treci alergen"
     ],
-    "Status": 1,
+    "Status": 0,
     "Alternative": null
   },
   {
-    "Id": 4,
-    "Name": "Aspirin",
+    "Id": 1,
+    "Name": "Berodual",
     "Ingredients": [
-      "sastojak1",
-      "sastojak2",
-      "sastojak3"
+      "ipratropium bromide",
+      "fenoterol"
     ],
-    "Status": 1,
-    "Alternative": "zamena1"
+    "Status": 0,
+    "Alternative": null
   },
   {
     "Id": 3,
@@ -39,7 +39,7 @@
       "sastojak2",
       "sastojak3"
     ],
-    "Status": 1,
+    "Status": 2,
     "Alternative": "zamena2"
   }
 ]

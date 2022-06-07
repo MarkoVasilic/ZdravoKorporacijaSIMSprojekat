@@ -3,8 +3,9 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKorporacija.Repository;
 
-namespace Service
+namespace ZdravoKorporacija.Service
 {
     public class PrescriptionService
     {
@@ -50,41 +51,49 @@ namespace Service
         public void CreatePrescription(String patientJmbg, String medication, String amount, int frequency, DateTime from, DateTime to)
         {
             Prescription prescription = new Prescription(-1, medication, amount, frequency, from, to);
-            List<String> allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
+
+            ValidatePrescriptionBeforeCreation(patientJmbg, medication, prescription);
+            PrescriptionRepository.SavePrescription(prescription);
+            AddPrescriptionToMedicalRecord(patientJmbg, prescription);
+        }
+
+        private void AddPrescriptionToMedicalRecord(string patientJmbg, Prescription prescription)
+        {
+            List<int> newPrescriptions = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
+            newPrescriptions.Add(prescription.Id);
+            MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg, newPrescriptions,
+                MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
+
+            if (!oneMedicalRecord.validateMedicalRecord())
+                throw new Exception("Something went wrong, medical record isn't updated!");
+
+            MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
+        }
+
+        private void ValidatePrescriptionBeforeCreation(string patientJmbg, string medication, Prescription prescription)
+        {
             List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingredients;
 
             if (ingredients == null)
                 throw new Exception("Prescribed medication is not available!");
-
-            if(isAllergic(allergens, ingredients))
+            List<String>? allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
+            if (isAllergic(allergens, ingredients))
                 throw new Exception("Patient is allergic to that medication!");
-
             if (!prescription.validatePrescription())
                 throw new Exception("Something went wrong, prescription isn't created!");
-
-            PrescriptionRepository.SavePrescription(prescription);
-
-            List<int> newPrescriptions = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
-            newPrescriptions.Add(prescription.Id);
-            MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg, newPrescriptions,
-                                     MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
-
-            if (!oneMedicalRecord.validateMedicalRecord())
-                throw new Exception("Something went wrong, medical record isn't updated!");
-            MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
-
         }
 
         private Boolean isAllergic(List<string> allergens, List<string> ingredients)
         {
+            if (allergens == null)
+                return false;
+
             foreach (String ingredient in ingredients)
             {
                 foreach (String allergen in allergens)
                 {
                     if (ingredient.Equals(allergen))
-                    {
                         return true;
-                    }
                 }
             }
             return false;
@@ -92,16 +101,23 @@ namespace Service
 
         public void ModifyPrescription(int prescriptonId, String newMedication, String newAmount, int newFrequency, DateTime newFrom, DateTime newTo)
         {
-
-            var onePrescription = PrescriptionRepository.FindOneById(prescriptonId);
-            Prescription newPrescription = new Prescription(onePrescription.Id, newMedication, newAmount,
-                                                            newFrequency, newFrom, newTo);
-
-            List<String> allergens = new List<String>();
             List<String> ingredients = MedicationRepository.FindOneByName(newMedication).Ingredients;
-            if (ingredients == null)
-                throw new Exception("Prescribed medication is not available!");
+            List<String> allergens = GetPatientAllergens(prescriptonId);
 
+            if (isAllergic(allergens, ingredients))
+                throw new Exception("Patient is allergic to that medication!");
+
+            Prescription newPrescription = new Prescription(prescriptonId, newMedication, newAmount, newFrequency, newFrom, newTo);
+            if (!newPrescription.validatePrescription())
+                throw new Exception("Something went wrong, prescription isn't updated!");
+
+            PrescriptionRepository.UpdatePrescription(newPrescription);
+
+        }
+
+        private List<String> GetPatientAllergens(int prescriptonId)
+        {
+            List<String> allergens = new List<String>();
             List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
             foreach (MedicalRecord mr in medicalRecords)
             {
@@ -115,15 +131,7 @@ namespace Service
                 }
             }
 
-            if (isAllergic(allergens, ingredients))
-                throw new Exception("Patient is allergic to that medication!");
-
-            if (!onePrescription.validatePrescription())
-                throw new Exception("Something went wrong, prescription isn't updated!");
-            PrescriptionRepository.UpdatePrescription(newPrescription);
-
+            return allergens;
         }
-
-
     }
 }
