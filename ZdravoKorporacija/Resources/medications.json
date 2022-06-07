@@ -1,10 +1,11 @@
 [
   {
-    "Id": 1,
-    "Name": "Berodual",
+    "Id": 4,
+    "Name": "Aspirin",
     "Ingredients": [
-      "ipratropium bromide",
-      "fenoterol"
+      "sastojak1",
+      "sastojak2",
+      "sastojak3"
     ],
     "Status": 1,
     "Alternative": "Efedrin"
@@ -21,15 +22,14 @@
     "Alternative": "Brufen"
   },
   {
-    "Id": 4,
-    "Name": "Aspirin",
+    "Id": 1,
+    "Name": "Berodual",
     "Ingredients": [
-      "sastojak1",
-      "sastojak2",
-      "sastojak3"
+      "ipratropium bromide",
+      "fenoterol"
     ],
-    "Status": 1,
-    "Alternative": "zamena1"
+    "Status": 0,
+    "Alternative": null
   },
   {
     "Id": 3,

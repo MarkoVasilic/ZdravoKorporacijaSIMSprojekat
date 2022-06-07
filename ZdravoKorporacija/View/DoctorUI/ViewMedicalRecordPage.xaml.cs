@@ -1,4 +1,4 @@
-﻿using Controller;
+﻿using ZdravoKorporacija.Controller;
 using Model;
 using Repository;
 using Service;
@@ -9,6 +9,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {

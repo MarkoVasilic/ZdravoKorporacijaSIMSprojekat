@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-namespace Repository
+
+namespace ZdravoKorporacija.Repository
 {
     public class AnamnesisRepository
     {
@@ -16,12 +17,12 @@ namespace Repository
             return values;
         }
 
-        public Anamnesis? FindOneById(int anamnesisId)
+        public Anamnesis? FindOneById(int id)
         {
             var values = GetValues();
             foreach (var val in values)
             {
-                if (val.Id == anamnesisId)
+                if (val.Id == id)
                 {
                     return val;
                 }

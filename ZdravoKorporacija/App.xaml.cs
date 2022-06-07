@@ -104,6 +104,9 @@ namespace ZdravoKorporacija
             NoteService noteService = new NoteService(noteRepository);
             noteController = new NoteController(noteService);
 
+           // notificationController.CreateNotification("Rescheduled appointment",
+             //   "Appointment on 24/6/2022 moved from 4:00PM to 6:30PM", DateTime.Now, "1231231231231", false);
+
 
             /*List<String> alergeni = new List<String> { "prvi alergen", "drugi alergen", "treci alergen" };
             patientController.CreatePatient(false, alergeni, BloodType.A_POSITIVE, "milos", "milosevic", "mikimilane", "mackacka",
@@ -173,6 +176,12 @@ namespace ZdravoKorporacija
             //****************************
             //********************************************************KT4*****************************************************************************
             //****************************
+
+            List<AppointmentDTO> appointments = appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231");
+            foreach (AppointmentDTO app in appointments)
+            {
+                app.ToString();
+            }
 
             //* Create Appointment Doctor *//
 

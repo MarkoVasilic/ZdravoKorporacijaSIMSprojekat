@@ -1,38 +1,43 @@
 ﻿using Model;
-using Service;
 using System;
+using ZdravoKorporacija.Service;
 using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
 
-namespace Controller
+namespace ZdravoKorporacija.Controller
 {
     public class AbsenceRequestController
     {
-        private readonly AbsenceRequestService AbsenceRequestService;
+        private readonly AbsenceRequestService absenceRequestService;
 
         public AbsenceRequestController(AbsenceRequestService absenceRequestService)
         {
-            AbsenceRequestService = absenceRequestService;
+            this.absenceRequestService = absenceRequestService;
+        }
+
+        public AbsenceRequest GetOneById(int id)
+        {
+            return absenceRequestService.GetOneById(id);
         }
 
         public List<AbsenceRequest> GetAllByDoctorJmbg(String jmbg)
         {
-            return AbsenceRequestService.GetAllByDoctorJmbg(jmbg);
+            return absenceRequestService.GetAllByDoctorJmbg(jmbg);
         }
 
         public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
         {
-            AbsenceRequestService.CreateAbsenceRequest(dateFrom, dateUntil, isUrgent, reason);
+            absenceRequestService.CreateAbsenceRequest(dateFrom, dateUntil, isUrgent, reason);
         }
 
         public List<AbsenceRequest> GetOnHoldAbsceneRequests()
         {
-            return AbsenceRequestService.GetOnHoldAbsceneRequests();
+            return absenceRequestService.GetOnHoldAbsceneRequests();
         }
 
         public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState)
         {
-            AbsenceRequestService.ChangeAbsceneRequestState(absceneRequestId, absenceRequestState);
+            absenceRequestService.ChangeAbsceneRequestState(absceneRequestId, absenceRequestState);
         }
         public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)

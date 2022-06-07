@@ -91,8 +91,8 @@ namespace Service
         }
         public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
         {
-            List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
             List<Appointment> appointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
             foreach (Appointment app in appointments)
             {
                 Patient patient = PatientRepository.FindOneByJmbg(app.PatientJmbg);
@@ -117,9 +117,7 @@ namespace Service
         public void DeleteAppointment(int appointmentId)
         {
             if (AppointmentRepository.FindOneById(appointmentId) == null)
-            {
                 throw new Exception("Appointment with that id doesn't exist!");
-            }
             AppointmentRepository.RemoveAppointment(appointmentId);
         }
 

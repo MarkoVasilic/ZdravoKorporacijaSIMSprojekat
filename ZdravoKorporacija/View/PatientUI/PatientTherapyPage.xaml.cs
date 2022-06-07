@@ -1,6 +1,8 @@
 ﻿using Model;
 using Repository;
 using Service;
+using ZdravoKorporacija.Service;
+using ZdravoKorporacija.Repository;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,6 +10,7 @@ using System.Windows.Navigation;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+
 
 namespace ZdravoKorporacija.View.PatientUI
 {

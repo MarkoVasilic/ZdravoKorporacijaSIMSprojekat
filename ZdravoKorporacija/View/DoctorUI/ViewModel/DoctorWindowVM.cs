@@ -1,6 +1,12 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Controller;
+using Repository;
+using Service;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.DoctorUI.Commands;
 
 namespace ZdravoKorporacija.View.DoctorUI.ViewModel
@@ -11,14 +17,16 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         public static DoctorHomePage DoctorHomePage;
         public static MedicalRecords medicalRecords;
         public static NavigationService? NavigationService;
+       // public AppointmentController appointmentController;
+       // private ObservableCollection<AppointmentDTO> appointments { get; set; }
 
         public ICommand HomeCommand { get; set; }   //Appointments
         public ICommand PatientsCommand { get; set; }
-        //public ICommand VerificationsCommand { get; set; }
-        //public ICommand AbsenceRequestsCommand { get; set; }
+        public ICommand VerificationsCommand { get; set; }
+        public ICommand AbsenceRequestsCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         //public ICommand ProfileCommand { get; set; }
-        //public ICommand NotificationsCommand { get; set; }
+        public ICommand NotificationsCommand { get; set; }
         public ICommand ViewMedicalRecordCommand { get; set; }
 
         public static void setWindowTitle(string newTitle)
@@ -36,6 +44,18 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             LogOutCommand = new RelayCommand(logOutExecute);
             PatientsCommand = new RelayCommand(medicalRecordsExecute);
             ViewMedicalRecordCommand = new RelayCommand(viewMedicalRecordExecute);
+            AbsenceRequestsCommand = new RelayCommand(viewAbsenceRequestsExecute);
+            VerificationsCommand = new RelayCommand(verificationsExecute);
+            NotificationsCommand = new RelayCommand(notificationsExecute);
+            /*AppointmentRepository appointmentRepository = new AppointmentRepository();
+            DoctorRepository doctorRepository = new DoctorRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            RoomRepository roomRepository = new RoomRepository();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
+            ScheduleService scheduleService = new ScheduleService();
+            EmergencyService emergencyService = new EmergencyService();
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
+            appointments = new ObservableCollection<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231"));*/
         }
 
         private void homeExecute(object parametar)
@@ -54,6 +74,22 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         {
             setWindowTitle("Medical Record");
             NavigationService.Navigate(new ViewMedicalRecordPage(parametar as String));
+        }
+
+        private void viewAbsenceRequestsExecute(object parametar)
+        {
+            setWindowTitle("Absence Requests");
+            NavigationService.Navigate(new AbsenceRequestsPage());
+        }
+        private void verificationsExecute(object parametar)
+        {
+            setWindowTitle("Verifications");
+            NavigationService.Navigate(new VerificationsPage());
+        }
+        private void notificationsExecute(object parametar)
+        {
+            setWindowTitle("Notifications");
+            NavigationService.Navigate(new NotificationsPage());
         }
 
         private void logOutExecute(object parameter)

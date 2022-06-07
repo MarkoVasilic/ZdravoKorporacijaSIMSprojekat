@@ -1,9 +1,11 @@
-﻿using Controller;
+﻿using ZdravoKorporacija.Controller;
 using Repository;
 using Service;
 using System;
 using System.Windows.Input;
 using ZdravoKorporacija.View.DoctorUI.Commands;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.View.DoctorUI.ViewModel
 {

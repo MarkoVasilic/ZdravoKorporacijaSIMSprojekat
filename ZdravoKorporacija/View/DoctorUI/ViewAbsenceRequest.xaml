@@ -1,0 +1,48 @@
+﻿<Page x:Class="ZdravoKorporacija.View.DoctorUI.ViewAbsenceRequest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      mc:Ignorable="d" 
+      Title="ViewAbsenceRequest"
+      Background="#FF01041C"
+      FontFamily="Times New Roman">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 10 0 2" Foreground="White">Absence reason:</TextBlock>
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White">Interval:</TextBlock>
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White">From:</TextBlock>
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White">To:</TextBlock>
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White">Urgent:</TextBlock>
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White">Status:</TextBlock>
+            <TextBlock FontSize="24" Width="250" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White">Rejection reason:</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBlock FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 10 0 2" Foreground="White" Text="{Binding Path=absenceRequest.Reason, Mode=OneWay}"></TextBlock>
+            <TextBlock FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White" Text="{Binding Path=absenceRequest.IntervalInDays, Mode=OneWay}"></TextBlock>
+            <TextBlock FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White" Text="{Binding Path=absenceRequest.DateFrom, Mode=OneWay}"></TextBlock>
+            <TextBlock FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White" Text="{Binding Path=absenceRequest.DateTo, Mode=OneWay}"></TextBlock>
+            <CheckBox FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 18 0 2" Foreground="White" HorizontalContentAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=absenceRequest.isUrgent, Mode=OneWay}" IsEnabled="False">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White" Text="{Binding Path=absenceRequest.State, Mode=OneWay}"></TextBlock>
+            <TextBlock FontSize="24" Width="300" HorizontalAlignment="Left" Margin="0 20 0 2" Foreground="White" Text="{Binding Path=absenceRequest.Response, Mode=OneWay}"></TextBlock>
+        </StackPanel>
+
+    </Grid>
+</Page>

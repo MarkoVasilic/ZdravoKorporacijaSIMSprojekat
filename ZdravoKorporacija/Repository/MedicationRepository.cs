@@ -92,6 +92,16 @@ namespace Repository
             return result;
         }
 
+        public List<Medication>? FindAllVerified()
+        {
+            var values = GetValues();
+            List<Medication> result = new List<Medication>();
+            foreach (Medication medication in values)
+                if (medication.Status == MedicationStatus.VERIFIED)
+                    result.Add(medication);
+            return result;
+        }
+
         public void SaveMedication(Medication medicationToSave)
         {
             var values = GetValues();

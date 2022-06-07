@@ -49,6 +49,11 @@ namespace Controller
             return MedicationService.GetAllUnverified();
         }
 
+        public List<Medication> GetAllVerified()
+        {
+            return MedicationService.GetAllVerified();
+        }
+
         public void Verify(int id)
         {
             MedicationService.Verify(id);

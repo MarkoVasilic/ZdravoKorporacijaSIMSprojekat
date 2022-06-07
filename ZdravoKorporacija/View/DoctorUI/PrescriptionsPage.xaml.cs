@@ -1,4 +1,4 @@
-﻿using Controller;
+﻿using ZdravoKorporacija.Controller;
 using Model;
 using Repository;
 using Service;
@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
@@ -16,12 +18,14 @@ namespace ZdravoKorporacija.View.DoctorUI
     /// </summary>
     public partial class PrescriptionsPage : Page
     {
+        private String jmbg;
         public MedicalRecordController MedicalRecordController { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
         public PrescriptionsPage(String Jmbg)
         {
             InitializeComponent();
             this.DataContext = this;
+            this.jmbg = Jmbg;
             DoctorWindowVM.setWindowTitle("Prescriptions");
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
@@ -41,7 +45,7 @@ namespace ZdravoKorporacija.View.DoctorUI
 
         private void AddPrescriptionButton_Click(object sender, RoutedEventArgs e)
         {
-            //
+            NavigationService.Navigate(new ChooseMedicationPage(jmbg));
         }
     }
 }

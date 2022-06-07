@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace ZdravoKorporacija.View.DoctorUI.Validation
 {
@@ -9,9 +10,8 @@ namespace ZdravoKorporacija.View.DoctorUI.Validation
             try
             {
                 var text = value as string;
-                if (text == null)
+                if (String.IsNullOrWhiteSpace(text))
                     return new ValidationResult(false, "This field is necessary!");
-
                 return new ValidationResult(true, null);
             }
             catch

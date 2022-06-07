@@ -77,6 +77,11 @@ namespace Service
             return MedicationRepository.FindAllUnverified();
         }
 
+        public List<Medication> GetAllVerified()
+        {
+            return MedicationRepository.FindAllVerified();
+        }
+
         public void Verify(int id)
         {
             Medication medication = GetOneById(id);
