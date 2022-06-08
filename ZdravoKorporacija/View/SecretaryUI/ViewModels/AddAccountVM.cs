@@ -106,17 +106,21 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         {
             Patient.IsGuest = false;
             Patient.Gender = patientGender;
-            try
+            if (ErrorMessage.Length == 0)
             {
-                PatientController.CreatePatient(Patient.IsGuest, Patient.Allergens, Patient.BloodTypeEnum, Patient.FirstName, Patient.LastName,
-                Patient.Username, Patient.Password, Patient.Jmbg, Patient.DateOfBirth, Patient.Gender, Patient.Email, Patient.PhoneNumber,
-                Patient.Address);
-                SecretaryWindowVM.NavigationService.Navigate(new PatientsView());
+                try
+                {
+                    PatientController.CreatePatient(Patient.IsGuest, Patient.Allergens, Patient.BloodTypeEnum, Patient.FirstName, Patient.LastName,
+                        Patient.Username, Patient.Password, Patient.Jmbg, Patient.DateOfBirth, Patient.Gender, Patient.Email, Patient.PhoneNumber,
+                        Patient.Address);
+                    SecretaryWindowVM.NavigationService.Navigate(new PatientsView());
+                }
+                catch (Exception e)
+                {
+                    ErrorMessage = e.Message;
+                }
             }
-            catch (Exception e)
-            {
-                ErrorMessage = e.Message;
-            }
+            
         }
 
         private void addAllergenExecute(object parameter)
@@ -133,6 +137,11 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         {
             Patient.Allergens.Remove(SelectedAllergen);
             PatientAllergens.Remove(SelectedAllergen);
+        }
+
+        public void setErrorMessage(String errorMsg)
+        {
+            ErrorMessage = errorMsg;
         }
     }
 }

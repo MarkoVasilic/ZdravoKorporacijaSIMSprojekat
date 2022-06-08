@@ -189,16 +189,26 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 newGender = Gender.FEMALE;
             else
                 newGender = Gender.NONE;
-            try
+            if (System.Windows.Controls.Validation.GetHasError(FirstNameTextBox) || System.Windows.Controls.Validation.GetHasError(LastNameTextBox)
+                 || System.Windows.Controls.Validation.GetHasError(PhoneNumberTextBox)
+                || System.Windows.Controls.Validation.GetHasError(EmailTextBox) || System.Windows.Controls.Validation.GetHasError(AddressTextBox))
             {
-                PatientController.ModifyPatient(false, selectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, firstName, lastName,
-                selectedPatient.Jmbg, dateOfBirth, newGender, email, phoneNumber, address);
-                NavigationService.Navigate(new PatientsView());
+                ErrorMessage = "Not all input fields are valid!";
             }
-            catch (Exception ex)
+            else
             {
-                ErrorMessage = ex.Message;
+                try
+                {
+                    PatientController.ModifyPatient(false, SelectedPatient.Allergens, (BloodType)BloodTypeComboBox.SelectedIndex, FirstName, LastName,
+                        selectedPatient.Jmbg, DateOfBirth, newGender, Email, PhoneNumber, Address);
+                    NavigationService.Navigate(new PatientsView());
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage = ex.Message;
+                }
             }
+            
         }
     }
 }

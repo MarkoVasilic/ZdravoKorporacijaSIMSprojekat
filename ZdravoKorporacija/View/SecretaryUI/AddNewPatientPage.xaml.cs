@@ -7,8 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Controller;
-using Repository;
-using Service;
 using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI
@@ -54,6 +52,17 @@ namespace ZdravoKorporacija.View.SecretaryUI
                 addAccountVM.setPatientGenderFemale((BloodType)BloodTypeComboBox.SelectedIndex);
             else
                 addAccountVM.setBloodType((BloodType)BloodTypeComboBox.SelectedIndex);
+            if (System.Windows.Controls.Validation.GetHasError(FirstNameTextBox) || System.Windows.Controls.Validation.GetHasError(LastNameTextBox)
+                || System.Windows.Controls.Validation.GetHasError(JmbgTextBox) || System.Windows.Controls.Validation.GetHasError(PhoneNumberTextBox)
+                || System.Windows.Controls.Validation.GetHasError(EmailTextBox) || System.Windows.Controls.Validation.GetHasError(AddressTextBox)
+                || System.Windows.Controls.Validation.GetHasError(UsernameTextBox) || System.Windows.Controls.Validation.GetHasError(PasswordTextBox))
+            {
+                addAccountVM.setErrorMessage("Not all input fields are valid!");
+            }
+            else
+            {
+                addAccountVM.setErrorMessage("");
+            }
         }
 
         private void Start_Demo_Button_Click(object sender, RoutedEventArgs e)
