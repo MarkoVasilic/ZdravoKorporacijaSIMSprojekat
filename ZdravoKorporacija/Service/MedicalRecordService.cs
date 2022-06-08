@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Interfaces;
 using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.Service
@@ -12,10 +13,10 @@ namespace ZdravoKorporacija.Service
         private readonly MedicalRecordRepository medicalRecordRepository;
         private readonly AnamnesisRepository anamnesisRepository;
         private readonly PrescriptionRepository prescriptionRepository;
-        private readonly PatientRepository patientRepository;
+        private readonly IPatientRepository patientRepository;
         private readonly AppointmentRepository appointmentRepository;
 
-        public MedicalRecordService(MedicalRecordRepository medicalRecordRepository, AnamnesisRepository anamnesisRepository, PrescriptionRepository prescriptionRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository)
+        public MedicalRecordService(MedicalRecordRepository medicalRecordRepository, AnamnesisRepository anamnesisRepository, PrescriptionRepository prescriptionRepository, IPatientRepository patientRepository, AppointmentRepository appointmentRepository)
         {
             this.medicalRecordRepository = medicalRecordRepository;
             this.anamnesisRepository = anamnesisRepository;

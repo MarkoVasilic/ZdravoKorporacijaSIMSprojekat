@@ -177,11 +177,11 @@ namespace ZdravoKorporacija
             //********************************************************KT4*****************************************************************************
             //****************************
 
-            List<AppointmentDTO> appointments = appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231");
+            /*List<AppointmentDTO> appointments = appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231");
             foreach (AppointmentDTO app in appointments)
             {
                 app.ToString();
-            }
+            }*/
 
             //* Create Appointment Doctor *//
 

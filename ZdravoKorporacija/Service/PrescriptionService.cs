@@ -31,9 +31,9 @@ namespace ZdravoKorporacija.Service
             return PrescriptionRepository.FindAll();
         }
 
-        public Prescription? GetOneById(int prescriptionId)
+        public Prescription? GetOneById(int id)
         {
-            return PrescriptionRepository.FindOneById(prescriptionId);
+            return PrescriptionRepository.FindOneById(id);
         }
 
         public List<Prescription>? GetAllByPatient(String patientJmbg)

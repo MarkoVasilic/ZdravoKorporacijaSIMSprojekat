@@ -32,12 +32,12 @@ public class PrescriptionRepository
         return values;
     }
 
-    public Prescription? FindOneById(int prescriptionId)
+    public Prescription? FindOneById(int id)
     {
         var values = GetValues();
         foreach (var val in values)
         {
-            if (val.Id == prescriptionId)
+            if (val.Id == id)
             {
                 return val;
             }

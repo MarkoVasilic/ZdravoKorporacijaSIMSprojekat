@@ -20,9 +20,9 @@ namespace ZdravoKorporacija.Controller
             return absenceRequestService.GetOneById(id);
         }
 
-        public List<AbsenceRequest> GetAllByDoctorJmbg(String jmbg)
+        public List<AbsenceRequest> GetAllByDoctorJmbg(String doctorJmbg)
         {
-            return absenceRequestService.GetAllByDoctorJmbg(jmbg);
+            return absenceRequestService.GetAllByDoctorJmbg(doctorJmbg);
         }
 
         public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)

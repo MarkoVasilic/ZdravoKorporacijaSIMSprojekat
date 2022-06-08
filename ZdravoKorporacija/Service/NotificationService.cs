@@ -112,9 +112,8 @@ namespace ZdravoKorporacija.Service
             DateTime StartTime = System.DateTime.Now;
             String userJmbg = patientJmbg;
             bool Seen = false; //ostaje
-
-
-            prescriptionsList = prescriptionService.GetAllByPatient(patientJmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
+            List<Notification> notificationsList = new List<Notification>();
+            List<Prescription> prescriptionsList = prescriptionService.GetAllByPatient(patientJmbg); //dobavljamo sve terapije po pacijentu koji je ulogovan
             foreach (Prescription prescription in prescriptionsList) //prolazimo kroz sve terapije i za svaku pojedinacno kreiramo sve notifikacije
             {
                 numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency); 
