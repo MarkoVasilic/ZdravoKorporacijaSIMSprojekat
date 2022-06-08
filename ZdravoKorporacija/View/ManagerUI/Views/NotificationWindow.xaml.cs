@@ -82,7 +82,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             NotificationWindow notificationWindow = new NotificationWindow();
             int notificationId = (int)((Button)sender).Tag;
             if (notificationId == null) return;
-            notificationController.DeleteNotification(notificationId);
+            notificationController.Delete(notificationId);
             notifications.Remove(notifications.Where(notification => notification.Id == notificationId).Single());
             this.Close();
             NotificationWindow notificationWindow1 = new NotificationWindow();

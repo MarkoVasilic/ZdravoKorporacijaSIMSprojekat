@@ -4,7 +4,7 @@
     "AppointmentId": 1,
     "HospitalRating": 5,
     "DoctorRating": 4,
-    "Desc": "Bolnica fenomenalno opremljena i doktor izuzetno profesionalan!",
+    "Comment": null,
     "RatingDate": "2022-05-10T00:27:29.9947826+02:00",
     "DoctorId": "1231231231231",
     "PatientId": "7778889994445"
@@ -14,7 +14,7 @@
     "AppointmentId": 5,
     "HospitalRating": 5,
     "DoctorRating": 5,
-    "Desc": "Super",
+    "Comment": null,
     "RatingDate": "2022-05-20T12:58:26.3012039+02:00",
     "DoctorId": "5151515151515",
     "PatientId": "7778889994445"
@@ -24,7 +24,7 @@
     "AppointmentId": 14,
     "HospitalRating": 5,
     "DoctorRating": 5,
-    "Desc": "",
+    "Comment": null,
     "RatingDate": "2022-05-24T16:31:29.6556766+02:00",
     "DoctorId": "1231231231231",
     "PatientId": "7778889994445"
@@ -34,7 +34,7 @@
     "AppointmentId": 14,
     "HospitalRating": 5,
     "DoctorRating": 5,
-    "Desc": "suepr sjajno",
+    "Comment": null,
     "RatingDate": "2022-05-24T19:17:08.7583505+02:00",
     "DoctorId": "1231231231231",
     "PatientId": "7778889994445"
@@ -44,7 +44,7 @@
     "AppointmentId": 30,
     "HospitalRating": 5,
     "DoctorRating": 1,
-    "Desc": "super",
+    "Comment": null,
     "RatingDate": "2022-05-31T16:23:58.2025312+02:00",
     "DoctorId": "4444444444444",
     "PatientId": "7778889994445"
@@ -54,7 +54,7 @@
     "AppointmentId": 15,
     "HospitalRating": 5,
     "DoctorRating": 1,
-    "Desc": "Fenomenalno ",
+    "Comment": null,
     "RatingDate": "2022-05-31T23:03:51.711565+02:00",
     "DoctorId": "1231231231231",
     "PatientId": "7778889994445"
@@ -64,8 +64,28 @@
     "AppointmentId": 35,
     "HospitalRating": 5,
     "DoctorRating": 1,
-    "Desc": "sjajno",
+    "Comment": null,
     "RatingDate": "2022-06-03T13:57:40.5036406+02:00",
+    "DoctorId": "4444444444444",
+    "PatientId": "7778889994445"
+  },
+  {
+    "Id": 8,
+    "AppointmentId": 17,
+    "HospitalRating": 5,
+    "DoctorRating": 4,
+    "Comment": null,
+    "RatingDate": "2022-06-03T17:35:04.2114701+02:00",
+    "DoctorId": "1231231231231",
+    "PatientId": "7778889994445"
+  },
+  {
+    "Id": 9,
+    "AppointmentId": 20,
+    "HospitalRating": 5,
+    "DoctorRating": 1,
+    "Comment": "",
+    "RatingDate": "2022-06-08T18:18:20.5432249+02:00",
     "DoctorId": "4444444444444",
     "PatientId": "7778889994445"
   }
