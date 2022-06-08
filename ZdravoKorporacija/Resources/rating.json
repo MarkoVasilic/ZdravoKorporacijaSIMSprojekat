@@ -68,5 +68,15 @@
     "RatingDate": "2022-06-03T13:57:40.5036406+02:00",
     "DoctorId": "4444444444444",
     "PatientId": "7778889994445"
+  },
+  {
+    "Id": 8,
+    "AppointmentId": 17,
+    "HospitalRating": 5,
+    "DoctorRating": 4,
+    "Desc": "Vrhunski pregled, vrhunska i naocita doktorica, 2 sata smo diskutovali i pokazivali se jedno drugome!",
+    "RatingDate": "2022-06-03T17:35:04.2114701+02:00",
+    "DoctorId": "1231231231231",
+    "PatientId": "7778889994445"
   }
 ]
