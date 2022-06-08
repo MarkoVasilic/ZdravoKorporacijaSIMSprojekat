@@ -97,14 +97,18 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsceneRequestDetailsDtos = new ObservableCollection<AbsceneRequestDetailsDto>();
             foreach (var ar in absenceRequests)
             {
-                Doctor doctor = doctorController.GetOneDoctor(ar.DoctorJmbg);
-                String urgent = "";
-                if (ar.isUrgent)
-                    urgent = "Yes";
-                else
-                    urgent = "No";
-                AbsceneRequestDetailsDtos.Add(new AbsceneRequestDetailsDto(ar.Id, ar.DoctorJmbg, doctor.FirstName, doctor.LastName, doctor.SpecialtyType,
-                    ar.DateFrom, ar.DateTo, urgent, ar.Reason, ""));
+                if (ar.DateFrom > DateTime.Now)
+                {
+                    Doctor doctor = doctorController.GetOneDoctor(ar.DoctorJmbg);
+                    String urgent = "";
+                    if (ar.isUgent)
+                        urgent = "Yes";
+                    else
+                        urgent = "No";
+                    AbsceneRequestDetailsDtos.Add(new AbsceneRequestDetailsDto(ar.Id, ar.DoctorJmbg, doctor.FirstName,
+                        doctor.LastName, doctor.SpecialtyType,
+                        ar.DateFrom, ar.DateTo, urgent, ar.Reason, ""));
+                }
             }
         }
 

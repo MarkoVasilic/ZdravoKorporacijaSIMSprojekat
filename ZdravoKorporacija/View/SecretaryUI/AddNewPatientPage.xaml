@@ -72,9 +72,6 @@
                                         <RowDefinition />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
                                     <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBoxFirstName"/>
                                     <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Style="{StaticResource SecretaryTextBlockStyle}"/>
                                 </Grid>

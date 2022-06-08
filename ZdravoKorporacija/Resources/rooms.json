@@ -47,12 +47,5 @@
     "Description": "Surgery 2",
     "Type": 4,
     "typeStr": "SURGERY"
-  },
-  {
-    "Name": "spojena soba",
-    "Id": 23,
-    "Description": "moja spojena soba",
-    "Type": 2,
-    "typeStr": "CONFERENCE"
   }
 ]
