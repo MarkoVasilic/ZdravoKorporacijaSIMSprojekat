@@ -84,18 +84,6 @@
     "Response": null
   },
   {
-    "Id": 11,
-    "DoctorJmbg": "1231231231231",
-    "DoctorSpecialtyType": "Surgeon",
-    "DateFrom": "2022-06-20T00:00:00",
-    "DateTo": "2022-06-24T00:00:00",
-    "IntervalInDays": 4,
-    "Reason": "dfghjk",
-    "isUrgent": true,
-    "State": 0,
-    "Response": null
-  },
-  {
     "Id": 3,
     "DoctorJmbg": "1231231231231",
     "DoctorSpecialtyType": "Surgeon",
@@ -128,7 +116,19 @@
     "IntervalInDays": 8,
     "Reason": "dfghj",
     "isUrgent": true,
-    "State": 0,
-    "Response": null
+    "State": 2,
+    "Response": "a sta da radis"
+  },
+  {
+    "Id": 11,
+    "DoctorJmbg": "1231231231231",
+    "DoctorSpecialtyType": "Surgeon",
+    "DateFrom": "2022-06-20T00:00:00",
+    "DateTo": "2022-06-24T00:00:00",
+    "IntervalInDays": 4,
+    "Reason": "dfghjk",
+    "isUrgent": true,
+    "State": 1,
+    "Response": "moze"
   }
 ]
