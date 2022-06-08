@@ -161,5 +161,6 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
                 Rooms.Add(r);
             }
         }
+
     }
 }

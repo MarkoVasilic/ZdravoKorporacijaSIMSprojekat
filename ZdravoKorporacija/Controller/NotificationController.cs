@@ -15,14 +15,14 @@ namespace ZdravoKorporacija.Controller
             this.notificationService = Service;
         }
 
-        public List<Notification> GetAllNotifications()
+        public List<Notification> GetAll()
         {
-            return notificationService.GetAllNotifications();
+            return notificationService.GetAll();
         }
 
-        public List<Notification> GetAllFutureAppointmentsByPatient()
+        public List<Notification> GetAllByPatientJmbg()
         {
-            return notificationService.GetNotificationsByPatientJmbg(App.loggedUser.Jmbg);
+            return notificationService.GetAllByPatientJmbg(App.loggedUser.Jmbg);
         }
 
         public List<Notification> GetAllByUserJmbg(String jmbg)
@@ -30,9 +30,9 @@ namespace ZdravoKorporacija.Controller
             return notificationService.GetAllByUserJmbg(jmbg);
         }
 
-        public void DeleteNotification(int notificationId)
+        public void Delete(int notificationId)
         {
-            notificationService.DeleteNotification(notificationId);
+            notificationService.Delete(notificationId);
         }
 
         public Notification GetOneById(int notificationId)
@@ -55,9 +55,9 @@ namespace ZdravoKorporacija.Controller
             notificationService.CreateDoctorNotificationForEmergency(doctorJmbg, patientFullName, oldAppointmentTime, newAppointmentTime, emergencyTime, roomName);
         }
 
-        public Notification CreateNotification(string title, string description, DateTime startTime, string receiverJmbg, bool seen)
+        public Notification Create(string title, string description, DateTime startTime, string receiverJmbg, bool seen)
         {
-            return notificationService.CreateNotification(title, description, startTime, receiverJmbg, seen);
+            return notificationService.Create(title, description, startTime, receiverJmbg, seen);
 
         }
         public void DeleteAll(String patientId)

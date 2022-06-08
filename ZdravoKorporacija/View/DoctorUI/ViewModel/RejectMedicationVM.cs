@@ -54,7 +54,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         {
             medicationController.Reject(Id);
             String name = medicationController.GetOneById(Id).Name;
-            notificationController.CreateNotification("Rejection of " + name + " medication", Response, DateTime.Now, "3434343434343", false);
+            notificationController.Create("Rejection of " + name + " medication", Response, DateTime.Now, "3434343434343", false);
             DoctorWindowVM.NavigationService.Navigate(new VerificationsPage());
 
         }

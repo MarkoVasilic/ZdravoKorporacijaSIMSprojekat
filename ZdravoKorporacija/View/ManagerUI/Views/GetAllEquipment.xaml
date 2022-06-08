@@ -107,8 +107,8 @@
                     <TextBlock Text="Filtriraj po vrsti:" FontSize="20" ></TextBlock>
                     <ComboBox Name="EquipmentTypeComboBox"  Margin="69 0 0 0"
                              SelectedValuePath="Content" Grid.Row="1" Width="250" Height="30" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >
-                        <ComboBoxItem>Statička</ComboBoxItem>
-                        <ComboBoxItem>Dinamička</ComboBoxItem>
+                        <ComboBoxItem>Trajna</ComboBoxItem>
+                        <ComboBoxItem>Potrošna</ComboBoxItem>
                     </ComboBox>
                     <Button Content="Filtriraj" Margin="45 0 0 0"  Style="{StaticResource ManagerHelpOk}" Click ="FilteringButtonClick"></Button>
                 </StackPanel>

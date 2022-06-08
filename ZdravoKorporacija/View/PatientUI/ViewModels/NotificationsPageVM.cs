@@ -55,7 +55,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
 
         private void DeleteExecute(object parameter)
         {
-            NotificationService.DeleteNotification((int)parameter);
+            NotificationService.Delete((int)parameter);
             Notifications.Remove(Notifications.Where(notification => notification.Id == (int)parameter).Single());
             MessageBox.Show("Notifikacija uspješno obrisana! \n ID: " + parameter, "USPJEŠNO!", MessageBoxButton.OK, MessageBoxImage.None);
         }

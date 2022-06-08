@@ -98,11 +98,11 @@ namespace ZdravoKorporacija.View.Equipment
         {
             if (EquipmentTypeComboBox.SelectedIndex == 0)
             {
-                equipmentType = "STATIC";
+                equipmentType = "TRAJNA";
             }
             else if (EquipmentTypeComboBox.SelectedIndex == 1)
             {
-                equipmentType = "DYNAMIC";
+                equipmentType = "POTROŠNA";
             }
 
 

@@ -114,7 +114,7 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
         {
             DateTime temp = new DateTime(dateTime.Year,dateTime.Month,dateTime.Day,hours,minutes,dateTime.Second);
             dateTime = temp;
-            NotificationService.CreateNotification(title,description,dateTime,App.loggedUser.Jmbg,false);
+            NotificationService.Create(title,description,dateTime,App.loggedUser.Jmbg,false);
             MessageBox.Show("Uspješno kreirana notifikacija! \n  "+dateTime, "USPJEŠNO!", MessageBoxButton.OK, MessageBoxImage.None);
             PatientWindowVM.NavigationService.Navigate(new NotificationsPage());
 

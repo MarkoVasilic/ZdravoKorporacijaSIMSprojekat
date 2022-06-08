@@ -158,11 +158,11 @@ namespace ZdravoKorporacija.Service
 
             if (equipment.IsStatic == true)
             {
-                equipmentDTO.IsStatic = "STATIC";
+                equipmentDTO.IsStatic = "TRAJNA";
             }
             else
             {
-                equipmentDTO.IsStatic = "DYNAMIC";
+                equipmentDTO.IsStatic = "POTROŠNA";
             }
 
             if (equipment.RoomId == null)
