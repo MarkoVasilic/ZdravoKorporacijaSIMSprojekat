@@ -1902,5 +1902,29 @@
     "StartTime": "2022-06-08T12:37:14.996388+02:00",
     "userJmbg": "1515151515151",
     "Seen": false
+  },
+  {
+    "Id": 235,
+    "Title": "Notifikacija",
+    "Description": "Napravi Notifkaciju 1",
+    "StartTime": "2022-06-08T14:59:19",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 236,
+    "Title": "Izmjenjen Termin",
+    "Description": "IZmjenjen termin notifikacija",
+    "StartTime": "2022-06-08T14:59:37",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 237,
+    "Title": "Notifikacija 3",
+    "Description": "Evo jos jedna notifikacija",
+    "StartTime": "2022-06-08T14:59:50",
+    "userJmbg": "7778889994445",
+    "Seen": false
   }
 ]
