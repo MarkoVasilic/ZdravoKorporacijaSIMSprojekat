@@ -2,62 +2,6 @@
   {
     "IsGuest": false,
     "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "BloodTypeEnum": 1,
-    "trollCounter": 0,
-    "FirstName": "Milos",
-    "LastName": "Milosevic",
-    "Username": "mikimilane",
-    "Password": "mackacka",
-    "Jmbg": "7458963215963",
-    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
-    "Gender": 1,
-    "Email": "milos@milos.com",
-    "PhoneNumber": "456789",
-    "Address": "neka adresa 12"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [],
-    "BloodTypeEnum": 4,
-    "trollCounter": 0,
-    "FirstName": "Jovan",
-    "LastName": "Konjevic",
-    "Username": "jovan",
-    "Password": "jovan",
-    "Jmbg": "1123456789111",
-    "DateOfBirth": "1999-03-28T00:00:00",
-    "Gender": 2,
-    "Email": "cdsa@cdds.coc",
-    "PhoneNumber": "212",
-    "Address": "Pa Pa Pavla 15, Beograd"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "BloodTypeEnum": 6,
-    "trollCounter": 0,
-    "FirstName": "Lazar",
-    "LastName": "Lazarobi",
-    "Username": "lakil",
-    "Password": "lazarlazar",
-    "Jmbg": "7536984215123",
-    "DateOfBirth": "2002-03-28T00:00:00",
-    "Gender": 1,
-    "Email": "dcas@cds.com",
-    "PhoneNumber": "3421",
-    "Address": "Beogradska 18, Novi Sad"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
       "cetvrti alergen",
       "peti alergen",
       "sesti alergen"
@@ -96,22 +40,6 @@
     "Address": "Stefana Stefanovica 18, Rijeka"
   },
   {
-    "IsGuest": true,
-    "Allergens": [],
-    "BloodTypeEnum": 0,
-    "trollCounter": 0,
-    "FirstName": "Neko",
-    "LastName": "Nekovic",
-    "Username": "Neko",
-    "Password": "sifra123",
-    "Jmbg": "7777777777777",
-    "DateOfBirth": null,
-    "Gender": 0,
-    "Email": "",
-    "PhoneNumber": "",
-    "Address": ""
-  },
-  {
     "IsGuest": false,
     "Allergens": [
       "prvi alergen",
@@ -130,5 +58,45 @@
     "Email": "pero@gmail.com",
     "PhoneNumber": "0638162900",
     "Address": "Pere Jecmenica 44"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 1,
+    "trollCounter": 0,
+    "FirstName": "Milos",
+    "LastName": "Milosevic",
+    "Username": "mikimilane",
+    "Password": "mackacka",
+    "Jmbg": "7458963215963",
+    "DateOfBirth": "2003-04-16T16:12:17.7395603+02:00",
+    "Gender": 1,
+    "Email": "milos@milos.com",
+    "PhoneNumber": "456789",
+    "Address": "neka adresa 12"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 6,
+    "trollCounter": 0,
+    "FirstName": "Lazar",
+    "LastName": "Lazarobi",
+    "Username": "lakil",
+    "Password": "lazarlazar",
+    "Jmbg": "7536984215123",
+    "DateOfBirth": "2002-03-28T00:00:00",
+    "Gender": 1,
+    "Email": "dcas@cds.com",
+    "PhoneNumber": "3421",
+    "Address": "Beogradska 18, Novi Sad"
   }
 ]

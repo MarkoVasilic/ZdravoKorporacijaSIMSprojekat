@@ -1830,5 +1830,85 @@
     "StartTime": "2022-06-07T21:45:12.2029229+02:00",
     "userJmbg": "3434343434343",
     "Seen": false
+  },
+  {
+    "Id": 103,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 9.6.2022. 10:00:00 in room Surg 1",
+    "StartTime": "2022-06-05T21:19:17.1000897+02:00",
+    "userJmbg": "3434343434343",
+    "Seen": false
+  },
+  {
+    "Id": 104,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 9.6.2022. 10:00:00 in room Surg 1",
+    "StartTime": "2022-06-05T21:19:17.1076542+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 105,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 9.6.2022. 10:00:00 in room Surg 1",
+    "StartTime": "2022-06-05T21:19:17.1137769+02:00",
+    "userJmbg": "1515151515151",
+    "Seen": false
+  },
+  {
+    "Id": 106,
+    "Title": "Absence request",
+    "Description": "Your absence request has been declined!\nReason: cdascds",
+    "StartTime": "2022-06-05T21:21:59.0641628+02:00",
+    "userJmbg": "4444444444444",
+    "Seen": false
+  },
+  {
+    "Id": 107,
+    "Title": "Absence request",
+    "Description": "Your absence request has been accepted!",
+    "StartTime": "2022-06-05T21:22:01.5763313+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 230,
+    "Title": "Absence request",
+    "Description": "Your absence request has been declined!\nReason: jbg brte moj",
+    "StartTime": "2022-06-08T12:35:31.2363573+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 231,
+    "Title": "Absence request",
+    "Description": "Your absence request has been accepted!",
+    "StartTime": "2022-06-08T12:35:38.9099128+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 232,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 18.6.2022. 08:15:00 in room Exam 3",
+    "StartTime": "2022-06-08T12:37:14.9800609+02:00",
+    "userJmbg": "4444444444444",
+    "Seen": false
+  },
+  {
+    "Id": 233,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 18.6.2022. 08:15:00 in room Exam 3",
+    "StartTime": "2022-06-08T12:37:14.9892059+02:00",
+    "userJmbg": "5555555555555",
+    "Seen": false
+  },
+  {
+    "Id": 234,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 18.6.2022. 08:15:00 in room Exam 3",
+    "StartTime": "2022-06-08T12:37:14.996388+02:00",
+    "userJmbg": "1515151515151",
+    "Seen": false
   }
 ]

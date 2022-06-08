@@ -34,9 +34,21 @@ namespace ZdravoKorporacija.View.DoctorUI
             InitializeComponent();
             this.Id = id;
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
-            ScheduleService scheduleService = new ScheduleService();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            RoomRepository roomRepository = new RoomRepository();
+            BasicRenovationRepository basicRenovation = new BasicRenovationRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
-            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository);
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovation, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository, appointmentRepository);
             absenceRequestController = new AbsenceRequestController(absenceRequestService);
             this.DataContext = this;
             absenceRequest = absenceRequestController.GetOneById(Id);

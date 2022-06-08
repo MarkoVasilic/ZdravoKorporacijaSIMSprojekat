@@ -12,26 +12,22 @@ namespace ZdravoKorporacija.Service
 {
     public class AbsenceRequestService
     {
-        private readonly AbsenceRequestRepository AbsenceRequestRepository;
-        private readonly ScheduleService ScheduleService;
-        private readonly IDoctorRepository DoctorRepository;
+        private readonly AbsenceRequestRepository absenceRequestRepository;
+        private readonly ScheduleService scheduleService;
+        private readonly IDoctorRepository doctorRepository;
         private readonly IAppointmentRepository AppointmentRepository;
 
         public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, ScheduleService scheduleService, IDoctorRepository doctorRepository, IAppointmentRepository appointmentRepository)
         {
-            AbsenceRequestRepository = absenceRequestRepository;
-            this.ScheduleService = scheduleService;
-            DoctorRepository = doctorRepository;
-            AppointmentRepository = appointmentRepository;
-        }
-
-        public AbsenceRequestService()
-        {
+            this.absenceRequestRepository = absenceRequestRepository;
+            this.scheduleService = scheduleService;
+            this.doctorRepository = doctorRepository;
+            this.AppointmentRepository = appointmentRepository;
         }
 
         public AbsenceRequest GetOneById(int id)
         {
-            return AbsenceRequestRepository.FindOneById(id);
+            return absenceRequestRepository.FindOneById(id);
         }
 
         public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
@@ -39,7 +35,7 @@ namespace ZdravoKorporacija.Service
         {
             List<String> doctorJmbgs = new List<String>();
             doctorJmbgs.Add(doctorJmbg);
-            ScheduleService.ValidateInputParametersForGetPossibleAppointments("*", doctorJmbgs, -1, dateFrom, dateUntil);
+            scheduleService.ValidateInputParametersForGetPossibleAppointments("*", doctorJmbgs, -1, dateFrom, dateUntil);
             if ((DateTime.Today.AddDays(2) > dateFrom))
                 throw new Exception("Chosen date must be al least 2 days earlier!");
             dateFrom = dateFrom.Date;
@@ -113,12 +109,12 @@ namespace ZdravoKorporacija.Service
 
         public List<AbsenceRequest> GetAllByDoctorJmbg(String jmbg)
         {
-            return AbsenceRequestRepository.FindAllByDoctorJmbg(jmbg);
+            return absenceRequestRepository.FindAllByDoctorJmbg(jmbg);
         }
 
         public List<AbsenceRequest> GetOnHoldAbsceneRequests()
         {
-            List<AbsenceRequest> absenceRequests = AbsenceRequestRepository.FindAll();
+            List<AbsenceRequest> absenceRequests = absenceRequestRepository.FindAll();
             List<AbsenceRequest> absenceRequestsOnHold = new List<AbsenceRequest>();
             foreach (var absenceRequest in absenceRequests)
             {
@@ -129,13 +125,14 @@ namespace ZdravoKorporacija.Service
             return absenceRequestsOnHold;
         }
 
-        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState)
+        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
         {
-            AbsenceRequest absenceRequestToChangeState = AbsenceRequestRepository.FindOneById(absceneRequestId);
+            AbsenceRequest absenceRequestToChangeState = absenceRequestRepository.FindOneById(absceneRequestId);
             if (absenceRequestToChangeState != null)
             {
                 absenceRequestToChangeState.State = absenceRequestState;
-                AbsenceRequestRepository.UpdateAbsenceRequest(absenceRequestToChangeState);
+                absenceRequestToChangeState.Response = response;
+                absenceRequestRepository.UpdateAbsenceRequest(absenceRequestToChangeState);
             }
             else
             {
@@ -146,7 +143,7 @@ namespace ZdravoKorporacija.Service
         public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
         {
             String doctorJmbg = "1231231231231";
-            String doctorSpecialtyType = DoctorRepository.FindOneByJmbg(doctorJmbg).SpecialtyType;
+            String doctorSpecialtyType = doctorRepository.FindOneByJmbg(doctorJmbg).SpecialtyType;
             int interval = (int)(dateUntil - dateFrom).TotalDays;
             PossibleAppointmentsDTO possibleAppointmentsDTO = GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, interval);
 
@@ -172,14 +169,14 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             AbsenceRequest absenceRequest = new AbsenceRequest(id, doctorJmbg, doctorSpecialtyType, dateFrom, dateUntil, interval, reason, isUrgent, AbsenceRequestState.ON_HOLD, null);
-            AbsenceRequestRepository.SaveAbsenceRequest(absenceRequest);
+            absenceRequestRepository.SaveAbsenceRequest(absenceRequest);
         }
 
         private void ValidateInputParameters(DateTime dateFrom, string doctorSpecialtyType)
         {
             if ((dateFrom - DateTime.Today).TotalDays <= 2)
                 throw new Exception("Chosen date must be al least 2 days erlier!");
-            else if (AbsenceRequestRepository.FindAllByDoctorSpecialtyType(doctorSpecialtyType).Count >= 2)
+            else if (absenceRequestRepository.FindAllByDoctorSpecialtyType(doctorSpecialtyType).Count >= 2)
                 throw new Exception("More than one doctor your specialty already requested absence!");
         }
 
@@ -187,14 +184,14 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             AbsenceRequest absenceRequest = new AbsenceRequest(id, doctorJmbg, doctorSpecialtyType, dateFrom, dateUntil, interval, reason, isUrgent, AbsenceRequestState.ON_HOLD, null);
-            AbsenceRequestRepository.SaveAbsenceRequest(absenceRequest);
+            absenceRequestRepository.SaveAbsenceRequest(absenceRequest);
         }
 
         private int GenerateNewId()
         {
             try
             {
-                List<AbsenceRequest> absenceRequests = AbsenceRequestRepository.FindAll();
+                List<AbsenceRequest> absenceRequests = absenceRequestRepository.FindAll();
                 int currentMax = absenceRequests.Max(obj => obj.Id);
                 return currentMax + 1;
             }

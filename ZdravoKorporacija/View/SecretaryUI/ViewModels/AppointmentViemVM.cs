@@ -233,6 +233,8 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void doctorsListToDoctorList(List<Doctor> doctors)
         {
             Doctors = new ObservableCollection<Doctor>();
+            Doctor doctor = new Doctor(false, "", -1, "- - -", "", "", "", "", new DateTime(), Gender.NONE, "", "", "");
+            Doctors.Add(doctor);
             foreach (var d in doctors)
             {
                 d.FirstName = d.FirstName + " " + d.LastName;
@@ -242,6 +244,8 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
         private void roomsListToRoomList(List<Room> rooms)
         {
             Rooms = new ObservableCollection<Room>();
+            Room room = new Room("- - -", -1, "", RoomType.NONE);
+            Rooms.Add(room);
             foreach (var r in rooms)
             {
                 Rooms.Add(r);
@@ -289,12 +293,12 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                     if (ap.PatientJmbg != PatientJmbg)
                         shouldAdd = false;
                 }
-                if (SelectedDoctor != null)
+                if (SelectedDoctor != null && SelectedDoctor.Jmbg.Length > 1)
                 {
                     if (ap.DoctorJmbg != SelectedDoctor.Jmbg)
                         shouldAdd = false;
                 }
-                if (SelectedRoom != null)
+                if (SelectedRoom != null && SelectedRoom.Id > 0)
                 {
                     if (ap.RoomId != SelectedRoom.Id)
                         shouldAdd = false;

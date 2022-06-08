@@ -12,18 +12,6 @@
     "Response": null
   },
   {
-    "Id": 3,
-    "DoctorJmbg": "1231231231231",
-    "DoctorSpecialtyType": "Surgeon",
-    "DateFrom": "2022-08-16T00:00:00",
-    "DateTo": "2022-08-25T00:00:00",
-    "IntervalInDays": 9,
-    "Reason": "sdfghjkl;",
-    "isUrgent": false,
-    "State": 0,
-    "Response": null
-  },
-  {
     "Id": 4,
     "DoctorJmbg": "1231231231231",
     "DoctorSpecialtyType": "Surgeon",
@@ -31,18 +19,6 @@
     "DateTo": "2022-06-23T00:00:00",
     "IntervalInDays": 15,
     "Reason": "sdfghjkl",
-    "isUrgent": true,
-    "State": 0,
-    "Response": null
-  },
-  {
-    "Id": 5,
-    "DoctorJmbg": "1231231231231",
-    "DoctorSpecialtyType": "Surgeon",
-    "DateFrom": "2022-06-13T00:00:00",
-    "DateTo": "2022-06-22T00:00:00",
-    "IntervalInDays": 9,
-    "Reason": "fdghjkl",
     "isUrgent": true,
     "State": 0,
     "Response": null
@@ -115,6 +91,42 @@
     "DateTo": "2022-06-24T00:00:00",
     "IntervalInDays": 4,
     "Reason": "dfghjk",
+    "isUrgent": true,
+    "State": 0,
+    "Response": null
+  },
+  {
+    "Id": 3,
+    "DoctorJmbg": "1231231231231",
+    "DoctorSpecialtyType": "Surgeon",
+    "DateFrom": "2022-08-16T00:00:00",
+    "DateTo": "2022-08-25T00:00:00",
+    "IntervalInDays": 9,
+    "Reason": "sdfghjkl;",
+    "isUrgent": false,
+    "State": 2,
+    "Response": "jbg brte moj"
+  },
+  {
+    "Id": 5,
+    "DoctorJmbg": "1231231231231",
+    "DoctorSpecialtyType": "Surgeon",
+    "DateFrom": "2022-06-13T00:00:00",
+    "DateTo": "2022-06-22T00:00:00",
+    "IntervalInDays": 9,
+    "Reason": "fdghjkl",
+    "isUrgent": true,
+    "State": 1,
+    "Response": "a sta da radis ali moze"
+  },
+  {
+    "Id": 12,
+    "DoctorJmbg": "1231231231231",
+    "DoctorSpecialtyType": "Surgeon",
+    "DateFrom": "2022-07-01T00:00:00",
+    "DateTo": "2022-07-09T00:00:00",
+    "IntervalInDays": 8,
+    "Reason": "dfghj",
     "isUrgent": true,
     "State": 0,
     "Response": null

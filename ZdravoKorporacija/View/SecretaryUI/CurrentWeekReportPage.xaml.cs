@@ -14,6 +14,7 @@ using ZdravoKorporacija.Service;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.View.SecretaryUI.ViewModels;
 
 namespace ZdravoKorporacija.View.SecretaryUI
 {
@@ -98,6 +99,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
         }
         public CurrentWeekReportPage()
         {
+            SecretaryWindowVM.setWindowTitle("Weekly report");
             InitializeComponent();
             this.DataContext = this;
             PatientRepository patientRepository = new PatientRepository();

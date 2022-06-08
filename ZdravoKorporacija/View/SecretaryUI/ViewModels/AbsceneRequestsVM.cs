@@ -58,7 +58,6 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             DoctorRepository doctorRepository = new DoctorRepository();
             DoctorService doctorService = new DoctorService(doctorRepository);
             doctorController = new DoctorController(doctorService);
-            ScheduleService scheduleService = new ScheduleService();
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
             ManagerRepository managerRepository = new ManagerRepository();
             RoomRepository roomRepository = new RoomRepository();
@@ -97,14 +96,18 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsceneRequestDetailsDtos = new ObservableCollection<AbsceneRequestDetailsDto>();
             foreach (var ar in absenceRequests)
             {
-                Doctor doctor = doctorController.GetOneDoctor(ar.DoctorJmbg);
-                String urgent = "";
-                if (ar.isUrgent)
-                    urgent = "Yes";
-                else
-                    urgent = "No";
-                AbsceneRequestDetailsDtos.Add(new AbsceneRequestDetailsDto(ar.Id, ar.DoctorJmbg, doctor.FirstName, doctor.LastName, doctor.SpecialtyType,
-                    ar.DateFrom, ar.DateTo, urgent, ar.Reason, ""));
+                if (ar.DateFrom > DateTime.Now)
+                {
+                    Doctor doctor = doctorController.GetOneDoctor(ar.DoctorJmbg);
+                    String urgent = "";
+                    if (ar.isUrgent)
+                        urgent = "Yes";
+                    else
+                        urgent = "No";
+                    AbsceneRequestDetailsDtos.Add(new AbsceneRequestDetailsDto(ar.Id, ar.DoctorJmbg, doctor.FirstName,
+                        doctor.LastName, doctor.SpecialtyType,
+                        ar.DateFrom, ar.DateTo, urgent, ar.Reason, ""));
+                }
             }
         }
 
@@ -113,7 +116,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsceneRequestDetailsDto absceneRequestDetailsDto = parameter as AbsceneRequestDetailsDto;
             try
             {
-                absenceRequestController.ChangeAbsceneRequestState(absceneRequestDetailsDto.Id, AbsenceRequestState.ACCEPTED);
+                absenceRequestController.ChangeAbsceneRequestState(absceneRequestDetailsDto.Id, AbsenceRequestState.ACCEPTED, absceneRequestDetailsDto.ReturnMessage);
                 notificationController.CreateUserNotification("Absence request", "Your absence request has been accepted!",
                     absceneRequestDetailsDto.DoctorJmbg);
                 absenceRequestToDto(absenceRequestController.GetOnHoldAbsceneRequests());
@@ -130,7 +133,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsceneRequestDetailsDto absceneRequestDetailsDto = parameter as AbsceneRequestDetailsDto;
             try
             {
-                absenceRequestController.ChangeAbsceneRequestState(absceneRequestDetailsDto.Id, AbsenceRequestState.REJECTED);
+                absenceRequestController.ChangeAbsceneRequestState(absceneRequestDetailsDto.Id, AbsenceRequestState.REJECTED, absceneRequestDetailsDto.ReturnMessage);
                 notificationController.CreateUserNotification("Absence request", "Your absence request has been declined!\nReason: " + absceneRequestDetailsDto.ReturnMessage,
                     absceneRequestDetailsDto.DoctorJmbg);
                 absenceRequestToDto(absenceRequestController.GetOnHoldAbsceneRequests());
