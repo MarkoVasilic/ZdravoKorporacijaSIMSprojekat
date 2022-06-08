@@ -38,14 +38,12 @@ namespace Service
         {
             if (SecretaryRepository.FindOneByJmbg(jmbg) != null)
                 throw new Exception("Secretary with that jmbg already exists!");
-            else if (SecretaryRepository.FindOneByUsername(username) != null)
+            if (SecretaryRepository.FindOneByUsername(username) != null)
                 throw new Exception("Secretary with that username already exists!");
-            else
-            {
-                Secretary newSecretary = new Secretary(firstName, lastName, username, password,
-                    jmbg, dateOfBirth, gender, email, telephone, address);
-                SecretaryRepository.SaveSecretary(newSecretary);
-            }
+
+            Secretary newSecretary = new Secretary(firstName, lastName, username, password,
+                jmbg, dateOfBirth, gender, email, telephone, address);
+            SecretaryRepository.SaveSecretary(newSecretary);
         }
 
         public void DeleteSecretary(string jmbg)
@@ -53,11 +51,8 @@ namespace Service
             if (SecretaryRepository.FindOneByJmbg(jmbg) == null)
             {
                 throw new Exception("Secretary with that jmbg doesn't exist!");
-            }
-            else
-            {
-                SecretaryRepository.RemoveSecretary(jmbg);
-            }
+            } 
+            SecretaryRepository.RemoveSecretary(jmbg);
         }
     }
 }

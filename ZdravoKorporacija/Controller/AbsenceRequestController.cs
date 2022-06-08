@@ -35,9 +35,9 @@ namespace ZdravoKorporacija.Controller
             return absenceRequestService.GetOnHoldAbsceneRequests();
         }
 
-        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState)
+        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
         {
-            absenceRequestService.ChangeAbsceneRequestState(absceneRequestId, absenceRequestState);
+            absenceRequestService.ChangeAbsceneRequestState(absceneRequestId, absenceRequestState, response);
         }
         public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)

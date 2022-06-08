@@ -21,6 +21,7 @@ using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.View.PatientUI.DTO;
 
 namespace ZdravoKorporacija.View.PatientUI
 {

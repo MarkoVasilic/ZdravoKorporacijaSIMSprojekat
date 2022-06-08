@@ -11,21 +11,22 @@ namespace ZdravoKorporacija.Service
 {
     public class AbsenceRequestService
     {
-        private readonly AbsenceRequestRepository AbsenceRequestRepository;
+        private readonly AbsenceRequestRepository absenceRequestRepository;
         private readonly ScheduleService scheduleService;
-        private readonly DoctorRepository DoctorRepository;
+        private readonly DoctorRepository doctorRepository;
         private readonly AppointmentRepository AppointmentRepository;
 
         public AbsenceRequestService(AbsenceRequestRepository absenceRequestRepository, ScheduleService scheduleService, DoctorRepository doctorRepository, AppointmentRepository appointmentRepository)
         {
-            AbsenceRequestRepository = absenceRequestRepository;
+            this.absenceRequestRepository = absenceRequestRepository;
             this.scheduleService = scheduleService;
-            DoctorRepository = doctorRepository;
-            AppointmentRepository = appointmentRepository;
+            this.doctorRepository = doctorRepository;
+            this.AppointmentRepository = appointmentRepository;
         }
 
-        public AbsenceRequestService()
+        public AbsenceRequest GetOneById(int id)
         {
+            return absenceRequestRepository.FindOneById(id);
         }
 
         public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
@@ -123,12 +124,13 @@ namespace ZdravoKorporacija.Service
             return absenceRequestsOnHold;
         }
 
-        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState)
+        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
         {
             AbsenceRequest absenceRequestToChangeState = absenceRequestRepository.FindOneById(absceneRequestId);
             if (absenceRequestToChangeState != null)
             {
                 absenceRequestToChangeState.State = absenceRequestState;
+                absenceRequestToChangeState.Response = response;
                 absenceRequestRepository.UpdateAbsenceRequest(absenceRequestToChangeState);
             }
             else
