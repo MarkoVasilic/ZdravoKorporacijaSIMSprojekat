@@ -12,5 +12,12 @@
     "StartTime": "2022-06-01T09:48:00",
     "Duration": 78,
     "Description": "fklndl"
+  },
+  {
+    "Id": 3,
+    "RoomId": 13,
+    "StartTime": "2022-06-10T05:00:00",
+    "Duration": 30,
+    "Description": "krecenje"
   }
 ]

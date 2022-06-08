@@ -65,16 +65,8 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;
             PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
-            try
-            {
-                PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration));
-            }
-            catch (Exception ex) {
 
-                MessageBox.Show(ex.Message, "Greška");
-                //kako da predjem na pocetnu sad
-            
-            }
+            getAppointments(roomId, dateFrom, dateUntil, duration);
 
             setIndexesOfPossibleAppointments();
             descriptionForRenovation = description;
@@ -82,6 +74,22 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             basicRenovationController = new BasicRenovationController(basicRenovationService);
             renovationRoomId = roomId;
             durationToSend = duration;
+        }
+
+
+        private void getAppointments(int roomId, DateTime dateFrom, DateTime dateUntil, int duration)
+        {
+            try
+            {
+                PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration));
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Greška");
+                //NavigationService.Navigate(new ChooseRenovationType());
+
+            }
         }
 
         private void setIndexesOfPossibleAppointments()
