@@ -1,16 +1,5 @@
 [
   {
-    "Id": 4,
-    "Name": "Aspirin",
-    "Ingredients": [
-      "sastojak1",
-      "sastojak2",
-      "sastojak3"
-    ],
-    "Status": 1,
-    "Alternative": "Efedrin"
-  },
-  {
     "Id": 2,
     "Name": "Paracetamol",
     "Ingredients": [
@@ -45,12 +34,32 @@
   },
   {
     "Id": 4,
-    "Name": "Panklav",
+    "Name": "Aspirin",
     "Ingredients": [
-      "neki sastojak1",
-      "neki sastojak2"
+      "sastojak1",
+      "sastojak2",
+      "sastojak3"
     ],
     "Status": 2,
-    "Alternative": "Febricet"
+    "Alternative": "Efedrin"
+  },
+  {
+    "Id": 5,
+    "Name": "Buscopan",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2"
+    ],
+    "Status": 1,
+    "Alternative": "Brufen"
+  },
+  {
+    "Id": 6,
+    "Name": "Amoxicillin",
+    "Ingredients": [
+      "penicillin"
+    ],
+    "Status": 1,
+    "Alternative": "ampicillin"
   }
 ]
