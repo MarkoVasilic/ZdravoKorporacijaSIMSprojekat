@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using Repository;
 using Service;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
 
@@ -25,17 +26,28 @@ namespace ZdravoKorporacija.View.DoctorUI
         {
             InitializeComponent();
             DoctorWindowVM.setWindowTitle("Appointment Schedule");
-            /*AppointmentRepository appointmentRepository = new AppointmentRepository();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             PatientRepository patientRepository = new PatientRepository();
             RoomRepository roomRepository = new RoomRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();*/
-            this.DataContext = doctorWindowVM;
-            //this.DataContext = this;
-            //appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
-            //appointments = new ObservableCollection<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO(doctorJmbg));
+            MeetingRepository meetingRepository = new MeetingRepository();
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
+            //this.DataContext = doctorWindowVM;
+            this.DataContext = this;
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
+            appointments = new ObservableCollection<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO(App.loggedUser.Jmbg));
         }
 
 

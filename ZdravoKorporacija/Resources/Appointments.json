@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "StartTime": "2022-06-13T16:30:00",
+    "Duration": 240,
+    "Id": 1,
+    "PatientJmbg": "1111111111111",
+    "DoctorJmbg": "6666666666666",
+    "RoomId": 11
+  },
+  {
+    "StartTime": "2022-06-15T05:45:00",
+    "Duration": 180,
+    "Id": 2,
+    "PatientJmbg": "1111111111111",
+    "DoctorJmbg": "1231231231231",
+    "RoomId": 14
+  }
+]

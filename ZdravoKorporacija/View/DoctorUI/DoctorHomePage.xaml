@@ -20,7 +20,7 @@
                 <DataGridTemplateColumn Header="Medical Record" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="ViewMedicalRecordButton" Content="VIEW" HorizontalContentAlignment="Center" Click="ViewMedicalRecordButton_OnClick"  CommandParameter="{Binding Jmbg}" TextBlock.FontSize="24"></Button>
+                            <Button x:Name="ViewMedicalRecordButton" Content="VIEW" HorizontalContentAlignment="Center" Click="ViewMedicalRecordButton_OnClick"  CommandParameter="{Binding PatientJmbg}" TextBlock.FontSize="24"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

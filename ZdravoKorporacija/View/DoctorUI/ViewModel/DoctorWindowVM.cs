@@ -17,8 +17,8 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         public static DoctorHomePage DoctorHomePage;
         public static MedicalRecords medicalRecords;
         public static NavigationService? NavigationService;
-       // public AppointmentController appointmentController;
-       // private ObservableCollection<AppointmentDTO> appointments { get; set; }
+        public AppointmentController appointmentController;
+        private ObservableCollection<AppointmentDTO> appointments { get; set; }
 
         public ICommand HomeCommand { get; set; }   //Appointments
         public ICommand PatientsCommand { get; set; }
@@ -47,12 +47,12 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             AbsenceRequestsCommand = new RelayCommand(viewAbsenceRequestsExecute);
             VerificationsCommand = new RelayCommand(verificationsExecute);
             NotificationsCommand = new RelayCommand(notificationsExecute);
-            /*AppointmentRepository appointmentRepository = new AppointmentRepository();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             PatientRepository patientRepository = new PatientRepository();
             RoomRepository roomRepository = new RoomRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService();
+           /* ScheduleService scheduleService = new ScheduleService();
             EmergencyService emergencyService = new EmergencyService();
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             appointments = new ObservableCollection<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231"));*/
