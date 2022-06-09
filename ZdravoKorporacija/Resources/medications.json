@@ -33,14 +33,24 @@
   },
   {
     "Id": 3,
-    "Name": "lek za testiranje",
+    "Name": "Xyzal",
     "Ingredients": [
       "sastojak1",
       "sastojak2",
       "sastojak3",
-      "sastojak5"
+      "sastojak4"
     ],
     "Status": 2,
-    "Alternative": "drugi lek za testiranje"
+    "Alternative": "Aerius"
+  },
+  {
+    "Id": 4,
+    "Name": "Panklav",
+    "Ingredients": [
+      "neki sastojak1",
+      "neki sastojak2"
+    ],
+    "Status": 2,
+    "Alternative": "Febricet"
   }
 ]
