@@ -46,26 +46,6 @@
       "drugi alergen",
       "treci alergen"
     ],
-    "BloodTypeEnum": 3,
-    "trollCounter": 0,
-    "FirstName": "Jovan",
-    "LastName": "Konjevic",
-    "Username": "joco",
-    "Password": "jocojoco",
-    "Jmbg": "7778889994445",
-    "DateOfBirth": "1931-02-01T00:00:00",
-    "Gender": 1,
-    "Email": "pero@yahoo.com",
-    "PhoneNumber": "0638162900",
-    "Address": "Pere Jecmenica 44"
-  },
-  {
-    "IsGuest": false,
-    "Allergens": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
     "BloodTypeEnum": 1,
     "trollCounter": 0,
     "FirstName": "Milos",
@@ -98,5 +78,25 @@
     "Email": "dcas@cds.com",
     "PhoneNumber": "3421",
     "Address": "Beogradska 18, Novi Sad"
+  },
+  {
+    "IsGuest": false,
+    "Allergens": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "BloodTypeEnum": 3,
+    "trollCounter": 0,
+    "FirstName": "Jovan",
+    "LastName": "Konjevic",
+    "Username": "joco",
+    "Password": "jocojoco",
+    "Jmbg": "7778889994445",
+    "DateOfBirth": "2000-08-03T00:00:00",
+    "Gender": 1,
+    "Email": "pero@yahoo.com",
+    "PhoneNumber": "0638162900",
+    "Address": "Pere Jecmenica 45"
   }
 ]
