@@ -36,18 +36,6 @@
     "Response": null
   },
   {
-    "Id": 7,
-    "DoctorJmbg": "1231231231231",
-    "DoctorSpecialtyType": "Surgeon",
-    "DateFrom": "2022-07-05T00:00:00",
-    "DateTo": "2022-07-10T00:00:00",
-    "IntervalInDays": 5,
-    "Reason": "Hitno bolovanje",
-    "isUrgent": true,
-    "State": 0,
-    "Response": null
-  },
-  {
     "Id": 8,
     "DoctorJmbg": "1231231231231",
     "DoctorSpecialtyType": "Surgeon",
@@ -67,18 +55,6 @@
     "DateTo": "2022-06-15T00:00:00",
     "IntervalInDays": 0,
     "Reason": "dgfhjkl",
-    "isUrgent": true,
-    "State": 0,
-    "Response": null
-  },
-  {
-    "Id": 10,
-    "DoctorJmbg": "1231231231231",
-    "DoctorSpecialtyType": "Surgeon",
-    "DateFrom": "2022-06-13T00:00:00",
-    "DateTo": "2022-06-17T00:00:00",
-    "IntervalInDays": 4,
-    "Reason": "dfyuio",
     "isUrgent": true,
     "State": 0,
     "Response": null
@@ -130,5 +106,29 @@
     "isUrgent": true,
     "State": 1,
     "Response": "moze"
+  },
+  {
+    "Id": 7,
+    "DoctorJmbg": "1231231231231",
+    "DoctorSpecialtyType": "Surgeon",
+    "DateFrom": "2022-07-05T00:00:00",
+    "DateTo": "2022-07-10T00:00:00",
+    "IntervalInDays": 5,
+    "Reason": "Hitno bolovanje",
+    "isUrgent": true,
+    "State": 1,
+    "Response": "odobreno"
+  },
+  {
+    "Id": 10,
+    "DoctorJmbg": "1231231231231",
+    "DoctorSpecialtyType": "Surgeon",
+    "DateFrom": "2022-06-13T00:00:00",
+    "DateTo": "2022-06-17T00:00:00",
+    "IntervalInDays": 4,
+    "Reason": "dfyuio",
+    "isUrgent": true,
+    "State": 1,
+    "Response": "ne moze"
   }
 ]
