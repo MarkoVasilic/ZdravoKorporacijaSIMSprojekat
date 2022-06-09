@@ -10,7 +10,7 @@
       FontFamily="Times New Roman">
 
     <Grid>
-        <DataGrid x:Name="DataGridDoctorAppointments" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding appointments, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 140 20 30" ScrollViewer.CanContentScroll="True" Height="auto" Width="auto" TextBlock.FontSize="24">
+        <DataGrid x:Name="DataGridDoctorAppointments" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding appointments, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 160 20 30" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" Height="auto" Width="1206" TextBlock.FontSize="24">
             <DataGrid.Columns>
                 <DataGridTextColumn TextBlock.FontSize="24" Header="Jmbg" Binding="{Binding PatientJmbg}" Width="200"></DataGridTextColumn>
                 <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="First Name" Binding="{Binding PatientFirstName}" Width="180"></DataGridTextColumn>
