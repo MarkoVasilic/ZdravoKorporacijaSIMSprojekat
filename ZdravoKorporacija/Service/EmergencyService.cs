@@ -11,14 +11,14 @@ namespace ZdravoKorporacija.Service
 {
     public class EmergencyService
     {
-        private readonly IAppointmentRepository AppointmentRepository;
-        private readonly IPatientRepository PatientRepository;
-        private readonly IDoctorRepository DoctorRepository;
-        private readonly IRoomRepository RoomRepository;
-        private readonly IBasicRenovationRepository BasicRenovationRepository;
-        private readonly IAdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
-        private readonly IAdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository;
-        private readonly ScheduleService scheduleService;
+        private readonly IAppointmentRepository _appointmentRepository;
+        private readonly IPatientRepository _patientRepository;
+        private readonly IDoctorRepository _doctorRepository;
+        private readonly IRoomRepository _roomRepository;
+        private readonly IBasicRenovationRepository _basicRenovationRepository;
+        private readonly IAdvancedRenovationJoiningRepository _advancedRenovationJoiningRepository;
+        private readonly IAdvancedRenovationSeparationRepository _advancedRenovationSeparationRepository;
+        private readonly ScheduleService _scheduleService;
 
         public EmergencyService(IAppointmentRepository appointmentRepository, IPatientRepository patientRepository,
             IDoctorRepository doctorRepository, IRoomRepository roomRepository,
@@ -26,20 +26,20 @@ namespace ZdravoKorporacija.Service
             IAdvancedRenovationJoiningRepository advancedRenovationJoining,
             IAdvancedRenovationSeparationRepository advancedRenovationSeparation, ScheduleService scheduleService)
         {
-            this.AppointmentRepository = appointmentRepository;
-            this.PatientRepository = patientRepository;
-            this.DoctorRepository = doctorRepository;
-            this.RoomRepository = roomRepository;
-            this.BasicRenovationRepository = basicRenovationRepository;
-            this.AdvancedRenovationJoiningRepository = advancedRenovationJoining;
-            this.AdvancedRenovationSeparationRepository = advancedRenovationSeparation;
-            this.scheduleService = scheduleService;
+            this._appointmentRepository = appointmentRepository;
+            this._patientRepository = patientRepository;
+            this._doctorRepository = doctorRepository;
+            this._roomRepository = roomRepository;
+            this._basicRenovationRepository = basicRenovationRepository;
+            this._advancedRenovationJoiningRepository = advancedRenovationJoining;
+            this._advancedRenovationSeparationRepository = advancedRenovationSeparation;
+            this._scheduleService = scheduleService;
         }
         public PossibleAppointmentsDTO FindPossibleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
         {
             ValidateParametersForScheduleEmergency(patientJmbg, doctorSpeciality);
-            Patient patient = PatientRepository.FindOneByJmbg(patientJmbg);
-            List<Doctor> doctors = DoctorRepository.FindAllBySpeciality(doctorSpeciality);
+            Patient patient = _patientRepository.FindOneByJmbg(patientJmbg);
+            List<Doctor> doctors = _doctorRepository.FindAllBySpeciality(doctorSpeciality);
             foreach (var doctor in doctors)
             {
                 PossibleAppointmentsDTO possibleEmergencyAppointment = GetPossibleEmergencyAppointmentForOneDoctor(patient, doctor);
@@ -51,13 +51,13 @@ namespace ZdravoKorporacija.Service
 
         private PossibleAppointmentsDTO GetPossibleEmergencyAppointmentForOneDoctor(Patient patient, Doctor doctor)
         {
-            List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
+            List<Appointment> doctorAppointments = _appointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
             if (!IsOccupied(doctorAppointments))
             {
-                List<Room> rooms = RoomRepository.FindAll();
+                List<Room> rooms = _roomRepository.FindAll();
                 foreach (var room in rooms)
                 {
-                    List<Appointment> roomAppointments = AppointmentRepository.FindAllByRoomId(room.Id);
+                    List<Appointment> roomAppointments = _appointmentRepository.FindAllByRoomId(room.Id);
                     if (!IsOccupied(roomAppointments) && !IsRoomOccupiedByBasicRenovation(room) &&
                         !IsRoomOccupiedByRenovationJoin(room) && !IsRoomOccupiedByRenovationSeparation(room))
                     {
@@ -83,7 +83,7 @@ namespace ZdravoKorporacija.Service
 
         private Boolean IsRoomOccupiedByBasicRenovation(Room room)
         {
-            List<BasicRenovation> roomBasicRenovations = BasicRenovationRepository.FindAllByRoomId(room.Id);
+            List<BasicRenovation> roomBasicRenovations = _basicRenovationRepository.FindAllByRoomId(room.Id);
             foreach (var roomBasicRenovation in roomBasicRenovations)
             {
                 if (ValidateAppointmentTimeForScheduleEmergency(roomBasicRenovation.StartTime, roomBasicRenovation.Duration))
@@ -95,7 +95,7 @@ namespace ZdravoKorporacija.Service
         }
         private Boolean IsRoomOccupiedByRenovationJoin(Room room)
         {
-            List<AdvancedRenovationJoining> roomJoinRenovations = AdvancedRenovationJoiningRepository.FindAllByRoomId(room.Id);
+            List<AdvancedRenovationJoining> roomJoinRenovations = _advancedRenovationJoiningRepository.FindAllByRoomId(room.Id);
             foreach (var advancedRenovationJoining in roomJoinRenovations)
             {
                 if (ValidateAppointmentTimeForScheduleEmergency(advancedRenovationJoining.StartTime, advancedRenovationJoining.Duration))
@@ -107,7 +107,7 @@ namespace ZdravoKorporacija.Service
         }
         private Boolean IsRoomOccupiedByRenovationSeparation(Room room)
         {
-            List<AdvancedRenovationSeparation> roomJoinSeparations = AdvancedRenovationSeparationRepository.FindAllByRoomId(room.Id);
+            List<AdvancedRenovationSeparation> roomJoinSeparations = _advancedRenovationSeparationRepository.FindAllByRoomId(room.Id);
             foreach (var advancedRenovationSeparation in roomJoinSeparations)
             {
                 if (ValidateAppointmentTimeForScheduleEmergency(advancedRenovationSeparation.StartTime, advancedRenovationSeparation.Duration))
@@ -130,8 +130,8 @@ namespace ZdravoKorporacija.Service
         public List<ModifyAppointmentForEmergencyDto> FindAppointmentsToRescheduleForEmergency(String patientJmbg, String doctorSpeciality)
         {
             ValidateParametersForScheduleEmergency(patientJmbg, doctorSpeciality);
-            Patient patient = PatientRepository.FindOneByJmbg(patientJmbg);
-            List<Doctor> doctors = DoctorRepository.FindAllBySpeciality(doctorSpeciality);
+            Patient patient = _patientRepository.FindOneByJmbg(patientJmbg);
+            List<Doctor> doctors = _doctorRepository.FindAllBySpeciality(doctorSpeciality);
             List<ModifyAppointmentForEmergencyDto> appointmentsToReschedule = new List<ModifyAppointmentForEmergencyDto>();
             foreach (var doctor in doctors)
             {
@@ -144,9 +144,9 @@ namespace ZdravoKorporacija.Service
 
         private void ValidateParametersForScheduleEmergency(String patientJmbg, String doctorSpeciality)
         {
-            if (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null)
+            if (patientJmbg == null || _patientRepository.FindOneByJmbg(patientJmbg) == null)
                 throw new Exception("Patient with that JMBG doesn't exist!");
-            else if (doctorSpeciality == null || DoctorRepository.FindAllBySpeciality(doctorSpeciality) == null)
+            else if (doctorSpeciality == null || _doctorRepository.FindAllBySpeciality(doctorSpeciality) == null)
                 throw new Exception("There are no doctors with that speciality!");
             else
                 return;
@@ -154,15 +154,15 @@ namespace ZdravoKorporacija.Service
 
         private List<ModifyAppointmentForEmergencyDto> GetPossibleAppointmentsToReschedule(Doctor doctor, String patientJmbg)
         {
-            List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
+            List<Appointment> doctorAppointments = _appointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
             List<ModifyAppointmentForEmergencyDto> appointmentsToReschedule = new List<ModifyAppointmentForEmergencyDto>();
             foreach (var appointment in doctorAppointments)
             {
                 if (CheckAppointmentTimeForReschedule(appointment.StartTime))
                 {
-                    Room room = RoomRepository.FindOneById(appointment.RoomId);
-                    Patient patientInOldAppointment = PatientRepository.FindOneByJmbg(appointment.PatientJmbg);
-                    List<PossibleAppointmentsDTO> newPossibleAppointments = scheduleService.GetPossibleAppointmentsBySecretary(patientJmbg, doctor.Jmbg,
+                    Room room = _roomRepository.FindOneById(appointment.RoomId);
+                    Patient patientInOldAppointment = _patientRepository.FindOneByJmbg(appointment.PatientJmbg);
+                    List<PossibleAppointmentsDTO> newPossibleAppointments = _scheduleService.GetPossibleAppointmentsBySecretary(patientJmbg, doctor.Jmbg,
                         room.Id, DateTime.Now.AddHours(3), DateTime.Now.AddDays(5), appointment.Duration, "doctor");
                     newPossibleAppointments.Sort((x, y) => DateTime.Compare(x.StartTime, y.StartTime));
                     appointmentsToReschedule.Add(new ModifyAppointmentForEmergencyDto(appointment.PatientJmbg, patientInOldAppointment.FirstName + " " + patientInOldAppointment.LastName, doctor.Jmbg,

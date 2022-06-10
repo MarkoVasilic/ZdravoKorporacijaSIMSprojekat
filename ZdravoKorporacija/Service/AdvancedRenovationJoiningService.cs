@@ -14,23 +14,23 @@ namespace ZdravoKorporacija.Service
     public class AdvancedRenovationJoiningService
     {
 
-        private readonly IAdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
-        private readonly RoomService RoomService;
-        private readonly AppointmentService AppointmentService;
-        private readonly BasicRenovationService BasicRenovationService;
-        private readonly EquipmentService EquipmentService;
-        private readonly ScheduleService ScheduleService;
-        private readonly DisplacementService DisplacementService;
+        private readonly IAdvancedRenovationJoiningRepository _advancedRenovationJoiningRepository;
+        private readonly RoomService _roomService;
+        private readonly AppointmentService _appointmentService;
+        private readonly BasicRenovationService _basicRenovationService;
+        private readonly EquipmentService _equipmentService;
+        private readonly ScheduleService _scheduleService;
+        private readonly DisplacementService _displacementService;
 
         public AdvancedRenovationJoiningService(IAdvancedRenovationJoiningRepository advancedRenovationJoiningRepository, RoomService roomService, AppointmentService appointmentService, BasicRenovationService basicRenovationService, EquipmentService equipmentService, ScheduleService scheduleService, DisplacementService displacementService)
         {
-            AdvancedRenovationJoiningRepository = advancedRenovationJoiningRepository;
-            RoomService = roomService;
-            AppointmentService = appointmentService;
-            BasicRenovationService = basicRenovationService;
-            EquipmentService = equipmentService;
-            ScheduleService = scheduleService;
-            DisplacementService = displacementService;
+            _advancedRenovationJoiningRepository = advancedRenovationJoiningRepository;
+            _roomService = roomService;
+            _appointmentService = appointmentService;
+            _basicRenovationService = basicRenovationService;
+            _equipmentService = equipmentService;
+            _scheduleService = scheduleService;
+            _displacementService = displacementService;
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
             DateTime dateFrom, DateTime dateUntil, int duration)
@@ -38,9 +38,9 @@ namespace ZdravoKorporacija.Service
             List<String> doctorJmbgs = new List<String>();
             doctorJmbgs.Add("");
             ValidateInputParametersForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil);
-            List<DateTime> possibleAppointmentsForFirstRoom = ScheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, firstRoomId,
+            List<DateTime> possibleAppointmentsForFirstRoom = _scheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, firstRoomId,
                 dateFrom, dateUntil, duration);
-            List<DateTime> possibleAppointmentsForSecondRoom = ScheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, secondRoomId,
+            List<DateTime> possibleAppointmentsForSecondRoom = _scheduleService.FindPossibleStartTimesOfAppointment("", doctorJmbgs, secondRoomId,
                 dateFrom, dateUntil, duration);
             if (possibleAppointmentsForFirstRoom.Count == 0 || possibleAppointmentsForSecondRoom.Count == 0)
                 throw new Exception("There are not free appointments for given parameters!");
@@ -70,7 +70,7 @@ namespace ZdravoKorporacija.Service
         private void ValidateInputParametersForRoomJoin(int firstRoomId, int secondRoomId, DateTime dateFrom,
             DateTime dateUntil)
         {
-            if (RoomService.GetRoomById(firstRoomId) == null || RoomService.GetRoomById(secondRoomId) == null)
+            if (_roomService.GetRoomById(firstRoomId) == null || _roomService.GetRoomById(secondRoomId) == null)
                 throw new Exception("One of the rooms doesn't exist!");
             else if (dateFrom > dateUntil)
                 throw new Exception("Dates are not valid!");
@@ -86,7 +86,7 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, renovation isn't saved");
             }
 
-            AdvancedRenovationJoiningRepository.SaveJoining(advancedRenovationJoining);
+            _advancedRenovationJoiningRepository.SaveJoining(advancedRenovationJoining);
         }
 
 
@@ -103,7 +103,7 @@ namespace ZdravoKorporacija.Service
 
             for (int i = 0; i < advancedRenovationIds.Count; i++)
             {
-                AdvancedRenovationJoiningRepository.RemoveJoining(advancedRenovationIds[i]);
+                _advancedRenovationJoiningRepository.RemoveJoining(advancedRenovationIds[i]);
             }
 
         }
@@ -111,14 +111,14 @@ namespace ZdravoKorporacija.Service
         public void PerformJoining(AdvancedRenovationJoining advancedRenovation, List<int> renovationIds)
         {
 
-            Room oldRoom = RoomService.GetRoomById(advancedRenovation.FirstStartRoom);
+            Room oldRoom = _roomService.GetRoomById(advancedRenovation.FirstStartRoom);
 
             if (advancedRenovation.StartTime <= DateTime.Today)
             {
                 if (oldRoom != null)
                 {
                     ChangeRoomInformation(advancedRenovation, oldRoom);
-                    RoomService.ModifyRoomForRenovation(oldRoom);
+                    _roomService.ModifyRoomForRenovation(oldRoom);
                     DeleteEverythingForRoom(advancedRenovation.SecondStartRoom);
                     renovationIds.Add(advancedRenovation.Id);
 
@@ -141,25 +141,25 @@ namespace ZdravoKorporacija.Service
 
         public void DeleteEverythingForRoom(int roomId)
         {
-            AppointmentService.DeleteAppointmentByRoomId(roomId);
-            BasicRenovationService.DeleteByRoomId(roomId);
-            EquipmentService.DeleteByRoomId(roomId);
-            DisplacementService.DeleteByStartRoomId(roomId);
-            DisplacementService.DeleteByEndRoomId(roomId);
-            RoomService.DeleteRoom(roomId);
+            _appointmentService.DeleteAppointmentByRoomId(roomId);
+            _basicRenovationService.DeleteByRoomId(roomId);
+            _equipmentService.DeleteByRoomId(roomId);
+            _displacementService.DeleteByStartRoomId(roomId);
+            _displacementService.DeleteByEndRoomId(roomId);
+            _roomService.DeleteRoom(roomId);
         }
 
 
         public List<AdvancedRenovationJoining> GetAll()
         {
-            return AdvancedRenovationJoiningRepository.FindAll();
+            return _advancedRenovationJoiningRepository.FindAll();
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<AdvancedRenovationJoining> renovations = AdvancedRenovationJoiningRepository.FindAll();
+                List<AdvancedRenovationJoining> renovations = _advancedRenovationJoiningRepository.FindAll();
                 int currentMax = renovations.Max(obj => obj.Id);
                 return currentMax + 1;
             }

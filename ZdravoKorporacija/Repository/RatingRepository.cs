@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class RatingRepository
     {
-        private readonly String RatingFilePath = @"..\..\..\Resources\rating.json";
+        private readonly String _ratingFilePath = @"..\..\..\Resources\rating.json";
 
         public List<Rating> FindAll()
         {
@@ -66,7 +66,7 @@ namespace ZdravoKorporacija.Repository
 
         public List<Rating> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Rating>>(File.ReadAllText(RatingFilePath));
+            var values = JsonConvert.DeserializeObject<List<Rating>>(File.ReadAllText(_ratingFilePath));
             if (values == null)
             {
                 values = new List<Rating>();
@@ -90,7 +90,7 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<Rating> values)
         {
-            File.WriteAllText(RatingFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_ratingFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
 

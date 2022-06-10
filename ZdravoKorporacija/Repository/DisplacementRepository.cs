@@ -10,7 +10,7 @@ namespace ZdravoKorporacija.Repository
     public class DisplacementRepository : IDisplacementRepository
     {
 
-        private readonly String DisplacementsFilePath = @"..\..\..\Resources\displacements.json";
+        private readonly String _displacementsFilePath = @"..\..\..\Resources\displacements.json";
 
         public void SaveDisplacement(Displacement displacementToMake)
         {
@@ -22,12 +22,12 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<Displacement> values)
         {
-            File.WriteAllText(DisplacementsFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_displacementsFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         public List<Displacement> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Displacement>>(File.ReadAllText(DisplacementsFilePath));
+            var values = JsonConvert.DeserializeObject<List<Displacement>>(File.ReadAllText(_displacementsFilePath));
 
             if (values == null)
             {

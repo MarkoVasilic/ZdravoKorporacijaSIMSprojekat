@@ -11,22 +11,22 @@ namespace ZdravoKorporacija.Service
     public class DisplacementService
     {
 
-        private readonly IDisplacementRepository DisplacementRepository;
-        private readonly IEquipmentRepository EquipmentRepository;
-        private readonly IRoomRepository RoomRepository;
+        private readonly IDisplacementRepository _displacementRepository;
+        private readonly IEquipmentRepository _equipmentRepository;
+        private readonly IRoomRepository _roomRepository;
 
         public DisplacementService(IDisplacementRepository displacementRepository, IEquipmentRepository equipmentRepository, IRoomRepository roomRepository)
         {
-            this.DisplacementRepository = displacementRepository;
-            this.EquipmentRepository = equipmentRepository;
-            this.RoomRepository = roomRepository;
+            this._displacementRepository = displacementRepository;
+            this._equipmentRepository = equipmentRepository;
+            this._roomRepository = roomRepository;
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<Displacement> displacements = DisplacementRepository.FindAll();
+                List<Displacement> displacements = _displacementRepository.FindAll();
                 int currentMax = displacements.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -39,13 +39,13 @@ namespace ZdravoKorporacija.Service
 
         public void Create(int startRoom, int endRoom, int equiomentId, DateTime displacementDate)
         {
-            if (EquipmentRepository.FindOneById(equiomentId).IsStatic == true)
+            if (_equipmentRepository.FindOneById(equiomentId).IsStatic == true)
             {
                 int displacementId = GenerateNewId();
                 CheckBeforeCreating(startRoom, endRoom, equiomentId, displacementDate, displacementId);
                 Displacement displacement = new Displacement(displacementId, startRoom, endRoom, equiomentId, 1, displacementDate);
                 Validate(displacement);
-                DisplacementRepository.SaveDisplacement(displacement);
+                _displacementRepository.SaveDisplacement(displacement);
 
             }
             else
@@ -67,21 +67,21 @@ namespace ZdravoKorporacija.Service
 
         public void CheckBeforeCreating(int startRoom, int endRoom, int equipmentId, DateTime displacementDate, int displacementId)
         {
-            if (RoomRepository.FindOneById(startRoom) == null)
+            if (_roomRepository.FindOneById(startRoom) == null)
             {
 
                 throw new Exception("Room with that identification number doesn't exist!");
             }
-            else if (RoomRepository.FindOneById(endRoom) == null)
+            else if (_roomRepository.FindOneById(endRoom) == null)
             {
 
                 throw new Exception("Room with that identification number doesn't exist!");
             }
-            else if (EquipmentRepository.FindOneById(equipmentId) == null)
+            else if (_equipmentRepository.FindOneById(equipmentId) == null)
             {
                 throw new Exception("Equipment with that identification number doesn't exist!");
             }
-            else if (DisplacementRepository.FindOneById(displacementId) != null)
+            else if (_displacementRepository.FindOneById(displacementId) != null)
             {
                 throw new Exception("Displacement with that identification number already exists!");
             }
@@ -94,7 +94,7 @@ namespace ZdravoKorporacija.Service
             List<Displacement> displacements = new List<Displacement>(GetAll());
             foreach (Displacement displacement in displacements)
             {
-                Equipment equipment = EquipmentRepository.FindOneById(displacement.StaticEquipmentId);
+                Equipment equipment = _equipmentRepository.FindOneById(displacement.StaticEquipmentId);
 
                 if (displacement.DisplacementDate <= System.DateTime.Today)
                 {
@@ -115,27 +115,27 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Equipment with that identification number doesn't exist.");
             }
 
-            if (EquipmentRepository.FindOneByRoomId(displacement.EndRoom) == null) //da mi se ne bi svaki put upisivala 
+            if (_equipmentRepository.FindOneByRoomId(displacement.EndRoom) == null) //da mi se ne bi svaki put upisivala 
             {
-                EquipmentRepository.SaveEquipment(equipment);
+                _equipmentRepository.SaveEquipment(equipment);
             }
-            EquipmentRepository.RemoveEquipmentByRoom(displacement.StartRoom);
+            _equipmentRepository.RemoveEquipmentByRoom(displacement.StartRoom);
         }
 
         public List<Displacement> GetAll()
         {
-            return DisplacementRepository.FindAll();
+            return _displacementRepository.FindAll();
         }
 
 
         public void DeleteByStartRoomId(int id)
         {
-            DisplacementRepository.RemoveDisplacementByStartRoomId(id);
+            _displacementRepository.RemoveDisplacementByStartRoomId(id);
         }
 
         public void DeleteByEndRoomId(int id)
         {
-            DisplacementRepository.RemoveDisplacementByEndRoomId(id);
+            _displacementRepository.RemoveDisplacementByEndRoomId(id);
         }
 
     }

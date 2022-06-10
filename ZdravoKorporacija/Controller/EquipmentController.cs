@@ -9,41 +9,41 @@ namespace ZdravoKorporacija.Controller
     public class EquipmentController
     {
 
-        private readonly EquipmentService EquipmentService;
+        private readonly EquipmentService _equipmentService;
 
         public EquipmentController(EquipmentService equipmentService)
         {
-            this.EquipmentService = equipmentService;
+            this._equipmentService = equipmentService;
         }
 
         public void Create(String name, Boolean isStatic, int? quantity, int? roomId, DateTime? dynamicAddDate)
         {
-            EquipmentService.Create(name, isStatic, quantity, roomId, dynamicAddDate);
+            _equipmentService.Create(name, isStatic, quantity, roomId, dynamicAddDate);
         }
 
         public List<Equipment> GetAll()
         {
-            return EquipmentService.GetAll();
+            return _equipmentService.GetAll();
         }
 
         public List<EquipmentDTO> GetEquipmentDTOs()
         {
-            return EquipmentService.GetEquipmentDTOs();
+            return _equipmentService.GetEquipmentDTOs();
         }
 
         public List<EquipmentDTO> Filter(String equipmentType)
         {
-            return EquipmentService.Filter(equipmentType);
+            return _equipmentService.Filter(equipmentType);
         }
 
         public List<EquipmentDTO> Search(string name)
         {
-            return EquipmentService.Search(name);
+            return _equipmentService.Search(name);
         }
 
         public List<EquipmentDTO> GetAllByRoomId(int id)
         {
-            return EquipmentService.GetAllByRoomId(id);
+            return _equipmentService.GetAllByRoomId(id);
         }
 
 

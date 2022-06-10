@@ -12,15 +12,15 @@ namespace ZdravoKorporacija.Service
     public class AdvancedRenovationSeparationService
     {
 
-        private readonly IAdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository;
-        private readonly RoomService RoomService;
+        private readonly IAdvancedRenovationSeparationRepository _advancedRenovationSeparationRepository;
+        private readonly RoomService _roomService;
 
         public AdvancedRenovationSeparationService() { }
 
         public AdvancedRenovationSeparationService(IAdvancedRenovationSeparationRepository advancedRenovationSeparationRepository, RoomService roomService)
         {
-            AdvancedRenovationSeparationRepository = advancedRenovationSeparationRepository;
-            RoomService = roomService;
+            _advancedRenovationSeparationRepository = advancedRenovationSeparationRepository;
+            _roomService = roomService;
         }
 
 
@@ -35,13 +35,13 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, renovation isn't saved");
             }
 
-            AdvancedRenovationSeparationRepository.SaveSeparation(advancedRenovationSeparation);
+            _advancedRenovationSeparationRepository.SaveSeparation(advancedRenovationSeparation);
         }
 
 
         public List<AdvancedRenovationSeparation> GetAll()
         {
-            return AdvancedRenovationSeparationRepository.FindAll();
+            return _advancedRenovationSeparationRepository.FindAll();
         }
 
 
@@ -58,7 +58,7 @@ namespace ZdravoKorporacija.Service
 
             for (int i = 0; i < advancedRenovationIds.Count; i++)
             {
-                AdvancedRenovationSeparationRepository.RemoveSeparation(advancedRenovationSeparations[i].Id);
+                _advancedRenovationSeparationRepository.RemoveSeparation(advancedRenovationSeparations[i].Id);
             }
         }
 
@@ -66,14 +66,14 @@ namespace ZdravoKorporacija.Service
         public void PerformSeparation(AdvancedRenovationSeparation advancedRenovationSeparation, List<int> renovationIds)
         {
 
-            Room oldRoom = RoomService.GetRoomById(advancedRenovationSeparation.StartRoomId);
+            Room oldRoom = _roomService.GetRoomById(advancedRenovationSeparation.StartRoomId);
             if (advancedRenovationSeparation.StartTime <= DateTime.Today)
             {
                 if (oldRoom != null)
                 {
                     ChangeRoomInformation(advancedRenovationSeparation, oldRoom);
-                    RoomService.ModifyRoomForRenovation(oldRoom);
-                    RoomService.CreateRoom(advancedRenovationSeparation.ResultSecondRoomName, advancedRenovationSeparation.ResultSecondRoomDescription, advancedRenovationSeparation.SecondRoomType);
+                    _roomService.ModifyRoomForRenovation(oldRoom);
+                    _roomService.CreateRoom(advancedRenovationSeparation.ResultSecondRoomName, advancedRenovationSeparation.ResultSecondRoomDescription, advancedRenovationSeparation.SecondRoomType);
                     renovationIds.Add(advancedRenovationSeparation.Id);
                 }
                 else
@@ -95,7 +95,7 @@ namespace ZdravoKorporacija.Service
         {
             try
             {
-                List<AdvancedRenovationSeparation> renovations = AdvancedRenovationSeparationRepository.FindAll();
+                List<AdvancedRenovationSeparation> renovations = _advancedRenovationSeparationRepository.FindAll();
                 int currentMax = renovations.Max(obj => obj.Id);
                 return currentMax + 1;
             }

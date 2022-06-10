@@ -9,7 +9,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class ManagerRepository : IManagerRepository
     {
-        private readonly String ManagerFilePath = @"..\..\..\Resources\manager.json";
+        private readonly String _managerFilePath = @"..\..\..\Resources\manager.json";
 
         public ManagerRepository()
         {
@@ -76,12 +76,12 @@ namespace ZdravoKorporacija.Repository
 
         private void Save(List<Manager> values)
         {
-            File.WriteAllText(ManagerFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_managerFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<Manager> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Manager>>(File.ReadAllText(ManagerFilePath));
+            var values = JsonConvert.DeserializeObject<List<Manager>>(File.ReadAllText(_managerFilePath));
 
             if (values == null)
             {

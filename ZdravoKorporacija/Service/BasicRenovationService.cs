@@ -11,12 +11,12 @@ namespace ZdravoKorporacija.Service
     public class BasicRenovationService
     {
 
-        private readonly IBasicRenovationRepository BasicRenovationRepository;
-        private readonly IRoomRepository RoomRepository;
+        private readonly IBasicRenovationRepository _basicRenovationRepository;
+        private readonly IRoomRepository _roomRepository;
         public BasicRenovationService(IBasicRenovationRepository basicRenovationRepository, IRoomRepository roomRepository)
         {
-            this.BasicRenovationRepository = basicRenovationRepository;
-            this.RoomRepository = RoomRepository;
+            this._basicRenovationRepository = basicRenovationRepository;
+            this._roomRepository = _roomRepository;
         }
 
 
@@ -31,14 +31,14 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Something went wrong, basic renovation isn't saved");
             }
 
-            BasicRenovationRepository.SaveBasicRenovation(basicRenovation);
+            _basicRenovationRepository.SaveBasicRenovation(basicRenovation);
 
 
         }
 
         public void DeleteByRoomId(int roomId)
         {
-            BasicRenovationRepository.RemoveBasicRenovationByRoomId(roomId);
+            _basicRenovationRepository.RemoveBasicRenovationByRoomId(roomId);
         }
 
 
@@ -46,7 +46,7 @@ namespace ZdravoKorporacija.Service
         {
             try
             {
-                List<BasicRenovation> renovations = BasicRenovationRepository.FindAll();
+                List<BasicRenovation> renovations = _basicRenovationRepository.FindAll();
                 int currentMax = renovations.Max(obj => obj.Id);
                 return currentMax + 1;
             }

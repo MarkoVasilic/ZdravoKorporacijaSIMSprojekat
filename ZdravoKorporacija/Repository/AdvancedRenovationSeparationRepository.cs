@@ -10,16 +10,16 @@ namespace ZdravoKorporacija.Repository
     public class AdvancedRenovationSeparationRepository: IAdvancedRenovationSeparationRepository
     {
 
-        private readonly String SeparationFilePath = @"..\..\..\Resources\advancedRenovationSeparation.json";
+        private readonly String _separationFilePath = @"..\..\..\Resources\advancedRenovationSeparation.json";
 
         private void Save(List<AdvancedRenovationSeparation> values)
         {
-            File.WriteAllText(SeparationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_separationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<AdvancedRenovationSeparation> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<AdvancedRenovationSeparation>>(File.ReadAllText(SeparationFilePath));
+            var values = JsonConvert.DeserializeObject<List<AdvancedRenovationSeparation>>(File.ReadAllText(_separationFilePath));
 
             if (values == null)
             {

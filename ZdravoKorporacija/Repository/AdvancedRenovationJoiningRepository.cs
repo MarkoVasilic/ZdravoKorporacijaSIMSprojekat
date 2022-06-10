@@ -10,17 +10,17 @@ namespace ZdravoKorporacija.Repository
     public class AdvancedRenovationJoiningRepository: IAdvancedRenovationJoiningRepository
     {
 
-        private readonly String JoiningFilePath = @"..\..\..\Resources\advancedRenovationJoining.json";
+        private readonly String _joiningFilePath = @"..\..\..\Resources\advancedRenovationJoining.json";
 
 
         private void Save(List<AdvancedRenovationJoining> values)
         {
-            File.WriteAllText(JoiningFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_joiningFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<AdvancedRenovationJoining> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<AdvancedRenovationJoining>>(File.ReadAllText(JoiningFilePath));
+            var values = JsonConvert.DeserializeObject<List<AdvancedRenovationJoining>>(File.ReadAllText(_joiningFilePath));
 
             if (values == null)
             {

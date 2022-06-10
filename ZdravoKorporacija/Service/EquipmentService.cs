@@ -13,15 +13,15 @@ namespace ZdravoKorporacija.Service
     {
 
 
-        private readonly IEquipmentRepository EquipmentRepository;
-        private readonly IRoomRepository RoomRepository;
-        private readonly IDisplacementRepository DisplacementRepository;
+        private readonly IEquipmentRepository _equipmentRepository;
+        private readonly IRoomRepository _roomRepository;
+        private readonly IDisplacementRepository _displacementRepository;
 
         public EquipmentService(IEquipmentRepository equipmentRepository, IRoomRepository roomRepository, IDisplacementRepository displacementRepository)
         {
-            this.EquipmentRepository = equipmentRepository;
-            this.RoomRepository = roomRepository;
-            this.DisplacementRepository = displacementRepository;
+            this._equipmentRepository = equipmentRepository;
+            this._roomRepository = roomRepository;
+            this._displacementRepository = displacementRepository;
 
         }
 
@@ -29,7 +29,7 @@ namespace ZdravoKorporacija.Service
         {
             int equipmentId = GenerateNewId();
 
-            if (EquipmentRepository.FindOneById(equipmentId) != null)
+            if (_equipmentRepository.FindOneById(equipmentId) != null)
             {
                 throw new Exception("Equipment with that identification number already exists!");
             }
@@ -58,7 +58,7 @@ namespace ZdravoKorporacija.Service
         public void CreateStatic(int id, String name, int? roomId)
         {
 
-            if (RoomRepository.FindOneById((int)roomId) == null)
+            if (_roomRepository.FindOneById((int)roomId) == null)
             {
                 throw new Exception("Room doesn't exist");
             }
@@ -69,7 +69,7 @@ namespace ZdravoKorporacija.Service
                 {
                     throw new Exception("Something went wrong, equipment isn't saved");
                 }
-                EquipmentRepository.SaveEquipment(newEquipmentStatic);
+                _equipmentRepository.SaveEquipment(newEquipmentStatic);
             }
         }
 
@@ -77,11 +77,11 @@ namespace ZdravoKorporacija.Service
         public void CreateDynamic(int id, String name, int? quaninty, DateTime? dynamicAddDate)
         {
 
-            Equipment equipment = EquipmentRepository.FindOneByName(name);
+            Equipment equipment = _equipmentRepository.FindOneByName(name);
             if (equipment != null)
             {
                 equipment.Quantity = quaninty + equipment.Quantity;
-                EquipmentRepository.UpdateEquipment(equipment);
+                _equipmentRepository.UpdateEquipment(equipment);
             }
             else
             {
@@ -92,18 +92,18 @@ namespace ZdravoKorporacija.Service
                     throw new Exception("Something went wrong, equipment isn't saved");
                 }
 
-                EquipmentRepository.SaveEquipment(newEquipmentDynamic);
+                _equipmentRepository.SaveEquipment(newEquipmentDynamic);
             }
 
         }
 
         public void Delete(int id)
         {
-            if (EquipmentRepository.FindOneById(id) == null)
+            if (_equipmentRepository.FindOneById(id) == null)
             {
                 throw new Exception("Equipment with that identification number doesn't exist");
             }
-            EquipmentRepository.RemoveEquipment(id);
+            _equipmentRepository.RemoveEquipment(id);
             
         }
 
@@ -111,7 +111,7 @@ namespace ZdravoKorporacija.Service
         {
             try
             {
-                List<Equipment> equipment = EquipmentRepository.FindAll();
+                List<Equipment> equipment = _equipmentRepository.FindAll();
                 int currentMax = equipment.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -123,7 +123,7 @@ namespace ZdravoKorporacija.Service
 
         public List<Equipment> GetAll()
         {
-            return EquipmentRepository.FindAll();
+            return _equipmentRepository.FindAll();
         }
 
 
@@ -171,7 +171,7 @@ namespace ZdravoKorporacija.Service
             }
             else
             {
-                equipmentDTO.RoomName = RoomRepository.FindOneById(equipment.RoomId).Name;
+                equipmentDTO.RoomName = _roomRepository.FindOneById(equipment.RoomId).Name;
             }
 
             return equipmentDTO;
@@ -224,13 +224,13 @@ namespace ZdravoKorporacija.Service
 
         public void DeleteByRoomId(int id)
         {
-            EquipmentRepository.RemoveEquipmentByRoom(id);
+            _equipmentRepository.RemoveEquipmentByRoom(id);
         }
 
 
         public List<EquipmentDTO> GetAllByRoomId(int id)
         {
-            List<Equipment> equipment = EquipmentRepository.FindAllByRoomId(id);
+            List<Equipment> equipment = _equipmentRepository.FindAllByRoomId(id);
             List<EquipmentDTO> equipmentDTO = new List<EquipmentDTO> ();
 
             foreach(Equipment eq in equipment)

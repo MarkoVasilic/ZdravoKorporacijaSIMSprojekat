@@ -10,15 +10,13 @@ namespace ZdravoKorporacija.Service
 {
     public class AnamnesisService
     {
-        private readonly AnamnesisRepository anamnesisRepository;
-        private readonly MedicalRecordRepository medicalRecordRepository;
-        private readonly DoctorRepository doctorRepository;
+        private readonly AnamnesisRepository _anamnesisRepository;
+        private readonly MedicalRecordRepository _medicalRecordRepository;
 
-        public AnamnesisService(AnamnesisRepository anamnesisRepository, MedicalRecordRepository medicalRecordRepository, DoctorRepository doctorRepository)
+        public AnamnesisService(AnamnesisRepository anamnesisRepository, MedicalRecordRepository medicalRecordRepository)
         {
-            this.anamnesisRepository = anamnesisRepository;
-            this.medicalRecordRepository = medicalRecordRepository;
-            this.doctorRepository = doctorRepository;
+            this._anamnesisRepository = anamnesisRepository;
+            this._medicalRecordRepository = medicalRecordRepository;
         }
 
         public AnamnesisService()
@@ -27,27 +25,27 @@ namespace ZdravoKorporacija.Service
 
         public List<Anamnesis> GetAll()
         {
-            return anamnesisRepository.FindAll();
+            return _anamnesisRepository.FindAll();
         }
 
         public Anamnesis? GetOneById(int id)
         {
-            return anamnesisRepository.FindOneById(id);
+            return _anamnesisRepository.FindOneById(id);
         }
         public List<Anamnesis>? GetAllByDoctor(String doctorJmbg)
         {
-            return anamnesisRepository.FindAllByDoctor(doctorJmbg);
+            return _anamnesisRepository.FindAllByDoctor(doctorJmbg);
         }
 
         public List<Anamnesis>? GetAllByPatient(String patientJmbg)
         {
             List<Anamnesis> result = new List<Anamnesis>();
-            List<int> anamnesisIds = medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
+            List<int> anamnesisIds = _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
             foreach (int id in anamnesisIds)
             {
-                if (anamnesisRepository.FindOneById(id) != null)
+                if (_anamnesisRepository.FindOneById(id) != null)
                 {
-                    result.Add(anamnesisRepository.FindOneById(id));
+                    result.Add(_anamnesisRepository.FindOneById(id));
                 }
             }
             return result;
@@ -56,7 +54,7 @@ namespace ZdravoKorporacija.Service
         {
             try
             {
-                List<Anamnesis> anamnesis = anamnesisRepository.FindAll();
+                List<Anamnesis> anamnesis = _anamnesisRepository.FindAll();
                 int currentMax = anamnesis.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -72,24 +70,24 @@ namespace ZdravoKorporacija.Service
             Anamnesis anamnesis = new Anamnesis(id, diagnosis, report, DateTime.Now, "1231231231231");
             if (!anamnesis.validateAnamnesis())
                 throw new Exception("Something went wrong, anamnesis isn't created!");
-            anamnesisRepository.SaveAnamnesis(anamnesis);
+            _anamnesisRepository.SaveAnamnesis(anamnesis);
 
-            if (medicalRecordRepository.FindOneByPatientJmbg(patientJmbg) == null)
+            if (_medicalRecordRepository.FindOneByPatientJmbg(patientJmbg) == null)
             {
                 throw new Exception("Medical Record for patient with that jmbg doesn't exists");
             }
             else
             {
-                List<int> newAnamnesis = medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
+                List<int> newAnamnesis = _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds;
                 newAnamnesis.Add(anamnesis.Id);
                 MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg,
-                medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds, newAnamnesis);
+                _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds, newAnamnesis);
 
                 if (!oneMedicalRecord.validateMedicalRecord())
                 {
                     throw new Exception("Something went wrong, medical record isn't updated!");
                 }
-                medicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
+                _medicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
             }
 
         }
@@ -97,14 +95,14 @@ namespace ZdravoKorporacija.Service
         public void ModifyAnamnesis(int id, String diagnosis, String report)
         {
 
-            var oneAnamnesis = anamnesisRepository.FindOneById(id);
+            var oneAnamnesis = _anamnesisRepository.FindOneById(id);
             Anamnesis newAnamnesis = new Anamnesis(oneAnamnesis.Id, diagnosis, report, DateTime.Now, "4444444444444"); //vreme postaje vreme izmene
 
             if (!newAnamnesis.validateAnamnesis())
             {
                 throw new Exception("Something went wrong, anamnesis isn't updated!");
             }
-            anamnesisRepository.UpdateAnamnesis(newAnamnesis);
+            _anamnesisRepository.UpdateAnamnesis(newAnamnesis);
 
         }
     }

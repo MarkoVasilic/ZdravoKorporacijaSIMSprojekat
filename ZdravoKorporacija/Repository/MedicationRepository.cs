@@ -9,7 +9,7 @@ namespace Repository
     public class MedicationRepository
     {
 
-        private readonly String MedicationFilePath = @"..\..\..\Resources\medications.json";
+        private readonly String _medicationFilePath = @"..\..\..\Resources\medications.json";
 
 
         public List<Medication> FindAll()
@@ -21,7 +21,7 @@ namespace Repository
 
         public List<Medication> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Medication>>(File.ReadAllText(MedicationFilePath));
+            var values = JsonConvert.DeserializeObject<List<Medication>>(File.ReadAllText(_medicationFilePath));
             if (values == null)
             {
                 values = new List<Medication>();
@@ -111,7 +111,7 @@ namespace Repository
 
         public void Save(List<Medication> values)
         {
-            File.WriteAllText(MedicationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_medicationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
     }

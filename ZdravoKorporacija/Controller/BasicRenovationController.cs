@@ -6,17 +6,17 @@ namespace ZdravoKorporacija.Controller
     public class BasicRenovationController
     {
 
-        private readonly BasicRenovationService BasicRenovationService;
+        private readonly BasicRenovationService _basicRenovationService;
 
         public BasicRenovationController(BasicRenovationService basicRenovationService)
         {
-            this.BasicRenovationService = basicRenovationService;
+            this._basicRenovationService = basicRenovationService;
         }
 
 
         public void CreateBasicRenovation(int roomId, DateTime startTime, int duration, string description)
         {
-            BasicRenovationService.CreateBasicRenovation(roomId, startTime, duration, description);
+            _basicRenovationService.CreateBasicRenovation(roomId, startTime, duration, description);
         }
     }
 }

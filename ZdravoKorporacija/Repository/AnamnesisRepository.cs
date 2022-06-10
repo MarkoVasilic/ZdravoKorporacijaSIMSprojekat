@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class AnamnesisRepository
     {
-        private readonly String AnamnesisFilePath = @"..\..\..\Resources\anamnesis.json";
+        private readonly String _anamnesisFilePath = @"..\..\..\Resources\anamnesis.json";
 
         public List<Anamnesis> FindAll()
         {
@@ -41,7 +41,7 @@ namespace ZdravoKorporacija.Repository
         }
         public List<Anamnesis> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Anamnesis>>(File.ReadAllText(AnamnesisFilePath));
+            var values = JsonConvert.DeserializeObject<List<Anamnesis>>(File.ReadAllText(_anamnesisFilePath));
             if (values == null)
             {
                 values = new List<Anamnesis>();
@@ -71,7 +71,7 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<Anamnesis> values)
         {
-            File.WriteAllText(AnamnesisFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_anamnesisFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
     }

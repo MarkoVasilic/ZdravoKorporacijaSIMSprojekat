@@ -10,25 +10,25 @@ namespace ZdravoKorporacija.Service
 {
     public class UserService
     {
-        private readonly IDoctorRepository doctorRepository;
-        private readonly IManagerRepository managerRepository;
-        private readonly ISecretaryRepository secretaryRepository;
+        private readonly IDoctorRepository _doctorRepository;
+        private readonly IManagerRepository _managerRepository;
+        private readonly ISecretaryRepository _secretaryRepository;
 
         public UserService(IDoctorRepository doctorRepository,
             IManagerRepository managerRepository, ISecretaryRepository secretaryRepository)
         {
-            this.doctorRepository = doctorRepository;
-            this.managerRepository = managerRepository;
-            this.secretaryRepository = secretaryRepository;
+            this._doctorRepository = doctorRepository;
+            this._managerRepository = managerRepository;
+            this._secretaryRepository = secretaryRepository;
         }
 
         public User? CheckUserJmbgExistence(string userJmbg)
         {
-            User user = doctorRepository.FindOneByJmbg(userJmbg);
+            User user = _doctorRepository.FindOneByJmbg(userJmbg);
             if (user == null)
-                user = managerRepository.FindOneByJmbg(userJmbg);
+                user = _managerRepository.FindOneByJmbg(userJmbg);
             if (user == null)
-                user = secretaryRepository.FindOneByJmbg(userJmbg);
+                user = _secretaryRepository.FindOneByJmbg(userJmbg);
             if (user == null)
                 throw new Exception("Something went wrong!");
             return user;
@@ -39,11 +39,11 @@ namespace ZdravoKorporacija.Service
             List<String> userFullNames = new List<string>();
             foreach (var userJmbg in userJmbgs)
             {
-                User user = doctorRepository.FindOneByJmbg(userJmbg);
+                User user = _doctorRepository.FindOneByJmbg(userJmbg);
                 if (user == null)
-                    user = managerRepository.FindOneByJmbg(userJmbg);
+                    user = _managerRepository.FindOneByJmbg(userJmbg);
                 if (user == null)
-                    user = secretaryRepository.FindOneByJmbg(userJmbg);
+                    user = _secretaryRepository.FindOneByJmbg(userJmbg);
                 userFullNames.Add(user.FirstName + " " + user.LastName);
             }
 

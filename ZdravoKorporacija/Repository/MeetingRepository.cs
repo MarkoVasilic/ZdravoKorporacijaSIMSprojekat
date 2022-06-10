@@ -9,7 +9,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class MeetingRepository: IMeetingRepository
     {
-        private readonly String MeetingFilePath = @"..\..\..\Resources\meeting.json";
+        private readonly String _meetingFilePath = @"..\..\..\Resources\meeting.json";
 
         public List<Meeting> FindAll()
         {
@@ -48,7 +48,7 @@ namespace ZdravoKorporacija.Repository
 
         private List<Meeting> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Meeting>>(File.ReadAllText(MeetingFilePath));
+            var values = JsonConvert.DeserializeObject<List<Meeting>>(File.ReadAllText(_meetingFilePath));
             if (values == null)
             {
                 values = new List<Meeting>();
@@ -71,7 +71,7 @@ namespace ZdravoKorporacija.Repository
 
         private void Save(List<Meeting> values)
         {
-            File.WriteAllText(MeetingFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_meetingFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
     }
 }

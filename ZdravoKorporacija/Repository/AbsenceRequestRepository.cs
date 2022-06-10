@@ -7,7 +7,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class AbsenceRequestRepository
     {
-        private readonly String AbsenceRequestFilePath = @"..\..\..\Resources\absenceRequests.json";
+        private readonly String _absenceRequestFilePath = @"..\..\..\Resources\absenceRequests.json";
 
         public List<AbsenceRequest> FindAll()
         {
@@ -64,7 +64,7 @@ namespace ZdravoKorporacija.Repository
 
         public List<AbsenceRequest> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<AbsenceRequest>>(File.ReadAllText(AbsenceRequestFilePath));
+            var values = JsonConvert.DeserializeObject<List<AbsenceRequest>>(File.ReadAllText(_absenceRequestFilePath));
             if (values == null)
             {
                 values = new List<AbsenceRequest>();
@@ -82,7 +82,7 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<AbsenceRequest> values)
         {
-            File.WriteAllText(AbsenceRequestFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_absenceRequestFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
     }
 }

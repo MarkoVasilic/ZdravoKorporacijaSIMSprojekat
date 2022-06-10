@@ -10,22 +10,22 @@ namespace Service
     public class RoomService
     {
 
-        private readonly IRoomRepository RoomRepository;
+        private readonly IRoomRepository _roomRepository;
 
         public RoomService(IRoomRepository roomRepository)
         {
-            this.RoomRepository = roomRepository;
+            this._roomRepository = roomRepository;
         }
 
 
         public void CreateRoom(String roomName, String roomDescription, RoomType roomType)
         {
             int roomId = GenerateNewId();
-            if (RoomRepository.FindOneById(roomId) != null)
+            if (_roomRepository.FindOneById(roomId) != null)
             {
                 throw new Exception("Soba sa tim ID-em vec postoji!");
             }
-            else if (RoomRepository.FindOneByName(roomName) != null)
+            else if (_roomRepository.FindOneByName(roomName) != null)
             {
                 throw new Exception("Prostorija sa tim nazivom vec postoji!");
             }
@@ -36,24 +36,24 @@ namespace Service
                 {
                     throw new Exception("Greska, prostorija nije sacuvana! Proverite da li ste popunili sva polja.");
                 }
-                RoomRepository.SaveRoom(newRoom);
+                _roomRepository.SaveRoom(newRoom);
             }
         }
 
         public List<Room> GetAllRooms()
         {
-            return RoomRepository.FindAll();
+            return _roomRepository.FindAll();
         }
 
         public void DeleteRoom(int roomId)
         {
-            if (RoomRepository.FindOneById(roomId) == null)
+            if (_roomRepository.FindOneById(roomId) == null)
             {
                 throw new Exception("Room with that identification number doesn't exist");
             }
             else
             {
-                RoomRepository.RemoveRoom(roomId);
+                _roomRepository.RemoveRoom(roomId);
             }
         }
 
@@ -61,17 +61,17 @@ namespace Service
         public void ModifyRoom(int roomId, String roomName, String roomDescription)
         {
 
-            if (RoomRepository.FindOneById(roomId) == null)
+            if (_roomRepository.FindOneById(roomId) == null)
             {
                 throw new Exception("Prostorija sa tim ID-em ne postoji");
             }
-            else if (RoomRepository.FindOneByName(roomName) != null)
+            else if (_roomRepository.FindOneByName(roomName) != null)
             {
                 throw new Exception("Prostorija sa tim nazivom vec postoji.");
             }
             else
             {
-                Room oldRoom = RoomRepository.FindOneById(roomId);
+                Room oldRoom = _roomRepository.FindOneById(roomId);
                 Room newRoom = new Room(roomName, oldRoom.Id, roomDescription, oldRoom.Type);
 
                 if (!newRoom.validateRoom())
@@ -79,7 +79,7 @@ namespace Service
                     throw new Exception("Greska, prostorija nije modifikovana! Proverite da li ste popunili sva polja.");
                 }
 
-                RoomRepository.UpdateRoom(newRoom);
+                _roomRepository.UpdateRoom(newRoom);
 
             }
 
@@ -87,17 +87,17 @@ namespace Service
 
         public void ModifyRoomForRenovation(Room room)
         {
-            if (RoomRepository.FindOneById(room.Id) == null)
+            if (_roomRepository.FindOneById(room.Id) == null)
             {
                 throw new Exception("Prostorija sa tim ID-em ne postoji");
             }
-            else if (RoomRepository.FindOneByName(room.Name) != null)
+            else if (_roomRepository.FindOneByName(room.Name) != null)
             {
                 throw new Exception("Prostorija sa tim nazivom vec postoji.");
             }
             else
             {
-                Room oldRoom = RoomRepository.FindOneById(room.Id);
+                Room oldRoom = _roomRepository.FindOneById(room.Id);
                 Room newRoom = new Room(room.Name, oldRoom.Id, room.Description, room.Type);
 
                 if (!newRoom.validateRoom())
@@ -105,31 +105,31 @@ namespace Service
                     throw new Exception("Greska, prostorija nije modifikovana! Proverite da li ste popunili sva polja.");
                 }
 
-                RoomRepository.UpdateRoom(newRoom);
+                _roomRepository.UpdateRoom(newRoom);
 
             }
         }
 
         public Model.Room? GetRoomByName(String name)
         {
-            return RoomRepository.FindOneByName(name);
+            return _roomRepository.FindOneByName(name);
         }
 
         public Model.Room? GetRoomByType(RoomType roomType)
         {
-            return RoomRepository.FindOneByType(roomType);
+            return _roomRepository.FindOneByType(roomType);
         }
 
         public Model.Room? GetRoomById(int roomId)
         {
-            return RoomRepository.FindOneById(roomId);
+            return _roomRepository.FindOneById(roomId);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<Room> rooms = RoomRepository.FindAll();
+                List<Room> rooms = _roomRepository.FindAll();
                 int currentMax = rooms.Max(obj => obj.Id);
                 return currentMax + 1;
             }

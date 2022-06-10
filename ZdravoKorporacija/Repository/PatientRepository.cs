@@ -10,7 +10,7 @@ namespace Repository
     public class PatientRepository : IPatientRepository
 
     {
-        private readonly String PatientFilePath = @"..\..\..\Resources\patients.json";
+        private readonly String _patientFilePath = @"..\..\..\Resources\patients.json";
 
         public PatientRepository()
         {
@@ -78,12 +78,12 @@ namespace Repository
 
         private void Save(List<Patient> values)
         {
-            File.WriteAllText(PatientFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_patientFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<Patient> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Patient>>(File.ReadAllText(PatientFilePath));
+            var values = JsonConvert.DeserializeObject<List<Patient>>(File.ReadAllText(_patientFilePath));
 
             if (values == null)
             {

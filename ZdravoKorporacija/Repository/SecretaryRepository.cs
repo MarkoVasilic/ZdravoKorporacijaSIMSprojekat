@@ -9,7 +9,7 @@ namespace Repository
 {
     public class SecretaryRepository : ISecretaryRepository
     {
-        private readonly String SecretaryFilePath = @"..\..\..\Resources\secretary.json";
+        private readonly String _secretaryFilePath = @"..\..\..\Resources\secretary.json";
 
         public SecretaryRepository()
         {
@@ -76,12 +76,12 @@ namespace Repository
 
         private void Save(List<Secretary> values)
         {
-            File.WriteAllText(SecretaryFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_secretaryFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<Secretary> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Secretary>>(File.ReadAllText(SecretaryFilePath));
+            var values = JsonConvert.DeserializeObject<List<Secretary>>(File.ReadAllText(_secretaryFilePath));
 
             if (values == null)
             {

@@ -9,7 +9,7 @@ namespace Repository
 {
     public class RoomRepository : IRoomRepository
     {
-        private readonly String RoomFilePath = @"..\..\..\Resources\rooms.json";
+        private readonly String _roomFilePath = @"..\..\..\Resources\rooms.json";
 
         public List<Room> FindAll()
         {
@@ -76,12 +76,12 @@ namespace Repository
 
         private void Save(List<Room> values)
         {
-            File.WriteAllText(RoomFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_roomFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<Room> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Room>>(File.ReadAllText(RoomFilePath));
+            var values = JsonConvert.DeserializeObject<List<Room>>(File.ReadAllText(_roomFilePath));
 
             if (values == null)
             {

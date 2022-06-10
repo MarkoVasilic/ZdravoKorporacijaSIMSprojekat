@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class NotificationRepository
     {
-        private readonly String NotificationFilePath = @"..\..\..\Resources\Notifications.json";
+        private readonly String _notificationFilePath = @"..\..\..\Resources\Notifications.json";
 
         public NotificationRepository() { }
         public List<Notification> FindAllByUserJmbg(String Jmbg)
@@ -38,7 +38,7 @@ namespace ZdravoKorporacija.Repository
 
         public List<Notification> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(NotificationFilePath));
+            var values = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(_notificationFilePath));
             if (values == null)
             {
                 values = new List<Notification>();
@@ -49,7 +49,7 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<Notification> values)
         {
-            File.WriteAllText(NotificationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_notificationFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         public List<Notification> FindAll()

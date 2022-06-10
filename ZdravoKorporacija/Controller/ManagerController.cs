@@ -7,45 +7,45 @@ namespace ZdravoKorporacija.Controller
 {
     public class ManagerController
     {
-        private readonly ManagerService ManagerService;
+        private readonly ManagerService _managerService;
 
         public ManagerController(ManagerService managerService)
         {
-            this.ManagerService = managerService;
+            this._managerService = managerService;
         }
 
         public Manager? getManagerByUsername(String username)
         {
-            return ManagerService.GetOneByUsername(username);
+            return _managerService.GetOneByUsername(username);
         }
 
         public List<Manager> GetAllManager()
         {
-            return ManagerService.GetAllManagers();
+            return _managerService.GetAllManagers();
         }
 
         public void CreateManager(string firstName, string lastName, string username, string password,
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
             string? address)
         {
-            ManagerService.CreateManager(firstName, lastName, username, password,
+            _managerService.CreateManager(firstName, lastName, username, password,
             jmbg, dateOfBirth, gender, email, phoneNumber, address);
         }
 
         public void DeleteManager(string jmbg)
         {
-            ManagerService.DeleteManager(jmbg);
+            _managerService.DeleteManager(jmbg);
         }
 
         public Manager? GetOneManager(string jmbg)
         {
-            return ManagerService.GetOneByJmbg(jmbg);
+            return _managerService.GetOneByJmbg(jmbg);
         }
 
         public void ModifyManager(string firstName, string lastName, DateTime? dateOfBirth, string? email, string? telephone,
         string? address, string username, string password, string jmbg)
         {
-            ManagerService.ModifyManager(firstName, lastName, dateOfBirth, email, telephone, address, username, password, jmbg);
+            _managerService.ModifyManager(firstName, lastName, dateOfBirth, email, telephone, address, username, password, jmbg);
         }
 
     }

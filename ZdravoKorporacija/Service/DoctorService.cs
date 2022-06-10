@@ -8,27 +8,27 @@ namespace Service
 {
     public class DoctorService
     {
-        private readonly IDoctorRepository DoctorRepository;
+        private readonly IDoctorRepository _doctorRepository;
 
         public DoctorService(IDoctorRepository doctorRepository)
         {
-            this.DoctorRepository = doctorRepository;
+            this._doctorRepository = doctorRepository;
         }
 
         public Doctor? GetOneByJmbg(String jmbg)
         {
-            return DoctorRepository.FindOneByJmbg(jmbg);
+            return _doctorRepository.FindOneByJmbg(jmbg);
 
         }
 
         public List<Doctor>? GetAllBySpeciality(String speciality)
         {
-            return DoctorRepository.FindAllBySpeciality(speciality);
+            return _doctorRepository.FindAllBySpeciality(speciality);
         }
 
         public List<String> GetAllSpecialities()
         {
-            List<Doctor> doctors = DoctorRepository.FindAll();
+            List<Doctor> doctors = _doctorRepository.FindAll();
             List<String> specialities = new List<String>();
             foreach (var doctor in doctors)
             {
@@ -40,12 +40,12 @@ namespace Service
 
         public List<Doctor> GetAllDoctors()
         {
-            return DoctorRepository.FindAll();
+            return _doctorRepository.FindAll();
         }
 
         public Doctor? GetOneByUsername(String username)
         {
-            return DoctorRepository.FindOneByUsername(username);
+            return _doctorRepository.FindOneByUsername(username);
 
         }
 
@@ -53,27 +53,27 @@ namespace Service
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
             string? address)
         {
-            if (DoctorRepository.FindOneByJmbg(jmbg) != null)
+            if (_doctorRepository.FindOneByJmbg(jmbg) != null)
                 throw new Exception("Doctor with that jmbg already exists!");
-            else if (DoctorRepository.FindOneByUsername(username) != null)
+            else if (_doctorRepository.FindOneByUsername(username) != null)
                 throw new Exception("Doctor with that username already exists!");
             else
             {
                 Doctor newDoctor = new Doctor(speciality, specialityType, roomId, firstName, lastName, username, password,
                     jmbg, dateOfBirth, gender, email, phoneNumber, address);
-                DoctorRepository.SaveDoctor(newDoctor);
+                _doctorRepository.SaveDoctor(newDoctor);
             }
         }
 
         public void DeleteDoctor(string jmbg)
         {
-            if (DoctorRepository.FindOneByJmbg(jmbg) == null)
+            if (_doctorRepository.FindOneByJmbg(jmbg) == null)
             {
                 throw new Exception("Doctor with that jmbg doesn't exist!");
             }
             else
             {
-                DoctorRepository.RemoveDoctor(jmbg);
+                _doctorRepository.RemoveDoctor(jmbg);
             }
         }
     }

@@ -10,18 +10,18 @@ namespace ZdravoKorporacija.Repository
     public class BasicRenovationRepository : IBasicRenovationRepository
     {
 
-        private readonly String BasicRenovationsFilePath = @"..\..\..\Resources\basicRenovations.json";
+        private readonly String _basicRenovationsFilePath = @"..\..\..\Resources\basicRenovations.json";
 
 
 
         private void Save(List<BasicRenovation> values)
         {
-            File.WriteAllText(BasicRenovationsFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_basicRenovationsFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         private List<BasicRenovation> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<BasicRenovation>>(File.ReadAllText(BasicRenovationsFilePath));
+            var values = JsonConvert.DeserializeObject<List<BasicRenovation>>(File.ReadAllText(_basicRenovationsFilePath));
 
             if (values == null)
             {

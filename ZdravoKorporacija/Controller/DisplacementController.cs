@@ -10,26 +10,26 @@ namespace ZdravoKorporacija.Controller
 {
     public class DisplacementController
     {
-        private readonly DisplacementService DisplacementService;
+        private readonly DisplacementService _displacementService;
 
         public DisplacementController(DisplacementService displacementService)
         {
-            DisplacementService = displacementService;
+            _displacementService = displacementService;
         }
 
         public void Create(int startRoom, int endRoom, int equiomentId, DateTime displacementDate)
         {
-            DisplacementService.Create(startRoom, endRoom, equiomentId, displacementDate);
+            _displacementService.Create(startRoom, endRoom, equiomentId, displacementDate);
         }
 
         public List<Displacement> GetAll()
         {
-            return DisplacementService.GetAll();
+            return _displacementService.GetAll();
         }
 
         public void DisplaceEquipment()
         {
-            DisplacementService.DisplaceEquipment();
+            _displacementService.DisplaceEquipment();
         }
 
 

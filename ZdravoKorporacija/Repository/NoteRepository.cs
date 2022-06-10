@@ -12,7 +12,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class NoteRepository 
     {
-        private readonly String NoteFilePath = @"..\..\..\Resources\notes.json";
+        private readonly String _noteFilePath = @"..\..\..\Resources\notes.json";
 
 
         public List<Note> FindAll()
@@ -24,7 +24,7 @@ namespace ZdravoKorporacija.Repository
 
         public List<Note> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Note>>(File.ReadAllText(NoteFilePath));
+            var values = JsonConvert.DeserializeObject<List<Note>>(File.ReadAllText(_noteFilePath));
             if (values == null)
             {
                 values = new List<Note>();
@@ -80,7 +80,7 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<Note> values)
         {
-            File.WriteAllText(NoteFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_noteFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         public void Remove(int noteId)

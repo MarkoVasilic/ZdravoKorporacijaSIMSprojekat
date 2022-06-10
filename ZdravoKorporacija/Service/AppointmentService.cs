@@ -11,51 +11,51 @@ namespace Service
 {
     public class AppointmentService
     {
-        private readonly IAppointmentRepository AppointmentRepository;
-        private readonly IPatientRepository PatientRepository;
-        private readonly IDoctorRepository DoctorRepository;
-        private readonly IRoomRepository RoomRepository;
+        private readonly IAppointmentRepository _appointmentRepository;
+        private readonly IPatientRepository _patientRepository;
+        private readonly IDoctorRepository _doctorRepository;
+        private readonly IRoomRepository _roomRepository;
         public AppointmentService(IAppointmentRepository appointmentRepository, IPatientRepository patientRepository,
             IDoctorRepository doctorRepository, IRoomRepository roomRepository)
         {
-            this.AppointmentRepository = appointmentRepository;
-            this.PatientRepository = patientRepository;
-            this.DoctorRepository = doctorRepository;
-            this.RoomRepository = roomRepository;
+            this._appointmentRepository = appointmentRepository;
+            this._patientRepository = patientRepository;
+            this._doctorRepository = doctorRepository;
+            this._roomRepository = roomRepository;
         }
         public AppointmentService() { }
 
         public List<Appointment> GetAllAppointments()
         {
-            return AppointmentRepository.FindAll();
+            return _appointmentRepository.FindAll();
         }
         public Model.Appointment? GetOneById(int appointmentId)
         {
-            return AppointmentRepository.FindOneById(appointmentId);
+            return _appointmentRepository.FindOneById(appointmentId);
         }
         public List<Appointment> GetAppointmentsByPatientJmbg(String patientJmbg)
         {
-            return AppointmentRepository.FindAllByPatientJmbg(patientJmbg);
+            return _appointmentRepository.FindAllByPatientJmbg(patientJmbg);
         }
         public List<Appointment> GetAppointmentsByDoctorJmbg(String doctorJmbg)
         {
-            return AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            return _appointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsDtos()
         {
-            List<Appointment> appointments = AppointmentRepository.FindAll();
+            List<Appointment> appointments = _appointmentRepository.FindAll();
             return CreatePossibleAppointmentsDtos(appointments);
         }
 
         public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
         {
-            List<Appointment> appointments = AppointmentRepository.GetAllFutureByPatient(App.loggedUser.Jmbg);
+            List<Appointment> appointments = _appointmentRepository.GetAllFutureByPatient(App.loggedUser.Jmbg);
             appointments.Sort((emp1, emp2) => emp1.StartTime.CompareTo(emp2.StartTime));
             return CreatePossibleAppointmentsDtos(appointments);
         }
         public List<PossibleAppointmentsDTO> GetAllPastAppointmentsByPatient()
         {
-            List<Appointment> appointments = AppointmentRepository.GetAllPastAppointmentsByPatient(App.loggedUser.Jmbg);
+            List<Appointment> appointments = _appointmentRepository.GetAllPastAppointmentsByPatient(App.loggedUser.Jmbg);
             return CreatePossibleAppointmentsDtos(appointments);
         }
         public List<PossibleAppointmentsDTO> GetAllByJmbgAndDate(DateTime date)
@@ -77,9 +77,9 @@ namespace Service
             {
                 foreach (var ap in appointments)
                 {
-                    Doctor doctor = DoctorRepository.FindOneByJmbg(ap.DoctorJmbg);
-                    Patient patient = PatientRepository.FindOneByJmbg(ap.PatientJmbg);
-                    Room room = RoomRepository.FindOneById(ap.RoomId);
+                    Doctor doctor = _doctorRepository.FindOneByJmbg(ap.DoctorJmbg);
+                    Patient patient = _patientRepository.FindOneByJmbg(ap.PatientJmbg);
+                    Room room = _roomRepository.FindOneById(ap.RoomId);
                     possibleAppointmentsDTO.Add(new PossibleAppointmentsDTO(ap.PatientJmbg,
                         patient.FirstName + " " + patient.LastName,
                         ap.DoctorJmbg, doctor.FirstName + " " + doctor.LastName, doctor.SpecialtyType, ap.RoomId,
@@ -91,13 +91,13 @@ namespace Service
         }
         public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
         {
-            List<Appointment> appointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
+            List<Appointment> appointments = _appointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
             List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
             foreach (Appointment app in appointments)
             {
-                Patient patient = PatientRepository.FindOneByJmbg(app.PatientJmbg);
+                Patient patient = _patientRepository.FindOneByJmbg(app.PatientJmbg);
                 appointmentDTOs.Add(new AppointmentDTO(app.Id, patient.Jmbg, patient.FirstName,
-                    patient.LastName, app.StartTime, RoomRepository.FindOneById(app.RoomId).Name));
+                    patient.LastName, app.StartTime, _roomRepository.FindOneById(app.RoomId).Name));
             }
             return appointmentDTOs;
         }
@@ -105,7 +105,7 @@ namespace Service
         {
             try
             {
-                List<Appointment> appointments = AppointmentRepository.FindAll();
+                List<Appointment> appointments = _appointmentRepository.FindAll();
                 int currentMax = appointments.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -116,25 +116,25 @@ namespace Service
         }
         public void DeleteAppointment(int appointmentId)
         {
-            if (AppointmentRepository.FindOneById(appointmentId) == null)
+            if (_appointmentRepository.FindOneById(appointmentId) == null)
                 throw new Exception("Appointment with that id doesn't exist!");
-            AppointmentRepository.RemoveAppointment(appointmentId);
+            _appointmentRepository.RemoveAppointment(appointmentId);
         }
 
         public void DeleteAppointmentsForOnePatient(String patientJmbg)
         {
-            AppointmentRepository.RemoveAppointmentsForOnePatient(patientJmbg);
+            _appointmentRepository.RemoveAppointmentsForOnePatient(patientJmbg);
         }
 
         public void DeleteAppointmentByRoomId(int roomId)
         {
-            AppointmentRepository.RemoveAppointmentByRoomId(roomId);
+            _appointmentRepository.RemoveAppointmentByRoomId(roomId);
         }
 
         public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
 
-            var oneAppointment = AppointmentRepository.FindOneById(appointmentId);
+            var oneAppointment = _appointmentRepository.FindOneById(appointmentId);
             if (oneAppointment == null)
             {
                 throw new Exception("Appointment with that id doesn't exist!");
@@ -144,11 +144,11 @@ namespace Service
             {
                 throw new Exception("Something went wrong, new appointment isn't modified!");
             }
-            AppointmentRepository.UpdateAppointment(oneAppointment);
+            _appointmentRepository.UpdateAppointment(oneAppointment);
         }
         public void CreateAppointmentByPatient(DateTime date, String doctorJmbg)
         {
-            Doctor doctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
+            Doctor doctor = _doctorRepository.FindOneByJmbg(doctorJmbg);
             ValidateInputParametersForCreateAppointment(App.loggedUser.Jmbg, doctorJmbg, doctor.RoomId);
             int id = GenerateNewId();
             Appointment appointment = new Appointment(date, 15, id, App.loggedUser.Jmbg, doctorJmbg, doctor.RoomId);
@@ -173,11 +173,11 @@ namespace Service
 
         private void ValidateInputParametersForCreateAppointment(string patientJmbg, string doctorJmbg, int roomId)
         {
-            if (PatientRepository.FindOneByJmbg(patientJmbg) == null)
+            if (_patientRepository.FindOneByJmbg(patientJmbg) == null)
                 throw new Exception("Patient with that JMBG doesn't exist!");
-            if (DoctorRepository.FindOneByJmbg(doctorJmbg) == null)
+            if (_doctorRepository.FindOneByJmbg(doctorJmbg) == null)
                 throw new Exception("Doctor with that JMBG doesn't exist!");
-            if (RoomRepository.FindOneById(roomId) == null)
+            if (_roomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");
         }
         private void SaveNewAppointment(Appointment appointment)
@@ -187,13 +187,13 @@ namespace Service
                 throw new Exception("Something went wrong, new appointment isn't created!");
             }
 
-            AppointmentRepository.SaveAppointment(appointment);
+            _appointmentRepository.SaveAppointment(appointment);
         }
 
         //OVO PROVJERITI DA LI SE UOPSTE POZIVA NEGDJE, AKO NE IZBRISATI
         public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
         {
-            Boolean specialty = DoctorRepository.FindOneByJmbg(appointmentToCreate.DoctorJmbg).Specialty;
+            Boolean specialty = _doctorRepository.FindOneByJmbg(appointmentToCreate.DoctorJmbg).Specialty;
             if (!specialty)
                 throw new Exception("Only doctors with specialization can perform operation!");
             if (appointmentToCreate.DoctorJmbg.Equals("1231231231231")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze

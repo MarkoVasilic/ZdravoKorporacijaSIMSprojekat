@@ -11,7 +11,7 @@ namespace ZdravoKorporacija.Repository
     {
 
 
-        private readonly String EquipmentFilePath = @"..\..\..\Resources\equipment.json";
+        private readonly String _equipmentFilePath = @"..\..\..\Resources\equipment.json";
 
         public List<Equipment> FindAll()
         {
@@ -101,12 +101,12 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<Equipment> values)
         {
-            File.WriteAllText(EquipmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_equipmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
         public List<Equipment> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Equipment>>(File.ReadAllText(EquipmentFilePath));
+            var values = JsonConvert.DeserializeObject<List<Equipment>>(File.ReadAllText(_equipmentFilePath));
 
             if (values == null)
             {

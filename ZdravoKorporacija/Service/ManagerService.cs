@@ -8,55 +8,55 @@ namespace ZdravoKorporacija.Service
 {
     public class ManagerService
     {
-        private readonly IManagerRepository ManagerRepository;
+        private readonly IManagerRepository _managerRepository;
 
         public ManagerService(IManagerRepository ManagerRepository)
         {
-            this.ManagerRepository = ManagerRepository;
+            this._managerRepository = ManagerRepository;
         }
 
         public Manager? GetOneByJmbg(String jmbg)
         {
-            return ManagerRepository.FindOneByJmbg(jmbg);
+            return _managerRepository.FindOneByJmbg(jmbg);
 
         }
 
         public Manager? GetOneByUsername(String username)
         {
-            return ManagerRepository.FindOneByUsername(username);
+            return _managerRepository.FindOneByUsername(username);
 
         }
 
         public List<Manager> GetAllManagers()
         {
-            return ManagerRepository.FindAll();
+            return _managerRepository.FindAll();
         }
 
         public void CreateManager(string firstName, string lastName, string username, string password,
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
             string? address)
         {
-            if (ManagerRepository.FindOneByJmbg(jmbg) != null)
+            if (_managerRepository.FindOneByJmbg(jmbg) != null)
                 throw new Exception("Manager with that jmbg already exists!");
-            else if (ManagerRepository.FindOneByUsername(username) != null)
+            else if (_managerRepository.FindOneByUsername(username) != null)
                 throw new Exception("Manager with that username already exists!");
             else
             {
                 Manager newManager = new Manager(firstName, lastName, username, password,
                     jmbg, dateOfBirth, gender, email, telephone, address);
-                ManagerRepository.SaveManager(newManager);
+                _managerRepository.SaveManager(newManager);
             }
         }
 
         public void DeleteManager(string jmbg)
         {
-            if (ManagerRepository.FindOneByJmbg(jmbg) == null)
+            if (_managerRepository.FindOneByJmbg(jmbg) == null)
             {
                 throw new Exception("Manager with that jmbg doesn't exist!");
             }
             else
             {
-                ManagerRepository.RemoveManager(jmbg);
+                _managerRepository.RemoveManager(jmbg);
             }
         }
 
@@ -64,16 +64,16 @@ namespace ZdravoKorporacija.Service
         public void ModifyManager(string firstName, string lastName, DateTime? dateOfBirth, string? email, string? telephone,
         string? address, string username, string password, string jmbg)
         {
-            if (ManagerRepository.FindOneByUsername(username) == null)
+            if (_managerRepository.FindOneByUsername(username) == null)
             {
                 throw new Exception("Manager with that username does not exist");
             }
             else
             {
-                Manager oldManager = ManagerRepository.FindOneByJmbg(jmbg);
+                Manager oldManager = _managerRepository.FindOneByJmbg(jmbg);
                 Manager newManager = new Manager(firstName, lastName, username, password, oldManager.Jmbg, dateOfBirth, oldManager.Gender, email, telephone, address);
 
-                ManagerRepository.UpdateManager(newManager);
+                _managerRepository.UpdateManager(newManager);
 
             }
 

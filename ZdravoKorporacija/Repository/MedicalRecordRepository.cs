@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.Repository
 {
     public class MedicalRecordRepository
     {
-        private readonly String MedicalRecordFilePath = @"..\..\..\Resources\medicalRecords.json";
+        private readonly String _medicalRecordFilePath = @"..\..\..\Resources\medicalRecords.json";
 
         public List<MedicalRecord> FindAll()
         {
@@ -33,7 +33,7 @@ namespace ZdravoKorporacija.Repository
 
         public List<MedicalRecord> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<MedicalRecord>>(File.ReadAllText(MedicalRecordFilePath));
+            var values = JsonConvert.DeserializeObject<List<MedicalRecord>>(File.ReadAllText(_medicalRecordFilePath));
             if (values == null)
             {
                 values = new List<MedicalRecord>();
@@ -63,7 +63,7 @@ namespace ZdravoKorporacija.Repository
 
         public void Save(List<MedicalRecord> values)
         {
-            File.WriteAllText(MedicalRecordFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_medicalRecordFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
     }

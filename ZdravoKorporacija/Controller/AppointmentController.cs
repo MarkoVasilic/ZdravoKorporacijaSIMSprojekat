@@ -9,114 +9,114 @@ namespace Controller
 {
     public class AppointmentController
     {
-        private readonly AppointmentService AppointmentService;
-        private readonly ScheduleService ScheduleService;
-        private readonly EmergencyService EmergencyService;
+        private readonly AppointmentService _appointmentService;
+        private readonly ScheduleService _scheduleService;
+        private readonly EmergencyService _emergencyService;
 
         public AppointmentController(AppointmentService appointmentService, ScheduleService scheduleService, EmergencyService emergencyService)
         {
-            this.AppointmentService = appointmentService;
-            this.ScheduleService = scheduleService;
-            this.EmergencyService = emergencyService;
+            this._appointmentService = appointmentService;
+            this._scheduleService = scheduleService;
+            this._emergencyService = emergencyService;
         }
 
         public List<Appointment> GetAllAppointments()
         {
-            return AppointmentService.GetAllAppointments();
+            return _appointmentService.GetAllAppointments();
         }
         public Appointment GetOneById(int appointmentId)
         {
-            return AppointmentService.GetOneById(appointmentId);
+            return _appointmentService.GetOneById(appointmentId);
         }
         public List<Model.Appointment> GetAppointmentsByPatientJmbg(String patientId)
         {
-            return AppointmentService.GetAppointmentsByPatientJmbg(patientId);
+            return _appointmentService.GetAppointmentsByPatientJmbg(patientId);
         }
         public List<Model.Appointment> GetAppointmentsByDoctorJmbg(String doctorJmbg)
         {
-            return AppointmentService.GetAppointmentsByDoctorJmbg(doctorJmbg);
+            return _appointmentService.GetAppointmentsByDoctorJmbg(doctorJmbg);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsDtos()
         {
-            return AppointmentService.GetPossibleAppointmentsDtos();
+            return _appointmentService.GetPossibleAppointmentsDtos();
         }
         public List<PossibleAppointmentsDTO> GetAllFutureAppointmentsByPatient()
         {
-            return AppointmentService.GetAllFutureAppointmentsByPatient();
+            return _appointmentService.GetAllFutureAppointmentsByPatient();
         }
 
         public List<PossibleAppointmentsDTO> GetAllPastAppointmentsByPatient()
         {
-            return AppointmentService.GetAllPastAppointmentsByPatient();
+            return _appointmentService.GetAllPastAppointmentsByPatient();
         }
         public List<PossibleAppointmentsDTO> GetAllByJmbgAndDate(DateTime dateTime)
         {
-            return AppointmentService.GetAllByJmbgAndDate(dateTime);
+            return _appointmentService.GetAllByJmbgAndDate(dateTime);
         }
         public List<AppointmentDTO> GetAppointmentsByDoctorJmbgDTO(String doctorJmbg)
         {
-            return AppointmentService.GetAppointmentsByDoctorJmbgDTO(doctorJmbg);
+            return _appointmentService.GetAppointmentsByDoctorJmbgDTO(doctorJmbg);
         }
         public void DeleteAppointment(int appointmentId)
         {
-            AppointmentService.DeleteAppointment(appointmentId);
+            _appointmentService.DeleteAppointment(appointmentId);
         }
 
         public void DeleteAppointmentsForOnePatient(String patientJmbg)
         {
-            AppointmentService.DeleteAppointmentsForOnePatient(patientJmbg);
+            _appointmentService.DeleteAppointmentsForOnePatient(patientJmbg);
         }
         public void DeleteAppointmentByRoomId(int roomId)
         {
-            AppointmentService.DeleteAppointmentByRoomId(roomId);
+            _appointmentService.DeleteAppointmentByRoomId(roomId);
         }
         public void ModifyAppointment(int appointmentId, DateTime newDate)
         {
-            AppointmentService.ModifyAppointment(appointmentId, newDate);
+            _appointmentService.ModifyAppointment(appointmentId, newDate);
         }
         public void CreateAppointmentByPatient(DateTime startTime, String doctorJmbg)
         {
-            AppointmentService.CreateAppointmentByPatient(startTime, doctorJmbg);
+            _appointmentService.CreateAppointmentByPatient(startTime, doctorJmbg);
         }
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)
         {
-            AppointmentService.CreateAppointmentBySecretary(patientJmbg, doctorJmbg, roomId,
+            _appointmentService.CreateAppointmentBySecretary(patientJmbg, doctorJmbg, roomId,
                 startTime, duration);
         }
 
         public void CreateAppointmentByDoctor(PossibleAppointmentsDTO appointmentToCreate)
         {
-            AppointmentService.CreateAppointmentByDoctor(appointmentToCreate);
+            _appointmentService.CreateAppointmentByDoctor(appointmentToCreate);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
-            return ScheduleService.GetPossibleAppointmentsByDoctor(patientJmbg, doctorJmbg,
+            return _scheduleService.GetPossibleAppointmentsByDoctor(patientJmbg, doctorJmbg,
                 dateFrom, dateUntil, duration, priority);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByManager(int roomId, DateTime dateFrom, DateTime dateUntil, int duration)
         {
-            return ScheduleService.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration);
+            return _scheduleService.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
-            return ScheduleService.GetPossibleAppointmentsBySecretary(patientJmbg, doctorJmbg, roomId,
+            return _scheduleService.GetPossibleAppointmentsBySecretary(patientJmbg, doctorJmbg, roomId,
                 dateFrom, dateUntil, duration, priority);
         }
         public PossibleAppointmentsDTO FindPossibleEmergencyAppointment(String patientJmbg, String doctorSpeciality)
         {
-            return EmergencyService.FindPossibleEmergencyAppointment(patientJmbg, doctorSpeciality);
+            return _emergencyService.FindPossibleEmergencyAppointment(patientJmbg, doctorSpeciality);
         }
         public List<ModifyAppointmentForEmergencyDto> FindAppointmentsToRescheduleForEmergency(String patientJmbg, String doctorSpeciality)
         {
-            return EmergencyService.FindAppointmentsToRescheduleForEmergency(patientJmbg, doctorSpeciality);
+            return _emergencyService.FindAppointmentsToRescheduleForEmergency(patientJmbg, doctorSpeciality);
         }
 
         public List<AppointmentDTO> FilterByTime(DateTime dateFrom, DateTime dateTo)
         {
-            return AppointmentService.FilterByTime(dateFrom, dateTo);
+            return _appointmentService.FilterByTime(dateFrom, dateTo);
         }
 
 

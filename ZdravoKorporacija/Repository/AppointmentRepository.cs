@@ -9,7 +9,7 @@ namespace Repository
 {
     public class AppointmentRepository: IAppointmentRepository
     {
-        private readonly String AppointmentFilePath = @"..\..\..\Resources\Appointments.json";
+        private readonly String _appointmentFilePath = @"..\..\..\Resources\Appointments.json";
 
         public List<Appointment> FindAll()
         {
@@ -127,7 +127,7 @@ namespace Repository
 
         private List<Appointment> GetValues()
         {
-            var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(AppointmentFilePath));
+            var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(_appointmentFilePath));
             if (values == null)
             {
                 values = new List<Appointment>();
@@ -150,7 +150,7 @@ namespace Repository
 
         private void Save(List<Appointment> values)
         {
-            File.WriteAllText(AppointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
+            File.WriteAllText(_appointmentFilePath, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
 
 
