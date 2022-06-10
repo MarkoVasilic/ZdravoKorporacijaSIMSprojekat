@@ -13,22 +13,10 @@ namespace ZdravoKorporacija.View.RoomCRUD
         public GetAllRooms()
         {
             InitializeComponent();
-            createRoomVM = new CreateRoomVM();
+            createRoomVM = new CreateRoomVM(this);
             DataContext = createRoomVM;
 
         }
-
-
-        private void Button_Click_Logout(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /*private void Button_Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ManagerHomePage());
-        }*/
-
 
         public void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

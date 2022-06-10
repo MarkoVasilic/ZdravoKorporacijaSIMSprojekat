@@ -99,9 +99,9 @@
 
         <StackPanel Grid.Row="4" Orientation="Horizontal">
             <TextBlock Text="Naziv" Margin=" 48 20 0 0 " FontSize="20"></TextBlock>
-            <TextBox x:Name="newRoomName" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding NewRoomName}"></TextBox>
+            <TextBox x:Name="newRoomName" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding NewRoomName}" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center"></TextBox>
             <TextBlock Text="Opis" Margin=" 50 20 0 0 " FontSize="20"></TextBlock>
-            <TextBox x:Name="newRoomDescription" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding NewRoomDescription}"></TextBox>
+            <TextBox x:Name="newRoomDescription" Margin="20 18 0 0" Height="30" Width="150" Text="{Binding NewRoomDescription}" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center"></TextBox>
             <TextBlock Text="Tip" Margin=" 50 20 0 0 " FontSize="20"></TextBlock>
             <ComboBox Name="newRoomTypeComboBox"  Margin="20,18,0,0" Height="30"
                              SelectedValuePath="Content" Width="200" Style="{StaticResource ManagerComboBoxStyle}" Background="#fad4c0" >

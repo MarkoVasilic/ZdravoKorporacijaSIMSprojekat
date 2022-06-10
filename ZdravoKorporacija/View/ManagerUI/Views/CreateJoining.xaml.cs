@@ -43,7 +43,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         private String newDescription;
         private RoomType roomType;
 
-        public CreateJoining(int firstRoomId, int secondRoomId, DateTime start, DateTime end, int duration, String NewRoomName, string NewRoomDescription, RoomType newRoomType)
+        public CreateJoining(int firstRoomId, int secondRoomId, DateTime start, DateTime end, String duration, String NewRoomName, string NewRoomDescription, RoomType newRoomType)
         {
             InitializeComponent();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -75,11 +75,11 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
             AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService, displacementService);
             advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
-            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, start, end, duration));
+            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, start, end, int.Parse(duration)));
             setIndexesOfPossibleAppointments();
             firstRenovationRoomId = firstRoomId;
             secondRenovationRoomId = secondRoomId;
-            durationToSend = duration;
+            durationToSend = int.Parse(duration);
             newName = NewRoomName;
             newDescription = NewRoomDescription;
             roomType = newRoomType;

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
 using ZdravoKorporacija.View.ManagerUI.ViewModels;
 
 namespace ZdravoKorporacija.View.ManagerUI.Views
@@ -9,11 +10,16 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
     /// </summary>
     public partial class ManagerHomeWindow : Window
     {
+
+
+        public static NavigationService? NavigationService { get; set; }
+
         public ManagerHomeWindow()
         {
 
             InitializeComponent();
             DataContext = new ManagerWindowVM(this);
+            NavigationService = this.ManagerMainFrame.NavigationService;
 
         }
 

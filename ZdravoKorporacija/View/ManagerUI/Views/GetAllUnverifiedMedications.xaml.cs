@@ -28,7 +28,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         {
             InitializeComponent();
 
-            createMedicationVM = new CreateMedicationVM();
+            createMedicationVM = new CreateMedicationVM(this);
             DataContext = createMedicationVM;
         }
 

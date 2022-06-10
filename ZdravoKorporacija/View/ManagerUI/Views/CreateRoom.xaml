@@ -9,13 +9,6 @@
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="CreateRoom" Background="#fee9e1"  >
 
-
-    <Page.CommandBindings>
-        <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="CreateRoomHelp_CanExecute" Executed="CreateRoomHelp_Executed"></CommandBinding>
-        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
-    </Page.CommandBindings>
-
-
     <Grid Margin="20 10" MaxWidth="1024">
 
 
