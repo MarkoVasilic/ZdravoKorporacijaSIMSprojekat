@@ -79,12 +79,5 @@ namespace Controller
             return PatientService.GetOneByJmbg(jmbg);
         }
 
-        public void ModifyInfo(
-string firstName, string lastName,  DateTime? dateOfBirth, string? email, string? telephone,
-string? address, string Username, string Password, string jmbg)
-        {
-            PatientService.ModifyInfo(firstName, lastName, dateOfBirth, email, telephone, address, Username, Password, jmbg);
-        }
-
     }
 }

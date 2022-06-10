@@ -24,14 +24,6 @@
     "Seen": false
   },
   {
-    "Id": 242,
-    "Title": "Rejection of Xyzal medication",
-    "Description": "dodati sastojak5",
-    "StartTime": "2022-06-09T21:34:00.5739782+02:00",
-    "userJmbg": "3434343434343",
-    "Seen": false
-  },
-  {
     "Id": 243,
     "Title": "Rejection of Aspirin medication",
     "Description": "pogresna alternativa",
@@ -109,6 +101,1950 @@
     "Description": "Your absence request has been accepted!",
     "StartTime": "2022-06-09T21:56:03.6419986+02:00",
     "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 253,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 17.6.2022. 04:45:00 in room Conf 2",
+    "StartTime": "2022-06-10T12:46:35.9576665+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 254,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 17.6.2022. 04:45:00 in room Conf 2",
+    "StartTime": "2022-06-10T12:46:35.9842334+02:00",
+    "userJmbg": "4444444444444",
+    "Seen": false
+  },
+  {
+    "Id": 255,
+    "Title": "Scheduled meeting",
+    "Description": "Meeting that requires your presence will start at 17.6.2022. 04:45:00 in room Conf 2",
+    "StartTime": "2022-06-10T12:46:35.9956452+02:00",
+    "userJmbg": "1515151515151",
+    "Seen": false
+  },
+  {
+    "Id": 256,
+    "Title": "Absence request",
+    "Description": "Your absence request has been declined!\nReason: ne moze",
+    "StartTime": "2022-06-10T12:47:13.3629262+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 257,
+    "Title": "Absence request",
+    "Description": "Your absence request has been accepted!",
+    "StartTime": "2022-06-10T12:47:17.3471718+02:00",
+    "userJmbg": "1231231231231",
+    "Seen": false
+  },
+  {
+    "Id": 258,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-13T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 259,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-13T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 260,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-13T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 261,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 262,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-14T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 263,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-14T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 264,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 265,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-15T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 266,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-15T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 267,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-16T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 268,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-16T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 269,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-16T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 270,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-13T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 271,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-13T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 272,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 273,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-14T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 274,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 275,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-15T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 276,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-16T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 277,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-16T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 278,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-17T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 279,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-17T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 280,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-18T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 281,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-18T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 282,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-19T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 283,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-19T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 284,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-20T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 285,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-20T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 286,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-21T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 287,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-21T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 288,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-22T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 289,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-22T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 290,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-23T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 291,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-23T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 292,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 293,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-14T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 294,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-14T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 295,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 296,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-15T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 297,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-15T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 298,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-16T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 299,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-16T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 300,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-13T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 301,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-13T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 302,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-13T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 303,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 304,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-14T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 305,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-14T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 306,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 307,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-15T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 308,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-15T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 309,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-16T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 310,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-16T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 311,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-16T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 312,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-13T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 313,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-13T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 314,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 315,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-14T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 316,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 317,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-15T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 318,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-16T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 319,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-16T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 320,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-17T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 321,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-17T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 322,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-18T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 323,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-18T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 324,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-19T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 325,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-19T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 326,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-20T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 327,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-20T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 328,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-21T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 329,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-21T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 330,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-22T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 331,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-22T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 332,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-23T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 333,
+    "Title": "Aspirin",
+    "Description": "Morate da popijete lijek Aspirin , Kolicina: 100mg , Satnica: 12:0h !",
+    "StartTime": "2022-06-23T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 334,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 335,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-14T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 336,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-14T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 337,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 338,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-15T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 339,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-15T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 340,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-16T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 341,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-16T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 342,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-16T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 343,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-17T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 344,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-17T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 345,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-17T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 346,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-18T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 347,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-18T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 348,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-18T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 349,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-19T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 350,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-19T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 351,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-19T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 352,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-20T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 353,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-20T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 354,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-20T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 355,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-21T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 356,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-21T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 357,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-21T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 358,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-22T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 359,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-22T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 360,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-22T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 361,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-23T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 362,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-23T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 363,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-23T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 364,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-24T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 365,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-24T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 366,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-24T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 367,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-25T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 368,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-25T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 369,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-25T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 370,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 371,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 5:0h !",
+    "StartTime": "2022-06-14T05:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 372,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 10:0h !",
+    "StartTime": "2022-06-14T10:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 373,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 15:0h !",
+    "StartTime": "2022-06-14T15:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 374,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 20:0h !",
+    "StartTime": "2022-06-14T20:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 375,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 1:0h !",
+    "StartTime": "2022-06-15T01:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 376,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 6:0h !",
+    "StartTime": "2022-06-15T06:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 377,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 11:0h !",
+    "StartTime": "2022-06-15T11:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 378,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 16:0h !",
+    "StartTime": "2022-06-15T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 379,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 21:0h !",
+    "StartTime": "2022-06-15T21:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 380,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 2:0h !",
+    "StartTime": "2022-06-16T02:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 381,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 7:0h !",
+    "StartTime": "2022-06-16T07:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 382,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 12:0h !",
+    "StartTime": "2022-06-16T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 383,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 17:0h !",
+    "StartTime": "2022-06-16T17:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 384,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 22:0h !",
+    "StartTime": "2022-06-16T22:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 385,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 3:0h !",
+    "StartTime": "2022-06-17T03:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 386,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 8:0h !",
+    "StartTime": "2022-06-17T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 387,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 13:0h !",
+    "StartTime": "2022-06-17T13:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 388,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 18:0h !",
+    "StartTime": "2022-06-17T18:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 389,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 23:0h !",
+    "StartTime": "2022-06-17T23:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 390,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 4:0h !",
+    "StartTime": "2022-06-18T04:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 391,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 9:0h !",
+    "StartTime": "2022-06-18T09:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 392,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 14:0h !",
+    "StartTime": "2022-06-18T14:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 393,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 19:0h !",
+    "StartTime": "2022-06-18T19:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 394,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 0:0h !",
+    "StartTime": "2022-06-19T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 395,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 5:0h !",
+    "StartTime": "2022-06-19T05:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 396,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 10:0h !",
+    "StartTime": "2022-06-19T10:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 397,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 15:0h !",
+    "StartTime": "2022-06-19T15:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 398,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 20:0h !",
+    "StartTime": "2022-06-19T20:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 399,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 1:0h !",
+    "StartTime": "2022-06-20T01:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 400,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 6:0h !",
+    "StartTime": "2022-06-20T06:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 401,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 11:0h !",
+    "StartTime": "2022-06-20T11:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 402,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 16:0h !",
+    "StartTime": "2022-06-20T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 403,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 21:0h !",
+    "StartTime": "2022-06-20T21:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 404,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 2:0h !",
+    "StartTime": "2022-06-21T02:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 405,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 7:0h !",
+    "StartTime": "2022-06-21T07:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 406,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 12:0h !",
+    "StartTime": "2022-06-21T12:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 407,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 17:0h !",
+    "StartTime": "2022-06-21T17:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 408,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 22:0h !",
+    "StartTime": "2022-06-21T22:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 409,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 3:0h !",
+    "StartTime": "2022-06-22T03:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 410,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 8:0h !",
+    "StartTime": "2022-06-22T08:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 411,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 13:0h !",
+    "StartTime": "2022-06-22T13:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 412,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 18:0h !",
+    "StartTime": "2022-06-22T18:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 413,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 23:0h !",
+    "StartTime": "2022-06-22T23:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 414,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 4:0h !",
+    "StartTime": "2022-06-23T04:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 415,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 9:0h !",
+    "StartTime": "2022-06-23T09:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 416,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 14:0h !",
+    "StartTime": "2022-06-23T14:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 417,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 19:0h !",
+    "StartTime": "2022-06-23T19:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 418,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 0:0h !",
+    "StartTime": "2022-06-24T00:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 419,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 5:0h !",
+    "StartTime": "2022-06-24T05:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 420,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 10:0h !",
+    "StartTime": "2022-06-24T10:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 421,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 15:0h !",
+    "StartTime": "2022-06-24T15:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 422,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 20:0h !",
+    "StartTime": "2022-06-24T20:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 423,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 1:0h !",
+    "StartTime": "2022-06-25T01:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 424,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 6:0h !",
+    "StartTime": "2022-06-25T06:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 425,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 11:0h !",
+    "StartTime": "2022-06-25T11:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 426,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 16:0h !",
+    "StartTime": "2022-06-25T16:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 427,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 21:0h !",
+    "StartTime": "2022-06-25T21:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 428,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 2:0h !",
+    "StartTime": "2022-06-26T02:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 429,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200gramakokaina , Satnica: 7:0h !",
+    "StartTime": "2022-06-26T07:00:00",
+    "userJmbg": "7458963215963",
+    "Seen": false
+  },
+  {
+    "Id": 430,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:13h !",
+    "StartTime": "2022-05-13T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 431,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 1:13h !",
+    "StartTime": "2022-05-13T01:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 432,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 2:13h !",
+    "StartTime": "2022-05-13T02:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 433,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 3:13h !",
+    "StartTime": "2022-05-13T03:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 434,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 4:13h !",
+    "StartTime": "2022-05-13T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 435,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 5:13h !",
+    "StartTime": "2022-05-13T05:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 436,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 6:13h !",
+    "StartTime": "2022-05-13T06:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 437,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 7:13h !",
+    "StartTime": "2022-05-13T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 438,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:13h !",
+    "StartTime": "2022-05-13T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 439,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 9:13h !",
+    "StartTime": "2022-05-13T09:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 440,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 10:13h !",
+    "StartTime": "2022-05-13T10:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 441,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 11:13h !",
+    "StartTime": "2022-05-13T11:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 442,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 12:13h !",
+    "StartTime": "2022-05-13T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 443,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 13:13h !",
+    "StartTime": "2022-05-13T13:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 444,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 14:13h !",
+    "StartTime": "2022-05-13T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 445,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 15:13h !",
+    "StartTime": "2022-05-13T15:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 446,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:13h !",
+    "StartTime": "2022-05-13T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 447,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 17:13h !",
+    "StartTime": "2022-05-13T17:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 448,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 18:13h !",
+    "StartTime": "2022-05-13T18:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 449,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 19:13h !",
+    "StartTime": "2022-05-13T19:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 450,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 20:13h !",
+    "StartTime": "2022-05-13T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 451,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 21:13h !",
+    "StartTime": "2022-05-13T21:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 452,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 22:13h !",
+    "StartTime": "2022-05-13T22:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 453,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 23:13h !",
+    "StartTime": "2022-05-13T23:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 454,
+    "Title": "Omeprol",
+    "Description": "Morate da popijete lijek Omeprol , Kolicina: 400g , Satnica: 0:13h !",
+    "StartTime": "2022-06-13T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 455,
+    "Title": "Omeprol",
+    "Description": "Morate da popijete lijek Omeprol , Kolicina: 400g , Satnica: 4:13h !",
+    "StartTime": "2022-06-13T04:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 456,
+    "Title": "Omeprol",
+    "Description": "Morate da popijete lijek Omeprol , Kolicina: 400g , Satnica: 8:13h !",
+    "StartTime": "2022-06-13T08:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 457,
+    "Title": "Omeprol",
+    "Description": "Morate da popijete lijek Omeprol , Kolicina: 400g , Satnica: 12:13h !",
+    "StartTime": "2022-06-13T12:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 458,
+    "Title": "Omeprol",
+    "Description": "Morate da popijete lijek Omeprol , Kolicina: 400g , Satnica: 16:13h !",
+    "StartTime": "2022-06-13T16:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 459,
+    "Title": "Omeprol",
+    "Description": "Morate da popijete lijek Omeprol , Kolicina: 400g , Satnica: 20:13h !",
+    "StartTime": "2022-06-13T20:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 460,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 12mg , Satnica: 0:13h !",
+    "StartTime": "2022-07-13T00:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 461,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 12mg , Satnica: 7:13h !",
+    "StartTime": "2022-07-13T07:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 462,
+    "Title": "Paracetamol",
+    "Description": "Morate da popijete lijek Paracetamol , Kolicina: 12mg , Satnica: 14:13h !",
+    "StartTime": "2022-07-13T14:13:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 463,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-09T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 464,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-09T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 465,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-09T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 466,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-10T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 467,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-10T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 468,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-10T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 469,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-11T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 470,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-11T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 471,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-11T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 472,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-12T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 473,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-12T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 474,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-12T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 475,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-13T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 476,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-13T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 477,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-13T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 478,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-14T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 479,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-14T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 480,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-14T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 481,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 0:0h !",
+    "StartTime": "2022-06-15T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 482,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 8:0h !",
+    "StartTime": "2022-06-15T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 483,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200mg , Satnica: 16:0h !",
+    "StartTime": "2022-06-15T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 484,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 0:0h !",
+    "StartTime": "2022-06-18T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 485,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 8:0h !",
+    "StartTime": "2022-06-18T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 486,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 16:0h !",
+    "StartTime": "2022-06-18T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 487,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 0:0h !",
+    "StartTime": "2022-06-19T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 488,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 8:0h !",
+    "StartTime": "2022-06-19T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 489,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 16:0h !",
+    "StartTime": "2022-06-19T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 490,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 0:0h !",
+    "StartTime": "2022-06-20T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 491,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 8:0h !",
+    "StartTime": "2022-06-20T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 492,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 16:0h !",
+    "StartTime": "2022-06-20T16:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 493,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 0:0h !",
+    "StartTime": "2022-06-21T00:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 494,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 8:0h !",
+    "StartTime": "2022-06-21T08:00:00",
+    "userJmbg": "7778889994445",
+    "Seen": false
+  },
+  {
+    "Id": 495,
+    "Title": "Berodual",
+    "Description": "Morate da popijete lijek Berodual , Kolicina: 200kg , Satnica: 16:0h !",
+    "StartTime": "2022-06-21T16:00:00",
+    "userJmbg": "7778889994445",
     "Seen": false
   }
 ]

@@ -42,14 +42,14 @@ namespace ZdravoKorporacija.Service
             List<Doctor> doctors = DoctorRepository.FindAllBySpeciality(doctorSpeciality);
             foreach (var doctor in doctors)
             {
-                PossibleAppointmentsDTO possibleEmergencyAppointment = GetPossibleEmergencyAppointment(patient, doctor);
+                PossibleAppointmentsDTO possibleEmergencyAppointment = GetPossibleEmergencyAppointmentForOneDoctor(patient, doctor);
                 if (possibleEmergencyAppointment != null)
                     return possibleEmergencyAppointment;
             }
             return null;
         }
 
-        private PossibleAppointmentsDTO GetPossibleEmergencyAppointment(Patient patient, Doctor doctor)
+        private PossibleAppointmentsDTO GetPossibleEmergencyAppointmentForOneDoctor(Patient patient, Doctor doctor)
         {
             List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctor.Jmbg);
             if (!IsOccupied(doctorAppointments))
