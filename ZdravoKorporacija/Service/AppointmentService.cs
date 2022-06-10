@@ -190,16 +190,5 @@ namespace Service
             AppointmentRepository.SaveAppointment(appointment);
         }
 
-        //OVO PROVJERITI DA LI SE UOPSTE POZIVA NEGDJE, AKO NE IZBRISATI
-        public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
-        {
-            Boolean specialty = DoctorRepository.FindOneByJmbg(appointmentToCreate.DoctorJmbg).Specialty;
-            if (!specialty)
-                throw new Exception("Only doctors with specialization can perform operation!");
-            if (appointmentToCreate.DoctorJmbg.Equals("1231231231231")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
-                CreateAppointmentByDoctor(appointmentToCreate);
-        }
-
-
     }
 }

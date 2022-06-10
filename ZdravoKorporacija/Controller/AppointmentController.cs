@@ -89,10 +89,6 @@ namespace Controller
         {
             AppointmentService.CreateAppointmentByDoctor(appointmentToCreate);
         }
-        public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
-        {
-            AppointmentService.CreateOperationAppointment(appointmentToCreate);
-        }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration, String priority)
         {
