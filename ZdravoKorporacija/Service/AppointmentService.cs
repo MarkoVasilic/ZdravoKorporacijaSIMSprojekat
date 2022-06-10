@@ -200,6 +200,22 @@ namespace Service
                 CreateAppointmentByDoctor(appointmentToCreate);
         }
 
+        public List<AppointmentDTO> FilterByTime(DateTime dateFrom, DateTime dateTo)
+        {
+            List<AppointmentDTO> appointments = GetAppointmentsByDoctorJmbgDTO(App.loggedUser.Jmbg);
+            List<AppointmentDTO> filteredAppointments = new List<AppointmentDTO>();
+
+            foreach (AppointmentDTO appointment in appointments)
+            {
+                if (appointment.StartTime > dateFrom && appointment.StartTime < dateTo)
+                {
+                    filteredAppointments.Add(appointment);
+                }
+            }
+
+            return filteredAppointments;
+        }
+
 
     }
 }

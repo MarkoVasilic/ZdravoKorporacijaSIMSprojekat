@@ -52,10 +52,6 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             PatientRepository patientRepository = new PatientRepository();
             RoomRepository roomRepository = new RoomRepository();
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-           /* ScheduleService scheduleService = new ScheduleService();
-            EmergencyService emergencyService = new EmergencyService();
-            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
-            appointments = new ObservableCollection<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO("1231231231231"));*/
         }
 
         private void homeExecute(object parametar)

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Controller;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using Repository;
@@ -15,13 +17,51 @@ namespace ZdravoKorporacija.View.DoctorUI
     /// <summary>
     /// Interaction logic for DoctorHomePage.xaml
     /// </summary>
-    public partial class DoctorHomePage : Page
+    public partial class DoctorHomePage : Page, INotifyPropertyChanged
     {
         private AppointmentController appointmentController;
-        private String doctorJmbg { get; set; }
+        private String jmbg { get; set; }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnProperyChanged(string? propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public DateTime dateFrom;
+        public DateTime DateFrom
+        {
+            get { return dateFrom; }
+            set
+            {
+                dateFrom = value;
+                OnProperyChanged("DateFrom");
+
+            }
+        }
+
+        public DateTime dateTo;
+        public DateTime DateTo
+        {
+            get { return dateTo; }
+            set
+            {
+                dateTo = value;
+                OnProperyChanged("DateTo");
+            }
+        }
 
         public ObservableCollection<AppointmentDTO> appointments { get; set; }
+        /*public ObservableCollection<AppointmentDTO> Appointments
+        {
+            get => appointments;
+            set
+            {
+                appointments = value;
+                OnPropertyChanged("Appointments");
+            }
+        }*/
         public DoctorHomePage(DoctorWindowVM doctorWindowVM)
         {
             InitializeComponent();
@@ -54,8 +94,37 @@ namespace ZdravoKorporacija.View.DoctorUI
         private void ViewMedicalRecordButton_OnClick(object sender, RoutedEventArgs e)
         {
             String Jmbg = (String)((Button)sender).CommandParameter;
-            this.doctorJmbg = Jmbg;
+            this.jmbg = Jmbg;
             NavigationService.Navigate(new ViewMedicalRecordPage(Jmbg));
+        }
+
+        private void CreateAppointmentButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CreateDoctorAppointmentPage());
+        }
+
+        private void ScheduleSurgeryButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ScheduleSurgeryPage());
+        }
+
+        private void EditButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AppointmentDTO appoinmeDTO = (AppointmentDTO)((Button)sender).CommandParameter;
+            int id = appoinmeDTO.Id;
+            NavigationService.Navigate(new ModifyDoctorAppointmentPage(id));
+        }
+
+        private void DeleteAppointmnetButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AppointmentDTO appoinmeDTO = (AppointmentDTO)((Button)sender).CommandParameter;
+            int id = appoinmeDTO.Id;
+            appointmentController.DeleteAppointment(id);
+        }
+
+        private void FilterAppointmnetsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.appointments = new ObservableCollection<AppointmentDTO>(appointmentController.FilterByTime(DateFrom, DateTo));
         }
     }
 }
