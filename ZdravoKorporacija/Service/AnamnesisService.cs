@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.Service

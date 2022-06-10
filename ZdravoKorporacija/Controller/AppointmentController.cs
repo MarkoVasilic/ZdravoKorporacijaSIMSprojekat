@@ -114,6 +114,11 @@ namespace Controller
             return EmergencyService.FindAppointmentsToRescheduleForEmergency(patientJmbg, doctorSpeciality);
         }
 
-        
+        public List<AppointmentDTO> FilterByTime(DateTime dateFrom, DateTime dateTo)
+        {
+            return AppointmentService.FilterByTime(dateFrom, dateTo);
+        }
+
+
     }
 }
