@@ -7,61 +7,61 @@ namespace Controller
 {
     public class MedicationController
     {
-        private readonly MedicationService MedicationService;
+        private readonly MedicationService _medicationService;
 
         public MedicationController(MedicationService medicationService)
         {
-            this.MedicationService = medicationService;
+            this._medicationService = medicationService;
         }
 
         public List<Medication> GetAll()
         {
-            return MedicationService.GetAll();
+            return _medicationService.GetAll();
         }
 
         public Medication GetOneByName(String name)
         {
-            return MedicationService.GetOneByName(name);
+            return _medicationService.GetOneByName(name);
         }
 
         public Medication GetOneById(int id)
         {
-            return MedicationService.GetOneById(id);
+            return _medicationService.GetOneById(id);
         }
 
         public void Create(String name, List<String> ingredients, String alternative)
         {
-            MedicationService.Create(name, ingredients, alternative);
+            _medicationService.Create(name, ingredients, alternative);
         }
 
         public void Modify(int id, String name, List<String> ingredients, String alternative)
         {
-            MedicationService.Modify(id, name, ingredients, alternative);
+            _medicationService.Modify(id, name, ingredients, alternative);
         }
 
         public List<Medication> GetAllRejected()
         {
-            return MedicationService.GetAllRejected();
+            return _medicationService.GetAllRejected();
         }
 
         public List<Medication> GetAllUnverified()
         {
-            return MedicationService.GetAllUnverified();
+            return _medicationService.GetAllUnverified();
         }
 
         public List<Medication> GetAllVerified()
         {
-            return MedicationService.GetAllVerified();
+            return _medicationService.GetAllVerified();
         }
 
         public void Verify(int id)
         {
-            MedicationService.Verify(id);
+            _medicationService.Verify(id);
         }
 
         public void Reject(int id)
         {
-            MedicationService.Reject(id);
+            _medicationService.Reject(id);
         }
 
     }

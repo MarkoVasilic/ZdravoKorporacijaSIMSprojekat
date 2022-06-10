@@ -10,15 +10,15 @@ namespace ZdravoKorporacija.Service
 {
     public class NotificationService
     {
-        private readonly NotificationRepository notificationRepository;
-        private readonly PrescriptionService prescriptionService;
+        private readonly NotificationRepository _notificationRepository;
+        private readonly PrescriptionService _prescriptionService;
 
 
         public NotificationService() { }
         public NotificationService(NotificationRepository repository, PrescriptionService prescriptionService)
         {
-            this.notificationRepository = repository;
-            this.prescriptionService = prescriptionService;
+            this._notificationRepository = repository;
+            this._prescriptionService = prescriptionService;
         }
 
 
@@ -26,7 +26,7 @@ namespace ZdravoKorporacija.Service
         {
             try
             {
-                List<Notification> notifications = notificationRepository.FindAll();
+                List<Notification> notifications = _notificationRepository.FindAll();
                 int currentMax = notifications.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -39,41 +39,41 @@ namespace ZdravoKorporacija.Service
         public List<Notification> GetAllByPatientJmbg(String userJmbg)
         {
             List<Notification> notifications = new List<Notification>();
-            notifications = notificationRepository.FindAllByUserJmbg(userJmbg);
+            notifications = _notificationRepository.FindAllByUserJmbg(userJmbg);
             return notifications;
         }
 
         public void Delete(int notificationId)
         {
-            if (notificationRepository.FindOneById(notificationId) == null)
+            if (_notificationRepository.FindOneById(notificationId) == null)
             {
                 throw new Exception("Notification with that id doesn't exist!");
             }
             else
             {
-                notificationRepository.RemoveNotification(notificationId);
+                _notificationRepository.RemoveNotification(notificationId);
             }
         }
 
         public List<Notification> GetAll()
         {
-            return notificationRepository.FindAll();
+            return _notificationRepository.FindAll();
         }
         public Notification GetOneById(int notificationId)
         {
-            return notificationRepository.FindOneById(notificationId);
+            return _notificationRepository.FindOneById(notificationId);
         }
 
         public List<Notification> GetAllByUserJmbg(String Jmbg)
         {
-            return notificationRepository.FindAllByUserJmbg(Jmbg);
+            return _notificationRepository.FindAllByUserJmbg(Jmbg);
         }
 
         public Notification Create(string title, string description, DateTime startTime, string receiverJmbg, bool seen)
         {
             int id = GenerateNewId();
             Notification notification = new Notification(title, description, startTime, receiverJmbg, seen, id);
-            notificationRepository.SaveNotification(notification);
+            _notificationRepository.SaveNotification(notification);
             return notification;
 
         }
@@ -84,14 +84,14 @@ namespace ZdravoKorporacija.Service
             String title = "Reschedule of appointment";
             String description = "Your appointment with doctor " + doctorFullName + " on date " + oldAppointmentTime + " in room " + roomName + " have been rescheduled to date " + newAppointmentTime;
             Notification notification = new Notification(title, description, DateTime.Now, patientJmbg, false, id);
-            notificationRepository.SaveNotification(notification);
+            _notificationRepository.SaveNotification(notification);
         }
 
         public void CreateUserNotification(String title, String description, String doctorJmbg)
         {
             int id = GenerateNewId();
             Notification notification = new Notification(title, description, DateTime.Now, doctorJmbg, false, id);
-            notificationRepository.SaveNotification(notification);
+            _notificationRepository.SaveNotification(notification);
         }
 
         public void CreateDoctorNotificationForEmergency(String doctorJmbg, String patientFullName, DateTime oldAppointmentTime, DateTime newAppointmentTime, DateTime emergencyTime, String roomName)
@@ -101,7 +101,7 @@ namespace ZdravoKorporacija.Service
             String description = "Your appointment with patient " + patientFullName + " on date " + oldAppointmentTime + " in room " + roomName + " have been rescheduled to date " + newAppointmentTime + ", there is emergency you need to attend now at room " +
                 roomName + " on date " + emergencyTime;
             Notification notification = new Notification(title, description, DateTime.Now, doctorJmbg, false, id);
-            notificationRepository.SaveNotification(notification);
+            _notificationRepository.SaveNotification(notification);
         }
 
         public List<Notification> CreatePatientNotifications(String patientJmbg)
@@ -113,7 +113,7 @@ namespace ZdravoKorporacija.Service
             InitializeNotificationParameters(patientJmbg, out numberOfMedNotification, out Description, out Title, out StartTime, out userJmbg, out Seen);
 
             List<Notification> notificationsList = new List<Notification>();
-            List<Prescription> prescriptionsList = prescriptionService.GetAllByPatient(patientJmbg);
+            List<Prescription> prescriptionsList = _prescriptionService.GetAllByPatient(patientJmbg);
             foreach (Prescription prescription in prescriptionsList)
             {
                 numberOfMedNotification = (prescription.To - prescription.From).Days * (24 / prescription.Frequency);
@@ -143,7 +143,7 @@ namespace ZdravoKorporacija.Service
         public List<Notification> ShowPatientNotification()
         {
             List<Notification> returnList = new List<Notification>();
-            List<Notification> notificationsListToDisplay = notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
+            List<Notification> notificationsListToDisplay = _notificationRepository.FindAllByUserJmbg(App.loggedUser.Jmbg);
             for (int i = 0; i < notificationsListToDisplay.Count; i++)
             {
                 if (IsNotificationReadyToDisplay(notificationsListToDisplay, i))
@@ -159,7 +159,7 @@ namespace ZdravoKorporacija.Service
 
         public void DeleteAll(String patientJmbg)
         {
-            List<Notification> notifications = new List<Notification>(notificationRepository.FindAllByUserJmbg(patientJmbg));
+            List<Notification> notifications = new List<Notification>(_notificationRepository.FindAllByUserJmbg(patientJmbg));
             for(int i = 0; i < notifications.Count; ++i)
                 Delete(notifications[i].Id);
         }
@@ -167,7 +167,7 @@ namespace ZdravoKorporacija.Service
         public Notification CreateNotification(Notification notification)
         {
             notification.Id = GenerateNewId();
-            notificationRepository.SaveNotification(notification);
+            _notificationRepository.SaveNotification(notification);
             return notification;
         }
 

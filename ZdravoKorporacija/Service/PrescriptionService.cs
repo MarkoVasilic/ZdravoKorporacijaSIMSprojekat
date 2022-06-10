@@ -9,17 +9,17 @@ namespace ZdravoKorporacija.Service
 {
     public class PrescriptionService
     {
-        private readonly PrescriptionRepository PrescriptionRepository;
-        private readonly MedicalRecordRepository MedicalRecordRepository;
-        private readonly PatientRepository PatientRepository;
-        private readonly MedicationRepository MedicationRepository;
+        private readonly PrescriptionRepository _prescriptionRepository;
+        private readonly MedicalRecordRepository _medicalRecordRepository;
+        private readonly PatientRepository _patientRepository;
+        private readonly MedicationRepository _medicationRepository;
 
         public PrescriptionService(PrescriptionRepository prescriptionRepository, MedicalRecordRepository medicalRecordRepository, PatientRepository patientRepository, MedicationRepository medicationRepository)
         {
-            PrescriptionRepository = prescriptionRepository;
-            MedicalRecordRepository = medicalRecordRepository;
-            PatientRepository = patientRepository;
-            MedicationRepository = medicationRepository;
+            _prescriptionRepository = prescriptionRepository;
+            _medicalRecordRepository = medicalRecordRepository;
+            _patientRepository = patientRepository;
+            _medicationRepository = medicationRepository;
         }
 
         public PrescriptionService()
@@ -28,21 +28,21 @@ namespace ZdravoKorporacija.Service
 
         public List<Prescription> GetAll()
         {
-            return PrescriptionRepository.FindAll();
+            return _prescriptionRepository.FindAll();
         }
 
         public Prescription? GetOneById(int id)
         {
-            return PrescriptionRepository.FindOneById(id);
+            return _prescriptionRepository.FindOneById(id);
         }
 
         public List<Prescription>? GetAllByPatient(String patientJmbg)
         {
-            List<int> prescriptionIds = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
+            List<int> prescriptionIds = _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
             List<Prescription> result = new List<Prescription>();
             foreach (int id in prescriptionIds)
             {
-                result.Add(PrescriptionRepository.FindOneById(id));
+                result.Add(_prescriptionRepository.FindOneById(id));
             }
             return result;
 
@@ -53,30 +53,30 @@ namespace ZdravoKorporacija.Service
             Prescription prescription = new Prescription(-1, medication, amount, frequency, from, to);
 
             ValidatePrescriptionBeforeCreation(patientJmbg, medication, prescription);
-            PrescriptionRepository.SavePrescription(prescription);
+            _prescriptionRepository.SavePrescription(prescription);
             AddPrescriptionToMedicalRecord(patientJmbg, prescription);
         }
 
         private void AddPrescriptionToMedicalRecord(string patientJmbg, Prescription prescription)
         {
-            List<int> newPrescriptions = MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
+            List<int> newPrescriptions = _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).PrescriptionIds;
             newPrescriptions.Add(prescription.Id);
             MedicalRecord oneMedicalRecord = new MedicalRecord(patientJmbg, newPrescriptions,
-                MedicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
+                _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg).AnamnesisIds);
 
             if (!oneMedicalRecord.validateMedicalRecord())
                 throw new Exception("Something went wrong, medical record isn't updated!");
 
-            MedicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
+            _medicalRecordRepository.UpdateMedicalRecord(oneMedicalRecord);
         }
 
         private void ValidatePrescriptionBeforeCreation(string patientJmbg, string medication, Prescription prescription)
         {
-            List<String> ingredients = MedicationRepository.FindOneByName(medication).Ingredients;
+            List<String> ingredients = _medicationRepository.FindOneByName(medication).Ingredients;
 
             if (ingredients == null)
                 throw new Exception("Prescribed medication is not available!");
-            List<String>? allergens = PatientRepository.FindOneByJmbg(patientJmbg).Allergens;
+            List<String>? allergens = _patientRepository.FindOneByJmbg(patientJmbg).Allergens;
             if (isAllergic(allergens, ingredients))
                 throw new Exception("Patient is allergic to that medication!");
             if (!prescription.validatePrescription())
@@ -101,7 +101,7 @@ namespace ZdravoKorporacija.Service
 
         public void ModifyPrescription(int prescriptonId, String newMedication, String newAmount, int newFrequency, DateTime newFrom, DateTime newTo)
         {
-            List<String> ingredients = MedicationRepository.FindOneByName(newMedication).Ingredients;
+            List<String> ingredients = _medicationRepository.FindOneByName(newMedication).Ingredients;
             List<String> allergens = GetPatientAllergens(prescriptonId);
 
             if (isAllergic(allergens, ingredients))
@@ -111,14 +111,14 @@ namespace ZdravoKorporacija.Service
             if (!newPrescription.validatePrescription())
                 throw new Exception("Something went wrong, prescription isn't updated!");
 
-            PrescriptionRepository.UpdatePrescription(newPrescription);
+            _prescriptionRepository.UpdatePrescription(newPrescription);
 
         }
 
         private List<String> GetPatientAllergens(int prescriptonId)
         {
             List<String> allergens = new List<String>();
-            List<MedicalRecord> medicalRecords = MedicalRecordRepository.FindAll();
+            List<MedicalRecord> medicalRecords = _medicalRecordRepository.FindAll();
             foreach (MedicalRecord mr in medicalRecords)
             {
                 List<int> pr = mr.PrescriptionIds;
@@ -126,7 +126,7 @@ namespace ZdravoKorporacija.Service
                 {
                     if (id == prescriptonId)
                     {
-                        allergens = PatientRepository.FindOneByJmbg(mr.PatientJmbg).Allergens;
+                        allergens = _patientRepository.FindOneByJmbg(mr.PatientJmbg).Allergens;
                     }
                 }
             }

@@ -7,39 +7,39 @@ namespace Controller
 {
     public class SecretaryController
     {
-        private readonly SecretaryService SecretaryService;
+        private readonly SecretaryService _secretaryService;
 
         public SecretaryController(SecretaryService secretaryService)
         {
-            this.SecretaryService = secretaryService;
+            this._secretaryService = secretaryService;
         }
 
         public Secretary? getSecretaryByUsername(String username)
         {
-            return SecretaryService.GetOneByUsername(username);
+            return _secretaryService.GetOneByUsername(username);
         }
 
         public List<Secretary> GetAllSecretary()
         {
-            return SecretaryService.GetAllSecretaries();
+            return _secretaryService.GetAllSecretaries();
         }
 
         public void CreateSecretary(string firstName, string lastName, string username, string password,
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
             string? address)
         {
-            SecretaryService.CreateSecretary(firstName, lastName, username, password,
+            _secretaryService.CreateSecretary(firstName, lastName, username, password,
             jmbg, dateOfBirth, gender, email, phoneNumber, address);
         }
 
         public void DeleteSecretary(string jmbg)
         {
-            SecretaryService.DeleteSecretary(jmbg);
+            _secretaryService.DeleteSecretary(jmbg);
         }
 
         public Secretary? GetOneSecretary(string jmbg)
         {
-            return SecretaryService.GetOneByJmbg(jmbg);
+            return _secretaryService.GetOneByJmbg(jmbg);
         }
 
     }

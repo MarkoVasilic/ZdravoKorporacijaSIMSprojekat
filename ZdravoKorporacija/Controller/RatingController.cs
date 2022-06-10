@@ -7,56 +7,56 @@ namespace ZdravoKorporacija.Controller
 {
     public class RatingController
     {
-        RatingService RatingService = new RatingService();
+        RatingService _ratingService = new RatingService();
 
         public RatingController(RatingService ratingService)
         {
-            this.RatingService = ratingService;
+            this._ratingService = ratingService;
         }
 
         public List<Rating> GetAll()
         {
-            return RatingService.GetAll();
+            return _ratingService.GetAll();
         }
 
         public void Delete(int id)
         {
-            RatingService.Delete(id);
+            _ratingService.Delete(id);
         }
 
         public Rating GetOneById(int id)
         {
-            return RatingService.GetOneById(id);
+            return _ratingService.GetOneById(id);
         }
 
         public List<Rating> GetAllByDoctorJmbg(String jmbg)
         {
-            return RatingService.GetAllByDoctorJmbg(jmbg);
+            return _ratingService.GetAllByDoctorJmbg(jmbg);
         }
 
         public void Create(int appointmentId, int hospitalRating, int doctorRating, String comment)
         {
-            RatingService.Create(appointmentId, hospitalRating, doctorRating, comment);
+            _ratingService.Create(appointmentId, hospitalRating, doctorRating, comment);
         }
 
         public double GetAverageRatingForDoctor(String doctorJmbg)
         {
-            return RatingService.GetAverageRatingForDoctor(doctorJmbg);
+            return _ratingService.GetAverageRatingForDoctor(doctorJmbg);
         }
 
         public double GetAverageRatingForHospital()
         {
-            return RatingService.GetAverageRatingForHospital();
+            return _ratingService.GetAverageRatingForHospital();
         }
 
         public List<int> GetHistogramOfRatingsForHospital()
         {
-            return RatingService.GetHistogramOfRatingsForHospital();
+            return _ratingService.GetHistogramOfRatingsForHospital();
         }
 
         public List<int> GetHistogramOfRatingsForDoctor(String doctorJmbg)
         {
-            return RatingService.GetHistogramOfRatingsForDoctor(doctorJmbg);
+            return _ratingService.GetHistogramOfRatingsForDoctor(doctorJmbg);
         }
     }
 }

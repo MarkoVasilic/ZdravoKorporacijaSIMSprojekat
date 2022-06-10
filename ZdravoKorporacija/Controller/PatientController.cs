@@ -7,38 +7,38 @@ namespace Controller
 {
     public class PatientController
     {
-        private readonly PatientService PatientService;
-        private readonly AppointmentService AppointmentService;
+        private readonly PatientService _patientService;
+        private readonly AppointmentService _appointmentService;
 
         public PatientController(PatientService patientService, AppointmentService appointmentService)
         {
-            this.PatientService = patientService;
-            this.AppointmentService = appointmentService;
+            this._patientService = patientService;
+            this._appointmentService = appointmentService;
         }
 
         public Patient? getPatientByUsername(String username)
         {
-            return PatientService.GetOneByUsername(username);
+            return _patientService.GetOneByUsername(username);
         }
 
         public List<Patient> GetAllPatients()
         {
-            return PatientService.GetAllPatients();
+            return _patientService.GetAllPatients();
         }
 
         public int getTrollCounterByPatient(string jmbg)
         {
-            return PatientService.getTrollCounterByPatient(jmbg);
+            return _patientService.getTrollCounterByPatient(jmbg);
         }
 
         public void incrementTrollCounterByPatient(string jmbg)
         {
-            PatientService.incrementTrollCounterByPatient(jmbg);
+            _patientService.incrementTrollCounterByPatient(jmbg);
         }
 
         public void resetTrollCounterByPatient(string jmbg)
         {
-            PatientService.resetTrollCounterByPatient(jmbg);
+            _patientService.resetTrollCounterByPatient(jmbg);
         }
 
         public void CreatePatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
@@ -46,44 +46,44 @@ namespace Controller
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
             string? address)
         {
-            PatientService.CreatePatient(isGuest, allergens, bloodType, firstName, lastName, username, password,
+            _patientService.CreatePatient(isGuest, allergens, bloodType, firstName, lastName, username, password,
             jmbg, dateOfBirth, gender, email, phoneNumber, address);
         }
 
         public void CreateGuestAccount(String firstName, String lastName, String jmbg)
         {
-            PatientService.CreateGuestAccount(firstName, lastName, jmbg);
+            _patientService.CreateGuestAccount(firstName, lastName, jmbg);
         }
 
         public void DeletePatient(string jmbg)
         {
-            PatientService.DeletePatient(jmbg);
-            AppointmentService.DeleteAppointmentsForOnePatient(jmbg);
+            _patientService.DeletePatient(jmbg);
+            _appointmentService.DeleteAppointmentsForOnePatient(jmbg);
         }
 
         public void DeleteAllPatients()
         {
-            PatientService.DeleteAllPatients();
+            _patientService.DeleteAllPatients();
         }
 
         public void ModifyPatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
             string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? phoneNumber,
             string? address)
         {
-            PatientService.ModifyPatient(isGuest, allergens, bloodType, firstName, lastName,
+            _patientService.ModifyPatient(isGuest, allergens, bloodType, firstName, lastName,
                 jmbg, dateOfBirth, gender, email, phoneNumber, address);
         }
 
         public Patient? GetOnePatient(string jmbg)
         {
-            return PatientService.GetOneByJmbg(jmbg);
+            return _patientService.GetOneByJmbg(jmbg);
         }
 
         public void ModifyInfo(
 string firstName, string lastName,  DateTime? dateOfBirth, string? email, string? telephone,
 string? address, string Username, string Password, string jmbg)
         {
-            PatientService.ModifyInfo(firstName, lastName, dateOfBirth, email, telephone, address, Username, Password, jmbg);
+            _patientService.ModifyInfo(firstName, lastName, dateOfBirth, email, telephone, address, Username, Password, jmbg);
         }
 
     }

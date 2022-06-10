@@ -9,81 +9,81 @@ namespace ZdravoKorporacija.Controller
 {
     public class MedicalRecordController
     {
-        private readonly MedicalRecordService medicalRecordService;
-        private readonly AnamnesisService anamnesisService;
-        private readonly PrescriptionService prescriptionService;
+        private readonly MedicalRecordService _medicalRecordService;
+        private readonly AnamnesisService _anamnesisService;
+        private readonly PrescriptionService _prescriptionService;
 
         public MedicalRecordController(MedicalRecordService medicalRecordService, AnamnesisService anamnesisService, PrescriptionService prescriptionService)
         {
-            this.medicalRecordService = medicalRecordService;
-            this.anamnesisService = anamnesisService;
-            this.prescriptionService = prescriptionService;
+            this._medicalRecordService = medicalRecordService;
+            this._anamnesisService = anamnesisService;
+            this._prescriptionService = prescriptionService;
         }
 
         public List<MedicalRecordDTO> GetAllMedicalRecords()
         {
-            return medicalRecordService.GetAll();
+            return _medicalRecordService.GetAll();
         }
         public List<Anamnesis> GetAllAnamnesis()
         {
-            return anamnesisService.GetAll();
+            return _anamnesisService.GetAll();
         }
         public MedicalRecordDTO? GetOneMedicalRecorByPatientJmbg(String patientJmbg)
         {
-            return medicalRecordService.GetOneByPatientJmbg(patientJmbg);
+            return _medicalRecordService.GetOneByPatientJmbg(patientJmbg);
         }
 
         public MedicalRecordDTO? GetOneMedicalRecorByAppointmentId(int appointmentId)
         {
-            return medicalRecordService.GetOneByAppointmentId(appointmentId);
+            return _medicalRecordService.GetOneByAppointmentId(appointmentId);
         }
 
         public Anamnesis? GetOneAnamnesisById(int anamnesisId)
         {
-            return anamnesisService.GetOneById(anamnesisId);
+            return _anamnesisService.GetOneById(anamnesisId);
         }
         public List<Anamnesis>? GetAllAnamnesisByDoctor(String doctorJmbg)
         {
-            return anamnesisService.GetAllByDoctor(doctorJmbg);
+            return _anamnesisService.GetAllByDoctor(doctorJmbg);
         }
         public List<Anamnesis>? GetAllAnamnesisByPatient(String patientJmbg)
         {
-            return anamnesisService.GetAllByPatient(patientJmbg);
+            return _anamnesisService.GetAllByPatient(patientJmbg);
         }
         public List<Prescription> GetAllPrescriptions()
         {
-            return prescriptionService.GetAll();
+            return _prescriptionService.GetAll();
         }
         public Prescription? GetOnePrescriptionById(int prescriptionId)
         {
-            return prescriptionService.GetOneById(prescriptionId);
+            return _prescriptionService.GetOneById(prescriptionId);
         }
         public void ModifyMedicalRecord(String patientJmbg, List<int> prescriptionIds, List<int> anamnesisIds)
         {
 
-            medicalRecordService.ModifyMedicalRecord(patientJmbg, prescriptionIds, anamnesisIds);
+            _medicalRecordService.ModifyMedicalRecord(patientJmbg, prescriptionIds, anamnesisIds);
         }
         public void ModifyAnamnesis(int anamnesisId, String diagnosis, String report)
         {
-            anamnesisService.ModifyAnamnesis(anamnesisId, diagnosis, report);
+            _anamnesisService.ModifyAnamnesis(anamnesisId, diagnosis, report);
         }
         public void ModifyPrescription(int prescriptonId, String newMedication, String newAmount, int newFrequency, DateTime newFrom, DateTime newTo)
         {
 
-            prescriptionService.ModifyPrescription(prescriptonId, newMedication, newAmount, newFrequency, newFrom, newTo);
+            _prescriptionService.ModifyPrescription(prescriptonId, newMedication, newAmount, newFrequency, newFrom, newTo);
 
         }
         public void CreateAnamnesis(String patientJmbg, String diagnosis, String report)
         {
-            anamnesisService.CreateAnamnesis(patientJmbg, diagnosis, report);
+            _anamnesisService.CreateAnamnesis(patientJmbg, diagnosis, report);
         }
         public void CreatePrescription(String patientJmbg, String medication, String amount, int frequency, DateTime from, DateTime to)
         {
-            prescriptionService.CreatePrescription(patientJmbg, medication, amount, frequency, from, to);
+            _prescriptionService.CreatePrescription(patientJmbg, medication, amount, frequency, from, to);
         }
         public void CreateMedicalRecord(String patientJmbg)
         {
-            medicalRecordService.CreateMedicalRecord(patientJmbg);
+            _medicalRecordService.CreateMedicalRecord(patientJmbg);
         }
 
 

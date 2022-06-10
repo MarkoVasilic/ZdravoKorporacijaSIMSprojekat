@@ -8,16 +8,16 @@ namespace Service
 {
     public class PatientService
     {
-        private readonly IPatientRepository PatientRepository;
+        private readonly IPatientRepository _patientRepository;
 
         public PatientService(IPatientRepository PatientRepository)
         {
-            this.PatientRepository = PatientRepository;
+            this._patientRepository = PatientRepository;
         }
 
         public List<Patient> GetAllPatients()
         {
-            return PatientRepository.FindAll();
+            return _patientRepository.FindAll();
         }
 
         public void CreatePatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
@@ -25,9 +25,9 @@ namespace Service
             string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
             string? address)
         {
-            if (PatientRepository.FindOneByJmbg(jmbg) != null)
+            if (_patientRepository.FindOneByJmbg(jmbg) != null)
                 throw new Exception("Patient with that jmbg already exists!");
-            else if (PatientRepository.FindOneByUsername(username) != null)
+            else if (_patientRepository.FindOneByUsername(username) != null)
                 throw new Exception("Patient with that username already exists!");
             else
             {
@@ -37,38 +37,38 @@ namespace Service
                     jmbg, dateOfBirth, gender, email, telephone, address);
                 if (!newPatient.validatePatient())
                     throw new Exception("Something went wrong, patient account isn't saved!");
-                PatientRepository.SavePatient(newPatient);
+                _patientRepository.SavePatient(newPatient);
             }
         }
 
         public void DeletePatient(string jmbg)
         {
-            if (PatientRepository.FindOneByJmbg(jmbg) == null)
+            if (_patientRepository.FindOneByJmbg(jmbg) == null)
             {
                 throw new Exception("Patient with that jmbg doesn't exist!");
             }
             else
             {
-                PatientRepository.RemovePatient(jmbg);
+                _patientRepository.RemovePatient(jmbg);
             }
         }
 
         public void DeleteAllPatients()
         {
-            PatientRepository.RemoveAll();
+            _patientRepository.RemoveAll();
         }
 
         public void ModifyPatient(Boolean isGuest, List<String>? allergens, BloodType bloodType,
             string firstName, string lastName, string jmbg, DateTime? dateOfBirth, Gender gender, string? email, string? telephone,
             string? address)
         {
-            Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
+            Patient oldPatient = _patientRepository.FindOneByJmbg(jmbg);
             if (oldPatient == null)
                 throw new Exception("Patient with that jmbg doesn't exist!");
             if (isGuest)
             {
                 oldPatient.Allergens = allergens;
-                PatientRepository.UpdatePatient(oldPatient);
+                _patientRepository.UpdatePatient(oldPatient);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Service
             jmbg, dateOfBirth, gender, email, telephone, address);
                 if (!newPatient.validatePatient())
                     throw new Exception("Something went wrong, patient account isn't changed!");
-                PatientRepository.UpdatePatient(newPatient);
+                _patientRepository.UpdatePatient(newPatient);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Service
     string firstName, string lastName, DateTime? dateOfBirth, string? email, string? telephone,
     string? address, string Username, string Password,string jmbg)
         {
-            Patient oldPatient = PatientRepository.FindOneByJmbg(jmbg);
+            Patient oldPatient = _patientRepository.FindOneByJmbg(jmbg);
             if (oldPatient == null)
                 throw new Exception("Patient with that jmbg doesn't exist!");
             else
@@ -95,41 +95,41 @@ namespace Service
                     throw new Exception("You must enter date of birth!");
                 Patient newPatient = new Patient(false, oldPatient.Allergens, oldPatient.BloodTypeEnum, firstName, lastName, Username, Password,jmbg,
              dateOfBirth, oldPatient.Gender, email, telephone, address);
-               // if (!newPatient.validatePatient())
-                 //   throw new Exception("Something went wrong, patient account isn't changed!");
-                PatientRepository.UpdatePatient(newPatient);
+                // if (!newPatient.validatePatient())
+                //   throw new Exception("Something went wrong, patient account isn't changed!");
+                _patientRepository.UpdatePatient(newPatient);
             }
         }
 
         public Patient? GetOneByJmbg(string jmbg)
         {
-            return PatientRepository.FindOneByJmbg(jmbg);
+            return _patientRepository.FindOneByJmbg(jmbg);
         }
 
         public Patient? GetOneByUsername(String username)
         {
-            return PatientRepository.FindOneByUsername(username);
+            return _patientRepository.FindOneByUsername(username);
 
         }
 
         public int getTrollCounterByPatient(string jmbg)
         {
-            Patient patient = PatientRepository.FindOneByJmbg(jmbg);
+            Patient patient = _patientRepository.FindOneByJmbg(jmbg);
             return patient.trollCounter;
         }
 
         public void incrementTrollCounterByPatient(string jmbg)
         {
-            Patient patient = PatientRepository.FindOneByJmbg(jmbg);
+            Patient patient = _patientRepository.FindOneByJmbg(jmbg);
             patient.trollCounter++;
-            PatientRepository.UpdatePatient(patient);
+            _patientRepository.UpdatePatient(patient);
 
         }
         public void resetTrollCounterByPatient(string jmbg)
         {
-            Patient patient = PatientRepository.FindOneByJmbg(jmbg);
+            Patient patient = _patientRepository.FindOneByJmbg(jmbg);
             patient.trollCounter = 0;
-            PatientRepository.UpdatePatient(patient);
+            _patientRepository.UpdatePatient(patient);
 
         }
 
@@ -141,13 +141,13 @@ namespace Service
             Patient guestPatient = new Patient(true, null, BloodType.NONE, firstName, lastName, firstName, "sifra123", jmbg,
                 null, Gender.NONE, null, null, null);
             string retVal = guestPatient.validateGuest();
-            if (PatientRepository.FindOneByJmbg(jmbg) != null)
+            if (_patientRepository.FindOneByJmbg(jmbg) != null)
                 throw new Exception("Patient with that jmbg doesn't exist!");
             else if (retVal.Length != 0)
                 throw new Exception(retVal);
             else
             {
-                PatientRepository.SavePatient(guestPatient);
+                _patientRepository.SavePatient(guestPatient);
             }
         }
 

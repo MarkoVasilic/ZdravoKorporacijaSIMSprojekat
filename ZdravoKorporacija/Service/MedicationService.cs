@@ -9,11 +9,11 @@ namespace Service
     public class MedicationService
     {
 
-        private readonly MedicationRepository MedicationRepository;
+        private readonly MedicationRepository _medicationRepository;
 
         public MedicationService(MedicationRepository medicationRepository)
         {
-            this.MedicationRepository = medicationRepository;
+            this._medicationRepository = medicationRepository;
         }
 
         public MedicationService() { }
@@ -21,24 +21,24 @@ namespace Service
 
         public List<Medication> GetAll()
         {
-            return MedicationRepository.FindAll();
+            return _medicationRepository.FindAll();
         }
 
         public Medication GetOneByName(String name)
         {
-            return MedicationRepository.FindOneByName(name);
+            return _medicationRepository.FindOneByName(name);
         }
 
         public Medication GetOneById(int id)
         {
-            return MedicationRepository.FindOneById(id);
+            return _medicationRepository.FindOneById(id);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<Medication> medications = MedicationRepository.FindAll();
+                List<Medication> medications = _medicationRepository.FindAll();
                 int currentMax = medications.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -55,17 +55,17 @@ namespace Service
             CheckBeforeCreating(id, name);
             Medication newMedication = new Medication(id, name, ingredients, MedicationStatus.UNVERIFIED, alternative);
             Validate(newMedication);
-            MedicationRepository.SaveMedication(newMedication);
+            _medicationRepository.SaveMedication(newMedication);
         }
 
         public void CheckBeforeCreating(int id, String name)
         {
 
-            if (MedicationRepository.FindOneById(id) != null)
+            if (_medicationRepository.FindOneById(id) != null)
             {
                 throw new Exception("Medication with that ID already exists!");
             }
-            else if (MedicationRepository.FindOneByName(name) != null)
+            else if (_medicationRepository.FindOneByName(name) != null)
             {
                 throw new Exception("Medication with that name already exists!");
             }
@@ -74,43 +74,43 @@ namespace Service
 
         public List<Medication> GetAllUnverified()
         {
-            return MedicationRepository.FindAllUnverified();
+            return _medicationRepository.FindAllUnverified();
         }
 
         public List<Medication> GetAllVerified()
         {
-            return MedicationRepository.FindAllVerified();
+            return _medicationRepository.FindAllVerified();
         }
 
         public void Verify(int id)
         {
             Medication medication = GetOneById(id);
             medication.Status = MedicationStatus.VERIFIED;
-            MedicationRepository.Update(medication);
+            _medicationRepository.Update(medication);
         }
 
         public void Reject(int id)
         {
             Medication medication = GetOneById(id);
             medication.Status = MedicationStatus.REJECTED;
-            MedicationRepository.Update(medication);
+            _medicationRepository.Update(medication);
         }
 
         public void Modify(int id, String name, List<String> ingredients, String alternative)
         {
 
             CheckBeforeModification(id);
-            Medication oldMedication = MedicationRepository.FindOneById(id);
+            Medication oldMedication = _medicationRepository.FindOneById(id);
             Medication newMedication = new Medication(oldMedication.Id, name, ingredients, MedicationStatus.UNVERIFIED, alternative);
             Validate(newMedication);
-            MedicationRepository.Update(newMedication);
+            _medicationRepository.Update(newMedication);
 
         }
 
 
         public void CheckBeforeModification(int id)
         {
-            if (MedicationRepository.FindOneById(id) == null)
+            if (_medicationRepository.FindOneById(id) == null)
                 throw new Exception("Medication with that identification number doesn't exist");
 
         }
@@ -125,7 +125,7 @@ namespace Service
 
         public List<Medication> GetAllRejected()
         {
-            return MedicationRepository.FindAllRejected();
+            return _medicationRepository.FindAllRejected();
         }
 
 
