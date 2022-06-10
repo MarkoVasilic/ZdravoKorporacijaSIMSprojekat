@@ -19,7 +19,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         public CreateRoom()
         {
             InitializeComponent();
-            createRoomVM = new CreateRoomVM();
+            createRoomVM = new CreateRoomVM(this);
             this.DataContext = createRoomVM;
             textBoxName.Focus();
         }
@@ -40,27 +40,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             }
         }
 
-        private void CreateRoomHelp_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
 
-        private void CreateRoomHelp_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            CreateRoomHelp createRoomHelp = new CreateRoomHelp();
-            createRoomHelp.Show();
-        }
-
-        private void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            // Console.WriteLine("Nadja");
-            NavigationService.Navigate(new ManagerHomePage());
-        }
 
 
     }

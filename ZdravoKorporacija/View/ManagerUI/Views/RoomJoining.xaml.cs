@@ -18,6 +18,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.View.ManagerUI.Views
 {
@@ -30,11 +33,13 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         public ObservableCollection<Room> Rooms { get; set; }
         private DateTime start;
         private DateTime end;
-        private int durationToSend;
+        private String durationToSend;
         private String _newRoomName = " ";
         private String _newRoomDescription = " ";
         private RoomType _newRoomType;
         private List<Room> selectedRooms;
+        private AdvancedRenovationJoiningController advancedRenovationJoiningController;
+        private AppointmentController appointmentController;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -84,11 +89,38 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         }
 
 
-        public RoomJoining(DateTime dateFrom, DateTime dateUntil, int duration)
+        public RoomJoining(DateTime dateFrom, DateTime dateUntil, String duration)
         {
             InitializeComponent();
+            InitializeComponent();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            PatientRepository patientRepository = new PatientRepository();
+            DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
+            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
+                new AdvancedRenovationSeparationRepository();
+            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
+            ManagerRepository managerRepository = new ManagerRepository();
+            SecretaryRepository secretaryRepository = new SecretaryRepository();
+            MeetingRepository meetingRepository = new MeetingRepository();
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
+            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
+            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
+                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
+                advancedRenovationSeparation, scheduleService);
             RoomService roomService = new RoomService(roomRepository);
+            DisplacementRepository displacementRepository = new DisplacementRepository();
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
+            BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
+            DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
+            AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
+            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService, displacementService);
+            advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             roomController = new RoomController(roomService);
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAllRooms());
@@ -110,9 +142,19 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         private void PossibleAppoitments_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService i uputiti ka ovoj stranici za kreiranje (proslediti dve sobe i sve ostalo sto treba)
-            NavigationService.Navigate(new CreateJoining(selectedRooms[0].Id, selectedRooms[1].Id, start, end, durationToSend, NewRoomName, NewRoomDescription, _newRoomType));
+            try
+            {
+                advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(selectedRooms[0].Id, selectedRooms[1].Id, start, end, int.Parse(durationToSend));
+                NavigationService.Navigate(new CreateJoining(selectedRooms[0].Id, selectedRooms[1].Id, start, end, durationToSend, NewRoomName, NewRoomDescription, _newRoomType));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška");
+                ManagerHomeWindow.NavigationService.Navigate(new ChooseRenovationType());
+            }
+
         }
+
 
         private void CheckedBox_Checked(object sender, RoutedEventArgs e)
         {

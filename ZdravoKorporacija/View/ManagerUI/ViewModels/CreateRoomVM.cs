@@ -7,7 +7,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using ZdravoKorporacija.View.ManagerUI.Help;
 using ZdravoKorporacija.View.PatientUI.Commands;
 using ZdravoKorporacija.View.RoomCRUD;
 
@@ -104,8 +107,11 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             }
         }
 
-        public CreateRoomVM()
+        Page page;
+
+        public CreateRoomVM(Page page)
         {
+            this.page = page;
             Room = new Room();
             RoomRepository roomRepository = new RoomRepository();
             RoomService roomService = new RoomService(roomRepository);
@@ -113,6 +119,10 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             SaveCommand = new RelayCommand(saveExecute);
             GetAllRoomsCommand = new RelayCommand(getAllRoomsManager);
             Rooms = new ObservableCollection<Room>(RoomController.GetAllRooms());
+
+            page.CommandBindings.Add(new CommandBinding(ZdravoKorporacija.View.ManagerUI.Commands.RoutedCommand.Help, CreateRoomHelp_Executed, CreateRoomHelp_CanExecute));
+
+            page.CommandBindings.Add(new CommandBinding(ZdravoKorporacija.View.ManagerUI.Commands.RoutedCommand.Back, GoBack_Executed, GoBack_CanExecute));
 
         }
 
@@ -160,6 +170,28 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
             {
                 Rooms.Add(r);
             }
+        }
+
+        private void CreateRoomHelp_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void CreateRoomHelp_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            CreateRoomHelp createRoomHelp = new CreateRoomHelp();
+            createRoomHelp.Show();
+        }
+
+        private void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void GoBack_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            // Console.WriteLine("Nadja");
+            page.NavigationService.Navigate(new ManagerHomePage());
         }
 
     }

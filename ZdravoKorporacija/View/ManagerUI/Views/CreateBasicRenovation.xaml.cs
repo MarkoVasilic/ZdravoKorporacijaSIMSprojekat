@@ -40,7 +40,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         private int durationToSend;
 
 
-        public CreateBasicRenovation(int roomId, DateTime dateFrom, DateTime dateUntil, int duration, String description)
+        public CreateBasicRenovation(int roomId, DateTime dateFrom, DateTime dateUntil, String duration, String description)
         {
             InitializeComponent();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -64,33 +64,17 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             RoomService roomService = new RoomService(roomRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;
-            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>();
-
-            getAppointments(roomId, dateFrom, dateUntil, duration);
-
+            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, int.Parse(duration)));
             setIndexesOfPossibleAppointments();
             descriptionForRenovation = description;
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
             basicRenovationController = new BasicRenovationController(basicRenovationService);
             renovationRoomId = roomId;
-            durationToSend = duration;
+            durationToSend = int.Parse(duration);
         }
 
 
-        private void getAppointments(int roomId, DateTime dateFrom, DateTime dateUntil, int duration)
-        {
-            try
-            {
-                PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, dateFrom, dateUntil, duration));
-            }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show(ex.Message, "Greška");
-                //NavigationService.Navigate(new ChooseRenovationType());
-
-            }
-        }
 
         private void setIndexesOfPossibleAppointments()
         {

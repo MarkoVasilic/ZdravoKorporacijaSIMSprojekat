@@ -11,10 +11,6 @@
       Title="CreateMedication">
 
 
-    <Page.CommandBindings>
-        <CommandBinding Command="cmd:RoutedCommand.Help" CanExecute="CreateRoomHelp_CanExecute" Executed="CreateRoomHelp_Executed"></CommandBinding>
-        <CommandBinding Command="cmd:RoutedCommand.Back" CanExecute="GoBack_CanExecute" Executed="GoBack_Executed"></CommandBinding>
-    </Page.CommandBindings>
 
     <Grid>
 
@@ -76,7 +72,7 @@
 
         <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="-60 100 0 0 ">
             <Button Content="Nazad" Margin="100 0 0 0" Style="{StaticResource ManagerRedButtonStyle}" Command="cmd:RoutedCommand.Back"/>
-            <Button Content="Unesi"  Margin="230, 0, 0, 0" Click="Button_Create_Medication_Click" Command="{Binding SaveCommand}" Style="{StaticResource ManagerGreenButtonStyle}"/>
+            <Button Content="Unesi"  Margin="230, 0, 0, 0" Command="{Binding SaveCommand}" Style="{StaticResource ManagerGreenButtonStyle}"/>
             <Button Content="Pomoć"  Margin="230, 0, 0, 0"  Style="{StaticResource ManagerHelpButton}" Command="cmd:RoutedCommand.Help"/>
         </StackPanel>
 

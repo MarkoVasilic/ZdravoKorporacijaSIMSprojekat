@@ -46,7 +46,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         private RoomType roomType2;
  
 
-        public CreateSeparation(int roomId, DateTime startDate, DateTime dateUntil, int duration, String firstRoomName, String firstRoomDescription, RoomType firstRoomType, String secondRoomName, String secondRoomDescription, RoomType secondRoomType)
+        public CreateSeparation(int roomId, DateTime startDate, DateTime dateUntil, String duration, String firstRoomName, String firstRoomDescription, RoomType firstRoomType, String secondRoomName, String secondRoomDescription, RoomType secondRoomType)
         {
             InitializeComponent();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -71,7 +71,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             this.DataContext = this;
 
-            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, startDate, dateUntil, duration));
+            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(appointmentController.GetPossibleAppointmentsByManager(roomId, startDate, dateUntil, int.Parse(duration)));
                        
             setIndexesOfPossibleAppointments();
             AdvancedRenovationSeparationRepository advancedRenovationSeparationRepository = new AdvancedRenovationSeparationRepository();
@@ -84,7 +84,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             roomType1 = firstRoomType;
             roomType2 = secondRoomType;
             renovationRoomId = roomId;
-            durationToSend = duration;
+            durationToSend = int.Parse(duration);
         }
 
 

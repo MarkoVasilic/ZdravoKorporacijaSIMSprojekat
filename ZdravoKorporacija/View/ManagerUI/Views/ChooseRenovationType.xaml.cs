@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +27,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         public DateTime dateFrom { get; set; }
         public DateTime dateUntil { get; set; }
-        public int duration { get; set; }
+        public String duration { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -57,7 +58,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             }
         }
 
-        public int Duration
+        public String Duration
         {
             get { return duration; }
             set
@@ -100,19 +101,42 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         private void StartRenovationClick(object sender, RoutedEventArgs e)
         {
 
+            if (validation() == false)
+            {
+                MessageBox.Show("Trajanje mora biti u formi broja!");
+                NavigationService.Refresh();
+            }
+            else
+            {
+
+                if (RenovationTypeComboBox.SelectedIndex == 0)
+                {
+                    NavigationService.Navigate(new BasicRenovation(DateFrom, DateUntil, Duration));
+                }
+                else if (RenovationTypeComboBox.SelectedIndex == 1)
+                {
+                    NavigationService.Navigate(new RoomJoining(DateFrom, DateUntil, Duration));
+                }
+                else if (RenovationTypeComboBox.SelectedIndex == 2)
+                {
+                    NavigationService.Navigate(new RoomSeparation(DateFrom, DateUntil, Duration));
+                }
+            }
             
 
-            if (RenovationTypeComboBox.SelectedIndex == 0)
+        }
+
+        private Boolean validation()
+        {
+            Regex onlyNumberRegex = new Regex("^[0-9]+$");
+            if (!onlyNumberRegex.IsMatch(Duration))
             {
-                NavigationService.Navigate(new BasicRenovation(DateFrom, DateUntil, Duration));
+                return false;
+
             }
-            else if (RenovationTypeComboBox.SelectedIndex == 1)
+            else
             {
-                NavigationService.Navigate(new RoomJoining(DateFrom, DateUntil, Duration));
-            }
-            else if (RenovationTypeComboBox.SelectedIndex == 2)
-            {
-                NavigationService.Navigate(new RoomSeparation(DateFrom, DateUntil, Duration));   
+                return true;
             }
         }
     }
