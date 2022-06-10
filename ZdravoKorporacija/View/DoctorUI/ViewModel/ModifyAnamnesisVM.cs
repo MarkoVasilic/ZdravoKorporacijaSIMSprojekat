@@ -46,11 +46,10 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
-            DoctorRepository doctorRepository = new DoctorRepository();
             PatientRepository patientRepository = new PatientRepository();
             MedicationRepository medicationRepository = new MedicationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);

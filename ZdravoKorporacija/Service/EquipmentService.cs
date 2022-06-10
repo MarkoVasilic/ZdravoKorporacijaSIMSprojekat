@@ -15,13 +15,11 @@ namespace ZdravoKorporacija.Service
 
         private readonly IEquipmentRepository _equipmentRepository;
         private readonly IRoomRepository _roomRepository;
-        private readonly IDisplacementRepository _displacementRepository;
 
-        public EquipmentService(IEquipmentRepository equipmentRepository, IRoomRepository roomRepository, IDisplacementRepository displacementRepository)
+        public EquipmentService(IEquipmentRepository equipmentRepository, IRoomRepository roomRepository)
         {
             this._equipmentRepository = equipmentRepository;
             this._roomRepository = roomRepository;
-            this._displacementRepository = displacementRepository;
 
         }
 

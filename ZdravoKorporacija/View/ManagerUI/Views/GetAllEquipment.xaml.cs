@@ -63,20 +63,13 @@ namespace ZdravoKorporacija.View.Equipment
             InitializeComponent();
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             RoomRepository roomRepository = new RoomRepository();
-            DisplacementRepository displacementRepository = new DisplacementRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
             equipmentController = new EquipmentController(equipmentService);
             this.DataContext = this;
             equipment = new ObservableCollection<EquipmentDTO>(equipmentController.GetEquipmentDTOs());
 
 
         }
-
-
-        /*private void Button_Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ManagerHomePage());
-        }*/
 
 
         public void GoBack_CanExecute(object sender, CanExecuteRoutedEventArgs e)

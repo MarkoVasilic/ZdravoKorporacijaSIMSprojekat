@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             RoomService roomService = new RoomService(roomRepository);
             DisplacementRepository displacementRepository = new DisplacementRepository();
             EquipmentRepository equipmentRepository = new EquipmentRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
             DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
@@ -75,7 +75,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
             AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService, displacementService);
             advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
-            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, start, end, int.Parse(duration)));
+            PossibleAppointments = new ObservableCollection<PossibleAppointmentsDTO>(advancedRenovationJoiningController.GetPossibleAppointments(firstRoomId, secondRoomId, start, end, int.Parse(duration)));
             setIndexesOfPossibleAppointments();
             firstRenovationRoomId = firstRoomId;
             secondRenovationRoomId = secondRoomId;

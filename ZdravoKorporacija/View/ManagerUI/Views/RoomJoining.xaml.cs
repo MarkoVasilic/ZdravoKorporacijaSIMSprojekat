@@ -114,7 +114,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
             RoomService roomService = new RoomService(roomRepository);
             DisplacementRepository displacementRepository = new DisplacementRepository();
             EquipmentRepository equipmentRepository = new EquipmentRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
             DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
@@ -144,7 +144,7 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         {
             try
             {
-                advancedRenovationJoiningController.GetPossibleAppointmentsForRoomJoin(selectedRooms[0].Id, selectedRooms[1].Id, start, end, int.Parse(durationToSend));
+                advancedRenovationJoiningController.GetPossibleAppointments(selectedRooms[0].Id, selectedRooms[1].Id, start, end, int.Parse(durationToSend));
                 NavigationService.Navigate(new CreateJoining(selectedRooms[0].Id, selectedRooms[1].Id, start, end, durationToSend, NewRoomName, NewRoomDescription, _newRoomType));
             }
             catch (Exception ex)

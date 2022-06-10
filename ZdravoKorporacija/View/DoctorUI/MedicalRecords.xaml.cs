@@ -31,9 +31,8 @@ namespace ZdravoKorporacija.View.DoctorUI
             PatientRepository patientRepository = new PatientRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             MedicationRepository medicationRepository = new MedicationRepository();
-            DoctorRepository doctorRepository = new DoctorRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             medicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
             this.DataContext = this;

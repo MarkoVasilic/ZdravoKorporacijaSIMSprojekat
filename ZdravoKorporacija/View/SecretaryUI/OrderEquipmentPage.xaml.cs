@@ -45,8 +45,7 @@ namespace ZdravoKorporacija.View.SecretaryUI
             SecretaryWindowVM.setWindowTitle("Order equipment");
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             RoomRepository roomRepository = new RoomRepository();
-            DisplacementRepository displacementRepository = new DisplacementRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
             EquipmentController = new EquipmentController(equipmentService);
         }
 

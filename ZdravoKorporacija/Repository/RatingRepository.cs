@@ -16,7 +16,6 @@ namespace ZdravoKorporacija.Repository
             return values;
         }
 
-        //Metoda za upravnika, da dobavi sve ocijene za konkretnog doktora
         public List<Rating> FindAllByDoctorJmbg(String jmbg)
         {
             var values = GetValues();

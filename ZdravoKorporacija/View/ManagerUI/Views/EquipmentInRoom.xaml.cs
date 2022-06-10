@@ -38,8 +38,7 @@ namespace ZdravoKorporacija.View.ManagerUI
             InitializeComponent();
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             RoomRepository roomRepository = new RoomRepository();
-            DisplacementRepository displacementRepository = new DisplacementRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
             equipmentController = new EquipmentController(equipmentService);
             startRoom = roomId;
             this.DataContext = this;

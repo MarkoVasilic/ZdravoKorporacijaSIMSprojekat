@@ -32,10 +32,10 @@ namespace ZdravoKorporacija.Controller
         {
             return _advancedRenovationJoiningService.GetAll();
         }
-        public List<PossibleAppointmentsDTO> GetPossibleAppointmentsForRoomJoin(int firstRoomId, int secondRoomId,
+        public List<PossibleAppointmentsDTO> GetPossibleAppointments(int firstRoomId, int secondRoomId,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
-            return _advancedRenovationJoiningService.GetPossibleAppointmentsForRoomJoin(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
+            return _advancedRenovationJoiningService.GetPossibleAppointments(firstRoomId, secondRoomId, dateFrom, dateUntil, duration);
         }
     }
 

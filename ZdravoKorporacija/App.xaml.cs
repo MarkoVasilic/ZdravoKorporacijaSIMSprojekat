@@ -67,11 +67,11 @@ namespace ZdravoKorporacija
             managerController = new ManagerController(managerService);
             secretaryController = new SecretaryController(secretaryService);
             EquipmentRepository equipmentRepository = new EquipmentRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository, displacementRepository);
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
             EquipmentController equipmentController = new EquipmentController(equipmentService);
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicationRepository medicationRepository = new MedicationRepository();
