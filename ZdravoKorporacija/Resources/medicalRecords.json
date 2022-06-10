@@ -1,23 +1,5 @@
 [
   {
-    "PatientJmbg": "7778889994445",
-    "PrescriptionIds": [
-      1,
-      2,
-      3,
-      7
-    ],
-    "AnamnesisIds": [7,11,12]
-  },
-  {
-    "PatientJmbg": "7458963215963",
-    "PrescriptionIds": [
-      9,
-      10
-    ],
-    "AnamnesisIds": []
-  },
-  {
     "PatientJmbg": "1111111111111",
     "PrescriptionIds": [
       2,
@@ -28,6 +10,31 @@
     "AnamnesisIds": [
       2,
       15
+    ]
+  },
+  {
+    "PatientJmbg": "7458963215963",
+    "PrescriptionIds": [
+      9,
+      10,
+      12,
+      13
+    ],
+    "AnamnesisIds": []
+  },
+  {
+    "PatientJmbg": "7778889994445",
+    "PrescriptionIds": [
+      1,
+      2,
+      3,
+      7,
+      14
+    ],
+    "AnamnesisIds": [
+      7,
+      11,
+      12
     ]
   }
 ]

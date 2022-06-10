@@ -284,7 +284,9 @@ namespace ZdravoKorporacija.View.PatientUI.ViewModels
             {
                 newPW = newPW.Replace("*", "");
             }
-            App.patientController.ModifyInfo(FirstName, LastName, DateOfBirth, Email, PhoneNumber, Address, Username, Password, App.loggedUser.Jmbg);
+            Patient patient = App.patientController.GetOnePatient(App.loggedUser.Jmbg);
+            App.patientController.ModifyPatient(false, patient.Allergens, patient.BloodTypeEnum, FirstName, LastName,
+                patient.Jmbg, DateOfBirth, patient.Gender, Email, PhoneNumber, Address);
             MessageBox.Show("Uspješno izmjenjeni lični podaci!", "USPJEŠNO", MessageBoxButton.OK, MessageBoxImage.None);
 
         }

@@ -128,8 +128,8 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
                 doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
                 advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
-            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
-                secretaryRepository, roomRepository, scheduleService);
+            UserService userService = new UserService(doctorRepository, managerRepository, secretaryRepository);
+            MeetingService meetingService = new MeetingService(meetingRepository, roomRepository, scheduleService, userService);
             meetingControler = new MeetingControler(meetingService);
             doctorsToDoctorsObservable(doctorController.GetAllDoctors(), managerController.GetAllManager(), secretaryController.GetAllSecretary());
             roomsToRoomsObservable(roomController.GetAllRooms());

@@ -219,8 +219,8 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
                 doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
                 advancedRenovationSeparation, scheduleService);
-            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
-                secretaryRepository, roomRepository, scheduleService);
+            UserService userService = new UserService(doctorRepository, managerRepository, secretaryRepository);
+            MeetingService meetingService = new MeetingService(meetingRepository, roomRepository, scheduleService, userService);
             meetingControler = new MeetingControler(meetingService);
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             NotificationRepository notificationRepository = new NotificationRepository();

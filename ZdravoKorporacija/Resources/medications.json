@@ -1,16 +1,5 @@
 [
   {
-    "Id": 2,
-    "Name": "Paracetamol",
-    "Ingredients": [
-      "prvi alergen",
-      "drugi alergen",
-      "treci alergen"
-    ],
-    "Status": 1,
-    "Alternative": "Brufen"
-  },
-  {
     "Id": 1,
     "Name": "Berodual",
     "Ingredients": [
@@ -19,18 +8,6 @@
     ],
     "Status": 0,
     "Alternative": null
-  },
-  {
-    "Id": 3,
-    "Name": "Xyzal",
-    "Ingredients": [
-      "sastojak1",
-      "sastojak2",
-      "sastojak3",
-      "sastojak4"
-    ],
-    "Status": 2,
-    "Alternative": "Aerius"
   },
   {
     "Id": 4,
@@ -61,5 +38,29 @@
     ],
     "Status": 1,
     "Alternative": "ampicillin"
+  },
+  {
+    "Id": 2,
+    "Name": "Paracetamol",
+    "Ingredients": [
+      "prvi alergen",
+      "drugi alergen",
+      "treci alergen"
+    ],
+    "Status": 0,
+    "Alternative": "Brufen"
+  },
+  {
+    "Id": 3,
+    "Name": "Xyzal",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2",
+      "sastojak3",
+      "sastojak4",
+      "sastojak5"
+    ],
+    "Status": 1,
+    "Alternative": "Aerius"
   }
 ]

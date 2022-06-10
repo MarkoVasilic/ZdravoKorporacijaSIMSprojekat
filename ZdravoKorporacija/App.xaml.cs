@@ -98,8 +98,8 @@ namespace ZdravoKorporacija
             AbsenceRequestRepository absenceRequestRepository = new AbsenceRequestRepository();
             AbsenceRequestService absenceRequestService = new AbsenceRequestService(absenceRequestRepository, scheduleService, doctorRepository, appointmentRepository);
             AbsenceRequestController absenceRequestController = new AbsenceRequestController(absenceRequestService);
-            MeetingService meetingService = new MeetingService(meetingRepository, doctorRepository, managerRepository,
-                secretaryRepository, roomRepository, scheduleService);
+            UserService userService = new UserService(doctorRepository, managerRepository, secretaryRepository);
+            MeetingService meetingService = new MeetingService(meetingRepository, roomRepository, scheduleService, userService);
             MeetingControler meetingControler = new MeetingControler(meetingService);
             NoteRepository noteRepository = new NoteRepository();
             NoteService noteService = new NoteService(noteRepository);

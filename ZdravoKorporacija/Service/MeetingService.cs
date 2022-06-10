@@ -13,30 +13,24 @@ namespace ZdravoKorporacija.Service
     public class MeetingService
     {
         private readonly IMeetingRepository meetingRepository;
-        private readonly IDoctorRepository doctorRepository;
-        private readonly IManagerRepository managerRepository;
-        private readonly ISecretaryRepository secretaryRepository;
         private readonly IRoomRepository roomRepository;
         private readonly ScheduleService scheduleService;
+        private readonly UserService userService;
 
-        public MeetingService(IMeetingRepository meetingRepository, IDoctorRepository doctorRepository,
-            IManagerRepository managerRepository, ISecretaryRepository secretaryRepository,
-            IRoomRepository roomRepository, ScheduleService scheduleService)
+        public MeetingService(IMeetingRepository meetingRepository,
+            IRoomRepository roomRepository, ScheduleService scheduleService, UserService userService)
         {
             this.meetingRepository = meetingRepository;
-            this.doctorRepository = doctorRepository;
-            this.managerRepository = managerRepository;
-            this.secretaryRepository = secretaryRepository;
             this.roomRepository = roomRepository;
             this.scheduleService = scheduleService;
+            this.userService = userService;
         }
 
         public List<PossibleMeetingDTO> GetPossibleMeetingAppointments(List<String> userJmbgs, int roomId,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
             scheduleService.ValidateInputParametersForGetPossibleAppointments("*", userJmbgs, roomId, dateFrom, dateUntil);
-            List<DateTime> possibleAppointments = new List<DateTime>();
-            possibleAppointments =
+            List<DateTime>  possibleAppointments =
                 scheduleService.FindPossibleStartTimesOfAppointment("", userJmbgs, roomId, dateFrom, dateUntil, duration);
             var possibleMeetingDtos = CreatePossibleMeetingsDtos(userJmbgs, roomId, duration, possibleAppointments);
             return possibleMeetingDtos;
@@ -55,7 +49,7 @@ namespace ZdravoKorporacija.Service
                         new List<string>(), selectedRoom.Id, selectedRoom.Name, pa, duration);
                     foreach (var userJmbg in userJmbgs)
                     {
-                        var user = CheckUserJmbgExistence(userJmbg);
+                        var user = userService.CheckUserJmbgExistence(userJmbg);
                         possibleMeetingDto.UserJmbgs.Add(userJmbg);
                         possibleMeetingDto.UserFullNames.Add(user.FirstName + " " + user.LastName);
                     }
@@ -66,17 +60,7 @@ namespace ZdravoKorporacija.Service
             return possibleMeetingDtos;
         }
 
-        private User? CheckUserJmbgExistence(string userJmbg)
-        {
-            User user = doctorRepository.FindOneByJmbg(userJmbg);
-            if (user == null)
-                user = managerRepository.FindOneByJmbg(userJmbg);
-            if (user == null)
-                user = secretaryRepository.FindOneByJmbg(userJmbg);
-            if (user == null)
-                throw new Exception("Something went wrong!");
-            return user;
-        }
+        
 
         public List<Meeting> GetAllMeetings()
         {
@@ -90,28 +74,13 @@ namespace ZdravoKorporacija.Service
             foreach (var meet in meetings)
             {
                 Room room = roomRepository.FindOneById(meet.RoomId);
-                possibleMeetingDtos.Add(new PossibleMeetingDTO(meet.UserJmbgs, CreateFullNamesOfUser(meet.UserJmbgs),
+                possibleMeetingDtos.Add(new PossibleMeetingDTO(meet.UserJmbgs, userService.CreateFullNamesOfUser(meet.UserJmbgs),
                     meet.RoomId, room.Name, meet.StartTime, meet.Duration));
             }
 
             return possibleMeetingDtos;
         }
 
-        private List<String> CreateFullNamesOfUser(List<String> userJmbgs)
-        {
-            List<String> userFullNames = new List<string>();
-            foreach (var userJmbg in userJmbgs)
-            {
-                User user = doctorRepository.FindOneByJmbg(userJmbg);
-                if (user == null)
-                    user = managerRepository.FindOneByJmbg(userJmbg);
-                if (user == null)
-                    user = secretaryRepository.FindOneByJmbg(userJmbg);
-                userFullNames.Add(user.FirstName + " " + user.LastName);
-            }
-
-            return userFullNames;
-        }
         public void CreateMeeting(List<String> userJmbgs, int roomId, DateTime startTime, int duration)
         {
             int meetingId = GenerateNewId();
