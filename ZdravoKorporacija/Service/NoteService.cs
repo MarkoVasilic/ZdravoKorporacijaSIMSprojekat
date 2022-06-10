@@ -12,11 +12,11 @@ namespace ZdravoKorporacija.Service
     public class NoteService
     {
 
-        private readonly NoteRepository NoteRepository;
+        private readonly NoteRepository _noteRepository;
 
         public NoteService(NoteRepository noteRepository)
         {
-            this.NoteRepository = noteRepository;
+            this._noteRepository = noteRepository;
         }
 
         public NoteService() { }
@@ -24,19 +24,19 @@ namespace ZdravoKorporacija.Service
 
         public List<Note> GetAll()
         {
-            return NoteRepository.FindAll();
+            return _noteRepository.FindAll();
         }
                 
         public Note GetOneById(int noteId)
         {
-            return NoteRepository.FindOneById(noteId);
+            return _noteRepository.FindOneById(noteId);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                List<Note> notes = NoteRepository.FindAll();
+                List<Note> notes = _noteRepository.FindAll();
                 int currentMax = notes.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -48,18 +48,18 @@ namespace ZdravoKorporacija.Service
 
        public List<Note> FindAllByPatientJmbg(String patientJmbg)
         {
-            return NoteRepository.FindAllByPatientJmbg(patientJmbg);
+            return _noteRepository.FindAllByPatientJmbg(patientJmbg);
         }
 
         public void Delete(int noteID)
         {
-            if (NoteRepository.FindOneById(noteID) == null)
+            if (_noteRepository.FindOneById(noteID) == null)
             {
                 throw new Exception("Note with that id doesn't exist!");
             }
             else
             {
-                NoteRepository.Remove(noteID);
+                _noteRepository.Remove(noteID);
             }
         }
 
@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.Service
         {
             int id = GenerateNewId();
             Note newNote = new Note(id, Title, Content, System.DateTime.Now, App.loggedUser.Jmbg);
-            NoteRepository.SaveNote(newNote);
+            _noteRepository.SaveNote(newNote);
         }
 
 

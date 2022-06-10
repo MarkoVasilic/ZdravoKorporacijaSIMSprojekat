@@ -32,14 +32,14 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <ListView ItemsSource="{Binding Appointments}" x:Name="AppointmentsListView" Background="MediumAquamarine" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0 0 0 0">
+        <ListView Width="590" ItemsSource="{Binding Appointments}" x:Name="AppointmentsListView" Background="MediumAquamarine" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0 0 0 0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0.3" BorderBrush="Black">
-                        <Grid Margin="5" Height="300" Width="570">
+                        <Grid Margin="5" Height="300" Width="547">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="290"></ColumnDefinition>
-                                <ColumnDefinition Width="290"></ColumnDefinition>
+                                <ColumnDefinition Width="270"></ColumnDefinition>
+                                <ColumnDefinition Width="270"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"></RowDefinition>

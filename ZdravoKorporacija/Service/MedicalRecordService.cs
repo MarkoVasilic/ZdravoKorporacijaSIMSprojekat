@@ -10,19 +10,19 @@ namespace ZdravoKorporacija.Service
 {
     public class MedicalRecordService
     {
-        private readonly MedicalRecordRepository medicalRecordRepository;
-        private readonly AnamnesisRepository anamnesisRepository;
-        private readonly PrescriptionRepository prescriptionRepository;
-        private readonly IPatientRepository patientRepository;
-        private readonly AppointmentRepository appointmentRepository;
+        private readonly MedicalRecordRepository _medicalRecordRepository;
+        private readonly AnamnesisRepository _anamnesisRepository;
+        private readonly PrescriptionRepository _prescriptionRepository;
+        private readonly IPatientRepository _patientRepository;
+        private readonly AppointmentRepository _appointmentRepository;
 
         public MedicalRecordService(MedicalRecordRepository medicalRecordRepository, AnamnesisRepository anamnesisRepository, PrescriptionRepository prescriptionRepository, IPatientRepository patientRepository, AppointmentRepository appointmentRepository)
         {
-            this.medicalRecordRepository = medicalRecordRepository;
-            this.anamnesisRepository = anamnesisRepository;
-            this.prescriptionRepository = prescriptionRepository;
-            this.patientRepository = patientRepository;
-            this.appointmentRepository = appointmentRepository;
+            this._medicalRecordRepository = medicalRecordRepository;
+            this._anamnesisRepository = anamnesisRepository;
+            this._prescriptionRepository = prescriptionRepository;
+            this._patientRepository = patientRepository;
+            this._appointmentRepository = appointmentRepository;
         }
 
         public MedicalRecordService()
@@ -32,7 +32,7 @@ namespace ZdravoKorporacija.Service
         public List<MedicalRecordDTO> GetAll()
         {
             List<MedicalRecordDTO> medicalRecordDTOs = new List<MedicalRecordDTO>();
-            List<MedicalRecord> medicalRecords = medicalRecordRepository.FindAll();
+            List<MedicalRecord> medicalRecords = _medicalRecordRepository.FindAll();
             foreach (MedicalRecord medicalRecord in medicalRecords)
             {
                 MedicalRecordDTO medicalRecordDTO = GetOneByPatientJmbg(medicalRecord.PatientJmbg);
@@ -45,17 +45,17 @@ namespace ZdravoKorporacija.Service
         public MedicalRecordDTO? GetOneByPatientJmbg(String patientJmbg)
         {
             
-            MedicalRecord medicalRecord = medicalRecordRepository.FindOneByPatientJmbg(patientJmbg);
+            MedicalRecord medicalRecord = _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg);
             List<Anamnesis> anamnesis = new List<Anamnesis>();
 
             foreach (int id in medicalRecord.AnamnesisIds)
-                anamnesis.Add(anamnesisRepository.FindOneById(id));
+                anamnesis.Add(_anamnesisRepository.FindOneById(id));
 
             List<Prescription> prescriptions = new List<Prescription>();
             foreach (int id in medicalRecord.PrescriptionIds)
-                prescriptions.Add(prescriptionRepository.FindOneById(id));
+                prescriptions.Add(_prescriptionRepository.FindOneById(id));
 
-            Patient patient = patientRepository.FindOneByJmbg(patientJmbg);
+            Patient patient = _patientRepository.FindOneByJmbg(patientJmbg);
             MedicalRecordDTO medicalRecordDTO = new MedicalRecordDTO(patient.FirstName, patient.LastName, patientJmbg, patient.DateOfBirth, patient.Gender, patient.Allergens,
                                                             patient.BloodTypeEnum, patient.PhoneNumber, patient.Email, patient.Address, anamnesis, prescriptions);
 
@@ -64,7 +64,7 @@ namespace ZdravoKorporacija.Service
 
         public MedicalRecordDTO? GetOneByAppointmentId(int appointmentId)
         {
-            String patientJmbg = appointmentRepository.FindOneById(appointmentId).PatientJmbg;
+            String patientJmbg = _appointmentRepository.FindOneById(appointmentId).PatientJmbg;
             MedicalRecordDTO medicalRecordDTO = GetOneByPatientJmbg(patientJmbg);
 
             return medicalRecordDTO;
@@ -72,13 +72,13 @@ namespace ZdravoKorporacija.Service
         public void ModifyMedicalRecord(String patientJmbg, List<int> prescriptionIds, List<int> anamnesisIds)
         {
 
-            var oneMedicalRecord = medicalRecordRepository.FindOneByPatientJmbg(patientJmbg);
+            var oneMedicalRecord = _medicalRecordRepository.FindOneByPatientJmbg(patientJmbg);
             MedicalRecord newMedicalRecord = new MedicalRecord(oneMedicalRecord.PatientJmbg, prescriptionIds, anamnesisIds);
 
             if (!newMedicalRecord.validateMedicalRecord())
                 throw new Exception("Something went wrong, medical record isn't updated!");
 
-            medicalRecordRepository.UpdateMedicalRecord(newMedicalRecord);
+            _medicalRecordRepository.UpdateMedicalRecord(newMedicalRecord);
         }
 
         public void CreateMedicalRecord(String patientJmbg)
@@ -88,7 +88,7 @@ namespace ZdravoKorporacija.Service
             if (!medicalRecord.validateMedicalRecord())
                 throw new Exception("Something went wrong, medical record isn't created!");
 
-            medicalRecordRepository.SaveMedicalRecord(medicalRecord);
+            _medicalRecordRepository.SaveMedicalRecord(medicalRecord);
         }
     }
 }

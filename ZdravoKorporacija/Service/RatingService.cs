@@ -10,20 +10,20 @@ namespace ZdravoKorporacija.Service
 {
     public class RatingService
     {
-        readonly RatingRepository RatingRepository = new RatingRepository();
-        readonly AppointmentRepository AppointmentRepository = new AppointmentRepository();
+        readonly RatingRepository _ratingRepository = new RatingRepository();
+        readonly AppointmentRepository _appointmentRepository = new AppointmentRepository();
 
         public RatingService(RatingRepository ratingRepository, AppointmentRepository AppointmentRepository)
         {
-            this.RatingRepository = ratingRepository;
-            this.AppointmentRepository = AppointmentRepository;
+            this._ratingRepository = ratingRepository;
+            this._appointmentRepository = AppointmentRepository;
         }
 
         public RatingService() { }
 
         public List<Rating> GetAll()
         {
-            return RatingRepository.FindAll();
+            return _ratingRepository.FindAll();
         }
 
 
@@ -31,7 +31,7 @@ namespace ZdravoKorporacija.Service
         {
             try
             {
-                List<Rating> ratings = RatingRepository.FindAll();
+                List<Rating> ratings = _ratingRepository.FindAll();
                 int currentMax = ratings.Max(obj => obj.Id);
                 return currentMax + 1;
             }
@@ -43,40 +43,40 @@ namespace ZdravoKorporacija.Service
 
         public void Delete(int id)
         {
-            if (RatingRepository.FindOneById(id) == null)
+            if (_ratingRepository.FindOneById(id) == null)
             {
                 throw new Exception("Rating with that id doesn't exist!");
             }
             else
             {
-                RatingRepository.Remove(id);
+                _ratingRepository.Remove(id);
             }
         }
 
 
         public Rating? GetOneById(int id)
         {
-            return RatingRepository.FindOneById(id);
+            return _ratingRepository.FindOneById(id);
         }
 
 
         public List<Rating> GetAllByDoctorJmbg(String jmbg)
         {
-            return RatingRepository.FindAllByDoctorJmbg(jmbg);
+            return _ratingRepository.FindAllByDoctorJmbg(jmbg);
         }
 
         public bool FindByAppointmentId(int id)
         {
-            return RatingRepository.FindOneByAppointemntId(id);
+            return _ratingRepository.FindOneByAppointemntId(id);
         }
 
         public void Create(int appointmentId, int hospitalRating, int doctorRating, String comment)
         {
             int id = GenerateNewId();
-            Appointment appointment = AppointmentRepository.FindOneById(appointmentId);
+            Appointment appointment = _appointmentRepository.FindOneById(appointmentId);
 
             Rating rating = new Rating(id, appointment.Id, hospitalRating, doctorRating, comment, System.DateTime.Now, App.loggedUser.Jmbg, appointment.DoctorJmbg);
-            RatingRepository.SaveRating(rating);
+            _ratingRepository.SaveRating(rating);
 
         }
 

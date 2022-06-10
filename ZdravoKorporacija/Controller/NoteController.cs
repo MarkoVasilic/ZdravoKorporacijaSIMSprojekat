@@ -10,11 +10,11 @@ namespace ZdravoKorporacija.Controller
 {
     public class NoteController
     {
-        private readonly NoteService NoteService;
+        private readonly NoteService _noteService;
 
         public NoteController(NoteService noteService)
         {
-            this.NoteService = noteService;
+            this._noteService = noteService;
         }
 
         
@@ -24,35 +24,35 @@ namespace ZdravoKorporacija.Controller
 
         public List<Note> GetAll()
         {
-            return NoteService.GetAll();
+            return _noteService.GetAll();
         }
 
         public Note GetOneById(int noteId)
         {
-            return NoteService.GetOneById(noteId);
+            return _noteService.GetOneById(noteId);
         }
 
 
         public List<Note> FindAllByPatientJmbg(String patientJmbg)
         {
-            return NoteService.FindAllByPatientJmbg(patientJmbg);
+            return _noteService.FindAllByPatientJmbg(patientJmbg);
         }
 
         public void Delete(int noteID)
         {
-            if (NoteService.GetOneById(noteID) == null)
+            if (_noteService.GetOneById(noteID) == null)
             {
                 throw new Exception("Note with that id doesn't exist!");
             }
             else
             {
-                NoteService.Delete(noteID);
+                _noteService.Delete(noteID);
             }
         }
         
         public void Create(String Title, String Content)
         {
-            NoteService.Create(Title, Content);
+            _noteService.Create(Title, Content);
         }
 
 

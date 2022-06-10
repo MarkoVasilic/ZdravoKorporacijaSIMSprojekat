@@ -12,16 +12,16 @@ namespace ZdravoKorporacija.Service
 {
     public class ScheduleService
     {
-        private readonly IAppointmentRepository AppointmentRepository;
-        private readonly IPatientRepository PatientRepository;
-        private readonly IDoctorRepository DoctorRepository;
-        private readonly IRoomRepository RoomRepository;
-        private readonly IBasicRenovationRepository BasicRenovationRepository;
-        private readonly IAdvancedRenovationJoiningRepository AdvancedRenovationJoiningRepository;
-        private readonly IAdvancedRenovationSeparationRepository AdvancedRenovationSeparationRepository;
-        private readonly IManagerRepository ManagerRepository;
-        private readonly ISecretaryRepository SecretaryRepository;
-        private readonly IMeetingRepository MeetingRepository;
+        private readonly IAppointmentRepository _appointmentRepository;
+        private readonly IPatientRepository _patientRepository;
+        private readonly IDoctorRepository _doctorRepository;
+        private readonly IRoomRepository _roomRepository;
+        private readonly IBasicRenovationRepository _basicRenovationRepository;
+        private readonly IAdvancedRenovationJoiningRepository _advancedRenovationJoiningRepository;
+        private readonly IAdvancedRenovationSeparationRepository _advancedRenovationSeparationRepository;
+        private readonly IManagerRepository _managerRepository;
+        private readonly ISecretaryRepository _secretaryRepository;
+        private readonly IMeetingRepository _meetingRepository;
 
         public ScheduleService(IAppointmentRepository appointmentRepository, IPatientRepository patientRepository,
             IDoctorRepository doctorRepository, IRoomRepository roomRepository,
@@ -30,16 +30,16 @@ namespace ZdravoKorporacija.Service
             IAdvancedRenovationSeparationRepository advancedRenovationSeparation, IManagerRepository managerRepository,
             ISecretaryRepository secretaryRepository, IMeetingRepository meetingRepository)
         {
-            this.AppointmentRepository = appointmentRepository;
-            this.PatientRepository = patientRepository;
-            this.DoctorRepository = doctorRepository;
-            this.RoomRepository = roomRepository;
-            this.BasicRenovationRepository = basicRenovationRepository;
-            this.AdvancedRenovationJoiningRepository = advancedRenovationJoining;
-            this.AdvancedRenovationSeparationRepository = advancedRenovationSeparation;
-            this.ManagerRepository = managerRepository;
-            this.SecretaryRepository = secretaryRepository;
-            this.MeetingRepository = meetingRepository;
+            this._appointmentRepository = appointmentRepository;
+            this._patientRepository = patientRepository;
+            this._doctorRepository = doctorRepository;
+            this._roomRepository = roomRepository;
+            this._basicRenovationRepository = basicRenovationRepository;
+            this._advancedRenovationJoiningRepository = advancedRenovationJoining;
+            this._advancedRenovationSeparationRepository = advancedRenovationSeparation;
+            this._managerRepository = managerRepository;
+            this._secretaryRepository = secretaryRepository;
+            this._meetingRepository = meetingRepository;
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
@@ -50,7 +50,7 @@ namespace ZdravoKorporacija.Service
             ValidateInputParametersForGetPossibleAppointments(patientJmbg, doctorJmbgs, -1, dateFrom, dateUntil);
             List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = new List<PossibleAppointmentsDTO>();
             List<DateTime> possibleAppointments = new List<DateTime>();
-            int roomId = DoctorRepository.FindOneByJmbg(doctorJmbg).RoomId;
+            int roomId = _doctorRepository.FindOneByJmbg(doctorJmbg).RoomId;
 
             if (priority == "doctor")
             {
@@ -101,9 +101,9 @@ namespace ZdravoKorporacija.Service
         {
             foreach (var userJmbg in userJmbgs)
             {
-                if (userJmbgs[0] != "*" && (userJmbg == null || (DoctorRepository.FindOneByJmbg(userJmbg) == null &&
-                                                                 ManagerRepository.FindOneByJmbg(userJmbg) == null
-                                                                 && SecretaryRepository.FindOneByJmbg(userJmbg) ==
+                if (userJmbgs[0] != "*" && (userJmbg == null || (_doctorRepository.FindOneByJmbg(userJmbg) == null &&
+                                                                 _managerRepository.FindOneByJmbg(userJmbg) == null
+                                                                 && _secretaryRepository.FindOneByJmbg(userJmbg) ==
                                                                  null)))
                 {
                     if (userJmbgs.Count == 1)
@@ -111,9 +111,9 @@ namespace ZdravoKorporacija.Service
                     throw new Exception("One of the users doesn't exist!");
                 }
             }
-            if (patientJmbg != "*" && (patientJmbg == null || PatientRepository.FindOneByJmbg(patientJmbg) == null))
+            if (patientJmbg != "*" && (patientJmbg == null || _patientRepository.FindOneByJmbg(patientJmbg) == null))
                 throw new Exception("Patient with that JMBG doesn't exist!");
-            if (roomId != -1 && RoomRepository.FindOneById(roomId) == null)
+            if (roomId != -1 && _roomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");
             if (dateFrom > dateUntil || dateFrom < DateTime.Now)
                 throw new Exception("Dates are not valid!");
@@ -122,9 +122,9 @@ namespace ZdravoKorporacija.Service
             List<DateTime> possibleAppointments)
         {
             List<PossibleAppointmentsDTO> possibleAppointmentsDtos = new List<PossibleAppointmentsDTO>();
-            Patient selectedPatient = PatientRepository.FindOneByJmbg(patientJmbg);
-            Doctor selectedDoctor = DoctorRepository.FindOneByJmbg(doctorJmbg);
-            Room selectedRoom = RoomRepository.FindOneById(roomId);
+            Patient selectedPatient = _patientRepository.FindOneByJmbg(patientJmbg);
+            Doctor selectedDoctor = _doctorRepository.FindOneByJmbg(doctorJmbg);
+            Room selectedRoom = _roomRepository.FindOneById(roomId);
             CheckExistenceOfInputParameters(ref selectedPatient, ref selectedDoctor, ref selectedRoom);
             foreach (var pa in possibleAppointments)
             {
@@ -154,8 +154,8 @@ namespace ZdravoKorporacija.Service
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
             List<DateTime> possibleAppointments;
-            Doctor sentDoctor = DoctorRepository.FindOneByJmbg(doctorJmbgs[0]);
-            List<Doctor> doctorsNeeded = DoctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
+            Doctor sentDoctor = _doctorRepository.FindOneByJmbg(doctorJmbgs[0]);
+            List<Doctor> doctorsNeeded = _doctorRepository.FindAllBySpeciality(sentDoctor.SpecialtyType);
             doctorsNeeded.Remove(sentDoctor);
             possibleAppointments = FindPossibleStartTimesOfAppointment(patientJmbg, doctorJmbgs, roomId,
                 dateFrom, dateUntil, duration);
@@ -270,7 +270,7 @@ namespace ZdravoKorporacija.Service
         private List<Appointment> CheckAdvancedRenovationsJoiningToWatch(int? roomId, DateTime dateFrom, DateTime dateUntil)
         {
             List<Appointment> appointmentsToWatch = new List<Appointment>();
-            List<AdvancedRenovationJoining> advancedRenovationJoinings = AdvancedRenovationJoiningRepository.FindAll();
+            List<AdvancedRenovationJoining> advancedRenovationJoinings = _advancedRenovationJoiningRepository.FindAll();
             foreach (var arj in advancedRenovationJoinings)
             {
                 if (CheckStartTimeForWhatAppointmentsToWatch(arj.StartTime, dateFrom, dateUntil, arj.Duration) &&
@@ -293,7 +293,7 @@ namespace ZdravoKorporacija.Service
         private List<Appointment> CheckAdvancedRenovationSeparationsToWatch(int? roomId, DateTime dateFrom, DateTime dateUntil)
         {
             List<Appointment> appointmentsToWatch = new List<Appointment>();
-            List<AdvancedRenovationSeparation> advancedRenovationSeparations = AdvancedRenovationSeparationRepository.FindAll();
+            List<AdvancedRenovationSeparation> advancedRenovationSeparations = _advancedRenovationSeparationRepository.FindAll();
             foreach (var ars in advancedRenovationSeparations)
             {
                 if (CheckStartTimeForWhatAppointmentsToWatch(ars.StartTime, dateFrom, dateUntil, ars.Duration) &&
@@ -310,7 +310,7 @@ namespace ZdravoKorporacija.Service
 
         private List<Appointment> CheckBasicRenovationsAppointmentsToWatch(int? roomId, DateTime dateFrom, DateTime dateUntil)
         {
-            List<BasicRenovation> allBasicRenovations = BasicRenovationRepository.FindAll();
+            List<BasicRenovation> allBasicRenovations = _basicRenovationRepository.FindAll();
             List<Appointment> appointmentsToWatch = new List<Appointment>();
             foreach (var br in allBasicRenovations)
             {
@@ -328,7 +328,7 @@ namespace ZdravoKorporacija.Service
 
         private List<Appointment> CheckMeetingsToWatch(List<String> userJmbgs, int? roomId, DateTime dateFrom, DateTime dateUntil)
         {
-            List<Meeting> allMeetings = MeetingRepository.FindAll();
+            List<Meeting> allMeetings = _meetingRepository.FindAll();
             List<Appointment> appointmentsToWatch = new List<Appointment>();
             foreach (var am in allMeetings)
             {
@@ -359,7 +359,7 @@ namespace ZdravoKorporacija.Service
             DateTime dateUntil)
         {
             List<Appointment> appointmentsToWatch = new List<Appointment>();
-            List<Appointment> allAppointments = AppointmentRepository.FindAll();
+            List<Appointment> allAppointments = _appointmentRepository.FindAll();
             foreach (var app in allAppointments)
             {
                 foreach (var doctorJmbg in doctorJmbgs)

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="UpdateAppointmentPage" Height="768" Width="1024">
     <Grid Background="#FF242F41">
-        <DataGrid  x:Name="dataGridRooms" ItemsSource="{Binding Appointments}" RowBackground="SteelBlue" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background ="SteelBlue"  IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="300" VerticalAlignment="Top" Margin="0,245,0,0" FontFamily="Georgia">
+        <DataGrid  x:Name="dataGridRooms" ItemsSource="{Binding Appointments}" RowBackground="SteelBlue" RowHeight="40" ColumnHeaderHeight="30" FontSize="16" Background ="SteelBlue"  IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Height="230" VerticalAlignment="Top" Margin="0,245,0,0" FontFamily="Georgia">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ljekar" Binding="{Binding DoctorFullName}" Width="180"></DataGridTextColumn>
                 <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientFullName}" Width="180"></DataGridTextColumn>
