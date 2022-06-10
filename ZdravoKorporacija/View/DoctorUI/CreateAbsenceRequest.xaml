@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-      Title="CreateAbsenceRequest"
+      Title="Create"
       Background="#FF01041C"
       FontFamily="Times New Roman">
 

@@ -83,7 +83,7 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
                 new NotificationService(notificationRepository, prescriptionService);
             notificationController = new NotificationController(notificationService);
             absenceRequestController = new AbsenceRequestController(absenceRequestService);
-            absenceRequestToDto(absenceRequestController.GetOnHoldAbsceneRequests());
+            absenceRequestToDto(absenceRequestController.GetOnHold());
             AcceptAbsenceCommand = new RelayCommand(acceptAbsenceExecute);
             RefuseAbsenceCommand = new RelayCommand(refuseAbsenceExecute);
         }
@@ -116,10 +116,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsceneRequestDetailsDto absceneRequestDetailsDto = parameter as AbsceneRequestDetailsDto;
             try
             {
-                absenceRequestController.ChangeAbsceneRequestState(absceneRequestDetailsDto.Id, AbsenceRequestState.ACCEPTED, absceneRequestDetailsDto.ReturnMessage);
+                absenceRequestController.ChangeState(absceneRequestDetailsDto.Id, AbsenceRequestState.ACCEPTED, absceneRequestDetailsDto.ReturnMessage);
                 notificationController.CreateUserNotification("Absence request", "Your absence request has been accepted!",
                     absceneRequestDetailsDto.DoctorJmbg);
-                absenceRequestToDto(absenceRequestController.GetOnHoldAbsceneRequests());
+                absenceRequestToDto(absenceRequestController.GetOnHold());
                 ErrorMessageChangeState = "";
             }
             catch (Exception e)
@@ -133,10 +133,10 @@ namespace ZdravoKorporacija.View.SecretaryUI.ViewModels
             AbsceneRequestDetailsDto absceneRequestDetailsDto = parameter as AbsceneRequestDetailsDto;
             try
             {
-                absenceRequestController.ChangeAbsceneRequestState(absceneRequestDetailsDto.Id, AbsenceRequestState.REJECTED, absceneRequestDetailsDto.ReturnMessage);
+                absenceRequestController.ChangeState(absceneRequestDetailsDto.Id, AbsenceRequestState.REJECTED, absceneRequestDetailsDto.ReturnMessage);
                 notificationController.CreateUserNotification("Absence request", "Your absence request has been declined!\nReason: " + absceneRequestDetailsDto.ReturnMessage,
                     absceneRequestDetailsDto.DoctorJmbg);
-                absenceRequestToDto(absenceRequestController.GetOnHoldAbsceneRequests());
+                absenceRequestToDto(absenceRequestController.GetOnHold());
                 ErrorMessageChangeState = "";
             }
             catch (Exception e)

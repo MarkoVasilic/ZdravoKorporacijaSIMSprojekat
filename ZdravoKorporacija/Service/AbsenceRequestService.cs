@@ -30,7 +30,7 @@ namespace ZdravoKorporacija.Service
             return absenceRequestRepository.FindOneById(id);
         }
 
-        public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
+        public PossibleAppointmentsDTO GetPossibleAppointments(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
             List<String> doctorJmbgs = new List<String>();
@@ -40,25 +40,25 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("Chosen date must be al least 2 days earlier!");
             dateFrom = dateFrom.Date;
             dateUntil = dateUntil.Date;
-            List<DateTime> possibleStartDaysOfAbsencePeriod = GetListOfDaysForAbsencePeriod(dateUntil, dateFrom);
-            RemoveOccupiedDaysFromPossibleStartDaysOfAbscenePeriod(dateFrom, dateUntil, ref possibleStartDaysOfAbsencePeriod, doctorJmbg);
-            DateTime startDate = GetStartDateOfAbsencePeriod(duration, possibleStartDaysOfAbsencePeriod);
+            List<DateTime> possibleStartDaysOfAbsencePeriod = GetCandidateStartDays(dateFrom, dateUntil);
+            RemoveOccupiedDaysFromCandidateDays(dateFrom, dateUntil, possibleStartDaysOfAbsencePeriod, doctorJmbg);
+            DateTime startDate = GetStartDate(duration, possibleStartDaysOfAbsencePeriod);
             return (startDate.Year != 1) ? new PossibleAppointmentsDTO("", "", doctorJmbg, "", "", -1, "", startDate, duration, -1) : null;
         }
 
-        private List<DateTime> GetListOfDaysForAbsencePeriod(DateTime dateUntil, DateTime dateFrom)
+        private List<DateTime> GetCandidateStartDays(DateTime dateFrom, DateTime dateUntil)
         {
-            List<DateTime> possibleAppointments = new List<DateTime>();
+            List<DateTime> candidateStartDays = new List<DateTime>();
             while (dateFrom != dateUntil.AddDays(1))
             {
-                possibleAppointments.Add(dateFrom);
+                candidateStartDays.Add(dateFrom);
                 dateFrom = dateFrom.AddDays(1);
             }
 
-            return possibleAppointments;
+            return candidateStartDays;
         }
 
-        private DateTime GetStartDateOfAbsencePeriod(int duration, List<DateTime> possibleStartDaysOfAbsencePeriod)
+        private DateTime GetStartDate(int duration, List<DateTime> possibleStartDaysOfAbsencePeriod)
         {
             DateTime startDate = possibleStartDaysOfAbsencePeriod[0];
             int counter = 1;
@@ -80,7 +80,7 @@ namespace ZdravoKorporacija.Service
             return new DateTime(1, 1, 1);
         }
 
-        private void RemoveOccupiedDaysFromPossibleStartDaysOfAbscenePeriod(DateTime dateFrom, DateTime dateUntil, ref List<DateTime> possibleStartDaysOfAbsencePeriod, String doctorJmbg)
+        private void RemoveOccupiedDaysFromCandidateDays(DateTime dateFrom, DateTime dateUntil, List<DateTime> possibleStartDaysOfAbsencePeriod, String doctorJmbg)
         {
             List<Appointment> doctorAppointments = AppointmentRepository.FindAllByDoctorJmbg(doctorJmbg);
             foreach (var doctorAppointment in doctorAppointments)
@@ -112,7 +112,7 @@ namespace ZdravoKorporacija.Service
             return absenceRequestRepository.FindAllByDoctorJmbg(jmbg);
         }
 
-        public List<AbsenceRequest> GetOnHoldAbsceneRequests()
+        public List<AbsenceRequest> GetOnHold()
         {
             List<AbsenceRequest> absenceRequests = absenceRequestRepository.FindAll();
             List<AbsenceRequest> absenceRequestsOnHold = new List<AbsenceRequest>();
@@ -125,7 +125,7 @@ namespace ZdravoKorporacija.Service
             return absenceRequestsOnHold;
         }
 
-        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
+        public void ChangeState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
         {
             AbsenceRequest absenceRequestToChangeState = absenceRequestRepository.FindOneById(absceneRequestId);
             if (absenceRequestToChangeState != null)
@@ -140,32 +140,32 @@ namespace ZdravoKorporacija.Service
             }
         }
 
-        public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
+        public void Create(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
         {
             String doctorJmbg = "1231231231231";
             String doctorSpecialtyType = doctorRepository.FindOneByJmbg(doctorJmbg).SpecialtyType;
             int interval = (int)(dateUntil - dateFrom).TotalDays;
-            PossibleAppointmentsDTO possibleAppointmentsDTO = GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, interval);
+            PossibleAppointmentsDTO possibleAppointmentsDTO = GetPossibleAppointments(doctorJmbg, dateFrom, dateUntil, interval);
 
             if (isUrgent)
-                CreateUrgentAbsenceRequest(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval);
+                CreateUrgent(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval);
             else
             {
                 ValidateInputParameters(dateFrom, doctorSpecialtyType);
-                CreateAbsenceRequestIfPossible(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval, possibleAppointmentsDTO);
+                CreateIfPossible(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval, possibleAppointmentsDTO);
             }
 
         }
 
-        private void CreateAbsenceRequestIfPossible(DateTime dateFrom, DateTime dateUntil, bool isUrgent, string reason, string doctorJmbg, string doctorSpecialtyType, int interval, PossibleAppointmentsDTO possibleAppointmentsDTO)
+        private void CreateIfPossible(DateTime dateFrom, DateTime dateUntil, bool isUrgent, string reason, string doctorJmbg, string doctorSpecialtyType, int interval, PossibleAppointmentsDTO possibleAppointmentsDTO)
         {
             if (possibleAppointmentsDTO == null)
                 throw new Exception("No free appointments for chosen period. Choose another period of absence!");
             else
-                CreateRegularAbsenceRequest(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval);
+                CreateRegular(dateFrom, dateUntil, isUrgent, reason, doctorJmbg, doctorSpecialtyType, interval);
         }
 
-        private void CreateRegularAbsenceRequest(DateTime dateFrom, DateTime dateUntil, bool isUrgent, string reason, string doctorJmbg, string doctorSpecialtyType, int interval)
+        private void CreateRegular(DateTime dateFrom, DateTime dateUntil, bool isUrgent, string reason, string doctorJmbg, string doctorSpecialtyType, int interval)
         {
             int id = GenerateNewId();
             AbsenceRequest absenceRequest = new AbsenceRequest(id, doctorJmbg, doctorSpecialtyType, dateFrom, dateUntil, interval, reason, isUrgent, AbsenceRequestState.ON_HOLD, null);
@@ -180,7 +180,7 @@ namespace ZdravoKorporacija.Service
                 throw new Exception("More than one doctor your specialty already requested absence!");
         }
 
-        private void CreateUrgentAbsenceRequest(DateTime dateFrom, DateTime dateUntil, bool isUrgent, string reason, string doctorJmbg, string doctorSpecialtyType, int interval)
+        private void CreateUrgent(DateTime dateFrom, DateTime dateUntil, bool isUrgent, string reason, string doctorJmbg, string doctorSpecialtyType, int interval)
         {
             int id = GenerateNewId();
             AbsenceRequest absenceRequest = new AbsenceRequest(id, doctorJmbg, doctorSpecialtyType, dateFrom, dateUntil, interval, reason, isUrgent, AbsenceRequestState.ON_HOLD, null);

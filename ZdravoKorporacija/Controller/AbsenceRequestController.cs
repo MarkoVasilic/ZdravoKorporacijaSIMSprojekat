@@ -25,24 +25,24 @@ namespace ZdravoKorporacija.Controller
             return absenceRequestService.GetAllByDoctorJmbg(doctorJmbg);
         }
 
-        public void CreateAbsenceRequest(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
+        public void Create(DateTime dateFrom, DateTime dateUntil, Boolean isUrgent, String reason)
         {
-            absenceRequestService.CreateAbsenceRequest(dateFrom, dateUntil, isUrgent, reason);
+            absenceRequestService.Create(dateFrom, dateUntil, isUrgent, reason);
         }
 
-        public List<AbsenceRequest> GetOnHoldAbsceneRequests()
+        public List<AbsenceRequest> GetOnHold()
         {
-            return absenceRequestService.GetOnHoldAbsceneRequests();
+            return absenceRequestService.GetOnHold();
         }
 
-        public void ChangeAbsceneRequestState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
+        public void ChangeState(int absceneRequestId, AbsenceRequestState absenceRequestState, String response)
         {
-            absenceRequestService.ChangeAbsceneRequestState(absceneRequestId, absenceRequestState, response);
+            absenceRequestService.ChangeState(absceneRequestId, absenceRequestState, response);
         }
-        public PossibleAppointmentsDTO GetPossibleAppointmentsForAbsence(String doctorJmbg,
+        public PossibleAppointmentsDTO GetPossibleAppointments(String doctorJmbg,
             DateTime dateFrom, DateTime dateUntil, int duration)
         {
-            return GetPossibleAppointmentsForAbsence(doctorJmbg, dateFrom, dateUntil, duration);
+            return absenceRequestService.GetPossibleAppointments(doctorJmbg, dateFrom, dateUntil, duration);
         }
     }
 }

@@ -101,7 +101,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         {
             try
             {
-                absenceRequestController.CreateAbsenceRequest(DateFrom, DateUntil, IsUrgent, AbsenceReason);
+                absenceRequestController.Create(DateFrom, DateUntil, IsUrgent, AbsenceReason);
                 DoctorWindowVM.NavigationService.Navigate(new AbsenceRequestsPage());
             }
             catch (Exception e)

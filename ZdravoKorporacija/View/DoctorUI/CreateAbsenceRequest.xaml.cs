@@ -17,7 +17,7 @@ using ZdravoKorporacija.View.DoctorUI.ViewModel;
 namespace ZdravoKorporacija.View.DoctorUI
 {
     /// <summary>
-    /// Interaction logic for CreateAbsenceRequest.xaml
+    /// Interaction logic for Create.xaml
     /// </summary>
     public partial class CreateAbsenceRequest : Page
     {
