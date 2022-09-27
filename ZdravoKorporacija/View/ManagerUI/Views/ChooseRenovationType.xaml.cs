@@ -100,15 +100,8 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
     
         private void StartRenovationClick(object sender, RoutedEventArgs e)
         {
-
-            if (validation() == false)
+            if(ValidateDate()== true && ValidateDuration() == true)
             {
-                MessageBox.Show("Trajanje mora biti u formi broja!");
-                NavigationService.Refresh();
-            }
-            else
-            {
-
                 if (RenovationTypeComboBox.SelectedIndex == 0)
                 {
                     NavigationService.Navigate(new BasicRenovation(DateFrom, DateUntil, Duration));
@@ -122,17 +115,44 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
                     NavigationService.Navigate(new RoomSeparation(DateFrom, DateUntil, Duration));
                 }
             }
-            
+            else
+            {
+                if (ValidateDate() == false)
+                {
+                    MessageBox.Show("Datum početka mora biti manji od krajnjeg datuma!", "Greška");
+                    NavigationService.Refresh();
+                }
+
+               if (ValidateDuration() == false)
+                {
+                    MessageBox.Show("Trajanje mora biti u formi broja!", "Greška");
+                    NavigationService.Refresh();
+                }
+            }
+                     
 
         }
 
-        private Boolean validation()
+        private Boolean ValidateDuration()
         {
             Regex onlyNumberRegex = new Regex("^[0-9]+$");
             if (!onlyNumberRegex.IsMatch(Duration))
             {
                 return false;
 
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        private Boolean ValidateDate()
+        {
+            if(DateFrom > DateUntil)
+            {
+                return false;
             }
             else
             {

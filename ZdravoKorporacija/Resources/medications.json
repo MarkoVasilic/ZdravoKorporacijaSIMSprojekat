@@ -10,17 +10,6 @@
     "Alternative": null
   },
   {
-    "Id": 4,
-    "Name": "Aspirin",
-    "Ingredients": [
-      "sastojak1",
-      "sastojak2",
-      "sastojak3"
-    ],
-    "Status": 2,
-    "Alternative": "Efedrin"
-  },
-  {
     "Id": 5,
     "Name": "Buscopan",
     "Ingredients": [
@@ -62,5 +51,17 @@
     ],
     "Status": 1,
     "Alternative": "Aerius"
+  },
+  {
+    "Id": 4,
+    "Name": "Aspirin",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2",
+      "sastojak3",
+      "sastojak4"
+    ],
+    "Status": 1,
+    "Alternative": "Efedrin"
   }
 ]

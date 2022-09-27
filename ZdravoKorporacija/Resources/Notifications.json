@@ -26,7 +26,7 @@
   {
     "Id": 243,
     "Title": "Rejection of Aspirin medication",
-    "Description": "pogresna alternativa",
+    "Description": "dodajte sastojak4",
     "StartTime": "2022-06-09T21:34:46.0996779+02:00",
     "userJmbg": "3434343434343",
     "Seen": false
@@ -45,14 +45,6 @@
     "Description": "Meeting that requires your presence will start at 25.6.2022. 16:30:00 in room Surg 1",
     "StartTime": "2022-06-09T21:54:31.6225821+02:00",
     "userJmbg": "1515151515151",
-    "Seen": false
-  },
-  {
-    "Id": 246,
-    "Title": "Scheduled meeting",
-    "Description": "Meeting that requires your presence will start at 25.6.2022. 16:30:00 in room Surg 1",
-    "StartTime": "2022-06-09T21:54:31.6356969+02:00",
-    "userJmbg": "3434343434343",
     "Seen": false
   },
   {
