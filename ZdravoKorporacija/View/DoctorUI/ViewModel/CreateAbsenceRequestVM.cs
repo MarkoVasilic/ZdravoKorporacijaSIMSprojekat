@@ -4,7 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
@@ -23,7 +28,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 errorMessage = value;
-                OnProperyChanged("ErrorMessage");
+                OnPropertyChanged("ErrorMessage");
             }
         }
 
@@ -34,7 +39,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 absenceReason = value;
-                OnProperyChanged("AbsenceReason");
+                OnPropertyChanged("AbsenceReason");
             }
         }
 
@@ -45,7 +50,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 dateFrom = value;
-                OnProperyChanged("DateFrom");
+                OnPropertyChanged("DateFrom");
             }
         }
 
@@ -56,7 +61,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 dateUntil = value;
-                OnProperyChanged("DateUntil");
+                OnPropertyChanged("DateUntil");
             }
         }
 
@@ -67,7 +72,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 isUrgent = value;
-                OnProperyChanged("IsUrgent");
+                OnPropertyChanged("IsUrgent");
             }
         }
 
@@ -101,8 +106,16 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         {
             try
             {
-                absenceRequestController.Create(DateFrom, DateUntil, IsUrgent, AbsenceReason);
-                DoctorWindowVM.NavigationService.Navigate(new AbsenceRequestsPage());
+                if (String.IsNullOrWhiteSpace(AbsenceReason))
+                {
+                    ErrorMessage = "Please enter absence reason!";
+                }
+                else
+                {
+                    absenceRequestController.Create(DateFrom, DateUntil, IsUrgent, AbsenceReason);
+                    notifier.ShowSuccess("Successfully created absence request!");
+                    DoctorWindowVM.NavigationService.Navigate(new AbsenceRequestsPage());
+                }
             }
             catch (Exception e)
             {
@@ -114,6 +127,21 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         {
             IsUrgent = isChecked;
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 30,
+                offsetY: 90);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(7),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
 
     }
 }

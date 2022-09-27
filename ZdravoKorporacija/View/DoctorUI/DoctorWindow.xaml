@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="Times New Roman">
     <Grid>
-        <Frame x:Name="DoctorMainFrame" Height="720"></Frame>
+        <Frame x:Name="DoctorMainFrame" Height="auto"></Frame>
         <Grid x:Name="GridBackground">
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"></RowDefinition>

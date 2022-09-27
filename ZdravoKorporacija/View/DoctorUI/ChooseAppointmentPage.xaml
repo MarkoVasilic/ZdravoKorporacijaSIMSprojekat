@@ -1,0 +1,28 @@
+﻿<Page x:Class="ZdravoKorporacija.View.DoctorUI.ChooseAppointmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      mc:Ignorable="d" 
+      Title="ChooseAppointmentPage"
+      Background="#FF01041C"
+      FontFamily="Times New Roman">
+
+    <Grid>
+        <DataGrid x:Name="DataGridPossibleAppointments" HorizontalAlignment="Center" ItemsSource="{Binding Appointments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 150 20 30" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" Height="500" Width="auto" TextBlock.FontSize="24">
+            <DataGrid.Columns>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Doctor" Binding="{Binding DoctorFullName}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Date and Time" Binding="{Binding StartTime}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Room" Binding="{Binding RoomName}" Width="200"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Choose" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ChooseAppointmentButton" Content="CHOOSE" HorizontalContentAlignment="Center" Click="ChooseAppointment_OnClick" CommandParameter="{Binding SelectedItem, ElementName=DataGridPossibleAppointments}" TextBlock.FontSize="24"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -73,9 +73,5 @@ namespace ZdravoKorporacija.View.DoctorUI
             NavigationService.Navigate(new AddPrescriptionPage(patientJmbg, Medication));
         }
 
-        /*private void SearchButtonCLick(object sender, RoutedEventArgs e)
-        {
-            Medications = new ObservableCollection<Medication>(medicationController.Search(EquipmentName));
-        }*/
     }
 }

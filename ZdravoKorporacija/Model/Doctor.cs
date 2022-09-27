@@ -4,9 +4,9 @@ namespace Model
 {
     public class Doctor : User
     {
-        public Boolean Specialty;
-        public String SpecialtyType;
-        public int RoomId;
+        public Boolean Specialty { get; set; }
+        public String SpecialtyType { get; set; }
+        public int RoomId { get; set; }
 
 
         public Doctor(Boolean specialty, String specialtyType, int roomId,

@@ -149,7 +149,7 @@ namespace Service
         public void CreateAppointmentByPatient(DateTime date, String doctorJmbg)
         {
             Doctor doctor = _doctorRepository.FindOneByJmbg(doctorJmbg);
-            ValidateInputParametersForCreateAppointment(App.loggedUser.Jmbg, doctorJmbg, doctor.RoomId);
+            ValidateInputParametersForCreateAppointment(App.loggedUser.Jmbg, doctorJmbg, doctor.RoomId, 45);
             int id = GenerateNewId();
             Appointment appointment = new Appointment(date, 15, id, App.loggedUser.Jmbg, doctorJmbg, doctor.RoomId);
             SaveNewAppointment(appointment);
@@ -158,20 +158,20 @@ namespace Service
         public void CreateAppointmentBySecretary(String patientJmbg, String doctorJmbg, int roomId,
             DateTime startTime, int duration)
         {
-            ValidateInputParametersForCreateAppointment(patientJmbg, doctorJmbg, roomId);
+            ValidateInputParametersForCreateAppointment(patientJmbg, doctorJmbg, roomId, duration);
             int id = GenerateNewId();
             Appointment appointment = new Appointment(startTime, duration, id, patientJmbg, doctorJmbg, roomId);
             SaveNewAppointment(appointment);
         }
         public void CreateAppointmentByDoctor(PossibleAppointmentsDTO appointmentToCreate)
         {
-            ValidateInputParametersForCreateAppointment(appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId);
+            ValidateInputParametersForCreateAppointment(appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId, appointmentToCreate.Duration);
             int id = GenerateNewId();
             Appointment appointment = new Appointment(appointmentToCreate.StartTime, appointmentToCreate.Duration, id, appointmentToCreate.PatientJmbg, appointmentToCreate.DoctorJmbg, appointmentToCreate.RoomId);
             SaveNewAppointment(appointment);
         }
 
-        private void ValidateInputParametersForCreateAppointment(string patientJmbg, string doctorJmbg, int roomId)
+        private void ValidateInputParametersForCreateAppointment(string patientJmbg, string doctorJmbg, int roomId, int duration)
         {
             if (_patientRepository.FindOneByJmbg(patientJmbg) == null)
                 throw new Exception("Patient with that JMBG doesn't exist!");
@@ -179,6 +179,10 @@ namespace Service
                 throw new Exception("Doctor with that JMBG doesn't exist!");
             if (_roomRepository.FindOneById(roomId) == null)
                 throw new Exception("Room with that id doesn't exist!");
+            if (duration < 1 || duration == null)
+            {
+                throw new Exception("Please insert duration!");
+            }
         }
         private void SaveNewAppointment(Appointment appointment)
         {
@@ -190,13 +194,13 @@ namespace Service
             _appointmentRepository.SaveAppointment(appointment);
         }
 
-        //OVO PROVJERITI DA LI SE UOPSTE POZIVA NEGDJE, AKO NE IZBRISATI
         public void CreateOperationAppointment(PossibleAppointmentsDTO appointmentToCreate)
         {
-            Boolean specialty = _doctorRepository.FindOneByJmbg(appointmentToCreate.DoctorJmbg).Specialty;
+            String jmbg = "1231231231231";
+            Boolean specialty = _doctorRepository.FindOneByJmbg(jmbg).Specialty;
             if (!specialty)
                 throw new Exception("Only doctors with specialization can perform operation!");
-            if (appointmentToCreate.DoctorJmbg.Equals("1231231231231")) //hard codovan ulogovan doktor, jer operaciju moze samo kod sebe da zakaze
+            if (appointmentToCreate.DoctorJmbg.Equals(jmbg))
                 CreateAppointmentByDoctor(appointmentToCreate);
         }
 

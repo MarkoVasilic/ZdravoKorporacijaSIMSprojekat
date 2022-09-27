@@ -50,5 +50,15 @@ namespace Model
             Console.WriteLine("Doctor: " + DoctorJmbg);
             Console.WriteLine();
         }
+
+        public String toPDF()
+        {
+            String txt = "";
+            txt += "Diagnosis:" + Diagnosis + "\n";
+            txt += "Report:" + Report + "\n";
+            txt += "DateTime:" + DateTime + "\n";
+            txt += "Doctor:" + DoctorJmbg + "\n";
+            return txt;
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace ZdravoKorporacija
             EquipmentController equipmentController = new EquipmentController(equipmentService);
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicationRepository medicationRepository = new MedicationRepository();
@@ -104,7 +104,31 @@ namespace ZdravoKorporacija
             NoteRepository noteRepository = new NoteRepository();
             NoteService noteService = new NoteService(noteRepository);
             noteController = new NoteController(noteService);
+
+            /*List<PossibleAppointmentsDTO> possibleAppointments = appointmentController.GetPossibleAppointmentsByDoctor(
+                "1111111111111", "1231231231231", new DateTime(2022, 10, 10),
+                new DateTime(2022, 10, 20), 90, "doctor", 7);
+
+            int i = -1;
+            foreach (PossibleAppointmentsDTO appointment in possibleAppointments)
+            {
+                i++;
+                Console.WriteLine("Id = " + i);
+                appointment.ToStringPossible();
+            }*/
+            /*Console.WriteLine("Izaberite jedan od ponudjenih termina");
+            Console.WriteLine("Choose appointment: ");
+            int app = Int16.Parse(Console.ReadLine());
+            PossibleAppointmentsDTO choosenAppointment = possibleAppointments[app];
+            appointmentController.CreateAppointmentByDoctor(choosenAppointment);*/
+
+            //String a = doctorRepository.FindOneByJmbg("4444444444444").SpecialtyType;
+            //Console.Write(a);
         }
+
+
+        
+
 
     }
 }

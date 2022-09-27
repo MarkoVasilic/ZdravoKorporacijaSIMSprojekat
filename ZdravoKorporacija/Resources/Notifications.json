@@ -2046,5 +2046,21 @@
     "StartTime": "2022-06-21T16:00:00",
     "userJmbg": "7778889994445",
     "Seen": false
+  },
+  {
+    "Id": 496,
+    "Title": "Rejection of Buscopan medication",
+    "Description": "",
+    "StartTime": "2022-06-13T02:34:32.981783+02:00",
+    "userJmbg": "3434343434343",
+    "Seen": false
+  },
+  {
+    "Id": 497,
+    "Title": "Rejection of Buscopan medication",
+    "Description": "sdidjfs",
+    "StartTime": "2022-06-13T02:42:53.2637231+02:00",
+    "userJmbg": "3434343434343",
+    "Seen": false
   }
 ]

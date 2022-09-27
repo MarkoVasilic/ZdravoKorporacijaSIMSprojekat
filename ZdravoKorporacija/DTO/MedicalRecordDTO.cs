@@ -46,7 +46,7 @@ namespace ZdravoKorporacija.DTO
             Console.WriteLine("Jmbg: " + Jmbg);
             Console.WriteLine("Date of Birth: " + DateOfBirth);
             Console.WriteLine("Gender: " + Gender);
-            Console.Write("Allergens: ");
+            Console.Write("---------------------------------------------Allergens---------------------------------------------");
             if (Allergens != null)
             {
                 foreach (String allergen in Allergens)
@@ -70,7 +70,7 @@ namespace ZdravoKorporacija.DTO
                 Console.Write("No anamnesis \n");
             }
             Console.WriteLine("\n");
-            Console.WriteLine("Prescriptions: ");
+            Console.WriteLine("---------------------------------------------Prescriptions---------------------------------------------");
             if (Prescriptions != null)
             {
                 foreach (Prescription prescription in Prescriptions)
@@ -86,6 +86,49 @@ namespace ZdravoKorporacija.DTO
             Console.WriteLine("\n");
 
 
+        }
+
+        public String toPDF()
+        {
+            String txt = "";
+            txt += "First Name: " + FirstName + "\n";
+            txt += "Last Name: " + LastName + "\n";
+            txt += "Jmbg: " + Jmbg + "\n";
+            txt += "Date of Birth: " + DateOfBirth + "\n";
+            Console.WriteLine("\n\n");
+            Console.WriteLine("\n\n");
+            txt += "---------------------------------------------------------------------------------------------------------------------------------------------------";
+            txt += "                                                                                 ANAMNESIS\n";
+            txt += "---------------------------------------------------------------------------------------------------------------------------------------------------\n";
+            if (Anamnesis != null)
+            {
+                foreach (Anamnesis anamnesis in Anamnesis)
+                {
+                    txt += anamnesis.toPDF();
+                    txt += "---------------------------------------------------------------------------------------------------------------------------------------------------";
+                }
+            }
+            else
+            {
+                txt += "No anamnesis \n\n";
+            }
+            //txt += "---------------------------------------------------------------------------------------------------------------------------------------------------";
+            txt += "                                                                             PRESCRIPTIONS\n";
+            txt += "---------------------------------------------------------------------------------------------------------------------------------------------------\n";
+            if (Prescriptions != null)
+            {
+                foreach (Prescription prescription in Prescriptions)
+                {
+                    txt += prescription.toPDF();
+                    txt += "---------------------------------------------------------------------------------------------------------------------------------------------------";
+                }
+            }
+            else
+            {
+                txt += "No prescriptions \n\n";
+            }
+
+            return txt;
         }
     }
 }

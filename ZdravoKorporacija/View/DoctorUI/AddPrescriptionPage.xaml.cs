@@ -21,11 +21,17 @@ namespace ZdravoKorporacija.View.DoctorUI
     /// </summary>
     public partial class AddPrescriptionPage : Page
     {
+        private String patientJmbg { get; set; }
         public AddPrescriptionPage(String jmbg, String medication)
         {
             InitializeComponent();
-            this.DataContext = new AddPrescriptionVM(jmbg, medication);
+            this.patientJmbg = jmbg;
+            this.DataContext = new AddPrescriptionVM(patientJmbg, medication);
         }
 
+        private void BackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ChooseMedicationPage(patientJmbg));
+        }
     }
 }

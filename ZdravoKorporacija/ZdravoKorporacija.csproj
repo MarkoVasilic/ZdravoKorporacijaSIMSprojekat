@@ -8,12 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AppointmentsTutorial.wmv" />
     <None Remove="Resources\Fonts\Bell_MT.ttf" />
     <None Remove="Resources\Images\bolnicaHCI.jpg" />
     <None Remove="Resources\Images\nadja_pocetna.jpg" />
     <None Remove="Resources\Images\nadja_pocetna.png" />
     <None Remove="Resources\Test2.pdf" />
     <None Remove="Savina.mp4" />
+    <None Remove="View\DoctorUI\AppointmentsTutorial.mp4" />
+    <None Remove="View\DoctorUI\PrescriptionsTutorial.mp4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +26,15 @@
     <Content Include="Savina.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\AppointmentsTutorial.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\DoctorUI\PrescriptionsTutorial.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="View\DoctorUI\AppointmentsTutorial.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +46,8 @@
     <PackageReference Include="MindFusion.Scheduling.Wpf" Version="3.5.1.2" />
     <PackageReference Include="ModernWpfUis.MahApps" Version="1.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="ToastNotifications" Version="2.5.1" />
+    <PackageReference Include="ToastNotifications.Messages" Version="2.5.1" />
     <PackageReference Include="WpfExtendedControls" Version="1.0.4" />
   </ItemGroup>
 

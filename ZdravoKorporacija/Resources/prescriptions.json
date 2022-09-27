@@ -110,5 +110,21 @@
     "Frequency": 8,
     "From": "2022-06-18T00:00:00",
     "To": "2022-06-22T00:00:00"
+  },
+  {
+    "Id": 15,
+    "Medication": "Berodual",
+    "Amount": "200mg",
+    "Frequency": 10,
+    "From": "2022-07-01T00:00:00",
+    "To": "2022-07-27T00:00:00"
+  },
+  {
+    "Id": 16,
+    "Medication": "Berodual",
+    "Amount": "200mg",
+    "Frequency": 120,
+    "From": "2022-06-22T00:00:00",
+    "To": "2022-07-01T00:00:00"
   }
 ]

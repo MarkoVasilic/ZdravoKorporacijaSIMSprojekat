@@ -34,7 +34,7 @@ namespace ZdravoKorporacija.View.DoctorUI
             PatientRepository patientRepository = new PatientRepository();
             MedicationRepository medicationRepository = new MedicationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
@@ -47,5 +47,6 @@ namespace ZdravoKorporacija.View.DoctorUI
         {
             NavigationService.Navigate(new ChooseMedicationPage(jmbg));
         }
+
     }
 }

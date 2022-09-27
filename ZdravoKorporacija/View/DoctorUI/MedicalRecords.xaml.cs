@@ -10,6 +10,7 @@ using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.View.DoctorUI.ViewModel;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
@@ -20,11 +21,12 @@ namespace ZdravoKorporacija.View.DoctorUI
     {
         private MedicalRecordController medicalRecordController;
 
-
+        private String patientJmbg { get; set; }
         public ObservableCollection<MedicalRecordDTO> medicalrecords { get; set; }
         public MedicalRecords()
         {
             InitializeComponent();
+            DoctorWindowVM.setWindowTitle("Patients");
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
@@ -33,7 +35,7 @@ namespace ZdravoKorporacija.View.DoctorUI
             MedicationRepository medicationRepository = new MedicationRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             PrescriptionService prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             medicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
             this.DataContext = this;
@@ -45,7 +47,13 @@ namespace ZdravoKorporacija.View.DoctorUI
         private void ViewMedicalRecord(object sender, RoutedEventArgs e)
         {
             String Jmbg = (String)((Button)sender).CommandParameter;
+            this.patientJmbg = Jmbg;
             NavigationService.Navigate(new ViewMedicalRecordPage(Jmbg));
+        }
+
+        private void Tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddPrescriptionTutorial());
         }
     }
 }

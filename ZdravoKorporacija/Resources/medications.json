@@ -17,18 +17,8 @@
       "sastojak2",
       "sastojak3"
     ],
-    "Status": 2,
-    "Alternative": "Efedrin"
-  },
-  {
-    "Id": 5,
-    "Name": "Buscopan",
-    "Ingredients": [
-      "sastojak1",
-      "sastojak2"
-    ],
     "Status": 1,
-    "Alternative": "Brufen"
+    "Alternative": "Efedrin"
   },
   {
     "Id": 6,
@@ -62,5 +52,15 @@
     ],
     "Status": 1,
     "Alternative": "Aerius"
+  },
+  {
+    "Id": 5,
+    "Name": "Buscopan",
+    "Ingredients": [
+      "sastojak1",
+      "sastojak2"
+    ],
+    "Status": 1,
+    "Alternative": "Brufen"
   }
 ]

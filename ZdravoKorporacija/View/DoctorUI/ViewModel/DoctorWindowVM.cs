@@ -54,10 +54,15 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
         }
 
+        public DoctorWindowVM()
+        {
+        }
+
         private void homeExecute(object parametar)
         {
             setWindowTitle("Appointment Schedule");
-            NavigationService.Navigate(DoctorHomePage);
+            DoctorWindowVM doctorWindowVm = new DoctorWindowVM();
+            NavigationService.Navigate(new DoctorHomePage(doctorWindowVm));
         }
 
         private void medicalRecordsExecute(object parametar)

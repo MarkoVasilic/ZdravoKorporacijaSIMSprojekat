@@ -43,24 +43,30 @@ namespace ZdravoKorporacija.Service
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
-            DateTime dateFrom, DateTime dateUntil, int duration, String priority)
+            DateTime dateFrom, DateTime dateUntil, int duration, String priority, int roomId)
         {
             List<String> doctorJmbgs = new List<String>();
             doctorJmbgs.Add(doctorJmbg);
-            ValidateInputParametersForGetPossibleAppointments(patientJmbg, doctorJmbgs, -1, dateFrom, dateUntil);
+            int RoomId = _doctorRepository.FindOneByJmbg(doctorJmbg).RoomId;
+            if (roomId == -1)
+                RoomId = _doctorRepository.FindOneByJmbg(doctorJmbg).RoomId;
+            else
+                RoomId = roomId;
+
+            ValidateInputParametersForGetPossibleAppointments(patientJmbg, doctorJmbgs, RoomId, dateFrom, dateUntil);
             List<PossibleAppointmentsDTO> possibleAppointmentsDTOs = new List<PossibleAppointmentsDTO>();
             List<DateTime> possibleAppointments = new List<DateTime>();
-            int roomId = _doctorRepository.FindOneByJmbg(doctorJmbg).RoomId;
+            
 
             if (priority == "doctor")
             {
-                possibleAppointments = FindPossibleAppointmentsForDoctorPriority(patientJmbg, doctorJmbgs, roomId, dateFrom, dateUntil, duration);
+                possibleAppointments = FindPossibleAppointmentsForDoctorPriority(patientJmbg, doctorJmbgs, RoomId, dateFrom, dateUntil, duration);
             }
             else
             {
-                possibleAppointments = FindPossibleAppointmentsForTimePriority(patientJmbg, ref doctorJmbgs, ref roomId, dateFrom, dateUntil, duration);
+                possibleAppointments = FindPossibleAppointmentsForTimePriority(patientJmbg, ref doctorJmbgs, ref RoomId, dateFrom, dateUntil, duration);
             }
-            return CreatePossibleAppointmentsDtos(patientJmbg, doctorJmbgs[0], roomId, duration, possibleAppointments);
+            return CreatePossibleAppointmentsDtos(patientJmbg, doctorJmbgs[0], RoomId, duration, possibleAppointments);
         }
 
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByManager(int roomId,

@@ -36,6 +36,9 @@
                 <DatePicker FontSize="24" Width="470" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="20 30 0 2" Foreground="Black" Background="White" SelectedDate="{Binding Path=From, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
             <DatePicker FontSize="24" Width="470" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="20 30 0 2" Foreground="Black" Background="White" SelectedDate="{Binding Path=To, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
         </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" x:Name="BackButton" Foreground="Black" Background="LightBlue" Width="150" Height="70" HorizontalAlignment="Left" Margin="0 9 0 0" Click="BackButton_OnClick">
+            <TextBlock FontSize="28" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center">Change Medication</TextBlock>
+        </Button>
         <StackPanel Grid.Row="2" Grid.Column="2">
             <TextBlock Name="ViewErrorMessage" FontSize="24" Width="470" Height="auto" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="20 20 0 2"  Foreground="Red" Text="{Binding Path=ErrorMessage}"></TextBlock>
             <Button x:Name="ConfirmPrescription" HorizontalContentAlignment="Center" Foreground="Black" Background="LightBlue" Width="200" Height="50" Content="CONFIRM" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Margin="0 30 0 0" Command="{Binding ConfirmCommand}"/>

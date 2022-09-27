@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:ZdravoKorporacija"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         <FontFamily x:Key="BellMTFont">.\Resources\Fonts\Bell_MT.ttf#Bell MT</FontFamily>
         <Style x:Key="SecretaryTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Height" Value="30"></Setter>
@@ -196,6 +200,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>

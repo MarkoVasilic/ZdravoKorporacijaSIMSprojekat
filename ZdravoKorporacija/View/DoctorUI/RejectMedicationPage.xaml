@@ -5,19 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="RejectMedicationPage"
       Background="#FF01041C"
       FontFamily="Times New Roman">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="280"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="450"></ColumnDefinition>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="400"></ColumnDefinition>
             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -26,10 +25,11 @@
             <TextBlock FontSize="24" Width="200" HorizontalAlignment="Left" Margin="0 10 0 2" Foreground="White">Rejection reason:</TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <TextBox x:Name="ResponseTextBox" FontSize="24" Width="400" Height="200" HorizontalAlignment="Left" Margin="0 10 0 2" Foreground="Black" Background="White" Text="{Binding Response, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="ResponseTextBox" FontSize="24" Width="400" Height="200" HorizontalAlignment="Right" Margin="10 10 0 2" Foreground="Black" Background="White" Text="{Binding Response, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="2">
-            <Button x:Name="ConfirmRejection" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="200" Height="50" Margin="100 50 0 0" Content="CONFIRM" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Command="{Binding ConfirmCommand}"></Button>
+            <TextBlock Name="ViewErrorMessage" FontSize="24" Width="400" Height="auto" TextWrapping="Wrap"  HorizontalAlignment="Center" Margin="10 5 0 10"  Foreground="Red" Text="{Binding Path=ErrorMessage}"></TextBlock>
+            <Button x:Name="ConfirmRejection" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="200" Height="50" Margin="100 5 0 0" Content="CONFIRM" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Command="{Binding ConfirmCommand}"></Button>
         </StackPanel>
     </Grid>
 </Page>

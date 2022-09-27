@@ -5,22 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       Title="DoctorHomePage"
       Background="#FF01041C"
       FontFamily="Times New Roman">
 
     <Grid>
-        <Button x:Name="CreateAppointmentButton" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="270" Height="60" Margin="350 210 0 0" Content="Create Appointment" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="CreateAppointmentButton_OnClick"></Button>
-        <Button x:Name="ScheduleSurgeryButton" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="270" Height="60" Margin="350 130 0 0" Content="Schedule Surgery" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="ScheduleSurgeryButton_OnClick"></Button>
-        <Button x:Name="EditButton" HorizontalContentAlignment="Center" CommandParameter="{Binding SelectedItem, ElementName=DataGridDoctorAppointments}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="270" Height="60" Margin="965 130 0 0" Content="Edit Appoitnment" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="EditButton_OnClick"></Button>
-        <Button x:Name="DeleteButton"  Click="DeleteAppointmnetButton_OnClick" CommandParameter="{Binding SelectedItem, ElementName=DataGridDoctorAppointments}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="270" Height="60" Margin="965 210 0 0" Content="Delete Appointment" TextBlock.FontSize="28" TextBlock.FontWeight="Bold"></Button>
-        <DatePicker x:Name="DatePickerFrom" Margin="30 130 0 0" BorderBrush="Transparent" Width="270" FontSize="24" HorizontalAlignment="Left" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}"></DatePicker>
-        <DatePicker x:Name="DatePickerTo" Margin="30 170 0 0" BorderBrush="Transparent" Width="270" FontSize="24" HorizontalAlignment="Left" SelectedDate="{Binding Path=DateTo, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}"></DatePicker>
-        <Button x:Name="FilterAppointementsButton" Click="FilterAppointmnetsButton_OnClick" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Width="240" Height="40" Margin="30 225 0 0" Content="Filter" TextBlock.FontSize="28" TextBlock.FontWeight="Bold"></Button>
+        <Button x:Name="CreateAppointmentButton" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Width="270" Height="60" Margin="0 210 445 0" Content="Create Appointment" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="CreateAppointmentButton_OnClick"></Button>
+        <Button x:Name="ScheduleSurgeryButton" Visibility="Visible" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Width="270" Height="60" Margin="0 130 445 0" Content="Schedule Surgery" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="ScheduleSurgeryButton_OnClick"></Button>
+        <Button x:Name="EditButton" HorizontalContentAlignment="Center" CommandParameter="{Binding SelectedItem, ElementName=DataGridDoctorAppointments}" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="LightBlue"  Width="270" Height="60" Margin="0 130 165 0" Content="Edit Appoitnment" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="EditButton_OnClick"></Button>
+        <Button x:Name="DeleteButton"  Click="DeleteAppointmnetButton_OnClick" CommandParameter="{Binding SelectedItem, ElementName=DataGridDoctorAppointments}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Width="270" Height="60" Margin="0 210 165 0" Content="Delete Appointment" TextBlock.FontSize="28" TextBlock.FontWeight="Bold"></Button>
+        <Label Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="28" FontWeight="Bold" Margin="165 125 0 0">From :</Label>
+        <Label Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="28" FontWeight="Bold" Margin="165 165 0 0">To :</Label>
+        <DatePicker x:Name="DatePickerFrom" Margin="260 130 0 610" BorderBrush="Transparent" Width="270" FontSize="24" HorizontalAlignment="Left" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" IsTodayHighlighted="True"></DatePicker>
+        <DatePicker x:Name="DatePickerTo" Margin="260 170 0 570" BorderBrush="Transparent" Width="270" FontSize="24" HorizontalAlignment="Left" SelectedDate="{Binding Path=DateTo, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" IsTodayHighlighted="True"></DatePicker>
+        <Button x:Name="FilterAppointementsButton" Click="FilterAppointmnetsButton_OnClick" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Width="240" Height="40" Margin="260 225 0 0" Content="Filter" TextBlock.FontSize="28" TextBlock.FontWeight="Bold"></Button>
 
 
-        <DataGrid x:Name="DataGridDoctorAppointments" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding appointments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 320 20 30" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" Height="auto" Width="1206" TextBlock.FontSize="24">
+        <DataGrid x:Name="DataGridDoctorAppointments" HorizontalAlignment="Center" ItemsSource="{Binding Appointments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20 180 20 30" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" Height="350" Width="1206" TextBlock.FontSize="24">
             <DataGrid.Columns>
                 <DataGridTextColumn TextBlock.FontSize="24" Header="Jmbg" Binding="{Binding PatientJmbg}" Width="200"></DataGridTextColumn>
                 <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="First Name" Binding="{Binding PatientFirstName}" Width="180"></DataGridTextColumn>
@@ -36,5 +39,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Label HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="300 0 0 30" Foreground="White" FontSize="32" FontWeight="Bold">How to manage appointments tutorial</Label>
+        <materialDesign:PackIcon Kind="ArrowRight" Height="47" Width="50" VerticalContentAlignment="Center" Foreground="White" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 60 620 25"></materialDesign:PackIcon>
+        <Button  Foreground="Black" Background="#FFDFDF28" Width="270" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 300 20" Content="TUTORIAL" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="Button_Click"></Button>
     </Grid>
 </Page>

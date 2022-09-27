@@ -52,7 +52,7 @@ namespace ZdravoKorporacija.DTO
             Console.WriteLine("Duration = " + Duration);
             Console.WriteLine();
         }
-        public void ToStringChoosen()
+        public void ToStringChosen()
         {
             Console.WriteLine("Patient = " + PatientFullName);
             Console.WriteLine("Doctor Jmbg = " + DoctorJmbg);

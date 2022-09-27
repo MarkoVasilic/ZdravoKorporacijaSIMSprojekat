@@ -52,7 +52,7 @@ namespace ZdravoKorporacija.View.PatientUI
             
             MedicationRepository medicationRepository = new MedicationRepository();
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository, doctorRepository);
+            AnamnesisService anamnesisService = new AnamnesisService(anamnesisRepository, medicalRecordRepository);
             prescriptionService = new PrescriptionService(prescriptionRepository, medicalRecordRepository, patientRepository, medicationRepository);
             MedicalRecordService medicalRecordService = new MedicalRecordService(medicalRecordRepository, anamnesisRepository, prescriptionRepository, patientRepository, appointmentRepository);
             MedicalRecordController = new MedicalRecordController(medicalRecordService, anamnesisService, prescriptionService);
