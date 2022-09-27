@@ -34,13 +34,13 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="40 75 0 0">
             <TextBlock Text="Datum početka (format mesec/dan/godina):" FontSize="20"></TextBlock>
-            <DatePicker x:Name="firstDatePicker" Height="25" Width="200" Margin="50 0 0 0" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}" >
+            <DatePicker x:Name="firstDatePicker" Height="25" Width="200" Margin="50 0 0 0" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Now}" >
             </DatePicker>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="40 80 0 0">
             <TextBlock Text="Datum kraja (format mesec/dan/godina):" FontSize="20"></TextBlock>
-            <DatePicker Height="25" Width="200" Margin="79 0 0 0" SelectedDate="{Binding Path=DateUntil, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Today}" >
+            <DatePicker Height="25" Width="200" Margin="79 0 0 0" SelectedDate="{Binding Path=DateUntil, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Now}" >
             </DatePicker>
         </StackPanel>
 

@@ -38,8 +38,6 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         private String _newRoomDescription = " ";
         private RoomType _newRoomType;
         private List<Room> selectedRooms;
-        private AdvancedRenovationJoiningController advancedRenovationJoiningController;
-        private AppointmentController appointmentController;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -92,35 +90,8 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         public RoomJoining(DateTime dateFrom, DateTime dateUntil, String duration)
         {
             InitializeComponent();
-            InitializeComponent();
-            AppointmentRepository appointmentRepository = new AppointmentRepository();
-            PatientRepository patientRepository = new PatientRepository();
-            DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
-            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
-                new AdvancedRenovationSeparationRepository();
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
-            ManagerRepository managerRepository = new ManagerRepository();
-            SecretaryRepository secretaryRepository = new SecretaryRepository();
-            MeetingRepository meetingRepository = new MeetingRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
-                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
-                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
-            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
-                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
-                advancedRenovationSeparation, scheduleService);
             RoomService roomService = new RoomService(roomRepository);
-            DisplacementRepository displacementRepository = new DisplacementRepository();
-            EquipmentRepository equipmentRepository = new EquipmentRepository();
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository, roomRepository);
-            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
-            BasicRenovationService basicRenovationService = new BasicRenovationService(basicRenovationRepository, roomRepository);
-            DisplacementService displacementService = new DisplacementService(displacementRepository, equipmentRepository, roomRepository);
-            AdvancedRenovationJoiningRepository advancedRenovationJoiningRepository = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationJoiningService advancedRenovationJoiningService = new AdvancedRenovationJoiningService(advancedRenovationJoiningRepository, roomService, appointmentService, basicRenovationService, equipmentService, scheduleService, displacementService);
-            advancedRenovationJoiningController = new AdvancedRenovationJoiningController(advancedRenovationJoiningService);
             roomController = new RoomController(roomService);
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAllRooms());
@@ -142,16 +113,9 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         private void PossibleAppoitments_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                advancedRenovationJoiningController.GetPossibleAppointments(selectedRooms[0].Id, selectedRooms[1].Id, start, end, int.Parse(durationToSend));
-                NavigationService.Navigate(new CreateJoining(selectedRooms[0].Id, selectedRooms[1].Id, start, end, durationToSend, NewRoomName, NewRoomDescription, _newRoomType));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Greška");
-                ManagerHomeWindow.NavigationService.Navigate(new ChooseRenovationType());
-            }
+     
+            NavigationService.Navigate(new CreateJoining(selectedRooms[0].Id, selectedRooms[1].Id, start, end, durationToSend, NewRoomName, NewRoomDescription, _newRoomType));
+           
 
         }
 

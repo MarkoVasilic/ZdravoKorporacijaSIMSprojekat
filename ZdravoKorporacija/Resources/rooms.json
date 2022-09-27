@@ -47,5 +47,12 @@
     "Description": "Operating room 4",
     "Type": 4,
     "typeStr": "SURGERY"
+  },
+  {
+    "Name": "adkdksm",
+    "Id": 23,
+    "Description": "fmksfmk",
+    "Type": 2,
+    "typeStr": "CONFERENCE"
   }
 ]

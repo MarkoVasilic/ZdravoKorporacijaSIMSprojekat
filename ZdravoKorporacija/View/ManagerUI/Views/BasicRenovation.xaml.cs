@@ -36,7 +36,6 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         private DateTime end;
         private String durationToSend;
         private String description;
-        private AppointmentController appointmentController;
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -62,26 +61,8 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
         public BasicRenovation(DateTime dateFrom, DateTime dateUntil, String duration)
         {
             InitializeComponent();
-            AppointmentRepository appointmentRepository = new AppointmentRepository();
-            PatientRepository patientRepository = new PatientRepository();
-            DoctorRepository doctorRepository = new DoctorRepository();
             RoomRepository roomRepository = new RoomRepository();
-            AdvancedRenovationJoiningRepository advancedRenovationJoining = new AdvancedRenovationJoiningRepository();
-            AdvancedRenovationSeparationRepository advancedRenovationSeparation =
-                new AdvancedRenovationSeparationRepository();
-            BasicRenovationRepository basicRenovationRepository = new BasicRenovationRepository();
-            ManagerRepository managerRepository = new ManagerRepository();
-            SecretaryRepository secretaryRepository = new SecretaryRepository();
-            MeetingRepository meetingRepository = new MeetingRepository();
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientRepository, doctorRepository, roomRepository);
-            ScheduleService scheduleService = new ScheduleService(appointmentRepository, patientRepository,
-                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
-                advancedRenovationSeparation, managerRepository, secretaryRepository, meetingRepository);
-            EmergencyService emergencyService = new EmergencyService(appointmentRepository, patientRepository,
-                doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
-                advancedRenovationSeparation, scheduleService);
             RoomService roomService = new RoomService(roomRepository);
-            appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             roomController = new RoomController(roomService);
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAllRooms());
@@ -92,18 +73,8 @@ namespace ZdravoKorporacija.View.ManagerUI.Views
 
         private void PossibleAppoitments_Click(object sender, RoutedEventArgs e)
         {
-
-            try
-            {
-                appointmentController.GetPossibleAppointmentsByManager(checkedRoomId, start, end, int.Parse(durationToSend));
-                NavigationService.Navigate(new CreateBasicRenovation(checkedRoomId, start, end, durationToSend, Description));
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Greška");
-                ManagerHomeWindow.NavigationService.Navigate(new ChooseRenovationType());
-            }
-
-
+            NavigationService.Navigate(new CreateBasicRenovation(checkedRoomId, start, end, durationToSend, Description));
+       
         }
 
 

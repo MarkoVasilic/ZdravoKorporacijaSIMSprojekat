@@ -136,9 +136,6 @@ namespace ZdravoKorporacija.View.ManagerUI.ViewModels
 
             try
             {
-                //Console.WriteLine(Room.Name);
-                //Console.WriteLine(Room.Description);
-                //Console.WriteLine(Room.Type);
                 RoomController.CreateRoom(Room.Name, Room.Description, Room.Type);
 
                 MessageBox.Show("Prostorija je uspešno kreirana.", "Obaveštenje", MessageBoxButton.OK);

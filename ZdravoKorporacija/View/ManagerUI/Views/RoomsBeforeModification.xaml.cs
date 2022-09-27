@@ -35,7 +35,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         private void RadioButtonList_Checked(object sender, RoutedEventArgs e)
         {
-            //Console.WriteLine(((RadioButton)sender).Tag);
             int id = (int)((RadioButton)sender).Tag;
 
             foreach (Room r in rooms)
@@ -43,8 +42,6 @@ namespace ZdravoKorporacija.View.RoomCRUD
                 if (r.Id == id)
                     checkedRoomId = id;
             }
-
-            //Console.WriteLine(checkedRoomId);
 
 
         }
@@ -54,11 +51,7 @@ namespace ZdravoKorporacija.View.RoomCRUD
 
         }
 
-        /*private void Button_Back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ManagerHomePage());
-        }*/
-
+     
         private void ModifyRoomHelp_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
