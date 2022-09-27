@@ -12,7 +12,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 firstName = value;
-                OnProperyChanged("FirstName");
+                OnPropertyChanged("FirstName");
             }
         }
         private String lastName;
@@ -22,7 +22,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 firstName = value;
-                OnProperyChanged("LastName");
+                OnPropertyChanged("LastName");
             }
         }
 
@@ -34,7 +34,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 jmbg = value;
-                OnProperyChanged("Jmbg");
+                OnPropertyChanged("Jmbg");
             }
         }
 
@@ -46,7 +46,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 dateOfBirth = value;
-                OnProperyChanged("DateOfBirth");
+                OnPropertyChanged("DateOfBirth");
             }
         }
 
@@ -58,7 +58,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 gender = value;
-                OnProperyChanged("Gender");
+                OnPropertyChanged("Gender");
             }
         }
         private BloodType bloodType;
@@ -69,7 +69,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 bloodType = value;
-                OnProperyChanged("BloodType");
+                OnPropertyChanged("BloodType");
             }
         }
 
@@ -81,7 +81,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 phoneNumber = value;
-                OnProperyChanged("PhoneNumber");
+                OnPropertyChanged("PhoneNumber");
             }
         }
 
@@ -93,7 +93,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 email = value;
-                OnProperyChanged("Email");
+                OnPropertyChanged("Email");
             }
         }
 
@@ -105,7 +105,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 adress = value;
-                OnProperyChanged("Adress");
+                OnPropertyChanged("Adress");
             }
         }
 

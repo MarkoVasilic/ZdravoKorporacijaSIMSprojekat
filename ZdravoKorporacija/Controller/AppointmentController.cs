@@ -89,11 +89,16 @@ namespace Controller
         {
             _appointmentService.CreateAppointmentByDoctor(appointmentToCreate);
         }
+
+        public void CreateOperationAppointment(PossibleAppointmentsDTO operationToCreate)
+        {
+            _appointmentService.CreateOperationAppointment(operationToCreate);
+        }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByDoctor(String patientJmbg, String doctorJmbg,
-            DateTime dateFrom, DateTime dateUntil, int duration, String priority)
+            DateTime dateFrom, DateTime dateUntil, int duration, String priority, int roomId)
         {
             return _scheduleService.GetPossibleAppointmentsByDoctor(patientJmbg, doctorJmbg,
-                dateFrom, dateUntil, duration, priority);
+                dateFrom, dateUntil, duration, priority, roomId);
         }
         public List<PossibleAppointmentsDTO> GetPossibleAppointmentsByManager(int roomId, DateTime dateFrom, DateTime dateUntil, int duration)
         {

@@ -4,11 +4,34 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      xmlns:validation="clr-namespace:ZdravoKorporacija.View.DoctorUI.Validation"
+      xmlns:sys="clr-namespace:System;assembly=System.Runtime"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ModifyDoctorAppointmentPage">
+      Title="ModifyDoctorAppointmentPage"
+      Background="#FF01041C"
+      FontFamily="Times New Roman">
 
-    <Grid>
-        
+    <Grid Margin="5, 50, 5, 5" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+            <TextBlock FontSize="24" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 2" Foreground="White">Pick new date:</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <DatePicker FontSize="24" Width="470" VerticalAlignment="Center" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="20 0 0 2" Foreground="Black" Background="White" SelectedDate="{Binding Path=NewDate, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Name="ViewErrorMessage" FontSize="24" Width="470" Height="auto" TextWrapping="Wrap"  HorizontalAlignment="Center" Margin="0 20 0 10"  Foreground="Red" Text="{Binding Path=ErrorMessage}"></TextBlock>
+            <Button x:Name="Confirm" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Grid.Row="1" Grid.Column="3" Width="200" Height="50" Margin="0 10 0 0" Content="CONFIRM" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="Confirm_OnClick"></Button>
+        </StackPanel>
     </Grid>
 </Page>

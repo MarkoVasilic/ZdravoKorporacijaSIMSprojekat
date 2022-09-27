@@ -2,13 +2,58 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CreateDoctorAppointmentPage">
+      Title="CreateDoctorAppointmentPage"
+      Background="#FF01041C"
+      FontFamily="Times New Roman">
 
-    <Grid>
-        
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Grid Margin="5, 100, 5, 5" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="230"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="155"></ColumnDefinition>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+            <TextBlock FontSize="24" Width="155" HorizontalAlignment="Left" Margin="4 23 0 2" Foreground="White">Patient jmbg:</TextBlock>
+            <TextBlock FontSize="24" Width="155" HorizontalAlignment="Left" Margin="4 40 0 2" Foreground="White">From:</TextBlock>
+            <TextBlock FontSize="24" Width="155" HorizontalAlignment="Left" Margin="4 39 0 2" Foreground="White">To:</TextBlock>
+            <TextBlock FontSize="24" Width="155" HorizontalAlignment="Left" Margin="4 33 0 2" Foreground="White">Choose priority:</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBox FontSize="24" Width="470" Height="35" HorizontalAlignment="Left" Margin="20 20 0 2" Foreground="Black" Background="White" Text="{Binding Path=PatientJmbg, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <DatePicker FontSize="24" Width="470" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="20 30 0 2" Foreground="Black" Background="White" SelectedDate="{Binding Path=DateFrom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+            <DatePicker FontSize="24" Width="470" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="20 30 0 2" Foreground="Black" Background="White" SelectedDate="{Binding Path=DateTo, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+            <ComboBox Name="PriorityComboBox" FontSize="24" Width="470" Height="35" HorizontalAlignment="Left" Margin="20 30 0 2" Foreground="Black" Background="White" 
+                      SelectedValuePath="Content">
+                <ComboBoxItem>Doctor</ComboBoxItem>
+                <ComboBoxItem>Time</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="24" Margin="0 15 0 0">Choose doctor from the table below :</Label>
+        <DataGrid x:Name="DataGridDoctors" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  ItemsSource="{Binding Doctors, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="4, 60, 10, 10" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" Height="160" Width="642" TextBlock.FontSize="24">
+            <DataGrid.Columns>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Medical Department" Binding="{Binding SpecialtyType}" Width="227"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="First Name" Binding="{Binding FirstName}" Width="195"></DataGridTextColumn>
+                <DataGridTextColumn TextBlock.FontSize="24" Header="Last Name" Binding="{Binding LastName}" Width="195"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock Name="ViewErrorMessage" FontSize="24" Width="470" Height="auto" TextWrapping="Wrap"  HorizontalAlignment="Center" Margin="20 0 0 10"  Foreground="Red" Text="{Binding Path=ErrorMessage}"></TextBlock>
+            <Button x:Name="Confirm" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" Margin="0 0 0 0" Background="LightBlue" Width="200" Height="50" Content="CONFIRM" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" CommandParameter="{Binding SelectedItem, ElementName=DataGridDoctors}" Click="Confirm_OnClick"/>
+        </StackPanel>
+
     </Grid>
+    </ScrollViewer>
 </Page>

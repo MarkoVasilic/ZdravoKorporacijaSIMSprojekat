@@ -46,5 +46,6 @@ namespace ZdravoKorporacija.View.DoctorUI
         {
             NavigationService.Navigate(new ChooseMedicationPage(jmbg));
         }
+
     }
 }

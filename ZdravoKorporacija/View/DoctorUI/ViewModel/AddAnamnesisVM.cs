@@ -6,6 +6,11 @@ using System.Windows.Input;
 using ZdravoKorporacija.View.DoctorUI.Commands;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
+using ToastNotifications;
+using ToastNotifications.Position;
+using ToastNotifications.Lifetime;
+using System.Windows;
+using ToastNotifications.Messages;
 
 namespace ZdravoKorporacija.View.DoctorUI.ViewModel
 {
@@ -20,7 +25,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 diagnosis = value;
-                OnProperyChanged("Diagnosis");
+                OnPropertyChanged("Diagnosis");
             }
         }
 
@@ -31,7 +36,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 report = value;
-                OnProperyChanged("Report");
+                OnPropertyChanged("Report");
             }
         }
 
@@ -58,13 +63,39 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
         {
             try
             {
-                MedicalRecordController.CreateAnamnesis(patientJmbg, Diagnosis, Report);
-                DoctorWindowVM.NavigationService.Navigate(new ViewMedicalRecordPage(patientJmbg));
+                if (Diagnosis == null || String.IsNullOrWhiteSpace(Diagnosis))
+                {
+
+                }else if ( Report == null || String.IsNullOrWhiteSpace(Report))
+                {
+
+                }
+                else
+                {
+                    MedicalRecordController.CreateAnamnesis(patientJmbg, Diagnosis, Report);
+                    notifier.ShowSuccess("Successfully created anamnesis!");
+                    DoctorWindowVM.NavigationService.Navigate(new ViewMedicalRecordPage(patientJmbg));
+                }
             }
             catch
             {
 
             }
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 30,
+                offsetY: 90);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(7),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
     }
 }

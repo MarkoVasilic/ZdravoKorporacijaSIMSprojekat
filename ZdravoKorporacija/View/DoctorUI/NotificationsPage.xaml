@@ -9,11 +9,11 @@
       Background="#FF01041C"
       FontFamily="Times New Roman">
 
-    <Grid MaxWidth="1024" Margin="5, 50, 5, 5" HorizontalAlignment="Center" VerticalAlignment="Top">
+    <Grid MaxWidth="1024" Margin="5, 100, 5, 5" HorizontalAlignment="Center" VerticalAlignment="Top">
         <DataGrid x:Name="dataGridMedicalRecords"  ItemsSource="{Binding notifications, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20, 70, 20, 20" ScrollViewer.CanContentScroll="True" Height="500" Width="auto" TextBlock.FontSize="24">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
-                    <Setter Property="Height" Value="70"/>
+                    <Setter Property="Height" Value="90"/>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>

@@ -7,11 +7,17 @@ using ZdravoKorporacija.View.DoctorUI.Commands;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.Controller;
+using ToastNotifications;
+using ToastNotifications.Position;
+using System.Windows;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
 
 namespace ZdravoKorporacija.View.DoctorUI.ViewModel
 {
     public class ModifyAnamnesisVM : ViewModelBase
     {
+        private String PatientJmbg { get; set; }
         public MedicalRecordController MedicalRecordController { get; set; }
         private String diagnosis;
         private int Id;
@@ -21,7 +27,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 diagnosis = value;
-                OnProperyChanged("Diagnosis");
+                OnPropertyChanged("Diagnosis");
             }
         }
 
@@ -32,16 +38,17 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             set
             {
                 report = value;
-                OnProperyChanged("Report");
+                OnPropertyChanged("Report");
             }
         }
 
         public ICommand ModifyCommand { get; }
 
-        public ModifyAnamnesisVM(int id)
+        public ModifyAnamnesisVM(int id, String patientJmbg)
         {
             ModifyCommand = new RelayCommand(confirmExecute);
             DoctorWindowVM.setWindowTitle("Modify report");
+            this.PatientJmbg = patientJmbg;
             this.Id = id;
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
@@ -62,12 +69,28 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
             try
             {
                 MedicalRecordController.ModifyAnamnesis(Id, Diagnosis, Report);
-                DoctorWindowVM.NavigationService.Navigate(new MedicalRecords());
+                notifier.ShowSuccess("Successfully modified anamnesis!");
+                DoctorWindowVM.NavigationService.Navigate(new ViewMedicalRecordPage(PatientJmbg));
             }
             catch
             {
 
             }
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 30,
+                offsetY: 90);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(7),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
     }
 }

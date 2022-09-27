@@ -5,12 +5,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using Model;
 using Repository;
 using Service;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.View.DoctorUI.ViewModel;
+using ToastNotifications;
+using ToastNotifications.Position;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
 
 namespace ZdravoKorporacija.View.DoctorUI
 {
@@ -24,7 +29,7 @@ namespace ZdravoKorporacija.View.DoctorUI
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnProperyChanged(string? propertyName)
+        protected void OnPropertyChanged(string? propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -36,7 +41,7 @@ namespace ZdravoKorporacija.View.DoctorUI
             set
             {
                 dateFrom = value;
-                OnProperyChanged("DateFrom");
+                OnPropertyChanged("DateFrom");
 
             }
         }
@@ -48,12 +53,12 @@ namespace ZdravoKorporacija.View.DoctorUI
             set
             {
                 dateTo = value;
-                OnProperyChanged("DateTo");
+                OnPropertyChanged("DateTo");
             }
         }
 
         public ObservableCollection<AppointmentDTO> appointments { get; set; }
-        /*public ObservableCollection<AppointmentDTO> Appointments
+        public ObservableCollection<AppointmentDTO> Appointments
         {
             get => appointments;
             set
@@ -61,11 +66,14 @@ namespace ZdravoKorporacija.View.DoctorUI
                 appointments = value;
                 OnPropertyChanged("Appointments");
             }
-        }*/
+        }
+
         public DoctorHomePage(DoctorWindowVM doctorWindowVM)
         {
             InitializeComponent();
             DoctorWindowVM.setWindowTitle("Appointment Schedule");
+            this.DateFrom = DateTime.MinValue;
+            this.DateTo = DateTime.MaxValue;
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             DoctorRepository doctorRepository = new DoctorRepository();
             PatientRepository patientRepository = new PatientRepository();
@@ -85,9 +93,14 @@ namespace ZdravoKorporacija.View.DoctorUI
                 doctorRepository, roomRepository, basicRenovationRepository, advancedRenovationJoining,
                 advancedRenovationSeparation, scheduleService);
             //this.DataContext = doctorWindowVM;
+            if (doctorRepository.FindOneByJmbg(App.loggedUser.Jmbg).Specialty == true)
+            {
+                ScheduleSurgeryButton.Visibility = Visibility.Visible;
+            }
             this.DataContext = this;
             appointmentController = new AppointmentController(appointmentService, scheduleService, emergencyService);
             appointments = new ObservableCollection<AppointmentDTO>(appointmentController.GetAppointmentsByDoctorJmbgDTO(App.loggedUser.Jmbg));
+
         }
 
 
@@ -110,21 +123,75 @@ namespace ZdravoKorporacija.View.DoctorUI
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
-            AppointmentDTO appoinmeDTO = (AppointmentDTO)((Button)sender).CommandParameter;
-            int id = appoinmeDTO.Id;
-            NavigationService.Navigate(new ModifyDoctorAppointmentPage(id));
+            try
+            {
+                AppointmentDTO appoinmeDTO = (AppointmentDTO)((Button)sender).CommandParameter;
+                if (appoinmeDTO == null)
+                {
+                    notifier.ShowError("Please select appointment to edit!");
+                }
+                else
+                {
+                    int id = appoinmeDTO.Id;
+                    NavigationService.Navigate(new ModifyDoctorAppointmentPage(id));
+                }
+            }
+            catch
+            {
+                notifier.ShowError("Please select appointment to edit!");
+            }
+            
         }
 
         private void DeleteAppointmnetButton_OnClick(object sender, RoutedEventArgs e)
         {
-            AppointmentDTO appoinmeDTO = (AppointmentDTO)((Button)sender).CommandParameter;
-            int id = appoinmeDTO.Id;
-            appointmentController.DeleteAppointment(id);
+            try
+            {
+                AppointmentDTO appoinmeDTO = (AppointmentDTO)((Button)sender).CommandParameter;
+                if (appoinmeDTO == null)
+                {
+                    notifier.ShowError("Please select appointment to delete!");
+                }
+                else
+                {
+                    int id = appoinmeDTO.Id;
+                    appointmentController.DeleteAppointment(id);
+                    notifier.ShowSuccess("Successfully deleted appointment!");
+                    DoctorWindowVM doctorWindowVm = new DoctorWindowVM();
+                    NavigationService.Navigate(new DoctorHomePage(doctorWindowVm));
+                }
+            }
+            catch
+            {
+                notifier.ShowError("Please select appointment to delete!");
+            }
+
         }
 
         private void FilterAppointmnetsButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            this.appointments = new ObservableCollection<AppointmentDTO>(appointmentController.FilterByTime(DateFrom, DateTo));
+        { 
+            Appointments = new ObservableCollection<AppointmentDTO>(appointmentController.FilterByTime(DateFrom, DateTo));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate((new AppointmentTutorialsPage()));
+        }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 30,
+                offsetY: 90);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(7),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
+
     }
 }

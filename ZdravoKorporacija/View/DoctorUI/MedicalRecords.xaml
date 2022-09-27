@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.View.DoctorUI"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1200"
       Title="Patients" Margin="0 10 0 0"
@@ -11,7 +12,10 @@
       FontFamily="Times New Roman">
 
     <Grid MaxWidth="1024" Margin="5, 50, 5, 5" HorizontalAlignment="Center" VerticalAlignment="Top">
-        <DataGrid x:Name="dataGridMedicalRecords"  ItemsSource="{Binding medicalrecords, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20, 70, 20, 20" ScrollViewer.CanContentScroll="True" Height="auto" Width="1010" TextBlock.FontSize="24">
+        <Label FontSize="30" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15 60 0 0">How to create anamnesis and prescription tutorial</Label>
+        <materialDesign:PackIcon Kind="ArrowRight" Height="47" Width="50" VerticalContentAlignment="Center" Foreground="White" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 60 280 0"></materialDesign:PackIcon>
+        <Button x:Name="TutorialButton" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="#FFDFDF28" Width="220" Height="60" Margin="50 50 20 0" Content="TUTORIAL" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="Tutorial_Click"></Button>
+        <DataGrid x:Name="dataGridMedicalRecords"  ItemsSource="{Binding medicalrecords, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="20, 130, 20, 20" ScrollViewer.CanContentScroll="True" Height="500" Width="1010" TextBlock.FontSize="24" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn TextBlock.FontSize="24" Header="Jmbg" Binding="{Binding Jmbg}" Width="200"></DataGridTextColumn>
                 <DataGridTextColumn TextBlock.FontSize="24" TextBlock.TextAlignment="Center" Header="First Name" Binding="{Binding FirstName}" Width="160"></DataGridTextColumn>

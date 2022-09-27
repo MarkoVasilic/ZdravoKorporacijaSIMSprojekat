@@ -30,6 +30,5 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="AddPrescriptionButton" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Foreground="Black" Background="LightBlue" Width="220" Height="60" Margin="50 0 0 0" Content="Add Prescription" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" Click="AddPrescriptionButton_Click"></Button>
-
     </Grid>
 </Page>

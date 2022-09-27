@@ -63,6 +63,17 @@ namespace Model
             return txt;
         }
 
+        public String toPDF()
+        {
+            String txt = "";
+            txt += "Medication : " + Medication + "\n";
+            txt += "Amount : " + Amount + "\n";
+            txt += "Frequency : " + Frequency + "\n";
+            txt += "From : " + From + "\n";
+            txt += "To : " + To + "\n";
+            return txt;
+        }
+
     }
 
 

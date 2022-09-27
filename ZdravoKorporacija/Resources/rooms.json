@@ -23,28 +23,28 @@
   {
     "Name": "Conf 1",
     "Id": 11,
-    "Description": "Conference 1",
+    "Description": "Operating room 1",
     "Type": 2,
-    "typeStr": "CONFERENCE"
+    "typeStr": "SURGERY"
   },
   {
     "Name": "Conf 2",
     "Id": 12,
-    "Description": "Conference 2",
+    "Description": "Operating room 2",
     "Type": 2,
-    "typeStr": "CONFERENCE"
+    "typeStr": "SURGERY"
   },
   {
     "Name": "Surg 1",
     "Id": 14,
-    "Description": "Surgery 1",
+    "Description": "Operating room 3",
     "Type": 4,
     "typeStr": "SURGERY"
   },
   {
     "Name": "Surg 2",
     "Id": 5,
-    "Description": "Surgery 2",
+    "Description": "Operating room 4",
     "Type": 4,
     "typeStr": "SURGERY"
   }

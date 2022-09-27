@@ -18,7 +18,7 @@
     "Diagnosis": "Fever",
     "Report": "new Report",
     "DateTime": "2022-05-05T17:32:31.2132711+02:00",
-    "DoctorJmbg": "4444444444444"
+    "DoctorJmbg": "1231231231231"
   },
   {
     "Id": 6,
@@ -30,7 +30,7 @@
   {
     "Id": 9,
     "Diagnosis": "novaa",
-    "Report": "fghjkl",
+    "Report": "repoort",
     "DateTime": "2022-05-16T19:41:50.05619+02:00",
     "DoctorJmbg": "4444444444444"
   },
@@ -39,7 +39,7 @@
     "Diagnosis": "Covid19",
     "Report": "Sweating, weakness",
     "DateTime": "2022-05-17T19:31:01.4211849+02:00",
-    "DoctorJmbg": "4444444444444"
+    "DoctorJmbg": "1231231231231"
   },
   {
     "Id": 8,
@@ -53,14 +53,7 @@
     "Diagnosis": "Appendicitis",
     "Report": "neophodno operativno lecenje.",
     "DateTime": "2022-05-17T21:27:34.8042355+02:00",
-    "DoctorJmbg": "4444444444444"
-  },
-  {
-    "Id": 11,
-    "Diagnosis": "gastritis",
-    "Report": "dijetalno-higijenska ishrana i omeprol.",
-    "DateTime": "2022-05-18T11:43:58.2169745+02:00",
-    "DoctorJmbg": "4444444444444"
+    "DoctorJmbg": "1231231231231"
   },
   {
     "Id": 12,
@@ -91,17 +84,59 @@
     "DoctorJmbg": "1231231231231"
   },
   {
-    "Id": 15,
-    "Diagnosis": "modify",
-    "Report": "drftyuio",
-    "DateTime": "2022-06-07T21:37:41.1923097+02:00",
-    "DoctorJmbg": "4444444444444"
-  },
-  {
     "Id": 16,
     "Diagnosis": "dijgnoza",
     "Report": "dfghjk",
     "DateTime": "2022-06-07T21:44:56.7447205+02:00",
     "DoctorJmbg": "1231231231231"
+  },
+  {
+    "Id": 18,
+    "Diagnosis": "Covid19",
+    "Report": "Fever, Cough, Short breath",
+    "DateTime": "2022-06-13T02:18:09.8587643+02:00",
+    "DoctorJmbg": "1231231231231"
+  },
+  {
+    "Id": 19,
+    "Diagnosis": "Bronchitis",
+    "Report": "Short breath, fever",
+    "DateTime": "2022-06-13T02:34:18.972839+02:00",
+    "DoctorJmbg": "1231231231231"
+  },
+  {
+    "Id": 21,
+    "Diagnosis": "Headache",
+    "Report": "Strong headache, fever",
+    "DateTime": "2022-06-14T00:36:22.2676464+02:00",
+    "DoctorJmbg": "1231231231231"
+  },
+  {
+    "Id": 15,
+    "Diagnosis": "Fever",
+    "Report": "Cough, sweating",
+    "DateTime": "2022-06-14T03:08:15.5497494+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 11,
+    "Diagnosis": "gastritis",
+    "Report": "dijetalno-higijenska ishrana i omeprol.",
+    "DateTime": "2022-06-14T03:08:45.8756546+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 20,
+    "Diagnosis": "new Diagnosis",
+    "Report": "reportt",
+    "DateTime": "2022-06-14T20:16:54.943042+02:00",
+    "DoctorJmbg": "4444444444444"
+  },
+  {
+    "Id": 17,
+    "Diagnosis": "Bronchitisj",
+    "Report": "Short breath, cough",
+    "DateTime": "2022-06-14T20:25:44.4891952+02:00",
+    "DoctorJmbg": "4444444444444"
   }
 ]

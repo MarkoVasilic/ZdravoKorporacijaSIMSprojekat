@@ -6,7 +6,7 @@ namespace ZdravoKorporacija.View.DoctorUI.ViewModel
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnProperyChanged(string? propertyName)
+        protected void OnPropertyChanged(string? propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

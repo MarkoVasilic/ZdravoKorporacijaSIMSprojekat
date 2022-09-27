@@ -10,7 +10,7 @@
       FontFamily="Times New Roman">
 
     <Grid>
-        <Button Margin="0 50 34 0" Content="Create Request" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" Background="LightBlue" Width="220" Height="60" Click="CreateAbsenceRequestClick" ></Button>
+        <Button Margin="0 100 34 0" Content="Create Request" TextBlock.FontSize="28" TextBlock.FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" Background="LightBlue" Width="220" Height="60" Click="CreateAbsenceRequestClick" ></Button>
         <DataGrid x:Name="dataGridMedicalRecords"  ItemsSource="{Binding absenceRequests, Mode=TwoWay}" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" Margin="34, 120, 34, 20" ScrollViewer.CanContentScroll="True" Height="500" Width="auto" TextBlock.FontSize="24">
             <DataGrid.Columns>
                 <DataGridTextColumn TextBlock.FontSize="24" Header="Absence reason" Binding="{Binding Reason}" Width="280">
